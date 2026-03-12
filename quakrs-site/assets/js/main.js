@@ -26,7 +26,6 @@ const homeKpiUpdated = document.querySelector("#home-kpi-updated");
 const homeKpiSource = document.querySelector("#home-kpi-source");
 const homeLaunch = document.querySelector("#launch");
 const homeSnapshotBrief = document.querySelector("#home-snapshot-brief");
-const homeSourcesLine = document.querySelector("#home-sources-line");
 const homeClustersList = document.querySelector("#home-clusters-list");
 const homeModuleEarthquakesList = document.querySelector("#home-module-earthquakes-list");
 const homeVolcanoList = document.querySelector("#home-volcano-list");
@@ -38,8 +37,8 @@ const homePriorityMode = document.querySelector("#home-priority-mode");
 const homePriorityBoardCards = document.querySelector("#home-priority-board-cards");
 const homePrioritySupport = document.querySelector("#home-priority-support");
 const homeMapFeedList = document.querySelector("#home-map-feed-list");
+const homeMapViewportOnlyToggle = document.querySelector("#home-map-viewport-only");
 const homeMapFeedTitle = document.querySelector("#home-map-feed-title");
-const homeMapFeedNote = document.querySelector("#home-map-feed-note");
 const homeContextTitle = document.querySelector("#home-context-title");
 const homeContextMode = document.querySelector("#home-context-mode");
 const homePriorityNow = document.querySelector("#home-priority-now");
@@ -62,6 +61,9 @@ const homeStatusTsunami = document.querySelector("#home-status-tsunami");
 const homeStatusTsunamiNote = document.querySelector("#home-status-tsunami-note");
 const homeStatusKp = document.querySelector("#home-status-kp");
 const homeStatusSpaceNote = document.querySelector("#home-status-space-note");
+const homeStatusTremorClusters = document.querySelector("#home-status-tremor-clusters");
+const homeStatusTremorNote = document.querySelector("#home-status-tremor-note");
+const homeMirrorNodes = document.querySelectorAll("[data-home-mirror]");
 const footerUpdateInterval = document.querySelector("#footer-update-interval");
 const footerDataLatency = document.querySelector("#footer-data-latency");
 const mapFilterButtons = document.querySelectorAll(".map-filter-btn");
@@ -75,19 +77,14 @@ const eventInsightPlate = document.querySelector("#event-insight-plate");
 const eventInsightFault = document.querySelector("#event-insight-fault");
 const eventInsightSlip = document.querySelector("#event-insight-slip");
 const eventInsightNearbyList = document.querySelector("#event-insight-nearby-list");
+const earthquakesMainLayout = document.querySelector(".earthquakes-main-layout");
+const earthquakesMapCard = earthquakesMainLayout ? earthquakesMainLayout.querySelector(".map-card") : null;
+const earthquakesSideCard = earthquakesMainLayout ? earthquakesMainLayout.querySelector(".side-card") : null;
 
 const homePulseState = {
   quakeBrief: null,
   volcanoBrief: null,
   tremorBrief: null,
-};
-
-const homeSourcesState = {
-  earthquakes: null,
-  volcanoes: null,
-  tremors: null,
-  tsunami: null,
-  spaceWeather: null,
 };
 
 const homeHazardsState = {
@@ -131,6 +128,7 @@ let latestHomeSituationContext = null;
 let latestHomeLiveMode = "normal-watch";
 let allEarthquakeEvents = [];
 let selectedEventKey = null;
+let homeMapViewportOnly = false;
 let eventInsightMap = null;
 let eventInsightEventLayer = null;
 let eventInsightStrongLayer = null;
@@ -287,27 +285,6 @@ function updateHomeBrief() {
   homeSnapshotBrief.textContent = parts.join(" ");
 }
 
-function updateHomeSourcesLine() {
-  if (!homeSourcesLine) {
-    return;
-  }
-
-  const sourceParts = [
-    homeSourcesState.earthquakes ? `EQ: ${homeSourcesState.earthquakes}` : null,
-    homeSourcesState.volcanoes ? `VOLC: ${homeSourcesState.volcanoes}` : null,
-    homeSourcesState.tremors ? `TREMOR: ${homeSourcesState.tremors}` : null,
-    homeSourcesState.tsunami ? `TSU: ${homeSourcesState.tsunami}` : null,
-    homeSourcesState.spaceWeather ? `SW: ${homeSourcesState.spaceWeather}` : null,
-  ].filter(Boolean);
-
-  if (sourceParts.length === 0) {
-    homeSourcesLine.textContent = "Sources loading...";
-    return;
-  }
-
-  homeSourcesLine.textContent = `Sources - ${sourceParts.join(" · ")}`;
-}
-
 function inferHomeSituationContext(events) {
   const now = Date.now();
   const lookbackMs = 6 * 60 * 60 * 1000;
@@ -413,9 +390,6 @@ function renderHomeSituationContext(context) {
   }
   if (homeMapFeedTitle) {
     homeMapFeedTitle.textContent = context.mode === "regional-focus" ? "Feed area prioritaria" : "Feed terremoti";
-  }
-  if (homeMapFeedNote) {
-    homeMapFeedNote.textContent = context.mode === "regional-focus" ? context.regionLabel : "Globale";
   }
   if (homeSignificantHeadNote) {
     homeSignificantHeadNote.textContent = context.mode === "regional-focus" ? "In evidenza ora" : "Live";
@@ -567,6 +541,17 @@ function renderHazardStatusCards() {
   if (homeStatusSpaceNote) {
     homeStatusSpaceNote.textContent = homeHazardsState.spaceStormLevel || "Loading space weather...";
   }
+
+  if (homeStatusTremorClusters) {
+    homeStatusTremorClusters.textContent =
+      homeHazardsState.tremorClusters !== null ? String(homeHazardsState.tremorClusters) : "--";
+  }
+  if (homeStatusTremorNote) {
+    homeStatusTremorNote.textContent =
+      homeHazardsState.tremorSignals !== null
+        ? `${homeHazardsState.tremorSignals} signals this cycle`
+        : "Loading tremor signals...";
+  }
 }
 
 function magnitudeColor(magnitude) {
@@ -583,8 +568,8 @@ function magnitudeColor(magnitude) {
     5: "#eab308",
     6: "#f59e0b",
     7: "#f97316",
-    8: "#ef4444",
-    9: "#b91c1c",
+    8: "#d946ef",
+    9: "#7e22ce",
   };
 
   return palette[bucket];
@@ -612,6 +597,23 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function setHomeMirror(key, value, color = "") {
+  if (!homeMirrorNodes.length) {
+    return;
+  }
+  homeMirrorNodes.forEach((node) => {
+    if (!(node instanceof HTMLElement) || node.dataset.homeMirror !== key) {
+      return;
+    }
+    node.textContent = value;
+    if (color) {
+      node.style.color = color;
+    } else {
+      node.style.removeProperty("color");
+    }
+  });
 }
 
 function formatUtcLabel(input) {
@@ -685,6 +687,22 @@ function getFilteredEarthquakeEvents() {
     return allEarthquakeEvents;
   }
   return allEarthquakeEvents.filter((event) => eventInMagnitudeBand(event, activeMagnitudeBand));
+}
+
+function filterEventsToCurrentMapViewport(events) {
+  if (!Array.isArray(events)) {
+    return [];
+  }
+  if (!leafletMap) {
+    return events;
+  }
+  const bounds = leafletMap.getBounds();
+  return events.filter((event) => {
+    if (typeof event?.latitude !== "number" || typeof event?.longitude !== "number") {
+      return false;
+    }
+    return bounds.contains([event.latitude, event.longitude]);
+  });
 }
 
 function getEventKey(event) {
@@ -810,6 +828,11 @@ function renderMap(events) {
           applyEarthquakeView();
         }
       });
+      leafletMap.on("moveend", () => {
+        if (homeMapViewportOnly && latestEarthquakePayload) {
+          applyEarthquakeView();
+        }
+      });
     }
 
     syncLeafletTheme();
@@ -854,21 +877,6 @@ function renderMap(events) {
       });
     });
 
-    if (homeSnapshot && latestHomeSituationContext?.mode === "regional-focus") {
-      const focusRows = events.filter(
-        (event) =>
-          typeof event?.latitude === "number" &&
-          typeof event?.longitude === "number" &&
-          formatRegionLabel(parseRegion(event.place)) === latestHomeSituationContext.regionLabel,
-      );
-
-      if (focusRows.length >= 2) {
-        const bounds = window.L.latLngBounds(focusRows.map((event) => [event.latitude, event.longitude]));
-        leafletMap.fitBounds(bounds.pad(0.35), { animate: false, maxZoom: 6 });
-      } else if (focusRows.length === 1) {
-        leafletMap.setView([focusRows[0].latitude, focusRows[0].longitude], 5, { animate: false });
-      }
-    }
     return;
   }
 
@@ -901,6 +909,26 @@ function renderMap(events) {
     point.appendChild(title);
     mapPoints.appendChild(point);
   });
+}
+
+function syncEarthquakesFeedHeight() {
+  if (!isEarthquakesPage || !eventsList || !earthquakesMapCard || !earthquakesSideCard) {
+    return;
+  }
+
+  if (typeof window !== "undefined" && window.matchMedia("(max-width: 1120px)").matches) {
+    eventsList.style.removeProperty("max-height");
+    return;
+  }
+
+  const mapRect = earthquakesMapCard.getBoundingClientRect();
+  const sideRect = earthquakesSideCard.getBoundingClientRect();
+  const listRect = eventsList.getBoundingClientRect();
+  const sideStyles = window.getComputedStyle(earthquakesSideCard);
+  const sidePaddingBottom = parseFloat(sideStyles.paddingBottom || "0") || 0;
+  const topOffset = Math.max(0, listRect.top - sideRect.top);
+  const available = Math.floor(mapRect.height - topOffset - sidePaddingBottom);
+  eventsList.style.maxHeight = `${Math.max(220, available)}px`;
 }
 
 function depthBand(depthKm) {
@@ -961,7 +989,8 @@ function renderHomeAiInsight(context, events) {
   const leadPlace = leadEvent ? shortPlaceLabel(leadEvent.place) : context.regionLabel;
 
   if (homeAiTech) {
-    homeAiTech.textContent = `${leadMag} · ${leadPlace}`;
+    const magColor = leadEvent ? magnitudeColor(leadEvent.magnitude) : "#6b7280";
+    homeAiTech.innerHTML = `<span style="color:${magColor}">${escapeHtml(leadMag)}</span> · ${escapeHtml(leadPlace)}`;
   }
   if (homeAiText) {
     if (context.mode === "regional-focus") {
@@ -979,7 +1008,12 @@ function renderHomeContextEarthquakeRow(events, context) {
     return;
   }
 
-  const rows = [...events]
+  const scopedEvents =
+    context?.mode === "regional-focus" && context?.regionLabel
+      ? events.filter((event) => formatRegionLabel(parseRegion(event.place)) === context.regionLabel)
+      : events;
+
+  const rows = [...scopedEvents]
     .sort((a, b) => {
       const magDiff = (b.magnitude || 0) - (a.magnitude || 0);
       if (magDiff !== 0) return magDiff;
@@ -1008,7 +1042,7 @@ function renderHomeContextEarthquakeRow(events, context) {
         : "--:--";
       return `
         <li class="home-context-earthquake-item">
-          <strong>${formatMagnitude(event.magnitude)}</strong>
+          <strong style="color:${magnitudeColor(event.magnitude)}">${formatMagnitude(event.magnitude)}</strong>
           <span>${shortPlaceLabel(event.place)}</span>
           <em>${when}</em>
         </li>
@@ -1062,6 +1096,91 @@ function parseGeomagneticTier(stormLevel, kp) {
   return 0;
 }
 
+function clampEditorialText(text, maxLen = 0) {
+  const normalized = String(text || "").replace(/\s+/g, " ").trim();
+  if (!normalized) {
+    return "";
+  }
+  if (!maxLen || maxLen <= 0 || normalized.length <= maxLen) {
+    return normalized;
+  }
+  return `${normalized.slice(0, maxLen).trimEnd()}...`;
+}
+
+function ensureBulletinEllipsis(text) {
+  const value = String(text || "").trim();
+  if (!value) {
+    return "";
+  }
+  if (/[.!?]$/.test(value)) {
+    return value;
+  }
+  if (value.endsWith("...")) {
+    return value;
+  }
+  return `${value}...`;
+}
+
+function buildPriorityEditorialNotes(event, relatedEvents = []) {
+  const notes = [];
+  const primary = ensureBulletinEllipsis(
+    clampEditorialText(event?.editorial_note || event?.summary || event?.status || ""),
+  );
+  if (primary) {
+    notes.push({
+      kind: "primary",
+      label: "Primary bulletin",
+      text: primary,
+      url: event?.bulletin_url || event?.detail_url || event?.monitor_url || null,
+    });
+  }
+
+  const secondary = Array.isArray(relatedEvents)
+    ? relatedEvents.find((row) => row && row.id && row.id !== event?.id)
+    : null;
+  const shouldAddSecondary = primary.length > 0 && primary.length < 380;
+  if (secondary && shouldAddSecondary) {
+    const lead = secondary.title || secondary.location_or_subject || "Secondary signal";
+    const detail = secondary.editorial_note || secondary.summary || secondary.status || "";
+    const merged = ensureBulletinEllipsis(clampEditorialText(`${detail}`.trim()));
+    if (merged) {
+      notes.push({
+        kind: "related",
+        label: `Related bulletin: ${lead}`,
+        text: merged,
+        url: secondary?.bulletin_url || secondary?.detail_url || secondary?.monitor_url || null,
+      });
+    }
+  }
+
+  return notes.slice(0, 2);
+}
+
+function buildPriorityContextRows(event, relatedEvents = []) {
+  const related = Array.isArray(relatedEvents) ? relatedEvents.filter((row) => row && row.id !== event?.id) : [];
+  const firstRelated = related[0] || null;
+  const typeLabel = String(event?.type || "signal").replace("_", " ");
+  const rows = [
+    { label: "Track", value: `${typeLabel.toUpperCase()} · ${event?.priority_level || "P3"}` },
+    { label: "Primary status", value: event?.status || event?.secondary_value || "--" },
+    { label: "Secondary lanes", value: `${related.length}` },
+  ];
+
+  if (firstRelated) {
+    rows.push({
+      label: "Next signal",
+      value: firstRelated.title || firstRelated.location_or_subject || "Secondary monitor",
+    });
+  } else {
+    rows.push({
+      label: "Next signal",
+      value: "No secondary signal in this cycle",
+    });
+  }
+
+  return rows.slice(0, 4);
+}
+
 function priorityLevelWeight(level) {
   if (level === "P1") return 3;
   if (level === "P2") return 2;
@@ -1086,6 +1205,12 @@ function normalizeEarthquakeEvents(events) {
         priority_level: level,
         title: `${formatMagnitude(magnitude)} earthquake - ${shortPlaceLabel(event.place)}`,
         summary: `${shortPlaceLabel(event.place)} · ${depth !== null ? `${depth.toFixed(0)} km depth` : "depth unavailable"}`,
+        editorial_note: clampEditorialText(
+          `${shortPlaceLabel(event.place)} registered ${formatMagnitude(magnitude)} with ${
+            depth !== null ? `${depth.toFixed(0)} km depth` : "depth not available"
+          }.`,
+        ),
+        bulletin_url: null,
         location_or_subject: shortPlaceLabel(event.place),
         main_value: formatMagnitude(magnitude),
         secondary_value: depth !== null ? `${depth.toFixed(0)} km` : "N/A",
@@ -1114,6 +1239,10 @@ function normalizeVolcanoEvents() {
       priority_level: newEruptive >= 2 ? "P1" : reports > 0 ? "P2" : "P3",
       title: "Volcanic activity cycle",
       summary: `${newEruptive} new eruptive signals · ${reports} reports`,
+      editorial_note: clampEditorialText(
+        `Bulletin cycle tracks ${reports} reports with ${newEruptive} new eruptive signals across monitored volcanoes.`,
+      ),
+      bulletin_url: null,
       location_or_subject: homeHazardsState.latestCountry || "Global",
       main_value: `${newEruptive}`,
       secondary_value: `${reports} reports`,
@@ -1136,6 +1265,8 @@ function normalizeVolcanoEvents() {
       priority_level: level,
       title: isNew ? `${volcanoName} - new eruptive activity` : `${volcanoName} - activity update`,
       summary: event?.country ? `${event.country} · ${isNew ? "new eruptive signal" : "ongoing activity"}` : "Weekly volcano status",
+      editorial_note: clampEditorialText(event?.summary || ""),
+      bulletin_url: event?.source_url || null,
       location_or_subject: event?.country || volcanoName,
       main_value: isNew ? "New eruptive" : "Active",
       secondary_value: `${reports} reports`,
@@ -1161,6 +1292,12 @@ function normalizeTsunamiEvents() {
     priority_level: isActive ? "P1" : "P3",
     title: isActive ? `Tsunami alerts active - ${levelLabel}` : "No active tsunami alerts",
     summary: isActive ? `${alerts} active alert(s) across monitored coasts` : "Operational feed reports no active tsunami advisories",
+    editorial_note: clampEditorialText(
+      isActive
+        ? `Operational tsunami advisories are active in ${Math.max(1, alerts)} monitored coastal sector(s).`
+        : "No active tsunami advisories are reported in current operational bulletins.",
+    ),
+    bulletin_url: null,
     location_or_subject: "Global coastlines",
     main_value: `${alerts}`,
     secondary_value: levelLabel,
@@ -1185,6 +1322,12 @@ function normalizeSpaceEvents() {
     priority_level: level,
     title: `Geomagnetic status - ${homeHazardsState.spaceStormLevel || "Monitoring"}`,
     summary: `Current Kp ${kp.toFixed(1)} · NOAA level ${homeHazardsState.spaceStormLevel || "not classified"}`,
+    editorial_note: clampEditorialText(
+      `Geomagnetic conditions are at Kp ${kp.toFixed(1)} with level ${
+        homeHazardsState.spaceStormLevel || "monitoring"
+      }.`,
+    ),
+    bulletin_url: null,
     location_or_subject: "Global",
     main_value: `Kp ${kp.toFixed(1)}`,
     secondary_value: homeHazardsState.spaceStormLevel || "Monitoring",
@@ -1246,7 +1389,7 @@ function buildHomePriorityModel(events) {
   return { mode, boardEvents, railEvents, allEvents: normalized };
 }
 
-function renderPriorityCard(event, compact = false) {
+function renderPriorityCard(event, compact = false, options = {}) {
   const levelClass = `is-${String(event.priority_level || "P3").toLowerCase()}`;
   const metrics = [
     { label: "Main", value: event.main_value || "--" },
@@ -1258,12 +1401,27 @@ function renderPriorityCard(event, compact = false) {
   const safeType = escapeHtml((event.type || "signal").replace("_", " "));
   const safeLevel = escapeHtml(event.priority_level || "P3");
   const safeFreshness = escapeHtml(formatUpdatedAgo(event.timestamp));
+  const editorialNotes = buildPriorityEditorialNotes(event, options.relatedEvents || []);
+  const contextRows = buildPriorityContextRows(event, options.relatedEvents || []);
   const cta = escapeHtml(event.type === "earthquake" ? "Open details" : "Open monitor");
+  const primaryUrlRaw = event.detail_url || event.monitor_url || "#";
+  const secondaryUrlRaw = event.monitor_url || "";
+  const primaryUrl = String(primaryUrlRaw || "").trim();
+  const secondaryUrl = String(secondaryUrlRaw || "").trim();
+  const showSecondaryLink =
+    secondaryUrl !== "" &&
+    secondaryUrl !== "#" &&
+    primaryUrl !== "" &&
+    primaryUrl !== "#" &&
+    secondaryUrl !== primaryUrl;
 
   if (compact) {
     return `
       <article class="home-priority-card home-priority-card-compact ${levelClass}">
-        <p class="home-priority-card-top">${safeType} · ${safeLevel}</p>
+        <p class="home-priority-card-top">
+          <span class="home-priority-chip">${safeType}</span>
+          <span class="home-priority-chip home-priority-chip-level">${safeLevel}</span>
+        </p>
         <h4>${safeTitle}</h4>
         <p class="home-priority-card-meta">${escapeHtml(event.main_value || "--")} · ${safeFreshness}</p>
         <a class="inline-link" href="${event.detail_url || event.monitor_url || "#"}">${cta}</a>
@@ -1274,9 +1432,13 @@ function renderPriorityCard(event, compact = false) {
   return `
     <article class="home-priority-card ${levelClass}">
       <div class="home-priority-card-head">
-        <span>${safeType}</span>
-        <span>${safeLevel}</span>
-        <span>${safeFreshness}</span>
+        <div class="home-priority-card-metahead">
+          <div class="home-priority-card-badges">
+            <span class="home-priority-chip">${safeType}</span>
+            <span class="home-priority-chip home-priority-chip-level">${safeLevel}</span>
+          </div>
+          <span class="home-priority-card-freshness">${safeFreshness}</span>
+        </div>
       </div>
       <h4>${safeTitle}</h4>
       <p class="home-priority-card-summary">${safeSummary}</p>
@@ -1291,17 +1453,114 @@ function renderPriorityCard(event, compact = false) {
           )
           .join("")}
       </dl>
+      ${
+        editorialNotes.length > 0 || contextRows.length > 0
+          ? `<div class="home-priority-card-editorial">
+              ${
+                editorialNotes.length > 0
+                  ? `<ul class="home-priority-card-editorial-list">
+                      ${editorialNotes
+                        .map((note) => {
+                          const safeLabel = escapeHtml(note.label || "Bulletin");
+                          const safeText = escapeHtml(note.text || "");
+                          const safeUrl = typeof note.url === "string" && note.url.trim() !== ""
+                            ? escapeHtml(note.url.trim())
+                            : "";
+                          const body = safeUrl
+                            ? `<a class="home-priority-bulletin-link" href="${safeUrl}" target="_blank" rel="noopener noreferrer">${safeText}</a>`
+                            : `<span>${safeText}</span>`;
+                          const itemClass = note.kind === "primary" ? "is-primary" : note.kind === "related" ? "is-related" : "";
+                          return `<li class="${itemClass}"><strong>${safeLabel}</strong>${body}</li>`;
+                        })
+                        .join("")}
+                    </ul>`
+                  : ""
+              }
+              ${
+                contextRows.length > 0
+                  ? `<dl class="home-priority-card-context">
+                      ${contextRows
+                        .map(
+                          (row) => `
+                        <div>
+                          <dt>${escapeHtml(row.label)}</dt>
+                          <dd>${escapeHtml(row.value)}</dd>
+                        </div>`,
+                        )
+                        .join("")}
+                    </dl>`
+                  : ""
+              }
+            </div>`
+          : ""
+      }
       <div class="home-priority-card-actions">
-        <a class="btn btn-ghost" href="${event.detail_url || event.monitor_url || "#"}">${cta}</a>
-        <a class="btn btn-ghost" href="${event.monitor_url || "#"}">Open category monitor</a>
+        <a class="btn btn-primary home-priority-card-cta" href="${primaryUrl || "#"}">${cta}</a>
+        ${showSecondaryLink ? `<a class="inline-link home-priority-card-inline" href="${secondaryUrl}">Open category monitor</a>` : ""}
       </div>
     </article>
+  `;
+}
+
+function renderAttentionWatch(events) {
+  const rows = Array.isArray(events) ? events.slice(0, 3) : [];
+  if (rows.length === 0) {
+    return `
+      <aside class="home-priority-watch">
+        <div class="home-priority-watch-head">
+          <p class="home-priority-watch-kicker">Attention watch</p>
+          <span>Secondary lanes</span>
+        </div>
+        <p class="home-priority-watch-empty">No secondary watch signals in this cycle.</p>
+      </aside>
+    `;
+  }
+
+  return `
+    <aside class="home-priority-watch">
+      <div class="home-priority-watch-head">
+        <p class="home-priority-watch-kicker">Attention watch</p>
+        <span>Secondary lanes</span>
+      </div>
+      <div class="home-priority-watch-list">
+        ${rows
+          .map((event) => {
+            const safeTitle = escapeHtml(event.title || "Signal");
+            const safeType = escapeHtml((event.type || "signal").replace("_", " "));
+            const safeLevel = escapeHtml(event.priority_level || "P2");
+            const safeMeta = escapeHtml(`${event.main_value || "--"} · ${formatUpdatedAgo(event.timestamp)}`);
+            const cta = escapeHtml(event.type === "earthquake" ? "Open details" : "Open monitor");
+            return `
+              <article class="home-priority-watch-row">
+                <div class="home-priority-watch-row-top">
+                  <span class="home-priority-chip">${safeType}</span>
+                  <span class="home-priority-chip home-priority-chip-level">${safeLevel}</span>
+                </div>
+                <h4>${safeTitle}</h4>
+                <p class="home-priority-watch-meta">${safeMeta}</p>
+                <a class="inline-link" href="${event.detail_url || event.monitor_url || "#"}">${cta}</a>
+              </article>
+            `;
+          })
+          .join("")}
+      </div>
+    </aside>
   `;
 }
 
 function renderPriorityBoard(model) {
   if (!homePriorityBoardCards) {
     return;
+  }
+
+  if (homePriorityNow) {
+    const liveLabels = {
+      single: "Single critical signal",
+      dual: "Dual critical signal",
+      triple: "Stacked critical signal",
+      fallback: "Global watch",
+    };
+    homePriorityNow.textContent = liveLabels[model.mode] || "Global watch";
   }
 
   if (homePriorityMode) {
@@ -1329,14 +1588,11 @@ function renderPriorityBoard(model) {
   if (model.mode === "single" || model.mode === "fallback") {
     const primary = model.boardEvents[0];
     const secondary = model.boardEvents.slice(1, 3);
+    const watchEvents = secondary.length > 0 ? secondary : model.railEvents.slice(0, 3);
     homePriorityBoardCards.innerHTML = `
       <div class="home-priority-board-single">
-        ${renderPriorityCard(primary, false)}
-        ${
-          secondary.length > 0
-            ? `<div class="home-priority-secondary">${secondary.map((event) => renderPriorityCard(event, true)).join("")}</div>`
-            : ""
-        }
+        ${renderPriorityCard(primary, false, { relatedEvents: watchEvents })}
+        ${renderAttentionWatch(watchEvents)}
       </div>
     `;
     return;
@@ -1365,7 +1621,7 @@ function renderSignificantRail(model) {
   if (homeSignificantHeadNote) {
     homeSignificantHeadNote.textContent = model.mode === "fallback" ? "Live ranked" : "P2 and P1 stream";
   }
-  const rows = Array.isArray(model.railEvents) ? model.railEvents.slice(0, 5) : [];
+  const rows = Array.isArray(model.railEvents) ? model.railEvents.slice(0, 8) : [];
   if (rows.length === 0) {
     homeSignificantList.innerHTML = "<li class='snapshot-row'>No significant events in this cycle.</li>";
     return;
@@ -1483,7 +1739,19 @@ function deriveHomeLiveMode(context) {
   };
   const mode = modeMap[model.mode] || "priority-fallback";
   const intensity = model.mode === "fallback" ? "baseline" : "high";
-  return { mode, intensity, model };
+  const leadEvent = Array.isArray(model.boardEvents) && model.boardEvents.length > 0
+    ? model.boardEvents[0]
+    : Array.isArray(model.allEvents) && model.allEvents.length > 0
+      ? model.allEvents[0]
+      : null;
+  const activeModuleMap = {
+    earthquake: "earthquake",
+    volcano: "volcano",
+    tsunami: "tsunami",
+    space_weather: "space",
+  };
+  const activeModule = activeModuleMap[String(leadEvent?.type || "")] || "earthquake";
+  return { mode, intensity, model, activeModule };
 }
 
 function applyHomeLiveMode(context) {
@@ -1492,6 +1760,7 @@ function applyHomeLiveMode(context) {
   if (homeLaunch) {
     homeLaunch.setAttribute("data-live-mode", live.mode);
     homeLaunch.setAttribute("data-live-intensity", live.intensity);
+    homeLaunch.setAttribute("data-active-module", live.activeModule);
   }
   renderPriorityBoard(live.model);
   renderSignificantRail(live.model);
@@ -1810,7 +2079,7 @@ async function renderEventInsight(eventKey) {
       radius: Math.max(5, Math.min(11, 2 + (row.magnitude || 0))),
       color: "rgba(255,255,255,0.9)",
       weight: 1,
-      fillColor: "#ff5f45",
+      fillColor: magnitudeColor(row.magnitude),
       fillOpacity: 0.8,
     })
       .bindTooltip(`${formatMagnitude(row.magnitude)} · ${row.distanceKm.toFixed(0)} km`, { direction: "top", opacity: 0.9 })
@@ -2252,29 +2521,38 @@ function renderHomeSnapshot(events, payload) {
     return new Date(event.event_time_utc).getTime() >= last6hThreshold;
   }).length;
   latestHomeSituationContext = inferHomeSituationContext(events);
+  renderHomeSituationContext(latestHomeSituationContext);
+  renderHomeAiInsight(latestHomeSituationContext, events);
+  renderHomeContextEarthquakeRow(events, latestHomeSituationContext);
   applyHomeLiveMode(latestHomeSituationContext);
 
   if (homeKpiTotal) {
     homeKpiTotal.textContent = String(events.length);
   }
+  setHomeMirror("total", String(events.length));
   if (homeKpiStrongest) {
     homeKpiStrongest.textContent = strongest ? formatMagnitude(strongest.magnitude) : "--";
     homeKpiStrongest.style.color = strongest ? magnitudeColor(strongest.magnitude) : "";
   }
+  setHomeMirror("strongest", strongest ? formatMagnitude(strongest.magnitude) : "--", strongest ? magnitudeColor(strongest.magnitude) : "");
   if (homeKpiStrongestPlace) {
     homeKpiStrongestPlace.textContent = strongest ? shortPlaceLabel(strongest.place) : "No data";
   }
+  setHomeMirror("strongest-place", strongest ? shortPlaceLabel(strongest.place) : "No data");
   if (homeKpiSignificant) {
     homeKpiSignificant.textContent = String(significant);
   }
+  setHomeMirror("significant", String(significant));
   if (homeKpiUpdated) {
     homeKpiUpdated.textContent = payload.generated_at
       ? new Date(payload.generated_at).toLocaleTimeString()
       : "--";
   }
+  setHomeMirror("updated", payload.generated_at ? new Date(payload.generated_at).toLocaleTimeString() : "--");
   if (homeKpiSource) {
     homeKpiSource.textContent = `Source: ${payload.provider || "Quakrs API"}`;
   }
+  setHomeMirror("source", payload.provider || "Quakrs API");
 
   if (footerUpdateInterval) {
     footerUpdateInterval.textContent = "Update interval: ~3 min";
@@ -2302,25 +2580,30 @@ function renderHomeSnapshot(events, payload) {
         const aTime = a?.event_time_utc ? new Date(a.event_time_utc).getTime() : 0;
         const bTime = b?.event_time_utc ? new Date(b.event_time_utc).getTime() : 0;
         return bTime - aTime;
-      })
-      .slice(0, 24);
+      });
 
-    if (selectedRows.length === 0) {
-      homeMapFeedList.innerHTML = "<li class='snapshot-row'>No earthquake feed available.</li>";
+    const listSource = homeMapViewportOnly ? filterEventsToCurrentMapViewport(selectedRows) : selectedRows;
+    const listRows = listSource.slice(0, 24);
+
+    if (listRows.length === 0) {
+      homeMapFeedList.innerHTML =
+        homeMapViewportOnly && leafletMap
+          ? "<li class='snapshot-row'>No earthquakes in current map view.</li>"
+          : "<li class='snapshot-row'>No earthquake feed available.</li>";
     } else {
-      homeMapFeedList.innerHTML = selectedRows
+      homeMapFeedList.innerHTML = listRows
         .map((event) => {
           const eventDate = event.event_time_utc ? new Date(event.event_time_utc) : null;
-          const absoluteLabel = eventDate
-            ? `${eventDate.toLocaleDateString(undefined, { day: "2-digit", month: "short" })} · ${eventDate.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`
-            : "time unavailable";
+          const timeLabel = eventDate
+            ? eventDate.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false })
+            : "--:--";
           return `
             <li class="snapshot-row">
               <div class="snapshot-main">
                 <strong style="color:${magnitudeColor(event.magnitude)}">${formatMagnitude(event.magnitude)}</strong>
                 <span>${shortPlaceLabel(event.place)}</span>
               </div>
-              <div class="snapshot-meta">${absoluteLabel}</div>
+              <div class="snapshot-meta">${timeLabel}</div>
             </li>
           `;
         })
@@ -2359,9 +2642,6 @@ function renderVolcanoSnapshot(payload) {
       const country = event.country ? String(event.country) : null;
       return country ? `${volcano} (${country})` : volcano;
     });
-
-  homeSourcesState.volcanoes = payload.provider || "Smithsonian GVP / USGS";
-  updateHomeSourcesLine();
 
   homeHazardsState.volcanoReports = reports;
   homeHazardsState.volcanoes = volcanoes;
@@ -2412,6 +2692,9 @@ function applyEarthquakeView() {
   renderRegions(filteredEvents);
   renderPriorityEvents(filteredEvents);
   renderTimeline(filteredEvents);
+  if (isEarthquakesPage && eventsList) {
+    window.requestAnimationFrame(() => syncEarthquakesFeedHeight());
+  }
 
   if (eventInsightPanel && filteredEvents.length > 0) {
     const fallbackKey = getEventKey(filteredEvents[0]);
@@ -2451,8 +2734,6 @@ async function loadEarthquakes() {
       : payload.provider || "Quakrs API";
     latestEarthquakePayload = payload;
     allEarthquakeEvents = events;
-    homeSourcesState.earthquakes = providers;
-    updateHomeSourcesLine();
     applyEarthquakeView();
   } catch (error) {
     allEarthquakeEvents = [];
@@ -2464,14 +2745,36 @@ async function loadEarthquakes() {
     }
     homePulseState.quakeBrief = "Earthquake pulse temporarily unavailable.";
     updateHomeBrief();
-    homeSourcesState.earthquakes = "unavailable";
-    updateHomeSourcesLine();
     if (homeSignificantList) {
       homeSignificantList.innerHTML = "<li class='snapshot-row'>Significant events unavailable right now.</li>";
     }
     if (homeMapFeedList) {
       homeMapFeedList.innerHTML = "<li class='snapshot-row'>Earthquake feed unavailable right now.</li>";
     }
+    if (homeContextTitle) {
+      homeContextTitle.textContent = "Global watch in progress";
+    }
+    if (homeContextMode) {
+      homeContextMode.textContent = "Feed unavailable";
+    }
+    if (homeContextSummary) {
+      homeContextSummary.textContent = "Earthquake feed unavailable in this runtime. Check local API routing/cache.";
+    }
+    if (homeContextRegion) {
+      homeContextRegion.textContent = "Area: --";
+    }
+    if (homeContextWindow) {
+      homeContextWindow.textContent = "Window: --";
+    }
+    if (homeContextPressure) {
+      homeContextPressure.textContent = "Intensity: --";
+    }
+    if (homeContextProbability) {
+      homeContextProbability.textContent = "Activity index: --";
+    }
+    renderHomeContextGenericRow("Highlighted earthquakes", [
+      { lead: "--", label: "Feed unavailable", meta: "Earthquake API not responding" },
+    ]);
     latestHomeSituationContext = null;
     latestHomeLiveMode = "priority-fallback";
     applyHomeLiveMode(latestHomeSituationContext);
@@ -2509,8 +2812,6 @@ async function loadVolcanoes() {
     homeHazardsState.newEruptiveVolcanoes = [];
     renderVolcanoList();
     renderHazardStatusCards();
-    homeSourcesState.volcanoes = "unavailable";
-    updateHomeSourcesLine();
     homePulseState.volcanoBrief = "Volc unavailable.";
     updateHomeBrief();
     applyHomeLiveMode(latestHomeSituationContext);
@@ -2518,7 +2819,7 @@ async function loadVolcanoes() {
 }
 
 function renderTremorSnapshot(payload) {
-  if (!homeClustersList && !homeSnapshotBrief && !homeSourcesLine) {
+  if (!homeClustersList && !homeSnapshotBrief) {
     return;
   }
 
@@ -2527,9 +2828,6 @@ function renderTremorSnapshot(payload) {
   const peakHour = payload.peak_hour_utc || "--:00";
   const peakCount = typeof payload.peak_hour_count === "number" ? payload.peak_hour_count : 0;
   const clusters = Array.isArray(payload.clusters) ? payload.clusters.slice(0, 3) : [];
-
-  homeSourcesState.tremors = payload.provider || "USGS (Tremor Signals Model)";
-  updateHomeSourcesLine();
 
   homeHazardsState.tremorSignals = signals;
   homeHazardsState.tremorClusters = clustersCount;
@@ -2567,8 +2865,6 @@ async function loadTremors() {
     homeHazardsState.tremorTopClusters = [];
     renderClustersList();
     renderHazardStatusCards();
-    homeSourcesState.tremors = "unavailable";
-    updateHomeSourcesLine();
     homePulseState.tremorBrief = "Tremor unavailable.";
     updateHomeBrief();
     applyHomeLiveMode(latestHomeSituationContext);
@@ -2576,7 +2872,7 @@ async function loadTremors() {
 }
 
 function renderTsunamiSnapshot(payload) {
-  if (!homeVolcanoList && !homeSnapshotBrief && !homeSourcesLine) {
+  if (!homeVolcanoList && !homeSnapshotBrief) {
     return;
   }
 
@@ -2586,15 +2882,13 @@ function renderTsunamiSnapshot(payload) {
   homeHazardsState.tsunamiLevel = highestLevel;
   homeHazardsState.tsunamiRegions = typeof payload.regions_count === "number" ? payload.regions_count : 0;
   homeHazardsState.tsunamiPayload = payload;
-  homeSourcesState.tsunami = payload.provider || "NOAA / NWS";
-  updateHomeSourcesLine();
   renderVolcanoList();
   renderHazardStatusCards();
   applyHomeLiveMode(latestHomeSituationContext);
 }
 
 async function loadTsunami() {
-  if (!homeVolcanoList && !homeSnapshotBrief && !homeSourcesLine) {
+  if (!homeVolcanoList && !homeSnapshotBrief) {
     return;
   }
 
@@ -2614,14 +2908,12 @@ async function loadTsunami() {
     homeHazardsState.tsunamiPayload = null;
     renderVolcanoList();
     renderHazardStatusCards();
-    homeSourcesState.tsunami = "unavailable";
-    updateHomeSourcesLine();
     applyHomeLiveMode(latestHomeSituationContext);
   }
 }
 
 function renderSpaceWeatherSnapshot(payload) {
-  if (!homeVolcanoList && !homeSnapshotBrief && !homeSourcesLine) {
+  if (!homeVolcanoList && !homeSnapshotBrief) {
     return;
   }
 
@@ -2629,15 +2921,13 @@ function renderSpaceWeatherSnapshot(payload) {
   homeHazardsState.spaceKp = kpCurrent;
   homeHazardsState.spaceStormLevel = payload.storm_level || payload.kp_band_current || null;
   homeHazardsState.spacePayload = payload;
-  homeSourcesState.spaceWeather = payload.provider || "NOAA SWPC";
-  updateHomeSourcesLine();
   renderVolcanoList();
   renderHazardStatusCards();
   applyHomeLiveMode(latestHomeSituationContext);
 }
 
 async function loadSpaceWeather() {
-  if (!homeVolcanoList && !homeSnapshotBrief && !homeSourcesLine) {
+  if (!homeVolcanoList && !homeSnapshotBrief) {
     return;
   }
 
@@ -2656,24 +2946,25 @@ async function loadSpaceWeather() {
     homeHazardsState.spacePayload = null;
     renderVolcanoList();
     renderHazardStatusCards();
-    homeSourcesState.spaceWeather = "unavailable";
-    updateHomeSourcesLine();
     applyHomeLiveMode(latestHomeSituationContext);
   }
 }
 
 drawGraticule();
 drawContinents();
+if (homeMapViewportOnlyToggle) {
+  homeMapViewportOnlyToggle.addEventListener("change", () => {
+    homeMapViewportOnly = Boolean(homeMapViewportOnlyToggle.checked);
+    if (latestEarthquakePayload) {
+      applyEarthquakeView();
+    }
+  });
+}
 if (bootstrapPayloads) {
   const eqBootstrap = bootstrapPayloads.earthquakes;
   if (eqBootstrap && Array.isArray(eqBootstrap.events)) {
     latestEarthquakePayload = eqBootstrap;
     allEarthquakeEvents = eqBootstrap.events;
-    homeSourcesState.earthquakes =
-      Array.isArray(eqBootstrap.providers) && eqBootstrap.providers.length > 0
-        ? eqBootstrap.providers.join(" + ")
-        : eqBootstrap.provider || "Quakrs API";
-    updateHomeSourcesLine();
     applyEarthquakeView();
   }
 
@@ -2730,6 +3021,12 @@ globalThemeToggle?.addEventListener("click", () => {
 });
 
 syncThemeToggleButton();
+
+if (typeof window !== "undefined") {
+  window.addEventListener("resize", () => {
+    syncEarthquakesFeedHeight();
+  });
+}
 
 document.addEventListener("click", (event) => {
   const target = event.target;

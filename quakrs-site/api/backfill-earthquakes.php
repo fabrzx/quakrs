@@ -167,12 +167,20 @@ function parse_usgs_events(array $features): array
         }
 
         $timeRaw = $properties['time'] ?? null;
-        $timeMs = is_numeric($timeRaw) ? (int) $timeRaw : 0;
-        $timeTs = $timeMs > 0 ? (int) floor($timeMs / 1000) : 0;
-        // Accept pre-1970 events: negative Unix timestamps are valid historical dates.
-        if ($timeTs === 0) {
+        if (!is_numeric($timeRaw)) {
             continue;
         }
+
+        $timeMs = (int) $timeRaw;
+        $timeTs = (int) floor($timeMs / 1000);
+
+        if ($timeMs === 0) {
+            continue;
+        }
+
+        $eventTimeUtc = (new DateTimeImmutable('@' . $timeTs))
+            ->setTimezone(new DateTimeZone('UTC'))
+            ->format('c');
 
         $rows[] = [
             'id' => (string) ($feature['id'] ?? ''),
@@ -181,7 +189,7 @@ function parse_usgs_events(array $features): array
             'depth_km' => isset($coords[2]) && is_numeric($coords[2]) ? abs((float) $coords[2]) : null,
             'latitude' => isset($coords[1]) && is_numeric($coords[1]) ? (float) $coords[1] : null,
             'longitude' => isset($coords[0]) && is_numeric($coords[0]) ? (float) $coords[0] : null,
-            'event_time_utc' => gmdate('c', $timeTs),
+            'event_time_utc' => $eventTimeUtc,
             'source_url' => (string) ($properties['url'] ?? ''),
             'source_provider' => 'USGS',
             'source_providers' => ['USGS'],
@@ -330,7 +338,11 @@ if (strcmp($cursorDate, $endDate) > 0) {
     ]);
 }
 
-if (!is_string($state['window_start']) || !is_string($state['window_end']) || (int) $state['window_pages'] <= 0) {
+$needsWindowResolution = !is_string($state['window_start'])
+    || !is_string($state['window_end'])
+    || ((int) $state['window_pages'] <= 0 && (string) ($state['count_mode'] ?? 'known') !== 'unknown');
+
+if ($needsWindowResolution) {
     $remainingDays = inclusive_days_between($cursorDate, $endDate);
     $candidateDays = max(1, min($remainingDays, (int) $state['max_window_days']));
     $windowResolved = false;

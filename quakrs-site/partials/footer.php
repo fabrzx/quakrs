@@ -15,6 +15,7 @@
           <a href="/data-archive.php">Archive</a>
           <a href="/about-sources.php">About / Sources</a>
           <a href="/about-methodology.php">Methodology</a>
+          <a href="/priority-levels.php">Priority Levels (P1/P2)</a>
           <a href="/resources-safety.php">Safety Guides</a>
         </nav>
         <div class="site-footer-meta">

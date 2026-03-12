@@ -272,7 +272,7 @@ require __DIR__ . '/../partials/topbar.php';
       const bucket = Math.max(1, Math.min(9, Math.floor(magnitude)));
       const palette = {
         1: "#3b82f6", 2: "#06b6d4", 3: "#14b8a6", 4: "#22c55e", 5: "#eab308",
-        6: "#f59e0b", 7: "#f97316", 8: "#ef4444", 9: "#b91c1c",
+        6: "#f59e0b", 7: "#f97316", 8: "#d946ef", 9: "#7e22ce",
       };
       return palette[bucket];
     };
@@ -768,7 +768,7 @@ require __DIR__ . '/../partials/topbar.php';
             radius: Math.max(5, Math.min(11, 2 + row.magnitude)),
             color: "rgba(255,255,255,0.9)",
             weight: 1,
-            fillColor: "#ff5f45",
+            fillColor: magnitudeColor(row.magnitude),
             fillOpacity: 0.82,
           }).bindTooltip(`M${row.magnitude.toFixed(1)} · ${row.distanceKm.toFixed(0)} km`).addTo(layerStrong);
         });

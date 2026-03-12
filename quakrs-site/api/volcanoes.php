@@ -85,7 +85,7 @@ foreach ($xml->channel->item as $item) {
     $descriptionRaw = trim((string) ($item->description ?? ''));
     $description = trim(html_entity_decode(strip_tags($descriptionRaw), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
     $description = preg_replace('/\s+/', ' ', $description ?? '') ?? '';
-    $summary = substr($description, 0, 240);
+    $summary = $description;
     $eventTs = isset($item->pubDate) ? strtotime((string) $item->pubDate) : 0;
     $eventIso = $eventTs > 0 ? gmdate('c', $eventTs) : null;
 

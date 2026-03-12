@@ -56,6 +56,7 @@ $menuItems = [
             ['key' => 'resources-safety', 'label' => 'Safety Guides', 'href' => '/resources-safety.php'],
             ['key' => 'resources-glossary', 'label' => 'Glossary', 'href' => '/resources-glossary.php'],
             ['key' => 'resources-bulletins', 'label' => 'Bulletins', 'href' => '/resources-bulletins.php'],
+            ['key' => 'priority-levels', 'label' => 'Priority Levels (P1/P2)', 'href' => '/priority-levels.php'],
         ],
     ],
     [
@@ -91,6 +92,7 @@ $legacyTopLevelMap = [
     'resources-safety' => 'resources',
     'resources-glossary' => 'resources',
     'resources-bulletins' => 'resources',
+    'priority-levels' => 'resources',
     'about' => 'about',
     'about-sources' => 'about',
     'about-methodology' => 'about',

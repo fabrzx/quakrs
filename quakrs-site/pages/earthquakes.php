@@ -18,7 +18,7 @@ require __DIR__ . '/../partials/topbar.php';
   </div>
 </main>
 
-<section class="panel panel-main">
+<section class="panel panel-main earthquakes-main-layout">
   <article class="card map-card">
     <div class="feed-head">
       <div class="map-head-left">
