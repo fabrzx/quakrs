@@ -1,0 +1,39 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 520'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#0a1222'/>
+      <stop offset='56%' stop-color='#141d31'/>
+      <stop offset='100%' stop-color='#090f1d'/>
+    </linearGradient>
+    <radialGradient id='craterGlow' cx='50%' cy='17%' r='34%'>
+      <stop offset='0%' stop-color='#ffb06d' stop-opacity='0.84'/>
+      <stop offset='55%' stop-color='#ff6c4f' stop-opacity='0.38'/>
+      <stop offset='100%' stop-color='#ff6c4f' stop-opacity='0'/>
+    </radialGradient>
+    <filter id='smoke' x='-20%' y='-20%' width='140%' height='140%'>
+      <feGaussianBlur stdDeviation='7'/>
+    </filter>
+  </defs>
+
+  <rect width='1200' height='520' fill='url(#bg)'/>
+  <rect width='1200' height='520' fill='url(#craterGlow)'/>
+
+  <path d='M90 430 L400 188 L672 430 Z' fill='#0c141f'/>
+  <path d='M470 430 L676 218 L930 430 Z' fill='#090f18'/>
+
+  <path d='M540 248 C586 214, 634 214, 686 246 L655 280 C622 262, 592 263, 563 286 Z' fill='#ff7f61'/>
+  <path d='M602 236 C640 152, 710 130, 806 92' fill='none' stroke='#ff7f61' stroke-width='8' stroke-linecap='round' opacity='0.86'/>
+  <path d='M622 244 C664 190, 734 178, 904 136' fill='none' stroke='#ffd46b' stroke-width='4.2' stroke-linecap='round' opacity='0.78'/>
+
+  <g fill='#ffcb68' opacity='0.88'>
+    <circle cx='784' cy='94' r='5'/><circle cx='818' cy='108' r='3.6'/><circle cx='860' cy='96' r='4.4'/>
+    <circle cx='892' cy='121' r='3.2'/><circle cx='932' cy='111' r='3.5'/>
+  </g>
+
+  <g fill='#d4dee8' opacity='0.2' filter='url(#smoke)'>
+    <ellipse cx='662' cy='128' rx='74' ry='28'/>
+    <ellipse cx='720' cy='106' rx='56' ry='22'/>
+  </g>
+
+  <path d='M82 440 L1118 440' stroke='#365074' stroke-opacity='0.42'/>
+</svg>

@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Legacy aliases
+RewriteRule ^about$ /about-sources.php [R=301,L,NC]
+RewriteRule ^analytics$ /data-energy.php [R=301,L,NC]
+RewriteRule ^tremors$ /data-clusters.php [R=301,L,NC]
+
+ErrorDocument 404 /404.php

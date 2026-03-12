@@ -1,0 +1,215 @@
+{
+    "ok": true,
+    "provider": "Institutional Bulletins",
+    "generated_at_ts": 1773152143,
+    "generated_at": "2026-03-10T14:15:43+00:00",
+    "bulletins_count": 20,
+    "sources_count": 3,
+    "categories": {
+        "Volcano": 20
+    },
+    "source_status": [
+        {
+            "key": "smithsonian_gvp",
+            "label": "Smithsonian GVP",
+            "status": "ok",
+            "url": "https://volcano.si.edu/news/WeeklyVolcanoRSS.xml",
+            "items": 20
+        },
+        {
+            "key": "usgs_updates",
+            "label": "USGS Updates",
+            "status": "error",
+            "url": "https://www.usgs.gov/feeds/news"
+        },
+        {
+            "key": "noaa_swpc",
+            "label": "NOAA SWPC",
+            "status": "error",
+            "url": "https://www.swpc.noaa.gov/products-and-data/alerts-and-forecasts/rss"
+        }
+    ],
+    "bulletins": [
+        {
+            "id": "smithsonian_gvp:6b7a8c3bc7fea3db910fb34a72d6a8a1d5f909f5",
+            "title": "Ambae (Vanuatu) - Report for 26 February-4 March 2026 - New Eruptive Activity",
+            "summary": "The Vanuatu Meteorology and Geohazards Department (VMGD) reported continuing eruptive activity at Ambae during 25 February-4 March. Seismicity remained high and was characterized by continuous volcanic tremor and volcano-seismic events. Continuous gas-and-ash ",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:a4ffce30b037204d7a215e506d612fb447ced4fc",
+            "title": "Kanlaon (Philippines) - Report for 26 February-4 March 2026 - New Eruptive Activity",
+            "summary": "The Philippine Institute of Volcanology and Seismology (PHIVOLCS) reported continuing eruptive activity at Kanlaon during 26 February-4 March. A two-minute, moderately explosive eruption at 1904 on 26 February generated a dense, dark gray ash plume that rose 2",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:ac884add1492b142501f8f04f348d630fb25f1fd",
+            "title": "Lascar (Chile) - Report for 26 February-4 March 2026 - New Unrest",
+            "summary": "The Servicio Nacional de Geolog\u00eda y Miner\u00eda (SERNAGEOMIN) reported that a sustained increase in volcano-tectonic seismicity (associated with rock fracturing) had been detected at L\u00e1scar in recent weeks. Additionally, an increase in thermal radiance and sulf",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:eb812406f4179093e9726ce6263f4c72d4d20062",
+            "title": "Lewotobi (Indonesia) - Report for 26 February-4 March 2026 - New Eruptive Activity",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported new ash plumes at Lewotobi Laki-laki during 3-4 March. At around 0942 and 1355 on 3 March gray to dark gray ash plumes rose 1-1.5 km above the summit. An increase in the number of low-frequenc",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:8d5bd70852fac3bf3a62e473df371e4ecca25063",
+            "title": "Piton de la Fournaise (France) - Report for 26 February-4 March 2026 - New Eruptive Activity",
+            "summary": "The Observatoire Volcanologique du Piton de la Fournaise (OVPF) reported that the eruption at Piton de la Fournaise decreased during 25 February-4 March. The cone around the fourth fissure, on the lower SE flank of Dolomieu Crater, continued to grow from accum",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:6b75a4d10ed9f458a57ffd2ad16a89bf89a7ff5a",
+            "title": "Aira (Japan) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Japan Meteorological Agency (JMA) reported ongoing eruptive activity at Minamidake Crater (Aira Caldera?s Sakurajima volcano) during 23 February-2 March. Crater incandescence was visible in webcam images at night during 23-27 February. An eruptive event at",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:8ca05c9d807a0b7a49a429478c6caf1b5794b3cb",
+            "title": "Fuego (Guatemala) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Instituto Nacional de Sismolog\u00eda, Vulcanologia, Meteorologia e Hidrolog\u00eda (INSIVUMEH) reported that eruptive activity at Fuego continued during 25 February-4 March. Daily Strombolian explosions recorded by the seismic network, at rates of 6-14 per hour w",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:d81c9b3be3908027dde44715dc962e5cfdca168a",
+            "title": "Great Sitkin (United States) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Alaska Volcano Observatory (AVO) reported that slow lava effusion continued to feed a thick flow in Great Sitkin?s summit crater during 25 February-4 March. Seismic activity was very low. Weather clouds obscured satellite and webcam views during most of th",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:c8d5855fd6a6ad022662c4eae051a5a3b00214ac",
+            "title": "Home Reef (Tonga) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Tonga Geological Services reported continuing activity at Home Reef during 28 January-28 February. The main active vent remained in the same location and produced white steam-and-gas plumes rose that rose above the crater rim and dissipated. Discolored wat",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:790cf8056e3b8abeb86023f72dc17f909fca3456",
+            "title": "Ibu (Indonesia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported that activity at Ibu continued during 26 February-4 March, with daily eruptive events recorded by the seismic network. Gray ash plumes rose 200-500 m above the summit and drifted E, SE, and S ",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:fea03cda5347f204f71f42cec42d83ac6eea4a85",
+            "title": "Kilauea (United States) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Hawaiian Volcano Observatory (HVO) reported that the eruption within Kilauea?s Kaluapele summit caldera, characterized by episodic fountaining, incandescence, and intermittent spatter from craters along the SW margin of Halema?uma?u Crater, continued at va",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:31866ca0a038d47c3d2dd7b215d741d42f0355e9",
+            "title": "Krasheninnikov (Russia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Kamchatkan Volcanic Eruption Response Team (KVERT) reported that lava flows at Krasheninnikov continued to effuse onto the ENE flanks of the Northern Cone during 26 February-4 March. A large thermal anomaly was identified daily in satellite images. The Avi",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:4efe0ae01e73c19a429d13e67da13c6464ac4d65",
+            "title": "Lewotolok (Indonesia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported ongoing eruptive activity at Lewotolok during 26 February-4 March. White plumes rose as high as 50 m above the summit and drifted E on 26 February; plumes were not observed on the other days. ",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:fccc7bb25f6bcdc2df969125202185e60eef0e15",
+            "title": "Marapi (Indonesia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported that the eruption at Marapi (on Sumatra) continued during 26 February-4 March. White-and-gray plumes rose as high as 200 m above the summit and drifted E and SE on 26 February. White plumes ro",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:821f75c9c86b8563516f7646f7ce2f5da430d864",
+            "title": "Mayon (Philippines) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Philippine Institute of Volcanology and Seismology (PHIVOLCS) reported that the eruption at Mayon continued during 25 February-4 March, characterized by lava effusion and collapses at the summit dome, pyroclastic density currents (PDCs), incandescent rockf",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:f8e4f3a8f76498fa942d52ab64f938bd5f56abd7",
+            "title": "Merapi (Indonesia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported that the eruption at Merapi (on Java) continued during 26 February-4 March. The SW lava dome produced daily lava avalanches that descended the Sat/Putih (W), Bebeng and Krasak (SW), and Boyong",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:16fbe3a5644d3ddb475c6b48342a7a29cf10942f",
+            "title": "Sabancaya (Peru) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Instituto Geof\u00edsico del Per\u00fa?s (IGP) Centro Vulcanol\u00f3gico Nacional (CENVUL) reported continuing eruptive activity at Sabancaya during 26 February-4 March. The seismic network detected 5-21 daily earthquakes indicating the movement of magma and gases. As",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:a8f70b89b107f7ee899a1afb536fac5977c9dae5",
+            "title": "Semeru (Indonesia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported that activity continued at Semeru during 26 February-4 March, with daily eruptive events recorded by the seismic network. White-to-gray ash plumes rose 400-500 m above the summit and drifted N",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:b224015ccc76c99bb47c6704db18d628ff2d309c",
+            "title": "Sheveluch (Russia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Kamchatkan Volcanic Eruption Response Team (KVERT) reported continuing eruptive activity at Sheveluch?s ?300 years of RAS? dome on the SW flank of Old Sheveluch and at the domes along the N crater floor of Young Sheveluch during 26 February-4 March. A dail",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        },
+        {
+            "id": "smithsonian_gvp:b59834ae6fb1cbea9e3f1253f3c7b138949d79c8",
+            "title": "Stromboli (Italy) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "summary": "The Sezione di Catania - Osservatorio Etneo (INGV) reported that eruptive activity continued at Stromboli during 23 February-2 March. Webcam images showed Strombolian activity from five vents in Area N within the upper part of the Sciara del Fuoco, and from at",
+            "published_at_utc": "2026-03-06T15:38:32+00:00",
+            "source_bulletin": "https://volcano.si.edu/reports_weekly.cfm",
+            "source_provider": "Smithsonian GVP",
+            "category": "Volcano"
+        }
+    ],
+    "from_cache": false
+}

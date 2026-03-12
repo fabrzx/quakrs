@@ -1,0 +1,944 @@
+{
+    "ok": true,
+    "provider": "USGS FDSN Historical Archive",
+    "generated_at_ts": 1773177162,
+    "generated_at": "2026-03-10T21:12:42+00:00",
+    "query": {
+        "lat": 38.844,
+        "lon": -122.82484,
+        "radius_km": 500,
+        "min_magnitude": null,
+        "start": "1899-12-31",
+        "end": "2026-03-09"
+    },
+    "page": 1,
+    "per_page": 80,
+    "total_pages": 1,
+    "total_events": 0,
+    "events_count": 80,
+    "events": [
+        {
+            "id": "nc75324657",
+            "magnitude": 1.07,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T23:23:32+00:00",
+            "depth_km": 3.28999996185303,
+            "latitude": 38.7973327636719,
+            "longitude": -122.814498901367,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324657"
+        },
+        {
+            "id": "nc75324652",
+            "magnitude": 1.09,
+            "place": "5 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T23:20:41+00:00",
+            "depth_km": 3.32999992370605,
+            "latitude": 38.7968330383301,
+            "longitude": -122.814666748047,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324652"
+        },
+        {
+            "id": "nc75324637",
+            "magnitude": 0.77,
+            "place": "10 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T22:37:13+00:00",
+            "depth_km": 2.51999998092651,
+            "latitude": 38.8224983215332,
+            "longitude": -122.853668212891,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324637"
+        },
+        {
+            "id": "nc75324622",
+            "magnitude": 1.28,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T21:36:29+00:00",
+            "depth_km": 2.99000000953674,
+            "latitude": 38.7996673583984,
+            "longitude": -122.814002990723,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324622"
+        },
+        {
+            "id": "nc75324617",
+            "magnitude": 1.08,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T21:33:59+00:00",
+            "depth_km": 3.40000009536743,
+            "latitude": 38.7988319396973,
+            "longitude": -122.817001342773,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324617"
+        },
+        {
+            "id": "nc75324612",
+            "magnitude": 1.3,
+            "place": "5 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T21:14:49+00:00",
+            "depth_km": 2.76999998092651,
+            "latitude": 38.7938346862793,
+            "longitude": -122.811500549316,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324612"
+        },
+        {
+            "id": "nc75324602",
+            "magnitude": 1.06,
+            "place": "5 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T20:58:42+00:00",
+            "depth_km": 3.38000011444092,
+            "latitude": 38.7973327636719,
+            "longitude": -122.813667297363,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324602"
+        },
+        {
+            "id": "nc75324597",
+            "magnitude": 0.77,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T20:58:09+00:00",
+            "depth_km": 3.34999990463257,
+            "latitude": 38.7971649169922,
+            "longitude": -122.81600189209,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324597"
+        },
+        {
+            "id": "nc75324592",
+            "magnitude": 0.96,
+            "place": "24 km NNE of San Ardo, CA",
+            "event_time_utc": "2026-03-08T20:51:57+00:00",
+            "depth_km": 6.53999996185303,
+            "latitude": 36.2060012817383,
+            "longitude": -120.767333984375,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324592"
+        },
+        {
+            "id": "nc75324577",
+            "magnitude": 0.74,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T20:24:48+00:00",
+            "depth_km": 3.66000008583069,
+            "latitude": 38.7991676330566,
+            "longitude": -122.81600189209,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324577"
+        },
+        {
+            "id": "nc75324572",
+            "magnitude": 0.77,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T20:19:35+00:00",
+            "depth_km": 3.14000010490417,
+            "latitude": 38.7976684570312,
+            "longitude": -122.815498352051,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324572"
+        },
+        {
+            "id": "nc75324567",
+            "magnitude": 2.68,
+            "place": "5 km SE of San Ramon, CA",
+            "event_time_utc": "2026-03-08T20:19:29+00:00",
+            "depth_km": 7.69000005722046,
+            "latitude": 37.7506675720215,
+            "longitude": -121.940330505371,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324567"
+        },
+        {
+            "id": "nc75324562",
+            "magnitude": 1.29,
+            "place": "5 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T20:17:15+00:00",
+            "depth_km": 2.64000010490417,
+            "latitude": 38.8121681213379,
+            "longitude": -122.79467010498,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324562"
+        },
+        {
+            "id": "nc75324557",
+            "magnitude": 0.58,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T20:08:02+00:00",
+            "depth_km": 3.19000005722046,
+            "latitude": 38.7968330383301,
+            "longitude": -122.81616973877,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324557"
+        },
+        {
+            "id": "nc75324547",
+            "magnitude": 2.28,
+            "place": "7 km NNE of Redwood Valley, CA",
+            "event_time_utc": "2026-03-08T19:50:06+00:00",
+            "depth_km": 4.44999980926514,
+            "latitude": 39.3181648254395,
+            "longitude": -123.16967010498,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324547"
+        },
+        {
+            "id": "nc75324537",
+            "magnitude": 1.12,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T19:33:34+00:00",
+            "depth_km": 2.99000000953674,
+            "latitude": 38.8036651611328,
+            "longitude": -122.81266784668,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324537"
+        },
+        {
+            "id": "nc75324497",
+            "magnitude": 0.77,
+            "place": "9 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T18:25:21+00:00",
+            "depth_km": 2.0699999332428,
+            "latitude": 38.8208351135254,
+            "longitude": -122.840835571289,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324497"
+        },
+        {
+            "id": "nc75324492",
+            "magnitude": 0.79,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T18:25:05+00:00",
+            "depth_km": 3.30999994277954,
+            "latitude": 38.7961654663086,
+            "longitude": -122.81583404541,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324492"
+        },
+        {
+            "id": "nc75324487",
+            "magnitude": 1.47,
+            "place": "22 km SW of Gustine, CA",
+            "event_time_utc": "2026-03-08T18:18:37+00:00",
+            "depth_km": 8.67000007629395,
+            "latitude": 37.1155014038086,
+            "longitude": -121.173835754395,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324487"
+        },
+        {
+            "id": "nc75324482",
+            "magnitude": 0.7,
+            "place": "8 km W of Cobb, CA",
+            "event_time_utc": "2026-03-08T18:02:14+00:00",
+            "depth_km": 2.16000008583069,
+            "latitude": 38.835334777832,
+            "longitude": -122.80916595459,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324482"
+        },
+        {
+            "id": "nc75324472",
+            "magnitude": 1.09,
+            "place": "2 km NNE of The Geysers, CA",
+            "event_time_utc": "2026-03-08T17:54:17+00:00",
+            "depth_km": 1.42999994754791,
+            "latitude": 38.798999786377,
+            "longitude": -122.749664306641,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324472"
+        },
+        {
+            "id": "nc75324467",
+            "magnitude": 0.79,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T17:53:04+00:00",
+            "depth_km": 3.23000001907349,
+            "latitude": 38.7976684570312,
+            "longitude": -122.815002441406,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324467"
+        },
+        {
+            "id": "nc75324462",
+            "magnitude": 1.07,
+            "place": "5 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T17:40:18+00:00",
+            "depth_km": 2.49000000953674,
+            "latitude": 38.7983322143555,
+            "longitude": -122.813667297363,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324462"
+        },
+        {
+            "id": "nc75324457",
+            "magnitude": 1.07,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T17:33:11+00:00",
+            "depth_km": 3.10999989509583,
+            "latitude": 38.8016662597656,
+            "longitude": -122.813667297363,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324457"
+        },
+        {
+            "id": "nc75324452",
+            "magnitude": 0.69,
+            "place": "9 km WNW of Cobb, CA",
+            "event_time_utc": "2026-03-08T17:25:59+00:00",
+            "depth_km": 3.09999990463257,
+            "latitude": 38.8393325805664,
+            "longitude": -122.820503234863,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324452"
+        },
+        {
+            "id": "nc75324437",
+            "magnitude": 1.6,
+            "place": "22 km SW of Gustine, CA",
+            "event_time_utc": "2026-03-08T16:29:28+00:00",
+            "depth_km": 7.8899998664856,
+            "latitude": 37.1160011291504,
+            "longitude": -121.178665161133,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324437"
+        },
+        {
+            "id": "uw62231361",
+            "magnitude": 2.12,
+            "place": "36 km E of Bonanza, Oregon",
+            "event_time_utc": "2026-03-08T16:27:59+00:00",
+            "depth_km": 3.25,
+            "latitude": 42.147666666666666,
+            "longitude": -120.96383333333333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62231361"
+        },
+        {
+            "id": "nc75324427",
+            "magnitude": 1.24,
+            "place": "7 km WNW of Cobb, CA",
+            "event_time_utc": "2026-03-08T16:22:17+00:00",
+            "depth_km": 2.14000010490417,
+            "latitude": 38.835334777832,
+            "longitude": -122.803001403809,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324427"
+        },
+        {
+            "id": "nc75324412",
+            "magnitude": 0.75,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T15:34:30+00:00",
+            "depth_km": 5.03000020980835,
+            "latitude": 38.804500579834,
+            "longitude": -122.819831848145,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324412"
+        },
+        {
+            "id": "nc75324402",
+            "magnitude": 1.08,
+            "place": "8 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T14:27:29+00:00",
+            "depth_km": 2,
+            "latitude": 38.8281669616699,
+            "longitude": -122.815498352051,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324402"
+        },
+        {
+            "id": "nc75324397",
+            "magnitude": 1.32,
+            "place": "0 km NE of Diablo, CA",
+            "event_time_utc": "2026-03-08T14:23:03+00:00",
+            "depth_km": 5.6399998664856,
+            "latitude": 37.8366661071777,
+            "longitude": -121.956001281738,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324397"
+        },
+        {
+            "id": "uw62231316",
+            "magnitude": 1.45,
+            "place": "37 km E of Bonanza, Oregon",
+            "event_time_utc": "2026-03-08T13:38:52+00:00",
+            "depth_km": 7.47,
+            "latitude": 42.13783333333333,
+            "longitude": -120.963,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62231316"
+        },
+        {
+            "id": "nc75324387",
+            "magnitude": 1.66,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T13:33:32+00:00",
+            "depth_km": 3.23000001907349,
+            "latitude": 38.800666809082,
+            "longitude": -122.813667297363,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324387"
+        },
+        {
+            "id": "nc75324382",
+            "magnitude": 0.69,
+            "place": "8 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T13:01:43+00:00",
+            "depth_km": 1.87999999523163,
+            "latitude": 38.8316650390625,
+            "longitude": -122.815330505371,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324382"
+        },
+        {
+            "id": "nc75324377",
+            "magnitude": 0.77,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T13:00:32+00:00",
+            "depth_km": 3.01999998092651,
+            "latitude": 38.7996673583984,
+            "longitude": -122.814002990723,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324377"
+        },
+        {
+            "id": "nc75324372",
+            "magnitude": 1.06,
+            "place": "6 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T12:54:47+00:00",
+            "depth_km": 3.17000007629395,
+            "latitude": 38.8123321533203,
+            "longitude": -122.809997558594,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324372"
+        },
+        {
+            "id": "nc75324367",
+            "magnitude": 1.79,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T12:45:55+00:00",
+            "depth_km": 3.20000004768372,
+            "latitude": 38.7971649169922,
+            "longitude": -122.817001342773,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324367"
+        },
+        {
+            "id": "nc75324357",
+            "magnitude": 0.98,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T12:26:20+00:00",
+            "depth_km": 3.46000003814697,
+            "latitude": 38.796501159668,
+            "longitude": -122.81616973877,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324357"
+        },
+        {
+            "id": "nc75324352",
+            "magnitude": 1.41,
+            "place": "3 km ESE of San Ramon, CA",
+            "event_time_utc": "2026-03-08T12:10:56+00:00",
+            "depth_km": 5.71000003814697,
+            "latitude": 37.7723350524902,
+            "longitude": -121.94116973877,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324352"
+        },
+        {
+            "id": "nc75324347",
+            "magnitude": 0.85,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T12:09:40+00:00",
+            "depth_km": 3.29999995231628,
+            "latitude": 38.8003349304199,
+            "longitude": -122.81616973877,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324347"
+        },
+        {
+            "id": "nc75324342",
+            "magnitude": 0.78,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T12:09:09+00:00",
+            "depth_km": 3.25999999046326,
+            "latitude": 38.7970008850098,
+            "longitude": -122.81600189209,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324342"
+        },
+        {
+            "id": "nc75324337",
+            "magnitude": 0.75,
+            "place": "7 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T12:05:54+00:00",
+            "depth_km": 4.63000011444092,
+            "latitude": 38.8128318786621,
+            "longitude": -122.818000793457,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324337"
+        },
+        {
+            "id": "nc75324332",
+            "magnitude": 2.93,
+            "place": "14 km NNW of Susanville, CA",
+            "event_time_utc": "2026-03-08T12:05:49+00:00",
+            "depth_km": 5.76000022888184,
+            "latitude": 40.5393333435059,
+            "longitude": -120.695999145508,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324332"
+        },
+        {
+            "id": "nc75324317",
+            "magnitude": 1.12,
+            "place": "5 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T11:33:33+00:00",
+            "depth_km": 3.1800000667572,
+            "latitude": 38.7970008850098,
+            "longitude": -122.814498901367,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324317"
+        },
+        {
+            "id": "nc75324312",
+            "magnitude": 0.74,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T11:24:28+00:00",
+            "depth_km": 3.84999990463257,
+            "latitude": 38.8013343811035,
+            "longitude": -122.816497802734,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324312"
+        },
+        {
+            "id": "nc75324302",
+            "magnitude": 0.76,
+            "place": "5 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T11:16:44+00:00",
+            "depth_km": 3.3199999332428,
+            "latitude": 38.7960014343262,
+            "longitude": -122.811164855957,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324302"
+        },
+        {
+            "id": "nc75324297",
+            "magnitude": 0.77,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T11:14:08+00:00",
+            "depth_km": 3.38000011444092,
+            "latitude": 38.7976684570312,
+            "longitude": -122.816665649414,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324297"
+        },
+        {
+            "id": "nc75324282",
+            "magnitude": 0.69,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T11:02:49+00:00",
+            "depth_km": 3.44000005722046,
+            "latitude": 38.8068351745605,
+            "longitude": -122.81583404541,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324282"
+        },
+        {
+            "id": "nc75324272",
+            "magnitude": 0.28,
+            "place": "5 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:54:28+00:00",
+            "depth_km": 3.39000010490417,
+            "latitude": 38.7970008850098,
+            "longitude": -122.813835144043,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324272"
+        },
+        {
+            "id": "nc75324267",
+            "magnitude": 0.45,
+            "place": "5 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:53:26+00:00",
+            "depth_km": 1.73000001907349,
+            "latitude": 38.7961654663086,
+            "longitude": -122.803337097168,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324267"
+        },
+        {
+            "id": "nc75324257",
+            "magnitude": 0.43,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:49:00+00:00",
+            "depth_km": 2.99000000953674,
+            "latitude": 38.7971649169922,
+            "longitude": -122.814666748047,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324257"
+        },
+        {
+            "id": "nc75324252",
+            "magnitude": 0.76,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:48:05+00:00",
+            "depth_km": 3.61999988555908,
+            "latitude": 38.7999992370605,
+            "longitude": -122.817001342773,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324252"
+        },
+        {
+            "id": "nc75324232",
+            "magnitude": 0.76,
+            "place": "5 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:45:00+00:00",
+            "depth_km": 3.46000003814697,
+            "latitude": 38.7939987182617,
+            "longitude": -122.808502197266,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324232"
+        },
+        {
+            "id": "nc75324227",
+            "magnitude": 0.73,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:42:42+00:00",
+            "depth_km": 3.29999995231628,
+            "latitude": 38.7976684570312,
+            "longitude": -122.816833496094,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324227"
+        },
+        {
+            "id": "nc75324222",
+            "magnitude": 0.71,
+            "place": "9 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:42:00+00:00",
+            "depth_km": 1.76999998092651,
+            "latitude": 38.8199996948242,
+            "longitude": -122.84700012207,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324222"
+        },
+        {
+            "id": "nc75324217",
+            "magnitude": 0.69,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:41:16+00:00",
+            "depth_km": 3.70000004768372,
+            "latitude": 38.7986679077148,
+            "longitude": -122.815002441406,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324217"
+        },
+        {
+            "id": "nc75324207",
+            "magnitude": 1.25,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:38:35+00:00",
+            "depth_km": 3.57999992370605,
+            "latitude": 38.7960014343262,
+            "longitude": -122.81566619873,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324207"
+        },
+        {
+            "id": "nc75324202",
+            "magnitude": 0.63,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:34:24+00:00",
+            "depth_km": 3.21000003814697,
+            "latitude": 38.7993316650391,
+            "longitude": -122.816329956055,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324202"
+        },
+        {
+            "id": "nc75324197",
+            "magnitude": 1.3,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:34:13+00:00",
+            "depth_km": 3.16000008583069,
+            "latitude": 38.7994995117188,
+            "longitude": -122.815330505371,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324197"
+        },
+        {
+            "id": "nc75324192",
+            "magnitude": 1.32,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:33:49+00:00",
+            "depth_km": 3.10999989509583,
+            "latitude": 38.7971649169922,
+            "longitude": -122.815170288086,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324192"
+        },
+        {
+            "id": "nc75324187",
+            "magnitude": 1.1,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:33:27+00:00",
+            "depth_km": 3.01999998092651,
+            "latitude": 38.7960014343262,
+            "longitude": -122.81600189209,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324187"
+        },
+        {
+            "id": "nc75324177",
+            "magnitude": 1.64,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:32:06+00:00",
+            "depth_km": 3.08999991416931,
+            "latitude": 38.7963333129883,
+            "longitude": -122.816329956055,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324177"
+        },
+        {
+            "id": "nc75324182",
+            "magnitude": 3.6,
+            "place": "6 km WNW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T10:31:07+00:00",
+            "depth_km": 3.74,
+            "latitude": 38.7953333333333,
+            "longitude": -122.816166666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324182"
+        },
+        {
+            "id": "nc75324142",
+            "magnitude": 2.62,
+            "place": "2 km ESE of San Ramon, CA",
+            "event_time_utc": "2026-03-08T08:59:46+00:00",
+            "depth_km": 3.99000000953674,
+            "latitude": 37.7751655578613,
+            "longitude": -121.954498291016,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324142"
+        },
+        {
+            "id": "nc75324137",
+            "magnitude": 1.58,
+            "place": "7 km N of Round Valley, CA",
+            "event_time_utc": "2026-03-08T07:27:44+00:00",
+            "depth_km": 9.6899995803833,
+            "latitude": 37.4813346862793,
+            "longitude": -118.599166870117,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324137"
+        },
+        {
+            "id": "nc75324117",
+            "magnitude": 0.7,
+            "place": "7 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T06:39:25+00:00",
+            "depth_km": 2.38000011444092,
+            "latitude": 38.8235015869141,
+            "longitude": -122.805335998535,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324117"
+        },
+        {
+            "id": "uw62231266",
+            "magnitude": 2.18,
+            "place": "48 km SE of Plush, Oregon",
+            "event_time_utc": "2026-03-08T06:32:31+00:00",
+            "depth_km": 6.87,
+            "latitude": 42.04633333333334,
+            "longitude": -119.571,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62231266"
+        },
+        {
+            "id": "nc75324112",
+            "magnitude": 1.37,
+            "place": "17 km NW of Parkfield, CA",
+            "event_time_utc": "2026-03-08T05:49:11+00:00",
+            "depth_km": 3.24000000953674,
+            "latitude": 36.0061683654785,
+            "longitude": -120.570167541504,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324112"
+        },
+        {
+            "id": "nc75324107",
+            "magnitude": 0.76,
+            "place": "8 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T05:10:49+00:00",
+            "depth_km": 0.680000007152557,
+            "latitude": 38.824333190918,
+            "longitude": -122.823669433594,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324107"
+        },
+        {
+            "id": "nc75324102",
+            "magnitude": 1.32,
+            "place": "8 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T05:08:11+00:00",
+            "depth_km": 1.53999996185303,
+            "latitude": 38.8286666870117,
+            "longitude": -122.814331054688,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324102"
+        },
+        {
+            "id": "nc75324097",
+            "magnitude": 1.51,
+            "place": "1 km SW of San Ardo, CA",
+            "event_time_utc": "2026-03-08T05:03:50+00:00",
+            "depth_km": 11.0100002288818,
+            "latitude": 36.0113334655762,
+            "longitude": -120.915664672852,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324097"
+        },
+        {
+            "id": "nc75324092",
+            "magnitude": 0.81,
+            "place": "8 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T05:01:47+00:00",
+            "depth_km": 0.529999971389771,
+            "latitude": 38.8251647949219,
+            "longitude": -122.823997497559,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324092"
+        },
+        {
+            "id": "uw62231246",
+            "magnitude": 2.38,
+            "place": "36 km E of Bonanza, Oregon",
+            "event_time_utc": "2026-03-08T04:57:50+00:00",
+            "depth_km": -0.19,
+            "latitude": 42.14483333333333,
+            "longitude": -120.97333333333333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62231246"
+        },
+        {
+            "id": "nc75324077",
+            "magnitude": 2.1,
+            "place": "8 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T04:44:28+00:00",
+            "depth_km": 0.490000009536743,
+            "latitude": 38.8240013122559,
+            "longitude": -122.823501586914,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324077"
+        },
+        {
+            "id": "nc75324067",
+            "magnitude": 1.11,
+            "place": "4 km W of Cobb, CA",
+            "event_time_utc": "2026-03-08T04:21:49+00:00",
+            "depth_km": 2.08999991416931,
+            "latitude": 38.8250007629395,
+            "longitude": -122.765663146973,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324067"
+        },
+        {
+            "id": "nc75324062",
+            "magnitude": 1.06,
+            "place": "7 km WNW of Cobb, CA",
+            "event_time_utc": "2026-03-08T04:15:51+00:00",
+            "depth_km": 2.19000005722046,
+            "latitude": 38.837833404541,
+            "longitude": -122.803337097168,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324062"
+        },
+        {
+            "id": "nc75324057",
+            "magnitude": 0.8,
+            "place": "8 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T03:23:58+00:00",
+            "depth_km": 0.569999992847443,
+            "latitude": 38.8228340148926,
+            "longitude": -122.825164794922,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324057"
+        },
+        {
+            "id": "nc75324052",
+            "magnitude": 1.62,
+            "place": "8 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T03:21:48+00:00",
+            "depth_km": 0.839999973773956,
+            "latitude": 38.8230018615723,
+            "longitude": -122.825332641602,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324052"
+        },
+        {
+            "id": "nc75324047",
+            "magnitude": 1.18,
+            "place": "8 km NW of The Geysers, CA",
+            "event_time_utc": "2026-03-08T03:18:43+00:00",
+            "depth_km": 0.670000016689301,
+            "latitude": 38.8236656188965,
+            "longitude": -122.824333190918,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324047"
+        },
+        {
+            "id": "nc75324032",
+            "magnitude": 1.52,
+            "place": "20 km NE of Morgan Hill, CA",
+            "event_time_utc": "2026-03-08T02:30:36+00:00",
+            "depth_km": 7.09999990463257,
+            "latitude": 37.2518348693848,
+            "longitude": -121.491165161133,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75324032"
+        }
+    ],
+    "strongest_events": [
+        {
+            "id": "official19060418131226300_12",
+            "magnitude": 7.9,
+            "place": "The 1906 San Francisco, California Earthquake",
+            "event_time_utc": null,
+            "depth_km": 11.7,
+            "latitude": 37.75,
+            "longitude": -122.55,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/official19060418131226300_12"
+        },
+        {
+            "id": "iscgem911811",
+            "magnitude": 7.41,
+            "place": "123 km W of Big Lagoon, California",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 41.189,
+            "longitude": -125.608,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem911811"
+        },
+        {
+            "id": "nc269151",
+            "magnitude": 7.2,
+            "place": "The 1992 Petrolia, California Earthquake",
+            "event_time_utc": "1992-04-25T18:06:05+00:00",
+            "depth_km": 9.856,
+            "latitude": 40.3353333,
+            "longitude": -124.2286667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc269151"
+        },
+        {
+            "id": "usp0001aq1",
+            "magnitude": 7.2,
+            "place": "The 1980 Eureka, California Earthquake",
+            "event_time_utc": "1980-11-08T10:27:34+00:00",
+            "depth_km": 19,
+            "latitude": 41.117,
+            "longitude": -124.253,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0001aq1"
+        },
+        {
+            "id": "usp000dt25",
+            "magnitude": 7.2,
+            "place": "153 km W of Big Lagoon, California",
+            "event_time_utc": "2005-06-15T02:50:54+00:00",
+            "depth_km": 16,
+            "latitude": 41.292,
+            "longitude": -125.953,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dt25"
+        },
+        {
+            "id": "iscgem911261",
+            "magnitude": 7.12,
+            "place": "The 1923 Humboldt County, California Earthquake",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 40.482,
+            "longitude": -125.034,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem911261"
+        },
+        {
+            "id": "usp0006hsx",
+            "magnitude": 7.1,
+            "place": "121 km W of Ferndale, California",
+            "event_time_utc": "1994-09-01T15:15:53+00:00",
+            "depth_km": 10,
+            "latitude": 40.402,
+            "longitude": -125.68,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0006hsx"
+        },
+        {
+            "id": "nn19541216110700000",
+            "magnitude": 7.1,
+            "place": "The 1954 Fairview Peak, Nevada Earthquake",
+            "event_time_utc": null,
+            "depth_km": 12,
+            "latitude": 39.2,
+            "longitude": -118,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn19541216110700000"
+        },
+        {
+            "id": "nc75095651",
+            "magnitude": 7,
+            "place": "2024 Offshore Cape Mendocino, California Earthquake",
+            "event_time_utc": "2024-12-05T18:44:21+00:00",
+            "depth_km": 10,
+            "latitude": 40.374,
+            "longitude": -125.021666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75095651"
+        },
+        {
+            "id": "nc228064",
+            "magnitude": 7,
+            "place": "136 km WSW of Brookings, Oregon",
+            "event_time_utc": "1991-08-17T22:17:09+00:00",
+            "depth_km": 1.303,
+            "latitude": 41.679,
+            "longitude": -125.856,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc228064"
+        },
+        {
+            "id": "iscgem909604",
+            "magnitude": 6.9,
+            "place": "The 1927 Lompoc, California Earthquake",
+            "event_time_utc": null,
+            "depth_km": 10,
+            "latitude": 34.68,
+            "longitude": -120.705,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem909604"
+        },
+        {
+            "id": "usp0004u34",
+            "magnitude": 6.9,
+            "place": "103 km W of Pistol River, Oregon",
+            "event_time_utc": "1991-07-13T02:50:14+00:00",
+            "depth_km": 11,
+            "latitude": 42.182,
+            "longitude": -125.641,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0004u34"
+        }
+    ],
+    "from_cache": false
+}

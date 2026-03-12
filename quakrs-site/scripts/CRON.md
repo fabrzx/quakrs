@@ -1,0 +1,73 @@
+# Quakrs Cron Warmup
+
+Use these jobs in production to keep data preloaded and avoid empty/slow blocks.
+
+## Recommended Schedule
+
+1. Fast feed warmup every 3 minutes
+
+```cron
+*/3 * * * * /bin/sh /var/www/quakrs-site/scripts/refresh-feeds.sh https://www.quakrs.com >> /var/log/quakrs/refresh-feeds.log 2>&1
+```
+
+2. Deep warmup every 15 minutes (includes event-history prewarm)
+
+```cron
+*/15 * * * * HISTORY_POINTS=18 /bin/sh /var/www/quakrs-site/scripts/prewarm-all.sh https://www.quakrs.com >> /var/log/quakrs/prewarm-all.log 2>&1
+```
+
+## Notes
+
+- `refresh-feeds.sh` refreshes core/hazard/derived feeds and tectonic cache.
+- `prewarm-all.sh` also preloads `event-history` for active seismic zones.
+- Keep both jobs; they serve different latencies and payload weights.
+
+## Historical Archive Backfill (MySQL)
+
+Use this once to build a long-term earthquake archive for `data-archive` filters (period, place, magnitude).
+
+1. Initial historical load (one-shot, resumable)
+
+```bash
+cd /var/www/quakrs-site
+php scripts/backfill-earthquakes-history.php --start=1900-01-01 --resume >> /var/log/quakrs/backfill-earthquakes.log 2>&1
+```
+
+2. Resume after interruptions
+
+```bash
+cd /var/www/quakrs-site
+php scripts/backfill-earthquakes-history.php --resume >> /var/log/quakrs/backfill-earthquakes.log 2>&1
+```
+
+3. Optional maintenance window (nightly catch-up)
+
+```cron
+20 2 * * * cd /var/www/quakrs-site && php scripts/backfill-earthquakes-history.php --start=1900-01-01 --resume >> /var/log/quakrs/backfill-earthquakes.log 2>&1
+```
+
+Checkpoint file:
+- `data/backfill_earthquakes_usgs_checkpoint.json` (override with `--checkpoint=...`)
+
+## Historical Backfill Without SSH (cron-job.org)
+
+If SSH is unavailable on your hosting plan, run backfill in HTTP batches with:
+- `/api/backfill-earthquakes.php`
+- one USGS page per run (resume/checkpoint automatic)
+
+Example URL (every 1-5 minutes):
+
+```text
+https://www.quakrs.com/api/backfill-earthquakes.php?force_refresh=1&token=YOUR_REFRESH_TOKEN&start=1900-01-01
+```
+
+Optional query params:
+- `end=YYYY-MM-DD` (default today UTC)
+- `min_magnitude=2.5`
+- `max_window_days=14`
+- `max_events_per_window=12000`
+- `page_size=300`
+- `reset=1` (reset HTTP checkpoint and restart from `start`)
+
+HTTP checkpoint file:
+- `data/backfill_earthquakes_http_checkpoint.json`

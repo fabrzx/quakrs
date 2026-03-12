@@ -1,0 +1,513 @@
+{
+    "ok": true,
+    "provider": "Curated Observatory Cameras",
+    "generated_at_ts": 1773149458,
+    "generated_at": "2026-03-10T13:30:58+00:00",
+    "cams_count": 12,
+    "countries_count": 4,
+    "snapshot_enabled_count": 8,
+    "cams": [
+        {
+            "id": "stromboli-live-italy",
+            "name": "Stromboli Live",
+            "volcano": "Stromboli",
+            "country": "Italy",
+            "source": "INGV Catania",
+            "status": "Monitoring",
+            "stream_url": "https://www.ct.ingv.it/sezioniesterne/StreamingEolie.php",
+            "embed_url": "https://garr.tv/videos/embed/8790a7a8-211c-4794-bcb2-41e24cd2e322",
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 58,
+            "priority_reasons": [
+                "Inline live player",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-b1cam-united-states",
+            "name": "Kilauea B1cam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/B1cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-f1cam-united-states",
+            "name": "Kilauea F1cam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/F1cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-k2cam-united-states",
+            "name": "Kilauea K2cam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/K2cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-kpcam-united-states",
+            "name": "Kilauea KPcam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/cams/KPcam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-kwcam-united-states",
+            "name": "Kilauea KWcam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/KWcam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-v1cam-united-states",
+            "name": "Kilauea V1cam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/V1cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-v2cam-united-states",
+            "name": "Kilauea V2cam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/cams/V2cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-v3cam-united-states",
+            "name": "Kilauea V3cam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/cams/V3cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "fuego-guatemala",
+            "name": "Fuego",
+            "volcano": "Fuego",
+            "country": "Guatemala",
+            "source": "Michigan Tech (with INSIVUMEH support)",
+            "status": "Monitoring",
+            "stream_url": "https://ovfuego-norte.geo.mtu.edu/animations.php",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 42,
+            "priority_reasons": [
+                "External-only source",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "etna-live-stream-italy",
+            "name": "Etna Live Stream",
+            "volcano": "Etna",
+            "country": "Italy",
+            "source": "INGV Catania",
+            "status": "Monitoring",
+            "stream_url": "https://www.ct.ingv.it/sezioniesterne/StreamingEtna.php",
+            "embed_url": "https://garr.tv/videos/embed/c6c70a03-e711-4eed-9835-1d02f5a5ec58",
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 26,
+            "priority_reasons": [
+                "Inline live player"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "popocatepetl-mexico",
+            "name": "Popocatepetl",
+            "volcano": "Popocatepetl",
+            "country": "Mexico",
+            "source": "CENAPRED",
+            "status": "Monitoring",
+            "stream_url": "https://www.cenapred.gob.mx/es/reportesVolcanesMX/",
+            "embed_url": "http://www.atlasnacionalderiesgos.gob.mx/app/BoletinPopo/sync3.html",
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 26,
+            "priority_reasons": [
+                "Inline live player"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        }
+    ],
+    "hot_now": [
+        {
+            "id": "stromboli-live-italy",
+            "name": "Stromboli Live",
+            "volcano": "Stromboli",
+            "country": "Italy",
+            "source": "INGV Catania",
+            "status": "Monitoring",
+            "stream_url": "https://www.ct.ingv.it/sezioniesterne/StreamingEolie.php",
+            "embed_url": "https://garr.tv/videos/embed/8790a7a8-211c-4794-bcb2-41e24cd2e322",
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 58,
+            "priority_reasons": [
+                "Inline live player",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-b1cam-united-states",
+            "name": "Kilauea B1cam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/B1cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-f1cam-united-states",
+            "name": "Kilauea F1cam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/F1cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "fuego-guatemala",
+            "name": "Fuego",
+            "volcano": "Fuego",
+            "country": "Guatemala",
+            "source": "Michigan Tech (with INSIVUMEH support)",
+            "status": "Monitoring",
+            "stream_url": "https://ovfuego-norte.geo.mtu.edu/animations.php",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 42,
+            "priority_reasons": [
+                "External-only source",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "etna-live-stream-italy",
+            "name": "Etna Live Stream",
+            "volcano": "Etna",
+            "country": "Italy",
+            "source": "INGV Catania",
+            "status": "Monitoring",
+            "stream_url": "https://www.ct.ingv.it/sezioniesterne/StreamingEtna.php",
+            "embed_url": "https://garr.tv/videos/embed/c6c70a03-e711-4eed-9835-1d02f5a5ec58",
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 26,
+            "priority_reasons": [
+                "Inline live player"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "popocatepetl-mexico",
+            "name": "Popocatepetl",
+            "volcano": "Popocatepetl",
+            "country": "Mexico",
+            "source": "CENAPRED",
+            "status": "Monitoring",
+            "stream_url": "https://www.cenapred.gob.mx/es/reportesVolcanesMX/",
+            "embed_url": "http://www.atlasnacionalderiesgos.gob.mx/app/BoletinPopo/sync3.html",
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 26,
+            "priority_reasons": [
+                "Inline live player"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        }
+    ],
+    "rotating_candidates": [
+        {
+            "id": "kilauea-k2cam-united-states",
+            "name": "Kilauea K2cam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/K2cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-kpcam-united-states",
+            "name": "Kilauea KPcam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/cams/KPcam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-kwcam-united-states",
+            "name": "Kilauea KWcam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/KWcam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-v1cam-united-states",
+            "name": "Kilauea V1cam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/V1cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-v2cam-united-states",
+            "name": "Kilauea V2cam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/cams/V2cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "kilauea-v3cam-united-states",
+            "name": "Kilauea V3cam",
+            "volcano": "Kilauea",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/cams/V3cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 51,
+            "priority_reasons": [
+                "Direct snapshot available",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        }
+    ],
+    "rotation_interval_seconds": 20,
+    "from_cache": false
+}

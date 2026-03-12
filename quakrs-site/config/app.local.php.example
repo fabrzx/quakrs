@@ -1,0 +1,15 @@
+<?php
+declare(strict_types=1);
+
+return [
+    'refresh_token' => 'SET_A_LONG_RANDOM_TOKEN',
+    'archive_mysql' => [
+        'host' => '31.11.39.180',
+        'port' => 3306,
+        'database' => 'Sql1923763_1',
+        'user' => 'Sql1923763',
+        'password' => 'YOUR_PASSWORD_HERE',
+        'charset' => 'utf8mb4',
+        'table' => 'earthquake_events',
+    ],
+];

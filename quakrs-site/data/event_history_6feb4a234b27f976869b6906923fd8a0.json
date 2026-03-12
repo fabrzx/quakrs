@@ -1,0 +1,944 @@
+{
+    "ok": true,
+    "provider": "USGS FDSN Historical Archive",
+    "generated_at_ts": 1773176432,
+    "generated_at": "2026-03-10T21:00:32+00:00",
+    "query": {
+        "lat": 38.0706,
+        "lon": 29.0062,
+        "radius_km": 500,
+        "min_magnitude": null,
+        "start": "1899-12-31",
+        "end": "2026-03-09"
+    },
+    "page": 1,
+    "per_page": 80,
+    "total_pages": 1,
+    "total_events": 0,
+    "events_count": 80,
+    "events": [
+        {
+            "id": "us7000s2gw",
+            "magnitude": 4.2,
+            "place": "158 km SSW of Ka\u015f, Turkey",
+            "event_time_utc": "2026-03-06T09:30:30+00:00",
+            "depth_km": 28.324,
+            "latitude": 34.8524,
+            "longitude": 29.0626,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2gw"
+        },
+        {
+            "id": "us7000s2gs",
+            "magnitude": 4.3,
+            "place": "158 km SSW of Ka\u015f, Turkey",
+            "event_time_utc": "2026-03-06T08:53:35+00:00",
+            "depth_km": 35.789,
+            "latitude": 34.86,
+            "longitude": 29.0234,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2gs"
+        },
+        {
+            "id": "us7000s2gb",
+            "magnitude": 4.6,
+            "place": "162 km SSW of Ka\u015f, Turkey",
+            "event_time_utc": "2026-03-06T05:35:24+00:00",
+            "depth_km": 38.189,
+            "latitude": 34.8213,
+            "longitude": 29.0231,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2gb"
+        },
+        {
+            "id": "us7000s2ga",
+            "magnitude": 4.1,
+            "place": "160 km SSW of Ka\u015f, Turkey",
+            "event_time_utc": "2026-03-06T05:33:20+00:00",
+            "depth_km": 20.544,
+            "latitude": 34.8502,
+            "longitude": 29.0194,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2ga"
+        },
+        {
+            "id": "us6000sa9q",
+            "magnitude": 4.4,
+            "place": "70 km SSE of Ier\u00e1petra, Greece",
+            "event_time_utc": "2026-02-19T19:11:03+00:00",
+            "depth_km": 39.385,
+            "latitude": 34.437,
+            "longitude": 26.0773,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000sa9q"
+        },
+        {
+            "id": "us6000s7km",
+            "magnitude": 4,
+            "place": "55 km SE of Empore\u00edo, Greece",
+            "event_time_utc": "2026-02-10T04:34:58+00:00",
+            "depth_km": 117.65,
+            "latitude": 36.0177,
+            "longitude": 25.8945,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s7km"
+        },
+        {
+            "id": "us7000s00d",
+            "magnitude": 4.2,
+            "place": "51 km S of Palekastro, Greece",
+            "event_time_utc": "2026-02-09T05:03:11+00:00",
+            "depth_km": 40.872,
+            "latitude": 34.7394,
+            "longitude": 26.3233,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s00d"
+        },
+        {
+            "id": "us6000saha",
+            "magnitude": 4.1,
+            "place": "50 km SSW of N\u00e9a Anatol\u00ed, Greece",
+            "event_time_utc": "2026-02-07T09:10:40+00:00",
+            "depth_km": 56.757,
+            "latitude": 34.5798,
+            "longitude": 25.495,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000saha"
+        },
+        {
+            "id": "us6000s6xt",
+            "magnitude": 4.3,
+            "place": "20 km SE of Ier\u00e1petra, Greece",
+            "event_time_utc": "2026-02-06T18:07:40+00:00",
+            "depth_km": 10,
+            "latitude": 34.8902,
+            "longitude": 25.9171,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s6xt"
+        },
+        {
+            "id": "us6000sagb",
+            "magnitude": 4.3,
+            "place": "27 km SE of Ier\u00e1petra, Greece",
+            "event_time_utc": "2026-02-06T17:32:07+00:00",
+            "depth_km": 19.414,
+            "latitude": 34.8513,
+            "longitude": 25.9695,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000sagb"
+        },
+        {
+            "id": "us7000rs18",
+            "magnitude": 4.4,
+            "place": "15 km SE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2026-01-26T00:47:20+00:00",
+            "depth_km": 10,
+            "latitude": 39.1417,
+            "longitude": 28.3047,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rs18"
+        },
+        {
+            "id": "us7000rrxr",
+            "magnitude": 4.1,
+            "place": "7 km SSE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2026-01-25T09:29:37+00:00",
+            "depth_km": 10,
+            "latitude": 39.1773,
+            "longitude": 28.1956,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rrxr"
+        },
+        {
+            "id": "us7000rrq9",
+            "magnitude": 4.9,
+            "place": "10 km ESE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2026-01-23T21:24:38+00:00",
+            "depth_km": 8.924,
+            "latitude": 39.199,
+            "longitude": 28.293,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rrq9"
+        },
+        {
+            "id": "us6000s6pc",
+            "magnitude": 4.1,
+            "place": "15 km SE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2026-01-21T23:24:58+00:00",
+            "depth_km": 10,
+            "latitude": 39.1329,
+            "longitude": 28.2902,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s6pc"
+        },
+        {
+            "id": "us7000rr79",
+            "magnitude": 4.5,
+            "place": "12 km SE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2026-01-21T20:28:57+00:00",
+            "depth_km": 15.856,
+            "latitude": 39.1598,
+            "longitude": 28.2744,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rr79"
+        },
+        {
+            "id": "us7000rr4f",
+            "magnitude": 4.6,
+            "place": "8 km SSE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2026-01-21T15:11:51+00:00",
+            "depth_km": 18.284,
+            "latitude": 39.1772,
+            "longitude": 28.2285,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rr4f"
+        },
+        {
+            "id": "us6000s6p3",
+            "magnitude": 4.2,
+            "place": "4 km N of K\u0131zkalesi, Turkey",
+            "event_time_utc": "2026-01-21T13:12:16+00:00",
+            "depth_km": 10,
+            "latitude": 36.5001,
+            "longitude": 34.1352,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s6p3"
+        },
+        {
+            "id": "us6000s6mr",
+            "magnitude": 4,
+            "place": "13 km N of Astyp\u00e1laia, Greece",
+            "event_time_utc": "2026-01-20T23:48:44+00:00",
+            "depth_km": 10,
+            "latitude": 36.67,
+            "longitude": 26.3749,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s6mr"
+        },
+        {
+            "id": "us7000rld7",
+            "magnitude": 4.2,
+            "place": "36 km ESE of Arch\u00e1ngelos, Greece",
+            "event_time_utc": "2025-12-29T17:00:06+00:00",
+            "depth_km": 44.648,
+            "latitude": 36.0705,
+            "longitude": 28.4808,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rld7"
+        },
+        {
+            "id": "us7000rk7x",
+            "magnitude": 4.2,
+            "place": "5 km SE of K\u00e9falos, Greece",
+            "event_time_utc": "2025-12-22T21:09:20+00:00",
+            "depth_km": 146.758,
+            "latitude": 36.7152,
+            "longitude": 27.0117,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rk7x"
+        },
+        {
+            "id": "us6000rw8l",
+            "magnitude": 4,
+            "place": "12 km WSW of Amorg\u00f3s, Greece",
+            "event_time_utc": "2025-12-20T23:13:56+00:00",
+            "depth_km": 10,
+            "latitude": 36.7861,
+            "longitude": 25.7763,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rw8l"
+        },
+        {
+            "id": "us6000rv9l",
+            "magnitude": 4.1,
+            "place": "8 km NE of Muratpa\u015fa, Turkey",
+            "event_time_utc": "2025-12-16T13:11:01+00:00",
+            "depth_km": 105.95,
+            "latitude": 36.9515,
+            "longitude": 30.8279,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rv9l"
+        },
+        {
+            "id": "us6000ruhy",
+            "magnitude": 4.2,
+            "place": "20 km S of Koloni, Cyprus",
+            "event_time_utc": "2025-12-12T17:20:16+00:00",
+            "depth_km": 10,
+            "latitude": 34.5682,
+            "longitude": 32.4728,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ruhy"
+        },
+        {
+            "id": "us6000ru32",
+            "magnitude": 4.5,
+            "place": "13 km ENE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-12-11T07:06:14+00:00",
+            "depth_km": 10,
+            "latitude": 39.2885,
+            "longitude": 28.3186,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ru32"
+        },
+        {
+            "id": "us6000rtch",
+            "magnitude": 5.1,
+            "place": "23 km NNE of Antalya, Turkey",
+            "event_time_utc": "2025-12-08T10:21:33+00:00",
+            "depth_km": 113.694,
+            "latitude": 37.1026,
+            "longitude": 30.7856,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rtch"
+        },
+        {
+            "id": "us6000rtcc",
+            "magnitude": 4.4,
+            "place": "19 km ENE of Kemer, Turkey",
+            "event_time_utc": "2025-12-08T09:34:09+00:00",
+            "depth_km": 104.803,
+            "latitude": 36.6359,
+            "longitude": 30.7699,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rtcc"
+        },
+        {
+            "id": "us6000rt9q",
+            "magnitude": 4.6,
+            "place": "11 km NW of G\u00f6yn\u00fck, Turkey",
+            "event_time_utc": "2025-12-08T00:31:56+00:00",
+            "depth_km": 10,
+            "latitude": 36.7393,
+            "longitude": 30.4636,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rt9q"
+        },
+        {
+            "id": "us7000rejd",
+            "magnitude": 4,
+            "place": "98 km SSE of Ier\u00e1petra, Greece",
+            "event_time_utc": "2025-11-29T01:34:03+00:00",
+            "depth_km": 49.351,
+            "latitude": 34.2042,
+            "longitude": 26.18,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rejd"
+        },
+        {
+            "id": "us7000re1e",
+            "magnitude": 4.7,
+            "place": "19 km NE of P\u00e1normos, Greece",
+            "event_time_utc": "2025-11-27T00:08:52+00:00",
+            "depth_km": 71.12,
+            "latitude": 35.5645,
+            "longitude": 24.8108,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000re1e"
+        },
+        {
+            "id": "us6000rtyc",
+            "magnitude": 4.1,
+            "place": "13 km WSW of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-22T21:29:30+00:00",
+            "depth_km": 10,
+            "latitude": 39.1936,
+            "longitude": 28.0382,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rtyc"
+        },
+        {
+            "id": "us6000rp6b",
+            "magnitude": 4.1,
+            "place": "25 km S of Sitia, Greece",
+            "event_time_utc": "2025-11-19T17:28:24+00:00",
+            "depth_km": 10,
+            "latitude": 34.9789,
+            "longitude": 26.0836,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rp6b"
+        },
+        {
+            "id": "us6000rp4l",
+            "magnitude": 4.4,
+            "place": "21 km E of Kentr\u00ed, Greece",
+            "event_time_utc": "2025-11-19T14:14:57+00:00",
+            "depth_km": 10,
+            "latitude": 35.0122,
+            "longitude": 25.9864,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rp4l"
+        },
+        {
+            "id": "us6000rnu8",
+            "magnitude": 4.5,
+            "place": "29 km WNW of Sk\u00fdros, Greece",
+            "event_time_utc": "2025-11-17T21:04:10+00:00",
+            "depth_km": 10,
+            "latitude": 39.009,
+            "longitude": 24.2442,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rnu8"
+        },
+        {
+            "id": "us6000rnfw",
+            "magnitude": 4.5,
+            "place": "8 km ESE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-15T08:46:19+00:00",
+            "depth_km": 10,
+            "latitude": 39.2087,
+            "longitude": 28.2723,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rnfw"
+        },
+        {
+            "id": "us6000rnfv",
+            "magnitude": 4.1,
+            "place": "12 km SE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-15T08:08:28+00:00",
+            "depth_km": 10,
+            "latitude": 39.1655,
+            "longitude": 28.2881,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rnfv"
+        },
+        {
+            "id": "us6000rndx",
+            "magnitude": 4.2,
+            "place": "5 km WSW of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-15T00:04:19+00:00",
+            "depth_km": 10,
+            "latitude": 39.2303,
+            "longitude": 28.1113,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rndx"
+        },
+        {
+            "id": "us6000rn88",
+            "magnitude": 4.8,
+            "place": "60 km SSE of Ier\u00e1petra, Greece",
+            "event_time_utc": "2025-11-14T11:01:08+00:00",
+            "depth_km": 45.634,
+            "latitude": 34.5337,
+            "longitude": 26.0526,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rn88"
+        },
+        {
+            "id": "us6000rn5t",
+            "magnitude": 4.3,
+            "place": "10 km SSE of Ouranoupolis, Greece",
+            "event_time_utc": "2025-11-13T22:17:11+00:00",
+            "depth_km": 10,
+            "latitude": 40.2428,
+            "longitude": 24.0215,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rn5t"
+        },
+        {
+            "id": "us6000rn3f",
+            "magnitude": 4.6,
+            "place": "6 km SE of Koloni, Cyprus",
+            "event_time_utc": "2025-11-13T09:27:24+00:00",
+            "depth_km": 10,
+            "latitude": 34.7095,
+            "longitude": 32.5226,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rn3f"
+        },
+        {
+            "id": "us6000rn2h",
+            "magnitude": 4,
+            "place": "3 km NNW of Pol\u00e9mi, Cyprus",
+            "event_time_utc": "2025-11-13T04:46:31+00:00",
+            "depth_km": 10,
+            "latitude": 34.9162,
+            "longitude": 32.494,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rn2h"
+        },
+        {
+            "id": "us7000rf2q",
+            "magnitude": 4.4,
+            "place": "4 km W of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-13T03:21:46+00:00",
+            "depth_km": 10,
+            "latitude": 39.2423,
+            "longitude": 28.124,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rf2q"
+        },
+        {
+            "id": "us7000rf2e",
+            "magnitude": 4.3,
+            "place": "7 km WSW of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-13T03:20:25+00:00",
+            "depth_km": 10,
+            "latitude": 39.2114,
+            "longitude": 28.1052,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rf2e"
+        },
+        {
+            "id": "us6000rn25",
+            "magnitude": 4.6,
+            "place": "11 km W of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-13T03:16:15+00:00",
+            "depth_km": 13.41,
+            "latitude": 39.2616,
+            "longitude": 28.0459,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rn25"
+        },
+        {
+            "id": "us7000rexh",
+            "magnitude": 4.2,
+            "place": "0 km S of Koloni, Cyprus",
+            "event_time_utc": "2025-11-12T14:42:39+00:00",
+            "depth_km": 10,
+            "latitude": 34.7431,
+            "longitude": 32.4664,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rexh"
+        },
+        {
+            "id": "us7000rexi",
+            "magnitude": 4.3,
+            "place": "7 km SW of Mel\u00e1deia, Cyprus",
+            "event_time_utc": "2025-11-12T14:39:48+00:00",
+            "depth_km": 10,
+            "latitude": 34.9414,
+            "longitude": 32.4528,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rexi"
+        },
+        {
+            "id": "us7000rexg",
+            "magnitude": 4.3,
+            "place": "1 km NNW of Paphos, Cyprus",
+            "event_time_utc": "2025-11-12T14:30:14+00:00",
+            "depth_km": 10,
+            "latitude": 34.7852,
+            "longitude": 32.4193,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rexg"
+        },
+        {
+            "id": "us7000rey2",
+            "magnitude": 4.6,
+            "place": "3 km ESE of P\u00f3lis, Cyprus",
+            "event_time_utc": "2025-11-12T14:26:11+00:00",
+            "depth_km": 10,
+            "latitude": 35.0254,
+            "longitude": 32.4592,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rey2"
+        },
+        {
+            "id": "us6000rmyh",
+            "magnitude": 5.3,
+            "place": "5 km NE of Pol\u00e9mi, Cyprus",
+            "event_time_utc": "2025-11-12T14:23:31+00:00",
+            "depth_km": 10,
+            "latitude": 34.9226,
+            "longitude": 32.5546,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmyh"
+        },
+        {
+            "id": "us6000rmxr",
+            "magnitude": 4.4,
+            "place": "0 km NNE of T\u00e1la, Cyprus",
+            "event_time_utc": "2025-11-12T09:59:09+00:00",
+            "depth_km": 10,
+            "latitude": 34.8374,
+            "longitude": 32.4318,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmxr"
+        },
+        {
+            "id": "us6000rmxn",
+            "magnitude": 4.7,
+            "place": "5 km ESE of Koloni, Cyprus",
+            "event_time_utc": "2025-11-12T09:41:51+00:00",
+            "depth_km": 10,
+            "latitude": 34.7251,
+            "longitude": 32.5184,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmxn"
+        },
+        {
+            "id": "us7000rexe",
+            "magnitude": 4.2,
+            "place": "8 km SSW of Paphos, Cyprus",
+            "event_time_utc": "2025-11-12T09:36:18+00:00",
+            "depth_km": 10,
+            "latitude": 34.711,
+            "longitude": 32.3738,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rexe"
+        },
+        {
+            "id": "us6000rmxj",
+            "magnitude": 5.2,
+            "place": "2 km ENE of Pol\u00e9mi, Cyprus",
+            "event_time_utc": "2025-11-12T09:31:27+00:00",
+            "depth_km": 19.682,
+            "latitude": 34.8976,
+            "longitude": 32.5325,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmxj"
+        },
+        {
+            "id": "us6000rmpr",
+            "magnitude": 4.1,
+            "place": "14 km WSW of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-11T01:54:24+00:00",
+            "depth_km": 12.851,
+            "latitude": 39.215,
+            "longitude": 28.0165,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmpr"
+        },
+        {
+            "id": "us6000rmnn",
+            "magnitude": 4.4,
+            "place": "5 km W of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-10T21:02:55+00:00",
+            "depth_km": 10,
+            "latitude": 39.2313,
+            "longitude": 28.1134,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmnn"
+        },
+        {
+            "id": "us6000rmmy",
+            "magnitude": 4.8,
+            "place": "9 km WSW of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-10T18:20:51+00:00",
+            "depth_km": 10,
+            "latitude": 39.208,
+            "longitude": 28.0825,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmmy"
+        },
+        {
+            "id": "us6000rmjv",
+            "magnitude": 4.5,
+            "place": "12 km SSE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-10T06:41:41+00:00",
+            "depth_km": 10,
+            "latitude": 39.1408,
+            "longitude": 28.2547,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmjv"
+        },
+        {
+            "id": "us6000rmjf",
+            "magnitude": 4.7,
+            "place": "12 km W of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-10T02:49:11+00:00",
+            "depth_km": 10,
+            "latitude": 39.2195,
+            "longitude": 28.0363,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmjf"
+        },
+        {
+            "id": "us6000rmjc",
+            "magnitude": 4.3,
+            "place": "6 km W of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-10T02:48:58+00:00",
+            "depth_km": 10,
+            "latitude": 39.2466,
+            "longitude": 28.1006,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmjc"
+        },
+        {
+            "id": "us6000rmi5",
+            "magnitude": 4.4,
+            "place": "6 km W of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-09T22:06:42+00:00",
+            "depth_km": 8.206,
+            "latitude": 39.2481,
+            "longitude": 28.1086,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmi5"
+        },
+        {
+            "id": "us6000rm8l",
+            "magnitude": 4,
+            "place": "39 km WNW of Fry, Greece",
+            "event_time_utc": "2025-11-08T08:51:54+00:00",
+            "depth_km": 10,
+            "latitude": 35.5143,
+            "longitude": 26.5019,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rm8l"
+        },
+        {
+            "id": "us6000rm2b",
+            "magnitude": 4.2,
+            "place": "40 km S of Ier\u00e1petra, Greece",
+            "event_time_utc": "2025-11-07T08:56:33+00:00",
+            "depth_km": 10,
+            "latitude": 34.6529,
+            "longitude": 25.7842,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rm2b"
+        },
+        {
+            "id": "us6000rm17",
+            "magnitude": 4.4,
+            "place": "8 km S of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-07T01:52:37+00:00",
+            "depth_km": 10,
+            "latitude": 39.162,
+            "longitude": 28.1825,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rm17"
+        },
+        {
+            "id": "us6000rlvx",
+            "magnitude": 4.3,
+            "place": "4 km W of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-06T16:15:42+00:00",
+            "depth_km": 10,
+            "latitude": 39.2365,
+            "longitude": 28.1235,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rlvx"
+        },
+        {
+            "id": "us6000rl6n",
+            "magnitude": 5,
+            "place": "21 km ESE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-03T12:35:37+00:00",
+            "depth_km": 10,
+            "latitude": 39.1744,
+            "longitude": 28.4156,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rl6n"
+        },
+        {
+            "id": "us6000rl1h",
+            "magnitude": 4.8,
+            "place": "6 km SSE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-02T12:41:10+00:00",
+            "depth_km": 10,
+            "latitude": 39.1954,
+            "longitude": 28.2157,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rl1h"
+        },
+        {
+            "id": "us6000rkwi",
+            "magnitude": 4.1,
+            "place": "11 km S of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-11-01T04:58:41+00:00",
+            "depth_km": 10,
+            "latitude": 39.1389,
+            "longitude": 28.171,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rkwi"
+        },
+        {
+            "id": "us6000rkii",
+            "magnitude": 4.4,
+            "place": "6 km SW of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-31T04:18:51+00:00",
+            "depth_km": 10,
+            "latitude": 39.1968,
+            "longitude": 28.1279,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rkii"
+        },
+        {
+            "id": "us6000rkgp",
+            "magnitude": 4.1,
+            "place": "14 km SE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-30T20:52:06+00:00",
+            "depth_km": 12.166,
+            "latitude": 39.1407,
+            "longitude": 28.2789,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rkgp"
+        },
+        {
+            "id": "us6000rnyl",
+            "magnitude": 4.2,
+            "place": "8 km SSW of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-28T12:27:25+00:00",
+            "depth_km": 10,
+            "latitude": 39.1701,
+            "longitude": 28.1493,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rnyl"
+        },
+        {
+            "id": "us6000rjwk",
+            "magnitude": 4.5,
+            "place": "10 km SSW of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-28T11:49:26+00:00",
+            "depth_km": 10,
+            "latitude": 39.1461,
+            "longitude": 28.1491,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjwk"
+        },
+        {
+            "id": "us6000rjvu",
+            "magnitude": 4.9,
+            "place": "12 km E of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-28T07:54:13+00:00",
+            "depth_km": 10,
+            "latitude": 39.2592,
+            "longitude": 28.3214,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjvu"
+        },
+        {
+            "id": "us6000rjvg",
+            "magnitude": 4.9,
+            "place": "7 km ESE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-28T07:10:00+00:00",
+            "depth_km": 10,
+            "latitude": 39.218,
+            "longitude": 28.2551,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjvg"
+        },
+        {
+            "id": "us6000rny9",
+            "magnitude": 4.4,
+            "place": "7 km SSE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-28T05:44:53+00:00",
+            "depth_km": 10,
+            "latitude": 39.1811,
+            "longitude": 28.2136,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rny9"
+        },
+        {
+            "id": "us6000rjug",
+            "magnitude": 4,
+            "place": "3 km S of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-28T02:36:31+00:00",
+            "depth_km": 10,
+            "latitude": 39.2068,
+            "longitude": 28.171,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjug"
+        },
+        {
+            "id": "us6000rju4",
+            "magnitude": 4.4,
+            "place": "15 km S of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-28T00:48:26+00:00",
+            "depth_km": 10,
+            "latitude": 39.1039,
+            "longitude": 28.1816,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rju4"
+        },
+        {
+            "id": "us6000rju3",
+            "magnitude": 4.4,
+            "place": "8 km SE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-28T00:42:59+00:00",
+            "depth_km": 10,
+            "latitude": 39.1979,
+            "longitude": 28.2599,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rju3"
+        },
+        {
+            "id": "us6000rjtu",
+            "magnitude": 4.1,
+            "place": "10 km SE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-27T23:30:12+00:00",
+            "depth_km": 10,
+            "latitude": 39.1738,
+            "longitude": 28.2562,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjtu"
+        },
+        {
+            "id": "us6000rjtk",
+            "magnitude": 4.2,
+            "place": "11 km W of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-27T22:55:53+00:00",
+            "depth_km": 10,
+            "latitude": 39.2223,
+            "longitude": 28.048,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjtk"
+        },
+        {
+            "id": "us6000rjt2",
+            "magnitude": 4.2,
+            "place": "9 km SE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-27T20:29:11+00:00",
+            "depth_km": 10,
+            "latitude": 39.1821,
+            "longitude": 28.2514,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjt2"
+        },
+        {
+            "id": "us6000rjsu",
+            "magnitude": 6,
+            "place": "7 km SE of S\u0131nd\u0131rg\u0131, Turkey",
+            "event_time_utc": "2025-10-27T19:48:28+00:00",
+            "depth_km": 8,
+            "latitude": 39.1937,
+            "longitude": 28.2425,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjsu"
+        }
+    ],
+    "strongest_events": [
+        {
+            "id": "iscgem888445",
+            "magnitude": 7.7,
+            "place": "19 km SSE of Amorg\u00f3s, Greece",
+            "event_time_utc": null,
+            "depth_km": 20,
+            "latitude": 36.664,
+            "longitude": 25.957,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem888445"
+        },
+        {
+            "id": "iscgem899277",
+            "magnitude": 7.6,
+            "place": "10 km WNW of Orta, Turkey",
+            "event_time_utc": null,
+            "depth_km": 30,
+            "latitude": 40.66,
+            "longitude": 32.998,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem899277"
+        },
+        {
+            "id": "usp0009d4z",
+            "magnitude": 7.6,
+            "place": "4 km ESE of Derince, Turkey",
+            "event_time_utc": "1999-08-17T00:01:39+00:00",
+            "depth_km": 17,
+            "latitude": 40.748,
+            "longitude": 29.864,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0009d4z"
+        },
+        {
+            "id": "iscgem891561",
+            "magnitude": 7.3,
+            "place": "7 km N of G\u00f6nen, Turkey",
+            "event_time_utc": null,
+            "depth_km": 10,
+            "latitude": 40.175,
+            "longitude": 27.648,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem891561"
+        },
+        {
+            "id": "iscgem886448",
+            "magnitude": 7.3,
+            "place": "34 km S of Sarigerme, Turkey",
+            "event_time_utc": null,
+            "depth_km": 35,
+            "latitude": 36.405,
+            "longitude": 28.699,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem886448"
+        },
+        {
+            "id": "iscgem897184",
+            "magnitude": 7.3,
+            "place": "15 km NNW of Karpathos, Greece",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 35.64,
+            "longitude": 27.158,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem897184"
+        },
+        {
+            "id": "iscgem833573",
+            "magnitude": 7.29,
+            "place": "9 km E of Akyaz\u0131, Turkey",
+            "event_time_utc": null,
+            "depth_km": 13.5,
+            "latitude": 40.67,
+            "longitude": 30.734,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem833573"
+        },
+        {
+            "id": "iscgem16957878",
+            "magnitude": 7.24,
+            "place": "Aegean Sea",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 40.092,
+            "longitude": 24.627,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem16957878"
+        },
+        {
+            "id": "iscgem16958205",
+            "magnitude": 7.23,
+            "place": "25 km SE of Malkara, Turkey",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 40.73,
+            "longitude": 27.121,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem16958205"
+        },
+        {
+            "id": "iscgem798506",
+            "magnitude": 7.23,
+            "place": "22 km NE of Gediz, Turkey",
+            "event_time_utc": "1970-03-28T21:02:25+00:00",
+            "depth_km": 22.2,
+            "latitude": 39.132,
+            "longitude": 29.58,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem798506"
+        },
+        {
+            "id": "usp0009hev",
+            "magnitude": 7.2,
+            "place": "8 km S of D\u00fczce, Turkey",
+            "event_time_utc": "1999-11-12T16:57:19+00:00",
+            "depth_km": 10,
+            "latitude": 40.758,
+            "longitude": 31.161,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0009hev"
+        },
+        {
+            "id": "usp0001hgc",
+            "magnitude": 7.2,
+            "place": "61 km W of Eres\u00f3s, Greece",
+            "event_time_utc": "1981-12-19T14:10:50+00:00",
+            "depth_km": 10,
+            "latitude": 39.243,
+            "longitude": 25.227,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0001hgc"
+        }
+    ],
+    "from_cache": false
+}

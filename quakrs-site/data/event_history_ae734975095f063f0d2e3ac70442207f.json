@@ -1,0 +1,944 @@
+{
+    "ok": true,
+    "provider": "USGS FDSN Historical Archive",
+    "generated_at_ts": 1773176874,
+    "generated_at": "2026-03-10T21:07:54+00:00",
+    "query": {
+        "lat": 51.6944,
+        "lon": 159.6841,
+        "radius_km": 500,
+        "min_magnitude": null,
+        "start": "1899-12-31",
+        "end": "2026-03-09"
+    },
+    "page": 1,
+    "per_page": 80,
+    "total_pages": 1,
+    "total_events": 0,
+    "events_count": 80,
+    "events": [
+        {
+            "id": "us7000s319",
+            "magnitude": 4.4,
+            "place": "149 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-08T19:54:02+00:00",
+            "depth_km": 50.462,
+            "latitude": 51.6811,
+            "longitude": 159.2109,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s319"
+        },
+        {
+            "id": "us7000s310",
+            "magnitude": 4.8,
+            "place": "161 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-08T19:06:26+00:00",
+            "depth_km": 35,
+            "latitude": 51.5996,
+            "longitude": 159.3437,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s310"
+        },
+        {
+            "id": "us7000s30x",
+            "magnitude": 4.4,
+            "place": "198 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-08T18:43:18+00:00",
+            "depth_km": 10,
+            "latitude": 51.3475,
+            "longitude": 159.7416,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s30x"
+        },
+        {
+            "id": "us7000s30r",
+            "magnitude": 4.5,
+            "place": "180 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-08T18:23:31+00:00",
+            "depth_km": 10,
+            "latitude": 51.4561,
+            "longitude": 159.4881,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s30r"
+        },
+        {
+            "id": "us7000s30e",
+            "magnitude": 4.8,
+            "place": "181 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-08T17:56:12+00:00",
+            "depth_km": 10,
+            "latitude": 51.4632,
+            "longitude": 159.5467,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s30e"
+        },
+        {
+            "id": "us7000s304",
+            "magnitude": 5.1,
+            "place": "160 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-08T17:23:45+00:00",
+            "depth_km": 10,
+            "latitude": 51.64,
+            "longitude": 159.4509,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s304"
+        },
+        {
+            "id": "us7000s302",
+            "magnitude": 5.1,
+            "place": "178 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-08T17:19:14+00:00",
+            "depth_km": 10,
+            "latitude": 51.4956,
+            "longitude": 159.5829,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s302"
+        },
+        {
+            "id": "us7000s2zx",
+            "magnitude": 5.9,
+            "place": "160 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-08T17:08:42+00:00",
+            "depth_km": 16,
+            "latitude": 51.621,
+            "longitude": 159.3956,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2zx"
+        },
+        {
+            "id": "us7000s2zf",
+            "magnitude": 4.9,
+            "place": "157 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-08T14:45:10+00:00",
+            "depth_km": 64.462,
+            "latitude": 51.6808,
+            "longitude": 159.4893,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2zf"
+        },
+        {
+            "id": "us7000s2x5",
+            "magnitude": 4.9,
+            "place": "176 km SE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-03-08T03:22:08+00:00",
+            "depth_km": 10,
+            "latitude": 52.1114,
+            "longitude": 160.717,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2x5"
+        },
+        {
+            "id": "us7000s2r5",
+            "magnitude": 4.5,
+            "place": "16 km SSE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-03-07T08:42:10+00:00",
+            "depth_km": 79.511,
+            "latitude": 52.9196,
+            "longitude": 158.6892,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2r5"
+        },
+        {
+            "id": "us7000s2qx",
+            "magnitude": 4.6,
+            "place": "148 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-07T07:36:15+00:00",
+            "depth_km": 35,
+            "latitude": 51.7384,
+            "longitude": 159.3949,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2qx"
+        },
+        {
+            "id": "us7000s2g3",
+            "magnitude": 5.1,
+            "place": "159 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-06T05:00:36+00:00",
+            "depth_km": 10,
+            "latitude": 51.7182,
+            "longitude": 159.6552,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2g3"
+        },
+        {
+            "id": "us7000s1yk",
+            "magnitude": 4.7,
+            "place": "73 km S of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-03-04T10:49:37+00:00",
+            "depth_km": 82.125,
+            "latitude": 50.0238,
+            "longitude": 155.9299,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s1yk"
+        },
+        {
+            "id": "us7000s1lc",
+            "magnitude": 5.1,
+            "place": "143 km ESE of Ozernovskiy, Russia",
+            "event_time_utc": "2026-03-03T02:16:44+00:00",
+            "depth_km": 41.402,
+            "latitude": 51.0326,
+            "longitude": 158.4253,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s1lc"
+        },
+        {
+            "id": "us7000s1dz",
+            "magnitude": 4.6,
+            "place": "175 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-02T08:15:13+00:00",
+            "depth_km": 33.867,
+            "latitude": 51.4957,
+            "longitude": 159.4851,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s1dz"
+        },
+        {
+            "id": "us7000s1db",
+            "magnitude": 4.8,
+            "place": "149 km SE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-02T04:35:53+00:00",
+            "depth_km": 35,
+            "latitude": 51.8743,
+            "longitude": 159.7552,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s1db"
+        },
+        {
+            "id": "us7000s1bd",
+            "magnitude": 4.4,
+            "place": "210 km SE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-01T21:05:57+00:00",
+            "depth_km": 10,
+            "latitude": 51.3988,
+            "longitude": 160.2159,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s1bd"
+        },
+        {
+            "id": "us7000s1ah",
+            "magnitude": 4.7,
+            "place": "147 km SE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-01T19:42:22+00:00",
+            "depth_km": 48.296,
+            "latitude": 51.9107,
+            "longitude": 159.7858,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s1ah"
+        },
+        {
+            "id": "us7000s1ad",
+            "magnitude": 5,
+            "place": "133 km SE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-03-01T19:38:41+00:00",
+            "depth_km": 39.541,
+            "latitude": 52.0532,
+            "longitude": 159.7399,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s1ad"
+        },
+        {
+            "id": "us7000s159",
+            "magnitude": 4.5,
+            "place": "104 km E of Ozernovskiy, Russia",
+            "event_time_utc": "2026-03-01T00:15:07+00:00",
+            "depth_km": 76.698,
+            "latitude": 51.6881,
+            "longitude": 157.9784,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s159"
+        },
+        {
+            "id": "us7000s0kg",
+            "magnitude": 4.3,
+            "place": "183 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-26T20:01:34+00:00",
+            "depth_km": 15.028,
+            "latitude": 51.4614,
+            "longitude": 159.6331,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0kg"
+        },
+        {
+            "id": "us7000s0k1",
+            "magnitude": 4.6,
+            "place": "158 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-26T18:57:52+00:00",
+            "depth_km": 35,
+            "latitude": 51.6353,
+            "longitude": 159.3523,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0k1"
+        },
+        {
+            "id": "us7000s0k0",
+            "magnitude": 4.5,
+            "place": "183 km SE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-26T18:56:15+00:00",
+            "depth_km": 38.832,
+            "latitude": 51.727,
+            "longitude": 160.2336,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0k0"
+        },
+        {
+            "id": "us7000s0ek",
+            "magnitude": 5.1,
+            "place": "84 km SE of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-02-26T07:04:25+00:00",
+            "depth_km": 47.728,
+            "latitude": 50.0615,
+            "longitude": 156.8372,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0ek"
+        },
+        {
+            "id": "us7000s0ed",
+            "magnitude": 4.6,
+            "place": "189 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-26T06:07:30+00:00",
+            "depth_km": 10,
+            "latitude": 51.4062,
+            "longitude": 159.6494,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0ed"
+        },
+        {
+            "id": "us7000s0ea",
+            "magnitude": 5,
+            "place": "196 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-26T05:58:47+00:00",
+            "depth_km": 10,
+            "latitude": 51.2738,
+            "longitude": 159.3975,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0ea"
+        },
+        {
+            "id": "us7000s0es",
+            "magnitude": 4.5,
+            "place": "203 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-26T05:57:46+00:00",
+            "depth_km": 10,
+            "latitude": 51.3228,
+            "longitude": 159.8201,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0es"
+        },
+        {
+            "id": "us7000s0e2",
+            "magnitude": 4.5,
+            "place": "185 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-26T05:30:35+00:00",
+            "depth_km": 10,
+            "latitude": 51.4879,
+            "longitude": 159.7652,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0e2"
+        },
+        {
+            "id": "us7000s0dq",
+            "magnitude": 5.7,
+            "place": "176 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-26T04:59:03+00:00",
+            "depth_km": 10,
+            "latitude": 51.5562,
+            "longitude": 159.6915,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0dq"
+        },
+        {
+            "id": "us7000s03s",
+            "magnitude": 4.6,
+            "place": "242 km ESE of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-02-24T23:48:20+00:00",
+            "depth_km": 10,
+            "latitude": 49.7003,
+            "longitude": 159.1653,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s03s"
+        },
+        {
+            "id": "us7000rzy3",
+            "magnitude": 4.9,
+            "place": "234 km SE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-24T09:43:50+00:00",
+            "depth_km": 10,
+            "latitude": 51.3871,
+            "longitude": 160.7474,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rzy3"
+        },
+        {
+            "id": "us7000s2ln",
+            "magnitude": 4.2,
+            "place": "138 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-23T15:53:57+00:00",
+            "depth_km": 35,
+            "latitude": 51.7685,
+            "longitude": 159.1397,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2ln"
+        },
+        {
+            "id": "us7000s2lh",
+            "magnitude": 4.3,
+            "place": "128 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-23T13:38:52+00:00",
+            "depth_km": 58.737,
+            "latitude": 51.9162,
+            "longitude": 159.3154,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2lh"
+        },
+        {
+            "id": "us6000saxs",
+            "magnitude": 4.4,
+            "place": "198 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-23T02:19:16+00:00",
+            "depth_km": 10,
+            "latitude": 51.3525,
+            "longitude": 159.7636,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000saxs"
+        },
+        {
+            "id": "us7000s2kv",
+            "magnitude": 4.2,
+            "place": "223 km ESE of Ozernovskiy, Russia",
+            "event_time_utc": "2026-02-22T21:21:09+00:00",
+            "depth_km": 10,
+            "latitude": 50.9963,
+            "longitude": 159.6044,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2kv"
+        },
+        {
+            "id": "us6000saj1",
+            "magnitude": 4.4,
+            "place": "63 km ENE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-20T22:11:49+00:00",
+            "depth_km": 70.275,
+            "latitude": 53.23,
+            "longitude": 159.5306,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000saj1"
+        },
+        {
+            "id": "us6000saaw",
+            "magnitude": 4.3,
+            "place": "69 km ESE of Ozernovskiy, Russia",
+            "event_time_utc": "2026-02-19T22:31:13+00:00",
+            "depth_km": 78.95,
+            "latitude": 51.2102,
+            "longitude": 157.3924,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000saaw"
+        },
+        {
+            "id": "us7000s28e",
+            "magnitude": 4.3,
+            "place": "186 km ESE of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-02-19T02:48:59+00:00",
+            "depth_km": 10,
+            "latitude": 50.0163,
+            "longitude": 158.5376,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s28e"
+        },
+        {
+            "id": "us6000sa28",
+            "magnitude": 4.9,
+            "place": "186 km SSW of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-02-18T23:36:42+00:00",
+            "depth_km": 61.302,
+            "latitude": 49.1665,
+            "longitude": 154.9929,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000sa28"
+        },
+        {
+            "id": "us6000s9yj",
+            "magnitude": 4.5,
+            "place": "115 km ESE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-18T12:12:00+00:00",
+            "depth_km": 49.086,
+            "latitude": 52.6622,
+            "longitude": 160.2167,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s9yj"
+        },
+        {
+            "id": "us6000s9uy",
+            "magnitude": 4.5,
+            "place": "151 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-17T20:01:38+00:00",
+            "depth_km": 39.833,
+            "latitude": 51.6377,
+            "longitude": 159.0807,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s9uy"
+        },
+        {
+            "id": "us7000s1r9",
+            "magnitude": 4,
+            "place": "80 km E of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-17T08:54:18+00:00",
+            "depth_km": 72.902,
+            "latitude": 53.1003,
+            "longitude": 159.8229,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s1r9"
+        },
+        {
+            "id": "us6000s9qz",
+            "magnitude": 4.5,
+            "place": "166 km S of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-02-17T08:09:55+00:00",
+            "depth_km": 50.991,
+            "latitude": 49.2084,
+            "longitude": 155.6968,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s9qz"
+        },
+        {
+            "id": "us6000s9l2",
+            "magnitude": 6,
+            "place": "82 km ESE of Ozernovskiy, Russia",
+            "event_time_utc": "2026-02-16T21:42:52+00:00",
+            "depth_km": 43,
+            "latitude": 51.2808,
+            "longitude": 157.6376,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s9l2"
+        },
+        {
+            "id": "us7000s0u9",
+            "magnitude": 4.2,
+            "place": "23 km ESE of Mil\u2019kovo, Russia",
+            "event_time_utc": "2026-02-15T12:30:24+00:00",
+            "depth_km": 175.046,
+            "latitude": 54.6059,
+            "longitude": 158.9494,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0u9"
+        },
+        {
+            "id": "us6000s9dx",
+            "magnitude": 4.7,
+            "place": "177 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-15T12:24:33+00:00",
+            "depth_km": 36.505,
+            "latitude": 51.5013,
+            "longitude": 159.5427,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s9dx"
+        },
+        {
+            "id": "us6000s9df",
+            "magnitude": 4.2,
+            "place": "187 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-15T09:37:54+00:00",
+            "depth_km": 10,
+            "latitude": 51.5218,
+            "longitude": 159.8995,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s9df"
+        },
+        {
+            "id": "us7000s0tk",
+            "magnitude": 4.2,
+            "place": "252 km E of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-02-15T02:01:33+00:00",
+            "depth_km": 10,
+            "latitude": 50.4133,
+            "longitude": 159.663,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0tk"
+        },
+        {
+            "id": "us6000s99d",
+            "magnitude": 4.5,
+            "place": "160 km SSW of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-02-14T21:08:01+00:00",
+            "depth_km": 109.033,
+            "latitude": 49.4299,
+            "longitude": 155.004,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s99d"
+        },
+        {
+            "id": "us7000s0t9",
+            "magnitude": 4.2,
+            "place": "183 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-14T19:07:18+00:00",
+            "depth_km": 30.677,
+            "latitude": 51.4383,
+            "longitude": 159.554,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0t9"
+        },
+        {
+            "id": "us7000s0t1",
+            "magnitude": 4.1,
+            "place": "129 km SE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-14T14:34:34+00:00",
+            "depth_km": 52.58,
+            "latitude": 52.2273,
+            "longitude": 159.9558,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0t1"
+        },
+        {
+            "id": "us6000s97t",
+            "magnitude": 4.5,
+            "place": "139 km SE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-14T14:09:01+00:00",
+            "depth_km": 53.35,
+            "latitude": 52.1866,
+            "longitude": 160.0901,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s97t"
+        },
+        {
+            "id": "us6000s963",
+            "magnitude": 4.6,
+            "place": "43 km SE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-14T05:24:17+00:00",
+            "depth_km": 79.208,
+            "latitude": 52.8136,
+            "longitude": 159.1208,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s963"
+        },
+        {
+            "id": "us6000s8qz",
+            "magnitude": 4.4,
+            "place": "176 km SE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-13T11:45:30+00:00",
+            "depth_km": 10,
+            "latitude": 51.9967,
+            "longitude": 160.546,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s8qz"
+        },
+        {
+            "id": "us7000s0i2",
+            "magnitude": 4.4,
+            "place": "167 km ESE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-11T09:42:25+00:00",
+            "depth_km": 10,
+            "latitude": 52.2971,
+            "longitude": 160.7531,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0i2"
+        },
+        {
+            "id": "us6000s7rd",
+            "magnitude": 4.7,
+            "place": "206 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-11T04:07:00+00:00",
+            "depth_km": 10,
+            "latitude": 51.1866,
+            "longitude": 159.4514,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s7rd"
+        },
+        {
+            "id": "us7000s08h",
+            "magnitude": 4.3,
+            "place": "69 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-10T15:47:28+00:00",
+            "depth_km": 87.964,
+            "latitude": 52.3907,
+            "longitude": 158.9058,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s08h"
+        },
+        {
+            "id": "us7000s08r",
+            "magnitude": 4.1,
+            "place": "201 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-10T13:45:32+00:00",
+            "depth_km": 10,
+            "latitude": 51.4076,
+            "longitude": 160.0084,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s08r"
+        },
+        {
+            "id": "us6000s7mb",
+            "magnitude": 4.4,
+            "place": "63 km ENE of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-02-10T11:23:29+00:00",
+            "depth_km": 79.904,
+            "latitude": 50.9459,
+            "longitude": 156.9186,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s7mb"
+        },
+        {
+            "id": "us6000s7m0",
+            "magnitude": 5,
+            "place": "180 km SE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-10T09:44:44+00:00",
+            "depth_km": 10,
+            "latitude": 51.629,
+            "longitude": 159.9762,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s7m0"
+        },
+        {
+            "id": "us7000s00n",
+            "magnitude": 4.4,
+            "place": "194 km ESE of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-02-09T12:37:27+00:00",
+            "depth_km": 10,
+            "latitude": 49.9893,
+            "longitude": 158.6459,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s00n"
+        },
+        {
+            "id": "us7000s00f",
+            "magnitude": 4.4,
+            "place": "218 km ESE of Ozernovskiy, Russia",
+            "event_time_utc": "2026-02-09T08:28:25+00:00",
+            "depth_km": 10,
+            "latitude": 50.9909,
+            "longitude": 159.5268,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s00f"
+        },
+        {
+            "id": "us6000s7ef",
+            "magnitude": 4.2,
+            "place": "159 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-09T06:55:21+00:00",
+            "depth_km": 43.625,
+            "latitude": 51.5821,
+            "longitude": 159.1872,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s7ef"
+        },
+        {
+            "id": "us6000s7e8",
+            "magnitude": 4.6,
+            "place": "105 km SSE of Ust\u2019-Kamchatsk Staryy, Russia",
+            "event_time_utc": "2026-02-09T05:59:49+00:00",
+            "depth_km": 10,
+            "latitude": 55.4281,
+            "longitude": 163.3854,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s7e8"
+        },
+        {
+            "id": "us6000s7e3",
+            "magnitude": 5.1,
+            "place": "185 km SSE of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-09T05:09:40+00:00",
+            "depth_km": 10,
+            "latitude": 51.3933,
+            "longitude": 159.4617,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s7e3"
+        },
+        {
+            "id": "us7000rzs9",
+            "magnitude": 4.2,
+            "place": "248 km SSW of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-02-08T17:55:27+00:00",
+            "depth_km": 55.21,
+            "latitude": 48.6126,
+            "longitude": 154.7887,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rzs9"
+        },
+        {
+            "id": "us7000rzs5",
+            "magnitude": 4.5,
+            "place": "84 km ENE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-08T12:06:47+00:00",
+            "depth_km": 48.636,
+            "latitude": 53.2225,
+            "longitude": 159.8561,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rzs5"
+        },
+        {
+            "id": "us6000s76f",
+            "magnitude": 4.6,
+            "place": "171 km E of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-07T20:00:45+00:00",
+            "depth_km": 25.26,
+            "latitude": 53.0527,
+            "longitude": 161.182,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s76f"
+        },
+        {
+            "id": "us6000s72y",
+            "magnitude": 4.5,
+            "place": "161 km ESE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-07T02:14:13+00:00",
+            "depth_km": 10,
+            "latitude": 52.4902,
+            "longitude": 160.8273,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s72y"
+        },
+        {
+            "id": "us6000s6x6",
+            "magnitude": 4.7,
+            "place": "265 km ESE of Ozernovskiy, Russia",
+            "event_time_utc": "2026-02-06T16:20:13+00:00",
+            "depth_km": 39.176,
+            "latitude": 50.6897,
+            "longitude": 160.0712,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s6x6"
+        },
+        {
+            "id": "us6000s6w7",
+            "magnitude": 4.6,
+            "place": "96 km S of Vilyuchinsk, Russia",
+            "event_time_utc": "2026-02-06T09:45:56+00:00",
+            "depth_km": 82.898,
+            "latitude": 52.0645,
+            "longitude": 158.2875,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s6w7"
+        },
+        {
+            "id": "us6000s6vj",
+            "magnitude": 4.6,
+            "place": "101 km ENE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-06T05:57:06+00:00",
+            "depth_km": 55.644,
+            "latitude": 53.3525,
+            "longitude": 160.0611,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s6vj"
+        },
+        {
+            "id": "us6000s6ve",
+            "magnitude": 5.1,
+            "place": "92 km E of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-06T04:24:32+00:00",
+            "depth_km": 57.768,
+            "latitude": 53.0593,
+            "longitude": 160.0124,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s6ve"
+        },
+        {
+            "id": "us6000s6uv",
+            "magnitude": 4.6,
+            "place": "106 km SE of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-02-06T02:27:55+00:00",
+            "depth_km": 35,
+            "latitude": 50.0245,
+            "longitude": 157.2287,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s6uv"
+        },
+        {
+            "id": "us6000safg",
+            "magnitude": 4,
+            "place": "126 km E of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-05T22:47:43+00:00",
+            "depth_km": 34.399,
+            "latitude": 52.8772,
+            "longitude": 160.4813,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000safg"
+        },
+        {
+            "id": "us6000saet",
+            "magnitude": 4,
+            "place": "101 km E of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-05T07:42:41+00:00",
+            "depth_km": 43.613,
+            "latitude": 53.0298,
+            "longitude": 160.1325,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000saet"
+        },
+        {
+            "id": "us6000saer",
+            "magnitude": 4.1,
+            "place": "230 km SE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2026-02-05T04:58:49+00:00",
+            "depth_km": 10,
+            "latitude": 51.8602,
+            "longitude": 161.3949,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000saer"
+        },
+        {
+            "id": "us6000s6c2",
+            "magnitude": 4.7,
+            "place": "197 km ESE of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2026-02-04T06:46:06+00:00",
+            "depth_km": 10,
+            "latitude": 50.0518,
+            "longitude": 158.721,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s6c2"
+        },
+        {
+            "id": "us6000sa89",
+            "magnitude": 4.2,
+            "place": "207 km ESE of Ozernovskiy, Russia",
+            "event_time_utc": "2026-02-04T02:14:01+00:00",
+            "depth_km": 10,
+            "latitude": 51.1133,
+            "longitude": 159.4086,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000sa89"
+        }
+    ],
+    "strongest_events": [
+        {
+            "id": "official19521104165830_30",
+            "magnitude": 9,
+            "place": "89 km ESE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": null,
+            "depth_km": 21.6,
+            "latitude": 52.623,
+            "longitude": 159.779,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/official19521104165830_30"
+        },
+        {
+            "id": "us6000qw60",
+            "magnitude": 8.8,
+            "place": "2025 Kamchatka Peninsula, Russia Earthquake",
+            "event_time_utc": "2025-07-29T23:24:52+00:00",
+            "depth_km": 35,
+            "latitude": 52.4948,
+            "longitude": 160.2395,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000qw60"
+        },
+        {
+            "id": "official19230203160150_30",
+            "magnitude": 8.4,
+            "place": "1923 Kamchatka, Russia Earthquake",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 54.486,
+            "longitude": 160.472,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/official19230203160150_30"
+        },
+        {
+            "id": "iscgem881925",
+            "magnitude": 7.9,
+            "place": "76 km ENE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": null,
+            "depth_km": 55,
+            "latitude": 53.257,
+            "longitude": 159.732,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem881925"
+        },
+        {
+            "id": "iscgem913898",
+            "magnitude": 7.83,
+            "place": "266 km SSW of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": null,
+            "depth_km": 30,
+            "latitude": 48.392,
+            "longitude": 155,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem913898"
+        },
+        {
+            "id": "us7000qx2g",
+            "magnitude": 7.8,
+            "place": "140 km E of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": "2025-09-18T18:58:14+00:00",
+            "depth_km": 27,
+            "latitude": 53.1426,
+            "longitude": 160.7206,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000qx2g"
+        },
+        {
+            "id": "usp0008btk",
+            "magnitude": 7.8,
+            "place": "156 km S of Ust\u2019-Kamchatsk Staryy, Russia",
+            "event_time_utc": "1997-12-05T11:26:54+00:00",
+            "depth_km": 33,
+            "latitude": 54.841,
+            "longitude": 162.035,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0008btk"
+        },
+        {
+            "id": "iscgem16957819",
+            "magnitude": 7.7,
+            "place": "115 km ESE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": null,
+            "depth_km": 30,
+            "latitude": 52.763,
+            "longitude": 160.277,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem16957819"
+        },
+        {
+            "id": "iscgem887437",
+            "magnitude": 7.6,
+            "place": "66 km SSE of Klyuchi, Russia",
+            "event_time_utc": null,
+            "depth_km": 147.8,
+            "latitude": 55.75,
+            "longitude": 161.134,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem887437"
+        },
+        {
+            "id": "iscgem16957820",
+            "magnitude": 7.5,
+            "place": "274 km SE of Petropavlovsk-Kamchatsky, Russia",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 51.424,
+            "longitude": 161.638,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem16957820"
+        },
+        {
+            "id": "usp0005u7b",
+            "magnitude": 7.5,
+            "place": "97 km ESE of Ozernovskiy, Russia",
+            "event_time_utc": "1993-06-08T13:03:36+00:00",
+            "depth_km": 70.6,
+            "latitude": 51.218,
+            "longitude": 157.829,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0005u7b"
+        },
+        {
+            "id": "us70008fi4",
+            "magnitude": 7.5,
+            "place": "221 km SSE of Severo-Kuril\u2019sk, Russia",
+            "event_time_utc": "2020-03-25T02:49:21+00:00",
+            "depth_km": 57.8,
+            "latitude": 48.9638,
+            "longitude": 157.6955,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us70008fi4"
+        }
+    ],
+    "from_cache": false
+}

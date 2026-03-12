@@ -1,0 +1,194 @@
+{
+    "ok": true,
+    "provider": "Smithsonian GVP / USGS",
+    "generated_at_ts": 1773148143,
+    "generated_at": "2026-03-10T13:09:03+00:00",
+    "hotspots_count": 20,
+    "countries_count": 12,
+    "top_country": "Indonesia",
+    "top_country_reports": 6,
+    "linked_monitor": "/volcanoes.php",
+    "hotspots": [
+        {
+            "volcano": "Ambae",
+            "country": "Vanuatu",
+            "reports": 1,
+            "new_eruptive_reports": 1,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "New Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Kanlaon",
+            "country": "Philippines",
+            "reports": 1,
+            "new_eruptive_reports": 1,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "New Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Lewotobi",
+            "country": "Indonesia",
+            "reports": 1,
+            "new_eruptive_reports": 1,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "New Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Piton de la Fournaise",
+            "country": "France",
+            "reports": 1,
+            "new_eruptive_reports": 1,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "New Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Lascar",
+            "country": "Chile",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Volcanic Unrest",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Aira",
+            "country": "Japan",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Fuego",
+            "country": "Guatemala",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Great Sitkin",
+            "country": "United States",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Home Reef",
+            "country": "Tonga",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Ibu",
+            "country": "Indonesia",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Kilauea",
+            "country": "United States",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Krasheninnikov",
+            "country": "Russia",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Lewotolok",
+            "country": "Indonesia",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Marapi",
+            "country": "Indonesia",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Mayon",
+            "country": "Philippines",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Merapi",
+            "country": "Indonesia",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Sabancaya",
+            "country": "Peru",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Semeru",
+            "country": "Indonesia",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Sheveluch",
+            "country": "Russia",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "volcano": "Stromboli",
+            "country": "Italy",
+            "reports": 1,
+            "new_eruptive_reports": 0,
+            "latest_event_utc": "2026-03-06T15:38:32+00:00",
+            "status": "Continuing Eruptive Activity",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        }
+    ],
+    "from_cache": false
+}

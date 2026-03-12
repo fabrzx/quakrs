@@ -1,0 +1,42 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 520'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#071224'/>
+      <stop offset='52%' stop-color='#10233f'/>
+      <stop offset='100%' stop-color='#0a1528'/>
+    </linearGradient>
+    <radialGradient id='nightGlow' cx='68%' cy='24%' r='44%'>
+      <stop offset='0%' stop-color='#7fe6d6' stop-opacity='0.28'/>
+      <stop offset='100%' stop-color='#7fe6d6' stop-opacity='0'/>
+    </radialGradient>
+    <filter id='blur' x='-20%' y='-20%' width='140%' height='140%'>
+      <feGaussianBlur stdDeviation='9'/>
+    </filter>
+  </defs>
+  <rect width='1200' height='520' fill='url(#bg)'/>
+  <rect width='1200' height='520' fill='url(#nightGlow)'/>
+
+  <g opacity='0.52'>
+    <path d='M64 322 C180 270, 290 302, 392 274 C500 246, 596 286, 700 262 C820 232, 938 264, 1138 214' fill='none' stroke='#5ecfc4' stroke-width='1.7'/>
+    <path d='M64 346 C180 294, 290 326, 392 298 C500 270, 596 310, 700 286 C820 256, 938 288, 1138 238' fill='none' stroke='#4eb2d2' stroke-width='1.5' stroke-opacity='0.65'/>
+    <path d='M64 370 C180 318, 290 350, 392 322 C500 294, 596 334, 700 310 C820 280, 938 312, 1138 262' fill='none' stroke='#f7d21e' stroke-width='1.4' stroke-opacity='0.42'/>
+  </g>
+
+  <g fill='#c7d8ec' opacity='0.22'>
+    <circle cx='116' cy='86' r='1.7'/><circle cx='190' cy='62' r='1.3'/><circle cx='268' cy='94' r='1.4'/><circle cx='354' cy='76' r='1.5'/>
+    <circle cx='842' cy='70' r='1.4'/><circle cx='946' cy='92' r='1.5'/><circle cx='1030' cy='66' r='1.6'/>
+  </g>
+
+  <g>
+    <circle cx='314' cy='292' r='13' fill='#ff805f'/>
+    <circle cx='314' cy='292' r='38' fill='#ff805f' fill-opacity='0.22' filter='url(#blur)'/>
+
+    <circle cx='584' cy='268' r='10' fill='#f7d21e'/>
+    <circle cx='584' cy='268' r='32' fill='#f7d21e' fill-opacity='0.2' filter='url(#blur)'/>
+
+    <circle cx='832' cy='238' r='11' fill='#63e1cc'/>
+    <circle cx='832' cy='238' r='34' fill='#63e1cc' fill-opacity='0.2' filter='url(#blur)'/>
+  </g>
+
+  <path d='M80 436 L1120 436' stroke='#375277' stroke-opacity='0.45'/>
+</svg>
