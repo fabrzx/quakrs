@@ -1,2 +1,2 @@
 config/app.local.php
-
+logs/*.log
