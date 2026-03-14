@@ -1,6 +1,9 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/../config/i18n.php';
+qk_boot_i18n();
+
 $pageTitle = $pageTitle ?? 'Quakrs.com - Live Hazard Monitoring';
 $pageDescription = $pageDescription ?? 'Quakrs.com live monitoring for earthquakes, volcanoes, tsunami alerts and space weather.';
 $faviconVersion = '3';
@@ -36,7 +39,7 @@ $bodyTokens = array_values(array_unique($bodyTokens));
 $bodyClassAttr = implode(' ', $bodyTokens);
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="<?= htmlspecialchars(qk_locale(), ENT_QUOTES, 'UTF-8'); ?>">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

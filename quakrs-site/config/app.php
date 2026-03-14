@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 $config = [
     'timezone' => 'Europe/Rome',
-    'cache_ttl_seconds' => 180,
+    'cache_ttl_seconds' => 90,
     'http_timeout_seconds' => 12,
     'max_events' => 1000,
     'refresh_token' => getenv('QUAKRS_REFRESH_TOKEN') ?: '',

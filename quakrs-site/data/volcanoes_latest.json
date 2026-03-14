@@ -1,213 +1,1257 @@
 {
     "ok": true,
     "provider": "Smithsonian GVP / USGS",
-    "generated_at_ts": 1773073270,
-    "generated_at": "2026-03-09T16:21:10+00:00",
-    "feed_updated_at": "2026-03-06T16:38:32+00:00",
-    "reports_count": 20,
-    "volcanoes_count": 20,
-    "new_eruptive_count": 4,
+    "generated_at_ts": 1773446762,
+    "generated_at": "2026-03-14T00:06:02+00:00",
+    "feed_updated_at": "2026-03-12T09:23:35+00:00",
+    "reports_count": 23,
+    "volcanoes_count": 23,
+    "new_eruptive_count": 6,
     "events": [
         {
+            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_285070",
+            "title": "Akan (Japan) - Report for 5 March-11 March 2026 - New Eruptive Activity",
+            "volcano": "Akan",
+            "country": "Japan",
+            "is_new_eruptive": true,
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Japan Meteorological Agency (JMA) reported eruptive activity at Me-Akan (also known as Meakan-dake, which means Meakan Peak) of the Akan volcanic complex on 8 March, though ashfall on snow surrounding Ponmachineshiri Crater?s 96-1 vent was observed in webcam images beforehand. Small-amplitude volcanic tremors were recorded by the seismic network on 27 February, 1 March, and 6 March; slight fluctuations in tilt were observed around the same times. Minor seismic amplitude fluctuations started on the evening of 6 March; the data was likely due to volcanic activity that may have occurred during 6 March through the morning of 8 March. At about 0915 on 8 March a very small eruption produced a grayish white ash plume that rose about 100 m above the Ponmachineshiri 96-1 Crater rim and drifted SE. Emissions continued until 1600, with gray ash plumes rising as high as 200 m above the crater rim. No significant changes to deeper volcanic activity were observed before or after the 8 March eruption. The Alert Level remained at 2 (the second lowest level on a 5-level scale) and the public was warned to exercise caution within 500 m of Ponmachineshiri Crater. Source: Japan Meteorological Agency (JMA)",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_257030",
-            "title": "Ambae (Vanuatu) - Report for 26 February-4 March 2026 - New Eruptive Activity",
+            "title": "Ambae (Vanuatu) - Report for 5 March-11 March 2026 - New Eruptive Activity",
             "volcano": "Ambae",
             "country": "Vanuatu",
             "is_new_eruptive": true,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Vanuatu Meteorology and Geohazards Department (VMGD) reported continuing eruptive activity at Ambae during 25 February-4 March. Seismicity remained high and was characterized by continuous volcanic tremor and volcano-seismic events. Con",
-            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
-        },
-        {
-            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_272020",
-            "title": "Kanlaon (Philippines) - Report for 26 February-4 March 2026 - New Eruptive Activity",
-            "volcano": "Kanlaon",
-            "country": "Philippines",
-            "is_new_eruptive": true,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Philippine Institute of Volcanology and Seismology (PHIVOLCS) reported continuing eruptive activity at Kanlaon during 26 February-4 March. A two-minute, moderately explosive eruption at 1904 on 26 February generated a dense, dark gray a",
-            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
-        },
-        {
-            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_355100",
-            "title": "Lascar (Chile) - Report for 26 February-4 March 2026 - New Unrest",
-            "volcano": "Lascar",
-            "country": "Chile",
-            "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Servicio Nacional de Geolog\u00eda y Miner\u00eda (SERNAGEOMIN) reported that a sustained increase in volcano-tectonic seismicity (associated with rock fracturing) had been detected at L\u00e1scar in recent weeks. Additionally, an increase in therm",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The eruption at Ambae continued during 4-11 March based on reports from the Vanuatu Meteorology and Geohazards Department (VMGD) and the Wellington Volcanic Ash Advisory Center (VAAC). On 10 March VMGD stated that seismicity began to decline on 7 March, though volcanic tremor remained high and volcano-seismic events continued to be recorded. The emissions visible in webcam images were mostly white, indicating less ash content, and they were rising to lower heights. Ground observations by an assessment and awareness team indicated that ashfall in villages to the W and S was gone or mostly gone, though ashfall still visible around the summit area. Very high amounts of sulfur dioxide emissions continued to be detected in satellite images along with low- to- moderate thermal anomalies. The VAAC reported that during 5-7 and 10-11 March ash plumes were visible in webcam and satellite images rising as high as 4.6 km (15,000 ft) a.s.l., or about 3 km above the summit, and drifting in multiple directions. According to news articles, residents in the S and SW parts of the island had experienced frequent ashfall and acid rain since the eruption intensified on 19 February. Ash fell in the Lolobanga and Vinarara communities by 25 February and acid rain affected areas from Loone (5 km NW) to Saranamundu. Ashfall contaminated water sources in Nduindui. About 50 residents, mainly from Lolobinanungwa village, had self-evacuated to Nduindui port by 5 March. A news article from 8 March noted that acid rain from the eruption affected water and food supplies in Port Vila, 310 km NW, and had reached Santo, Malakula (over 50 km SW), Pentecost (over 21 km E), and Ambrym (over 50 km S) islands. Residents of East Ambae described the eruption as very loud and that it could also be heard in E Santo, Pentecost, and Ambrym islands. The Alert Level remained at 3 (on a scale of 0-5), and the public was warned to stay outside of Danger Zone B, defined as a 3-km radius around the active vents in Lake Voui, and to stay away from drainages during heavy rains. Sources: Penama Provincial Updates,Radio New Zealand ,Vanuatu Meteorology and Geohazards Department (VMGD),Wellington Volcanic Ash Advisory Center (VAAC)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_264180",
-            "title": "Lewotobi (Indonesia) - Report for 26 February-4 March 2026 - New Eruptive Activity",
+            "title": "Lewotobi (Indonesia) - Report for 5 March-11 March 2026 - New Eruptive Activity",
             "volcano": "Lewotobi",
             "country": "Indonesia",
             "is_new_eruptive": true,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported new ash plumes at Lewotobi Laki-laki during 3-4 March. At around 0942 and 1355 on 3 March gray to dark gray ash plumes rose 1-1.5 km above the summit. An increase in the nu",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported periodic ash plumes at Lewotobi Laki-laki during 5-11 March. An eruptive event was recorded at 0456 on 5 March but not visually observed due to darkness and weather clouds. That same day, at 0523, at 1214, and at 1645, dense gray ash plumes rose 800-1,200 m above the summit and drifted N, NE, and E. At 0937 on 8 March a dense gray ash plume rose 1 km above the summit and drifted N and NE. No emissions were visible during 6-7 March, and white plumes rose 100-200 m above the summit and drifted N and NE during 8-9 March. A gray ash plume rose around 500 m above the summit and drifted E at 0130 on 11 March. At 0917 on that same day a gray ash plume rose around 800 m above the summit and drifted NE and E. The Alert Level remained at 2 (the second lowest level on a scale of 1-4) and the exclusion zone was a radius of 4 km from the center of Laki-laki. Source: Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG, also known as CVGHM)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_233020",
-            "title": "Piton de la Fournaise (France) - Report for 26 February-4 March 2026 - New Eruptive Activity",
+            "title": "Piton de la Fournaise (France) - Report for 5 March-11 March 2026 - New Eruptive Activity",
             "volcano": "Piton de la Fournaise",
             "country": "France",
             "is_new_eruptive": true,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Observatoire Volcanologique du Piton de la Fournaise (OVPF) reported that the eruption at Piton de la Fournaise decreased during 25 February-4 March. The cone around the fourth fissure, on the lower SE flank of Dolomieu Crater, continue",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Observatoire Volcanologique du Piton de la Fournaise (OVPF) reported that the eruption at Piton de la Fournaise continued during 4-11 March. Deformation data indicated that inflation had resumed and persisted during the week. Low-amplitude tremor was at stable levels, with a few peaks likely indicating variations in degassing or morphological changes at the cone; overall, since the beginning of the eruption on 13 February, the amplitude has progressively increased. Lava flow rates estimated from satellite data were 1-10 cubic meters per second, though estimates could vary due to cloud cover. The crater opening at the active cone on the lower SE flank of Dolomieu Crater continued to close and lava was occasionally ejected above the crater rim. Lava mainly flowed downslope though tubes and reemerged as ?a?a and pahoehoe at elevations higher than the Grandes Pentes area, causing the flow field to widen and thicken. The main lava flow had stopped on 16 February, at about 1,725 m elevation or about 2.6 km from the road. The new flow that had begun descending the E flank on 3 March, S of the main branch, continued to advance. The flow descended from 1,175 m elevation on 7 March to 350 m elevation by the morning of 11 March; the flow rate increased to 35 m per hour during 10-11 March, higher than previous measurements of 19 m per hour. By 11 March the lava flow was 1.1 km from the National Route 2 road. The Alert Level remained at 2.1 (on a 0?4 scale). Source: Observatoire Volcanologique du Piton de la Fournaise (OVPF)",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_264040",
+            "title": "Tambora (Indonesia) - Report for 5 March-11 March 2026 - New Unrest",
+            "volcano": "Tambora",
+            "country": "Indonesia",
+            "is_new_eruptive": false,
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported increased seismicity at Tambora. The seismic network recorded 267 deep volcanic earthquakes (VA) during January and a significantly higher total, 453 VA events, in February. The seismicity indicated that magma was moving from a deep reservoir to a location closer to the surface under the volcano. Seismicity remained at high levels during 1-9 March and was characterized by nine earthquakes indicating rockfalls, 88 deep volcanic earthquakes, and 40 local tectonic earthquakes. No emissions were visible, though weather conditions sometimes obscured views. The Alert Level was raised to 2 (the second lowest level on a four-level scale) at 1000 on 10 March and the public was advised to stay 3 km away from the center of the crater. Source: Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG, also known as CVGHM)",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_357120",
+            "title": "Villarrica (Chile) - Report for 5 March-11 March 2026 - New Eruptive Activity",
+            "volcano": "Villarrica",
+            "country": "Chile",
+            "is_new_eruptive": true,
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Servicio Nacional de Geolog\u00eda y Miner\u00eda (SERNAGEOMIN) and the Sistema y Servicio Nacional de Prevenci\u00f3n y Repuesta Ante Desastres (SENAPRED) reported that temperatures inside Villarrica?s summit crater increased during the second half of February based on satellite data. During an overflight of the crater on 6 March observers noted that a small area of lava was visible within a vent on the crater floor, deep within the summit crater. Lava hadn?t been seen at the surface since February 2025. The Volcanic Alert Level remained at Green (the lowest level on a four-level scale). Sources: Servicio Nacional de Geolog\u00eda y Miner\u00eda (SERNAGEOMIN),Sistema y Servicio Nacional de Prevenci\u00f3n y Repuesta Ante Desastres (SENAPRED)",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_241040",
+            "title": "Whakaari/White Island (New Zealand) - Report for 5 March-11 March 2026 - New Eruptive Activity",
+            "volcano": "Whakaari/White Island",
+            "country": "New Zealand",
+            "is_new_eruptive": true,
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The GeoNet reported minor ash in the emissions from Whakaari/White Island on 10 March. The size and coloration (brown to gray) of low-level steam-and-gas plumes during the previous week varied with atmospheric conditions, as seen in the Whakatane and Te Kaha webcams along the Bay of Plenty coast. An overflight confirmed that the emissions were rising from the active vent; there were no signs of erupted tephra on the crater floor. Minor amounts of sulfur dioxide emissions were identified in satellite data and were sometimes above background levels. On 10 March a pilot observed minor ash being emitted from the main vent, and photos shared with GeoNet showed minor ashfall on the crater floor. These observations indicated a slight increase in activity and a minor non-explosive eruption. The Volcanic Alert Level was raised to 3 (on a scale of 0-5) and the Aviation Color Code was raised to Orange (the second lowest level on a four-color scale). According to the Wellington Volcanic Ash Advisory Center (VAAC) a local aeronautic club also reported ash deposits on aircraft on 11 March. A low-level gas-and-steam plume with minor ash content rose 900 m (3,000 ft) a.s.l. based on webcam images and a pilot report. Sources: GeoNet ,Wellington Volcanic Ash Advisory Center (VAAC)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_282080",
-            "title": "Aira (Japan) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "title": "Aira (Japan) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
             "volcano": "Aira",
             "country": "Japan",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Japan Meteorological Agency (JMA) reported ongoing eruptive activity at Minamidake Crater (Aira Caldera?s Sakurajima volcano) during 23 February-2 March. Crater incandescence was visible in webcam images at night during 23-27 February. ",
-            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
-        },
-        {
-            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_342090",
-            "title": "Fuego (Guatemala) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
-            "volcano": "Fuego",
-            "country": "Guatemala",
-            "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Instituto Nacional de Sismolog\u00eda, Vulcanologia, Meteorologia e Hidrolog\u00eda (INSIVUMEH) reported that eruptive activity at Fuego continued during 25 February-4 March. Daily Strombolian explosions recorded by the seismic network, at rate",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Japan Meteorological Agency (JMA) reported ongoing eruptive activity at Minamidake Crater (Aira Caldera?s Sakurajima volcano) during 2-9 March. Very small eruptive events were recorded and crater incandescence was visible in webcam images at night. Sulfur dioxide emissions were slightly high, averaging 1,300 tons per day on 3 March. The Alert Level remained at 3 (on a 5-level scale), and the public was warned to be cautious within 2 km of both the Minimadake and Showa craters. Source: Japan Meteorological Agency (JMA)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_311120",
-            "title": "Great Sitkin (United States) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "title": "Great Sitkin (United States) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
             "volcano": "Great Sitkin",
             "country": "United States",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Alaska Volcano Observatory (AVO) reported that slow lava effusion continued to feed a thick flow in Great Sitkin?s summit crater during 25 February-4 March. Seismic activity was very low. Weather clouds obscured satellite and webcam vie",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Alaska Volcano Observatory (AVO) reported that slow lava effusion continued to feed a thick flow in Great Sitkin?s summit crater during 4-11 March. Seismic activity was very low and characterized by occasional small volcanic earthquakes and daily small rockfalls within the crater. Minor steaming and slow southward growth of the lava dome were observed in satellite views during 8-9 March. Weather clouds obscured satellite and webcam views during most of the week. The Volcano Alert Level remained at Watch (the third level on a four-level scale) and the Aviation Color Code remained at Orange (the third color on a four-color scale). Source: US Geological Survey Alaska Volcano Observatory (AVO)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_243080",
-            "title": "Home Reef (Tonga) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "title": "Home Reef (Tonga) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
             "volcano": "Home Reef",
             "country": "Tonga",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Tonga Geological Services reported continuing activity at Home Reef during 28 January-28 February. The main active vent remained in the same location and produced white steam-and-gas plumes rose that rose above the crater rim and dissip",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Tonga Geological Services reported continuing activity at Home Reef during 28 February-7 March. The main vent was about 25 m in diameter and located in the same central area as in 2025. Photos captured on 1 March by people onboard an Australian Navy vessel showed diffuse gray gas-and-ash puffs rising above the crater; the plumes were darker near the vent and whiter near the top. The ash plumes were not detected by satellite volcanic cloud monitoring data. The Aviation Color Code remained at Orange (the second highest level on a four-level scale, the Maritime Alert Level remained at Red (the highest level on a four-level scale) with advice to stay at least 2 nautical miles (3.7 km) from the island, and the Alert Level for residents of Vava?u and Ha?apai remained at Green (the first level on a four-level scale). Source: Tonga Geological Services, Government of Tonga",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_268030",
-            "title": "Ibu (Indonesia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "title": "Ibu (Indonesia) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
             "volcano": "Ibu",
             "country": "Indonesia",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported that activity at Ibu continued during 26 February-4 March, with daily eruptive events recorded by the seismic network. Gray ash plumes rose 200-500 m above the summit and d",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported that activity at Ibu continued during 5-11 March, with daily eruptive events recorded by the seismic network. Gray and white-and-gray ash plumes rose 200-600 m above the summit and drifted E, SE, S, and SW on most days; emissions were not visible during 10-11 March due to weather conditions. Incandescence at the summit was visible in a few nighttime webcam images. The Alert Level remained at 2 (the second lowest level on a four-level scale) and the public was advised to stay 2 km away from the active crater and 3.5 km away from the N crater wall opening. Source: Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG, also known as CVGHM)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_332010",
-            "title": "Kilauea (United States) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "title": "Kilauea (United States) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
             "volcano": "Kilauea",
             "country": "United States",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Hawaiian Volcano Observatory (HVO) reported that the eruption within Kilauea?s Kaluapele summit caldera, characterized by episodic fountaining, incandescence, and intermittent spatter from craters along the SW margin of Halema?uma?u Cra",
-            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
-        },
-        {
-            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_300190",
-            "title": "Krasheninnikov (Russia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
-            "volcano": "Krasheninnikov",
-            "country": "Russia",
-            "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Kamchatkan Volcanic Eruption Response Team (KVERT) reported that lava flows at Krasheninnikov continued to effuse onto the ENE flanks of the Northern Cone during 26 February-4 March. A large thermal anomaly was identified daily in satel",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Hawaiian Volcano Observatory (HVO) reported that the eruption within Kilauea?s Kaluapele summit caldera, characterized by episodic fountaining, incandescence, and intermittent spatter from craters along the SW margin of Halema?uma?u Crater, continued at variable levels during 4-11 March. Both the N and S vents emitted continuous steam-and-gas plumes and incandescence at both vents was variable throughout the week. Spattering at the N vent was visible during the morning of 7 March and at both vents during 7-8 March. Continuous and strong incandescence from both vents was visible overnight during 9-10 March along with intermittent spattering and flaming. Activity at the N vent escalated at around 0817 on 10 March. Dome fountains rose 5-10 m high and produced a narrow lava flow that traveled about one-third of the way across the floor of Halema?uma?u Crater. Fountaining at the N vent began at 0917 and at the S vent just before 1000; fountains at both exceeded 300 m by 1050. Within an hour and a half fallout as large as a ~28 cm in diameter was reported at overlooks in Hawai?i Volcanoes National Park, creating hazardous ground conditions downwind, including neighboring communities and on Highway 11. An eruption plume rose as high as 7.6 km (25,000 ft) a.s.l. prompting HVO raised the Volcano Alert Level to Warning (the highest level on a four-level scale) and the Aviation Color Code to Red (the highest color on a four-color scale) at 1054. Tephra up to 7.6 cm in diameter fell in Volcano Village (6 km ENE) and Mauna Loa Estates (8 km ENE), residents of Royal Hawaiian Estates (7 km ENE) reported tephra up to 1.3 cm in diameter as well as Pele's hair, and Pele's hair was reported as far as Hilo (40 km NE), Hawaiian Paradise Park (40 km ENE), and the Hamakua Coast just north of Hilo. Hawaii County Civil Defense Agency closed Highway 11 between the 24 and 40 mile markers (a distance of ~26 km) at 1110 due to dangerous conditions created by falling tephra. Hawai?i Volcanoes National Park closed access to the summit during 1120-1130 and evacuated most visitors. The eruption plume rose higher than 9.1 km (30,000 ft) a.s.l. by 1130 and drifted N and E. According to a news article several flights in and out of Hilo airport were cancelled and a few others were diverted. The fountains had peaked at over 400 m high by 1100, though by midday the S vent fountain was rising 350-400 m and the N vent fountain was around 300 m tall. Lava flows covered about one third of the crater floor. By 1400 the S vent fountain had dropped to 300 m high and the N vent fountain had dropped to 220 m; by 1700 they were 220 m and 180 m tall, respectively. At 1807 HVO lowered the Volcano Alert Level to Watch (the third level on a four-level scale) and the Aviation Color Code to Orange (the third color on a four-color scale), noting that the eruption plume was rising 3-4.6 km (10,000-15,000 ft) a.s.l. and drifting NE. Pele?s hair, fine ash, and occasional pumice clasts less 1.2 cm in diameter was falling in the national park and adjacent communities. After nine hours and four minutes of continuous lava fountaining, the eruption abruptly ended at 1821. The average effusion rate was 400 cubic meters per second; the highest peak was 800 cubic meters per second, occurring at around 1030. An estimated 12 million cubic meters of lava erupted and covered about 50 percent of the Halema?uma?u Crater floor. During 10-11 March lava flows on the crater floor were incandescent and continued to spread, covering another 5-10 percent of the floor along the SE margin; the flow had dimmed by the morning. Both vents were brightly incandescent overnight. At 1130 on 11 March the national park reopened Crater Rim Drive West from the park entrance to Kilauea Military Camp; other areas of the park were expected to reopen after staff clear tephra fall from the roadways and other areas. Highway 11 had also reopened. Sources: Hawaii News Now ,US Geological Survey Hawaiian Volcano Observatory (HVO) ,US Hawaii Volcanoes National Park",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_264230",
-            "title": "Lewotolok (Indonesia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "title": "Lewotolok (Indonesia) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
             "volcano": "Lewotolok",
             "country": "Indonesia",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported ongoing eruptive activity at Lewotolok during 26 February-4 March. White plumes rose as high as 50 m above the summit and drifted E on 26 February; plumes were not observed",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported ongoing eruptive activity at Lewotolok during 5-11 March. Emissions were not visible during 5-7 March, though minor incandescence at the summit was visible in a 5 March webcam image. At 1944 on 8 March an ash plume rose around 100 m above the summit and drifted E. A webcam image from 1945 showed incandescent material being ejected above the summit and an active lava flow on the flank. The Alert Level remained at 2 (on a scale of 1-4) and the public was warned to stay 2 km away from the summit. Source: Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG, also known as CVGHM)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_261140",
-            "title": "Marapi (Indonesia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "title": "Marapi (Indonesia) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
             "volcano": "Marapi",
             "country": "Indonesia",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported that the eruption at Marapi (on Sumatra) continued during 26 February-4 March. White-and-gray plumes rose as high as 200 m above the summit and drifted E and SE on 26 Febru",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported that the eruption at Marapi (on Sumatra) continued during 5-11 March. No emissions were observed on most days, though weather clouds sometimes obscured views. At 0846 on 9 March a dense gray ash plume rose 1.6 km above the summit and drifted E. The Alert Level remained at 2 (on a scale of 1-4) and the public was warned to stay 3 km away from the active crater. Source: Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG, also known as CVGHM)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_273030",
-            "title": "Mayon (Philippines) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "title": "Mayon (Philippines) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
             "volcano": "Mayon",
             "country": "Philippines",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Philippine Institute of Volcanology and Seismology (PHIVOLCS) reported that the eruption at Mayon continued during 25 February-4 March, characterized by lava effusion and collapses at the summit dome, pyroclastic density currents (PDCs)",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Philippine Institute of Volcanology and Seismology (PHIVOLCS) reported that the eruption at Mayon continued during 4-11 March, characterized by lava effusion and collapses at the summit dome, pyroclastic density currents (PDCs), incandescent rockfalls, ash plumes, active lava flows, and occasional minor Strombolian activity. Emissions rose 1 km above the summit and drifted in various directions on most days; views were obscured on 8 March. The seismic network recorded 246-373 daily rockfalls and 1-8 daily PDCs. The number of daily earthquakes increased at the end of the week with 18-82 daily volcanic earthquakes during 4-8 March, 133 volcanic earthquakes on 9 March, and 202 volcanic earthquakes on 10 March. Daily measurements of sulfur dioxide emissions averaged 1,139-7,633 tonnes per day. The lava flows did not advance in the Mi-isi (S) and Basud (E) drainages, remaining 1.3 and 3.8 km long, respectively. The lava flow in the Bonga (SE) drainage advanced 400 m during 4.7 March to reach a total length of 3.1 km. By 1800 on 10 March a total of 4,058 people (1,116 families) were staying in 13 evacuation shelters, and an additional 48 people (16 families) were staying with friends or relatives, according to the Disaster Response Operations Monitoring and Information Center (DROMIC). The Alert Level remained at 3 (on a 0-5 scale) and residents were reminded to stay away from the 6-km-radius Permanent Danger Zone (PDZ). PHIVOLCS recommended that civil aviation authorities advise pilots to avoid flying close to the summit. Sources: Disaster Response Operations Monitoring and Information Center (DROMIC),Philippine Institute of Volcanology and Seismology (PHIVOLCS)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_263250",
-            "title": "Merapi (Indonesia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "title": "Merapi (Indonesia) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
             "volcano": "Merapi",
             "country": "Indonesia",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported that the eruption at Merapi (on Java) continued during 26 February-4 March. The SW lava dome produced daily lava avalanches that descended the Sat/Putih (W), Bebeng and Kra",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported that the eruption at Merapi (on Java) continued during 5-11 March. No emissions were visible during 5-7 March; white plumes rose as high as 20 m above the summit and drifted E and S during 8-9 March. On 9 March there were 13 lava avalanches that traveled as far as 2 km down the Sat/Putih (W) drainage. Three pyroclastic flows were detected by the seismic network. During 10-11 March a total of 11 lava avalanches traveled as far as 1.9 km down the Sat/Putih drainage. The Alert Level remained at 3 (on a scale of 1-4), and the public was warned to stay 3-7 km away from the summit, based on location. Source: Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG, also known as CVGHM)",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_351020",
+            "title": "Nevado del Ruiz (Colombia) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
+            "volcano": "Nevado del Ruiz",
+            "country": "Colombia",
+            "is_new_eruptive": false,
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Servicio Geol\u00f3gico Colombiano?s (SGC) Observatorio Vulcanol\u00f3gico y Sismol\u00f3gico de Manizales reported that eruptive activity at Nevado del Ruiz continued during 3-9 March. Seismic data indicated that events associated with fluid movement were at low levels; long-duration signals increased in both number and intensity compared to the previous week while short-duration signals decreased in both number and intensity. Several of the seismic events were associated with pulsating ash emissions; webcam images confirmed these ash emissions, including some with higher-temperature ejecta. Events associated with rock fracturing were similar in number, but slightly stronger, compared to the previous week. The earthquakes were mainly located at depths less than 2 km below Arenas Crater and 1-9 km below the SSE and SW flanks within a radius of 10 km. The largest earthquakes, two M 1.2, occurred on 2 and 9 March, 5 km NE at a depth of 4 km and 2 km below Arenas Crater, respectively. Daily sulfur dioxide emissions fluctuated at low levels. Low-level thermal anomalies at the bottom of the crater were periodically identified in satellite images. Gas-and-steam emissions rose as high as 1 km above the summit and drifted in various directions. The tallest emission was an ash plume that rose 1.5 km above the crater rim and drifted NW and SSW at 2019 on 8 March. The Alert Level remained at Yellow (the second level on a four-level scale). Source: Servicio Geol\u00f3gico Colombiano (SGC)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_354006",
-            "title": "Sabancaya (Peru) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "title": "Sabancaya (Peru) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
             "volcano": "Sabancaya",
             "country": "Peru",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Instituto Geof\u00edsico del Per\u00fa?s (IGP) Centro Vulcanol\u00f3gico Nacional (CENVUL) reported continuing eruptive activity at Sabancaya during 26 February-4 March. The seismic network detected 5-21 daily earthquakes indicating the movement of",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Instituto Geof\u00edsico del Per\u00fa?s (IGP) Centro Vulcanol\u00f3gico Nacional (CENVUL) reported continuing eruptive activity at Sabancaya during 4-11 March. The seismic network detected 8-20 daily earthquakes indicating the movement of magma and gases. As many as two daily thermal anomalies were identified in satellite images. Explosions and ash plumes that dissipated within 10 km occurred on most days. Four explosions were detected during 4-5 March. One of them, detected at 1133 on 5 March, produced an ash plume that rose 2.4 km above the crater rim and drifted W and NW. An explosion at 0954 on 6 March generated an ash plume that rose 2.5 km above the crater rim and drifted SW. Gas, steam, and ash plumes rose 900 m above the crater rim and drifted in various directions on 9 March. An ash plume from an explosion at 1502 on 8 March rose 2.8 km above the crater rim and drifted SE and E. Later that day an explosion at 1750 generated an ash plume that rose 2.2 km above the crater rim. During 9-11 March gas-and-steam plumes rose 200-300 m above the crater rim and drifted N, NW, and SW. The Alert Level remained at Orange (the third level on a four-color scale) and the public was warned to stay outside of a 12 km radius from the summit. Source: Instituto Geof\u00edsico del Per\u00fa (IGP)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_263300",
-            "title": "Semeru (Indonesia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "title": "Semeru (Indonesia) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
             "volcano": "Semeru",
             "country": "Indonesia",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported that activity continued at Semeru during 26 February-4 March, with daily eruptive events recorded by the seismic network. White-to-gray ash plumes rose 400-500 m above the ",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) reported that activity continued at Semeru during 5-11 March, with daily eruptive events recorded by the seismic network. No emissions were visible on 5 March. On the other days white-to-gray ash plumes rose 300-1,000 m above the summit and drifted N, NE, and E. The tallest ash plume, 1 km above the summit, was recorded at 1807 on 10 March; a webcam image at 1813 showed a pyroclastic flow descending the SE flank. The Alert Level remained at 3 (the second lowest level on a scale of 1-4) and the public was warned to stay at least 5 km away from the summit in all directions, 13 km from the summit on the SE flank along the Kobokan drainage, and 500 m from the banks of the Kobokan drainage as far as 17 km SE of the summit. Source: Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG, also known as CVGHM)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
             "id": "https://volcano.si.edu/reports_weekly.cfm#vn_300270",
-            "title": "Sheveluch (Russia) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
+            "title": "Sheveluch (Russia) - Report for 5 March-11 March 2026 - Continuing Eruptive Activity",
             "volcano": "Sheveluch",
             "country": "Russia",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Kamchatkan Volcanic Eruption Response Team (KVERT) reported continuing eruptive activity at Sheveluch?s ?300 years of RAS? dome on the SW flank of Old Sheveluch and at the domes along the N crater floor of Young Sheveluch during 26 Febr",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Kamchatka Volcanological Station (Volkstat) and the Kamchatkan Volcanic Eruption Response Team (KVERT) reported continuing eruptive activity at the domes along the N crater floor of Young Sheveluch (on the SW flank of Old Sheveluch). The Volkstat noted that effusion at the dome that began growing in December 2025 continued at a steady rate during 27 February-5 March. Nighttime incandescence occurred on the WNW side of the dome, partly out of view. According to KVERT a daily thermal anomaly was identified in satellite images during 5-11 March. The Aviation Color Code remained at Orange (the second highest level on a four-color scale). Sources: Kamchatka Volcanological Station,Kamchatkan Volcanic Eruption Response Team (KVERT)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         },
         {
-            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_211040",
-            "title": "Stromboli (Italy) - Report for 26 February-4 March 2026 - Continuing Eruptive Activity",
-            "volcano": "Stromboli",
-            "country": "Italy",
+            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_311350",
+            "title": "Fisher (United States) - Report for 5 March-11 March 2026 - Other Observations",
+            "volcano": "Fisher",
+            "country": "United States",
             "is_new_eruptive": false,
-            "event_time_utc": "2026-03-06T15:38:32+00:00",
-            "summary": "The Sezione di Catania - Osservatorio Etneo (INGV) reported that eruptive activity continued at Stromboli during 23 February-2 March. Webcam images showed Strombolian activity from five vents in Area N within the upper part of the Sciara de",
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Alaska Volcano Observatory (AVO) reported that power to seismic monitoring instruments at Fisher had been restored following a failure which affected the ability to receive data. At 1118 on 9 March the Volcano Alert Level was moved to Normal and the Aviation Color Code was moved to Green. Source: US Geological Survey Alaska Volcano Observatory (AVO)",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_312170",
+            "title": "Katmai (United States) - Report for 5 March-11 March 2026 - Other Observations",
+            "volcano": "Katmai",
+            "country": "United States",
+            "is_new_eruptive": false,
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Alaska Volcano Observatory (AVO) reported that on 9 March strong winds in the vicinity of Katmai and the Valley of Ten Thousand Smokes dispersed unconsolidated ash up to 1.8 km (6,000 ft) a.s.l. to the SE. The ash was originally deposited during the Novarupta-Katmai eruption in 1912. The Volcano Alert Level remained at Normal (the lowest level on a four-level scale) and the Aviation Color Code remained at Green (the lowest level on a four-color scale). Source: US Geological Survey Alaska Volcano Observatory (AVO)",
+            "source_url": "https://volcano.si.edu/reports_weekly.cfm"
+        },
+        {
+            "id": "https://volcano.si.edu/reports_weekly.cfm#vn_311340",
+            "title": "Westdahl (United States) - Report for 5 March-11 March 2026 - Other Observations",
+            "volcano": "Westdahl",
+            "country": "United States",
+            "is_new_eruptive": false,
+            "event_time_utc": "2026-03-12T08:23:35+00:00",
+            "summary": "The Alaska Volcano Observatory (AVO) reported that power to seismic monitoring instruments at Westdahl had been restored following a failure which affected the ability to receive data. At 1118 on 9 March the Volcano Alert Level was moved to Normal and the Aviation Color Code was moved to Green. Source: US Geological Survey Alaska Volcano Observatory (AVO)",
             "source_url": "https://volcano.si.edu/reports_weekly.cfm"
         }
     ],
+    "history_by_volcano": {
+        "akan|japan": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            }
+        ],
+        "ambae|vanuatu": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            }
+        ],
+        "lewotobi|indonesia": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            }
+        ],
+        "piton de la fournaise|france": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            }
+        ],
+        "tambora|indonesia": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 42,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 42,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 42,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 42,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 42,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 42,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "villarrica|chile": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            }
+        ],
+        "whakaari white island|new zealand": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            }
+        ],
+        "aira|japan": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "great sitkin|united states": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "home reef|tonga": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "ibu|indonesia": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "kilauea|united states": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "lewotolok|indonesia": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "marapi|indonesia": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "mayon|philippines": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "merapi|indonesia": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "nevado del ruiz|colombia": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "sabancaya|peru": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "semeru|indonesia": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "sheveluch|russia": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "fisher|united states": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "katmai|united states": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ],
+        "westdahl|united states": [
+            {
+                "ts": 1773307415,
+                "time_utc": "2026-03-12T09:23:35+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773439200,
+                "time_utc": "2026-03-13T22:00:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773441000,
+                "time_utc": "2026-03-13T22:30:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773442800,
+                "time_utc": "2026-03-13T23:00:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773444600,
+                "time_utc": "2026-03-13T23:30:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773446400,
+                "time_utc": "2026-03-14T00:00:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            }
+        ]
+    },
     "from_cache": false
 }

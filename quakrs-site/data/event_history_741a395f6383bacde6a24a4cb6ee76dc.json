@@ -1,0 +1,944 @@
+{
+    "ok": true,
+    "provider": "USGS FDSN Historical Archive",
+    "generated_at_ts": 1773438023,
+    "generated_at": "2026-03-13T21:40:23+00:00",
+    "query": {
+        "lat": 35.6301,
+        "lon": -98.0336,
+        "radius_km": 500,
+        "min_magnitude": null,
+        "start": "1899-12-31",
+        "end": "2026-03-12"
+    },
+    "page": 1,
+    "per_page": 80,
+    "total_pages": 1,
+    "total_events": 0,
+    "events_count": 80,
+    "events": [
+        {
+            "id": "ok2026exjd",
+            "magnitude": 1.77,
+            "place": "4 km SW of Hulbert, Oklahoma",
+            "event_time_utc": "2026-03-11T16:53:15+00:00",
+            "depth_km": 0,
+            "latitude": 35.90866667,
+            "longitude": -95.17716667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026exjd"
+        },
+        {
+            "id": "tx2026exmmex",
+            "magnitude": 2.1,
+            "place": "10 km W of Rotan, Texas",
+            "event_time_utc": "2026-03-11T10:44:50+00:00",
+            "depth_km": 7.1045,
+            "latitude": 32.837,
+            "longitude": -100.572,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026exmmex"
+        },
+        {
+            "id": "tx2026exfzch",
+            "magnitude": 1.2,
+            "place": "25 km SSW of Westbrook, Texas",
+            "event_time_utc": "2026-03-11T07:28:21+00:00",
+            "depth_km": 8.7158,
+            "latitude": 32.136,
+            "longitude": -101.086,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026exfzch"
+        },
+        {
+            "id": "tx2026exauft",
+            "magnitude": 0.9,
+            "place": "14 km S of Ackerly, Texas",
+            "event_time_utc": "2026-03-11T04:55:23+00:00",
+            "depth_km": 6.5674,
+            "latitude": 32.394,
+            "longitude": -101.714,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026exauft"
+        },
+        {
+            "id": "tx2026ewyked",
+            "magnitude": 1,
+            "place": "16 km SSW of Ackerly, Texas",
+            "event_time_utc": "2026-03-11T03:39:55+00:00",
+            "depth_km": 6.8115,
+            "latitude": 32.394,
+            "longitude": -101.793,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026ewyked"
+        },
+        {
+            "id": "ok2026evvh",
+            "magnitude": 1.44,
+            "place": "6 km N of Mill Creek, Oklahoma",
+            "event_time_utc": "2026-03-10T20:45:02+00:00",
+            "depth_km": 0,
+            "latitude": 34.466,
+            "longitude": -96.821,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026evvh"
+        },
+        {
+            "id": "ok2026evvc",
+            "magnitude": 1.3,
+            "place": "9 km ESE of Loco, Oklahoma",
+            "event_time_utc": "2026-03-10T20:39:40+00:00",
+            "depth_km": 6.04,
+            "latitude": 34.29033333,
+            "longitude": -97.59366667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026evvc"
+        },
+        {
+            "id": "ok2026evsk",
+            "magnitude": 1.68,
+            "place": "7 km ENE of Drumright, Oklahoma",
+            "event_time_utc": "2026-03-10T19:17:28+00:00",
+            "depth_km": 0,
+            "latitude": 36.0135,
+            "longitude": -96.52166667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026evsk"
+        },
+        {
+            "id": "ok2026evgk",
+            "magnitude": 1.38,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-10T13:14:09+00:00",
+            "depth_km": 5.46,
+            "latitude": 35.61833333,
+            "longitude": -98.03966667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026evgk"
+        },
+        {
+            "id": "ok2026evff",
+            "magnitude": 1.19,
+            "place": "5 km E of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-10T12:38:18+00:00",
+            "depth_km": 7.98,
+            "latitude": 35.59666667,
+            "longitude": -98.06366667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026evff"
+        },
+        {
+            "id": "ok2026even",
+            "magnitude": 1.92,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-10T12:17:27+00:00",
+            "depth_km": 5.65,
+            "latitude": 35.615,
+            "longitude": -98.04216667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026even"
+        },
+        {
+            "id": "ok2026evej",
+            "magnitude": 1.59,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-10T12:11:52+00:00",
+            "depth_km": 7,
+            "latitude": 35.61633333,
+            "longitude": -98.04033333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026evej"
+        },
+        {
+            "id": "ok2026evei",
+            "magnitude": 1.78,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-10T12:10:46+00:00",
+            "depth_km": 6.87,
+            "latitude": 35.61916667,
+            "longitude": -98.04233333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026evei"
+        },
+        {
+            "id": "ok2026eusy",
+            "magnitude": 1.19,
+            "place": "8 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-10T06:25:53+00:00",
+            "depth_km": 7.47,
+            "latitude": 35.6275,
+            "longitude": -98.029,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026eusy"
+        },
+        {
+            "id": "tx2026eupsgi",
+            "magnitude": 1.3,
+            "place": "24 km E of Forsan, Texas",
+            "event_time_utc": "2026-03-09T21:08:46+00:00",
+            "depth_km": 8.7158,
+            "latitude": 32.119,
+            "longitude": -101.112,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026eupsgi"
+        },
+        {
+            "id": "tx2026eudsho",
+            "magnitude": 1,
+            "place": "20 km NW of Westbrook, Texas",
+            "event_time_utc": "2026-03-09T15:06:42+00:00",
+            "depth_km": 6.0059,
+            "latitude": 32.485,
+            "longitude": -101.166,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026eudsho"
+        },
+        {
+            "id": "tx2026etjqur",
+            "magnitude": 0.5,
+            "place": "9 km NNW of Big Spring, Texas",
+            "event_time_utc": "2026-03-09T05:01:31+00:00",
+            "depth_km": 4.9072,
+            "latitude": 32.33,
+            "longitude": -101.498,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026etjqur"
+        },
+        {
+            "id": "ok2026essn",
+            "magnitude": 1.21,
+            "place": "6 km ENE of Guthrie, Oklahoma",
+            "event_time_utc": "2026-03-09T03:56:45+00:00",
+            "depth_km": 6.3,
+            "latitude": 35.89566667,
+            "longitude": -97.35433333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026essn"
+        },
+        {
+            "id": "ok2026esrw",
+            "magnitude": 1.43,
+            "place": "6 km ENE of Guthrie, Oklahoma",
+            "event_time_utc": "2026-03-09T03:37:25+00:00",
+            "depth_km": 6.92,
+            "latitude": 35.89316667,
+            "longitude": -97.352,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026esrw"
+        },
+        {
+            "id": "tx2026etgsnl",
+            "magnitude": 1.1,
+            "place": "27 km E of Forsan, Texas",
+            "event_time_utc": "2026-03-09T03:33:00+00:00",
+            "depth_km": 8.7646,
+            "latitude": 32.101,
+            "longitude": -101.073,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026etgsnl"
+        },
+        {
+            "id": "ok2026eryw",
+            "magnitude": 1.19,
+            "place": "4 km WSW of Carney, Oklahoma",
+            "event_time_utc": "2026-03-08T18:00:43+00:00",
+            "depth_km": 15.75,
+            "latitude": 35.7935,
+            "longitude": -97.057,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026eryw"
+        },
+        {
+            "id": "tx2026erzbht",
+            "magnitude": 0.5,
+            "place": "18 km SE of Ackerly, Texas",
+            "event_time_utc": "2026-03-08T10:37:20+00:00",
+            "depth_km": 5.1514,
+            "latitude": 32.409,
+            "longitude": -101.575,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026erzbht"
+        },
+        {
+            "id": "tx2026erpzta",
+            "magnitude": 0.8,
+            "place": "13 km S of Ackerly, Texas",
+            "event_time_utc": "2026-03-08T06:07:34+00:00",
+            "depth_km": 5.542,
+            "latitude": 32.401,
+            "longitude": -101.708,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026erpzta"
+        },
+        {
+            "id": "tx2026erpkfd",
+            "magnitude": 1.1,
+            "place": "7 km SE of Big Spring, Texas",
+            "event_time_utc": "2026-03-08T05:46:02+00:00",
+            "depth_km": 8.374,
+            "latitude": 32.196,
+            "longitude": -101.425,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026erpkfd"
+        },
+        {
+            "id": "tx2026erownv",
+            "magnitude": 1.4,
+            "place": "17 km SSE of Westbrook, Texas",
+            "event_time_utc": "2026-03-08T05:30:05+00:00",
+            "depth_km": 4.1748,
+            "latitude": 32.202,
+            "longitude": -100.968,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026erownv"
+        },
+        {
+            "id": "ok2026eqxe",
+            "magnitude": 0.52,
+            "place": "9 km SW of Shamrock, Oklahoma",
+            "event_time_utc": "2026-03-08T04:01:06+00:00",
+            "depth_km": 5.18,
+            "latitude": 35.84066667,
+            "longitude": -96.65383333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026eqxe"
+        },
+        {
+            "id": "ok2026eqvh",
+            "magnitude": 1.24,
+            "place": "6 km ESE of Ratliff City, Oklahoma",
+            "event_time_utc": "2026-03-08T03:04:29+00:00",
+            "depth_km": 5.97,
+            "latitude": 34.41483333,
+            "longitude": -97.447,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026eqvh"
+        },
+        {
+            "id": "tx2026epvrzh",
+            "magnitude": 1.3,
+            "place": "6 km NNE of Westbrook, Texas",
+            "event_time_utc": "2026-03-07T06:47:10+00:00",
+            "depth_km": 8.1299,
+            "latitude": 32.411,
+            "longitude": -100.99,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026epvrzh"
+        },
+        {
+            "id": "tx2026epvdta",
+            "magnitude": 1.1,
+            "place": "7 km NNE of Westbrook, Texas",
+            "event_time_utc": "2026-03-07T06:30:31+00:00",
+            "depth_km": 2.4658,
+            "latitude": 32.418,
+            "longitude": -100.99,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026epvdta"
+        },
+        {
+            "id": "tx2026epoula",
+            "magnitude": 1.5,
+            "place": "18 km SSE of Westbrook, Texas",
+            "event_time_utc": "2026-03-07T03:18:47+00:00",
+            "depth_km": 7.1045,
+            "latitude": 32.193,
+            "longitude": -100.97,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026epoula"
+        },
+        {
+            "id": "tx2026eokpvy",
+            "magnitude": 1.5,
+            "place": "21 km S of Westbrook, Texas",
+            "event_time_utc": "2026-03-06T12:08:12+00:00",
+            "depth_km": 8.1787,
+            "latitude": 32.165,
+            "longitude": -101.011,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026eokpvy"
+        },
+        {
+            "id": "ok2026enjy",
+            "magnitude": 2.54,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-06T05:56:08+00:00",
+            "depth_km": 7.13,
+            "latitude": 35.6205,
+            "longitude": -98.03783333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026enjy"
+        },
+        {
+            "id": "ok2026emxy",
+            "magnitude": 1.31,
+            "place": "6 km E of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-05T23:52:51+00:00",
+            "depth_km": 5.37,
+            "latitude": 35.60983333,
+            "longitude": -98.0525,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026emxy"
+        },
+        {
+            "id": "ok2026emvt",
+            "magnitude": 1.28,
+            "place": "7 km N of Mill Creek, Oklahoma",
+            "event_time_utc": "2026-03-05T22:45:16+00:00",
+            "depth_km": 0,
+            "latitude": 34.473,
+            "longitude": -96.82633333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026emvt"
+        },
+        {
+            "id": "ok2026emuf",
+            "magnitude": 1.34,
+            "place": "8 km W of Davis, Oklahoma",
+            "event_time_utc": "2026-03-05T21:58:56+00:00",
+            "depth_km": 0,
+            "latitude": 34.50666667,
+            "longitude": -97.208,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026emuf"
+        },
+        {
+            "id": "ok2026emhn",
+            "magnitude": 1.42,
+            "place": "1 km E of Sportsmen Acres, Oklahoma",
+            "event_time_utc": "2026-03-05T15:34:11+00:00",
+            "depth_km": 0,
+            "latitude": 36.24783333,
+            "longitude": -95.2315,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026emhn"
+        },
+        {
+            "id": "ok2026emda",
+            "magnitude": 0.84,
+            "place": "11 km W of Ralston, Oklahoma",
+            "event_time_utc": "2026-03-05T13:18:13+00:00",
+            "depth_km": 4.48,
+            "latitude": 36.5215,
+            "longitude": -96.85333333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026emda"
+        },
+        {
+            "id": "ok2026emba",
+            "magnitude": 1.07,
+            "place": "10 km W of Ralston, Oklahoma",
+            "event_time_utc": "2026-03-05T12:17:32+00:00",
+            "depth_km": 3.73,
+            "latitude": 36.5215,
+            "longitude": -96.84966667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026emba"
+        },
+        {
+            "id": "tx2026emmrzf",
+            "magnitude": 0.8,
+            "place": "7 km SE of Ackerly, Texas",
+            "event_time_utc": "2026-03-05T11:02:07+00:00",
+            "depth_km": 5.2979,
+            "latitude": 32.491,
+            "longitude": -101.654,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026emmrzf"
+        },
+        {
+            "id": "tx2026emmkzo",
+            "magnitude": 1,
+            "place": "9 km NNW of Forsan, Texas",
+            "event_time_utc": "2026-03-05T10:53:58+00:00",
+            "depth_km": 7.7881,
+            "latitude": 32.191,
+            "longitude": -101.393,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026emmkzo"
+        },
+        {
+            "id": "tx2026emklta",
+            "magnitude": 1,
+            "place": "13 km NW of Sand Springs, Texas",
+            "event_time_utc": "2026-03-05T09:54:29+00:00",
+            "depth_km": 5.5908,
+            "latitude": 32.374,
+            "longitude": -101.44,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026emklta"
+        },
+        {
+            "id": "tx2026emahpr",
+            "magnitude": 1.9,
+            "place": "24 km SSW of Westbrook, Texas",
+            "event_time_utc": "2026-03-05T04:50:24+00:00",
+            "depth_km": 8.8623,
+            "latitude": 32.14,
+            "longitude": -101.09,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026emahpr"
+        },
+        {
+            "id": "ok2026eleo",
+            "magnitude": 1.13,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-05T00:56:11+00:00",
+            "depth_km": 4.83,
+            "latitude": 35.6145,
+            "longitude": -98.04283333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026eleo"
+        },
+        {
+            "id": "ok2026elcx",
+            "magnitude": 1.23,
+            "place": "7 km SSE of Hickory, Oklahoma",
+            "event_time_utc": "2026-03-05T00:06:46+00:00",
+            "depth_km": 0,
+            "latitude": 34.491,
+            "longitude": -96.83966667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026elcx"
+        },
+        {
+            "id": "ok2026elcd",
+            "magnitude": 1.07,
+            "place": "3 km SSW of Mill Creek, Oklahoma",
+            "event_time_utc": "2026-03-04T23:43:06+00:00",
+            "depth_km": 0,
+            "latitude": 34.3735,
+            "longitude": -96.83833333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026elcd"
+        },
+        {
+            "id": "tx2026elonfd",
+            "magnitude": 1.2,
+            "place": "28 km S of Westbrook, Texas",
+            "event_time_utc": "2026-03-04T22:52:24+00:00",
+            "depth_km": 4.1748,
+            "latitude": 32.105,
+            "longitude": -101.062,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026elonfd"
+        },
+        {
+            "id": "ok2026elaj",
+            "magnitude": 0.9,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-04T22:49:46+00:00",
+            "depth_km": 16.43,
+            "latitude": 35.62533333,
+            "longitude": -98.0415,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026elaj"
+        },
+        {
+            "id": "ok2026eksn",
+            "magnitude": 1.17,
+            "place": "5 km SSW of Mill Creek, Oklahoma",
+            "event_time_utc": "2026-03-04T18:51:55+00:00",
+            "depth_km": 0,
+            "latitude": 34.35616667,
+            "longitude": -96.85116667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026eksn"
+        },
+        {
+            "id": "ok2026ekrc",
+            "magnitude": 1.16,
+            "place": "8 km S of Hickory, Oklahoma",
+            "event_time_utc": "2026-03-04T18:08:40+00:00",
+            "depth_km": 0,
+            "latitude": 34.4815,
+            "longitude": -96.85716667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ekrc"
+        },
+        {
+            "id": "ok2026ekpf",
+            "magnitude": 2.23,
+            "place": "7 km SE of Ratliff City, Oklahoma",
+            "event_time_utc": "2026-03-04T17:11:28+00:00",
+            "depth_km": 5.58,
+            "latitude": 34.41083333,
+            "longitude": -97.442,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ekpf"
+        },
+        {
+            "id": "ok2026ekok",
+            "magnitude": 1.21,
+            "place": "10 km SE of Katie, Oklahoma",
+            "event_time_utc": "2026-03-04T16:46:39+00:00",
+            "depth_km": 0,
+            "latitude": 34.509,
+            "longitude": -97.2825,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ekok"
+        },
+        {
+            "id": "ok2026ekmy",
+            "magnitude": 0.88,
+            "place": "6 km ENE of Guthrie, Oklahoma",
+            "event_time_utc": "2026-03-04T16:03:04+00:00",
+            "depth_km": 3.21,
+            "latitude": 35.89783333,
+            "longitude": -97.3565,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ekmy"
+        },
+        {
+            "id": "ok2026ekce",
+            "magnitude": 1.43,
+            "place": "6 km E of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-04T10:36:00+00:00",
+            "depth_km": 5.4,
+            "latitude": 35.61,
+            "longitude": -98.043,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ekce"
+        },
+        {
+            "id": "ok2026ekcd",
+            "magnitude": 1.44,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-04T10:34:53+00:00",
+            "depth_km": 3.78,
+            "latitude": 35.61833333,
+            "longitude": -98.03383333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ekcd"
+        },
+        {
+            "id": "tx2026ekoprn",
+            "magnitude": 1,
+            "place": "25 km E of Forsan, Texas",
+            "event_time_utc": "2026-03-04T09:50:48+00:00",
+            "depth_km": 4.4434,
+            "latitude": 32.13,
+            "longitude": -101.102,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026ekoprn"
+        },
+        {
+            "id": "ok2026ekah",
+            "magnitude": 1.24,
+            "place": "8 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-04T09:39:12+00:00",
+            "depth_km": 5.66,
+            "latitude": 35.62633333,
+            "longitude": -98.02533333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ekah"
+        },
+        {
+            "id": "ok2026ejzs",
+            "magnitude": 1.04,
+            "place": "9 km NNW of El Reno, Oklahoma",
+            "event_time_utc": "2026-03-04T09:21:41+00:00",
+            "depth_km": 6.99,
+            "latitude": 35.6115,
+            "longitude": -98.00616667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ejzs"
+        },
+        {
+            "id": "ok2026ejzp",
+            "magnitude": 1.36,
+            "place": "8 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-04T09:18:03+00:00",
+            "depth_km": 5.1,
+            "latitude": 35.62466667,
+            "longitude": -98.02766667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ejzp"
+        },
+        {
+            "id": "ok2026ejzm",
+            "magnitude": 1.28,
+            "place": "6 km E of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-04T09:14:38+00:00",
+            "depth_km": 4.6,
+            "latitude": 35.6095,
+            "longitude": -98.051,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ejzm"
+        },
+        {
+            "id": "ok2026ejzg",
+            "magnitude": 1.75,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-04T09:07:23+00:00",
+            "depth_km": 5.88,
+            "latitude": 35.61433333,
+            "longitude": -98.04283333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ejzg"
+        },
+        {
+            "id": "ok2026ejzd",
+            "magnitude": 1.55,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-04T09:04:30+00:00",
+            "depth_km": 3.59,
+            "latitude": 35.61383333,
+            "longitude": -98.04116667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ejzd"
+        },
+        {
+            "id": "ok2026ejxf",
+            "magnitude": 1.35,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-04T08:05:15+00:00",
+            "depth_km": 3.58,
+            "latitude": 35.61583333,
+            "longitude": -98.042,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ejxf"
+        },
+        {
+            "id": "ok2026ejwl",
+            "magnitude": 0.92,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-04T07:42:53+00:00",
+            "depth_km": 3.6,
+            "latitude": 35.61483333,
+            "longitude": -98.04316667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ejwl"
+        },
+        {
+            "id": "ok2026ejru",
+            "magnitude": 1.19,
+            "place": "6 km E of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-04T05:21:35+00:00",
+            "depth_km": 6.78,
+            "latitude": 35.61083333,
+            "longitude": -98.04616667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ejru"
+        },
+        {
+            "id": "ok2026ejpv",
+            "magnitude": 1.16,
+            "place": "7 km E of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-04T04:22:23+00:00",
+            "depth_km": 5.4,
+            "latitude": 35.60983333,
+            "longitude": -98.04133333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ejpv"
+        },
+        {
+            "id": "tx2026ekaepm",
+            "magnitude": 0.8,
+            "place": "14 km NE of Hermleigh, Texas",
+            "event_time_utc": "2026-03-04T02:35:32+00:00",
+            "depth_km": 6.5186,
+            "latitude": 32.744,
+            "longitude": -100.672,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026ekaepm"
+        },
+        {
+            "id": "ok2026ejbt",
+            "magnitude": 1.38,
+            "place": "9 km SE of Ratliff City, Oklahoma",
+            "event_time_utc": "2026-03-03T21:14:36+00:00",
+            "depth_km": 6.22,
+            "latitude": 34.4,
+            "longitude": -97.42916667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ejbt"
+        },
+        {
+            "id": "tx2026ejnwgs",
+            "magnitude": 1.3,
+            "place": "14 km S of Ackerly, Texas",
+            "event_time_utc": "2026-03-03T20:23:55+00:00",
+            "depth_km": 7.2998,
+            "latitude": 32.4,
+            "longitude": -101.71,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026ejnwgs"
+        },
+        {
+            "id": "ok2026eixs",
+            "magnitude": 1.39,
+            "place": "11 km W of Davis, Oklahoma",
+            "event_time_utc": "2026-03-03T19:12:26+00:00",
+            "depth_km": 0,
+            "latitude": 34.5175,
+            "longitude": -97.24033333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026eixs"
+        },
+        {
+            "id": "tx2026ejlenl",
+            "magnitude": 1.1,
+            "place": "15 km S of Ackerly, Texas",
+            "event_time_utc": "2026-03-03T19:06:31+00:00",
+            "depth_km": 5.8105,
+            "latitude": 32.39,
+            "longitude": -101.728,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026ejlenl"
+        },
+        {
+            "id": "ok2026eivt",
+            "magnitude": 1.62,
+            "place": "2 km S of Watonga, Oklahoma",
+            "event_time_utc": "2026-03-03T18:12:52+00:00",
+            "depth_km": 10.79,
+            "latitude": 35.82483333,
+            "longitude": -98.4145,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026eivt"
+        },
+        {
+            "id": "tx2026ejagbs",
+            "magnitude": 1.5,
+            "place": "25 km SSW of Westbrook, Texas",
+            "event_time_utc": "2026-03-03T13:32:46+00:00",
+            "depth_km": 8.4473,
+            "latitude": 32.137,
+            "longitude": -101.085,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026ejagbs"
+        },
+        {
+            "id": "ok2026eimm",
+            "magnitude": 1.35,
+            "place": "8 km NW of Prague, Oklahoma",
+            "event_time_utc": "2026-03-03T13:32:14+00:00",
+            "depth_km": 5.47,
+            "latitude": 35.55016667,
+            "longitude": -96.7405,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026eimm"
+        },
+        {
+            "id": "tx2026eixvly",
+            "magnitude": 2.9,
+            "place": "24 km SSW of Westbrook, Texas",
+            "event_time_utc": "2026-03-03T12:20:07+00:00",
+            "depth_km": 8.2275,
+            "latitude": 32.14,
+            "longitude": -101.084,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026eixvly"
+        },
+        {
+            "id": "ok2026eiet",
+            "magnitude": 1.38,
+            "place": "7 km ESE of Ratliff City, Oklahoma",
+            "event_time_utc": "2026-03-03T09:38:24+00:00",
+            "depth_km": 6.08,
+            "latitude": 34.4165,
+            "longitude": -97.443,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026eiet"
+        },
+        {
+            "id": "ok2026eidj",
+            "magnitude": 1.08,
+            "place": "8 km NNW of Pawnee, Oklahoma",
+            "event_time_utc": "2026-03-03T08:56:16+00:00",
+            "depth_km": 5.96,
+            "latitude": 36.413,
+            "longitude": -96.824,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026eidj"
+        },
+        {
+            "id": "tx2026eikobb",
+            "magnitude": 1.6,
+            "place": "24 km SSW of Westbrook, Texas",
+            "event_time_utc": "2026-03-03T05:39:16+00:00",
+            "depth_km": 8.6182,
+            "latitude": 32.138,
+            "longitude": -101.082,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026eikobb"
+        },
+        {
+            "id": "ok2026ehwo",
+            "magnitude": 0.98,
+            "place": "12 km N of Alex, Oklahoma",
+            "event_time_utc": "2026-03-03T05:29:43+00:00",
+            "depth_km": 3.86,
+            "latitude": 35.0245,
+            "longitude": -97.78033333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ehwo"
+        },
+        {
+            "id": "tx2026eijurw",
+            "magnitude": 0.6,
+            "place": "7 km SSE of Ackerly, Texas",
+            "event_time_utc": "2026-03-03T05:16:51+00:00",
+            "depth_km": 3.8086,
+            "latitude": 32.472,
+            "longitude": -101.674,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026eijurw"
+        },
+        {
+            "id": "ok2026ehtx",
+            "magnitude": 0.9,
+            "place": "7 km ENE of Calumet, Oklahoma",
+            "event_time_utc": "2026-03-03T04:09:09+00:00",
+            "depth_km": 7,
+            "latitude": 35.616,
+            "longitude": -98.042,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ehtx"
+        }
+    ],
+    "strongest_events": [
+        {
+            "id": "us10006jxs",
+            "magnitude": 5.8,
+            "place": "14 km NW of Pawnee, Oklahoma",
+            "event_time_utc": "2016-09-03T12:02:44+00:00",
+            "depth_km": 5.557,
+            "latitude": 36.4251,
+            "longitude": -96.9291,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10006jxs"
+        },
+        {
+            "id": "usp000jadn",
+            "magnitude": 5.7,
+            "place": "8 km NW of Prague, Oklahoma",
+            "event_time_utc": "2011-11-06T03:53:10+00:00",
+            "depth_km": 5.2,
+            "latitude": 35.532,
+            "longitude": -96.765,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000jadn"
+        },
+        {
+            "id": "tx2024ophu",
+            "magnitude": 5.1,
+            "place": "17 km NNE of Hermleigh, Texas",
+            "event_time_utc": "2024-07-26T14:28:29+00:00",
+            "depth_km": 3.2959,
+            "latitude": 32.766,
+            "longitude": -100.659,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2024ophu"
+        },
+        {
+            "id": "us20004zy8",
+            "magnitude": 5.1,
+            "place": "18 km SE of Waynoka, Oklahoma",
+            "event_time_utc": "2016-02-13T17:07:06+00:00",
+            "depth_km": 8.31,
+            "latitude": 36.4898,
+            "longitude": -98.709,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20004zy8"
+        },
+        {
+            "id": "ok2024cish",
+            "magnitude": 5.06,
+            "place": "8 km NW of Prague, Oklahoma",
+            "event_time_utc": "2024-02-03T05:24:28+00:00",
+            "depth_km": 3,
+            "latitude": 35.53433333,
+            "longitude": -96.76383333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2024cish"
+        },
+        {
+            "id": "us100075y8",
+            "magnitude": 5,
+            "place": "3 km W of Cushing, Oklahoma",
+            "event_time_utc": "2016-11-07T01:44:24+00:00",
+            "depth_km": 4.43,
+            "latitude": 35.9907,
+            "longitude": -96.803,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us100075y8"
+        },
+        {
+            "id": "tx2024oizv",
+            "magnitude": 4.9,
+            "place": "17 km NNE of Hermleigh, Texas",
+            "event_time_utc": "2024-07-23T03:38:42+00:00",
+            "depth_km": 3.1982,
+            "latitude": 32.766,
+            "longitude": -100.659,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2024oizv"
+        },
+        {
+            "id": "ushis726",
+            "magnitude": 4.9,
+            "place": "9 km NE of Panhandle, Texas",
+            "event_time_utc": null,
+            "depth_km": null,
+            "latitude": 35.4,
+            "longitude": -101.3,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ushis726"
+        },
+        {
+            "id": "usc000swru",
+            "magnitude": 4.9,
+            "place": "4 km ENE of Milan, Kansas",
+            "event_time_utc": "2014-11-12T21:40:00+00:00",
+            "depth_km": 4.03,
+            "latitude": 37.2713,
+            "longitude": -97.6206,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usc000swru"
+        },
+        {
+            "id": "usp000jac0",
+            "magnitude": 4.8,
+            "place": "8 km SE of Sparks, Oklahoma",
+            "event_time_utc": "2011-11-05T07:12:45+00:00",
+            "depth_km": 3.1,
+            "latitude": 35.55,
+            "longitude": -96.764,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000jac0"
+        },
+        {
+            "id": "usp000jajb",
+            "magnitude": 4.8,
+            "place": "9 km SSE of Sparks, Oklahoma",
+            "event_time_utc": "2011-11-08T02:46:57+00:00",
+            "depth_km": 5,
+            "latitude": 35.531,
+            "longitude": -96.788,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000jajb"
+        },
+        {
+            "id": "tx2023dgvx",
+            "magnitude": 4.7,
+            "place": "15 km NE of Hermleigh, Texas",
+            "event_time_utc": "2023-02-16T10:29:04+00:00",
+            "depth_km": 7.849975586,
+            "latitude": 32.7456665,
+            "longitude": -100.6594179,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2023dgvx"
+        }
+    ],
+    "from_cache": false
+}

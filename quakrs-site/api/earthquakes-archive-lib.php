@@ -84,23 +84,28 @@ function earthquake_archive_open(array $appConfig, ?string &$reason = null): ?my
         return null;
     }
 
-    $mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, 6);
-    $connected = @$mysqli->real_connect(
-        $cfg['host'],
-        $cfg['user'],
-        $cfg['password'],
-        $cfg['database'],
-        $cfg['port']
-    );
-    if ($connected !== true) {
-        $reason = 'MySQL connect failed';
-        return null;
-    }
+    try {
+        $mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, 6);
+        $connected = @$mysqli->real_connect(
+            $cfg['host'],
+            $cfg['user'],
+            $cfg['password'],
+            $cfg['database'],
+            $cfg['port']
+        );
+        if ($connected !== true) {
+            $reason = 'MySQL connect failed';
+            return null;
+        }
 
-    $mysqli->set_charset($cfg['charset']);
-    $createSql = earthquake_archive_table_sql($cfg['table']);
-    if ($mysqli->query($createSql) !== true) {
-        $reason = 'MySQL schema init failed';
+        $mysqli->set_charset($cfg['charset']);
+        $createSql = earthquake_archive_table_sql($cfg['table']);
+        if ($mysqli->query($createSql) !== true) {
+            $reason = 'MySQL schema init failed';
+            return null;
+        }
+    } catch (Throwable $e) {
+        $reason = 'MySQL exception: ' . $e->getMessage();
         return null;
     }
 

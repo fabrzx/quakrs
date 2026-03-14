@@ -30,7 +30,7 @@ $cacheAge = is_array($cachedPayload) && isset($cachedPayload['generated_at_ts'])
     ? $now - (int) $cachedPayload['generated_at_ts']
     : null;
 
-if (!$forceRefresh && is_array($cachedPayload)) {
+if (!$forceRefresh && is_array($cachedPayload) && is_int($cacheAge) && $cacheAge <= $cacheTtl) {
     $cachedPayload['from_cache'] = true;
     $cachedPayload['stale_cache'] = !is_int($cacheAge) || $cacheAge > $cacheTtl;
     json_response(200, $cachedPayload);

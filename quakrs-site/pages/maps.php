@@ -40,7 +40,7 @@ require __DIR__ . '/../partials/topbar.php';
   </article>
 </section>
 
-<section class="panel panel-main">
+<section class="panel panel-main earthquakes-main-layout">
   <article class="card map-card">
     <div class="feed-head">
       <div class="map-head-left">
@@ -63,28 +63,27 @@ require __DIR__ . '/../partials/topbar.php';
   </article>
   <article class="card side-card">
     <h3>Priority Events</h3>
-    <ul id="events-list" class="events-list" data-order="priority">
+    <ul id="events-list" class="events-list live-feed-scroll" data-order="priority">
       <li class="event-item">Loading latest events...</li>
     </ul>
   </article>
 </section>
 
-<section class="panel panel-charts">
-  <article class="card">
+<section class="panel panel-charts maps-charts">
+  <article class="card maps-chart-card maps-chart-wide">
     <div class="feed-head">
       <h3>Magnitude Distribution</h3>
-      <p class="feed-meta">Standard bands: &lt;2, 2-3, 3-4, 4-5, 5-6, 6+</p>
     </div>
-    <div id="mag-chart" class="bars"></div>
+    <div id="mag-chart" class="bars bars-vertical bars-magnitude"></div>
   </article>
-  <article class="card">
+  <article class="card maps-chart-card maps-chart-wide">
     <div class="feed-head">
       <h3>Activity by Hour (UTC)</h3>
       <p class="feed-meta">Last 24 hours</p>
     </div>
-    <div id="hourly-chart" class="bars bars-hourly"></div>
+    <div id="hourly-chart" class="bars bars-vertical bars-hourly-vertical"></div>
   </article>
-  <article class="card">
+  <article class="card maps-chart-card maps-chart-regions">
     <div class="feed-head">
       <h3>Top Regions</h3>
       <p class="feed-meta">Most active places now</p>

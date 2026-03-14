@@ -1,0 +1,944 @@
+{
+    "ok": true,
+    "provider": "USGS FDSN Historical Archive",
+    "generated_at_ts": 1773441616,
+    "generated_at": "2026-03-13T22:40:16+00:00",
+    "query": {
+        "lat": 43.1268,
+        "lon": 12.6812,
+        "radius_km": 500,
+        "min_magnitude": null,
+        "start": "1899-12-31",
+        "end": "2026-03-12"
+    },
+    "page": 1,
+    "per_page": 80,
+    "total_pages": 1,
+    "total_events": 0,
+    "events_count": 80,
+    "events": [
+        {
+            "id": "us7000s39n",
+            "magnitude": 6,
+            "place": "12 km W of Anacapri, Italy",
+            "event_time_utc": "2026-03-09T23:03:54+00:00",
+            "depth_km": 381.687,
+            "latitude": 40.565,
+            "longitude": 14.0671,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s39n"
+        },
+        {
+            "id": "us7000s1va",
+            "magnitude": 3.7,
+            "place": "4 km ESE of Drni\u0161, Croatia",
+            "event_time_utc": "2026-03-04T00:23:15+00:00",
+            "depth_km": 17.831,
+            "latitude": 43.8501,
+            "longitude": 16.2106,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s1va"
+        },
+        {
+            "id": "us7000rztk",
+            "magnitude": 3.9,
+            "place": "8 km NW of Vitina, Bosnia and Herzegovina",
+            "event_time_utc": "2026-02-23T19:29:41+00:00",
+            "depth_km": 10,
+            "latitude": 43.2877,
+            "longitude": 17.4003,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rztk"
+        },
+        {
+            "id": "us6000sajm",
+            "magnitude": 4.7,
+            "place": "5 km WSW of Licinella-Torre di Paestum, Italy",
+            "event_time_utc": "2026-02-21T00:28:44+00:00",
+            "depth_km": 299.395,
+            "latitude": 40.3887,
+            "longitude": 14.9323,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000sajm"
+        },
+        {
+            "id": "us6000s9sn",
+            "magnitude": 4.3,
+            "place": "6 km NNW of Zabri\u0161\u0107e, Bosnia and Herzegovina",
+            "event_time_utc": "2026-02-17T16:31:27+00:00",
+            "depth_km": 38.572,
+            "latitude": 43.8452,
+            "longitude": 16.9192,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s9sn"
+        },
+        {
+            "id": "us6000s5j7",
+            "magnitude": 4.3,
+            "place": "1 km NNW of Fornace Zarattini, Italy",
+            "event_time_utc": "2026-01-13T08:29:17+00:00",
+            "depth_km": 10,
+            "latitude": 44.4305,
+            "longitude": 12.1227,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s5j7"
+        },
+        {
+            "id": "us7000rpcy",
+            "magnitude": 4.6,
+            "place": "2 km N of Fornace Zarattini, Italy",
+            "event_time_utc": "2026-01-13T08:27:57+00:00",
+            "depth_km": 10,
+            "latitude": 44.436,
+            "longitude": 12.1283,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rpcy"
+        },
+        {
+            "id": "us7000rnut",
+            "magnitude": 3.2,
+            "place": "4 km N of Gargnano, Italy",
+            "event_time_utc": "2026-01-09T14:28:55+00:00",
+            "depth_km": 10.874,
+            "latitude": 45.7294,
+            "longitude": 10.6498,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rnut"
+        },
+        {
+            "id": "us6000rvk7",
+            "magnitude": 4.4,
+            "place": "9 km SE of Babino Polje, Croatia",
+            "event_time_utc": "2025-12-17T22:07:46+00:00",
+            "depth_km": 10,
+            "latitude": 42.6832,
+            "longitude": 17.6545,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rvk7"
+        },
+        {
+            "id": "us6000rnx5",
+            "magnitude": 4.1,
+            "place": "16 km ESE of Ventotene, Italy",
+            "event_time_utc": "2025-11-18T12:36:05+00:00",
+            "depth_km": 404.05,
+            "latitude": 40.7299,
+            "longitude": 13.6049,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rnx5"
+        },
+        {
+            "id": "us6000rk5l",
+            "magnitude": 4.1,
+            "place": "22 km SSW of Plu\u017eine, Montenegro",
+            "event_time_utc": "2025-10-29T13:19:08+00:00",
+            "depth_km": 10,
+            "latitude": 42.971,
+            "longitude": 18.711,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rk5l"
+        },
+        {
+            "id": "us6000rjh3",
+            "magnitude": 4.4,
+            "place": "3 km WNW of Summonte, Italy",
+            "event_time_utc": "2025-10-25T19:49:19+00:00",
+            "depth_km": 10,
+            "latitude": 40.9578,
+            "longitude": 14.7014,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjh3"
+        },
+        {
+            "id": "us6000rj3f",
+            "magnitude": 4,
+            "place": "0 km SSE of Torrioni, Italy",
+            "event_time_utc": "2025-10-24T12:40:59+00:00",
+            "depth_km": 10,
+            "latitude": 41.0269,
+            "longitude": 14.8167,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rj3f"
+        },
+        {
+            "id": "us6000rf24",
+            "magnitude": 4.9,
+            "place": "30 km NE of Marotta, Italy",
+            "event_time_utc": "2025-10-06T10:13:59+00:00",
+            "depth_km": 10,
+            "latitude": 43.9808,
+            "longitude": 13.3879,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rf24"
+        },
+        {
+            "id": "us6000remm",
+            "magnitude": 3,
+            "place": "1 km SE of Montescano, Italy",
+            "event_time_utc": "2025-10-03T18:57:00+00:00",
+            "depth_km": 27.129,
+            "latitude": 45.0199,
+            "longitude": 9.2998,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000remm"
+        },
+        {
+            "id": "us6000red0",
+            "magnitude": 3.7,
+            "place": "9 km SSW of Turbe, Bosnia and Herzegovina",
+            "event_time_utc": "2025-10-02T21:39:15+00:00",
+            "depth_km": 10,
+            "latitude": 44.1613,
+            "longitude": 17.5248,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000red0"
+        },
+        {
+            "id": "us7000qxli",
+            "magnitude": 4.2,
+            "place": "4 km SSE of San Terenziano, Italy",
+            "event_time_utc": "2025-09-20T21:11:40+00:00",
+            "depth_km": 10,
+            "latitude": 42.827,
+            "longitude": 12.4921,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000qxli"
+        },
+        {
+            "id": "us6000qh9w",
+            "magnitude": 3.7,
+            "place": "10 km ENE of Crni\u0107i, Bosnia and Herzegovina",
+            "event_time_utc": "2025-06-01T16:44:09+00:00",
+            "depth_km": 10,
+            "latitude": 43.181,
+            "longitude": 17.9687,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000qh9w"
+        },
+        {
+            "id": "us7000q0z4",
+            "magnitude": 4,
+            "place": "12 km WNW of Igalo, Montenegro",
+            "event_time_utc": "2025-05-22T22:52:00+00:00",
+            "depth_km": 10,
+            "latitude": 42.5041,
+            "longitude": 18.3603,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000q0z4"
+        },
+        {
+            "id": "us7000q0g6",
+            "magnitude": 2.7,
+            "place": "2 km NE of Besenello, Italy",
+            "event_time_utc": "2025-05-20T22:37:03+00:00",
+            "depth_km": 11.615,
+            "latitude": 45.9604,
+            "longitude": 11.135,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000q0g6"
+        },
+        {
+            "id": "us7000pyym",
+            "magnitude": 4,
+            "place": "2 km N of Bacoli, Italy",
+            "event_time_utc": "2025-05-13T10:07:45+00:00",
+            "depth_km": 10,
+            "latitude": 40.8192,
+            "longitude": 14.0745,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pyym"
+        },
+        {
+            "id": "us7000pyn6",
+            "magnitude": 4.4,
+            "place": "22 km ENE of Bile\u0107a, Bosnia and Herzegovina",
+            "event_time_utc": "2025-05-11T11:46:53+00:00",
+            "depth_km": 10,
+            "latitude": 42.9684,
+            "longitude": 18.6709,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pyn6"
+        },
+        {
+            "id": "us7000pxxr",
+            "magnitude": 2.7,
+            "place": "1 km NNE of Montecompatri, Italy",
+            "event_time_utc": "2025-05-08T01:42:59+00:00",
+            "depth_km": 9.538,
+            "latitude": 41.8207,
+            "longitude": 12.7418,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pxxr"
+        },
+        {
+            "id": "us7000pm28",
+            "magnitude": 2.5,
+            "place": "1 km WSW of Cantaron, France",
+            "event_time_utc": "2025-03-20T21:25:24+00:00",
+            "depth_km": 10,
+            "latitude": 43.7581,
+            "longitude": 7.3008,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pm28"
+        },
+        {
+            "id": "us6000pzn6",
+            "magnitude": 3.1,
+            "place": "1 km ESE of Tourrette-Levens, France",
+            "event_time_utc": "2025-03-18T21:24:20+00:00",
+            "depth_km": 10,
+            "latitude": 43.7835,
+            "longitude": 7.2915,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pzn6"
+        },
+        {
+            "id": "us6000pzm8",
+            "magnitude": 3.3,
+            "place": "2 km N of Berre-les-Alpes, France",
+            "event_time_utc": "2025-03-18T17:44:59+00:00",
+            "depth_km": 10,
+            "latitude": 43.8554,
+            "longitude": 7.3311,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pzm8"
+        },
+        {
+            "id": "us6000pzjc",
+            "magnitude": 4.3,
+            "place": "3 km NE of Potenza, Italy",
+            "event_time_utc": "2025-03-18T09:01:26+00:00",
+            "depth_km": 17.181,
+            "latitude": 40.6596,
+            "longitude": 15.836,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pzjc"
+        },
+        {
+            "id": "us6000pz15",
+            "magnitude": 3.2,
+            "place": "7 km SE of Procida, Italy",
+            "event_time_utc": "2025-03-15T12:32:26+00:00",
+            "depth_km": 10,
+            "latitude": 40.706,
+            "longitude": 14.0702,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pz15"
+        },
+        {
+            "id": "us6000pyx0",
+            "magnitude": 3.9,
+            "place": "14 km SSE of Isole Tremiti, Italy",
+            "event_time_utc": "2025-03-14T20:00:09+00:00",
+            "depth_km": 10,
+            "latitude": 41.9963,
+            "longitude": 15.5571,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pyx0"
+        },
+        {
+            "id": "us6000pywp",
+            "magnitude": 5,
+            "place": "14 km NNE of Lesina, Italy",
+            "event_time_utc": "2025-03-14T19:37:15+00:00",
+            "depth_km": 9.637,
+            "latitude": 41.9796,
+            "longitude": 15.4373,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pywp"
+        },
+        {
+            "id": "us6000pyh6",
+            "magnitude": 4.2,
+            "place": "1 km S of Monte di Procida, Italy",
+            "event_time_utc": "2025-03-13T00:25:01+00:00",
+            "depth_km": 8.036,
+            "latitude": 40.7838,
+            "longitude": 14.051,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pyh6"
+        },
+        {
+            "id": "us6000pwt2",
+            "magnitude": 2.5,
+            "place": "2 km NNW of Carrara, Italy",
+            "event_time_utc": "2025-03-04T15:00:13+00:00",
+            "depth_km": 10,
+            "latitude": 44.1014,
+            "longitude": 10.0806,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pwt2"
+        },
+        {
+            "id": "us6000pwq6",
+            "magnitude": 3.2,
+            "place": "3 km S of Bevagna, Italy",
+            "event_time_utc": "2025-03-04T00:55:41+00:00",
+            "depth_km": 11.31,
+            "latitude": 42.9102,
+            "longitude": 12.6133,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pwq6"
+        },
+        {
+            "id": "us6000pvby",
+            "magnitude": 4.4,
+            "place": "0 km WSW of Sisak, Croatia",
+            "event_time_utc": "2025-02-25T11:52:49+00:00",
+            "depth_km": 10,
+            "latitude": 45.4631,
+            "longitude": 16.3687,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pvby"
+        },
+        {
+            "id": "us7000pe5u",
+            "magnitude": 2.9,
+            "place": "2 km WSW of Bagnoli, Italy",
+            "event_time_utc": "2025-02-16T23:19:52+00:00",
+            "depth_km": 10,
+            "latitude": 40.8039,
+            "longitude": 14.1469,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pe5u"
+        },
+        {
+            "id": "us7000pe46",
+            "magnitude": 3,
+            "place": "10 km S of Procida, Italy",
+            "event_time_utc": "2025-02-16T14:30:01+00:00",
+            "depth_km": 10,
+            "latitude": 40.6603,
+            "longitude": 14.0371,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pe46"
+        },
+        {
+            "id": "us7000pd3z",
+            "magnitude": 2.3,
+            "place": "4 km WSW of Vare\u0161, Bosnia and Herzegovina",
+            "event_time_utc": "2025-02-12T00:26:02+00:00",
+            "depth_km": 10,
+            "latitude": 44.1483,
+            "longitude": 18.2715,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pd3z"
+        },
+        {
+            "id": "us7000pcwq",
+            "magnitude": 4.6,
+            "place": "5 km NE of Starigrad, Croatia",
+            "event_time_utc": "2025-02-11T17:43:01+00:00",
+            "depth_km": 10,
+            "latitude": 44.3255,
+            "longitude": 15.4995,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pcwq"
+        },
+        {
+            "id": "us7000pbtb",
+            "magnitude": 4.1,
+            "place": "35 km W of Diamante, Italy",
+            "event_time_utc": "2025-02-06T13:42:37+00:00",
+            "depth_km": 274.635,
+            "latitude": 39.6282,
+            "longitude": 15.4131,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pbtb"
+        },
+        {
+            "id": "us7000pbac",
+            "magnitude": 4.3,
+            "place": "1 km SW of Capaccio Scalo, Italy",
+            "event_time_utc": "2025-02-04T17:51:58+00:00",
+            "depth_km": 304.774,
+            "latitude": 40.4467,
+            "longitude": 14.9972,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pbac"
+        },
+        {
+            "id": "us7000pb8c",
+            "magnitude": 2.4,
+            "place": "2 km ESE of Siena, Italy",
+            "event_time_utc": "2025-02-03T23:07:32+00:00",
+            "depth_km": 10.646,
+            "latitude": 43.3042,
+            "longitude": 11.3608,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pb8c"
+        },
+        {
+            "id": "us6000pjjz",
+            "magnitude": 3.9,
+            "place": "2 km S of Ampezzo, Italy",
+            "event_time_utc": "2025-01-12T13:51:40+00:00",
+            "depth_km": 8.787,
+            "latitude": 46.3924,
+            "longitude": 12.7916,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pjjz"
+        },
+        {
+            "id": "us7000nx9v",
+            "magnitude": 3.9,
+            "place": "8 km WNW of Acceglio, Italy",
+            "event_time_utc": "2024-12-09T10:41:22+00:00",
+            "depth_km": 10,
+            "latitude": 44.5125,
+            "longitude": 6.9032,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000nx9v"
+        },
+        {
+            "id": "us7000nx8a",
+            "magnitude": 4.1,
+            "place": "3 km SSE of Formia, Italy",
+            "event_time_utc": "2024-12-09T06:33:02+00:00",
+            "depth_km": 10,
+            "latitude": 41.2334,
+            "longitude": 13.6285,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000nx8a"
+        },
+        {
+            "id": "us7000nry0",
+            "magnitude": 4.3,
+            "place": "18 km W of San Nicola Arcella, Italy",
+            "event_time_utc": "2024-11-15T08:05:48+00:00",
+            "depth_km": 265.157,
+            "latitude": 39.8411,
+            "longitude": 15.5658,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000nry0"
+        },
+        {
+            "id": "us7000nqt7",
+            "magnitude": 4,
+            "place": "5 km W of Larino, Italy",
+            "event_time_utc": "2024-11-09T00:51:25+00:00",
+            "depth_km": 10,
+            "latitude": 41.8108,
+            "longitude": 14.8565,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000nqt7"
+        },
+        {
+            "id": "us6000ntnz",
+            "magnitude": 4.1,
+            "place": "8 km ESE of Maslovare, Bosnia and Herzegovina",
+            "event_time_utc": "2024-09-22T12:23:14+00:00",
+            "depth_km": 7.699,
+            "latitude": 44.5278,
+            "longitude": 17.6243,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ntnz"
+        },
+        {
+            "id": "us7000ndu7",
+            "magnitude": 4.1,
+            "place": "62 km SE of Ramatuelle, France",
+            "event_time_utc": "2024-09-14T18:47:43+00:00",
+            "depth_km": 7.094,
+            "latitude": 42.8846,
+            "longitude": 7.2336,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ndu7"
+        },
+        {
+            "id": "us7000n73a",
+            "magnitude": 4,
+            "place": "7 km WSW of Ston, Croatia",
+            "event_time_utc": "2024-08-15T03:33:35+00:00",
+            "depth_km": 10,
+            "latitude": 42.8221,
+            "longitude": 17.6066,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000n73a"
+        },
+        {
+            "id": "us6000njt6",
+            "magnitude": 4.1,
+            "place": "5 km W of Rasinja, Croatia",
+            "event_time_utc": "2024-08-13T06:43:05+00:00",
+            "depth_km": 10,
+            "latitude": 46.1922,
+            "longitude": 16.6379,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000njt6"
+        },
+        {
+            "id": "us6000n08j",
+            "magnitude": 3,
+            "place": "1 km N of Collecchio, Italy",
+            "event_time_utc": "2024-05-22T09:34:21+00:00",
+            "depth_km": 35,
+            "latitude": 44.7672,
+            "longitude": 10.2195,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000n08j"
+        },
+        {
+            "id": "us6000mzw5",
+            "magnitude": 4.2,
+            "place": "3 km ENE of Procida, Italy",
+            "event_time_utc": "2024-05-20T19:46:13+00:00",
+            "depth_km": 8.769,
+            "latitude": 40.7649,
+            "longitude": 14.051,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000mzw5"
+        },
+        {
+            "id": "us6000mzvj",
+            "magnitude": 4.1,
+            "place": "2 km E of Bacoli, Italy",
+            "event_time_utc": "2024-05-20T18:10:03+00:00",
+            "depth_km": 9.045,
+            "latitude": 40.7925,
+            "longitude": 14.1036,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000mzvj"
+        },
+        {
+            "id": "us6000mwme",
+            "magnitude": 4.3,
+            "place": "71 km SW of Cittadella del Capo, Italy",
+            "event_time_utc": "2024-05-06T04:27:55+00:00",
+            "depth_km": 274.337,
+            "latitude": 39.1978,
+            "longitude": 15.1884,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000mwme"
+        },
+        {
+            "id": "us6000mvhh",
+            "magnitude": 3.8,
+            "place": "1 km SW of Rakovica, Croatia",
+            "event_time_utc": "2024-05-01T17:03:52+00:00",
+            "depth_km": 17.815,
+            "latitude": 44.9831,
+            "longitude": 15.6333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000mvhh"
+        },
+        {
+            "id": "us6000mvdz",
+            "magnitude": 4.2,
+            "place": "4 km SW of Rakovica, Croatia",
+            "event_time_utc": "2024-05-01T03:38:47+00:00",
+            "depth_km": 10,
+            "latitude": 44.9652,
+            "longitude": 15.6111,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000mvdz"
+        },
+        {
+            "id": "us7000mc0m",
+            "magnitude": 2.7,
+            "place": "0 km ENE of Pianura, Italy",
+            "event_time_utc": "2024-04-14T07:44:24+00:00",
+            "depth_km": 5,
+            "latitude": 40.8609,
+            "longitude": 14.1775,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000mc0m"
+        },
+        {
+            "id": "us7000m9ky",
+            "magnitude": 4.4,
+            "place": "20 km SW of Plu\u017eine, Montenegro",
+            "event_time_utc": "2024-04-03T10:40:44+00:00",
+            "depth_km": 18.163,
+            "latitude": 43.005,
+            "longitude": 18.699,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000m9ky"
+        },
+        {
+            "id": "us7000m9ep",
+            "magnitude": 4,
+            "place": "21 km ENE of Bile\u0107a, Bosnia and Herzegovina",
+            "event_time_utc": "2024-04-02T19:07:42+00:00",
+            "depth_km": 13.13,
+            "latitude": 42.9741,
+            "longitude": 18.6532,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000m9ep"
+        },
+        {
+            "id": "us7000m8em",
+            "magnitude": 4.3,
+            "place": "6 km ENE of Tramonti di Sopra, Italy",
+            "event_time_utc": "2024-03-27T21:19:37+00:00",
+            "depth_km": 10.179,
+            "latitude": 46.3313,
+            "longitude": 12.8741,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000m8em"
+        },
+        {
+            "id": "us6000mirj",
+            "magnitude": 5.4,
+            "place": "22 km ENE of Bile\u0107a, Bosnia and Herzegovina",
+            "event_time_utc": "2024-03-14T03:06:47+00:00",
+            "depth_km": 16.067,
+            "latitude": 42.954,
+            "longitude": 18.6883,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000mirj"
+        },
+        {
+            "id": "us6000mjmd",
+            "magnitude": 4.1,
+            "place": "105 km S of Ponza, Italy",
+            "event_time_utc": "2024-03-12T22:59:50+00:00",
+            "depth_km": 490.23,
+            "latitude": 39.9459,
+            "longitude": 12.8364,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000mjmd"
+        },
+        {
+            "id": "us7000m4u4",
+            "magnitude": 4.1,
+            "place": "57 km NNW of Malfa, Italy",
+            "event_time_utc": "2024-03-12T09:37:29+00:00",
+            "depth_km": 316.36,
+            "latitude": 39.0854,
+            "longitude": 14.6877,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000m4u4"
+        },
+        {
+            "id": "us7000m3ta",
+            "magnitude": 2.9,
+            "place": "2 km E of Zagreb, Croatia",
+            "event_time_utc": "2024-03-07T00:58:24+00:00",
+            "depth_km": 5,
+            "latitude": 45.8164,
+            "longitude": 16.014,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000m3ta"
+        },
+        {
+            "id": "us6000mg0c",
+            "magnitude": 4.6,
+            "place": "21 km W of San Nicola Arcella, Italy",
+            "event_time_utc": "2024-03-01T05:52:38+00:00",
+            "depth_km": 268.439,
+            "latitude": 39.8285,
+            "longitude": 15.5315,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000mg0c"
+        },
+        {
+            "id": "us7000m11g",
+            "magnitude": 4.4,
+            "place": "94 km S of Babino Polje, Croatia",
+            "event_time_utc": "2024-02-23T09:23:18+00:00",
+            "depth_km": 10,
+            "latitude": 41.883,
+            "longitude": 17.5546,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000m11g"
+        },
+        {
+            "id": "us7000m0q4",
+            "magnitude": 4.1,
+            "place": "9 km SSW of Neum, Bosnia and Herzegovina",
+            "event_time_utc": "2024-02-22T06:03:38+00:00",
+            "depth_km": 10,
+            "latitude": 42.8445,
+            "longitude": 17.5782,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000m0q4"
+        },
+        {
+            "id": "us7000m04x",
+            "magnitude": 4.3,
+            "place": "11 km NNE of Hotonj, Bosnia and Herzegovina",
+            "event_time_utc": "2024-02-19T08:22:04+00:00",
+            "depth_km": 10,
+            "latitude": 43.9809,
+            "longitude": 18.4579,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000m04x"
+        },
+        {
+            "id": "us7000lzuy",
+            "magnitude": 3.7,
+            "place": "5 km SSE of Modigliana, Italy",
+            "event_time_utc": "2024-02-17T11:49:34+00:00",
+            "depth_km": 1.267,
+            "latitude": 44.1103,
+            "longitude": 11.8128,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000lzuy"
+        },
+        {
+            "id": "us7000lzs8",
+            "magnitude": 4.1,
+            "place": "3 km SE of Basilicanova, Italy",
+            "event_time_utc": "2024-02-17T00:23:29+00:00",
+            "depth_km": 31.637,
+            "latitude": 44.675,
+            "longitude": 10.3817,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000lzs8"
+        },
+        {
+            "id": "us7000lyb3",
+            "magnitude": 4.1,
+            "place": "1 km SSE of Bella, Italy",
+            "event_time_utc": "2024-02-10T15:10:29+00:00",
+            "depth_km": 1.171,
+            "latitude": 40.7467,
+            "longitude": 15.5501,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000lyb3"
+        },
+        {
+            "id": "us7000lxz4",
+            "magnitude": 4.2,
+            "place": "1 km ENE of Pilastro, Italy",
+            "event_time_utc": "2024-02-09T12:06:22+00:00",
+            "depth_km": 24.964,
+            "latitude": 44.6852,
+            "longitude": 10.3074,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000lxz4"
+        },
+        {
+            "id": "us7000lui0",
+            "magnitude": 4.1,
+            "place": "4 km NNE of San Gregorio Magno, Italy",
+            "event_time_utc": "2024-01-28T09:23:23+00:00",
+            "depth_km": 10,
+            "latitude": 40.6984,
+            "longitude": 15.4246,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000lui0"
+        },
+        {
+            "id": "us7000lu20",
+            "magnitude": 4.4,
+            "place": "53 km WSW of Cittadella del Capo, Italy",
+            "event_time_utc": "2024-01-26T15:00:25+00:00",
+            "depth_km": 272.127,
+            "latitude": 39.3284,
+            "longitude": 15.3318,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000lu20"
+        },
+        {
+            "id": "us6000m227",
+            "magnitude": 2.4,
+            "place": "6 km SW of Koran, Bosnia and Herzegovina",
+            "event_time_utc": "2024-01-05T16:50:34+00:00",
+            "depth_km": 10,
+            "latitude": 43.7704,
+            "longitude": 18.5108,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000m227"
+        },
+        {
+            "id": "us6000m0pp",
+            "magnitude": 4.7,
+            "place": "9 km S of \u017deljezno Polje, Bosnia and Herzegovina",
+            "event_time_utc": "2023-12-30T20:43:24+00:00",
+            "depth_km": 10.239,
+            "latitude": 44.3112,
+            "longitude": 17.9273,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000m0pp"
+        },
+        {
+            "id": "us6000m01b",
+            "magnitude": 3.8,
+            "place": "5 km N of Grohote, Croatia",
+            "event_time_utc": "2023-12-27T18:56:08+00:00",
+            "depth_km": 10,
+            "latitude": 43.4424,
+            "longitude": 16.2943,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000m01b"
+        },
+        {
+            "id": "us6000m00f",
+            "magnitude": 2.7,
+            "place": "3 km SSE of Okrug Gornji, Croatia",
+            "event_time_utc": "2023-12-27T05:32:44+00:00",
+            "depth_km": 10,
+            "latitude": 43.4622,
+            "longitude": 16.286,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000m00f"
+        },
+        {
+            "id": "us6000lprc",
+            "magnitude": 4.1,
+            "place": "10 km WSW of Acceglio, Italy",
+            "event_time_utc": "2023-11-21T05:52:05+00:00",
+            "depth_km": 6.606,
+            "latitude": 44.4556,
+            "longitude": 6.8591,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000lprc"
+        },
+        {
+            "id": "us6000lpk2",
+            "magnitude": 4.6,
+            "place": "103 km SSW of Anacapri, Italy",
+            "event_time_utc": "2023-11-20T06:46:28+00:00",
+            "depth_km": 409.477,
+            "latitude": 39.6907,
+            "longitude": 13.7452,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000lpk2"
+        }
+    ],
+    "strongest_events": [
+        {
+            "id": "usp0001ay4",
+            "magnitude": 6.9,
+            "place": "2 km N of Cairano, Italy",
+            "event_time_utc": "1980-11-23T18:34:53+00:00",
+            "depth_km": 10,
+            "latitude": 40.914,
+            "longitude": 15.366,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0001ay4"
+        },
+        {
+            "id": "iscgem913880",
+            "magnitude": 6.69,
+            "place": "4 km WNW of San Benedetto dei Marsi, Italy",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 42.025,
+            "longitude": 13.578,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem913880"
+        },
+        {
+            "id": "iscgem907513",
+            "magnitude": 6.64,
+            "place": "3 km SSW of Bisaccia Nuova, Italy",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 40.98,
+            "longitude": 15.341,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem907513"
+        },
+        {
+            "id": "us1000731j",
+            "magnitude": 6.6,
+            "place": "5 km ESE of Preci, Italy",
+            "event_time_utc": "2016-10-30T06:40:18+00:00",
+            "depth_km": 8,
+            "latitude": 42.8621,
+            "longitude": 13.0961,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000731j"
+        },
+        {
+            "id": "iscgemsup16958099",
+            "magnitude": 6.5,
+            "place": "72 km WSW of Cittadella del Capo, Italy",
+            "event_time_utc": null,
+            "depth_km": 260,
+            "latitude": 39.361,
+            "longitude": 15.068,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgemsup16958099"
+        },
+        {
+            "id": "usp0000g5v",
+            "magnitude": 6.5,
+            "place": "3 km SW of Prato, Italy",
+            "event_time_utc": "1976-05-06T20:00:11+00:00",
+            "depth_km": 9,
+            "latitude": 46.356,
+            "longitude": 13.275,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0000g5v"
+        },
+        {
+            "id": "us6000d3zh",
+            "magnitude": 6.4,
+            "place": "2 km WSW of Petrinja, Croatia",
+            "event_time_utc": "2020-12-29T11:19:54+00:00",
+            "depth_km": 10,
+            "latitude": 45.4244,
+            "longitude": 16.2573,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000d3zh"
+        },
+        {
+            "id": "iscgem912596",
+            "magnitude": 6.31,
+            "place": "2 km SW of Molazzana, Italy",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 44.058,
+            "longitude": 10.395,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem912596"
+        },
+        {
+            "id": "iscgem872748",
+            "magnitude": 6.3,
+            "place": "58 km SSE of San Lorenzo al Mare, Italy",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 43.343,
+            "longitude": 8.153,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem872748"
+        },
+        {
+            "id": "usp000gvtu",
+            "magnitude": 6.3,
+            "place": "3 km SE of Sassa, Italy",
+            "event_time_utc": "2009-04-06T01:32:39+00:00",
+            "depth_km": 8.8,
+            "latitude": 42.334,
+            "longitude": 13.334,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gvtu"
+        },
+        {
+            "id": "iscgem912821",
+            "magnitude": 6.23,
+            "place": "1 km NNW of Vicchio, Italy",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 43.949,
+            "longitude": 11.454,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem912821"
+        },
+        {
+            "id": "iscgem874017",
+            "magnitude": 6.23,
+            "place": "4 km ENE of Ba\u0161ka Voda, Croatia",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 43.369,
+            "longitude": 17.006,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem874017"
+        }
+    ],
+    "from_cache": false
+}

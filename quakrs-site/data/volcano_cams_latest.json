@@ -1,33 +1,12 @@
 {
     "ok": true,
     "provider": "Curated Observatory Cameras",
-    "generated_at_ts": 1773149458,
-    "generated_at": "2026-03-10T13:30:58+00:00",
+    "generated_at_ts": 1773443551,
+    "generated_at": "2026-03-13T23:12:31+00:00",
     "cams_count": 12,
     "countries_count": 4,
     "snapshot_enabled_count": 8,
     "cams": [
-        {
-            "id": "stromboli-live-italy",
-            "name": "Stromboli Live",
-            "volcano": "Stromboli",
-            "country": "Italy",
-            "source": "INGV Catania",
-            "status": "Monitoring",
-            "stream_url": "https://www.ct.ingv.it/sezioniesterne/StreamingEolie.php",
-            "embed_url": "https://garr.tv/videos/embed/8790a7a8-211c-4794-bcb2-41e24cd2e322",
-            "snapshot_url": null,
-            "snapshot_fallback_available": false,
-            "priority_score": 58,
-            "priority_reasons": [
-                "Inline live player",
-                "Continuing eruptive activity",
-                "1 hotspot reports"
-            ],
-            "hotspot_status": "Continuing Eruptive Activity",
-            "hotspot_reports": 1,
-            "hotspot_new_eruptive_reports": 0
-        },
         {
             "id": "kilauea-b1cam-united-states",
             "name": "Kilauea B1cam",
@@ -39,11 +18,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/B1cam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -60,11 +40,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/F1cam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -81,11 +62,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/K2cam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -102,11 +84,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/cams/KPcam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -123,11 +106,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/KWcam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -144,11 +128,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/V1cam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -165,11 +150,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/cams/V2cam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -186,32 +172,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/cams/V3cam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
-            ],
-            "hotspot_status": "Continuing Eruptive Activity",
-            "hotspot_reports": 1,
-            "hotspot_new_eruptive_reports": 0
-        },
-        {
-            "id": "fuego-guatemala",
-            "name": "Fuego",
-            "volcano": "Fuego",
-            "country": "Guatemala",
-            "source": "Michigan Tech (with INSIVUMEH support)",
-            "status": "Monitoring",
-            "stream_url": "https://ovfuego-norte.geo.mtu.edu/animations.php",
-            "embed_url": null,
-            "snapshot_url": null,
-            "snapshot_fallback_available": false,
-            "priority_score": 42,
-            "priority_reasons": [
-                "External-only source",
-                "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -254,9 +220,7 @@
             "hotspot_status": null,
             "hotspot_reports": 0,
             "hotspot_new_eruptive_reports": 0
-        }
-    ],
-    "hot_now": [
+        },
         {
             "id": "stromboli-live-italy",
             "name": "Stromboli Live",
@@ -268,16 +232,35 @@
             "embed_url": "https://garr.tv/videos/embed/8790a7a8-211c-4794-bcb2-41e24cd2e322",
             "snapshot_url": null,
             "snapshot_fallback_available": false,
-            "priority_score": 58,
+            "priority_score": 26,
             "priority_reasons": [
-                "Inline live player",
-                "Continuing eruptive activity",
-                "1 hotspot reports"
+                "Inline live player"
             ],
-            "hotspot_status": "Continuing Eruptive Activity",
-            "hotspot_reports": 1,
+            "hotspot_status": null,
+            "hotspot_reports": 0,
             "hotspot_new_eruptive_reports": 0
         },
+        {
+            "id": "fuego-guatemala",
+            "name": "Fuego",
+            "volcano": "Fuego",
+            "country": "Guatemala",
+            "source": "Michigan Tech (with INSIVUMEH support)",
+            "status": "Monitoring",
+            "stream_url": "https://ovfuego-norte.geo.mtu.edu/animations.php",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        }
+    ],
+    "hot_now": [
         {
             "id": "kilauea-b1cam-united-states",
             "name": "Kilauea B1cam",
@@ -289,11 +272,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/B1cam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -310,32 +294,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/F1cam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
-            ],
-            "hotspot_status": "Continuing Eruptive Activity",
-            "hotspot_reports": 1,
-            "hotspot_new_eruptive_reports": 0
-        },
-        {
-            "id": "fuego-guatemala",
-            "name": "Fuego",
-            "volcano": "Fuego",
-            "country": "Guatemala",
-            "source": "Michigan Tech (with INSIVUMEH support)",
-            "status": "Monitoring",
-            "stream_url": "https://ovfuego-norte.geo.mtu.edu/animations.php",
-            "embed_url": null,
-            "snapshot_url": null,
-            "snapshot_fallback_available": false,
-            "priority_score": 42,
-            "priority_reasons": [
-                "External-only source",
-                "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -374,6 +338,44 @@
             "priority_score": 26,
             "priority_reasons": [
                 "Inline live player"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "stromboli-live-italy",
+            "name": "Stromboli Live",
+            "volcano": "Stromboli",
+            "country": "Italy",
+            "source": "INGV Catania",
+            "status": "Monitoring",
+            "stream_url": "https://www.ct.ingv.it/sezioniesterne/StreamingEolie.php",
+            "embed_url": "https://garr.tv/videos/embed/8790a7a8-211c-4794-bcb2-41e24cd2e322",
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 26,
+            "priority_reasons": [
+                "Inline live player"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "fuego-guatemala",
+            "name": "Fuego",
+            "volcano": "Fuego",
+            "country": "Guatemala",
+            "source": "Michigan Tech (with INSIVUMEH support)",
+            "status": "Monitoring",
+            "stream_url": "https://ovfuego-norte.geo.mtu.edu/animations.php",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
             ],
             "hotspot_status": null,
             "hotspot_reports": 0,
@@ -392,11 +394,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/K2cam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -413,11 +416,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/cams/KPcam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -434,11 +438,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/KWcam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -455,11 +460,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/V1cam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -476,11 +482,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/cams/V2cam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
@@ -497,11 +504,12 @@
             "embed_url": null,
             "snapshot_url": "https://volcanoes.usgs.gov/cams/V3cam/images/M.jpg",
             "snapshot_fallback_available": true,
-            "priority_score": 51,
+            "priority_score": 57,
             "priority_reasons": [
                 "Direct snapshot available",
                 "Continuing eruptive activity",
-                "1 hotspot reports"
+                "1 hotspot reports",
+                "Updated in last 72h"
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,

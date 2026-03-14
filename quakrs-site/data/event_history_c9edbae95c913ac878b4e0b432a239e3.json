@@ -1,0 +1,944 @@
+{
+    "ok": true,
+    "provider": "USGS FDSN Historical Archive",
+    "generated_at_ts": 1773437591,
+    "generated_at": "2026-03-13T21:33:11+00:00",
+    "query": {
+        "lat": -8.98,
+        "lon": 124.18,
+        "radius_km": 500,
+        "min_magnitude": null,
+        "start": "1899-12-31",
+        "end": "2026-03-12"
+    },
+    "page": 1,
+    "per_page": 80,
+    "total_pages": 1,
+    "total_events": 0,
+    "events_count": 80,
+    "events": [
+        {
+            "id": "us7000s3i3",
+            "magnitude": 5,
+            "place": "40 km ENE of Waingapu, Indonesia",
+            "event_time_utc": "2026-03-10T21:45:36+00:00",
+            "depth_km": 49.917,
+            "latitude": -9.4883,
+            "longitude": 120.5923,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s3i3"
+        },
+        {
+            "id": "us7000s2n1",
+            "magnitude": 4.9,
+            "place": "47 km NNW of Waingapu, Indonesia",
+            "event_time_utc": "2026-03-06T20:51:28+00:00",
+            "depth_km": 44.17,
+            "latitude": -9.2498,
+            "longitude": 120.1385,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s2n1"
+        },
+        {
+            "id": "us7000s25r",
+            "magnitude": 4.6,
+            "place": "199 km N of Likis\u00e1, Timor Leste",
+            "event_time_utc": "2026-03-05T01:43:30+00:00",
+            "depth_km": 546.346,
+            "latitude": -6.7905,
+            "longitude": 125.1486,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s25r"
+        },
+        {
+            "id": "us7000s1gx",
+            "magnitude": 4.9,
+            "place": "125 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2026-03-02T17:40:14+00:00",
+            "depth_km": 137.161,
+            "latitude": -7.586,
+            "longitude": 127.6466,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s1gx"
+        },
+        {
+            "id": "us7000s15a",
+            "magnitude": 4.5,
+            "place": "40 km SW of Waingapu, Indonesia",
+            "event_time_utc": "2026-03-01T00:25:45+00:00",
+            "depth_km": 70.706,
+            "latitude": -9.8644,
+            "longitude": 119.9565,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s15a"
+        },
+        {
+            "id": "us6000sadr",
+            "magnitude": 4.1,
+            "place": "134 km ENE of Lospalos, Timor Leste",
+            "event_time_utc": "2026-02-20T13:01:58+00:00",
+            "depth_km": 67.054,
+            "latitude": -7.909,
+            "longitude": 128.0484,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000sadr"
+        },
+        {
+            "id": "us7000s207",
+            "magnitude": 4.4,
+            "place": "241 km NNE of Lospalos, Timor Leste",
+            "event_time_utc": "2026-02-18T05:13:03+00:00",
+            "depth_km": 383.101,
+            "latitude": -6.5205,
+            "longitude": 127.8813,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s207"
+        },
+        {
+            "id": "us6000s9rj",
+            "magnitude": 4.6,
+            "place": "175 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2026-02-17T10:57:15+00:00",
+            "depth_km": 152.965,
+            "latitude": -7.502,
+            "longitude": 128.2197,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s9rj"
+        },
+        {
+            "id": "us6000s943",
+            "magnitude": 4.1,
+            "place": "269 km NNE of Lospalos, Timor Leste",
+            "event_time_utc": "2026-02-14T00:17:29+00:00",
+            "depth_km": 387.567,
+            "latitude": -6.1515,
+            "longitude": 127.5847,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s943"
+        },
+        {
+            "id": "us7000s0it",
+            "magnitude": 4.4,
+            "place": "40 km SE of Kupang, Indonesia",
+            "event_time_utc": "2026-02-12T11:35:00+00:00",
+            "depth_km": 10,
+            "latitude": -10.3855,
+            "longitude": 123.909,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0it"
+        },
+        {
+            "id": "us7000s0hz",
+            "magnitude": 4.1,
+            "place": "67 km NNW of Ende, Indonesia",
+            "event_time_utc": "2026-02-11T07:42:46+00:00",
+            "depth_km": 190.029,
+            "latitude": -8.2618,
+            "longitude": 121.4784,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0hz"
+        },
+        {
+            "id": "us7000s0h6",
+            "magnitude": 4.2,
+            "place": "141 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2026-02-11T02:13:47+00:00",
+            "depth_km": 156.628,
+            "latitude": -7.4621,
+            "longitude": 127.719,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s0h6"
+        },
+        {
+            "id": "us6000s7nc",
+            "magnitude": 4.3,
+            "place": "187 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2026-02-10T17:26:45+00:00",
+            "depth_km": 132.471,
+            "latitude": -7.5538,
+            "longitude": 128.392,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s7nc"
+        },
+        {
+            "id": "us6000s6fl",
+            "magnitude": 4.2,
+            "place": "167 km NNW of Pante Makasar, Timor Leste",
+            "event_time_utc": "2026-02-04T16:38:25+00:00",
+            "depth_km": 273.37,
+            "latitude": -7.7532,
+            "longitude": 123.9407,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s6fl"
+        },
+        {
+            "id": "us6000s90u",
+            "magnitude": 4.2,
+            "place": "212 km NNE of Lospalos, Timor Leste",
+            "event_time_utc": "2026-01-30T19:59:51+00:00",
+            "depth_km": 403.744,
+            "latitude": -6.7138,
+            "longitude": 127.6631,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s90u"
+        },
+        {
+            "id": "us6000s900",
+            "magnitude": 4.1,
+            "place": "131 km ENE of Maumere, Indonesia",
+            "event_time_utc": "2026-01-30T06:35:53+00:00",
+            "depth_km": 230.212,
+            "latitude": -8.0318,
+            "longitude": 123.2436,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s900"
+        },
+        {
+            "id": "us7000rs4t",
+            "magnitude": 4.2,
+            "place": "56 km WNW of Pante Makasar, Timor Leste",
+            "event_time_utc": "2026-01-26T15:00:12+00:00",
+            "depth_km": 95.7,
+            "latitude": -9.0524,
+            "longitude": 123.8889,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rs4t"
+        },
+        {
+            "id": "us6000s82r",
+            "magnitude": 4.5,
+            "place": "131 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2026-01-26T11:02:01+00:00",
+            "depth_km": 158.224,
+            "latitude": -7.5461,
+            "longitude": 127.6819,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s82r"
+        },
+        {
+            "id": "us7000rs1m",
+            "magnitude": 4.3,
+            "place": "127 km N of Labuan Bajo, Indonesia",
+            "event_time_utc": "2026-01-26T01:56:24+00:00",
+            "depth_km": 419.774,
+            "latitude": -7.3494,
+            "longitude": 120.0325,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rs1m"
+        },
+        {
+            "id": "us7000rs19",
+            "magnitude": 5.1,
+            "place": "135 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2026-01-26T00:54:01+00:00",
+            "depth_km": 169.506,
+            "latitude": -7.5173,
+            "longitude": 127.7074,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rs19"
+        },
+        {
+            "id": "us6000s7wd",
+            "magnitude": 4.2,
+            "place": "136 km NNW of Pante Makasar, Timor Leste",
+            "event_time_utc": "2026-01-25T22:54:40+00:00",
+            "depth_km": 161.102,
+            "latitude": -8.0595,
+            "longitude": 123.9126,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s7wd"
+        },
+        {
+            "id": "us7000rr44",
+            "magnitude": 4.4,
+            "place": "167 km N of Baukau, Timor Leste",
+            "event_time_utc": "2026-01-21T14:30:20+00:00",
+            "depth_km": 402.82,
+            "latitude": -6.9749,
+            "longitude": 126.6481,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rr44"
+        },
+        {
+            "id": "us7000rr2j",
+            "magnitude": 4.1,
+            "place": "116 km S of Waingapu, Indonesia",
+            "event_time_utc": "2026-01-21T09:16:51+00:00",
+            "depth_km": 14.17,
+            "latitude": -10.7084,
+            "longitude": 120.3625,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rr2j"
+        },
+        {
+            "id": "us7000rqj1",
+            "magnitude": 4.4,
+            "place": "119 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2026-01-19T07:49:16+00:00",
+            "depth_km": 147.237,
+            "latitude": -7.6251,
+            "longitude": 127.6049,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rqj1"
+        },
+        {
+            "id": "us6000s607",
+            "magnitude": 4.3,
+            "place": "43 km NNE of Maumere, Indonesia",
+            "event_time_utc": "2026-01-15T16:27:42+00:00",
+            "depth_km": 192.676,
+            "latitude": -8.2625,
+            "longitude": 122.3851,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s607"
+        },
+        {
+            "id": "us7000rple",
+            "magnitude": 4.9,
+            "place": "61 km SSE of Maumere, Indonesia",
+            "event_time_utc": "2026-01-14T14:39:21+00:00",
+            "depth_km": 92.13,
+            "latitude": -9.1173,
+            "longitude": 122.463,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rple"
+        },
+        {
+            "id": "us7000rntz",
+            "magnitude": 4.3,
+            "place": "165 km N of Ruteng, Indonesia",
+            "event_time_utc": "2026-01-10T03:39:59+00:00",
+            "depth_km": 572.11,
+            "latitude": -7.1162,
+            "longitude": 120.4717,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rntz"
+        },
+        {
+            "id": "us7000rnfl",
+            "magnitude": 4.6,
+            "place": "173 km N of Manatutu, Timor Leste",
+            "event_time_utc": "2026-01-08T14:30:39+00:00",
+            "depth_km": 495.928,
+            "latitude": -6.9405,
+            "longitude": 125.9368,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rnfl"
+        },
+        {
+            "id": "us7000rrdf",
+            "magnitude": 4.2,
+            "place": "45 km WNW of Pante Makasar, Timor Leste",
+            "event_time_utc": "2026-01-01T05:00:37+00:00",
+            "depth_km": 88.753,
+            "latitude": -9.0882,
+            "longitude": 123.9896,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rrdf"
+        },
+        {
+            "id": "us7000rqw1",
+            "magnitude": 4.4,
+            "place": "27 km NE of Soe, Indonesia",
+            "event_time_utc": "2025-12-29T11:32:44+00:00",
+            "depth_km": 10,
+            "latitude": -9.7209,
+            "longitude": 124.4911,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rqw1"
+        },
+        {
+            "id": "us7000rqlt",
+            "magnitude": 4,
+            "place": "34 km WNW of Pante Makasar, Timor Leste",
+            "event_time_utc": "2025-12-27T18:56:33+00:00",
+            "depth_km": 94.912,
+            "latitude": -9.0626,
+            "longitude": 124.0975,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rqlt"
+        },
+        {
+            "id": "us7000rq6t",
+            "magnitude": 4.4,
+            "place": "9 km SW of Pante Makasar, Timor Leste",
+            "event_time_utc": "2025-12-26T20:48:48+00:00",
+            "depth_km": 32.198,
+            "latitude": -9.2676,
+            "longitude": 124.3365,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rq6t"
+        },
+        {
+            "id": "us7000rq2t",
+            "magnitude": 4.3,
+            "place": "272 km E of Katobu, Indonesia",
+            "event_time_utc": "2025-12-23T03:16:44+00:00",
+            "depth_km": 521.228,
+            "latitude": -4.6583,
+            "longitude": 125.1727,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rq2t"
+        },
+        {
+            "id": "us7000rpfr",
+            "magnitude": 4.1,
+            "place": "133 km N of Baukau, Timor Leste",
+            "event_time_utc": "2025-12-19T12:36:58+00:00",
+            "depth_km": 330.724,
+            "latitude": -7.2788,
+            "longitude": 126.5952,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rpfr"
+        },
+        {
+            "id": "us6000rvfi",
+            "magnitude": 4.3,
+            "place": "176 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2025-12-17T08:51:57+00:00",
+            "depth_km": 152.143,
+            "latitude": -7.5435,
+            "longitude": 128.2641,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rvfi"
+        },
+        {
+            "id": "us7000rnnp",
+            "magnitude": 4.4,
+            "place": "10 km NNW of Katobu, Indonesia",
+            "event_time_utc": "2025-12-16T05:41:29+00:00",
+            "depth_km": 10,
+            "latitude": -4.7414,
+            "longitude": 122.6823,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rnnp"
+        },
+        {
+            "id": "us6000rusz",
+            "magnitude": 4.6,
+            "place": "147 km N of Metinaro, Timor Leste",
+            "event_time_utc": "2025-12-14T11:55:42+00:00",
+            "depth_km": 504.307,
+            "latitude": -7.1995,
+            "longitude": 125.6981,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rusz"
+        },
+        {
+            "id": "us7000rn7n",
+            "magnitude": 4.4,
+            "place": "64 km SSE of Soe, Indonesia",
+            "event_time_utc": "2025-12-13T18:15:37+00:00",
+            "depth_km": 10,
+            "latitude": -10.4067,
+            "longitude": 124.4798,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rn7n"
+        },
+        {
+            "id": "us6000ru4p",
+            "magnitude": 4.4,
+            "place": "54 km S of Baubau, Indonesia",
+            "event_time_utc": "2025-12-11T14:42:07+00:00",
+            "depth_km": 10,
+            "latitude": -5.9523,
+            "longitude": 122.5618,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ru4p"
+        },
+        {
+            "id": "us7000rmli",
+            "magnitude": 4.1,
+            "place": "48 km NNW of Naisano Dua, Indonesia",
+            "event_time_utc": "2025-12-09T21:51:09+00:00",
+            "depth_km": 35,
+            "latitude": -9.1708,
+            "longitude": 123.6698,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rmli"
+        },
+        {
+            "id": "us7000rmsx",
+            "magnitude": 4.5,
+            "place": "56 km NNE of Baukau, Timor Leste",
+            "event_time_utc": "2025-12-08T12:19:42+00:00",
+            "depth_km": 10,
+            "latitude": -7.9926,
+            "longitude": 126.6309,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rmsx"
+        },
+        {
+            "id": "us6000rtcl",
+            "magnitude": 4.1,
+            "place": "205 km NW of Maubara, Timor Leste",
+            "event_time_utc": "2025-12-08T10:36:48+00:00",
+            "depth_km": 559.942,
+            "latitude": -7.3832,
+            "longitude": 123.8029,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rtcl"
+        },
+        {
+            "id": "us6000rsxw",
+            "magnitude": 4.2,
+            "place": "21 km SSE of Ruteng, Indonesia",
+            "event_time_utc": "2025-12-06T20:06:45+00:00",
+            "depth_km": 120.656,
+            "latitude": -8.799,
+            "longitude": 120.5048,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rsxw"
+        },
+        {
+            "id": "us6000rsvk",
+            "magnitude": 4.3,
+            "place": "144 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2025-12-06T04:03:07+00:00",
+            "depth_km": 165.544,
+            "latitude": -7.5002,
+            "longitude": 127.8101,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rsvk"
+        },
+        {
+            "id": "us7000rf1i",
+            "magnitude": 4.6,
+            "place": "179 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2025-12-02T12:30:13+00:00",
+            "depth_km": 143.843,
+            "latitude": -7.4197,
+            "longitude": 128.1947,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rf1i"
+        },
+        {
+            "id": "us6000rvhs",
+            "magnitude": 4.2,
+            "place": "184 km NNE of Lospalos, Timor Leste",
+            "event_time_utc": "2025-11-30T04:18:12+00:00",
+            "depth_km": 378.31,
+            "latitude": -6.8976,
+            "longitude": 127.3696,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rvhs"
+        },
+        {
+            "id": "us7000rdit",
+            "magnitude": 4.5,
+            "place": "167 km ENE of Lospalos, Timor Leste",
+            "event_time_utc": "2025-11-24T18:43:27+00:00",
+            "depth_km": 89.733,
+            "latitude": -7.7519,
+            "longitude": 128.312,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rdit"
+        },
+        {
+            "id": "us6000rq02",
+            "magnitude": 4.3,
+            "place": "123 km N of Baukau, Timor Leste",
+            "event_time_utc": "2025-11-23T23:20:02+00:00",
+            "depth_km": 432.992,
+            "latitude": -7.371,
+            "longitude": 126.2895,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rq02"
+        },
+        {
+            "id": "us6000rpuy",
+            "magnitude": 4.6,
+            "place": "142 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2025-11-22T16:30:59+00:00",
+            "depth_km": 165.364,
+            "latitude": -7.5021,
+            "longitude": 127.7856,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rpuy"
+        },
+        {
+            "id": "us6000rpqr",
+            "magnitude": 4.3,
+            "place": "50 km W of Pante Makasar, Timor Leste",
+            "event_time_utc": "2025-11-21T22:56:22+00:00",
+            "depth_km": 96.853,
+            "latitude": -9.1482,
+            "longitude": 123.9283,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rpqr"
+        },
+        {
+            "id": "us6000rpnn",
+            "magnitude": 4.4,
+            "place": "183 km NNW of Likis\u00e1, Timor Leste",
+            "event_time_utc": "2025-11-21T17:43:38+00:00",
+            "depth_km": 562.786,
+            "latitude": -6.9643,
+            "longitude": 125.0035,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rpnn"
+        },
+        {
+            "id": "us6000rpfe",
+            "magnitude": 4.4,
+            "place": "45 km NNW of Pante Makasar, Timor Leste",
+            "event_time_utc": "2025-11-20T19:08:35+00:00",
+            "depth_km": 98.987,
+            "latitude": -8.8417,
+            "longitude": 124.1877,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rpfe"
+        },
+        {
+            "id": "us6000rng8",
+            "magnitude": 4.5,
+            "place": "33 km N of Naisano Dua, Indonesia",
+            "event_time_utc": "2025-11-15T11:53:11+00:00",
+            "depth_km": 102.266,
+            "latitude": -9.2994,
+            "longitude": 123.793,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rng8"
+        },
+        {
+            "id": "us6000rmpl",
+            "magnitude": 4.4,
+            "place": "36 km ESE of Lospalos, Timor Leste",
+            "event_time_utc": "2025-11-11T01:23:15+00:00",
+            "depth_km": 35,
+            "latitude": -8.6238,
+            "longitude": 127.3137,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmpl"
+        },
+        {
+            "id": "us6000rmpn",
+            "magnitude": 4.2,
+            "place": "126 km NNE of Lospalos, Timor Leste",
+            "event_time_utc": "2025-11-11T01:10:23+00:00",
+            "depth_km": 183.306,
+            "latitude": -7.53,
+            "longitude": 127.5634,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmpn"
+        },
+        {
+            "id": "us7000reg7",
+            "magnitude": 4,
+            "place": "30 km W of Kupang, Indonesia",
+            "event_time_utc": "2025-11-11T00:07:43+00:00",
+            "depth_km": 75.872,
+            "latitude": -10.1177,
+            "longitude": 123.3333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000reg7"
+        },
+        {
+            "id": "us7000refq",
+            "magnitude": 4,
+            "place": "41 km NE of Naisano Dua, Indonesia",
+            "event_time_utc": "2025-11-10T16:18:30+00:00",
+            "depth_km": 92.228,
+            "latitude": -9.3174,
+            "longitude": 124.0143,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000refq"
+        },
+        {
+            "id": "us7000rdz8",
+            "magnitude": 4.4,
+            "place": "54 km NNW of Ende, Indonesia",
+            "event_time_utc": "2025-11-07T20:55:10+00:00",
+            "depth_km": 185.872,
+            "latitude": -8.4152,
+            "longitude": 121.4124,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000rdz8"
+        },
+        {
+            "id": "us6000rlv3",
+            "magnitude": 4.3,
+            "place": "53 km WNW of Pante Makasar, Timor Leste",
+            "event_time_utc": "2025-11-06T12:02:52+00:00",
+            "depth_km": 84.782,
+            "latitude": -9.0454,
+            "longitude": 123.9238,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rlv3"
+        },
+        {
+            "id": "us6000rl01",
+            "magnitude": 4.1,
+            "place": "114 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2025-11-02T03:53:48+00:00",
+            "depth_km": 174.724,
+            "latitude": -7.6961,
+            "longitude": 127.6235,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rl01"
+        },
+        {
+            "id": "us6000rkzu",
+            "magnitude": 5.2,
+            "place": "126 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2025-11-02T03:09:18+00:00",
+            "depth_km": 148.845,
+            "latitude": -7.5821,
+            "longitude": 127.6454,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rkzu"
+        },
+        {
+            "id": "us6000rjlr",
+            "magnitude": 4.6,
+            "place": "54 km WNW of Pante Makasar, Timor Leste",
+            "event_time_utc": "2025-10-26T17:34:45+00:00",
+            "depth_km": 89.944,
+            "latitude": -8.9813,
+            "longitude": 123.9429,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjlr"
+        },
+        {
+            "id": "us6000rjkv",
+            "magnitude": 6.2,
+            "place": "57 km NW of Pante Makasar, Timor Leste",
+            "event_time_utc": "2025-10-26T17:04:25+00:00",
+            "depth_km": 75,
+            "latitude": -8.8524,
+            "longitude": 123.9887,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjkv"
+        },
+        {
+            "id": "us6000rjkq",
+            "magnitude": 4.7,
+            "place": "167 km SSW of Baubau, Indonesia",
+            "event_time_utc": "2025-10-26T16:18:55+00:00",
+            "depth_km": 10,
+            "latitude": -6.7723,
+            "longitude": 121.8347,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjkq"
+        },
+        {
+            "id": "us6000rjgy",
+            "magnitude": 4.3,
+            "place": "118 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "2025-10-25T19:17:56+00:00",
+            "depth_km": 148.708,
+            "latitude": -7.6963,
+            "longitude": 127.6784,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjgy"
+        },
+        {
+            "id": "us6000rjez",
+            "magnitude": 4.5,
+            "place": "264 km N of Lospalos, Timor Leste",
+            "event_time_utc": "2025-10-25T11:09:58+00:00",
+            "depth_km": 411.927,
+            "latitude": -6.1749,
+            "longitude": 127.4623,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjez"
+        },
+        {
+            "id": "us6000rja1",
+            "magnitude": 4.3,
+            "place": "122 km NNE of Lospalos, Timor Leste",
+            "event_time_utc": "2025-10-24T19:23:06+00:00",
+            "depth_km": 163.157,
+            "latitude": -7.5953,
+            "longitude": 127.6016,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rja1"
+        },
+        {
+            "id": "us6000rj23",
+            "magnitude": 5.1,
+            "place": "82 km WNW of Pante Makasar, Timor Leste",
+            "event_time_utc": "2025-10-24T04:46:35+00:00",
+            "depth_km": 109.792,
+            "latitude": -8.8044,
+            "longitude": 123.7428,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rj23"
+        },
+        {
+            "id": "us6000riva",
+            "magnitude": 4.1,
+            "place": "201 km N of Baukau, Timor Leste",
+            "event_time_utc": "2025-10-23T12:40:08+00:00",
+            "depth_km": 466.147,
+            "latitude": -6.6663,
+            "longitude": 126.6796,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000riva"
+        },
+        {
+            "id": "us6000rimr",
+            "magnitude": 4.6,
+            "place": "144 km NNE of Labuan Bajo, Indonesia",
+            "event_time_utc": "2025-10-22T09:31:54+00:00",
+            "depth_km": 577.946,
+            "latitude": -7.2499,
+            "longitude": 120.2784,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rimr"
+        },
+        {
+            "id": "us6000rmtb",
+            "magnitude": 4.1,
+            "place": "41 km SE of Kupang, Indonesia",
+            "event_time_utc": "2025-10-21T11:23:41+00:00",
+            "depth_km": 10,
+            "latitude": -10.4725,
+            "longitude": 123.827,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rmtb"
+        },
+        {
+            "id": "us6000riem",
+            "magnitude": 4.1,
+            "place": "28 km NW of Waingapu, Indonesia",
+            "event_time_utc": "2025-10-21T07:10:32+00:00",
+            "depth_km": 84.061,
+            "latitude": -9.5135,
+            "longitude": 120.05,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000riem"
+        },
+        {
+            "id": "us6000rid1",
+            "magnitude": 4.6,
+            "place": "178 km N of Metinaro, Timor Leste",
+            "event_time_utc": "2025-10-20T22:31:55+00:00",
+            "depth_km": 509.074,
+            "latitude": -6.9147,
+            "longitude": 125.7048,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rid1"
+        },
+        {
+            "id": "us6000ribj",
+            "magnitude": 5.1,
+            "place": "154 km N of Maumere, Indonesia",
+            "event_time_utc": "2025-10-20T16:16:48+00:00",
+            "depth_km": 535.316,
+            "latitude": -7.2376,
+            "longitude": 122.4153,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ribj"
+        },
+        {
+            "id": "us6000ri97",
+            "magnitude": 4.8,
+            "place": "65 km NW of Waingapu, Indonesia",
+            "event_time_utc": "2025-10-20T05:56:04+00:00",
+            "depth_km": 52.805,
+            "latitude": -9.2487,
+            "longitude": 119.8291,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ri97"
+        },
+        {
+            "id": "us6000ri4x",
+            "magnitude": 4.9,
+            "place": "152 km NE of Maumere, Indonesia",
+            "event_time_utc": "2025-10-19T10:00:20+00:00",
+            "depth_km": 10,
+            "latitude": -7.8045,
+            "longitude": 123.329,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ri4x"
+        },
+        {
+            "id": "us6000rheu",
+            "magnitude": 4.1,
+            "place": "176 km N of Likis\u00e1, Timor Leste",
+            "event_time_utc": "2025-10-16T00:43:23+00:00",
+            "depth_km": 549.11,
+            "latitude": -7.009,
+            "longitude": 125.1068,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rheu"
+        },
+        {
+            "id": "us6000rlqa",
+            "magnitude": 4.4,
+            "place": "18 km ENE of Atambua, Indonesia",
+            "event_time_utc": "2025-10-15T08:57:47+00:00",
+            "depth_km": 33.611,
+            "latitude": -9.0298,
+            "longitude": 125.0407,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rlqa"
+        },
+        {
+            "id": "us6000rh71",
+            "magnitude": 4.5,
+            "place": "34 km ESE of Same, Timor Leste",
+            "event_time_utc": "2025-10-14T22:10:44+00:00",
+            "depth_km": 10,
+            "latitude": -9.1425,
+            "longitude": 125.9261,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rh71"
+        },
+        {
+            "id": "us6000rgse",
+            "magnitude": 4.2,
+            "place": "151 km NNE of Labuan Bajo, Indonesia",
+            "event_time_utc": "2025-10-12T23:03:39+00:00",
+            "depth_km": 580.056,
+            "latitude": -7.2296,
+            "longitude": 120.4179,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rgse"
+        }
+    ],
+    "strongest_events": [
+        {
+            "id": "usp0007jw8",
+            "magnitude": 7.9,
+            "place": "169 km NNE of Maumere, Indonesia",
+            "event_time_utc": "1996-06-17T11:22:18+00:00",
+            "depth_km": 587.3,
+            "latitude": -7.137,
+            "longitude": 122.589,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0007jw8"
+        },
+        {
+            "id": "usp0005j5a",
+            "magnitude": 7.8,
+            "place": "37 km WNW of Maumere, Indonesia",
+            "event_time_utc": "1992-12-12T05:29:26+00:00",
+            "depth_km": 27.7,
+            "latitude": -8.48,
+            "longitude": 121.896,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0005j5a"
+        },
+        {
+            "id": "usp000d85g",
+            "magnitude": 7.5,
+            "place": "63 km NW of Maubara, Timor Leste",
+            "event_time_utc": "2004-11-11T21:26:41+00:00",
+            "depth_km": 10,
+            "latitude": -8.152,
+            "longitude": 124.868,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000d85g"
+        },
+        {
+            "id": "us7000g7lx",
+            "magnitude": 7.3,
+            "place": "125 km NNE of Lospalos, Timor Leste",
+            "event_time_utc": "2021-12-29T18:25:51+00:00",
+            "depth_km": 165.49,
+            "latitude": -7.5482,
+            "longitude": 127.5773,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000g7lx"
+        },
+        {
+            "id": "us6000gc2a",
+            "magnitude": 7.3,
+            "place": "Flores Sea",
+            "event_time_utc": "2021-12-14T03:20:23+00:00",
+            "depth_km": 14.27,
+            "latitude": -7.6033,
+            "longitude": 122.2274,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000gc2a"
+        },
+        {
+            "id": "usp000200r",
+            "magnitude": 7.3,
+            "place": "172 km NE of Lospalos, Timor Leste",
+            "event_time_utc": "1983-11-24T05:30:34+00:00",
+            "depth_km": 178.5,
+            "latitude": -7.481,
+            "longitude": 128.168,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000200r"
+        },
+        {
+            "id": "iscgem812115",
+            "magnitude": 7.22,
+            "place": "187 km N of Baukau, Timor Leste",
+            "event_time_utc": null,
+            "depth_km": 430.5,
+            "latitude": -6.784,
+            "longitude": 126.581,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem812115"
+        },
+        {
+            "id": "iscgem16957874",
+            "magnitude": 7.16,
+            "place": "58 km ENE of Lospalos, Timor Leste",
+            "event_time_utc": null,
+            "depth_km": 35,
+            "latitude": -8.277,
+            "longitude": 127.465,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem16957874"
+        },
+        {
+            "id": "iscgem902719",
+            "magnitude": 7.16,
+            "place": "70 km SE of Maumere, Indonesia",
+            "event_time_utc": null,
+            "depth_km": 66,
+            "latitude": -8.996,
+            "longitude": 122.726,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem902719"
+        },
+        {
+            "id": "iscgem874743",
+            "magnitude": 7.1,
+            "place": "186 km NE of Lospalos, Timor Leste",
+            "event_time_utc": null,
+            "depth_km": 30.2,
+            "latitude": -7.351,
+            "longitude": 128.218,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem874743"
+        },
+        {
+            "id": "usp00049qg",
+            "magnitude": 7.1,
+            "place": "135 km NNE of Labuan Bajo, Indonesia",
+            "event_time_utc": "1990-05-24T20:09:23+00:00",
+            "depth_km": 588.9,
+            "latitude": -7.363,
+            "longitude": 120.363,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp00049qg"
+        },
+        {
+            "id": "iscgem892487",
+            "magnitude": 7.02,
+            "place": "77 km N of Baukau, Timor Leste",
+            "event_time_utc": null,
+            "depth_km": 25,
+            "latitude": -7.78,
+            "longitude": 126.493,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem892487"
+        }
+    ],
+    "from_cache": false
+}

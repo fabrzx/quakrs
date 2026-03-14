@@ -30,6 +30,10 @@ return [
         'provider' => 'Smithsonian GVP Volcanoes of the World',
         'url' => 'https://volcano.si.edu/database/list_volcano_holocene_excel.cfm',
     ],
+    'volcano_current_eruptions' => [
+        'provider' => 'Smithsonian GVP Current Eruptions',
+        'url' => 'https://volcano.si.edu/gvp_currenteruptions.cfm',
+    ],
     'tremors' => [
         'provider' => 'USGS (Tremor Signals Model)',
         'url' => 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson',

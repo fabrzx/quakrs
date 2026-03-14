@@ -249,9 +249,27 @@ require __DIR__ . '/../partials/topbar.php';
       applyTheme();
     });
 
+    const REFRESH_MS = 60000;
+    let refreshInFlight = false;
+    const refresh = async () => {
+      if (refreshInFlight) return;
+      refreshInFlight = true;
+      try {
+        await fetchData();
+      } catch (error) {
+        setError();
+      } finally {
+        refreshInFlight = false;
+      }
+    };
+
     updateButtonsState();
     applyTheme();
-    fetchData().catch(setError);
+    refresh();
+    window.setInterval(() => {
+      if (document.hidden) return;
+      void refresh();
+    }, REFRESH_MS);
   })();
 </script>
 

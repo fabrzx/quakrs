@@ -6,6 +6,7 @@ require __DIR__ . '/bootstrap.php';
 $cachePath = $appConfig['data_dir'] . '/volcano_catalog_latest.json';
 $now = time();
 $cacheTtl = max(3600, min(7 * 86400, (int) ($appConfig['volcano_catalog_ttl_seconds'] ?? 86400)));
+$catalogSchemaVersion = 2;
 $forceRefresh = isset($_GET['force_refresh']) && (string) $_GET['force_refresh'] === '1';
 
 $cachedPayload = read_json_file($cachePath);
@@ -14,9 +15,22 @@ $cacheAge = is_array($cachedPayload) && isset($cachedPayload['generated_at_ts'])
     : null;
 
 if (!$forceRefresh && is_array($cachedPayload) && is_int($cacheAge) && $cacheAge <= $cacheTtl) {
-    $cachedPayload['from_cache'] = true;
-    $cachedPayload['stale_cache'] = false;
-    json_response(200, $cachedPayload);
+    $catalogRows = isset($cachedPayload['catalog']) && is_array($cachedPayload['catalog'])
+        ? $cachedPayload['catalog']
+        : [];
+    $sample = (count($catalogRows) > 0 && is_array($catalogRows[0])) ? $catalogRows[0] : null;
+    $hasEruptionSchema = is_array($sample) && array_key_exists('eruption_start_date', $sample) && array_key_exists('eruption_type', $sample);
+    $sameSchemaVersion = (int) ($cachedPayload['schema_version'] ?? 0) === $catalogSchemaVersion;
+    if ($hasEruptionSchema && $sameSchemaVersion) {
+        $normalizedCached = normalize_cached_catalog_continents($cachedPayload);
+        if ($normalizedCached !== $cachedPayload) {
+            write_json_file($cachePath, $normalizedCached);
+        }
+        $cachedPayload = $normalizedCached;
+        $cachedPayload['from_cache'] = true;
+        $cachedPayload['stale_cache'] = false;
+        json_response(200, $cachedPayload);
+    }
 }
 
 function infer_continent(string $regionGroup, string $country, ?float $lat): string
@@ -24,46 +38,174 @@ function infer_continent(string $regionGroup, string $country, ?float $lat): str
     $group = strtolower(trim($regionGroup));
     $countryKey = strtolower(trim($country));
 
-    if (str_contains($group, 'europe')) return 'Europe';
-    if (str_contains($group, 'north american')) return 'North America';
-    if (str_contains($group, 'south american')) return 'South America';
+    $countryContinentMap = [
+        'algeria' => 'Africa',
+        'antarctica' => 'Antarctica',
+        'argentina' => 'South America',
+        'armenia' => 'Asia',
+        'armenia-azerbaijan' => 'Asia',
+        'australia' => 'Oceania',
+        'bolivia' => 'South America',
+        'burma (myanmar)' => 'Asia',
+        'cabo verde' => 'Africa',
+        'cameroon' => 'Africa',
+        'canada' => 'North America',
+        'chad' => 'Africa',
+        'chile' => 'South America',
+        'chile-argentina' => 'South America',
+        'chile-bolivia' => 'South America',
+        'china' => 'Asia',
+        'china-north korea' => 'Asia',
+        'colombia' => 'South America',
+        'colombia-ecuador' => 'South America',
+        'costa rica' => 'North America',
+        'dr congo' => 'Africa',
+        'dr congo-rwanda' => 'Africa',
+        'djibouti' => 'Africa',
+        'dominica' => 'North America',
+        'ecuador' => 'South America',
+        'el salvador' => 'North America',
+        'equatorial guinea' => 'Africa',
+        'eritrea' => 'Africa',
+        'eritrea-djibouti' => 'Africa',
+        'ethiopia' => 'Africa',
+        'ethiopia-djibouti' => 'Africa',
+        'ethiopia-eritrea' => 'Africa',
+        'ethiopia-eritrea-djibouti' => 'Africa',
+        'fiji' => 'Oceania',
+        'france' => 'Europe',
+        'france - claimed by vanuatu' => 'Oceania',
+        'georgia' => 'Asia',
+        'germany' => 'Europe',
+        'greece' => 'Europe',
+        'grenada' => 'North America',
+        'guatemala' => 'North America',
+        'guatemala-el salvador' => 'North America',
+        'honduras' => 'North America',
+        'iceland' => 'Europe',
+        'india' => 'Asia',
+        'indonesia' => 'Asia',
+        'iran' => 'Asia',
+        'italy' => 'Europe',
+        'japan' => 'Asia',
+        'japan - administered by russia' => 'Asia',
+        'kenya' => 'Africa',
+        'mexico' => 'North America',
+        'mexico-guatemala' => 'North America',
+        'mongolia' => 'Asia',
+        'netherlands' => 'Europe',
+        'new zealand' => 'Oceania',
+        'nicaragua' => 'North America',
+        'niger' => 'Africa',
+        'norway' => 'Europe',
+        'panama' => 'North America',
+        'papua new guinea' => 'Oceania',
+        'peru' => 'South America',
+        'philippines' => 'Asia',
+        'portugal' => 'Europe',
+        'russia' => 'Asia',
+        'saint kitts and nevis' => 'North America',
+        'saint lucia' => 'North America',
+        'saint vincent and the grenadines' => 'North America',
+        'samoa' => 'Oceania',
+        'saudi arabia' => 'Asia',
+        'solomon islands' => 'Oceania',
+        'south africa' => 'Africa',
+        'south korea' => 'Asia',
+        'spain' => 'Europe',
+        'sudan' => 'Africa',
+        'syria-jordan-saudi arabia' => 'Asia',
+        'taiwan' => 'Asia',
+        'tanzania' => 'Africa',
+        'tonga' => 'Oceania',
+        'turkiye' => 'Asia',
+        'uganda' => 'Africa',
+        'undersea features' => 'Unknown',
+        'union of the comoros' => 'Africa',
+        'united kingdom' => 'Europe',
+        'united states' => 'North America',
+        'vanuatu' => 'Oceania',
+        'vietnam' => 'Asia',
+        'yemen' => 'Asia',
+    ];
+    if (isset($countryContinentMap[$countryKey])) {
+        return $countryContinentMap[$countryKey];
+    }
+
+    if (str_contains($group, 'north america') || str_contains($group, 'central america') || str_contains($group, 'caribbean')) {
+        return 'North America';
+    }
+    if (str_contains($group, 'south america')) return 'South America';
     if (str_contains($group, 'afric')) return 'Africa';
     if (str_contains($group, 'antarctic')) return 'Antarctica';
-    if (str_contains($group, 'middle east')) return 'Asia';
-    if (str_contains($group, 'indian ocean')) return 'Asia';
-    if (str_contains($group, 'southeast asian')) return 'Asia';
-    if (str_contains($group, 'east asian')) return 'Asia';
-    if (str_contains($group, 'west and central asian')) return 'Asia';
-    if (str_contains($group, 'southwest pacific')) return 'Oceania';
-    if (str_contains($group, 'australian')) return 'Oceania';
-    if (str_contains($group, 'new zealand')) return 'Oceania';
-
-    if ($countryKey === 'united states') {
-        return is_float($lat) && $lat < -5 ? 'Oceania' : 'North America';
+    if (str_contains($group, 'europe') || str_contains($group, 'mediterranean')) return 'Europe';
+    if (
+        str_contains($group, 'asia') ||
+        str_contains($group, 'asian') ||
+        str_contains($group, 'east asia') ||
+        str_contains($group, 'eastern asia') ||
+        str_contains($group, 'western asia') ||
+        str_contains($group, 'central asia') ||
+        str_contains($group, 'southeast') ||
+        str_contains($group, 'middle east') ||
+        str_contains($group, 'arabia') ||
+        str_contains($group, 'indian ocean') ||
+        str_contains($group, 'northwestern pacific') ||
+        str_contains($group, 'western pacific')
+    ) {
+        return 'Asia';
     }
-    if ($countryKey === 'france') {
-        return is_float($lat) && $lat < -10 ? 'Oceania' : 'Europe';
+    if (
+        str_contains($group, 'southwest pacific') ||
+        str_contains($group, 'australian') ||
+        str_contains($group, 'new zealand') ||
+        str_contains($group, 'melanesia') ||
+        str_contains($group, 'polynesia')
+    ) {
+        return 'Oceania';
     }
-    if ($countryKey === 'united kingdom') {
-        return is_float($lat) && $lat < -30 ? 'Antarctica' : 'Europe';
-    }
-    if ($countryKey === 'chile') return 'South America';
-    if ($countryKey === 'indonesia') return 'Asia';
-    if ($countryKey === 'japan') return 'Asia';
-    if ($countryKey === 'russia') {
-        return is_float($lat) && $lat < 0 ? 'Asia' : 'Europe';
-    }
-    if ($countryKey === 'antarctica') return 'Antarctica';
 
     if (is_float($lat)) {
         if ($lat < -60) return 'Antarctica';
-        if ($lat < -5) return 'South America';
-        if ($lat < 12) return 'Asia';
-        if ($lat < 35) return 'Africa';
-        return 'Europe';
+        if ($lat < -5) return 'Oceania';
+        if ($lat < 15) return 'Africa';
+        if ($lat < 40) return 'Asia';
+        if ($lat < 66) return 'Europe';
+        return 'North America';
     }
 
     return 'Unknown';
+}
+
+function normalize_cached_catalog_continents(array $payload): array
+{
+    $catalog = isset($payload['catalog']) && is_array($payload['catalog']) ? $payload['catalog'] : [];
+    if ($catalog === []) {
+        return $payload;
+    }
+
+    $changed = false;
+    foreach ($catalog as $idx => $row) {
+        if (!is_array($row)) {
+            continue;
+        }
+        $country = isset($row['country']) ? (string) $row['country'] : '';
+        $regionGroup = isset($row['region_group']) ? (string) $row['region_group'] : '';
+        $lat = isset($row['latitude']) && is_numeric($row['latitude']) ? (float) $row['latitude'] : null;
+        $normalized = infer_continent($regionGroup, $country, $lat);
+        $current = isset($row['continent']) ? (string) $row['continent'] : '';
+        if ($normalized !== $current) {
+            $catalog[$idx]['continent'] = $normalized;
+            $changed = true;
+        }
+    }
+
+    if (!$changed) {
+        return $payload;
+    }
+
+    $payload['catalog'] = $catalog;
+    return $payload;
 }
 
 function parse_float_value(string $value): ?float
@@ -75,13 +217,100 @@ function parse_float_value(string $value): ?float
     return (float) $trimmed;
 }
 
+function clean_html_cell(string $html): string
+{
+    $text = html_entity_decode(strip_tags($html), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    $text = preg_replace('/\s+/', ' ', $text ?? '') ?? '';
+    return trim($text);
+}
+
+function normalize_merge_part(string $value): string
+{
+    $trimmed = trim($value);
+    if ($trimmed === '') {
+        return '';
+    }
+    $lower = function_exists('mb_strtolower')
+        ? mb_strtolower($trimmed, 'UTF-8')
+        : strtolower($trimmed);
+    $normalized = preg_replace('/[^\p{L}\p{N}]+/u', ' ', $lower ?? '') ?? '';
+    return trim($normalized);
+}
+
+function parse_current_eruptions(string $html): array
+{
+    $result = [
+        'by_number' => [],
+        'by_name' => [],
+    ];
+
+    if (!preg_match('/<tbody>(.*?)<\/tbody>/si', $html, $tbodyMatch)) {
+        return $result;
+    }
+
+    $rowMatches = [];
+    preg_match_all('/<tr[^>]*>(.*?)<\/tr>/si', (string) ($tbodyMatch[1] ?? ''), $rowMatches);
+    foreach ($rowMatches[1] ?? [] as $rowRaw) {
+        $cellMatches = [];
+        preg_match_all('/<td[^>]*>(.*?)<\/td>/si', (string) $rowRaw, $cellMatches);
+        $cells = $cellMatches[1] ?? [];
+        if (!is_array($cells) || count($cells) < 5) {
+            continue;
+        }
+
+        $volcanoCell = (string) $cells[0];
+        $country = clean_html_cell((string) $cells[1]);
+        $eruptionStartDate = clean_html_cell((string) $cells[2]);
+        $lastKnownActivity = clean_html_cell((string) $cells[3]);
+        $eruptionType = clean_html_cell((string) $cells[4]);
+        $volcano = clean_html_cell($volcanoCell);
+        if ($volcano === '') {
+            continue;
+        }
+
+        $volcanoNumber = '';
+        if (preg_match('/volcano\.cfm\?vn=(\d+)/i', $volcanoCell, $vnMatch)) {
+            $volcanoNumber = (string) $vnMatch[1];
+        }
+
+        $profileUrl = '';
+        if ($volcanoNumber !== '') {
+            $profileUrl = 'https://volcano.si.edu/volcano.cfm?vn=' . rawurlencode($volcanoNumber);
+        }
+
+        $entry = [
+            'eruption_start_date' => $eruptionStartDate !== '' ? $eruptionStartDate : null,
+            'eruption_type' => $eruptionType !== '' ? $eruptionType : null,
+            'eruption_last_known_activity' => $lastKnownActivity !== '' ? $lastKnownActivity : null,
+            'eruption_profile_url' => $profileUrl !== '' ? $profileUrl : null,
+        ];
+
+        if ($volcanoNumber !== '') {
+            $result['by_number'][$volcanoNumber] = $entry;
+        }
+
+        $mergeKey = normalize_merge_part($volcano) . '|' . normalize_merge_part($country);
+        if ($mergeKey !== '|') {
+            $result['by_name'][$mergeKey] = $entry;
+        }
+    }
+
+    return $result;
+}
+
 $catalogUrl = (string) ($feedConfig['volcano_catalog']['url'] ?? 'https://volcano.si.edu/database/list_volcano_holocene_excel.cfm');
 $provider = (string) ($feedConfig['volcano_catalog']['provider'] ?? 'Smithsonian GVP VOTW');
 $externalRaw = fetch_external_text($catalogUrl, max(20, (int) $appConfig['http_timeout_seconds']));
+$currentEruptionsUrl = (string) ($feedConfig['volcano_current_eruptions']['url'] ?? 'https://volcano.si.edu/gvp_currenteruptions.cfm');
 
 if (!is_string($externalRaw) || $externalRaw === '') {
     write_log($appConfig['logs_dir'], "Volcano catalog fetch failed: {$catalogUrl}");
     if (is_array($cachedPayload)) {
+        $normalizedCached = normalize_cached_catalog_continents($cachedPayload);
+        if ($normalizedCached !== $cachedPayload) {
+            write_json_file($cachePath, $normalizedCached);
+        }
+        $cachedPayload = $normalizedCached;
         $cachedPayload['from_cache'] = true;
         $cachedPayload['stale_cache'] = true;
         json_response(200, $cachedPayload);
@@ -110,6 +339,13 @@ if (empty($rowsMatches[1])) {
 
 $headerSeen = false;
 $catalog = [];
+$currentEruptions = ['by_number' => [], 'by_name' => []];
+$currentEruptionsRaw = fetch_external_text($currentEruptionsUrl, max(20, (int) $appConfig['http_timeout_seconds']));
+if (is_string($currentEruptionsRaw) && $currentEruptionsRaw !== '') {
+    $currentEruptions = parse_current_eruptions($currentEruptionsRaw);
+} else {
+    write_log($appConfig['logs_dir'], "Current eruptions feed fetch failed: {$currentEruptionsUrl}");
+}
 
 foreach ($rowsMatches[1] as $rowRaw) {
     $cells = [];
@@ -165,6 +401,14 @@ foreach ($rowsMatches[1] as $rowRaw) {
         $profileUrl = 'https://volcano.si.edu/volcano.cfm?vn=' . rawurlencode($volcanoNumber);
     }
 
+    $mergeKey = normalize_merge_part($volcanoName) . '|' . normalize_merge_part($country);
+    $eruption = null;
+    if ($volcanoNumber !== '' && isset($currentEruptions['by_number'][$volcanoNumber]) && is_array($currentEruptions['by_number'][$volcanoNumber])) {
+        $eruption = $currentEruptions['by_number'][$volcanoNumber];
+    } elseif (isset($currentEruptions['by_name'][$mergeKey]) && is_array($currentEruptions['by_name'][$mergeKey])) {
+        $eruption = $currentEruptions['by_name'][$mergeKey];
+    }
+
     $catalog[] = [
         'volcano_number' => $volcanoNumber,
         'volcano' => $volcanoName,
@@ -182,6 +426,10 @@ foreach ($rowsMatches[1] as $rowRaw) {
         'tectonic_setting' => $tectonicSetting,
         'dominant_rock_type' => $dominantRockType,
         'profile_url' => $profileUrl,
+        'eruption_start_date' => is_array($eruption) ? ($eruption['eruption_start_date'] ?? null) : null,
+        'eruption_type' => is_array($eruption) ? ($eruption['eruption_type'] ?? null) : null,
+        'eruption_last_known_activity' => is_array($eruption) ? ($eruption['eruption_last_known_activity'] ?? null) : null,
+        'is_currently_erupting' => is_array($eruption),
     ];
 }
 
@@ -193,6 +441,7 @@ usort($catalog, static function (array $a, array $b): int {
 
 $payload = [
     'ok' => true,
+    'schema_version' => $catalogSchemaVersion,
     'provider' => $provider,
     'generated_at_ts' => $now,
     'generated_at' => gmdate('c', $now),

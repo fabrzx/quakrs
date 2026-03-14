@@ -2,69 +2,71 @@
 declare(strict_types=1);
 
 $currentPage = $currentPage ?? 'home';
+$currentLocale = qk_locale();
+$availableLocales = qk_supported_locales();
 
 $menuItems = [
     [
         'key' => 'live',
-        'label' => 'Live',
+        'label' => qk_t('nav.live'),
         'href' => '/',
     ],
     [
         'key' => 'monitors',
-        'label' => 'Monitors',
+        'label' => qk_t('nav.monitors'),
         'children' => [
-            ['key' => 'earthquakes', 'label' => 'Earthquakes', 'href' => '/earthquakes.php'],
-            ['key' => 'volcanoes', 'label' => 'Volcanoes', 'href' => '/volcanoes.php'],
-            ['key' => 'tsunami-alerts', 'label' => 'Tsunami Alerts', 'href' => '/tsunami.php'],
-            ['key' => 'space-weather', 'label' => 'Space Weather', 'href' => '/space-weather.php'],
+            ['key' => 'earthquakes', 'label' => qk_t('nav.earthquakes'), 'href' => '/earthquakes.php'],
+            ['key' => 'volcanoes', 'label' => qk_t('nav.volcanoes'), 'href' => '/volcanoes.php'],
+            ['key' => 'tsunami-alerts', 'label' => qk_t('nav.tsunami_alerts'), 'href' => '/tsunami.php'],
+            ['key' => 'space-weather', 'label' => qk_t('nav.space_weather'), 'href' => '/space-weather.php'],
         ],
     ],
     [
         'key' => 'maps',
-        'label' => 'Maps',
+        'label' => qk_t('nav.maps'),
         'children' => [
-            ['key' => 'maps', 'label' => 'Global Map', 'href' => '/maps.php'],
-            ['key' => 'maps-heatmap', 'label' => 'Heatmap', 'href' => '/maps-heatmap.php'],
-            ['key' => 'maps-plates', 'label' => 'Tectonic Plates', 'href' => '/maps-plates.php'],
-            ['key' => 'maps-depth', 'label' => 'Depth View', 'href' => '/maps-depth.php'],
+            ['key' => 'maps', 'label' => qk_t('nav.global_map'), 'href' => '/maps.php'],
+            ['key' => 'maps-heatmap', 'label' => qk_t('nav.heatmap'), 'href' => '/maps-heatmap.php'],
+            ['key' => 'maps-plates', 'label' => qk_t('nav.tectonic_plates'), 'href' => '/maps-plates.php'],
+            ['key' => 'maps-depth', 'label' => qk_t('nav.depth_view'), 'href' => '/maps-depth.php'],
         ],
     ],
     [
         'key' => 'cams',
-        'label' => 'Cams',
+        'label' => qk_t('nav.cams'),
         'children' => [
-            ['key' => 'cams-volcanoes', 'label' => 'Volcano Cams', 'href' => '/cams-volcanoes.php'],
-            ['key' => 'cams-hotspots', 'label' => 'Eruption Hotspots', 'href' => '/cams-hotspots.php'],
+            ['key' => 'cams-volcanoes', 'label' => qk_t('nav.volcano_cams'), 'href' => '/cams-volcanoes.php'],
+            ['key' => 'cams-hotspots', 'label' => qk_t('nav.eruption_hotspots'), 'href' => '/cams-hotspots.php'],
         ],
     ],
     [
         'key' => 'data',
-        'label' => 'Data',
+        'label' => qk_t('nav.data'),
         'children' => [
-            ['key' => 'data-archive', 'label' => 'Archive', 'href' => '/data-archive.php'],
-            ['key' => 'data-energy', 'label' => 'Energy', 'href' => '/data-energy.php'],
-            ['key' => 'data-reports', 'label' => 'Reports', 'href' => '/data-reports.php'],
-            ['key' => 'data-clusters', 'label' => 'Clusters', 'href' => '/data-clusters.php'],
-            ['key' => 'data-api', 'label' => 'API', 'href' => '/data-api.php'],
-            ['key' => 'data-status', 'label' => 'Data Status', 'href' => '/data-status.php'],
+            ['key' => 'data-archive', 'label' => qk_t('nav.archive'), 'href' => '/data-archive.php'],
+            ['key' => 'data-energy', 'label' => qk_t('nav.energy'), 'href' => '/data-energy.php'],
+            ['key' => 'data-reports', 'label' => qk_t('nav.reports'), 'href' => '/data-reports.php'],
+            ['key' => 'data-clusters', 'label' => qk_t('nav.clusters'), 'href' => '/data-clusters.php'],
+            ['key' => 'data-api', 'label' => qk_t('nav.api'), 'href' => '/data-api.php'],
+            ['key' => 'data-status', 'label' => qk_t('nav.data_status'), 'href' => '/data-status.php'],
         ],
     ],
     [
         'key' => 'resources',
-        'label' => 'Resources',
+        'label' => qk_t('nav.resources'),
         'children' => [
-            ['key' => 'resources-safety', 'label' => 'Safety Guides', 'href' => '/resources-safety.php'],
-            ['key' => 'resources-glossary', 'label' => 'Glossary', 'href' => '/resources-glossary.php'],
-            ['key' => 'resources-bulletins', 'label' => 'Bulletins', 'href' => '/resources-bulletins.php'],
-            ['key' => 'priority-levels', 'label' => 'Priority Levels (P1/P2)', 'href' => '/priority-levels.php'],
+            ['key' => 'resources-safety', 'label' => qk_t('nav.safety_guides'), 'href' => '/resources-safety.php'],
+            ['key' => 'resources-glossary', 'label' => qk_t('nav.glossary'), 'href' => '/resources-glossary.php'],
+            ['key' => 'resources-bulletins', 'label' => qk_t('nav.bulletins'), 'href' => '/resources-bulletins.php'],
+            ['key' => 'priority-levels', 'label' => qk_t('nav.priority_levels'), 'href' => '/priority-levels.php'],
         ],
     ],
     [
         'key' => 'about',
-        'label' => 'About',
+        'label' => qk_t('nav.about'),
         'children' => [
-            ['key' => 'about-sources', 'label' => 'Sources', 'href' => '/about-sources.php'],
-            ['key' => 'about-methodology', 'label' => 'Methodology', 'href' => '/about-methodology.php'],
+            ['key' => 'about-sources', 'label' => qk_t('nav.sources'), 'href' => '/about-sources.php'],
+            ['key' => 'about-methodology', 'label' => qk_t('nav.methodology'), 'href' => '/about-methodology.php'],
         ],
     ],
 ];
@@ -99,25 +101,29 @@ $legacyTopLevelMap = [
 ];
 ?>
 <header class="topbar">
-  <a class="brand" href="/" aria-label="Go to homepage">Quakrs<span>.com</span></a>
+  <a class="brand" href="<?= htmlspecialchars(qk_localized_url('/'), ENT_QUOTES, 'UTF-8'); ?>" aria-label="<?= htmlspecialchars(qk_t('nav.go_home'), ENT_QUOTES, 'UTF-8'); ?>">Quakrs<span>.com</span></a>
   <button
     id="mobile-nav-toggle"
     class="nav-toggle"
     type="button"
     aria-controls="main-nav"
     aria-expanded="false"
-    aria-label="Open navigation menu"
+    aria-label="<?= htmlspecialchars(qk_t('nav.open_menu'), ENT_QUOTES, 'UTF-8'); ?>"
+    data-label-open="<?= htmlspecialchars(qk_t('nav.menu'), ENT_QUOTES, 'UTF-8'); ?>"
+    data-label-close="<?= htmlspecialchars(qk_t('nav.close'), ENT_QUOTES, 'UTF-8'); ?>"
+    data-aria-open="<?= htmlspecialchars(qk_t('nav.open_menu'), ENT_QUOTES, 'UTF-8'); ?>"
+    data-aria-close="<?= htmlspecialchars(qk_t('nav.close_menu'), ENT_QUOTES, 'UTF-8'); ?>"
   >
-    Menu
+    <?= htmlspecialchars(qk_t('nav.menu'), ENT_QUOTES, 'UTF-8'); ?>
   </button>
-  <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+  <nav id="main-nav" class="main-nav" aria-label="<?= htmlspecialchars(qk_t('nav.main_aria'), ENT_QUOTES, 'UTF-8'); ?>">
     <?php foreach ($menuItems as $item): ?>
       <?php
       $topKey = $item['key'];
       $isTopActive = ($legacyTopLevelMap[$currentPage] ?? $currentPage) === $topKey || $currentPage === $topKey;
       ?>
       <?php if (!isset($item['children'])): ?>
-        <a class="nav-link <?= $isTopActive ? 'is-active' : ''; ?>" href="<?= $item['href']; ?>">
+        <a class="nav-link <?= $isTopActive ? 'is-active' : ''; ?>" href="<?= htmlspecialchars(qk_localized_url((string) $item['href']), ENT_QUOTES, 'UTF-8'); ?>">
           <?= htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8'); ?>
         </a>
       <?php else: ?>
@@ -129,7 +135,7 @@ $legacyTopLevelMap = [
             <?php foreach ($item['children'] as $child): ?>
               <?php $isChildActive = $currentPage === $child['key']; ?>
               <?php if (!empty($child['href'])): ?>
-                <a class="nav-sublink <?= $isChildActive ? 'is-active' : ''; ?>" href="<?= $child['href']; ?>" role="menuitem">
+                <a class="nav-sublink <?= $isChildActive ? 'is-active' : ''; ?>" href="<?= htmlspecialchars(qk_localized_url((string) $child['href']), ENT_QUOTES, 'UTF-8'); ?>" role="menuitem">
                   <?= htmlspecialchars($child['label'], ENT_QUOTES, 'UTF-8'); ?>
                 </a>
               <?php else: ?>
@@ -143,5 +149,23 @@ $legacyTopLevelMap = [
       <?php endif; ?>
     <?php endforeach; ?>
   </nav>
-  <a class="cta" href="/earthquakes.php">Live Feed</a>
+  <details class="lang-dropdown">
+    <summary class="lang-dropdown-trigger" aria-label="<?= htmlspecialchars(qk_t('nav.lang_aria'), ENT_QUOTES, 'UTF-8'); ?>">
+      <span><?= htmlspecialchars($availableLocales[$currentLocale] ?? strtoupper($currentLocale), ENT_QUOTES, 'UTF-8'); ?></span>
+    </summary>
+    <div class="lang-dropdown-menu" role="menu" aria-label="<?= htmlspecialchars(qk_t('nav.lang_aria'), ENT_QUOTES, 'UTF-8'); ?>">
+      <?php foreach ($availableLocales as $localeCode => $localeLabel): ?>
+        <a
+          class="lang-switch-link <?= $currentLocale === $localeCode ? 'is-active' : ''; ?>"
+          href="<?= htmlspecialchars(qk_locale_switch_url($localeCode), ENT_QUOTES, 'UTF-8'); ?>"
+          hreflang="<?= htmlspecialchars($localeCode, ENT_QUOTES, 'UTF-8'); ?>"
+          role="menuitem"
+          <?= $currentLocale === $localeCode ? 'aria-current="true"' : ''; ?>
+        >
+          <span><?= htmlspecialchars($localeLabel, ENT_QUOTES, 'UTF-8'); ?></span>
+        </a>
+      <?php endforeach; ?>
+    </div>
+  </details>
+  <a class="cta" href="<?= htmlspecialchars(qk_localized_url('/earthquakes.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('nav.live_feed'), ENT_QUOTES, 'UTF-8'); ?></a>
 </header>

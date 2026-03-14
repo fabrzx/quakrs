@@ -2,28 +2,28 @@
       <div class="site-footer-inner">
         <div class="site-footer-brand">
           <p class="brand">Quakrs<span>.com</span></p>
-          <p class="site-footer-note">Global seismic intelligence across earthquakes, volcanoes and tremor signals.</p>
+          <p class="site-footer-note"><?= htmlspecialchars(qk_t('footer.note'), ENT_QUOTES, 'UTF-8'); ?></p>
         </div>
-        <nav class="site-footer-nav" aria-label="Footer navigation">
-          <a href="/earthquakes.php">Earthquakes</a>
-          <a href="/volcanoes.php">Volcanoes</a>
-          <a href="/tsunami.php">Tsunami Alerts</a>
-          <a href="/space-weather.php">Space Weather</a>
-          <a href="/maps.php">Maps</a>
-          <a href="/data-energy.php">Data / Energy</a>
-          <a href="/data-status.php">Data Status</a>
-          <a href="/data-archive.php">Archive</a>
-          <a href="/about-sources.php">About / Sources</a>
-          <a href="/about-methodology.php">Methodology</a>
-          <a href="/priority-levels.php">Priority Levels (P1/P2)</a>
-          <a href="/resources-safety.php">Safety Guides</a>
+        <nav class="site-footer-nav" aria-label="<?= htmlspecialchars(qk_t('footer.nav_aria'), ENT_QUOTES, 'UTF-8'); ?>">
+          <a href="<?= htmlspecialchars(qk_localized_url('/earthquakes.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('nav.earthquakes'), ENT_QUOTES, 'UTF-8'); ?></a>
+          <a href="<?= htmlspecialchars(qk_localized_url('/volcanoes.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('nav.volcanoes'), ENT_QUOTES, 'UTF-8'); ?></a>
+          <a href="<?= htmlspecialchars(qk_localized_url('/tsunami.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('nav.tsunami_alerts'), ENT_QUOTES, 'UTF-8'); ?></a>
+          <a href="<?= htmlspecialchars(qk_localized_url('/space-weather.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('nav.space_weather'), ENT_QUOTES, 'UTF-8'); ?></a>
+          <a href="<?= htmlspecialchars(qk_localized_url('/maps.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('nav.maps'), ENT_QUOTES, 'UTF-8'); ?></a>
+          <a href="<?= htmlspecialchars(qk_localized_url('/data-energy.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('footer.data_energy'), ENT_QUOTES, 'UTF-8'); ?></a>
+          <a href="<?= htmlspecialchars(qk_localized_url('/data-status.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('nav.data_status'), ENT_QUOTES, 'UTF-8'); ?></a>
+          <a href="<?= htmlspecialchars(qk_localized_url('/data-archive.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('nav.archive'), ENT_QUOTES, 'UTF-8'); ?></a>
+          <a href="<?= htmlspecialchars(qk_localized_url('/about-sources.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('footer.about_sources'), ENT_QUOTES, 'UTF-8'); ?></a>
+          <a href="<?= htmlspecialchars(qk_localized_url('/about-methodology.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('nav.methodology'), ENT_QUOTES, 'UTF-8'); ?></a>
+          <a href="<?= htmlspecialchars(qk_localized_url('/priority-levels.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('nav.priority_levels'), ENT_QUOTES, 'UTF-8'); ?></a>
+          <a href="<?= htmlspecialchars(qk_localized_url('/resources-safety.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('nav.safety_guides'), ENT_QUOTES, 'UTF-8'); ?></a>
         </nav>
         <div class="site-footer-meta">
-          <p>Sources: USGS, INGV, EMSC, Smithsonian GVP</p>
-          <p id="footer-update-interval">Update interval: ~3 min</p>
-          <p id="footer-data-latency">Data latency: estimating...</p>
-          <p><a href="/privacy.php">Privacy</a> · <a href="/terms.php">Terms</a></p>
-          <p>&copy; <?= date('Y'); ?> Quakrs. Real-time monitoring interface.</p>
+          <p><?= htmlspecialchars(qk_t('footer.sources_line'), ENT_QUOTES, 'UTF-8'); ?></p>
+          <p id="footer-update-interval"><?= htmlspecialchars(qk_t('footer.update_interval'), ENT_QUOTES, 'UTF-8'); ?></p>
+          <p id="footer-data-latency"><?= htmlspecialchars(qk_t('footer.data_latency'), ENT_QUOTES, 'UTF-8'); ?></p>
+          <p><a href="<?= htmlspecialchars(qk_localized_url('/privacy.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('footer.privacy'), ENT_QUOTES, 'UTF-8'); ?></a> · <a href="<?= htmlspecialchars(qk_localized_url('/terms.php'), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars(qk_t('footer.terms'), ENT_QUOTES, 'UTF-8'); ?></a></p>
+          <p>&copy; <?= date('Y'); ?> Quakrs. <?= htmlspecialchars(qk_t('footer.copyright'), ENT_QUOTES, 'UTF-8'); ?></p>
         </div>
       </div>
     </footer>

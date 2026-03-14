@@ -148,7 +148,23 @@ require __DIR__ . '/../partials/topbar.php';
       }
     };
 
-    load();
+    const REFRESH_MS = 60000;
+    let refreshInFlight = false;
+    const refresh = async () => {
+      if (refreshInFlight) return;
+      refreshInFlight = true;
+      try {
+        await load();
+      } finally {
+        refreshInFlight = false;
+      }
+    };
+
+    refresh();
+    window.setInterval(() => {
+      if (document.hidden) return;
+      void refresh();
+    }, REFRESH_MS);
   })();
 </script>
 

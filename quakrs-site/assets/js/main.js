@@ -26,6 +26,7 @@ const homeKpiUpdated = document.querySelector("#home-kpi-updated");
 const homeKpiSource = document.querySelector("#home-kpi-source");
 const homeLaunch = document.querySelector("#launch");
 const homeSnapshotBrief = document.querySelector("#home-snapshot-brief");
+const homeSourcesLine = document.querySelector("#home-sources-line");
 const homeClustersList = document.querySelector("#home-clusters-list");
 const homeModuleEarthquakesList = document.querySelector("#home-module-earthquakes-list");
 const homeVolcanoList = document.querySelector("#home-volcano-list");
@@ -116,6 +117,9 @@ let timelineExpanded = false;
 let timelineEventsCache = [];
 let leafletMap = null;
 let leafletMarkers = [];
+let leafletPulseLayers = [];
+let leafletPulseTimers = [];
+let leafletPulseRunToken = 0;
 let leafletLightTiles = null;
 let leafletDarkTiles = null;
 let leafletNightLightsTiles = null;
@@ -127,8 +131,12 @@ let latestEarthquakePayload = null;
 let latestHomeSituationContext = null;
 let latestHomeLiveMode = "normal-watch";
 let allEarthquakeEvents = [];
+let previousPayloadEventKeys = new Set();
+let hasHydratedPayloadKeys = false;
+let pendingLeafletPulseEvents = [];
 let selectedEventKey = null;
 let homeMapViewportOnly = false;
+let leafletResizeRaf = 0;
 let eventInsightMap = null;
 let eventInsightEventLayer = null;
 let eventInsightStrongLayer = null;
@@ -148,6 +156,101 @@ const bootstrapPayloads =
 const currentPath = typeof window !== "undefined" ? window.location.pathname.replace(/\/+$/, "") : "";
 const isMapsPage = currentPath === "/maps.php" || currentPath === "/maps";
 const isEarthquakesPage = currentPath === "/earthquakes.php" || currentPath === "/earthquakes";
+const isHomePage = currentPath === "" || currentPath === "/home.php" || currentPath === "/home";
+const FORCE_LIVE_FEEDS = false;
+const SKIP_BOOTSTRAP_PAYLOADS = FORCE_LIVE_FEEDS && isHomePage;
+const siteLocale =
+  typeof document !== "undefined" && document.documentElement && document.documentElement.lang
+    ? document.documentElement.lang.toLowerCase().startsWith("it")
+      ? "it"
+      : "en"
+    : "en";
+const homeI18n = {
+  en: {
+    mode_regional_focus: "Regional focus",
+    mode_global_watch: "Global watch",
+    title_under_watch: "{region} under watch",
+    title_global_situation: "Global situation",
+    summary_regional:
+      "{focusCount} events in the last {lookbackHours}h across {regionLabel}, peaking at {focusStrongest}. Current activity is elevated versus the global baseline.",
+    summary_global:
+      "Distributed activity across {workingSetSize} recent events, with no single dominant area right now.",
+    label_area: "Area: {regionLabel}",
+    label_window: "Window: last {lookbackHours}h",
+    label_intensity: "Intensity: {pressure}",
+    label_activity_index: "Activity index: {probability}/100",
+    map_feed_priority_area: "Priority area feed",
+    map_feed_earthquakes: "Earthquake feed",
+    significant_now: "Featured now",
+    significant_live: "Live",
+    visual_title_distributed: "Distributed activity",
+    visual_meta_regional: "{focusCount} events in {lookbackHours}h · peak {focusStrongest}",
+    visual_meta_global: "{workingSetSize} events in analyzed window · peak {strongestMagnitude}",
+    ai_text_regional: "This event belongs to the {regionLabel} cluster, currently concentrating {focusCount} events.",
+    ai_text_global: "No dominant cluster right now: activity is distributed across multiple areas.",
+    eq_highlighted: "Highlighted earthquakes",
+    eq_highlighted_region: "Highlighted earthquakes - {regionLabel}",
+    no_event_available: "No event available.",
+    no_update_available: "No update available.",
+    night_mode_disable: "Disable night mode",
+    night_mode_enable: "Enable night mode",
+  },
+  it: {
+    mode_regional_focus: "Focus regionale",
+    mode_global_watch: "Monitoraggio globale",
+    title_under_watch: "{region} sotto osservazione",
+    title_global_situation: "Situazione globale",
+    summary_regional:
+      "{focusCount} eventi nelle ultime {lookbackHours}h in area {regionLabel}, con picco {focusStrongest}. Attività attuale elevata rispetto al quadro globale.",
+    summary_global:
+      "Attività distribuita su {workingSetSize} eventi recenti, senza una singola area dominante in questo momento.",
+    label_area: "Area: {regionLabel}",
+    label_window: "Finestra: ultime {lookbackHours}h",
+    label_intensity: "Intensità: {pressure}",
+    label_activity_index: "Indice attività: {probability}/100",
+    map_feed_priority_area: "Feed area prioritaria",
+    map_feed_earthquakes: "Feed terremoti",
+    significant_now: "In evidenza ora",
+    significant_live: "Live",
+    visual_title_distributed: "Attività distribuita",
+    visual_meta_regional: "{focusCount} eventi in {lookbackHours}h · picco {focusStrongest}",
+    visual_meta_global: "{workingSetSize} eventi in finestra analizzata · picco {strongestMagnitude}",
+    ai_text_regional: "Questo evento rientra nel cluster {regionLabel}, che in questo momento concentra {focusCount} eventi.",
+    ai_text_global: "Nessun cluster dominante al momento: l'attività è distribuita su più aree.",
+    eq_highlighted: "Terremoti in evidenza",
+    eq_highlighted_region: "Terremoti in evidenza - {regionLabel}",
+    no_event_available: "Nessun evento disponibile.",
+    no_update_available: "Nessun aggiornamento disponibile.",
+    night_mode_disable: "Disattiva modalità notturna",
+    night_mode_enable: "Attiva modalità notturna",
+  },
+};
+
+function tHome(key, vars = {}) {
+  const template = (homeI18n[siteLocale] && homeI18n[siteLocale][key]) || homeI18n.en[key] || key;
+  return String(template).replace(/\{([a-zA-Z0-9_]+)\}/g, (_, token) =>
+    Object.prototype.hasOwnProperty.call(vars, token) ? String(vars[token]) : ""
+  );
+}
+
+function buildApiUrl(path, forceRefresh = false) {
+  if (typeof window === "undefined") {
+    return path;
+  }
+  const url = new URL(path, window.location.origin);
+  if (forceRefresh) {
+    url.searchParams.set("force_refresh", "1");
+    url.searchParams.set("t", String(Date.now()));
+  }
+  return url.toString();
+}
+
+function fetchApiJson(path, forceRefresh = false) {
+  return fetch(buildApiUrl(path, forceRefresh), {
+    headers: { Accept: "application/json" },
+    cache: "no-store",
+  });
+}
 
 function initMobileNavDropdowns() {
   const navGroups = Array.from(document.querySelectorAll(".nav-group"));
@@ -212,19 +315,23 @@ function initMobileNavToggle() {
   }
 
   const mobileMq = window.matchMedia("(max-width: 760px)");
+  const labelOpen = toggle.dataset.labelOpen || "Menu";
+  const labelClose = toggle.dataset.labelClose || "Close";
+  const ariaOpen = toggle.dataset.ariaOpen || "Open navigation menu";
+  const ariaClose = toggle.dataset.ariaClose || "Close navigation menu";
 
   const closeMenu = () => {
     topbar.classList.remove("is-nav-open");
     toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", "Open navigation menu");
-    toggle.textContent = "Menu";
+    toggle.setAttribute("aria-label", ariaOpen);
+    toggle.textContent = labelOpen;
   };
 
   const openMenu = () => {
     topbar.classList.add("is-nav-open");
     toggle.setAttribute("aria-expanded", "true");
-    toggle.setAttribute("aria-label", "Close navigation menu");
-    toggle.textContent = "Close";
+    toggle.setAttribute("aria-label", ariaClose);
+    toggle.textContent = labelClose;
   };
 
   toggle.addEventListener("click", () => {
@@ -341,8 +448,10 @@ function inferHomeSituationContext(events) {
 
   return {
     mode: hasRegionalFocus ? "regional-focus" : "global-watch",
-    modeLabel: hasRegionalFocus ? "Focus regionale" : "Monitoraggio globale",
-    title: hasRegionalFocus ? `${focusRegionLabel} sotto osservazione` : "Situazione globale",
+    modeLabel: hasRegionalFocus ? tHome("mode_regional_focus") : tHome("mode_global_watch"),
+    title: hasRegionalFocus
+      ? tHome("title_under_watch", { region: focusRegionLabel })
+      : tHome("title_global_situation"),
     region: focusRegion,
     regionLabel: focusRegionLabel,
     pressure,
@@ -368,41 +477,54 @@ function renderHomeSituationContext(context) {
   }
   if (homeContextSummary) {
     if (context.mode === "regional-focus") {
-      homeContextSummary.textContent =
-        `${context.focusCount} eventi nelle ultime ${context.lookbackHours} ore in area ${context.regionLabel}, con picco ${formatMagnitude(context.focusStrongest)}. ` +
-        `Attivita attuale elevata rispetto al quadro globale.`;
+      homeContextSummary.textContent = tHome("summary_regional", {
+        focusCount: context.focusCount,
+        lookbackHours: context.lookbackHours,
+        regionLabel: context.regionLabel,
+        focusStrongest: formatMagnitude(context.focusStrongest),
+      });
     } else {
-      homeContextSummary.textContent =
-        `Attivita distribuita su ${context.workingSetSize} eventi recenti, senza una singola area dominante in questo momento.`;
+      homeContextSummary.textContent = tHome("summary_global", {
+        workingSetSize: context.workingSetSize,
+      });
     }
   }
   if (homeContextRegion) {
-    homeContextRegion.textContent = `Area: ${context.regionLabel}`;
+    homeContextRegion.textContent = tHome("label_area", { regionLabel: context.regionLabel });
   }
   if (homeContextWindow) {
-    homeContextWindow.textContent = `Finestra: ultime ${context.lookbackHours}h`;
+    homeContextWindow.textContent = tHome("label_window", { lookbackHours: context.lookbackHours });
   }
   if (homeContextPressure) {
-    homeContextPressure.textContent = `Intensita: ${context.pressure}`;
+    homeContextPressure.textContent = tHome("label_intensity", { pressure: context.pressure });
   }
   if (homeContextProbability) {
-    homeContextProbability.textContent = `Indice attivita: ${context.probability}/100`;
+    homeContextProbability.textContent = tHome("label_activity_index", { probability: context.probability });
   }
   if (homeMapFeedTitle) {
-    homeMapFeedTitle.textContent = context.mode === "regional-focus" ? "Feed area prioritaria" : "Feed terremoti";
+    homeMapFeedTitle.textContent =
+      context.mode === "regional-focus" ? tHome("map_feed_priority_area") : tHome("map_feed_earthquakes");
   }
   if (homeSignificantHeadNote) {
-    homeSignificantHeadNote.textContent = context.mode === "regional-focus" ? "In evidenza ora" : "Live";
+    homeSignificantHeadNote.textContent =
+      context.mode === "regional-focus" ? tHome("significant_now") : tHome("significant_live");
   }
   if (homeContextVisualTitle) {
     homeContextVisualTitle.textContent =
-      context.mode === "regional-focus" ? context.regionLabel : "Attivita distribuita";
+      context.mode === "regional-focus" ? context.regionLabel : tHome("visual_title_distributed");
   }
   if (homeContextVisualMeta) {
     if (context.mode === "regional-focus") {
-      homeContextVisualMeta.textContent = `${context.focusCount} eventi in ${context.lookbackHours}h · picco ${formatMagnitude(context.focusStrongest)}`;
+      homeContextVisualMeta.textContent = tHome("visual_meta_regional", {
+        focusCount: context.focusCount,
+        lookbackHours: context.lookbackHours,
+        focusStrongest: formatMagnitude(context.focusStrongest),
+      });
     } else {
-      homeContextVisualMeta.textContent = `${context.workingSetSize} eventi in finestra analizzata · picco ${formatMagnitude(context.strongestMagnitude)}`;
+      homeContextVisualMeta.textContent = tHome("visual_meta_global", {
+        workingSetSize: context.workingSetSize,
+        strongestMagnitude: formatMagnitude(context.strongestMagnitude),
+      });
     }
   }
 }
@@ -715,6 +837,115 @@ function getEventKey(event) {
   return `${lat}|${lon}|${time}`;
 }
 
+function clearLeafletPulses() {
+  leafletPulseRunToken += 1;
+  leafletPulseTimers.forEach((timerId) => {
+    window.clearTimeout(timerId);
+  });
+  leafletPulseTimers = [];
+  leafletPulseLayers.forEach((layer) => {
+    if (leafletMap && leafletMap.hasLayer(layer)) {
+      layer.remove();
+    }
+  });
+  leafletPulseLayers = [];
+}
+
+function pulseSpecFromMagnitude(magnitude) {
+  const mag = typeof magnitude === "number" ? magnitude : 0;
+  if (mag >= 7) {
+    return { rings: 5, duration: 4200, maxRadius: 64 };
+  }
+  if (mag >= 6) {
+    return { rings: 4, duration: 3600, maxRadius: 56 };
+  }
+  if (mag >= 5) {
+    return { rings: 4, duration: 3200, maxRadius: 50 };
+  }
+  if (mag >= 4) {
+    return { rings: 3, duration: 2800, maxRadius: 42 };
+  }
+  return { rings: 2, duration: 2200, maxRadius: 34 };
+}
+
+function playLeafletPulse(event, staggerMs = 0) {
+  if (!leafletMap || typeof window === "undefined" || !window.L) {
+    return;
+  }
+  if (typeof event?.latitude !== "number" || typeof event?.longitude !== "number") {
+    return;
+  }
+
+  const startPulse = () => {
+    const token = leafletPulseRunToken;
+    const spec = pulseSpecFromMagnitude(event.magnitude);
+    const color = magnitudeColor(event.magnitude);
+    const baseRadius = Math.max(3, Math.min(8, 3 + (typeof event.magnitude === "number" ? event.magnitude * 0.45 : 0)));
+    const startTs = performance.now();
+    const rings = [];
+
+    for (let i = 0; i < spec.rings; i += 1) {
+      const layer = window.L.circleMarker([event.latitude, event.longitude], {
+        radius: baseRadius,
+        color,
+        weight: 1.4,
+        fill: false,
+        opacity: 0,
+        interactive: false,
+      }).addTo(leafletMap);
+      leafletPulseLayers.push(layer);
+      rings.push({ layer, delay: i * 210 });
+    }
+
+    const tick = (nowTs) => {
+      if (token !== leafletPulseRunToken) {
+        return;
+      }
+
+      let hasLiveRing = false;
+      rings.forEach((ring, index) => {
+        const elapsed = nowTs - startTs - ring.delay;
+        if (elapsed < 0) {
+          hasLiveRing = true;
+          return;
+        }
+
+        const progress = Math.min(1, elapsed / spec.duration);
+        const radius = baseRadius + spec.maxRadius * progress;
+        const opacity = Math.max(0, (1 - progress) ** 1.55 * (0.92 - index * 0.12));
+        ring.layer.setRadius(radius);
+        ring.layer.setStyle({ opacity });
+
+        if (progress < 1) {
+          hasLiveRing = true;
+        }
+      });
+
+      if (hasLiveRing) {
+        window.requestAnimationFrame(tick);
+        return;
+      }
+
+      rings.forEach((ring) => {
+        if (leafletMap && leafletMap.hasLayer(ring.layer)) {
+          ring.layer.remove();
+        }
+      });
+      leafletPulseLayers = leafletPulseLayers.filter((layer) => !rings.some((ring) => ring.layer === layer));
+    };
+
+    window.requestAnimationFrame(tick);
+  };
+
+  if (staggerMs > 0) {
+    const timerId = window.setTimeout(startPulse, staggerMs);
+    leafletPulseTimers.push(timerId);
+    return;
+  }
+
+  startPulse();
+}
+
 function eventDetailUrl(event) {
   const params = new URLSearchParams();
   if (event && typeof event === "object") {
@@ -837,6 +1068,7 @@ function renderMap(events) {
 
     syncLeafletTheme();
 
+    clearLeafletPulses();
     leafletMarkers.forEach((marker) => marker.remove());
     leafletMarkers = [];
     mapEventLookup.clear();
@@ -877,6 +1109,27 @@ function renderMap(events) {
       });
     });
 
+    if (isEarthquakesPage && pendingLeafletPulseEvents.length > 0) {
+      const pulseCandidates = pendingLeafletPulseEvents
+        .filter((event) => mapEventLookup.has(getEventKey(event)))
+        .sort((a, b) => {
+          const magA = typeof a.magnitude === "number" ? a.magnitude : -1;
+          const magB = typeof b.magnitude === "number" ? b.magnitude : -1;
+          if (magB !== magA) {
+            return magB - magA;
+          }
+          const tsA = a.event_time_utc ? Date.parse(a.event_time_utc) : 0;
+          const tsB = b.event_time_utc ? Date.parse(b.event_time_utc) : 0;
+          return tsB - tsA;
+        })
+        .slice(0, 10);
+
+      pulseCandidates.forEach((event, index) => {
+        playLeafletPulse(event, index * 160);
+      });
+      pendingLeafletPulseEvents = [];
+    }
+
     return;
   }
 
@@ -912,7 +1165,7 @@ function renderMap(events) {
 }
 
 function syncEarthquakesFeedHeight() {
-  if (!isEarthquakesPage || !eventsList || !earthquakesMapCard || !earthquakesSideCard) {
+  if ((!isEarthquakesPage && !isMapsPage) || !eventsList || !earthquakesMapCard || !earthquakesSideCard) {
     return;
   }
 
@@ -929,6 +1182,19 @@ function syncEarthquakesFeedHeight() {
   const topOffset = Math.max(0, listRect.top - sideRect.top);
   const available = Math.floor(mapRect.height - topOffset - sidePaddingBottom);
   eventsList.style.maxHeight = `${Math.max(220, available)}px`;
+}
+
+function syncLeafletMapSize() {
+  if (!leafletMap || typeof window === "undefined") {
+    return;
+  }
+  if (leafletResizeRaf) {
+    window.cancelAnimationFrame(leafletResizeRaf);
+  }
+  leafletResizeRaf = window.requestAnimationFrame(() => {
+    leafletMap?.invalidateSize(false);
+    leafletResizeRaf = 0;
+  });
 }
 
 function depthBand(depthKm) {
@@ -994,11 +1260,12 @@ function renderHomeAiInsight(context, events) {
   }
   if (homeAiText) {
     if (context.mode === "regional-focus") {
-      homeAiText.textContent =
-        `Questo evento rientra nel cluster ${context.regionLabel}, che in questo momento concentra ${context.focusCount} eventi.`;
+      homeAiText.textContent = tHome("ai_text_regional", {
+        regionLabel: context.regionLabel,
+        focusCount: context.focusCount,
+      });
     } else {
-      homeAiText.textContent =
-        `Nessun cluster dominante al momento: l'attivita e distribuita su piu aree.`;
+      homeAiText.textContent = tHome("ai_text_global");
     }
   }
 }
@@ -1026,12 +1293,12 @@ function renderHomeContextEarthquakeRow(events, context) {
   if (homeContextEqTitle) {
     homeContextEqTitle.textContent =
       context?.mode === "regional-focus"
-        ? `Terremoti in evidenza - ${context.regionLabel}`
-        : "Terremoti in evidenza";
+        ? tHome("eq_highlighted_region", { regionLabel: context.regionLabel })
+        : tHome("eq_highlighted");
   }
 
   if (rows.length === 0) {
-    homeContextEqList.innerHTML = "<li class='home-context-earthquake-item'>Nessun evento disponibile.</li>";
+    homeContextEqList.innerHTML = `<li class='home-context-earthquake-item'>${escapeHtml(tHome("no_event_available"))}</li>`;
     return;
   }
 
@@ -1061,7 +1328,7 @@ function renderHomeContextGenericRow(title, rows) {
 
   const safeRows = Array.isArray(rows) ? rows.slice(0, 3) : [];
   if (safeRows.length === 0) {
-    homeContextEqList.innerHTML = "<li class='home-context-earthquake-item'>Nessun aggiornamento disponibile.</li>";
+    homeContextEqList.innerHTML = `<li class='home-context-earthquake-item'>${escapeHtml(tHome("no_update_available"))}</li>`;
     return;
   }
 
@@ -1959,7 +2226,7 @@ function syncThemeToggleButton() {
   globalThemeToggle.classList.toggle("is-active", leafletDarkMode);
   globalThemeToggle.setAttribute("aria-pressed", leafletDarkMode ? "true" : "false");
   globalThemeToggle.textContent = leafletDarkMode ? "☾" : "☀";
-  const label = leafletDarkMode ? "Disattiva modalita notturna" : "Attiva modalita notturna";
+  const label = leafletDarkMode ? tHome("night_mode_disable") : tHome("night_mode_enable");
   globalThemeToggle.setAttribute("aria-label", label);
   globalThemeToggle.setAttribute("title", label);
 }
@@ -2174,6 +2441,51 @@ function setBarRows(container, rows) {
   });
 }
 
+function setBarColumns(container, rows, options = {}) {
+  if (!container) {
+    return;
+  }
+
+  const labelStep = Number.isFinite(options.labelStep) && options.labelStep > 0 ? Math.floor(options.labelStep) : 1;
+  const compact = Boolean(options.compact);
+  container.innerHTML = "";
+
+  const maxValue = Math.max(1, ...rows.map((row) => row.value));
+  container.style.setProperty("--bar-count", String(Math.max(1, rows.length)));
+
+  rows.forEach((row, idx) => {
+    const col = document.createElement("div");
+    col.className = "bar-col";
+    if (compact) {
+      col.classList.add("is-compact");
+    }
+    const titleLabel = row.tooltipLabel || row.label;
+    col.title = `${titleLabel}: ${row.value}`;
+
+    const valueEl = document.createElement("div");
+    valueEl.className = "bar-col-value";
+    valueEl.textContent = String(row.value);
+
+    const trackEl = document.createElement("div");
+    trackEl.className = "bar-col-track";
+
+    const fillEl = document.createElement("div");
+    fillEl.className = "bar-col-fill";
+    fillEl.style.height = `${(row.value / maxValue) * 100}%`;
+    fillEl.style.background = row.color || "linear-gradient(0deg, #22d3ee, #f7d21e, #ff7a5f)";
+    trackEl.appendChild(fillEl);
+
+    const labelEl = document.createElement("div");
+    labelEl.className = "bar-col-label";
+    labelEl.textContent = idx % labelStep === 0 ? row.label : "";
+
+    col.appendChild(valueEl);
+    col.appendChild(trackEl);
+    col.appendChild(labelEl);
+    container.appendChild(col);
+  });
+}
+
 function renderMagnitudeChart(events) {
   const bins = [
     { label: "<2", min: -1, max: 2 },
@@ -2192,11 +2504,27 @@ function renderMagnitudeChart(events) {
     return {
       label: bin.label,
       value: count,
-      color: `linear-gradient(90deg, ${magnitudeColor(bin.min + 0.2)}, ${magnitudeColor(bin.max - 0.2)})`,
+      color: `linear-gradient(0deg, ${magnitudeColor(bin.min + 0.2)}, ${magnitudeColor(bin.max - 0.2)})`,
     };
   });
 
-  setBarRows(magChart, rows);
+  setBarColumns(magChart, rows);
+}
+
+function hourlyActivityColor(value, maxValue) {
+  const safeMax = Math.max(1, maxValue);
+  const ratio = Math.max(0, Math.min(1, value / safeMax));
+
+  if (ratio < 0.34) {
+    // Low activity: keep the bar in cool tones.
+    return "linear-gradient(0deg, #22d3ee, #5de4c7)";
+  }
+  if (ratio < 0.67) {
+    // Medium activity: transition to yellow but avoid orange highlights.
+    return "linear-gradient(0deg, #22d3ee, #f7d21e)";
+  }
+  // High activity: warm top for immediate visual emphasis.
+  return "linear-gradient(0deg, #22d3ee, #f7d21e, #ff7a5f)";
 }
 
 function renderHourlyChart(events) {
@@ -2215,12 +2543,18 @@ function renderHourlyChart(events) {
     }).length;
 
     rows.push({
-      label: `${String(slot.getUTCHours()).padStart(2, "0")}h`,
+      label: i === 0 ? "now" : `${i}h`,
+      tooltipLabel: `${String(slot.getUTCHours()).padStart(2, "0")}:00 UTC · ${i === 0 ? "current hour" : `${i}h ago`}`,
       value: count,
     });
   }
 
-  setBarRows(hourlyChart, rows);
+  const maxCount = Math.max(1, ...rows.map((row) => row.value));
+  rows.forEach((row) => {
+    row.color = hourlyActivityColor(row.value, maxCount);
+  });
+
+  setBarColumns(hourlyChart, rows, { compact: true, labelStep: 2 });
 }
 
 function renderRegions(events) {
@@ -2376,13 +2710,6 @@ function renderPriorityEvents(events) {
       const time = event.event_time_utc
         ? new Date(event.event_time_utc).toLocaleString()
         : "Unknown time";
-      const providers = Array.isArray(event.source_providers)
-        ? [...new Set(event.source_providers.filter((v) => typeof v === "string" && v))]
-        : [];
-      const mergeBadge =
-        providers.length > 1
-          ? `<span class="merge-badge merge-badge-corner" title="Merged from ${providers.join(", ")}">${providers.length} src</span>`
-          : "";
       const rowClass = index === 0 ? "event-item event-item-featured" : "event-item event-item-compact";
       const eventKey = getEventKey(event);
       const detailUrl = eventDetailUrl(event);
@@ -2393,7 +2720,6 @@ function renderPriorityEvents(events) {
             <span class="event-place">${event.place}</span>
           </div>
           <div class="event-meta">${depth} · ${time}</div>
-          ${mergeBadge}
         </li>
       `;
     })
@@ -2674,14 +3000,11 @@ function applyEarthquakeView() {
   });
 
   const filteredEvents = getFilteredEarthquakeEvents();
-  const source = latestEarthquakePayload.from_cache ? "cache" : "live";
-  const providers = Array.isArray(latestEarthquakePayload.providers) && latestEarthquakePayload.providers.length > 0
-    ? latestEarthquakePayload.providers.join(" + ")
-    : latestEarthquakePayload.provider || "Quakrs API";
   if (feedMeta) {
-    const filterText = activeMagnitudeBand ? ` · filter ${getMagnitudeBandLabel(activeMagnitudeBand)}` : "";
-    const mapHint = isMapsPage || isEarthquakesPage ? " · click marker to zoom" : "";
-    feedMeta.textContent = `${providers} - ${filteredEvents.length}/${allEarthquakeEvents.length} events (${source}${filterText})${mapHint}`;
+    const updatedAt = latestEarthquakePayload?.generated_at || latestEarthquakePayload?.feed_updated_at || null;
+    const updatedText = updatedAt ? ` · ${formatUpdatedAgo(updatedAt)}` : "";
+    const filterText = activeMagnitudeBand ? ` · filtered ${getMagnitudeBandLabel(activeMagnitudeBand)}` : "";
+    feedMeta.textContent = `${filteredEvents.length}/${allEarthquakeEvents.length} events shown${filterText}${updatedText}`;
   }
 
   renderKpis(filteredEvents, latestEarthquakePayload);
@@ -2692,9 +3015,10 @@ function applyEarthquakeView() {
   renderRegions(filteredEvents);
   renderPriorityEvents(filteredEvents);
   renderTimeline(filteredEvents);
-  if (isEarthquakesPage && eventsList) {
+  if ((isEarthquakesPage || isMapsPage) && eventsList) {
     window.requestAnimationFrame(() => syncEarthquakesFeedHeight());
   }
+  syncLeafletMapSize();
 
   if (eventInsightPanel && filteredEvents.length > 0) {
     const fallbackKey = getEventKey(filteredEvents[0]);
@@ -2719,9 +3043,7 @@ async function loadEarthquakes() {
   }
 
   try {
-    const response = await fetch("/api/earthquakes.php", {
-      headers: { Accept: "application/json" },
-    });
+    const response = await fetchApiJson("/api/earthquakes.php", FORCE_LIVE_FEEDS);
 
     if (!response.ok) {
       throw new Error("Feed request failed");
@@ -2732,11 +3054,22 @@ async function loadEarthquakes() {
     const providers = Array.isArray(payload.providers) && payload.providers.length > 0
       ? payload.providers.join(" + ")
       : payload.provider || "Quakrs API";
+
+    const incomingKeys = new Set(events.map((event) => getEventKey(event)));
+    if (hasHydratedPayloadKeys) {
+      pendingLeafletPulseEvents = events.filter((event) => !previousPayloadEventKeys.has(getEventKey(event)));
+    } else {
+      pendingLeafletPulseEvents = [];
+      hasHydratedPayloadKeys = true;
+    }
+    previousPayloadEventKeys = incomingKeys;
+
     latestEarthquakePayload = payload;
     allEarthquakeEvents = events;
     applyEarthquakeView();
   } catch (error) {
     allEarthquakeEvents = [];
+    pendingLeafletPulseEvents = [];
     if (feedMeta) {
       feedMeta.textContent = "Feed unavailable right now.";
     }
@@ -2790,9 +3123,7 @@ async function loadVolcanoes() {
   }
 
   try {
-    const response = await fetch("/api/volcanoes.php", {
-      headers: { Accept: "application/json" },
-    });
+    const response = await fetchApiJson("/api/volcanoes.php", FORCE_LIVE_FEEDS);
     if (!response.ok) {
       throw new Error("Volcano feed request failed");
     }
@@ -2848,9 +3179,7 @@ async function loadTremors() {
   }
 
   try {
-    const response = await fetch("/api/tremors.php", {
-      headers: { Accept: "application/json" },
-    });
+    const response = await fetchApiJson("/api/tremors.php", FORCE_LIVE_FEEDS);
     if (!response.ok) {
       throw new Error("Tremor feed request failed");
     }
@@ -2893,9 +3222,7 @@ async function loadTsunami() {
   }
 
   try {
-    const response = await fetch("/api/tsunami.php", {
-      headers: { Accept: "application/json" },
-    });
+    const response = await fetchApiJson("/api/tsunami.php", FORCE_LIVE_FEEDS);
     if (!response.ok) {
       throw new Error("Tsunami feed request failed");
     }
@@ -2932,9 +3259,7 @@ async function loadSpaceWeather() {
   }
 
   try {
-    const response = await fetch("/api/space-weather.php", {
-      headers: { Accept: "application/json" },
-    });
+    const response = await fetchApiJson("/api/space-weather.php", FORCE_LIVE_FEEDS);
     if (!response.ok) {
       throw new Error("Space weather feed request failed");
     }
@@ -2960,9 +3285,11 @@ if (homeMapViewportOnlyToggle) {
     }
   });
 }
-if (bootstrapPayloads) {
+if (bootstrapPayloads && !SKIP_BOOTSTRAP_PAYLOADS) {
   const eqBootstrap = bootstrapPayloads.earthquakes;
   if (eqBootstrap && Array.isArray(eqBootstrap.events)) {
+    previousPayloadEventKeys = new Set(eqBootstrap.events.map((event) => getEventKey(event)));
+    hasHydratedPayloadKeys = true;
     latestEarthquakePayload = eqBootstrap;
     allEarthquakeEvents = eqBootstrap.events;
     applyEarthquakeView();
@@ -2996,6 +3323,36 @@ loadTremors();
 loadTsunami();
 loadSpaceWeather();
 
+const LIVE_REFRESH_INTERVAL_MS = 60000;
+let liveRefreshInFlight = false;
+
+async function refreshLiveFeeds() {
+  if (liveRefreshInFlight) {
+    return;
+  }
+  liveRefreshInFlight = true;
+  try {
+    await Promise.allSettled([
+      loadEarthquakes(),
+      loadVolcanoes(),
+      loadTremors(),
+      loadTsunami(),
+      loadSpaceWeather(),
+    ]);
+  } finally {
+    liveRefreshInFlight = false;
+  }
+}
+
+if (typeof window !== "undefined") {
+  window.setInterval(() => {
+    if (typeof document !== "undefined" && document.hidden) {
+      return;
+    }
+    void refreshLiveFeeds();
+  }, LIVE_REFRESH_INTERVAL_MS);
+}
+
 timelineMoreButton?.addEventListener("click", () => {
   timelineExpanded = !timelineExpanded;
   renderTimeline(timelineEventsCache);
@@ -3025,6 +3382,7 @@ syncThemeToggleButton();
 if (typeof window !== "undefined") {
   window.addEventListener("resize", () => {
     syncEarthquakesFeedHeight();
+    syncLeafletMapSize();
   });
 }
 

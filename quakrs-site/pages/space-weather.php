@@ -173,7 +173,7 @@ require __DIR__ . '/../partials/topbar.php';
 </div>
 
 <script>
-  (async () => {
+  (() => {
     const chartKp = document.querySelector("#space-kp-chart");
     const chartXray = document.querySelector("#space-xray-chart");
     const chartWind = document.querySelector("#space-wind-chart");
@@ -471,7 +471,8 @@ require __DIR__ . '/../partials/topbar.php';
       if (kpiSource) kpiSource.textContent = "Source unavailable";
     };
 
-    try {
+    const load = async () => {
+      try {
       const response = await fetch("/api/space-weather.php", { headers: { Accept: "application/json" } });
       if (!response.ok) throw new Error("Request failed");
 
@@ -674,9 +675,28 @@ require __DIR__ . '/../partials/topbar.php';
         const when = point.time_utc ? formatTime(point.time_utc) : "n/a";
         return `<strong>IMF Bz</strong><span>${when}</span><span>${formatNumber(point.value, 1)} nT</span>`;
       });
-    } catch (error) {
-      setError();
-    }
+      } catch (error) {
+        setError();
+      }
+    };
+
+    const REFRESH_MS = 60000;
+    let refreshInFlight = false;
+    const refresh = async () => {
+      if (refreshInFlight) return;
+      refreshInFlight = true;
+      try {
+        await load();
+      } finally {
+        refreshInFlight = false;
+      }
+    };
+
+    refresh();
+    window.setInterval(() => {
+      if (document.hidden) return;
+      void refresh();
+    }, REFRESH_MS);
   })();
 </script>
 

@@ -56,6 +56,12 @@ function write_log(string $logsDir, string $message): void
 
 function fetch_external_text(string $url, int $timeoutSeconds): ?string
 {
+    $parsed = parse_url($url);
+    $scheme = is_array($parsed) ? strtolower((string) ($parsed['scheme'] ?? '')) : '';
+    if ($scheme !== 'http' && $scheme !== 'https') {
+        return null;
+    }
+
     $body = null;
     $statusCode = 0;
 
@@ -91,11 +97,28 @@ function fetch_external_text(string $url, int $timeoutSeconds): ?string
         }
     }
 
-    if (!is_string($body) || ($statusCode !== 0 && ($statusCode < 200 || $statusCode >= 300))) {
-        return null;
+    if (is_string($body) && ($statusCode === 0 || ($statusCode >= 200 && $statusCode < 300))) {
+        return $body;
     }
 
-    return $body;
+    // Fallback path for environments where PHP DNS/SSL stacks fail while system curl works.
+    if (function_exists('shell_exec')) {
+        $safeUrl = escapeshellarg($url);
+        $timeout = max(2, min(60, $timeoutSeconds));
+        $command = sprintf(
+            'curl -fsSL --connect-timeout %d --max-time %d -A %s %s 2>/dev/null',
+            $timeout,
+            $timeout,
+            escapeshellarg('QuakrsAPI/1.0'),
+            $safeUrl
+        );
+        $shellBody = shell_exec($command);
+        if (is_string($shellBody) && $shellBody !== '') {
+            return $shellBody;
+        }
+    }
+
+    return null;
 }
 
 function fetch_external_json(string $url, int $timeoutSeconds): ?array

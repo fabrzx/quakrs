@@ -216,7 +216,7 @@ $cacheAge = is_array($cachedPayload) && isset($cachedPayload['generated_at_ts'])
     ? $now - (int) $cachedPayload['generated_at_ts']
     : null;
 
-if (!$forceRefresh && is_array($cachedPayload)) {
+if (!$forceRefresh && is_array($cachedPayload) && is_int($cacheAge) && $cacheAge <= $cacheTtl) {
     if (isset($cachedPayload['events']) && is_array($cachedPayload['events'])) {
         $cachedPayload['events'] = dedupe_events($cachedPayload['events'], $maxEvents);
         $cachedPayload['events_count'] = count($cachedPayload['events']);

@@ -71,7 +71,7 @@ require __DIR__ . '/../partials/topbar.php';
 </section>
 
 <script>
-  (async () => {
+  (() => {
     const kpiTotal = document.querySelector("#cams-kpi-total");
     const kpiCountries = document.querySelector("#cams-kpi-countries");
     const kpiHot = document.querySelector("#cams-kpi-hot");
@@ -158,7 +158,12 @@ require __DIR__ . '/../partials/topbar.php';
       }
     };
 
-    try {
+    const REFRESH_MS = 60000;
+    let refreshInFlight = false;
+    let rotationTimerId = null;
+
+    const load = async () => {
+      try {
       const response = await fetch("/api/volcano-cams.php", { headers: { Accept: "application/json" } });
       if (!response.ok) throw new Error("Request failed");
 
@@ -216,14 +221,34 @@ require __DIR__ . '/../partials/topbar.php';
         }
       };
 
+      if (rotationTimerId) {
+        window.clearInterval(rotationTimerId);
+      }
       renderRotation();
-      window.setInterval(() => {
+      rotationTimerId = window.setInterval(() => {
         cursor = (cursor + windowSize) % rotatingPool.length;
         renderRotation();
       }, rotationInterval * 1000);
-    } catch (error) {
-      setError();
-    }
+      } catch (error) {
+        setError();
+      }
+    };
+
+    const refresh = async () => {
+      if (refreshInFlight) return;
+      refreshInFlight = true;
+      try {
+        await load();
+      } finally {
+        refreshInFlight = false;
+      }
+    };
+
+    refresh();
+    window.setInterval(() => {
+      if (document.hidden) return;
+      void refresh();
+    }, REFRESH_MS);
   })();
 </script>
 

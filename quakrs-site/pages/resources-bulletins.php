@@ -233,8 +233,24 @@ require __DIR__ . '/../partials/topbar.php';
       }
     };
 
+    const REFRESH_MS = 60000;
+    let refreshInFlight = false;
+    const refresh = async () => {
+      if (refreshInFlight) return;
+      refreshInFlight = true;
+      try {
+        await load();
+      } finally {
+        refreshInFlight = false;
+      }
+    };
+
     sourceFilter?.addEventListener("change", render);
-    load();
+    refresh();
+    window.setInterval(() => {
+      if (document.hidden) return;
+      void refresh();
+    }, REFRESH_MS);
   })();
 </script>
 

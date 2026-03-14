@@ -5,6 +5,7 @@ $pageTitle = 'Quakrs.com - Volcanoes';
 $pageDescription = 'Live volcanic operations with top active volcanoes, selection and webcam coverage.';
 $currentPage = 'volcanoes';
 $bodyClass = 'volcanoes-page';
+$includeLeaflet = true;
 
 require __DIR__ . '/../partials/head.php';
 require __DIR__ . '/../partials/topbar.php';
@@ -78,8 +79,11 @@ require __DIR__ . '/../partials/topbar.php';
           <p id="volc-detail-country" class="kpi-note">--</p>
         </div>
 
-        <p id="volc-detail-status" class="volc-detail-status">Waiting for data...</p>
-        <p id="volc-detail-meta" class="kpi-note">Loading selected volcano metadata...</p>
+        <div class="volc-detail-copy">
+          <p id="volc-detail-status" class="volc-detail-status">Waiting for data...</p>
+          <p id="volc-detail-meta" class="kpi-note">Loading selected volcano metadata...</p>
+          <p id="volc-detail-eruption" class="kpi-note volc-detail-eruption" hidden></p>
+        </div>
 
         <div class="volc-inline-metrics" aria-label="Selected volcano metrics">
           <div><span class="kpi-label">Activity Index</span><strong id="volc-metric-index">--</strong></div>
@@ -138,6 +142,25 @@ require __DIR__ . '/../partials/topbar.php';
   </article>
 </section>
 
+<section class="panel">
+  <article class="card volc-map-board">
+    <div class="volc-map-head">
+      <div>
+        <h3>Active Volcano Map</h3>
+        <p id="volc-map-note" class="kpi-note">Loading active volcano markers...</p>
+      </div>
+      <div class="volc-map-legend" aria-label="Activity level legend">
+        <span class="volc-map-legend-item"><i class="volc-map-legend-dot is-high" aria-hidden="true"></i>High</span>
+        <span class="volc-map-legend-item"><i class="volc-map-legend-dot is-mid" aria-hidden="true"></i>Medium</span>
+        <span class="volc-map-legend-item"><i class="volc-map-legend-dot is-low" aria-hidden="true"></i>Low</span>
+      </div>
+    </div>
+    <div class="map-wrap volc-map-wrap">
+      <div id="volc-active-map" class="world-map-leaflet volc-map-leaflet" aria-label="Active volcanoes map"></div>
+    </div>
+  </article>
+</section>
+
 <script>
   (() => {
     const bootstrap = window.__QUAKRS_BOOTSTRAP && typeof window.__QUAKRS_BOOTSTRAP === "object"
@@ -158,6 +181,7 @@ require __DIR__ . '/../partials/topbar.php';
     const detailCountry = document.querySelector("#volc-detail-country");
     const detailStatus = document.querySelector("#volc-detail-status");
     const detailMeta = document.querySelector("#volc-detail-meta");
+    const detailEruption = document.querySelector("#volc-detail-eruption");
 
     const metricIndex = document.querySelector("#volc-metric-index");
     const metricReports = document.querySelector("#volc-metric-reports");
@@ -175,6 +199,8 @@ require __DIR__ . '/../partials/topbar.php';
     const gaugeFill = document.querySelector("#volc-gauge-fill");
     const gaugeValue = document.querySelector("#volc-gauge-value");
     const gaugeLabel = document.querySelector("#volc-gauge-label");
+    const mapNote = document.querySelector("#volc-map-note");
+    const activeMapContainer = document.querySelector("#volc-active-map");
 
     const state = {
       provider: "Volcano feed",
@@ -185,12 +211,15 @@ require __DIR__ . '/../partials/topbar.php';
       selectedCamIndex: 0,
       query: "",
       camsByVolcano: new Map(),
+      historyByMerge: new Map(),
       filters: {
         continent: "",
         country: "",
         status: "",
       },
     };
+    let activeMap = null;
+    let activeMapLayer = null;
 
     const norm = (value) => String(value || "").trim().toLowerCase();
     const toTs = (iso) => (iso ? new Date(iso).getTime() : 0);
@@ -363,6 +392,7 @@ require __DIR__ . '/../partials/topbar.php';
         bucket.catalog = item || null;
         bucket.profileUrl = item?.profile_url || "";
         bucket.continent = item?.continent || bucket.continent || continentOf(bucket.country);
+        bucket.history = state.historyByMerge.get(bucket.merge_key) || [];
         if (!live && state.camsByVolcano.get(norm(bucket.volcano))) {
           bucket.index = 4;
         }
@@ -372,6 +402,7 @@ require __DIR__ . '/../partials/topbar.php';
 
       liveBuckets.forEach((bucket) => {
         if (seen.has(bucket.merge_key)) return;
+        bucket.history = state.historyByMerge.get(bucket.merge_key) || [];
         merged.push(bucket);
       });
 
@@ -459,6 +490,113 @@ require __DIR__ . '/../partials/topbar.php';
       return index;
     }
 
+    function ensureActiveMap() {
+      if (!activeMapContainer || !window.L) return null;
+      if (activeMap) return activeMap;
+
+      activeMap = window.L.map(activeMapContainer, {
+        zoomControl: true,
+        worldCopyJump: true,
+        preferCanvas: true,
+      }).setView([12, 8], 2);
+
+      window.L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+        maxZoom: 9,
+        minZoom: 2,
+        subdomains: "abcd",
+        attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
+      }).addTo(activeMap);
+
+      activeMapLayer = window.L.layerGroup().addTo(activeMap);
+      window.setTimeout(() => activeMap?.invalidateSize(), 0);
+      window.addEventListener("resize", () => activeMap?.invalidateSize(), { passive: true });
+      return activeMap;
+    }
+
+    function volcanoMarkerIcon(bucket) {
+      const value = Math.max(0, Math.min(100, Number(bucket?.index) || 0));
+      const level = value >= 70 ? "is-high" : (value >= 40 ? "is-mid" : "is-low");
+      return window.L.divIcon({
+        className: "volc-map-marker",
+        iconSize: [30, 30],
+        iconAnchor: [15, 26],
+        popupAnchor: [0, -18],
+        html: `
+          <span class="volc-map-icon ${level}" aria-hidden="true">
+            <svg viewBox="0 0 36 36" role="presentation" focusable="false">
+              <circle class="volc-map-smoke-a" cx="13" cy="7.4" r="2.7"></circle>
+              <circle class="volc-map-smoke-b" cx="20.4" cy="6.2" r="3"></circle>
+              <circle class="volc-map-smoke-c" cx="25.3" cy="9.6" r="2.4"></circle>
+              <path class="volc-map-mountain" d="M5 30.3 14.7 14.3 19.7 21.1 24.2 15.5 31.3 30.3Z"></path>
+              <path class="volc-map-lava" d="M17.8 17.6c1 1.4 1.8 2.6 2.6 3.9.9 1.4 1.5 3 1.8 4.8h-2.6c-.2-1.1-.6-2.2-1.2-3.1-.5-.9-1.1-1.8-1.8-2.7z"></path>
+              <path class="volc-map-crater" d="M13.3 14.8c1.6-1 3.2-1.5 4.9-1.5 2.1 0 4 .7 5.6 2.1l-.9 1.3c-1.3-1-2.9-1.6-4.7-1.6-1.4 0-2.8.4-4.2 1.3z"></path>
+            </svg>
+          </span>
+        `,
+      });
+    }
+
+    function mapRows() {
+      return filteredBuckets().filter((bucket) => {
+        if (bucket.reports <= 0) return false;
+        const lat = Number(bucket?.catalog?.latitude);
+        const lon = Number(bucket?.catalog?.longitude);
+        return Number.isFinite(lat) && Number.isFinite(lon);
+      });
+    }
+
+    function renderActiveMap() {
+      const map = ensureActiveMap();
+      if (!map || !activeMapLayer) {
+        if (mapNote) mapNote.textContent = "Map library unavailable in this session.";
+        return;
+      }
+
+      const rows = mapRows();
+      activeMapLayer.clearLayers();
+
+      rows.forEach((bucket) => {
+        const lat = Number(bucket.catalog.latitude);
+        const lon = Number(bucket.catalog.longitude);
+        const marker = window.L.marker([lat, lon], {
+          icon: volcanoMarkerIcon(bucket),
+          keyboard: false,
+        });
+        marker.bindPopup(`
+          <strong>${esc(bucket.volcano)}</strong><br />
+          ${esc(bucket.country)} · ${esc(bucket.continent)} · idx ${bucket.index}<br />
+          ${esc(bucket.status)}
+        `);
+        marker.on("click", () => {
+          state.selectedKey = bucket.key;
+          state.selectedCamIndex = 0;
+          renderTop();
+          renderAll();
+          renderDetail();
+        });
+        marker.addTo(activeMapLayer);
+      });
+
+      if (mapNote) {
+        mapNote.textContent = rows.length > 0
+          ? `${rows.length} active volcanoes mapped (current filters applied).`
+          : "No active volcanoes with mappable coordinates for current filters.";
+      }
+
+      if (rows.length === 0) {
+        map.setView([12, 8], 2);
+        return;
+      }
+
+      const bounds = window.L.latLngBounds(rows.map((bucket) => [Number(bucket.catalog.latitude), Number(bucket.catalog.longitude)]));
+      if (!bounds.isValid()) return;
+      if (rows.length === 1) {
+        map.setView(bounds.getCenter(), 5);
+      } else {
+        map.fitBounds(bounds.pad(0.24), { maxZoom: 5, animate: false });
+      }
+    }
+
     function findSelected() {
       const hasFilter = Boolean(state.filters.continent || state.filters.country || state.filters.status || state.query);
       const pool = hasFilter ? filteredBuckets() : state.buckets;
@@ -468,9 +606,10 @@ require __DIR__ . '/../partials/topbar.php';
 
     function renderTop() {
       if (!topList) return;
-      const topBuckets = state.topKeys
-        .map((key) => state.buckets.find((bucket) => bucket.key === key))
-        .filter(Boolean);
+      const hasFilter = Boolean(state.filters.continent || state.filters.country || state.filters.status || state.query);
+      const topBuckets = hasFilter
+        ? deriveTopKeys(filteredBuckets()).map((key) => state.buckets.find((bucket) => bucket.key === key)).filter(Boolean)
+        : state.topKeys.map((key) => state.buckets.find((bucket) => bucket.key === key)).filter(Boolean);
 
       topList.innerHTML = topBuckets.length > 0
         ? topBuckets.map((bucket) => `
@@ -508,22 +647,32 @@ require __DIR__ . '/../partials/topbar.php';
     function renderTrend(bucket) {
       if (!trendSvg || !trendNote) return;
 
-      const rows = [...bucket.rows].sort((a, b) => toTs(a.event_time_utc) - toTs(b.event_time_utc));
-      const points = rows.slice(-12).map((row) => {
-        let score = 22;
-        if (row.is_new_eruptive) score += 40;
-        const title = norm(row.title);
-        if (title.includes("new unrest")) score += 25;
-        if (title.includes("continuing eruptive")) score += 16;
-        if (title.includes("continuing")) score += 8;
-        return { score: Math.min(100, score), label: fmtTime(row.event_time_utc) };
-      });
+      const historyRows = Array.isArray(bucket.history) ? bucket.history : [];
+      const historyPoints = historyRows
+        .filter((row) => row && Number.isFinite(Number(row.score)) && Number(row.ts) > 0)
+        .sort((a, b) => Number(a.ts) - Number(b.ts))
+        .slice(-24)
+        .map((row) => ({
+          score: Math.max(0, Math.min(100, Number(row.score))),
+          label: fmtTime(row.time_utc || (Number(row.ts) > 0 ? new Date(Number(row.ts) * 1000).toISOString() : null)),
+        }));
+      const points = historyPoints.length > 0
+        ? historyPoints
+        : [...bucket.rows]
+            .sort((a, b) => toTs(a.event_time_utc) - toTs(b.event_time_utc))
+            .slice(-12)
+            .map((row) => {
+              let score = 22;
+              if (row.is_new_eruptive) score += 40;
+              const title = norm(row.title);
+              if (title.includes("new unrest")) score += 25;
+              if (title.includes("continuing eruptive")) score += 16;
+              if (title.includes("continuing")) score += 8;
+              return { score: Math.min(100, score), label: fmtTime(row.event_time_utc) };
+            });
 
       if (points.length === 0) {
         points.push({ score: 10, label: "No bulletin" });
-        points.push({ score: 10, label: "Current cycle" });
-      } else if (points.length === 1) {
-        points.unshift({ score: Math.max(8, points[0].score - 10), label: "Prior cycle" });
       }
 
       const padX = 20;
@@ -535,24 +684,53 @@ require __DIR__ . '/../partials/topbar.php';
       const maxY = 100;
       const minY = 0;
       const coords = points.map((point, idx) => {
-        const x = padX + (points.length === 1 ? 0 : (idx / (points.length - 1)) * innerW);
+        const x = points.length === 1
+          ? padX + innerW / 2
+          : padX + (idx / (points.length - 1)) * innerW;
         const y = padY + (1 - ((point.score - minY) / (maxY - minY))) * innerH;
         return { x, y, label: point.label, score: point.score };
       });
       const line = coords.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
       const last = coords[coords.length - 1];
+      const first = coords[0];
       const guides = [20, 40, 60, 80].map((value) => {
         const y = padY + (1 - (value / 100)) * innerH;
         return `<line class="volc-axis-line" x1="${padX}" y1="${y.toFixed(1)}" x2="${w - padX}" y2="${y.toFixed(1)}"></line>`;
       }).join("");
+      const pointMarkers = coords.map((point, idx) => `
+        <circle
+          class="volc-trend-dot${idx === coords.length - 1 ? "" : " volc-trend-dot-sub"}"
+          cx="${point.x.toFixed(1)}"
+          cy="${point.y.toFixed(1)}"
+          r="${idx === coords.length - 1 ? "5.4" : "3.2"}"
+        ></circle>
+      `).join("");
+      const startLabel = first?.label ? esc(clip(first.label, 24)) : "";
+      const endLabel = last?.label ? esc(clip(last.label, 24)) : "";
+      const axisLabels = `
+        <text class="volc-trend-axis-label" x="${padX}" y="${h - 6}">${startLabel}</text>
+        <text class="volc-trend-axis-label volc-trend-axis-label-end" x="${w - padX}" y="${h - 6}">${endLabel}</text>
+      `;
+      const lastTagX = Math.max(padX + 8, Math.min(w - padX - 24, last.x - 18)).toFixed(1);
+      const lastTagY = Math.max(14, last.y - 10).toFixed(1);
+      const lastTag = `<text class="volc-trend-tag" x="${lastTagX}" y="${lastTagY}">${Math.round(last.score)}</text>`;
 
       trendSvg.innerHTML = `
         ${guides}
-        <polyline class="volc-trend-line" points="${line}"></polyline>
-        <circle class="volc-trend-dot" cx="${last.x.toFixed(1)}" cy="${last.y.toFixed(1)}" r="5.4"></circle>
-        <text class="volc-trend-tag" x="${Math.max(padX + 8, last.x - 22).toFixed(1)}" y="${Math.max(14, last.y - 10).toFixed(1)}">${Math.round(last.score)}</text>
+        ${coords.length > 1 ? `<polyline class="volc-trend-line" points="${line}"></polyline>` : ""}
+        ${pointMarkers}
+        ${lastTag}
+        ${axisLabels}
       `;
-      trendNote.textContent = bucket.reports > 0 ? `${Math.min(12, bucket.rows.length)} recent bulletin points` : "No weekly points";
+      if (bucket.reports <= 0 && points.length <= 1) {
+        trendNote.textContent = "No weekly points";
+      } else if (coords.length <= 1) {
+        trendNote.textContent = "1 point · waiting for more history";
+      } else {
+        const delta = last.score - first.score;
+        const deltaText = delta > 0 ? `+${Math.round(delta)}` : `${Math.round(delta)}`;
+        trendNote.textContent = `${coords.length} history points · Δ ${deltaText}`;
+      }
     }
 
     function renderGauge(bucket) {
@@ -575,6 +753,11 @@ require __DIR__ . '/../partials/topbar.php';
       const bucket = findSelected();
       if (!bucket) {
         if (detailStatus) detailStatus.textContent = "No volcano data available.";
+        if (detailMeta) detailMeta.textContent = "No metadata available.";
+        if (detailEruption) {
+          detailEruption.textContent = "";
+          detailEruption.hidden = true;
+        }
         if (bulletinList) bulletinList.innerHTML = "<li class='event-item'>No bulletins available.</li>";
         if (webcamMedia) webcamMedia.textContent = "No webcam available.";
         renderGauge({ index: 0 });
@@ -597,6 +780,15 @@ require __DIR__ . '/../partials/topbar.php';
       if (typeof c.elevation_m === "number" && Number.isFinite(c.elevation_m)) metaParts.push(`${Math.round(c.elevation_m)} m`);
       if (typeof c.latitude === "number" && typeof c.longitude === "number") metaParts.push(`${c.latitude.toFixed(2)}, ${c.longitude.toFixed(2)}`);
       if (detailMeta) detailMeta.textContent = metaParts.join(" · ");
+
+      if (detailEruption) {
+        const eruptionParts = [
+          `Eruption start ${c.eruption_start_date || "n/a"}`,
+          `Type ${c.eruption_type || "n/a"}`,
+        ];
+        detailEruption.textContent = eruptionParts.join(" · ");
+        detailEruption.hidden = false;
+      }
 
       if (metricIndex) metricIndex.textContent = String(bucket.index);
       if (metricReports) metricReports.textContent = String(bucket.reports);
@@ -698,8 +890,10 @@ require __DIR__ . '/../partials/topbar.php';
         const filtered = filteredBuckets();
         state.selectedKey = filtered.find((bucket) => bucket.key === state.selectedKey)?.key || filtered[0]?.key || state.selectedKey;
         renderCoverageLine();
+        renderTop();
         renderAll();
         renderDetail();
+        renderActiveMap();
       });
 
       continentFilter?.addEventListener("change", () => {
@@ -710,8 +904,10 @@ require __DIR__ . '/../partials/topbar.php';
         state.selectedKey = filtered.find((bucket) => bucket.key === state.selectedKey)?.key || filtered[0]?.key || state.selectedKey;
         state.selectedCamIndex = 0;
         renderCoverageLine();
+        renderTop();
         renderAll();
         renderDetail();
+        renderActiveMap();
       });
 
       countryFilter?.addEventListener("change", () => {
@@ -720,8 +916,10 @@ require __DIR__ . '/../partials/topbar.php';
         state.selectedKey = filtered.find((bucket) => bucket.key === state.selectedKey)?.key || filtered[0]?.key || state.selectedKey;
         state.selectedCamIndex = 0;
         renderCoverageLine();
+        renderTop();
         renderAll();
         renderDetail();
+        renderActiveMap();
       });
 
       statusFilter?.addEventListener("change", () => {
@@ -730,23 +928,32 @@ require __DIR__ . '/../partials/topbar.php';
         state.selectedKey = filtered.find((bucket) => bucket.key === state.selectedKey)?.key || filtered[0]?.key || state.selectedKey;
         state.selectedCamIndex = 0;
         renderCoverageLine();
+        renderTop();
         renderAll();
         renderDetail();
+        renderActiveMap();
       });
     }
 
     async function loadData() {
       try {
+        const apiFetch = (url) => {
+          const join = url.includes("?") ? "&" : "?";
+          return fetch(`${url}${join}t=${Date.now()}`, {
+            headers: { Accept: "application/json" },
+            cache: "no-store",
+          });
+        };
         const volcanoPromise = bootstrap.volcanoes && typeof bootstrap.volcanoes === "object"
           ? Promise.resolve(bootstrap.volcanoes)
-          : fetch("/api/volcanoes.php", { headers: { Accept: "application/json" } }).then((res) => {
+          : apiFetch("/api/volcanoes.php").then((res) => {
               if (!res.ok) throw new Error("volcano feed failed");
               return res.json();
             });
-        const catalogPromise = fetch("/api/volcano-catalog.php", { headers: { Accept: "application/json" } })
+        const catalogPromise = apiFetch("/api/volcano-catalog.php")
           .then((res) => (res.ok ? res.json() : { catalog: [] }))
           .catch(() => ({ catalog: [] }));
-        const camsPromise = fetch("/api/volcano-cams.php", { headers: { Accept: "application/json" } })
+        const camsPromise = apiFetch("/api/volcano-cams.php")
           .then((res) => (res.ok ? res.json() : { cams: [] }))
           .catch(() => ({ cams: [] }));
 
@@ -757,6 +964,11 @@ require __DIR__ . '/../partials/topbar.php';
         state.provider = volcanoPayload.provider || "Volcano feed";
         state.catalogProvider = catalogPayload.provider || "Volcano catalog";
         state.camsByVolcano = buildCamsIndex(camsPayload);
+        state.historyByMerge = new Map(Object.entries(
+          volcanoPayload.history_by_volcano && typeof volcanoPayload.history_by_volcano === "object"
+            ? volcanoPayload.history_by_volcano
+            : {}
+        ));
         state.buckets = buildMergedBuckets(events, catalogRows);
         state.topKeys = deriveTopKeys(state.buckets);
         state.selectedKey = state.topKeys[0] || state.buckets.find((bucket) => norm(bucket.volcano) === "etna")?.key || state.buckets[0]?.key || null;
@@ -775,16 +987,34 @@ require __DIR__ . '/../partials/topbar.php';
         renderTop();
         renderAll();
         renderDetail();
+        renderActiveMap();
       } catch (error) {
         if (updatedLine) updatedLine.textContent = "Volcano feed unavailable right now.";
         if (topList) topList.innerHTML = "<li>Top active unavailable.</li>";
         if (allList) allList.innerHTML = "<li>Volcano list unavailable.</li>";
         if (bulletinList) bulletinList.innerHTML = "<li class='event-item'>Status feed unavailable.</li>";
+        if (mapNote) mapNote.textContent = "Active volcano map unavailable right now.";
       }
     }
 
+    const REFRESH_MS = 60000;
+    let refreshInFlight = false;
+    const refresh = async () => {
+      if (refreshInFlight) return;
+      refreshInFlight = true;
+      try {
+        await loadData();
+      } finally {
+        refreshInFlight = false;
+      }
+    };
+
     bindEvents();
-    loadData();
+    refresh();
+    window.setInterval(() => {
+      if (document.hidden) return;
+      void refresh();
+    }, REFRESH_MS);
   })();
 </script>
 

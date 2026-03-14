@@ -53,7 +53,7 @@ require __DIR__ . '/../partials/topbar.php';
 </section>
 
 <script>
-  (async () => {
+  (() => {
     const list = document.querySelector("#tsunami-alerts-list");
     const kpiTotal = document.querySelector("#tsunami-kpi-total");
     const kpiLevel = document.querySelector("#tsunami-kpi-level");
@@ -70,48 +70,68 @@ require __DIR__ . '/../partials/topbar.php';
       }
     };
 
-    try {
-      const response = await fetch("/api/tsunami.php", { headers: { Accept: "application/json" } });
-      if (!response.ok) {
-        throw new Error("Request failed");
+    const load = async () => {
+      try {
+        const response = await fetch("/api/tsunami.php", { headers: { Accept: "application/json" } });
+        if (!response.ok) {
+          throw new Error("Request failed");
+        }
+
+        const payload = await response.json();
+        const alerts = Array.isArray(payload.alerts) ? payload.alerts : [];
+        const updatedAt = payload.generated_at ? new Date(payload.generated_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "--";
+
+        if (kpiTotal) kpiTotal.textContent = String(typeof payload.alerts_count === "number" ? payload.alerts_count : alerts.length);
+        if (kpiLevel) kpiLevel.textContent = payload.highest_level || "None";
+        if (kpiRegions) kpiRegions.textContent = String(typeof payload.regions_count === "number" ? payload.regions_count : 0);
+        if (kpiUpdated) kpiUpdated.textContent = updatedAt;
+        if (kpiSource) kpiSource.textContent = `Source: ${payload.provider || "NOAA / NWS"}${payload.from_cache ? " (cache)" : ""}`;
+
+        if (!list) {
+          return;
+        }
+
+        if (alerts.length === 0) {
+          list.innerHTML = "<li class='event-item'>No active tsunami alerts.</li>";
+          return;
+        }
+
+        list.innerHTML = alerts.slice(0, 20).map((alert) => {
+          const when = alert.issued_at_utc
+            ? new Date(alert.issued_at_utc).toLocaleString([], { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit" })
+            : "n/a";
+          const bulletin = alert.source_bulletin ? `<a class="inline-link" href="${alert.source_bulletin}" target="_blank" rel="noopener noreferrer">Bulletin</a>` : "";
+
+          return `
+            <li class="event-item">
+              <strong>${alert.event || "Tsunami Alert"} - ${alert.warning_level || "Unknown"}</strong><br />
+              <span>${alert.region || "Unknown region"} | ${alert.severity || "Unknown"} | ${when}</span>
+              ${bulletin ? `<div>${bulletin}</div>` : ""}
+            </li>
+          `;
+        }).join("");
+      } catch (error) {
+        setError("Unable to load tsunami alerts right now.");
       }
+    };
 
-      const payload = await response.json();
-      const alerts = Array.isArray(payload.alerts) ? payload.alerts : [];
-      const updatedAt = payload.generated_at ? new Date(payload.generated_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "--";
-
-      if (kpiTotal) kpiTotal.textContent = String(typeof payload.alerts_count === "number" ? payload.alerts_count : alerts.length);
-      if (kpiLevel) kpiLevel.textContent = payload.highest_level || "None";
-      if (kpiRegions) kpiRegions.textContent = String(typeof payload.regions_count === "number" ? payload.regions_count : 0);
-      if (kpiUpdated) kpiUpdated.textContent = updatedAt;
-      if (kpiSource) kpiSource.textContent = `Source: ${payload.provider || "NOAA / NWS"}${payload.from_cache ? " (cache)" : ""}`;
-
-      if (!list) {
-        return;
+    const REFRESH_MS = 60000;
+    let refreshInFlight = false;
+    const refresh = async () => {
+      if (refreshInFlight) return;
+      refreshInFlight = true;
+      try {
+        await load();
+      } finally {
+        refreshInFlight = false;
       }
+    };
 
-      if (alerts.length === 0) {
-        list.innerHTML = "<li class='event-item'>No active tsunami alerts.</li>";
-        return;
-      }
-
-      list.innerHTML = alerts.slice(0, 20).map((alert) => {
-        const when = alert.issued_at_utc
-          ? new Date(alert.issued_at_utc).toLocaleString([], { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit" })
-          : "n/a";
-        const bulletin = alert.source_bulletin ? `<a class="inline-link" href="${alert.source_bulletin}" target="_blank" rel="noopener noreferrer">Bulletin</a>` : "";
-
-        return `
-          <li class="event-item">
-            <strong>${alert.event || "Tsunami Alert"} - ${alert.warning_level || "Unknown"}</strong><br />
-            <span>${alert.region || "Unknown region"} | ${alert.severity || "Unknown"} | ${when}</span>
-            ${bulletin ? `<div>${bulletin}</div>` : ""}
-          </li>
-        `;
-      }).join("");
-    } catch (error) {
-      setError("Unable to load tsunami alerts right now.");
-    }
+    refresh();
+    window.setInterval(() => {
+      if (document.hidden) return;
+      void refresh();
+    }, REFRESH_MS);
   })();
 </script>
 

@@ -717,16 +717,22 @@ require __DIR__ . '/../partials/topbar.php';
 
     const findSelectedEvent = (events) => {
       if (!Array.isArray(events) || events.length === 0) return null;
+      const hasDirectSelection = Boolean(
+        q.id
+        || q.time
+        || q.place
+        || (Number.isFinite(q.lat) && Number.isFinite(q.lon))
+      );
       if (q.id) {
-        const byId = events.find((row) => row.id === q.id);
+        const byId = events.find((row) => String(row.id || "") === q.id);
         if (byId) return byId;
       }
       if (Number.isFinite(q.lat) && Number.isFinite(q.lon)) {
         const byCoord = events.find((row) =>
           Number.isFinite(row.latitude) &&
           Number.isFinite(row.longitude) &&
-          Math.abs(row.latitude - q.lat) < 0.12 &&
-          Math.abs(row.longitude - q.lon) < 0.12
+          Math.abs(row.latitude - q.lat) < 0.02 &&
+          Math.abs(row.longitude - q.lon) < 0.02
         );
         if (byCoord) return byCoord;
       }
@@ -738,7 +744,7 @@ require __DIR__ . '/../partials/topbar.php';
         const byPlace = events.find((row) => String(row.place || "").toLowerCase() === q.place.toLowerCase());
         if (byPlace) return byPlace;
       }
-      return events[0];
+      return hasDirectSelection ? null : events[0];
     };
 
     const buildNearbyStrong = (selected, events) =>
