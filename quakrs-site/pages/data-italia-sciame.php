@@ -72,7 +72,7 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Data / Italia / Sciame</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.data_italia_sciame.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
     <p id="swarm-highlight-label" class="swarm-highlight-label">Sciame in evidenza</p>
     <h1 id="swarm-title">Dettaglio cluster locale.</h1>
     <p id="swarm-sub" class="sub">Mappa dedicata, concentrazione eventi e trend utili per monitoraggio operativo.</p>

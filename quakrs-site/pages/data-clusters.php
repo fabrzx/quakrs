@@ -11,9 +11,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Data / Clusters</p>
-    <h1>Tremor Clusters &amp; Signals.</h1>
-    <p class="sub">Track broad tremor behavior and emerging regional clusters with rapid context.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.data_clusters.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.data_clusters.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.data_clusters.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
@@ -101,8 +101,7 @@ require __DIR__ . '/../partials/topbar.php';
           kpiPeakNote.textContent = `${count} signals in peak slot`;
         }
         if (kpiMethod) {
-          const mode = payload.from_cache ? "cache" : "live";
-          kpiMethod.textContent = `${payload.provider || "Tremor feed"} (${mode})`;
+          kpiMethod.textContent = `${payload.provider || "Tremor feed"}`;
         }
 
         if (radarList) {

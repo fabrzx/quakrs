@@ -11,9 +11,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Legal / Privacy</p>
-    <h1>Privacy Notice.</h1>
-    <p class="sub">How Quakrs handles technical logs, operational metrics and external data sources.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.privacy.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.privacy.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.privacy.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 

@@ -12,19 +12,16 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Live Feed</p>
-    <h1>Global Earthquake Feed.</h1>
-    <p class="sub">USGS-style live stream: newest events first on map and feed list.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.earthquakes.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.earthquakes.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.earthquakes.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
 <section class="panel panel-main earthquakes-main-layout">
   <article class="card map-card">
     <div class="feed-head">
-      <div class="map-head-left">
-        <h3>Global Seismic Map</h3>
-        <button id="global-theme-toggle" class="map-mini-toggle" type="button" aria-pressed="false" aria-label="Attiva modalita notturna" title="Attiva modalita notturna">☀</button>
-      </div>
+      <h3>Global Seismic Map</h3>
       <p id="feed-meta" class="feed-meta">Loading sources...</p>
     </div>
     <div class="map-wrap">
@@ -44,6 +41,31 @@ require __DIR__ . '/../partials/topbar.php';
     <h3>Live Feed (Newest First)</h3>
     <ul id="events-list" class="events-list live-feed-scroll" data-order="chronological">
       <li class="event-item">Loading latest events...</li>
+    </ul>
+  </article>
+</section>
+
+<section class="panel panel-charts maps-charts">
+  <article class="card maps-chart-card maps-chart-wide">
+    <div class="feed-head">
+      <h3>Magnitude Distribution</h3>
+    </div>
+    <div id="mag-chart" class="bars bars-vertical bars-magnitude"></div>
+  </article>
+  <article class="card maps-chart-card maps-chart-wide">
+    <div class="feed-head">
+      <h3>Activity by Hour (UTC)</h3>
+      <p class="feed-meta">Last 24 hours</p>
+    </div>
+    <div id="hourly-chart" class="bars bars-vertical bars-hourly-vertical"></div>
+  </article>
+  <article class="card maps-chart-card maps-chart-regions">
+    <div class="feed-head">
+      <h3>Top Regions</h3>
+      <p class="feed-meta">Most active places now</p>
+    </div>
+    <ul id="regions-list" class="regions-list">
+      <li>No data loaded yet.</li>
     </ul>
   </article>
 </section>

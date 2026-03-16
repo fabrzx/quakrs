@@ -11,11 +11,10 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">About / Sources</p>
-    <h1>Data Providers &amp; Coverage.</h1>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.about_sources.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.about_sources.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
     <p class="sub">
-      Quakrs aggregates global seismic signals from institutional feeds and publishes
-      normalized snapshots for operational monitoring.
+      <?= htmlspecialchars(qk_t('page.about_sources.sub'), ENT_QUOTES, 'UTF-8'); ?>
     </p>
   </div>
 </main>

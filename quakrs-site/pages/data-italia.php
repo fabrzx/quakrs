@@ -204,9 +204,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Data / Italia</p>
-    <h1>Italia seismic monitor.</h1>
-    <p class="sub">Vista dedicata Italia con dettaglio locale, trend 7g/30g e aree in possibile attivazione di sciame.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.data_italia.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.data_italia.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.data_italia.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
@@ -238,7 +238,7 @@ require __DIR__ . '/../partials/topbar.php';
     <div class="feed-head">
       <div class="map-head-left">
         <h3>Italy map (INGV)</h3>
-        <button id="it-theme-toggle" class="map-mini-toggle" type="button" aria-pressed="false" aria-label="Attiva modalita notturna" title="Attiva modalita notturna">☀</button>
+        <button id="it-theme-toggle" class="map-mini-toggle" type="button" aria-pressed="true" aria-label="Disattiva modalita notturna" title="Disattiva modalita notturna">☾</button>
       </div>
       <p class="feed-meta">Solo territorio italiano · aggiornamento orario</p>
     </div>
@@ -528,7 +528,7 @@ require __DIR__ . '/../partials/topbar.php';
         themeToggle.textContent = darkMode ? "☾" : "☀";
       }
     };
-    if (map && lightTiles) lightTiles.addTo(map);
+    if (map && darkTiles) darkTiles.addTo(map);
     themeToggle?.addEventListener("click", () => {
       darkMode = !darkMode;
       applyTheme();
@@ -600,7 +600,7 @@ require __DIR__ . '/../partials/topbar.php';
         }
         if (kpiSource) {
           const methodLabel = baselineMethod === "proxy-24h" ? "proxy baseline" : "30d baseline";
-          kpiSource.textContent = `${payload.provider || "INGV"} · ${baselineState} · ${methodLabel}${payload.from_cache ? " (cache)" : ""}`;
+          kpiSource.textContent = `${payload.provider || "INGV"} · ${baselineState} · ${methodLabel}`;
         }
 
         renderVerticalChart(chart7d, series7d.map((row) => {

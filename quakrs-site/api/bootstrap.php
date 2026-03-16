@@ -23,6 +23,27 @@ function json_response(int $statusCode, array $payload): void
     exit;
 }
 
+function require_refresh_token(array $appConfig): string
+{
+    $requiredToken = trim((string) ($appConfig['refresh_token'] ?? ''));
+    if ($requiredToken === '') {
+        json_response(503, [
+            'ok' => false,
+            'error' => 'Refresh token not configured',
+        ]);
+    }
+
+    $requestToken = (string) ($_GET['token'] ?? '');
+    if ($requestToken === '' || !hash_equals($requiredToken, $requestToken)) {
+        json_response(403, [
+            'ok' => false,
+            'error' => 'Invalid refresh token',
+        ]);
+    }
+
+    return $requestToken;
+}
+
 function read_json_file(string $path): ?array
 {
     if (!file_exists($path)) {

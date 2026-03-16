@@ -11,9 +11,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Monitors / Tsunami Alerts</p>
-    <h1>Active Tsunami Alert Monitor.</h1>
-    <p class="sub">Operational view of active tsunami bulletins, warning level, issue time and target regions.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.tsunami.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.tsunami.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.tsunami.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
@@ -85,7 +85,7 @@ require __DIR__ . '/../partials/topbar.php';
         if (kpiLevel) kpiLevel.textContent = payload.highest_level || "None";
         if (kpiRegions) kpiRegions.textContent = String(typeof payload.regions_count === "number" ? payload.regions_count : 0);
         if (kpiUpdated) kpiUpdated.textContent = updatedAt;
-        if (kpiSource) kpiSource.textContent = `Source: ${payload.provider || "NOAA / NWS"}${payload.from_cache ? " (cache)" : ""}`;
+        if (kpiSource) kpiSource.textContent = `Source: ${payload.provider || "NOAA / NWS"}`;
 
         if (!list) {
           return;

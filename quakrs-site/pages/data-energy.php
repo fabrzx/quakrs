@@ -11,9 +11,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Data / Energy</p>
-    <h1>Seismic Trends &amp; Energy Pulse.</h1>
-    <p class="sub">Magnitude and hourly activity analytics for rapid global interpretation.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.data_energy.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.data_energy.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.data_energy.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
@@ -303,7 +303,7 @@ require __DIR__ . '/../partials/topbar.php';
         })));
 
         if (kpiSource) {
-          kpiSource.textContent = `${provider}${payload.from_cache ? " (cache)" : ""} · baseline M${BASELINE_MIN_MAG.toFixed(1)}+ loading`;
+          kpiSource.textContent = `${provider} · baseline M${BASELINE_MIN_MAG.toFixed(1)}+ loading`;
         }
         if (kpiMomentum) kpiMomentum.textContent = "--";
         if (anomalyPill) {
@@ -336,10 +336,9 @@ require __DIR__ . '/../partials/topbar.php';
             kpiMomentum.style.color = stateColor;
           }
           if (kpiSource) {
-            const cacheLabel = baselinePayload.from_cache ? "cache" : "fresh";
-            const staleLabel = baselinePayload.stale_cache ? " stale" : "";
+            const refreshLabel = baselinePayload.stale_cache ? "delayed" : "synced";
             const modelSource = baselinePayload.source ? ` ${baselinePayload.source}` : "";
-            kpiSource.textContent = `${provider}${payload.from_cache ? " (cache)" : ""} · ${baselineState} (baseline M${BASELINE_MIN_MAG.toFixed(1)}+ · ${cacheLabel}${staleLabel}${modelSource})`;
+            kpiSource.textContent = `${provider} · ${baselineState} (baseline M${BASELINE_MIN_MAG.toFixed(1)}+ · ${refreshLabel}${modelSource})`;
           }
           if (anomalyPill) {
             const baselineLabel = isProxy ? "24h reference" : "30d avg";
@@ -376,7 +375,7 @@ require __DIR__ . '/../partials/topbar.php';
             kpiMomentum.style.color = "";
           }
           if (kpiSource) {
-            kpiSource.textContent = `${provider}${payload.from_cache ? " (cache)" : ""} · baseline unavailable`;
+            kpiSource.textContent = `${provider} · baseline unavailable`;
           }
           if (anomalyPill) anomalyPill.textContent = "Baseline temporarily unavailable";
         }

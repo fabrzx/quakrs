@@ -13,9 +13,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero volc-hero">
   <div>
-    <p class="eyebrow">Volcanoes</p>
-    <h1>Volcanic Operations</h1>
-    <p class="sub">Editorial monitoring console for live volcanic activity. Track top systems, review trend evolution, and inspect webcams and bulletins in one streamlined workflow.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.volcanoes.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.volcanoes.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.volcanoes.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
@@ -975,8 +975,7 @@ require __DIR__ . '/../partials/topbar.php';
 
         const updated = volcanoPayload.feed_updated_at || volcanoPayload.generated_at;
         if (updatedLine) {
-          const mode = volcanoPayload.from_cache ? "cache" : "live";
-          updatedLine.textContent = `Feed ${state.provider} · updated ${fmtTime(updated)} · mode ${mode} · catalog ${state.catalogProvider}`;
+          updatedLine.textContent = `Feed ${state.provider} · updated ${fmtTime(updated)} · catalog ${state.catalogProvider}`;
         }
         if (criterionLine) {
           criterionLine.textContent = "Top Active Now = weighted score from recency, new eruptive/unrest flags and bulletin frequency.";

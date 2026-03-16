@@ -4,21 +4,27 @@ set -eu
 BASE_URL="${1:-https://www.quakrs.com}"
 TIMEOUT="${TIMEOUT:-30}"
 HISTORY_POINTS="${HISTORY_POINTS:-14}"
+TOKEN="${QUAKRS_REFRESH_TOKEN:-}"
+
+if [ -z "$TOKEN" ]; then
+  echo "Missing QUAKRS_REFRESH_TOKEN" >&2
+  exit 1
+fi
 
 echo "[prewarm] base=${BASE_URL}"
 
-for endpoint in earthquakes volcanoes tremors tsunami space-weather volcano-cams hotspots bulletins; do
+for endpoint in earthquakes aftershocks volcanoes tremors tsunami space-weather volcano-cams hotspots bulletins; do
   echo "[prewarm] refresh ${endpoint}"
   curl -fsS --max-time "$TIMEOUT" \
     -H 'Accept: application/json' \
-    "${BASE_URL}/api/${endpoint}.php?force_refresh=1" \
+    "${BASE_URL}/api/${endpoint}.php?force_refresh=1&token=${TOKEN}" \
     >/dev/null
 done
 
 echo "[prewarm] refresh tectonic-context"
 curl -fsS --max-time "$TIMEOUT" \
   -H 'Accept: application/json' \
-  "${BASE_URL}/api/tectonic-context.php?force_refresh=1&scope=global&max_plates=2400&max_faults=4200" \
+  "${BASE_URL}/api/tectonic-context.php?force_refresh=1&token=${TOKEN}&scope=global&max_plates=2400&max_faults=4200" \
   >/dev/null
 
 echo "[prewarm] warm event-history for active zones"
@@ -53,7 +59,7 @@ if [ -n "$coords" ]; then
     fi
     curl -fsS --max-time "$TIMEOUT" \
       -H 'Accept: application/json' \
-      "${BASE_URL}/api/event-history.php?force_refresh=1&lat=${lat}&lon=${lon}&radius_km=500&start=1900-01-01&page=1&per_page=80" \
+      "${BASE_URL}/api/event-history.php?force_refresh=1&token=${TOKEN}&lat=${lat}&lon=${lon}&radius_km=500&start=1900-01-01&page=1&per_page=80" \
       >/dev/null || true
   done
 fi

@@ -11,9 +11,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Cams / Volcano Cams</p>
-    <h1>Volcano Camera Directory.</h1>
-    <p class="sub">Curated observatory camera entry points with source attribution and snapshot fallback support.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.cams_volcanoes.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.cams_volcanoes.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.cams_volcanoes.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
@@ -184,7 +184,7 @@ require __DIR__ . '/../partials/topbar.php';
           : "--";
       }
       if (kpiSource) {
-        kpiSource.textContent = `Source: ${payload.provider || "Curated Observatory Cameras"}${payload.from_cache ? " (cache)" : ""}`;
+        kpiSource.textContent = `Source: ${payload.provider || "Curated Observatory Cameras"}`;
       }
 
       if (cams.length === 0) {

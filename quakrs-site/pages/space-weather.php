@@ -11,9 +11,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Monitors / Space Weather</p>
-    <h1>Solar &amp; Geomagnetic Command Deck.</h1>
-    <p class="sub">Real solar image, flare diagnostics, geomagnetic Kp timeline, solar wind speed and IMF Bz in one operational board.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.space_weather.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.space_weather.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.space_weather.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
@@ -492,10 +492,9 @@ require __DIR__ . '/../partials/topbar.php';
       if (kpiBz) kpiBz.textContent = bzCurrent !== null ? `${formatNumber(bzCurrent, 1)}` : "--";
 
       const provider = payload.provider || "NOAA SWPC";
-      const isCache = Boolean(payload.from_cache);
       const isStale = Boolean(payload.stale_cache);
-      if (kpiSource) kpiSource.textContent = `Source: ${provider}${isCache ? " (cache)" : ""}`;
-      if (cacheStatus) cacheStatus.textContent = isStale ? "Cache stale" : (isCache ? "Cached feed" : "Live pull");
+      if (kpiSource) kpiSource.textContent = `Source: ${provider}`;
+      if (cacheStatus) cacheStatus.textContent = isStale ? "Feed delayed" : "Feed synced";
       if (sourceLine) sourceLine.textContent = `Provider: ${provider} · Last update ${formatTime(payload.generated_at)}`;
 
       if (currentBand) currentBand.textContent = payload.kp_band_current || inferBand(currentKp);

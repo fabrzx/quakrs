@@ -11,9 +11,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Resources / Bulletins</p>
-    <h1>Institutional Bulletins Stream.</h1>
-    <p class="sub">Aggregated hazard updates from institutional sources only, sorted by publish time.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.resources_bulletins.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.resources_bulletins.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.resources_bulletins.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
@@ -185,7 +185,7 @@ require __DIR__ . '/../partials/topbar.php';
         if (kpiSources) kpiSources.textContent = String(sourceSet.size);
         if (kpiCategories) kpiCategories.textContent = String(payload.categories ? Object.keys(payload.categories).length : 0);
         if (kpiUpdated) kpiUpdated.textContent = payload.generated_at ? timeLabel(payload.generated_at) : "--";
-        if (kpiSource) kpiSource.textContent = `Source: ${payload.provider || "Institutional feeds"}${payload.from_cache ? " (cache)" : ""}`;
+        if (kpiSource) kpiSource.textContent = `Source: ${payload.provider || "Institutional feeds"}`;
 
         if (featured) {
           const top = allBulletins[0] || null;

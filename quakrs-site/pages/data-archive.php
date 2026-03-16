@@ -12,61 +12,61 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Data / Archive</p>
-    <h1>Searchable Seismic Archive.</h1>
-    <p class="sub">Use filters + interactive map to select a center point and radius, then inspect matching earthquakes.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('data_archive.hero_eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('data_archive.hero_title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('data_archive.hero_sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
 <section class="panel panel-kpi">
   <article class="card kpi-card">
-    <p class="kpi-label">Visible Events</p>
+    <p class="kpi-label"><?= htmlspecialchars(qk_t('data_archive.kpi_visible'), ENT_QUOTES, 'UTF-8'); ?></p>
     <p id="archive-kpi-visible" class="kpi-value">--</p>
-    <p id="archive-kpi-visible-note" class="kpi-note">Rows loaded on current page</p>
+    <p id="archive-kpi-visible-note" class="kpi-note"><?= htmlspecialchars(qk_t('data_archive.kpi_visible_note'), ENT_QUOTES, 'UTF-8'); ?></p>
   </article>
   <article class="card kpi-card">
-    <p class="kpi-label">Dataset Size</p>
+    <p class="kpi-label"><?= htmlspecialchars(qk_t('data_archive.kpi_dataset'), ENT_QUOTES, 'UTF-8'); ?></p>
     <p id="archive-kpi-total" class="kpi-value">--</p>
-    <p class="kpi-note">Filtered archive count</p>
+    <p class="kpi-note"><?= htmlspecialchars(qk_t('data_archive.kpi_dataset_note'), ENT_QUOTES, 'UTF-8'); ?></p>
   </article>
   <article class="card kpi-card">
-    <p class="kpi-label">Max Magnitude</p>
+    <p class="kpi-label"><?= htmlspecialchars(qk_t('data_archive.kpi_max'), ENT_QUOTES, 'UTF-8'); ?></p>
     <p id="archive-kpi-max-mag" class="kpi-value">--</p>
-    <p class="kpi-note">Within active filters</p>
+    <p class="kpi-note"><?= htmlspecialchars(qk_t('data_archive.kpi_max_note'), ENT_QUOTES, 'UTF-8'); ?></p>
   </article>
   <article class="card kpi-card">
-    <p class="kpi-label">Latest Event</p>
+    <p class="kpi-label"><?= htmlspecialchars(qk_t('data_archive.kpi_latest'), ENT_QUOTES, 'UTF-8'); ?></p>
     <p id="archive-kpi-latest" class="kpi-value">--</p>
-    <p id="archive-kpi-source" class="kpi-note">Loading source...</p>
+    <p id="archive-kpi-source" class="kpi-note"><?= htmlspecialchars(qk_t('data_archive.kpi_source_loading'), ENT_QUOTES, 'UTF-8'); ?></p>
   </article>
 </section>
 
 <section class="panel">
   <article class="card">
     <div class="feed-head">
-      <h3>Filters</h3>
-      <p class="feed-meta">Applied server-side on full archive</p>
+      <h3><?= htmlspecialchars(qk_t('data_archive.filters_title'), ENT_QUOTES, 'UTF-8'); ?></h3>
+      <p class="feed-meta"><?= htmlspecialchars(qk_t('data_archive.filters_sub'), ENT_QUOTES, 'UTF-8'); ?></p>
     </div>
     <div class="archive-filter-grid">
       <label class="event-item archive-filter-item">
-        <strong>Finestra temporale</strong><br />
+        <strong><?= htmlspecialchars(qk_t('data_archive.filter_window'), ENT_QUOTES, 'UTF-8'); ?></strong><br />
         <select id="archive-filter-window">
-          <option value="24h">Ultime 24 ore</option>
-          <option value="7d">Ultimi 7 giorni</option>
-          <option value="30d" selected>Ultimi 30 giorni</option>
-          <option value="90d">Ultimi 90 giorni</option>
-          <option value="1y">Ultimo 1 anno</option>
-          <option value="all">Tutti i dati disponibili</option>
-          <option value="custom">Personalizzato</option>
+          <option value="24h"><?= htmlspecialchars(qk_t('data_archive.window_24h'), ENT_QUOTES, 'UTF-8'); ?></option>
+          <option value="7d"><?= htmlspecialchars(qk_t('data_archive.window_7d'), ENT_QUOTES, 'UTF-8'); ?></option>
+          <option value="30d" selected><?= htmlspecialchars(qk_t('data_archive.window_30d'), ENT_QUOTES, 'UTF-8'); ?></option>
+          <option value="90d"><?= htmlspecialchars(qk_t('data_archive.window_90d'), ENT_QUOTES, 'UTF-8'); ?></option>
+          <option value="1y"><?= htmlspecialchars(qk_t('data_archive.window_1y'), ENT_QUOTES, 'UTF-8'); ?></option>
+          <option value="all"><?= htmlspecialchars(qk_t('data_archive.window_all'), ENT_QUOTES, 'UTF-8'); ?></option>
+          <option value="custom"><?= htmlspecialchars(qk_t('data_archive.window_custom'), ENT_QUOTES, 'UTF-8'); ?></option>
         </select>
       </label>
       <label class="event-item archive-filter-item">
-        <strong>Location</strong><br />
-        <input id="archive-filter-location" type="search" list="archive-location-list" placeholder="Search any place in the world..." autocomplete="off" />
+        <strong><?= htmlspecialchars(qk_t('data_archive.filter_location'), ENT_QUOTES, 'UTF-8'); ?></strong><br />
+        <input id="archive-filter-location" type="search" list="archive-location-list" placeholder="<?= htmlspecialchars(qk_t('data_archive.location_placeholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="off" />
         <datalist id="archive-location-list"></datalist>
       </label>
       <label class="event-item archive-filter-item">
-        <strong>Min Magnitude</strong><br />
+        <strong><?= htmlspecialchars(qk_t('data_archive.filter_min_magnitude'), ENT_QUOTES, 'UTF-8'); ?></strong><br />
         <select id="archive-filter-mag">
           <option value="0">M0+</option>
           <option value="2">M2+</option>
@@ -77,45 +77,45 @@ require __DIR__ . '/../partials/topbar.php';
         </select>
       </label>
       <label class="event-item archive-filter-item">
-        <strong>Depth Band</strong><br />
+        <strong><?= htmlspecialchars(qk_t('data_archive.filter_depth_band'), ENT_QUOTES, 'UTF-8'); ?></strong><br />
         <select id="archive-filter-depth">
-          <option value="all">All depths</option>
-          <option value="shallow">Shallow (0-70 km)</option>
-          <option value="intermediate">Intermediate (70-300 km)</option>
-          <option value="deep">Deep (300+ km)</option>
+          <option value="all"><?= htmlspecialchars(qk_t('data_archive.depth_all'), ENT_QUOTES, 'UTF-8'); ?></option>
+          <option value="shallow"><?= htmlspecialchars(qk_t('data_archive.depth_shallow'), ENT_QUOTES, 'UTF-8'); ?></option>
+          <option value="intermediate"><?= htmlspecialchars(qk_t('data_archive.depth_intermediate'), ENT_QUOTES, 'UTF-8'); ?></option>
+          <option value="deep"><?= htmlspecialchars(qk_t('data_archive.depth_deep'), ENT_QUOTES, 'UTF-8'); ?></option>
         </select>
       </label>
     </div>
     <div class="preset-row">
-      <button id="archive-search-btn" class="btn btn-ghost" type="button">Cerca</button>
-      <button id="archive-custom-range-btn" class="btn btn-ghost" type="button">Imposta intervallo personalizzato</button>
-      <span id="archive-custom-range-label" class="kpi-note">Nessun intervallo personalizzato attivo</span>
-      <button id="archive-reset-filters" class="btn btn-ghost" type="button">Reset Filters</button>
+      <button id="archive-search-btn" class="btn btn-ghost" type="button"><?= htmlspecialchars(qk_t('data_archive.search'), ENT_QUOTES, 'UTF-8'); ?></button>
+      <button id="archive-custom-range-btn" class="btn btn-ghost" type="button"><?= htmlspecialchars(qk_t('data_archive.custom_range'), ENT_QUOTES, 'UTF-8'); ?></button>
+      <span id="archive-custom-range-label" class="kpi-note"><?= htmlspecialchars(qk_t('data_archive.custom_range_none'), ENT_QUOTES, 'UTF-8'); ?></span>
+      <button id="archive-reset-filters" class="btn btn-ghost" type="button"><?= htmlspecialchars(qk_t('data_archive.reset_filters'), ENT_QUOTES, 'UTF-8'); ?></button>
     </div>
     <div id="archive-search-feedback" class="archive-search-feedback" aria-live="polite" aria-atomic="true">
       <div class="archive-search-feedback-track">
         <span id="archive-search-feedback-bar" class="archive-search-feedback-bar" style="width:0%"></span>
       </div>
-      <p id="archive-search-feedback-text" class="feed-meta">Pronto</p>
+      <p id="archive-search-feedback-text" class="feed-meta"><?= htmlspecialchars(qk_t('data_archive.ready', 'Ready'), ENT_QUOTES, 'UTF-8'); ?></p>
     </div>
   </article>
 </section>
 
 <dialog id="archive-custom-range-dialog" class="archive-dialog">
   <form method="dialog" class="archive-dialog-card">
-    <h3>Intervallo personalizzato</h3>
-    <p class="kpi-note">Seleziona data inizio e data fine per il filtro storico.</p>
+    <h3><?= htmlspecialchars(qk_t('data_archive.custom_title'), ENT_QUOTES, 'UTF-8'); ?></h3>
+    <p class="kpi-note"><?= htmlspecialchars(qk_t('data_archive.custom_sub'), ENT_QUOTES, 'UTF-8'); ?></p>
     <label class="archive-dialog-field">
-      <strong>Data inizio</strong>
+      <strong><?= htmlspecialchars(qk_t('data_archive.custom_from'), ENT_QUOTES, 'UTF-8'); ?></strong>
       <input id="archive-filter-from" type="date" />
     </label>
     <label class="archive-dialog-field">
-      <strong>Data fine</strong>
+      <strong><?= htmlspecialchars(qk_t('data_archive.custom_to'), ENT_QUOTES, 'UTF-8'); ?></strong>
       <input id="archive-filter-to" type="date" />
     </label>
     <div class="preset-row">
-      <button id="archive-custom-range-cancel" class="btn btn-ghost" type="button">Annulla</button>
-      <button id="archive-custom-range-apply" class="btn btn-ghost" type="button">Applica intervallo</button>
+      <button id="archive-custom-range-cancel" class="btn btn-ghost" type="button"><?= htmlspecialchars(qk_t('data_archive.custom_cancel'), ENT_QUOTES, 'UTF-8'); ?></button>
+      <button id="archive-custom-range-apply" class="btn btn-ghost" type="button"><?= htmlspecialchars(qk_t('data_archive.custom_apply'), ENT_QUOTES, 'UTF-8'); ?></button>
     </div>
   </form>
 </dialog>
@@ -123,58 +123,105 @@ require __DIR__ . '/../partials/topbar.php';
 <section class="panel panel-main earthquakes-main-layout archive-map-layout">
   <article class="map-card archive-map-card">
     <div class="feed-head">
-      <h3>Archive Map</h3>
-      <p id="archive-map-meta" class="feed-meta">Click map to set center point</p>
+      <h3><?= htmlspecialchars(qk_t('data_archive.map_title'), ENT_QUOTES, 'UTF-8'); ?></h3>
+      <p id="archive-map-meta" class="feed-meta"><?= htmlspecialchars(qk_t('data_archive.map_sub'), ENT_QUOTES, 'UTF-8'); ?></p>
     </div>
     <div class="archive-radius-control event-item">
-      <label for="archive-filter-radius"><strong>Radius</strong></label>
+      <label for="archive-filter-radius"><strong><?= htmlspecialchars(qk_t('data_archive.radius'), ENT_QUOTES, 'UTF-8'); ?></strong></label>
       <input id="archive-filter-radius" type="range" min="5" max="1200" step="5" value="120" />
       <span id="archive-radius-value" class="archive-radius-value">120 km</span>
     </div>
-    <p id="archive-center-status" class="kpi-note archive-center-status">Center not set. Use localita or click on the map.</p>
+    <p id="archive-center-status" class="kpi-note archive-center-status"><?= htmlspecialchars(qk_t('data_archive.center_not_set', 'Center not set. Select a valid location or click on the map (radius disabled).'), ENT_QUOTES, 'UTF-8'); ?></p>
     <div class="map-wrap">
-      <div id="archive-map-leaflet" class="world-map-leaflet archive-map-leaflet" aria-label="Archive interactive map"></div>
+      <div id="archive-map-leaflet" class="world-map-leaflet archive-map-leaflet" aria-label="<?= htmlspecialchars(qk_t('data_archive.map_aria'), ENT_QUOTES, 'UTF-8'); ?>"></div>
     </div>
   </article>
   <article class="card side-card archive-list-card">
     <div class="archive-list-head">
-      <h3>Matching Events</h3>
+      <h3><?= htmlspecialchars(qk_t('data_archive.matching_title'), ENT_QUOTES, 'UTF-8'); ?></h3>
       <label class="archive-list-sort">
-        <span class="sr-only">Sort matching events</span>
-        <select id="archive-list-sort" aria-label="Sort matching events">
-          <option value="date_desc" selected>Data ↓</option>
-          <option value="date_asc">Data ↑</option>
-          <option value="mag_desc">Magnitudo ↓</option>
-          <option value="mag_asc">Magnitudo ↑</option>
+        <span class="sr-only"><?= htmlspecialchars(qk_t('data_archive.sort_aria'), ENT_QUOTES, 'UTF-8'); ?></span>
+        <select id="archive-list-sort" aria-label="<?= htmlspecialchars(qk_t('data_archive.sort_aria'), ENT_QUOTES, 'UTF-8'); ?>">
+          <option value="date_desc" selected><?= htmlspecialchars(qk_t('data_archive.sort_date_desc'), ENT_QUOTES, 'UTF-8'); ?></option>
+          <option value="date_asc"><?= htmlspecialchars(qk_t('data_archive.sort_date_asc'), ENT_QUOTES, 'UTF-8'); ?></option>
+          <option value="mag_desc"><?= htmlspecialchars(qk_t('data_archive.sort_mag_desc'), ENT_QUOTES, 'UTF-8'); ?></option>
+          <option value="mag_asc"><?= htmlspecialchars(qk_t('data_archive.sort_mag_asc'), ENT_QUOTES, 'UTF-8'); ?></option>
         </select>
       </label>
     </div>
-    <p id="archive-feed-meta" class="feed-meta">Loading archive...</p>
+    <p id="archive-feed-meta" class="feed-meta"><?= htmlspecialchars(qk_t('data_archive.feed_loading'), ENT_QUOTES, 'UTF-8'); ?></p>
     <ul id="archive-map-list" class="events-list live-feed-scroll archive-map-list">
-      <li class="event-item">Loading archived events...</li>
+      <li class="event-item"><?= htmlspecialchars(qk_t('data_archive.events_loading'), ENT_QUOTES, 'UTF-8'); ?></li>
     </ul>
   </article>
 </section>
 
 <section class="panel page-grid">
   <article class="card page-card">
-    <h3>Filter Insight</h3>
-    <p id="archive-insight-summary" class="insight-lead">Apply filters to generate an operational summary.</p>
+    <h3><?= htmlspecialchars(qk_t('data_archive.insight_title'), ENT_QUOTES, 'UTF-8'); ?></h3>
+    <p id="archive-insight-summary" class="insight-lead"><?= htmlspecialchars(qk_t('data_archive.insight_sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </article>
   <article class="card page-card">
-    <h3>Radius &amp; Coverage</h3>
-    <p id="archive-insight-depth" class="insight-lead">Depth and regional composition will appear here.</p>
+    <h3><?= htmlspecialchars(qk_t('data_archive.coverage_title'), ENT_QUOTES, 'UTF-8'); ?></h3>
+    <p id="archive-insight-depth" class="insight-lead"><?= htmlspecialchars(qk_t('data_archive.coverage_sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </article>
   <article class="card page-card">
-    <h3>Source Blend</h3>
+    <h3><?= htmlspecialchars(qk_t('data_archive.blend_title'), ENT_QUOTES, 'UTF-8'); ?></h3>
     <div id="archive-insight-providers" class="insight-pills">
-      <span class="insight-pill">Loading providers...</span>
+      <span class="insight-pill"><?= htmlspecialchars(qk_t('data_archive.providers_loading'), ENT_QUOTES, 'UTF-8'); ?></span>
     </div>
   </article>
 </section>
 
 <script>
   (() => {
+    const i18n = {
+      search: <?= json_encode(qk_t('data_archive.search'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      searching: <?= json_encode(qk_t('data_archive.searching'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      resetFilters: <?= json_encode(qk_t('data_archive.reset_filters'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      resetting: <?= json_encode(qk_t('data_archive.resetting'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      loadingArchive: <?= json_encode(qk_t('data_archive.loading_archive', 'Loading archive'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      searchingInProgress: <?= json_encode(qk_t('data_archive.searching_in_progress', 'Searching in progress'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      completed: <?= json_encode(qk_t('data_archive.completed', 'Completed'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      ready: <?= json_encode(qk_t('data_archive.ready', 'Ready'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      searchError: <?= json_encode(qk_t('data_archive.search_error', 'Search failed'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      noCustomRange: <?= json_encode(qk_t('data_archive.custom_range_none'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      centerNotSet: <?= json_encode(qk_t('data_archive.center_not_set', 'Center not set. Select a valid location or click on the map (radius disabled).'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      centerCustomPoint: <?= json_encode(qk_t('data_archive.center_custom_point', 'Custom point'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      centerSetPressSearch: <?= json_encode(qk_t('data_archive.center_set_press_search', 'set. Press Search to apply filters.'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      centerSelected: <?= json_encode(qk_t('data_archive.center_selected', 'selected'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      centerReady: <?= json_encode(qk_t('data_archive.center_ready', 'ready'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      locationNotFound: <?= json_encode(qk_t('data_archive.location_not_found', 'Location not found. Try adding country/region.'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      searchFailed: <?= json_encode(qk_t('data_archive.search_failed', 'Request failed'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      searchDone: <?= json_encode(qk_t('data_archive.search_done', 'completed'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      resetFiltersAction: <?= json_encode(qk_t('data_archive.reset_filters_action', 'Reset filters'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      preparingSearch: <?= json_encode(qk_t('data_archive.preparing_search', 'Preparing search'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      radiusOff: <?= json_encode(qk_t('data_archive.radius_off', 'off'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      centerPrefix: <?= json_encode(qk_t('data_archive.center_prefix', 'Center'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      centerDetails: <?= json_encode(qk_t('data_archive.center_details', 'Center: {name} ({lat}, {lon})'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      kpiRowsNote: <?= json_encode(qk_t('data_archive.kpi_rows_note', 'Rows loaded in current filtered result set'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      feedRowsArchive: <?= json_encode(qk_t('data_archive.feed_rows_archive', '{count} matching rows in archive'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      summaryEventsFound: <?= json_encode(qk_t('data_archive.summary_events_found', '{count} events found {locality}.'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      coverageDepthMix: <?= json_encode(qk_t('data_archive.coverage_depth_mix', '{center} · Radius: {radius}. Depth mix: {shallow} shallow, {intermediate} intermediate, {deep} deep.'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      sourcePrefix: <?= json_encode(qk_t('data_archive.source_prefix', 'Source'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      noEventsMatch: <?= json_encode(qk_t('data_archive.no_events_match', 'No events match current filters.'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      openEvent: <?= json_encode(qk_t('data_archive.open_event', 'Open event'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      noProvidersSet: <?= json_encode(qk_t('data_archive.no_providers_set', 'No providers in current result set'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      archiveUnavailable: <?= json_encode(qk_t('data_archive.archive_unavailable', 'Archive unavailable'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      sourceUnavailable: <?= json_encode(qk_t('data_archive.source_unavailable', 'Source unavailable'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      summaryUnavailable: <?= json_encode(qk_t('data_archive.summary_unavailable', 'Unable to build archive summary right now.'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      depthUnavailable: <?= json_encode(qk_t('data_archive.depth_unavailable', 'Depth summary unavailable.'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      providerMixUnavailable: <?= json_encode(qk_t('data_archive.provider_mix_unavailable', 'Provider mix unavailable'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      loadedRowsProgress: <?= json_encode(qk_t('data_archive.loaded_rows_progress', 'Loaded {rows} / {total} rows'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      loadingRowsProgress: <?= json_encode(qk_t('data_archive.loading_rows_progress', 'Loading {rows} / {total} rows...'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      localityAround: <?= json_encode(qk_t('data_archive.locality_around', 'around "{value}"'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      localityAll: <?= json_encode(qk_t('data_archive.locality_all', 'across all locations'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      loadingRowsArchive: <?= json_encode(qk_t('data_archive.loading_rows_archive', 'Loading archive rows {rows} / {total}...'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      centerPlaceNotFound: <?= json_encode(qk_t('data_archive.center_place_not_found', 'Center place not found in archive, try map click or broader text.'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      clickMapCenter: <?= json_encode(qk_t('data_archive.click_map_center', 'Click map to set center point'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      depthLabel: <?= json_encode(qk_t('data_archive.depth_label', 'Depth'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      centerRadius: <?= json_encode(qk_t('data_archive.center_radius', 'Center {name} · radius {radius}'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+    };
     const mapContainer = document.querySelector("#archive-map-leaflet");
     const mapList = document.querySelector("#archive-map-list");
     const mapMeta = document.querySelector("#archive-map-meta");
@@ -231,7 +278,7 @@ require __DIR__ . '/../partials/topbar.php';
     let pinnedCenterPlace = "";
     let pendingMapFocus = false;
     let requestSeq = 0;
-    let pendingFetchReason = "Caricamento archivio";
+    let pendingFetchReason = i18n.loadingArchive;
     let locationSuggestSeq = 0;
     let locationSuggestTimer = null;
     let feedbackProgressTimer = null;
@@ -251,6 +298,11 @@ require __DIR__ . '/../partials/topbar.php';
     const escapeAttrValue = (value) => String(value ?? "")
       .replace(/\\/g, "\\\\")
       .replace(/"/g, '\\"');
+
+    const interpolate = (template, vars) =>
+      String(template).replace(/\{([a-zA-Z0-9_]+)\}/g, (_, key) =>
+        Object.prototype.hasOwnProperty.call(vars, key) ? String(vars[key]) : ""
+      );
 
     const eventKey = (row, index) => {
       if (row && typeof row.id === "string" && row.id !== "") return row.id;
@@ -328,7 +380,7 @@ require __DIR__ . '/../partials/topbar.php';
         filterRadius.disabled = !enabled;
       }
       if (radiusValue) {
-        radiusValue.textContent = enabled ? `${radiusKm()} km` : "off";
+        radiusValue.textContent = enabled ? `${radiusKm()} km` : i18n.radiusOff;
       }
     };
 
@@ -336,14 +388,14 @@ require __DIR__ . '/../partials/topbar.php';
       syncRadiusControl();
     };
 
-    const setActionButtonsBusy = (busy, label = "Cerca") => {
+    const setActionButtonsBusy = (busy, label = i18n.searching) => {
       if (searchBtn instanceof HTMLButtonElement) {
         searchBtn.disabled = busy;
-        searchBtn.textContent = busy ? label : "Cerca";
+        searchBtn.textContent = busy ? label : i18n.search;
       }
       if (resetFilters instanceof HTMLButtonElement) {
         resetFilters.disabled = busy;
-        resetFilters.textContent = busy ? "Reset..." : "Reset Filters";
+        resetFilters.textContent = busy ? i18n.resetting : i18n.resetFilters;
       }
     };
 
@@ -369,10 +421,10 @@ require __DIR__ . '/../partials/topbar.php';
     const beginFeedbackProgress = (reason) => {
       stopFeedbackTimers();
       feedbackProgress = Math.max(6, Math.min(18, feedbackProgress || 8));
-      updateFeedbackUi(feedbackProgress, reason || "Ricerca in corso", { active: true, error: false });
+      updateFeedbackUi(feedbackProgress, reason || i18n.searchingInProgress, { active: true, error: false });
       feedbackProgressTimer = window.setInterval(() => {
         feedbackProgress = Math.min(92, feedbackProgress + (Math.random() * 9 + 2));
-        updateFeedbackUi(feedbackProgress, reason || "Ricerca in corso", { active: true, error: false });
+        updateFeedbackUi(feedbackProgress, reason || i18n.searchingInProgress, { active: true, error: false });
       }, 180);
     };
 
@@ -380,14 +432,14 @@ require __DIR__ . '/../partials/topbar.php';
       stopFeedbackTimers();
       if (ok) {
         feedbackProgress = 100;
-        updateFeedbackUi(100, message || "Completato", { active: true, error: false });
+        updateFeedbackUi(100, message || i18n.completed, { active: true, error: false });
         feedbackHideTimer = window.setTimeout(() => {
-          updateFeedbackUi(0, "Pronto", { active: false, error: false });
+          updateFeedbackUi(0, i18n.ready, { active: false, error: false });
           feedbackProgress = 0;
         }, 850);
       } else {
         const stuckAt = Math.max(8, Math.min(95, feedbackProgress || 12));
-        updateFeedbackUi(stuckAt, message || "Errore durante la ricerca", { active: true, error: true });
+        updateFeedbackUi(stuckAt, message || i18n.searchError, { active: true, error: true });
       }
     };
 
@@ -396,7 +448,7 @@ require __DIR__ . '/../partials/topbar.php';
       const to = String(filterTo?.value || "").trim();
       if (!customRangeLabel) return;
       if (from === "" || to === "") {
-        customRangeLabel.textContent = "Nessun intervallo personalizzato attivo";
+        customRangeLabel.textContent = i18n.noCustomRange;
         return;
       }
       customRangeLabel.textContent = `${from} → ${to}`;
@@ -423,12 +475,16 @@ require __DIR__ . '/../partials/topbar.php';
     const setCenterStatus = (center) => {
       if (!centerStatus) return;
       if (!center || typeof center.latitude !== "number" || typeof center.longitude !== "number") {
-        centerStatus.textContent = "Center not set. Select a valid location or click on the map (radius disabled).";
+        centerStatus.textContent = i18n.centerNotSet;
         syncRadiusControl();
         return;
       }
-      const name = center.name ? String(center.name) : "Custom point";
-      centerStatus.textContent = `Center: ${name} (${center.latitude.toFixed(3)}, ${center.longitude.toFixed(3)})`;
+      const name = center.name ? String(center.name) : i18n.centerCustomPoint;
+      centerStatus.textContent = interpolate(i18n.centerDetails, {
+        name,
+        lat: center.latitude.toFixed(3),
+        lon: center.longitude.toFixed(3),
+      });
       syncRadiusControl();
     };
 
@@ -448,7 +504,7 @@ require __DIR__ . '/../partials/topbar.php';
         if (typeof lat !== "number" || typeof lon !== "number") return;
 
         manualCenter = {
-          name: `Custom point ${lat.toFixed(3)}, ${lon.toFixed(3)}`,
+          name: `${i18n.centerCustomPoint} ${lat.toFixed(3)}, ${lon.toFixed(3)}`,
           latitude: lat,
           longitude: lon,
           source: "manual-click",
@@ -457,7 +513,7 @@ require __DIR__ . '/../partials/topbar.php';
         drawCenterGeometry();
         setCenterStatus(resolvedCenter);
         if (mapMeta) {
-          mapMeta.textContent = `Center ${resolvedCenter.name || "selected"} set. Press Cerca to apply filters.`;
+          mapMeta.textContent = `Center ${resolvedCenter.name || i18n.centerSelected} ${i18n.centerSetPressSearch}`;
         }
       });
     };
@@ -623,7 +679,7 @@ require __DIR__ . '/../partials/topbar.php';
         const url = eventDetailUrl(row);
 
         marker.bindPopup(
-          `<strong><span class="mag-value ${magBand}">${mag}</span> ${place}</strong><br/>${when} | Depth ${depth}<br/><a href="${url}">Open event</a>`
+          `<strong><span class="mag-value ${magBand}">${mag}</span> ${place}</strong><br/>${when} | ${escapeHtml(i18n.depthLabel)} ${depth}<br/><a href="${url}">${escapeHtml(i18n.openEvent)}</a>`
         );
 
         marker.on("click", () => {
@@ -662,7 +718,7 @@ require __DIR__ . '/../partials/topbar.php';
     const renderList = (rows) => {
       if (!mapList) return;
       if (!Array.isArray(rows) || rows.length === 0) {
-        mapList.innerHTML = "<li class='event-item'>No events match current filters.</li>";
+        mapList.innerHTML = `<li class='event-item'>${escapeHtml(i18n.noEventsMatch)}</li>`;
         return;
       }
 
@@ -688,7 +744,7 @@ require __DIR__ . '/../partials/topbar.php';
         return `
           <li class="event-item event-item-clickable archive-map-item${selectedRowKey === key ? " is-active" : ""}" data-key="${escapeHtml(key)}" data-url="${escapeHtml(url)}">
             <strong><span class="mag-value ${magBand}">${escapeHtml(mag)}</span> ${escapeHtml(place)}</strong><br />
-            <span class="archive-result-meta">${escapeHtml(when)} | Depth ${escapeHtml(depth)}${escapeHtml(dist)}</span>
+            <span class="archive-result-meta">${escapeHtml(when)} | ${escapeHtml(i18n.depthLabel)} ${escapeHtml(depth)}${escapeHtml(dist)}</span>
           </li>
         `;
       }).join("");
@@ -889,7 +945,7 @@ require __DIR__ . '/../partials/topbar.php';
     const updateKpisAndInsights = (payload, rows) => {
       if (kpiVisible) kpiVisible.textContent = String(Array.isArray(rows) ? rows.length : 0);
       if (kpiVisibleNote) {
-        kpiVisibleNote.textContent = "Rows loaded in current filtered result set";
+        kpiVisibleNote.textContent = i18n.kpiRowsNote;
       }
       if (kpiTotal) kpiTotal.textContent = String(Number(payload.total_count || 0));
 
@@ -903,13 +959,18 @@ require __DIR__ . '/../partials/topbar.php';
       if (kpiLatest) kpiLatest.textContent = rows[0]?.event_time_utc ? timeLabel(rows[0].event_time_utc) : "--";
 
       if (feedMeta) {
-        feedMeta.textContent = `${payload.total_count || 0} matching rows in archive`;
+        feedMeta.textContent = interpolate(i18n.feedRowsArchive, { count: payload.total_count || 0 });
       }
 
       if (insightSummary) {
         const filters = payload.filters_applied || {};
-        const localityText = filters.locality ? `around "${filters.locality}"` : "across all locations";
-        insightSummary.textContent = `${payload.total_count || 0} events found ${localityText}.`;
+        const localityText = filters.locality
+          ? interpolate(i18n.localityAround, { value: filters.locality })
+          : i18n.localityAll;
+        insightSummary.textContent = interpolate(i18n.summaryEventsFound, {
+          count: payload.total_count || 0,
+          locality: localityText,
+        });
       }
 
       if (insightDepth) {
@@ -918,21 +979,27 @@ require __DIR__ . '/../partials/topbar.php';
         const deep = (Array.isArray(rows) ? rows : []).filter((row) => classifyDepth(row.depth_km) === "deep").length;
         const center = payload.center;
         const radius = payload.filters_applied?.radius_km;
-        const centerText = center && center.name ? `Center: ${center.name}` : "Center: not set";
-        const radiusText = typeof radius === "number" ? `${radius} km` : "off";
-        insightDepth.textContent = `${centerText} · Radius: ${radiusText}. Depth mix: ${shallow} shallow, ${intermediate} intermediate, ${deep} deep.`;
+        const centerText = center && center.name ? `${i18n.centerPrefix}: ${center.name}` : `${i18n.centerPrefix}: ${i18n.centerNotSet.toLowerCase()}`;
+        const radiusText = typeof radius === "number" ? `${radius} km` : i18n.radiusOff;
+        insightDepth.textContent = interpolate(i18n.coverageDepthMix, {
+          center: centerText,
+          radius: radiusText,
+          shallow,
+          intermediate,
+          deep,
+        });
       }
 
       const providers = Array.isArray(payload.providers) ? payload.providers : [];
       if (insightProviders) {
         insightProviders.innerHTML = providers.length > 0
           ? providers.map((name) => `<span class=\"insight-pill\">${escapeHtml(name)}</span>`).join("")
-          : "<span class='insight-pill'>No providers in current result set</span>";
+          : `<span class='insight-pill'>${escapeHtml(i18n.noProvidersSet)}</span>`;
       }
 
       if (kpiSource) {
         const providerLabel = payload.provider || "Archive API";
-        kpiSource.textContent = `Source: ${providerLabel}`;
+        kpiSource.textContent = `${i18n.sourcePrefix}: ${providerLabel}`;
       }
     };
 
@@ -942,7 +1009,7 @@ require __DIR__ . '/../partials/topbar.php';
         activeArchiveController.abort();
       }
       activeArchiveController = new AbortController();
-      const actionReason = pendingFetchReason || "Ricerca in corso";
+      const actionReason = pendingFetchReason || i18n.searchingInProgress;
       beginFeedbackProgress(actionReason);
       try {
         const query = collectQuery();
@@ -976,8 +1043,11 @@ require __DIR__ . '/../partials/topbar.php';
         const typedCenter = String(pinnedCenterPlace || normalizeSelectedLocation()).trim();
         if (mapMeta) {
           mapMeta.textContent = resolvedCenter
-            ? `Center ${resolvedCenter.name || "selected"} · radius ${radiusKm()} km`
-            : (typedCenter !== "" ? "Center place not found in archive, try map click or broader text." : "Click map to set center point");
+            ? interpolate(i18n.centerRadius, {
+                name: resolvedCenter.name || i18n.centerSelected,
+                radius: `${radiusKm()} km`,
+              })
+            : (typedCenter !== "" ? i18n.centerPlaceNotFound : i18n.clickMapCenter);
         }
 
         ensureMap();
@@ -996,14 +1066,14 @@ require __DIR__ . '/../partials/topbar.php';
           if (kpiVisibleNote) {
             const totalLabel = expectedTotal !== null ? expectedTotal : rows.length;
             kpiVisibleNote.textContent = done
-              ? `Loaded ${rows.length} / ${totalLabel} rows`
-              : `Loading ${rows.length} / ${totalLabel} rows...`;
+              ? interpolate(i18n.loadedRowsProgress, { rows: rows.length, total: totalLabel })
+              : interpolate(i18n.loadingRowsProgress, { rows: rows.length, total: totalLabel });
           }
           if (feedMeta) {
             const totalLabel = expectedTotal !== null ? expectedTotal : rows.length;
             feedMeta.textContent = done
-              ? `${rows.length} matching rows in archive`
-              : `Loading archive rows ${rows.length} / ${totalLabel}...`;
+              ? interpolate(i18n.feedRowsArchive, { count: rows.length })
+              : interpolate(i18n.loadingRowsArchive, { rows: rows.length, total: totalLabel });
           }
         };
 
@@ -1035,9 +1105,9 @@ require __DIR__ . '/../partials/topbar.php';
           renderProgress(page >= pageCount);
         }
 
-        finishFeedbackProgress(true, `${actionReason} completata`);
+        finishFeedbackProgress(true, `${actionReason} ${i18n.searchDone}`);
         setActionButtonsBusy(false);
-        pendingFetchReason = "Ricerca in corso";
+        pendingFetchReason = i18n.searchingInProgress;
         if (activeArchiveController && activeArchiveController.signal.aborted === false) {
           activeArchiveController = null;
         }
@@ -1047,18 +1117,18 @@ require __DIR__ . '/../partials/topbar.php';
           return;
         }
         setError();
-        finishFeedbackProgress(false, "Richiesta non riuscita");
+        finishFeedbackProgress(false, i18n.searchFailed);
         setActionButtonsBusy(false);
-        pendingFetchReason = "Ricerca in corso";
+        pendingFetchReason = i18n.searchingInProgress;
         activeArchiveController = null;
       }
     };
 
     const runSearch = async () => {
       const location = normalizeSelectedLocation();
-      pendingFetchReason = "Ricerca in corso";
-      setActionButtonsBusy(true, "Ricerca...");
-      beginFeedbackProgress("Preparazione ricerca");
+      pendingFetchReason = i18n.searchingInProgress;
+      setActionButtonsBusy(true, i18n.searching);
+      beginFeedbackProgress(i18n.preparingSearch);
 
       if (location !== "") {
         let resolved = selectedSuggestion();
@@ -1072,8 +1142,8 @@ require __DIR__ . '/../partials/topbar.php';
         }
         if (!resolved) {
           setActionButtonsBusy(false);
-          finishFeedbackProgress(false, "Localita non trovata");
-          if (mapMeta) mapMeta.textContent = "Location not found. Try adding country/region.";
+          finishFeedbackProgress(false, i18n.locationNotFound);
+          if (mapMeta) mapMeta.textContent = i18n.locationNotFound;
           return;
         }
         manualCenter = resolved;
@@ -1084,7 +1154,10 @@ require __DIR__ . '/../partials/topbar.php';
         drawCenterGeometry();
         setCenterStatus(resolvedCenter);
         if (mapMeta) {
-          mapMeta.textContent = `Center ${resolvedCenter.name || "selected"} · radius ${radiusKm()} km`;
+          mapMeta.textContent = interpolate(i18n.centerRadius, {
+            name: resolvedCenter.name || i18n.centerSelected,
+            radius: `${radiusKm()} km`,
+          });
         }
         if (map && typeof resolvedCenter.latitude === "number" && typeof resolvedCenter.longitude === "number") {
           map.flyTo([resolvedCenter.latitude, resolvedCenter.longitude], targetZoomForRadius(), { duration: 0.35 });
@@ -1137,7 +1210,10 @@ require __DIR__ . '/../partials/topbar.php';
       drawCenterGeometry();
       setCenterStatus(resolvedCenter);
       if (mapMeta) {
-        mapMeta.textContent = `Center ${resolvedCenter.name || "selected"} ready · radius ${radiusKm()} km`;
+        mapMeta.textContent = `${interpolate(i18n.centerRadius, {
+          name: resolvedCenter.name || i18n.centerSelected,
+          radius: `${radiusKm()} km`,
+        })} · ${i18n.centerReady}`;
       }
       if (map && typeof resolvedCenter.latitude === "number" && typeof resolvedCenter.longitude === "number") {
         map.flyTo([resolvedCenter.latitude, resolvedCenter.longitude], targetZoomForRadius(), { duration: 0.35 });
@@ -1236,9 +1312,9 @@ require __DIR__ . '/../partials/topbar.php';
       });
 
       resetFilters?.addEventListener("click", () => {
-        pendingFetchReason = "Reset filtri";
-        setActionButtonsBusy(true, "Ricerca...");
-        beginFeedbackProgress("Reset filtri");
+      pendingFetchReason = i18n.resetFiltersAction;
+      setActionButtonsBusy(true, i18n.searching);
+      beginFeedbackProgress(i18n.resetFiltersAction);
         if (filterWindow) filterWindow.value = "30d";
         if (filterFrom) filterFrom.value = "";
         if (filterTo) filterTo.value = "";
@@ -1289,13 +1365,13 @@ require __DIR__ . '/../partials/topbar.php';
 
     const setError = () => {
       if (mapList) {
-        mapList.innerHTML = "<li class='event-item'>Unable to load archive right now.</li>";
+        mapList.innerHTML = `<li class='event-item'>${escapeHtml(i18n.archiveUnavailable)}</li>`;
       }
-      if (feedMeta) feedMeta.textContent = "Archive unavailable";
-      if (kpiSource) kpiSource.textContent = "Source unavailable";
-      if (insightSummary) insightSummary.textContent = "Unable to build archive summary right now.";
-      if (insightDepth) insightDepth.textContent = "Depth summary unavailable.";
-      if (insightProviders) insightProviders.innerHTML = "<span class='insight-pill'>Provider mix unavailable</span>";
+      if (feedMeta) feedMeta.textContent = i18n.archiveUnavailable;
+      if (kpiSource) kpiSource.textContent = i18n.sourceUnavailable;
+      if (insightSummary) insightSummary.textContent = i18n.summaryUnavailable;
+      if (insightDepth) insightDepth.textContent = i18n.depthUnavailable;
+      if (insightProviders) insightProviders.innerHTML = `<span class='insight-pill'>${escapeHtml(i18n.providerMixUnavailable)}</span>`;
     };
 
     setRadiusLabel();

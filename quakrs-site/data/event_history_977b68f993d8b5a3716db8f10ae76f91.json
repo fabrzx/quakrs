@@ -1,0 +1,944 @@
+{
+    "ok": true,
+    "provider": "USGS FDSN Historical Archive",
+    "generated_at_ts": 1773677452,
+    "generated_at": "2026-03-16T16:10:52+00:00",
+    "query": {
+        "lat": 43.3392,
+        "lon": 13.217,
+        "radius_km": 100,
+        "min_magnitude": null,
+        "start": "1899-12-31",
+        "end": "2026-03-15"
+    },
+    "page": 1,
+    "per_page": 80,
+    "total_pages": 1,
+    "total_events": 0,
+    "events_count": 80,
+    "events": [
+        {
+            "id": "us6000rf24",
+            "magnitude": 4.9,
+            "place": "30 km NE of Marotta, Italy",
+            "event_time_utc": "2025-10-06T10:13:59+00:00",
+            "depth_km": 10,
+            "latitude": 43.9808,
+            "longitude": 13.3879,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rf24"
+        },
+        {
+            "id": "us7000qxli",
+            "magnitude": 4.2,
+            "place": "4 km SSE of San Terenziano, Italy",
+            "event_time_utc": "2025-09-20T21:11:40+00:00",
+            "depth_km": 10,
+            "latitude": 42.827,
+            "longitude": 12.4921,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000qxli"
+        },
+        {
+            "id": "us6000pwq6",
+            "magnitude": 3.2,
+            "place": "3 km S of Bevagna, Italy",
+            "event_time_utc": "2025-03-04T00:55:41+00:00",
+            "depth_km": 11.31,
+            "latitude": 42.9102,
+            "longitude": 12.6133,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pwq6"
+        },
+        {
+            "id": "us6000lnce",
+            "magnitude": 4,
+            "place": "2 km ESE of Monteleone di Fermo, Italy",
+            "event_time_utc": "2023-11-14T16:17:49+00:00",
+            "depth_km": 14.118,
+            "latitude": 43.0428,
+            "longitude": 13.555,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000lnce"
+        },
+        {
+            "id": "us7000kvh7",
+            "magnitude": 4.2,
+            "place": "20 km NE of Senigallia, Italy",
+            "event_time_utc": "2023-09-13T08:38:17+00:00",
+            "depth_km": 10,
+            "latitude": 43.8586,
+            "longitude": 13.3777,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000kvh7"
+        },
+        {
+            "id": "us7000ku9l",
+            "magnitude": 4,
+            "place": "24 km NE of Marotta, Italy",
+            "event_time_utc": "2023-09-08T14:36:22+00:00",
+            "depth_km": 10,
+            "latitude": 43.9014,
+            "longitude": 13.3816,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ku9l"
+        },
+        {
+            "id": "us7000jil2",
+            "magnitude": 4.2,
+            "place": "4 km S of Umbertide, Italy",
+            "event_time_utc": "2023-03-09T19:13:57+00:00",
+            "depth_km": 2.838,
+            "latitude": 43.2648,
+            "longitude": 12.336,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000jil2"
+        },
+        {
+            "id": "us7000jiky",
+            "magnitude": 4.5,
+            "place": "2 km S of Umbertide, Italy",
+            "event_time_utc": "2023-03-09T19:08:07+00:00",
+            "depth_km": 10,
+            "latitude": 43.2824,
+            "longitude": 12.3414,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000jiky"
+        },
+        {
+            "id": "us7000jiim",
+            "magnitude": 4.3,
+            "place": "4 km SW of Umbertide, Italy",
+            "event_time_utc": "2023-03-09T15:05:40+00:00",
+            "depth_km": 4.946,
+            "latitude": 43.267,
+            "longitude": 12.3032,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000jiim"
+        },
+        {
+            "id": "us6000jqg3",
+            "magnitude": 4.2,
+            "place": "2 km NE of Pollenza, Italy",
+            "event_time_utc": "2023-02-21T00:07:21+00:00",
+            "depth_km": 13.057,
+            "latitude": 43.2845,
+            "longitude": 13.3723,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000jqg3"
+        },
+        {
+            "id": "us7000j3ua",
+            "magnitude": 4,
+            "place": "27 km NE of Senigallia, Italy",
+            "event_time_utc": "2023-01-12T07:06:13+00:00",
+            "depth_km": 10,
+            "latitude": 43.9032,
+            "longitude": 13.4288,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000j3ua"
+        },
+        {
+            "id": "us6000j7up",
+            "magnitude": 4.4,
+            "place": "17 km NE of Marotta, Italy",
+            "event_time_utc": "2022-12-08T07:08:18+00:00",
+            "depth_km": 7.629,
+            "latitude": 43.8785,
+            "longitude": 13.2942,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000j7up"
+        },
+        {
+            "id": "us6000j70x",
+            "magnitude": 4.2,
+            "place": "4 km N of Monte Grimano, Italy",
+            "event_time_utc": "2022-12-05T14:43:29+00:00",
+            "depth_km": 6.412,
+            "latitude": 43.5061,
+            "longitude": 12.458,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000j70x"
+        },
+        {
+            "id": "us7000ir3c",
+            "magnitude": 4.5,
+            "place": "19 km NE of Marotta, Italy",
+            "event_time_utc": "2022-11-20T05:20:30+00:00",
+            "depth_km": 10,
+            "latitude": 43.899,
+            "longitude": 13.3081,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ir3c"
+        },
+        {
+            "id": "us7000ip52",
+            "magnitude": 4.2,
+            "place": "25 km NE of Marotta, Italy",
+            "event_time_utc": "2022-11-11T20:41:07+00:00",
+            "depth_km": 3.894,
+            "latitude": 43.9205,
+            "longitude": 13.3785,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ip52"
+        },
+        {
+            "id": "us7000inve",
+            "magnitude": 4.3,
+            "place": "25 km NE of Marotta, Italy",
+            "event_time_utc": "2022-11-10T17:54:11+00:00",
+            "depth_km": 7.13,
+            "latitude": 43.8965,
+            "longitude": 13.4088,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000inve"
+        },
+        {
+            "id": "us7000insu",
+            "magnitude": 4.1,
+            "place": "central Italy",
+            "event_time_utc": "2022-11-10T12:35:52+00:00",
+            "depth_km": 10,
+            "latitude": 43.8551,
+            "longitude": 13.3632,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000insu"
+        },
+        {
+            "id": "us7000infp",
+            "magnitude": 5.6,
+            "place": "central Italy",
+            "event_time_utc": "2022-11-09T06:07:26+00:00",
+            "depth_km": 8,
+            "latitude": 43.9315,
+            "longitude": 13.3152,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000infp"
+        },
+        {
+            "id": "us7000ia47",
+            "magnitude": 4.3,
+            "place": "1 km S of Appignano del Tronto, Italy",
+            "event_time_utc": "2022-09-22T10:24:48+00:00",
+            "depth_km": 10,
+            "latitude": 42.8863,
+            "longitude": 13.6606,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ia47"
+        },
+        {
+            "id": "us7000hg5l",
+            "magnitude": 4.3,
+            "place": "11 km ENE of Cupra Marittima, Italy",
+            "event_time_utc": "2022-06-09T11:18:00+00:00",
+            "depth_km": 10,
+            "latitude": 43.0652,
+            "longitude": 13.9813,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000hg5l"
+        },
+        {
+            "id": "us7000fpqa",
+            "magnitude": 4.1,
+            "place": "central Italy",
+            "event_time_utc": "2021-10-29T10:53:08+00:00",
+            "depth_km": 17.6,
+            "latitude": 43.8485,
+            "longitude": 12.9676,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000fpqa"
+        },
+        {
+            "id": "us6000fvmd",
+            "magnitude": 4.3,
+            "place": "2 km ESE of Visso, Italy",
+            "event_time_utc": "2021-10-18T12:54:18+00:00",
+            "depth_km": 10,
+            "latitude": 42.9218,
+            "longitude": 13.1128,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000fvmd"
+        },
+        {
+            "id": "us7000e3cn",
+            "magnitude": 4.1,
+            "place": "1 km SE of Cipolleto, Italy",
+            "event_time_utc": "2021-05-15T07:56:02+00:00",
+            "depth_km": 10.76,
+            "latitude": 43.3128,
+            "longitude": 12.5915,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000e3cn"
+        },
+        {
+            "id": "us6000dchr",
+            "magnitude": 3.4,
+            "place": "8 km ENE of Civitanova Marche, Italy",
+            "event_time_utc": "2021-01-27T21:46:07+00:00",
+            "depth_km": 16.58,
+            "latitude": 43.3316,
+            "longitude": 13.8238,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000dchr"
+        },
+        {
+            "id": "us70005aqt",
+            "magnitude": 4.1,
+            "place": "1 km N of Norcia, Italy",
+            "event_time_utc": "2019-09-01T00:02:39+00:00",
+            "depth_km": 6.33,
+            "latitude": 42.808,
+            "longitude": 13.0983,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us70005aqt"
+        },
+        {
+            "id": "us2000haag",
+            "magnitude": 2.6,
+            "place": "1 km SSW of Monteleone di Fermo, Italy",
+            "event_time_utc": "2018-09-07T05:44:53+00:00",
+            "depth_km": 10,
+            "latitude": 43.0372,
+            "longitude": 13.5258,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us2000haag"
+        },
+        {
+            "id": "us2000dxbt",
+            "magnitude": 4.7,
+            "place": "1 km SSE of Muccia, Italy",
+            "event_time_utc": "2018-04-10T03:11:31+00:00",
+            "depth_km": 10,
+            "latitude": 43.0662,
+            "longitude": 13.0516,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us2000dxbt"
+        },
+        {
+            "id": "us1000de9s",
+            "magnitude": 4,
+            "place": "3 km SW of Pieve Torina, Italy",
+            "event_time_utc": "2018-04-04T18:41:29+00:00",
+            "depth_km": 10,
+            "latitude": 43.0224,
+            "longitude": 13.0201,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000de9s"
+        },
+        {
+            "id": "us1000ddzh",
+            "magnitude": 4.1,
+            "place": "3 km WNW of Pieve Torina, Italy",
+            "event_time_utc": "2018-04-04T02:19:46+00:00",
+            "depth_km": 10,
+            "latitude": 43.0547,
+            "longitude": 13.0039,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000ddzh"
+        },
+        {
+            "id": "us1000bkp1",
+            "magnitude": 4.2,
+            "place": "5 km ESE of Accumoli, Italy",
+            "event_time_utc": "2017-12-03T23:34:11+00:00",
+            "depth_km": 3.29,
+            "latitude": 42.6825,
+            "longitude": 13.3079,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000bkp1"
+        },
+        {
+            "id": "us2000bfsp",
+            "magnitude": 4,
+            "place": "8 km SSE of Norcia, Italy",
+            "event_time_utc": "2017-11-02T18:04:16+00:00",
+            "depth_km": 10,
+            "latitude": 42.7258,
+            "longitude": 13.1416,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us2000bfsp"
+        },
+        {
+            "id": "us20009zjr",
+            "magnitude": 4.2,
+            "place": "2 km NE of Amatrice, Italy",
+            "event_time_utc": "2017-07-22T02:13:08+00:00",
+            "depth_km": 6.67,
+            "latitude": 42.6433,
+            "longitude": 13.3183,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20009zjr"
+        },
+        {
+            "id": "us100095ri",
+            "magnitude": 4.3,
+            "place": "3 km SE of Accumoli, Italy",
+            "event_time_utc": "2017-07-01T19:17:26+00:00",
+            "depth_km": 5.1,
+            "latitude": 42.6702,
+            "longitude": 13.2814,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us100095ri"
+        },
+        {
+            "id": "us100095dw",
+            "magnitude": 4.1,
+            "place": "2 km SW of Accumoli, Italy",
+            "event_time_utc": "2017-06-30T00:25:19+00:00",
+            "depth_km": 10,
+            "latitude": 42.682,
+            "longitude": 13.2247,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us100095dw"
+        },
+        {
+            "id": "us20009li5",
+            "magnitude": 4.2,
+            "place": "2 km SSW of Capitignano, Italy",
+            "event_time_utc": "2017-06-09T12:15:44+00:00",
+            "depth_km": 10,
+            "latitude": 42.4976,
+            "longitude": 13.2834,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20009li5"
+        },
+        {
+            "id": "us10008ley",
+            "magnitude": 4.1,
+            "place": "2 km SE of Visso, Italy",
+            "event_time_utc": "2017-04-27T21:19:43+00:00",
+            "depth_km": 4,
+            "latitude": 42.9185,
+            "longitude": 13.1097,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10008ley"
+        },
+        {
+            "id": "us10008lew",
+            "magnitude": 4.2,
+            "place": "5 km S of Pie' del Sasso, Italy",
+            "event_time_utc": "2017-04-27T21:16:59+00:00",
+            "depth_km": 4,
+            "latitude": 42.9438,
+            "longitude": 13.0086,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10008lew"
+        },
+        {
+            "id": "us20008t96",
+            "magnitude": 4.1,
+            "place": "3 km S of Amatrice, Italy",
+            "event_time_utc": "2017-03-20T05:02:41+00:00",
+            "depth_km": 10,
+            "latitude": 42.5947,
+            "longitude": 13.2939,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20008t96"
+        },
+        {
+            "id": "us20008kup",
+            "magnitude": 4,
+            "place": "1 km SE of Montereale, Italy",
+            "event_time_utc": "2017-02-20T03:13:30+00:00",
+            "depth_km": 7.15,
+            "latitude": 42.5143,
+            "longitude": 13.2589,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20008kup"
+        },
+        {
+            "id": "us20008haf",
+            "magnitude": 4.3,
+            "place": "4 km SSW of Serravalle di Chienti, Italy",
+            "event_time_utc": "2017-02-03T04:10:06+00:00",
+            "depth_km": 10,
+            "latitude": 43.0359,
+            "longitude": 12.9281,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20008haf"
+        },
+        {
+            "id": "us20008hab",
+            "magnitude": 4.1,
+            "place": "3 km E of Pie' del Sasso, Italy",
+            "event_time_utc": "2017-02-03T03:47:56+00:00",
+            "depth_km": 10,
+            "latitude": 42.9973,
+            "longitude": 13.0465,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20008hab"
+        },
+        {
+            "id": "us10007ulq",
+            "magnitude": 4.1,
+            "place": "9 km E of Cascia, Italy",
+            "event_time_utc": "2017-01-21T09:35:57+00:00",
+            "depth_km": 10,
+            "latitude": 42.7079,
+            "longitude": 13.1276,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007ulq"
+        },
+        {
+            "id": "us10007u02",
+            "magnitude": 4.2,
+            "place": "5 km SW of Accumoli, Italy",
+            "event_time_utc": "2017-01-18T19:32:33+00:00",
+            "depth_km": 10,
+            "latitude": 42.6614,
+            "longitude": 13.1941,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007u02"
+        },
+        {
+            "id": "us10007tyz",
+            "magnitude": 4.3,
+            "place": "3 km S of Amatrice, Italy",
+            "event_time_utc": "2017-01-18T15:16:10+00:00",
+            "depth_km": 10,
+            "latitude": 42.5921,
+            "longitude": 13.2915,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007tyz"
+        },
+        {
+            "id": "us10007txl",
+            "magnitude": 5.2,
+            "place": "3 km N of Montereale, Italy",
+            "event_time_utc": "2017-01-18T13:33:38+00:00",
+            "depth_km": 7.39,
+            "latitude": 42.5581,
+            "longitude": 13.2487,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007txl"
+        },
+        {
+            "id": "us10007tx8",
+            "magnitude": 4.1,
+            "place": "4 km SW of Accumoli, Italy",
+            "event_time_utc": "2017-01-18T12:01:41+00:00",
+            "depth_km": 10,
+            "latitude": 42.6587,
+            "longitude": 13.2117,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007tx8"
+        },
+        {
+            "id": "us10007tww",
+            "magnitude": 4.1,
+            "place": "7 km WSW of Arquata del Tronto, Italy",
+            "event_time_utc": "2017-01-18T11:07:39+00:00",
+            "depth_km": 10,
+            "latitude": 42.759,
+            "longitude": 13.2089,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007tww"
+        },
+        {
+            "id": "us10007tx9",
+            "magnitude": 4.3,
+            "place": "3 km NNW of Montereale, Italy",
+            "event_time_utc": "2017-01-18T10:39:24+00:00",
+            "depth_km": 10,
+            "latitude": 42.5493,
+            "longitude": 13.2266,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007tx9"
+        },
+        {
+            "id": "us10007twn",
+            "magnitude": 5.6,
+            "place": "4 km SE of Cittareale, Italy",
+            "event_time_utc": "2017-01-18T10:25:25+00:00",
+            "depth_km": 10,
+            "latitude": 42.5855,
+            "longitude": 13.1904,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007twn"
+        },
+        {
+            "id": "us10007twk",
+            "magnitude": 4.3,
+            "place": "3 km ENE of Cittareale, Italy",
+            "event_time_utc": "2017-01-18T10:24:16+00:00",
+            "depth_km": 10,
+            "latitude": 42.6241,
+            "longitude": 13.2034,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007twk"
+        },
+        {
+            "id": "us10007tx5",
+            "magnitude": 4.6,
+            "place": "1 km WNW of Montereale, Italy",
+            "event_time_utc": "2017-01-18T10:16:37+00:00",
+            "depth_km": 10,
+            "latitude": 42.5275,
+            "longitude": 13.2341,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007tx5"
+        },
+        {
+            "id": "us10007tx3",
+            "magnitude": 4.7,
+            "place": "4 km WNW of Campotosto, Italy",
+            "event_time_utc": "2017-01-18T10:15:33+00:00",
+            "depth_km": 10,
+            "latitude": 42.583,
+            "longitude": 13.3175,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007tx3"
+        },
+        {
+            "id": "us10007twj",
+            "magnitude": 5.7,
+            "place": "5 km ESE of Cittareale, Italy",
+            "event_time_utc": "2017-01-18T10:14:10+00:00",
+            "depth_km": 7,
+            "latitude": 42.6012,
+            "longitude": 13.2268,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007twj"
+        },
+        {
+            "id": "us10007twc",
+            "magnitude": 5.3,
+            "place": "4 km SW of Accumoli, Italy",
+            "event_time_utc": "2017-01-18T09:25:41+00:00",
+            "depth_km": 10,
+            "latitude": 42.6598,
+            "longitude": 13.2099,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007twc"
+        },
+        {
+            "id": "us10007p63",
+            "magnitude": 4.3,
+            "place": "1 km W of San Giacomo, Italy",
+            "event_time_utc": "2017-01-02T03:36:14+00:00",
+            "depth_km": 10,
+            "latitude": 42.7941,
+            "longitude": 12.7351,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007p63"
+        },
+        {
+            "id": "us20007zyp",
+            "magnitude": 4.2,
+            "place": "3 km W of Castelsantangelo sul Nera, Italy",
+            "event_time_utc": "2016-12-11T12:54:52+00:00",
+            "depth_km": 8,
+            "latitude": 42.9,
+            "longitude": 13.11,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20007zyp"
+        },
+        {
+            "id": "us10007d4d",
+            "magnitude": 4.4,
+            "place": "3 km N of Montereale, Italy",
+            "event_time_utc": "2016-11-29T16:14:03+00:00",
+            "depth_km": 4.39,
+            "latitude": 42.5589,
+            "longitude": 13.247,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007d4d"
+        },
+        {
+            "id": "us100077u2",
+            "magnitude": 4.1,
+            "place": "5 km N of Castelsantangelo sul Nera, Italy",
+            "event_time_utc": "2016-11-14T19:49:52+00:00",
+            "depth_km": 10,
+            "latitude": 42.94,
+            "longitude": 13.15,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us100077u2"
+        },
+        {
+            "id": "us100077it",
+            "magnitude": 4.2,
+            "place": "6 km SW of Castelsantangelo sul Nera, Italy",
+            "event_time_utc": "2016-11-14T01:33:44+00:00",
+            "depth_km": 10,
+            "latitude": 42.8522,
+            "longitude": 13.1055,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us100077it"
+        },
+        {
+            "id": "us1000775z",
+            "magnitude": 4.4,
+            "place": "3 km E of Norcia, Italy",
+            "event_time_utc": "2016-11-12T22:32:23+00:00",
+            "depth_km": 9.8,
+            "latitude": 42.796,
+            "longitude": 13.139,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000775z"
+        },
+        {
+            "id": "us1000774f",
+            "magnitude": 4.1,
+            "place": "4 km NW of Accumoli, Italy",
+            "event_time_utc": "2016-11-12T14:43:33+00:00",
+            "depth_km": 10,
+            "latitude": 42.72,
+            "longitude": 13.21,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000774f"
+        },
+        {
+            "id": "us10007644",
+            "magnitude": 4.3,
+            "place": "0 km SW of Castelsantangelo sul Nera, Italy",
+            "event_time_utc": "2016-11-07T18:56:16+00:00",
+            "depth_km": 13,
+            "latitude": 42.89,
+            "longitude": 13.15,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007644"
+        },
+        {
+            "id": "us100074df",
+            "magnitude": 4,
+            "place": "6 km NW of Accumoli, Italy",
+            "event_time_utc": "2016-11-05T21:29:11+00:00",
+            "depth_km": 8,
+            "latitude": 42.73,
+            "longitude": 13.19,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us100074df"
+        },
+        {
+            "id": "us100073v1",
+            "magnitude": 4.8,
+            "place": "2 km W of Pieve Torina, Italy",
+            "event_time_utc": "2016-11-03T00:35:02+00:00",
+            "depth_km": 10,
+            "latitude": 43.0383,
+            "longitude": 13.0143,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us100073v1"
+        },
+        {
+            "id": "us100073t3",
+            "magnitude": 4.3,
+            "place": "2 km E of Preci, Italy",
+            "event_time_utc": "2016-11-02T19:37:49+00:00",
+            "depth_km": 8,
+            "latitude": 42.88,
+            "longitude": 13.07,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us100073t3"
+        },
+        {
+            "id": "us100073jb",
+            "magnitude": 4.4,
+            "place": "5 km E of Cerreto di Spoleto, Italy",
+            "event_time_utc": "2016-11-01T19:03:21+00:00",
+            "depth_km": 8.62,
+            "latitude": 42.8236,
+            "longitude": 12.9874,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us100073jb"
+        },
+        {
+            "id": "us100073f9",
+            "magnitude": 4.9,
+            "place": "3 km SSW of Pie' del Colle, Italy",
+            "event_time_utc": "2016-11-01T07:56:39+00:00",
+            "depth_km": 10,
+            "latitude": 43,
+            "longitude": 13.16,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us100073f9"
+        },
+        {
+            "id": "us1000737b",
+            "magnitude": 3.9,
+            "place": "5 km SE of Preci, Italy",
+            "event_time_utc": "2016-10-31T07:05:45+00:00",
+            "depth_km": 16.51,
+            "latitude": 42.8486,
+            "longitude": 13.0893,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000737b"
+        },
+        {
+            "id": "us10007377",
+            "magnitude": 4,
+            "place": "1 km ENE of Norcia, Italy",
+            "event_time_utc": "2016-10-31T06:17:21+00:00",
+            "depth_km": 10,
+            "latitude": 42.7937,
+            "longitude": 13.1105,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007377"
+        },
+        {
+            "id": "us1000736c",
+            "magnitude": 4.3,
+            "place": "4 km N of Cascia, Italy",
+            "event_time_utc": "2016-10-31T03:27:41+00:00",
+            "depth_km": 10,
+            "latitude": 42.7611,
+            "longitude": 13.0057,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000736c"
+        },
+        {
+            "id": "us10007342",
+            "magnitude": 4,
+            "place": "4 km E of Norcia, Italy",
+            "event_time_utc": "2016-10-30T18:21:09+00:00",
+            "depth_km": 10,
+            "latitude": 42.79,
+            "longitude": 13.15,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007342"
+        },
+        {
+            "id": "us10007335",
+            "magnitude": 4.6,
+            "place": "central Italy",
+            "event_time_utc": "2016-10-30T13:34:55+00:00",
+            "depth_km": 10,
+            "latitude": 42.802,
+            "longitude": 13.122,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007335"
+        },
+        {
+            "id": "us1000732t",
+            "magnitude": 4.7,
+            "place": "5 km SW of Preci, Italy",
+            "event_time_utc": "2016-10-30T12:07:02+00:00",
+            "depth_km": 10,
+            "latitude": 42.839,
+            "longitude": 12.999,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000732t"
+        },
+        {
+            "id": "us1000732r",
+            "magnitude": 4.5,
+            "place": "6 km SSW of Preci, Italy",
+            "event_time_utc": "2016-10-30T11:58:18+00:00",
+            "depth_km": 6.11,
+            "latitude": 42.8209,
+            "longitude": 13.0139,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000732r"
+        },
+        {
+            "id": "us1000732k",
+            "magnitude": 4.6,
+            "place": "4 km ESE of Camerino, Italy",
+            "event_time_utc": "2016-10-30T11:21:11+00:00",
+            "depth_km": 10,
+            "latitude": 43.1228,
+            "longitude": 13.1153,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000732k"
+        },
+        {
+            "id": "us1000731w",
+            "magnitude": 4.6,
+            "place": "6 km NNE of Poggiodomo, Italy",
+            "event_time_utc": "2016-10-30T08:36:00+00:00",
+            "depth_km": 10,
+            "latitude": 42.7652,
+            "longitude": 12.9588,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000731w"
+        },
+        {
+            "id": "us1000731q",
+            "magnitude": 4.1,
+            "place": "5 km SW of Castelsantangelo sul Nera, Italy",
+            "event_time_utc": "2016-10-30T07:34:48+00:00",
+            "depth_km": 10,
+            "latitude": 42.8556,
+            "longitude": 13.1168,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000731q"
+        },
+        {
+            "id": "us1000731p",
+            "magnitude": 4.3,
+            "place": "6 km WNW of Accumoli, Italy",
+            "event_time_utc": "2016-10-30T07:13:06+00:00",
+            "depth_km": 10,
+            "latitude": 42.7282,
+            "longitude": 13.1757,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000731p"
+        },
+        {
+            "id": "us1000743z",
+            "magnitude": 4.3,
+            "place": "8 km W of Accumoli, Italy",
+            "event_time_utc": "2016-10-30T07:08:35+00:00",
+            "depth_km": 10,
+            "latitude": 42.71,
+            "longitude": 13.14,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000743z"
+        },
+        {
+            "id": "us10007433",
+            "magnitude": 4.5,
+            "place": "3 km WSW of Accumoli, Italy",
+            "event_time_utc": "2016-10-30T07:07:55+00:00",
+            "depth_km": 10,
+            "latitude": 42.6874,
+            "longitude": 13.2009,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007433"
+        }
+    ],
+    "strongest_events": [
+        {
+            "id": "us1000731j",
+            "magnitude": 6.6,
+            "place": "5 km ESE of Preci, Italy",
+            "event_time_utc": "2016-10-30T06:40:18+00:00",
+            "depth_km": 8,
+            "latitude": 42.8621,
+            "longitude": 13.0961,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000731j"
+        },
+        {
+            "id": "us10006g7d",
+            "magnitude": 6.2,
+            "place": "5 km WNW of Accumoli, Italy",
+            "event_time_utc": "2016-08-24T01:36:32+00:00",
+            "depth_km": 4.44,
+            "latitude": 42.723,
+            "longitude": 13.1877,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10006g7d"
+        },
+        {
+            "id": "us1000725y",
+            "magnitude": 6.1,
+            "place": "2 km NNW of Visso, Italy",
+            "event_time_utc": "2016-10-26T19:18:08+00:00",
+            "depth_km": 10,
+            "latitude": 42.9564,
+            "longitude": 13.0666,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000725y"
+        },
+        {
+            "id": "iscgem610326521",
+            "magnitude": 6.05,
+            "place": "19 km NNE of Gabicce Mare, Italy",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 44.128,
+            "longitude": 12.831,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem610326521"
+        },
+        {
+            "id": "iscgem913838",
+            "magnitude": 6.01,
+            "place": "15 km NNE of Pesaro, Italy",
+            "event_time_utc": null,
+            "depth_km": 10,
+            "latitude": 44.035,
+            "longitude": 13.009,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem913838"
+        },
+        {
+            "id": "usp000881f",
+            "magnitude": 6,
+            "place": "3 km SSE of Nocera Umbra, Italy",
+            "event_time_utc": "1997-09-26T09:40:26+00:00",
+            "depth_km": 10,
+            "latitude": 43.084,
+            "longitude": 12.812,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000881f"
+        },
+        {
+            "id": "iscgem907677",
+            "magnitude": 5.98,
+            "place": "28 km NNE of Montignano-Marzocca, Italy",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 43.89,
+            "longitude": 13.483,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem907677"
+        },
+        {
+            "id": "usp000130x",
+            "magnitude": 5.9,
+            "place": "3 km NW of Norcia, Italy",
+            "event_time_utc": "1979-09-19T21:35:37+00:00",
+            "depth_km": 16,
+            "latitude": 42.812,
+            "longitude": 13.061,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000130x"
+        },
+        {
+            "id": "iscgem913466",
+            "magnitude": 5.72,
+            "place": "6 km SW of Monterchi, Italy",
+            "event_time_utc": null,
+            "depth_km": 10,
+            "latitude": 43.453,
+            "longitude": 12.046,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem913466"
+        },
+        {
+            "id": "usp000880n",
+            "magnitude": 5.7,
+            "place": "6 km WSW of Serravalle di Chienti, Italy",
+            "event_time_utc": "1997-09-26T00:33:12+00:00",
+            "depth_km": 10,
+            "latitude": 43.048,
+            "longitude": 12.879,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000880n"
+        },
+        {
+            "id": "usp00023zg",
+            "magnitude": 5.7,
+            "place": "7 km SW of Stazione di Padule, Italy",
+            "event_time_utc": "1984-04-29T05:03:00+00:00",
+            "depth_km": 11.9,
+            "latitude": 43.26,
+            "longitude": 12.558,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp00023zg"
+        },
+        {
+            "id": "us10007twj",
+            "magnitude": 5.7,
+            "place": "5 km ESE of Cittareale, Italy",
+            "event_time_utc": "2017-01-18T10:14:10+00:00",
+            "depth_km": 7,
+            "latitude": 42.6012,
+            "longitude": 13.2268,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007twj"
+        }
+    ],
+    "from_cache": false
+}

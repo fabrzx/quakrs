@@ -12,9 +12,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Volcanoes / Hotspots</p>
-    <h1>Volcanic Hotspot Tracker.</h1>
-    <p class="sub">Operational hotspot ranking from current volcanic reports. This page tracks activity priority, not live camera streams.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.cams_hotspots.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.cams_hotspots.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.cams_hotspots.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 

@@ -11,9 +11,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Resources / Safety Guides</p>
-    <h1>Immediate Hazard Safety Guides.</h1>
-    <p class="sub">Quick action checklists and official guidance links for earthquakes, tsunami and volcanic ash.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.resources_safety.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.resources_safety.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.resources_safety.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 

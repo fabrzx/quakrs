@@ -1,0 +1,13 @@
+{
+    "ok": true,
+    "generated_at_ts": 1773675896,
+    "generated_at": "2026-03-16T15:44:56+00:00",
+    "trigger_magnitude": 6,
+    "radius_km": 150,
+    "window_hours": 168,
+    "min_aftershock_magnitude": 1,
+    "source_feed_generated_at": "2026-03-16T15:43:37+00:00",
+    "active_sequences_count": 0,
+    "sequences": [],
+    "from_cache": false
+}

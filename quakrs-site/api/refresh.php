@@ -11,16 +11,7 @@ if (!$forceRefresh) {
     ]);
 }
 
-$requiredToken = trim((string) ($appConfig['refresh_token'] ?? ''));
-if ($requiredToken !== '') {
-    $requestToken = (string) ($_GET['token'] ?? '');
-    if (!hash_equals($requiredToken, $requestToken)) {
-        json_response(403, [
-            'ok' => false,
-            'error' => 'Invalid refresh token',
-        ]);
-    }
-}
+$requestToken = require_refresh_token($appConfig);
 
 $host = isset($_SERVER['HTTP_HOST']) && is_string($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] !== ''
     ? $_SERVER['HTTP_HOST']
@@ -30,12 +21,12 @@ $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
 $scheme = $isHttps ? 'https' : 'http';
 $baseUrl = $scheme . '://' . $host;
 
-$targets = ['earthquakes', 'volcanoes', 'volcano-catalog', 'tremors', 'tsunami', 'space-weather', 'volcano-cams', 'hotspots', 'bulletins'];
+$targets = ['earthquakes', 'aftershocks', 'volcanoes', 'volcano-catalog', 'tremors', 'tsunami', 'space-weather', 'volcano-cams', 'hotspots', 'bulletins'];
 $results = [];
 $okCount = 0;
 
 foreach ($targets as $target) {
-    $url = $baseUrl . '/api/' . $target . '.php?force_refresh=1';
+    $url = $baseUrl . '/api/' . $target . '.php?force_refresh=1&token=' . rawurlencode($requestToken);
     $payload = fetch_external_json($url, max(10, (int) $appConfig['http_timeout_seconds']));
 
     if (!is_array($payload) || !isset($payload['ok']) || $payload['ok'] !== true) {

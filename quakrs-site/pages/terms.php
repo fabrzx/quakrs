@@ -11,9 +11,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Legal / Terms</p>
-    <h1>Terms Of Use.</h1>
-    <p class="sub">Usage rules for Quakrs monitoring pages, API endpoints and operational content.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.terms.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.terms.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.terms.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 

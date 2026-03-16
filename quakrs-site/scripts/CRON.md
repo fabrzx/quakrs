@@ -7,13 +7,13 @@ Use these jobs in production to keep data preloaded and avoid empty/slow blocks.
 1. Fast feed warmup every 3 minutes
 
 ```cron
-*/3 * * * * /bin/sh /var/www/quakrs-site/scripts/refresh-feeds.sh https://www.quakrs.com >> /var/log/quakrs/refresh-feeds.log 2>&1
+*/3 * * * * QUAKRS_REFRESH_TOKEN=YOUR_REFRESH_TOKEN /bin/sh /var/www/quakrs-site/scripts/refresh-feeds.sh https://www.quakrs.com >> /var/log/quakrs/refresh-feeds.log 2>&1
 ```
 
 2. Deep warmup every 15 minutes (includes event-history prewarm)
 
 ```cron
-*/15 * * * * HISTORY_POINTS=18 /bin/sh /var/www/quakrs-site/scripts/prewarm-all.sh https://www.quakrs.com >> /var/log/quakrs/prewarm-all.log 2>&1
+*/15 * * * * QUAKRS_REFRESH_TOKEN=YOUR_REFRESH_TOKEN HISTORY_POINTS=18 /bin/sh /var/www/quakrs-site/scripts/prewarm-all.sh https://www.quakrs.com >> /var/log/quakrs/prewarm-all.log 2>&1
 ```
 
 ## Notes

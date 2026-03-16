@@ -253,13 +253,7 @@ if (!$forceRefresh) {
     json_response(400, ['ok' => false, 'error' => 'Missing required query parameter: force_refresh=1']);
 }
 
-$requiredToken = trim((string) ($appConfig['refresh_token'] ?? ''));
-if ($requiredToken !== '') {
-    $requestToken = (string) ($_GET['token'] ?? '');
-    if (!hash_equals($requiredToken, $requestToken)) {
-        json_response(403, ['ok' => false, 'error' => 'Invalid refresh token']);
-    }
-}
+require_refresh_token($appConfig);
 
 $sourceCfg = source_config((string) ($_GET['source'] ?? 'usgs'));
 $startDate = normalize_date_value((string) ($_GET['start'] ?? '1900-01-01'), '1900-01-01');

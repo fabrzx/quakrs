@@ -12,9 +12,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Maps / Tectonic Plates</p>
-    <h1>Tectonic Plates &amp; Active Faults.</h1>
-    <p class="sub">Confini di placca + faglie attive globali, con filtri magnitudo e controllo layer in mappa.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.maps_plates.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.maps_plates.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.maps_plates.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
@@ -46,7 +46,7 @@ require __DIR__ . '/../partials/topbar.php';
     <div class="feed-head">
       <div class="map-head-left">
         <h3>Tectonic + Fault Overlay</h3>
-        <button id="plates-theme-toggle" class="map-mini-toggle" type="button" aria-pressed="false" aria-label="Attiva modalita notturna" title="Attiva modalita notturna">☀</button>
+        <button id="plates-theme-toggle" class="map-mini-toggle" type="button" aria-pressed="true" aria-label="Disattiva modalita notturna" title="Disattiva modalita notturna">☾</button>
       </div>
       <p class="feed-meta">Plates (cyan), faults (orange), events by magnitude</p>
     </div>
@@ -122,7 +122,7 @@ require __DIR__ . '/../partials/topbar.php';
           attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
         })
       : null;
-    let darkMode = false;
+    let darkMode = true;
 
     const applyTheme = () => {
       if (!map || !lightTiles || !darkTiles) return;
@@ -143,8 +143,8 @@ require __DIR__ . '/../partials/topbar.php';
       }
     };
 
-    if (map && lightTiles) {
-      lightTiles.addTo(map);
+    if (map && darkTiles) {
+      darkTiles.addTo(map);
     }
 
     const setError = () => {
@@ -366,7 +366,7 @@ require __DIR__ . '/../partials/topbar.php';
         const provider = Array.isArray(payload.providers) && payload.providers.length > 0
           ? payload.providers.join(" + ")
           : (payload.provider || "Quakrs API");
-        kpiSource.textContent = `Source: ${provider}${payload.from_cache ? " (cache)" : ""}`;
+        kpiSource.textContent = `Source: ${provider}`;
       }
 
       const strongest = [...filtered]

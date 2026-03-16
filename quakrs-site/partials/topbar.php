@@ -16,6 +16,7 @@ $menuItems = [
         'label' => qk_t('nav.monitors'),
         'children' => [
             ['key' => 'earthquakes', 'label' => qk_t('nav.earthquakes'), 'href' => '/earthquakes.php'],
+            ['key' => 'aftershocks', 'label' => qk_t('nav.aftershocks'), 'href' => '/aftershocks.php'],
             ['key' => 'volcanoes', 'label' => qk_t('nav.volcanoes'), 'href' => '/volcanoes.php'],
             ['key' => 'tsunami-alerts', 'label' => qk_t('nav.tsunami_alerts'), 'href' => '/tsunami.php'],
             ['key' => 'space-weather', 'label' => qk_t('nav.space_weather'), 'href' => '/space-weather.php'],
@@ -25,7 +26,7 @@ $menuItems = [
         'key' => 'maps',
         'label' => qk_t('nav.maps'),
         'children' => [
-            ['key' => 'maps', 'label' => qk_t('nav.global_map'), 'href' => '/maps.php'],
+            ['key' => 'maps', 'label' => qk_t('nav.priority_map'), 'href' => '/maps.php'],
             ['key' => 'maps-heatmap', 'label' => qk_t('nav.heatmap'), 'href' => '/maps-heatmap.php'],
             ['key' => 'maps-plates', 'label' => qk_t('nav.tectonic_plates'), 'href' => '/maps-plates.php'],
             ['key' => 'maps-depth', 'label' => qk_t('nav.depth_view'), 'href' => '/maps-depth.php'],
@@ -75,6 +76,7 @@ $menuItems = [
 $legacyTopLevelMap = [
     'home' => 'live',
     'earthquakes' => 'monitors',
+    'aftershocks' => 'monitors',
     'volcanoes' => 'monitors',
     'tsunami-alerts' => 'monitors',
     'space-weather' => 'monitors',

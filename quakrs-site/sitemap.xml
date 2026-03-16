@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://quakrs.com/</loc></url>
   <url><loc>https://quakrs.com/earthquakes.php</loc></url>
+  <url><loc>https://quakrs.com/aftershocks.php</loc></url>
   <url><loc>https://quakrs.com/volcanoes.php</loc></url>
   <url><loc>https://quakrs.com/tsunami.php</loc></url>
   <url><loc>https://quakrs.com/space-weather.php</loc></url>
@@ -12,6 +13,7 @@
   <url><loc>https://quakrs.com/cams-volcanoes.php</loc></url>
   <url><loc>https://quakrs.com/cams-hotspots.php</loc></url>
   <url><loc>https://quakrs.com/data-archive.php</loc></url>
+  <url><loc>https://quakrs.com/data-italia.php</loc></url>
   <url><loc>https://quakrs.com/data-energy.php</loc></url>
   <url><loc>https://quakrs.com/data-reports.php</loc></url>
   <url><loc>https://quakrs.com/data-clusters.php</loc></url>
@@ -20,8 +22,10 @@
   <url><loc>https://quakrs.com/resources-safety.php</loc></url>
   <url><loc>https://quakrs.com/resources-glossary.php</loc></url>
   <url><loc>https://quakrs.com/resources-bulletins.php</loc></url>
+  <url><loc>https://quakrs.com/priority-levels.php</loc></url>
   <url><loc>https://quakrs.com/about-sources.php</loc></url>
   <url><loc>https://quakrs.com/about-methodology.php</loc></url>
+  <url><loc>https://quakrs.com/about-energy.php</loc></url>
   <url><loc>https://quakrs.com/privacy.php</loc></url>
   <url><loc>https://quakrs.com/terms.php</loc></url>
 </urlset>

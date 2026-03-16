@@ -1,29 +1,24 @@
 {
     "ok": true,
     "provider": "INGV",
-    "generated_at_ts": 1773618763,
-    "generated_at": "2026-03-15T23:52:43+00:00",
+    "generated_at_ts": 1773673901,
+    "generated_at": "2026-03-16T15:11:41+00:00",
     "window": {
-        "events_24h_start": "2026-03-14T23:52:43+00:00",
-        "events_24h_end": "2026-03-15T23:52:43+00:00"
+        "events_24h_start": "2026-03-15T15:11:41+00:00",
+        "events_24h_end": "2026-03-16T15:11:41+00:00"
     },
-    "events_count_24h": 53,
-    "max_magnitude_24h": 2.9,
-    "estimated_energy_j_24h": 5023362514.104511,
+    "events_count_24h": 34,
+    "max_magnitude_24h": 3.3,
+    "estimated_energy_j_24h": 6142062069.554637,
     "top_region_24h": "2 km SW Sant'Angelo in Pontano (MC)",
     "baseline": {
-        "today_count": 53,
-        "daily_avg_prev30": 48.48275862068966,
-        "delta_pct": 9.31721194879089,
-        "state": "Within normal",
+        "today_count": 34,
+        "daily_avg_prev30": 48.89655172413793,
+        "delta_pct": -30.46544428772919,
+        "state": "Below normal",
         "method": "rolling-30d"
     },
     "series_7d": [
-        {
-            "date_utc": "2026-03-09",
-            "label": "Mon",
-            "count": 64
-        },
         {
             "date_utc": "2026-03-10",
             "label": "Tue",
@@ -52,15 +47,15 @@
         {
             "date_utc": "2026-03-15",
             "label": "Sun",
-            "count": 49
+            "count": 50
+        },
+        {
+            "date_utc": "2026-03-16",
+            "label": "Mon",
+            "count": 18
         }
     ],
     "series_30d": [
-        {
-            "date_utc": "2026-02-14",
-            "label": "Sat",
-            "count": 38
-        },
         {
             "date_utc": "2026-02-15",
             "label": "Sun",
@@ -204,871 +199,300 @@
         {
             "date_utc": "2026-03-15",
             "label": "Sun",
-            "count": 49
+            "count": 50
+        },
+        {
+            "date_utc": "2026-03-16",
+            "label": "Mon",
+            "count": 18
         }
     ],
     "magnitude_bands_24h": {
-        "M0-1": 4,
-        "M1-2": 33,
-        "M2-3": 16,
-        "M3+": 0
+        "M0-1": 6,
+        "M1-2": 25,
+        "M2-3": 2,
+        "M3+": 1
     },
     "depth_bands_24h": {
-        "0-10": 9,
-        "10-30": 43,
+        "0-10": 15,
+        "10-30": 17,
         "30-70": 1,
-        "70+": 0
+        "70+": 1
     },
     "swarms_24h": [
         {
+            "swarm_id": "43.00|13.00",
+            "events": 5,
+            "max_magnitude": 1.8,
+            "duration_hours": 8.3,
+            "center_lat": 43.139,
+            "center_lon": 13.072,
+            "region": "1 km N Muccia (MC)",
+            "first_event_utc": "2026-03-15T16:18:00+00:00",
+            "last_event_utc": "2026-03-16T00:38:29+00:00"
+        },
+        {
             "swarm_id": "43.00|13.25",
-            "events": 27,
-            "max_magnitude": 2.9,
-            "duration_hours": 21.8,
-            "center_lat": 43.089,
-            "center_lon": 13.384,
-            "region": "1 km S Sant'Angelo in Pontano (MC)",
-            "first_event_utc": "2026-03-14T23:32:49+00:00",
-            "last_event_utc": "2026-03-15T21:19:13+00:00"
+            "events": 5,
+            "max_magnitude": 1.7,
+            "duration_hours": 14.2,
+            "center_lat": 43.09,
+            "center_lon": 13.393,
+            "region": "1 km SW Sant'Angelo in Pontano (MC)",
+            "first_event_utc": "2026-03-15T16:36:09+00:00",
+            "last_event_utc": "2026-03-16T06:49:04+00:00"
         }
     ],
-    "requested_swarm_id": "43.00|13.25",
-    "swarm_detail": {
-        "swarm_id": "43.00|13.25",
-        "region": "2 km SW Sant'Angelo in Pontano (MC)",
-        "events_24h": 26,
-        "events_7d": 42,
-        "events_30d": 48,
-        "max_magnitude_24h": 2.9,
-        "max_magnitude_30d": 2.9,
-        "avg_depth_km_24h": 23.8,
-        "center_lat": 43.0973,
-        "center_lon": 13.3799,
-        "first_event_utc": "2026-02-13T21:14:07+00:00",
-        "last_event_utc": "2026-03-15T21:19:13+00:00",
-        "series_14d": [
-            {
-                "date_utc": "2026-03-02",
-                "label": "Mon",
-                "count": 0
-            },
-            {
-                "date_utc": "2026-03-03",
-                "label": "Tue",
-                "count": 1
-            },
-            {
-                "date_utc": "2026-03-04",
-                "label": "Wed",
-                "count": 0
-            },
-            {
-                "date_utc": "2026-03-05",
-                "label": "Thu",
-                "count": 0
-            },
-            {
-                "date_utc": "2026-03-06",
-                "label": "Fri",
-                "count": 0
-            },
-            {
-                "date_utc": "2026-03-07",
-                "label": "Sat",
-                "count": 0
-            },
-            {
-                "date_utc": "2026-03-08",
-                "label": "Sun",
-                "count": 0
-            },
-            {
-                "date_utc": "2026-03-09",
-                "label": "Mon",
-                "count": 2
-            },
-            {
-                "date_utc": "2026-03-10",
-                "label": "Tue",
-                "count": 0
-            },
-            {
-                "date_utc": "2026-03-11",
-                "label": "Wed",
-                "count": 0
-            },
-            {
-                "date_utc": "2026-03-12",
-                "label": "Thu",
-                "count": 2
-            },
-            {
-                "date_utc": "2026-03-13",
-                "label": "Fri",
-                "count": 3
-            },
-            {
-                "date_utc": "2026-03-14",
-                "label": "Sat",
-                "count": 9
-            },
-            {
-                "date_utc": "2026-03-15",
-                "label": "Sun",
-                "count": 26
-            }
-        ],
-        "hourly_24h": [
-            {
-                "hour_utc": "00",
-                "count": 1
-            },
-            {
-                "hour_utc": "01",
-                "count": 1
-            },
-            {
-                "hour_utc": "02",
-                "count": 0
-            },
-            {
-                "hour_utc": "03",
-                "count": 0
-            },
-            {
-                "hour_utc": "04",
-                "count": 0
-            },
-            {
-                "hour_utc": "05",
-                "count": 3
-            },
-            {
-                "hour_utc": "06",
-                "count": 3
-            },
-            {
-                "hour_utc": "07",
-                "count": 3
-            },
-            {
-                "hour_utc": "08",
-                "count": 9
-            },
-            {
-                "hour_utc": "09",
-                "count": 0
-            },
-            {
-                "hour_utc": "10",
-                "count": 0
-            },
-            {
-                "hour_utc": "11",
-                "count": 0
-            },
-            {
-                "hour_utc": "12",
-                "count": 1
-            },
-            {
-                "hour_utc": "13",
-                "count": 0
-            },
-            {
-                "hour_utc": "14",
-                "count": 2
-            },
-            {
-                "hour_utc": "15",
-                "count": 0
-            },
-            {
-                "hour_utc": "16",
-                "count": 1
-            },
-            {
-                "hour_utc": "17",
-                "count": 0
-            },
-            {
-                "hour_utc": "18",
-                "count": 1
-            },
-            {
-                "hour_utc": "19",
-                "count": 0
-            },
-            {
-                "hour_utc": "20",
-                "count": 0
-            },
-            {
-                "hour_utc": "21",
-                "count": 1
-            },
-            {
-                "hour_utc": "22",
-                "count": 0
-            },
-            {
-                "hour_utc": "23",
-                "count": 0
-            }
-        ],
-        "magnitude_bands_24h": {
-            "M0-1": 0,
-            "M1-2": 17,
-            "M2-3": 9,
-            "M3+": 0
-        },
-        "depth_bands_24h": {
-            "0-10": 0,
-            "10-30": 26,
-            "30-70": 0,
-            "70+": 0
-        },
-        "strongest_event": {
+    "requested_swarm_id": null,
+    "swarm_detail": null,
+    "events": [
+        {
             "id": "",
-            "place": "Sant'Angelo in Pontano (MC)",
-            "region": "Sant'Angelo in Pontano (MC)",
-            "magnitude": 2.9,
-            "depth_km": 24.3,
-            "latitude": 43.1,
-            "longitude": 13.3938,
-            "event_time_ts": 1773561567,
-            "event_time_utc": "2026-03-15T07:59:27+00:00",
+            "place": "8 km NW Sellano (PG)",
+            "region": "8 km NW Sellano (PG)",
+            "magnitude": 1.6,
+            "depth_km": 9.6,
+            "latitude": 42.9358,
+            "longitude": 12.8548,
+            "event_time_ts": 1773669165,
+            "event_time_utc": "2026-03-16T13:52:45+00:00",
             "source_url": "",
             "source_provider": "INGV"
         },
-        "events": [
-            {
-                "id": "",
-                "place": "1 km S Sant'Angelo in Pontano (MC)",
-                "region": "1 km S Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.3,
-                "depth_km": 23.3,
-                "latitude": 43.0897,
-                "longitude": 13.3988,
-                "event_time_ts": 1773609553,
-                "event_time_utc": "2026-03-15T21:19:13+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "1 km SE Sant'Angelo in Pontano (MC)",
-                "region": "1 km SE Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.4,
-                "depth_km": 24.2,
-                "latitude": 43.0913,
-                "longitude": 13.4023,
-                "event_time_ts": 1773597836,
-                "event_time_utc": "2026-03-15T18:03:56+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km SW Sant'Angelo in Pontano (MC)",
-                "region": "2 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.2,
-                "depth_km": 23.4,
-                "latitude": 43.0875,
-                "longitude": 13.389,
-                "event_time_ts": 1773592569,
-                "event_time_utc": "2026-03-15T16:36:09+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km SW Sant'Angelo in Pontano (MC)",
-                "region": "2 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.7,
-                "depth_km": 26.5,
-                "latitude": 43.0817,
-                "longitude": 13.3875,
-                "event_time_ts": 1773583312,
-                "event_time_utc": "2026-03-15T14:01:52+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "1 km SW Sant'Angelo in Pontano (MC)",
-                "region": "1 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 2,
-                "depth_km": 23.6,
-                "latitude": 43.089,
-                "longitude": 13.3892,
-                "event_time_ts": 1773583244,
-                "event_time_utc": "2026-03-15T14:00:44+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "3 km SW Sant'Angelo in Pontano (MC)",
-                "region": "3 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.8,
-                "depth_km": 24,
-                "latitude": 43.0817,
-                "longitude": 13.3767,
-                "event_time_ts": 1773577279,
-                "event_time_utc": "2026-03-15T12:21:19+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km SW Sant'Angelo in Pontano (MC)",
-                "region": "2 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 2.4,
-                "depth_km": 23.4,
-                "latitude": 43.0872,
-                "longitude": 13.3808,
-                "event_time_ts": 1773564966,
-                "event_time_utc": "2026-03-15T08:56:06+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "3 km NW Sant'Angelo in Pontano (MC)",
-                "region": "3 km NW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.2,
-                "depth_km": 24.9,
-                "latitude": 43.1227,
-                "longitude": 13.3845,
-                "event_time_ts": 1773564119,
-                "event_time_utc": "2026-03-15T08:41:59+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "1 km SW Sant'Angelo in Pontano (MC)",
-                "region": "1 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 2.3,
-                "depth_km": 22.9,
-                "latitude": 43.0893,
-                "longitude": 13.3858,
-                "event_time_ts": 1773563059,
-                "event_time_utc": "2026-03-15T08:24:19+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "3 km SW Sant'Angelo in Pontano (MC)",
-                "region": "3 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.9,
-                "depth_km": 23.8,
-                "latitude": 43.0797,
-                "longitude": 13.3838,
-                "event_time_ts": 1773562443,
-                "event_time_utc": "2026-03-15T08:14:03+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km SW Sant'Angelo in Pontano (MC)",
-                "region": "2 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.8,
-                "depth_km": 23.9,
-                "latitude": 43.0838,
-                "longitude": 13.3832,
-                "event_time_ts": 1773561951,
-                "event_time_utc": "2026-03-15T08:05:51+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "3 km SW Sant'Angelo in Pontano (MC)",
-                "region": "3 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.7,
-                "depth_km": 25.4,
-                "latitude": 43.0837,
-                "longitude": 13.3742,
-                "event_time_ts": 1773561917,
-                "event_time_utc": "2026-03-15T08:05:17+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "1 km E Sant'Angelo in Pontano (MC)",
-                "region": "1 km E Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.9,
-                "depth_km": 24.2,
-                "latitude": 43.0948,
-                "longitude": 13.4103,
-                "event_time_ts": 1773561845,
-                "event_time_utc": "2026-03-15T08:04:05+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km SW Sant'Angelo in Pontano (MC)",
-                "region": "2 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 2.3,
-                "depth_km": 23,
-                "latitude": 43.0888,
-                "longitude": 13.3842,
-                "event_time_ts": 1773561709,
-                "event_time_utc": "2026-03-15T08:01:49+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km SW Sant'Angelo in Pontano (MC)",
-                "region": "2 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 2.4,
-                "depth_km": 24.4,
-                "latitude": 43.0848,
-                "longitude": 13.3745,
-                "event_time_ts": 1773561661,
-                "event_time_utc": "2026-03-15T08:01:01+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "Sant'Angelo in Pontano (MC)",
-                "region": "Sant'Angelo in Pontano (MC)",
-                "magnitude": 2.9,
-                "depth_km": 24.3,
-                "latitude": 43.1,
-                "longitude": 13.3938,
-                "event_time_ts": 1773561567,
-                "event_time_utc": "2026-03-15T07:59:27+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km SW Sant'Angelo in Pontano (MC)",
-                "region": "2 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.4,
-                "depth_km": 23.2,
-                "latitude": 43.0872,
-                "longitude": 13.3728,
-                "event_time_ts": 1773561375,
-                "event_time_utc": "2026-03-15T07:56:15+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "3 km SW Sant'Angelo in Pontano (MC)",
-                "region": "3 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.3,
-                "depth_km": 24.4,
-                "latitude": 43.0837,
-                "longitude": 13.371,
-                "event_time_ts": 1773558211,
-                "event_time_utc": "2026-03-15T07:03:31+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "1 km S Sant'Angelo in Pontano (MC)",
-                "region": "1 km S Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.4,
-                "depth_km": 24.3,
-                "latitude": 43.0883,
-                "longitude": 13.3953,
-                "event_time_ts": 1773557750,
-                "event_time_utc": "2026-03-15T06:55:50+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km NE Gualdo (MC)",
-                "region": "2 km NE Gualdo (MC)",
-                "magnitude": 1.3,
-                "depth_km": 23.4,
-                "latitude": 43.0797,
-                "longitude": 13.3538,
-                "event_time_ts": 1773556507,
-                "event_time_utc": "2026-03-15T06:35:07+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "1 km SE Sant'Angelo in Pontano (MC)",
-                "region": "1 km SE Sant'Angelo in Pontano (MC)",
-                "magnitude": 2.8,
-                "depth_km": 23.9,
-                "latitude": 43.0922,
-                "longitude": 13.4057,
-                "event_time_ts": 1773556358,
-                "event_time_utc": "2026-03-15T06:32:38+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km NE Gualdo (MC)",
-                "region": "2 km NE Gualdo (MC)",
-                "magnitude": 1.3,
-                "depth_km": 24.3,
-                "latitude": 43.0808,
-                "longitude": 13.3583,
-                "event_time_ts": 1773553106,
-                "event_time_utc": "2026-03-15T05:38:26+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "1 km SW Sant'Angelo in Pontano (MC)",
-                "region": "1 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.7,
-                "depth_km": 22.7,
-                "latitude": 43.0937,
-                "longitude": 13.3878,
-                "event_time_ts": 1773551581,
-                "event_time_utc": "2026-03-15T05:13:01+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "1 km S Sant'Angelo in Pontano (MC)",
-                "region": "1 km S Sant'Angelo in Pontano (MC)",
-                "magnitude": 2.2,
-                "depth_km": 23.2,
-                "latitude": 43.0957,
-                "longitude": 13.3965,
-                "event_time_ts": 1773551535,
-                "event_time_utc": "2026-03-15T05:12:15+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km SW Sant'Angelo in Pontano (MC)",
-                "region": "2 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 2.4,
-                "depth_km": 24.6,
-                "latitude": 43.0878,
-                "longitude": 13.3803,
-                "event_time_ts": 1773537466,
-                "event_time_utc": "2026-03-15T01:17:46+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km W Sant'Angelo in Pontano (MC)",
-                "region": "2 km W Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.5,
-                "depth_km": 19.5,
-                "latitude": 43.0977,
-                "longitude": 13.3773,
-                "event_time_ts": 1773534993,
-                "event_time_utc": "2026-03-15T00:36:33+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km W Sant'Angelo in Pontano (MC)",
-                "region": "2 km W Sant'Angelo in Pontano (MC)",
-                "magnitude": 2.4,
-                "depth_km": 23.1,
-                "latitude": 43.091,
-                "longitude": 13.3727,
-                "event_time_ts": 1773531169,
-                "event_time_utc": "2026-03-14T23:32:49+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "1 km SW Sant'Angelo in Pontano (MC)",
-                "region": "1 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.5,
-                "depth_km": 23.7,
-                "latitude": 43.0892,
-                "longitude": 13.3882,
-                "event_time_ts": 1773528542,
-                "event_time_utc": "2026-03-14T22:49:02+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km W Sant'Angelo in Pontano (MC)",
-                "region": "2 km W Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.5,
-                "depth_km": 23.7,
-                "latitude": 43.1068,
-                "longitude": 13.3692,
-                "event_time_ts": 1773527975,
-                "event_time_utc": "2026-03-14T22:39:35+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km SW Sant'Angelo in Pontano (MC)",
-                "region": "2 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.6,
-                "depth_km": 23,
-                "latitude": 43.0847,
-                "longitude": 13.3768,
-                "event_time_ts": 1773519852,
-                "event_time_utc": "2026-03-14T20:24:12+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "3 km SW Sant'Angelo in Pontano (MC)",
-                "region": "3 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 2.1,
-                "depth_km": 24.5,
-                "latitude": 43.0868,
-                "longitude": 13.366,
-                "event_time_ts": 1773519660,
-                "event_time_utc": "2026-03-14T20:21:00+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "Sant'Angelo in Pontano (MC)",
-                "region": "Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.7,
-                "depth_km": 22.8,
-                "latitude": 43.0993,
-                "longitude": 13.3917,
-                "event_time_ts": 1773503362,
-                "event_time_utc": "2026-03-14T15:49:22+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "1 km SW Sant'Angelo in Pontano (MC)",
-                "region": "1 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1,
-                "depth_km": 21.3,
-                "latitude": 43.0937,
-                "longitude": 13.391,
-                "event_time_ts": 1773487321,
-                "event_time_utc": "2026-03-14T11:22:01+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km SW Sant'Angelo in Pontano (MC)",
-                "region": "2 km SW Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.5,
-                "depth_km": 21.5,
-                "latitude": 43.0877,
-                "longitude": 13.3772,
-                "event_time_ts": 1773486391,
-                "event_time_utc": "2026-03-14T11:06:31+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "1 km S Sant'Angelo in Pontano (MC)",
-                "region": "1 km S Sant'Angelo in Pontano (MC)",
-                "magnitude": 1.4,
-                "depth_km": 23.6,
-                "latitude": 43.0927,
-                "longitude": 13.3987,
-                "event_time_ts": 1773485698,
-                "event_time_utc": "2026-03-14T10:54:58+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "3 km E San Ginesio (MC)",
-                "region": "3 km E San Ginesio (MC)",
-                "magnitude": 1,
-                "depth_km": 22.7,
-                "latitude": 43.1038,
-                "longitude": 13.3533,
-                "event_time_ts": 1773443941,
-                "event_time_utc": "2026-03-13T23:19:01+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "3 km E San Ginesio (MC)",
-                "region": "3 km E San Ginesio (MC)",
-                "magnitude": 1.1,
-                "depth_km": 21.2,
-                "latitude": 43.0982,
-                "longitude": 13.3523,
-                "event_time_ts": 1773407440,
-                "event_time_utc": "2026-03-13T13:10:40+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "3 km NE Sant'Angelo in Pontano (MC)",
-                "region": "3 km NE Sant'Angelo in Pontano (MC)",
-                "magnitude": 0.9,
-                "depth_km": 24.9,
-                "latitude": 43.1268,
-                "longitude": 13.4152,
-                "event_time_ts": 1773368269,
-                "event_time_utc": "2026-03-13T02:17:49+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km W Montappone (FM)",
-                "region": "2 km W Montappone (FM)",
-                "magnitude": 1,
-                "depth_km": 22.8,
-                "latitude": 43.1288,
-                "longitude": 13.4467,
-                "event_time_ts": 1773332801,
-                "event_time_utc": "2026-03-12T16:26:41+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km NW Falerone (FM)",
-                "region": "2 km NW Falerone (FM)",
-                "magnitude": 1.5,
-                "depth_km": 22.6,
-                "latitude": 43.1198,
-                "longitude": 13.4512,
-                "event_time_ts": 1773332635,
-                "event_time_utc": "2026-03-12T16:23:55+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km S San Ginesio (MC)",
-                "region": "2 km S San Ginesio (MC)",
-                "magnitude": 0.9,
-                "depth_km": 23.9,
-                "latitude": 43.0913,
-                "longitude": 13.3242,
-                "event_time_ts": 1773032982,
-                "event_time_utc": "2026-03-09T05:09:42+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km NW Gualdo (MC)",
-                "region": "2 km NW Gualdo (MC)",
-                "magnitude": 1,
-                "depth_km": 24.4,
-                "latitude": 43.0823,
-                "longitude": 13.3298,
-                "event_time_ts": 1773025394,
-                "event_time_utc": "2026-03-09T03:03:14+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "3 km N Sant'Angelo in Pontano (MC)",
-                "region": "3 km N Sant'Angelo in Pontano (MC)",
-                "magnitude": 0.9,
-                "depth_km": 22.2,
-                "latitude": 43.1262,
-                "longitude": 13.3955,
-                "event_time_ts": 1772560089,
-                "event_time_utc": "2026-03-03T17:48:09+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km SE Ripe San Ginesio (MC)",
-                "region": "2 km SE Ripe San Ginesio (MC)",
-                "magnitude": 1.8,
-                "depth_km": 21.2,
-                "latitude": 43.1298,
-                "longitude": 13.3837,
-                "event_time_ts": 1772134333,
-                "event_time_utc": "2026-02-26T19:32:13+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km NE Gualdo (MC)",
-                "region": "2 km NE Gualdo (MC)",
-                "magnitude": 1.6,
-                "depth_km": 23.6,
-                "latitude": 43.0812,
-                "longitude": 13.3505,
-                "event_time_ts": 1772093128,
-                "event_time_utc": "2026-02-26T08:05:28+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km S Ripe San Ginesio (MC)",
-                "region": "2 km S Ripe San Ginesio (MC)",
-                "magnitude": 1.4,
-                "depth_km": 25.9,
-                "latitude": 43.1303,
-                "longitude": 13.3723,
-                "event_time_ts": 1771573133,
-                "event_time_utc": "2026-02-20T07:38:53+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "3 km E San Ginesio (MC)",
-                "region": "3 km E San Ginesio (MC)",
-                "magnitude": 1.4,
-                "depth_km": 23.1,
-                "latitude": 43.1108,
-                "longitude": 13.3548,
-                "event_time_ts": 1771547941,
-                "event_time_utc": "2026-02-20T00:39:01+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            },
-            {
-                "id": "",
-                "place": "2 km SW Tolentino (MC)",
-                "region": "2 km SW Tolentino (MC)",
-                "magnitude": 1,
-                "depth_km": 16.3,
-                "latitude": 43.1887,
-                "longitude": 13.2747,
-                "event_time_ts": 1771017247,
-                "event_time_utc": "2026-02-13T21:14:07+00:00",
-                "source_url": "",
-                "source_provider": "INGV"
-            }
-        ]
-    },
-    "events": [
+        {
+            "id": "",
+            "place": "4 km S Cingoli (MC)",
+            "region": "4 km S Cingoli (MC)",
+            "magnitude": 0.9,
+            "depth_km": 9.9,
+            "latitude": 43.3392,
+            "longitude": 13.217,
+            "event_time_ts": 1773668130,
+            "event_time_utc": "2026-03-16T13:35:30+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "5 km S Cingoli (MC)",
+            "region": "5 km S Cingoli (MC)",
+            "magnitude": 1.5,
+            "depth_km": 9.2,
+            "latitude": 43.3297,
+            "longitude": 13.2203,
+            "event_time_ts": 1773667796,
+            "event_time_utc": "2026-03-16T13:29:56+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "8 km E Roma (RM)",
+            "region": "8 km E Roma (RM)",
+            "magnitude": 1.9,
+            "depth_km": 8,
+            "latitude": 41.8688,
+            "longitude": 12.5703,
+            "event_time_ts": 1773662289,
+            "event_time_utc": "2026-03-16T11:58:09+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "10 km W San Giovanni in Fiore (CS)",
+            "region": "10 km W San Giovanni in Fiore (CS)",
+            "magnitude": 1.3,
+            "depth_km": 7.8,
+            "latitude": 39.243,
+            "longitude": 16.5805,
+            "event_time_ts": 1773661547,
+            "event_time_utc": "2026-03-16T11:45:47+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "Costa Cilentana (Salerno)",
+            "region": "Costa Cilentana (Salerno)",
+            "magnitude": 3.3,
+            "depth_km": 300.4,
+            "latitude": 39.8083,
+            "longitude": 15.1917,
+            "event_time_ts": 1773660903,
+            "event_time_utc": "2026-03-16T11:35:03+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "7 km SE Rignano Garganico (FG)",
+            "region": "7 km SE Rignano Garganico (FG)",
+            "magnitude": 1.6,
+            "depth_km": 7.5,
+            "latitude": 41.6233,
+            "longitude": 15.629,
+            "event_time_ts": 1773657520,
+            "event_time_utc": "2026-03-16T10:38:40+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "3 km NW Pacentro (AQ)",
+            "region": "3 km NW Pacentro (AQ)",
+            "magnitude": 1.4,
+            "depth_km": 7.8,
+            "latitude": 42.0703,
+            "longitude": 13.9742,
+            "event_time_ts": 1773656160,
+            "event_time_utc": "2026-03-16T10:16:00+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "Isole Eolie (Messina)",
+            "region": "Isole Eolie (Messina)",
+            "magnitude": 1.6,
+            "depth_km": 14.2,
+            "latitude": 38.4182,
+            "longitude": 14.6068,
+            "event_time_ts": 1773648377,
+            "event_time_utc": "2026-03-16T08:06:17+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "6 km N Lusevera (UD)",
+            "region": "6 km N Lusevera (UD)",
+            "magnitude": 1,
+            "depth_km": 8,
+            "latitude": 46.3205,
+            "longitude": 13.2772,
+            "event_time_ts": 1773644857,
+            "event_time_utc": "2026-03-16T07:07:37+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "10 km W Milo (CT)",
+            "region": "10 km W Milo (CT)",
+            "magnitude": 1.8,
+            "depth_km": 0.4,
+            "latitude": 37.748,
+            "longitude": 15.002,
+            "event_time_ts": 1773644236,
+            "event_time_utc": "2026-03-16T06:57:16+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "1 km SW Sant'Angelo in Pontano (MC)",
+            "region": "1 km SW Sant'Angelo in Pontano (MC)",
+            "magnitude": 1.3,
+            "depth_km": 24.3,
+            "latitude": 43.0957,
+            "longitude": 13.3908,
+            "event_time_ts": 1773643744,
+            "event_time_utc": "2026-03-16T06:49:04+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "2 km SW Sant'Angelo in Pontano (MC)",
+            "region": "2 km SW Sant'Angelo in Pontano (MC)",
+            "magnitude": 1.7,
+            "depth_km": 23.6,
+            "latitude": 43.0877,
+            "longitude": 13.3848,
+            "event_time_ts": 1773635302,
+            "event_time_utc": "2026-03-16T04:28:22+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "12 km NE Courmayeur (AO)",
+            "region": "12 km NE Courmayeur (AO)",
+            "magnitude": 1.4,
+            "depth_km": 10,
+            "latitude": 45.8935,
+            "longitude": 7.042,
+            "event_time_ts": 1773635184,
+            "event_time_utc": "2026-03-16T04:26:24+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "4 km NE Norcia (PG)",
+            "region": "4 km NE Norcia (PG)",
+            "magnitude": 0.9,
+            "depth_km": 9.4,
+            "latitude": 42.8177,
+            "longitude": 13.1262,
+            "event_time_ts": 1773632209,
+            "event_time_utc": "2026-03-16T03:36:49+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "5 km NE Cittareale (RI)",
+            "region": "5 km NE Cittareale (RI)",
+            "magnitude": 1.1,
+            "depth_km": 10.5,
+            "latitude": 42.664,
+            "longitude": 13.1833,
+            "event_time_ts": 1773630703,
+            "event_time_utc": "2026-03-16T03:11:43+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "1 km N Muccia (MC)",
+            "region": "1 km N Muccia (MC)",
+            "magnitude": 0.9,
+            "depth_km": 14.9,
+            "latitude": 43.0927,
+            "longitude": 13.0418,
+            "event_time_ts": 1773621509,
+            "event_time_utc": "2026-03-16T00:38:29+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "2 km SW Serra San Quirico (AN)",
+            "region": "2 km SW Serra San Quirico (AN)",
+            "magnitude": 0.4,
+            "depth_km": 9.4,
+            "latitude": 43.4313,
+            "longitude": 12.9963,
+            "event_time_ts": 1773619216,
+            "event_time_utc": "2026-03-16T00:00:16+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "1 km W Alcara li Fusi (ME)",
+            "region": "1 km W Alcara li Fusi (ME)",
+            "magnitude": 1.8,
+            "depth_km": 8.7,
+            "latitude": 38.0222,
+            "longitude": 14.6953,
+            "event_time_ts": 1773618808,
+            "event_time_utc": "2026-03-15T23:53:28+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
         {
             "id": "",
             "place": "6 km NW Pistoia (PT)",
@@ -1261,500 +685,6 @@
             "longitude": 13,
             "event_time_ts": 1773587929,
             "event_time_utc": "2026-03-15T15:18:49+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km SW Sant'Angelo in Pontano (MC)",
-            "region": "2 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.7,
-            "depth_km": 26.5,
-            "latitude": 43.0817,
-            "longitude": 13.3875,
-            "event_time_ts": 1773583312,
-            "event_time_utc": "2026-03-15T14:01:52+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km SW Sant'Angelo in Pontano (MC)",
-            "region": "1 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 2,
-            "depth_km": 23.6,
-            "latitude": 43.089,
-            "longitude": 13.3892,
-            "event_time_ts": 1773583244,
-            "event_time_utc": "2026-03-15T14:00:44+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km SW Sant'Angelo in Pontano (MC)",
-            "region": "3 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.8,
-            "depth_km": 24,
-            "latitude": 43.0817,
-            "longitude": 13.3767,
-            "event_time_ts": 1773577279,
-            "event_time_utc": "2026-03-15T12:21:19+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km E Brienza (PZ)",
-            "region": "2 km E Brienza (PZ)",
-            "magnitude": 1.3,
-            "depth_km": 16.3,
-            "latitude": 40.4822,
-            "longitude": 15.6513,
-            "event_time_ts": 1773576914,
-            "event_time_utc": "2026-03-15T12:15:14+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km W Mistretta (ME)",
-            "region": "3 km W Mistretta (ME)",
-            "magnitude": 2.1,
-            "depth_km": 25.7,
-            "latitude": 37.9372,
-            "longitude": 14.3268,
-            "event_time_ts": 1773575593,
-            "event_time_utc": "2026-03-15T11:53:13+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km W Pescopagano (PZ)",
-            "region": "1 km W Pescopagano (PZ)",
-            "magnitude": 1.5,
-            "depth_km": 7.8,
-            "latitude": 40.8353,
-            "longitude": 15.3837,
-            "event_time_ts": 1773574285,
-            "event_time_utc": "2026-03-15T11:31:25+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km SW Alcara li Fusi (ME)",
-            "region": "1 km SW Alcara li Fusi (ME)",
-            "magnitude": 0.9,
-            "depth_km": 11.2,
-            "latitude": 38.0132,
-            "longitude": 14.6918,
-            "event_time_ts": 1773572077,
-            "event_time_utc": "2026-03-15T10:54:37+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "7 km W Esanatoglia (MC)",
-            "region": "7 km W Esanatoglia (MC)",
-            "magnitude": 0.9,
-            "depth_km": 10.6,
-            "latitude": 43.2735,
-            "longitude": 12.8642,
-            "event_time_ts": 1773571250,
-            "event_time_utc": "2026-03-15T10:40:50+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km SW Alcara li Fusi (ME)",
-            "region": "1 km SW Alcara li Fusi (ME)",
-            "magnitude": 2.2,
-            "depth_km": 8.1,
-            "latitude": 38.0128,
-            "longitude": 14.6932,
-            "event_time_ts": 1773570745,
-            "event_time_utc": "2026-03-15T10:32:25+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km SW Sant'Angelo in Pontano (MC)",
-            "region": "2 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 2.4,
-            "depth_km": 23.4,
-            "latitude": 43.0872,
-            "longitude": 13.3808,
-            "event_time_ts": 1773564966,
-            "event_time_utc": "2026-03-15T08:56:06+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km NW Sant'Angelo in Pontano (MC)",
-            "region": "3 km NW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.2,
-            "depth_km": 24.9,
-            "latitude": 43.1227,
-            "longitude": 13.3845,
-            "event_time_ts": 1773564119,
-            "event_time_utc": "2026-03-15T08:41:59+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km SW Sant'Angelo in Pontano (MC)",
-            "region": "1 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 2.3,
-            "depth_km": 22.9,
-            "latitude": 43.0893,
-            "longitude": 13.3858,
-            "event_time_ts": 1773563059,
-            "event_time_utc": "2026-03-15T08:24:19+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km SW Sant'Angelo in Pontano (MC)",
-            "region": "3 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.9,
-            "depth_km": 23.8,
-            "latitude": 43.0797,
-            "longitude": 13.3838,
-            "event_time_ts": 1773562443,
-            "event_time_utc": "2026-03-15T08:14:03+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km SW Sant'Angelo in Pontano (MC)",
-            "region": "2 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.8,
-            "depth_km": 23.9,
-            "latitude": 43.0838,
-            "longitude": 13.3832,
-            "event_time_ts": 1773561951,
-            "event_time_utc": "2026-03-15T08:05:51+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km SW Sant'Angelo in Pontano (MC)",
-            "region": "3 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.7,
-            "depth_km": 25.4,
-            "latitude": 43.0837,
-            "longitude": 13.3742,
-            "event_time_ts": 1773561917,
-            "event_time_utc": "2026-03-15T08:05:17+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km E Sant'Angelo in Pontano (MC)",
-            "region": "1 km E Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.9,
-            "depth_km": 24.2,
-            "latitude": 43.0948,
-            "longitude": 13.4103,
-            "event_time_ts": 1773561845,
-            "event_time_utc": "2026-03-15T08:04:05+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km SW Sant'Angelo in Pontano (MC)",
-            "region": "2 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 2.3,
-            "depth_km": 23,
-            "latitude": 43.0888,
-            "longitude": 13.3842,
-            "event_time_ts": 1773561709,
-            "event_time_utc": "2026-03-15T08:01:49+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km SW Sant'Angelo in Pontano (MC)",
-            "region": "2 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 2.4,
-            "depth_km": 24.4,
-            "latitude": 43.0848,
-            "longitude": 13.3745,
-            "event_time_ts": 1773561661,
-            "event_time_utc": "2026-03-15T08:01:01+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "Sant'Angelo in Pontano (MC)",
-            "region": "Sant'Angelo in Pontano (MC)",
-            "magnitude": 2.9,
-            "depth_km": 24.3,
-            "latitude": 43.1,
-            "longitude": 13.3938,
-            "event_time_ts": 1773561567,
-            "event_time_utc": "2026-03-15T07:59:27+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km SW Sant'Angelo in Pontano (MC)",
-            "region": "2 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.4,
-            "depth_km": 23.2,
-            "latitude": 43.0872,
-            "longitude": 13.3728,
-            "event_time_ts": 1773561375,
-            "event_time_utc": "2026-03-15T07:56:15+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "Isole Eolie (Messina)",
-            "region": "Isole Eolie (Messina)",
-            "magnitude": 2.1,
-            "depth_km": 15.5,
-            "latitude": 38.4048,
-            "longitude": 14.5805,
-            "event_time_ts": 1773559095,
-            "event_time_utc": "2026-03-15T07:18:15+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km SW Sant'Angelo in Pontano (MC)",
-            "region": "3 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.3,
-            "depth_km": 24.4,
-            "latitude": 43.0837,
-            "longitude": 13.371,
-            "event_time_ts": 1773558211,
-            "event_time_utc": "2026-03-15T07:03:31+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km S Sant'Angelo in Pontano (MC)",
-            "region": "1 km S Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.4,
-            "depth_km": 24.3,
-            "latitude": 43.0883,
-            "longitude": 13.3953,
-            "event_time_ts": 1773557750,
-            "event_time_utc": "2026-03-15T06:55:50+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km NE Gualdo (MC)",
-            "region": "2 km NE Gualdo (MC)",
-            "magnitude": 1.3,
-            "depth_km": 23.4,
-            "latitude": 43.0797,
-            "longitude": 13.3538,
-            "event_time_ts": 1773556507,
-            "event_time_utc": "2026-03-15T06:35:07+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km SE Sant'Angelo in Pontano (MC)",
-            "region": "1 km SE Sant'Angelo in Pontano (MC)",
-            "magnitude": 2.8,
-            "depth_km": 23.9,
-            "latitude": 43.0922,
-            "longitude": 13.4057,
-            "event_time_ts": 1773556358,
-            "event_time_utc": "2026-03-15T06:32:38+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km NE Gualdo (MC)",
-            "region": "2 km NE Gualdo (MC)",
-            "magnitude": 1.3,
-            "depth_km": 24.3,
-            "latitude": 43.0808,
-            "longitude": 13.3583,
-            "event_time_ts": 1773553106,
-            "event_time_utc": "2026-03-15T05:38:26+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km SW Sant'Angelo in Pontano (MC)",
-            "region": "1 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.7,
-            "depth_km": 22.7,
-            "latitude": 43.0937,
-            "longitude": 13.3878,
-            "event_time_ts": 1773551581,
-            "event_time_utc": "2026-03-15T05:13:01+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km S Sant'Angelo in Pontano (MC)",
-            "region": "1 km S Sant'Angelo in Pontano (MC)",
-            "magnitude": 2.2,
-            "depth_km": 23.2,
-            "latitude": 43.0957,
-            "longitude": 13.3965,
-            "event_time_ts": 1773551535,
-            "event_time_utc": "2026-03-15T05:12:15+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "6 km NW Gubbio (PG)",
-            "region": "6 km NW Gubbio (PG)",
-            "magnitude": 1.2,
-            "depth_km": 9,
-            "latitude": 43.3983,
-            "longitude": 12.5348,
-            "event_time_ts": 1773551292,
-            "event_time_utc": "2026-03-15T05:08:12+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "9 km NE Valfabbrica (PG)",
-            "region": "9 km NE Valfabbrica (PG)",
-            "magnitude": 1.2,
-            "depth_km": 11.2,
-            "latitude": 43.2298,
-            "longitude": 12.6552,
-            "event_time_ts": 1773550587,
-            "event_time_utc": "2026-03-15T04:56:27+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "Alcara li Fusi (ME)",
-            "region": "Alcara li Fusi (ME)",
-            "magnitude": 2.1,
-            "depth_km": 6.8,
-            "latitude": 38.021,
-            "longitude": 14.7013,
-            "event_time_ts": 1773548486,
-            "event_time_utc": "2026-03-15T04:21:26+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km N Alcara li Fusi (ME)",
-            "region": "1 km N Alcara li Fusi (ME)",
-            "magnitude": 1.9,
-            "depth_km": 5.8,
-            "latitude": 38.034,
-            "longitude": 14.7027,
-            "event_time_ts": 1773543871,
-            "event_time_utc": "2026-03-15T03:04:31+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km SW Sant'Angelo in Pontano (MC)",
-            "region": "2 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 2.4,
-            "depth_km": 24.6,
-            "latitude": 43.0878,
-            "longitude": 13.3803,
-            "event_time_ts": 1773537466,
-            "event_time_utc": "2026-03-15T01:17:46+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km W Sant'Angelo in Pontano (MC)",
-            "region": "2 km W Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.5,
-            "depth_km": 19.5,
-            "latitude": 43.0977,
-            "longitude": 13.3773,
-            "event_time_ts": 1773534993,
-            "event_time_utc": "2026-03-15T00:36:33+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km W Sant'Angelo in Pontano (MC)",
-            "region": "2 km W Sant'Angelo in Pontano (MC)",
-            "magnitude": 2.4,
-            "depth_km": 23.1,
-            "latitude": 43.091,
-            "longitude": 13.3727,
-            "event_time_ts": 1773531169,
-            "event_time_utc": "2026-03-14T23:32:49+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "Isole Eolie (Messina)",
-            "region": "Isole Eolie (Messina)",
-            "magnitude": 1.4,
-            "depth_km": 10.2,
-            "latitude": 38.4067,
-            "longitude": 14.5963,
-            "event_time_ts": 1773530861,
-            "event_time_utc": "2026-03-14T23:27:41+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "7 km NW Ciampino (RM)",
-            "region": "7 km NW Ciampino (RM)",
-            "magnitude": 1.5,
-            "depth_km": 8.8,
-            "latitude": 41.86,
-            "longitude": 12.5602,
-            "event_time_ts": 1773529507,
-            "event_time_utc": "2026-03-14T23:05:07+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "Isole Eolie (Messina)",
-            "region": "Isole Eolie (Messina)",
-            "magnitude": 1.6,
-            "depth_km": 10.2,
-            "latitude": 38.4037,
-            "longitude": 14.5972,
-            "event_time_ts": 1773528855,
-            "event_time_utc": "2026-03-14T22:54:15+00:00",
             "source_url": "",
             "source_provider": "INGV"
         }

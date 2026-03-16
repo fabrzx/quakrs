@@ -11,9 +11,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Data / Energy Guide</p>
-    <h1>What the energy value means.</h1>
-    <p class="sub">Simple guide to understand the seismic energy value shown in Quakrs.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.about_energy.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.about_energy.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.about_energy.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
@@ -71,7 +71,7 @@ require __DIR__ . '/../partials/topbar.php';
   <article class="card page-card">
     <h3>Back to dashboard</h3>
     <p>Return to the Energy page to see the value in context with baseline and trend charts.</p>
-    <a href="/data-energy.php" class="inline-link">Open Data / Energy</a>
+    <a href="/data-energy.php" class="inline-link"><?= htmlspecialchars(qk_t('page.about_energy.open_data_energy'), ENT_QUOTES, 'UTF-8'); ?></a>
   </article>
 </section>
 

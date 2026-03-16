@@ -11,11 +11,10 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">About / Priority Levels</p>
-    <h1>P1/P2 Priority Logic Explained.</h1>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.priority_levels.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.priority_levels.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
     <p class="sub">
-      This page explains what P1 and P2 mean on the homepage, why events appear in specific boxes,
-      and how Quakrs builds the live ranking across different hazard streams.
+      <?= htmlspecialchars(qk_t('page.priority_levels.sub'), ENT_QUOTES, 'UTF-8'); ?>
     </p>
   </div>
 </main>

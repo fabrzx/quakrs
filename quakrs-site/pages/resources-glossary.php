@@ -11,9 +11,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Resources / Glossary</p>
-    <h1>Monitoring Glossary.</h1>
-    <p class="sub">Quick reference for core terms used across Quakrs monitors and data pages.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.resources_glossary.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.resources_glossary.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.resources_glossary.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 

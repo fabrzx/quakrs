@@ -1,5 +1,7 @@
 const feedMeta = document.querySelector("#feed-meta");
 const eventsList = document.querySelector("#events-list");
+const mapsFeedFormatDropdown = document.querySelector("#maps-feed-format-dropdown");
+const mapsFeedSortDropdown = document.querySelector("#maps-feed-sort-dropdown");
 const mapLeafletContainer = document.querySelector("#world-map-leaflet");
 const mapGraticule = document.querySelector("#map-graticule");
 const mapContinents = document.querySelector("#map-continents");
@@ -39,6 +41,7 @@ const homePriorityBoardCards = document.querySelector("#home-priority-board-card
 const homePrioritySupport = document.querySelector("#home-priority-support");
 const homeMapFeedList = document.querySelector("#home-map-feed-list");
 const homeMapViewportOnlyToggle = document.querySelector("#home-map-viewport-only");
+const mapsViewportOnlyToggle = document.querySelector("#maps-viewport-only");
 const homeMapFeedTitle = document.querySelector("#home-map-feed-title");
 const homeContextTitle = document.querySelector("#home-context-title");
 const homeContextMode = document.querySelector("#home-context-mode");
@@ -124,6 +127,23 @@ let leafletLightTiles = null;
 let leafletDarkTiles = null;
 let leafletNightLightsTiles = null;
 let leafletDarkMode = true;
+let leafletBaseStyle = "grayscale";
+let leafletActiveBaseLayer = null;
+const leafletBaseLayerCache = new Map();
+let mapStyleControlRoot = null;
+let mapStyleQuickThemeButton = null;
+let mapStyleOptions = [];
+let mapStyleOverlayOptions = [];
+const mapOverlayState = {
+  heat: false,
+  depth: false,
+  plates: false,
+};
+let mapOverlayHeatLayer = null;
+let mapOverlayDepthLayer = null;
+let mapOverlayPlatesLayer = null;
+let mapOverlayFaultsLayer = null;
+let mapOverlayPlateRenderToken = 0;
 const mapEventLookup = new Map();
 const eventLookupByKey = new Map();
 let activeMagnitudeBand = null;
@@ -136,6 +156,9 @@ let hasHydratedPayloadKeys = false;
 let pendingLeafletPulseEvents = [];
 let selectedEventKey = null;
 let homeMapViewportOnly = false;
+let mapsViewportOnly = false;
+let mapsFeedSortMode = "newest";
+let mapsFeedFormatMode = "magnitude";
 let leafletResizeRaf = 0;
 let eventInsightMap = null;
 let eventInsightEventLayer = null;
@@ -157,6 +180,12 @@ const currentPath = typeof window !== "undefined" ? window.location.pathname.rep
 const isMapsPage = currentPath === "/maps.php" || currentPath === "/maps";
 const isEarthquakesPage = currentPath === "/earthquakes.php" || currentPath === "/earthquakes";
 const isHomePage = currentPath === "" || currentPath === "/home.php" || currentPath === "/home";
+const isMapsFullscreen =
+  isMapsPage &&
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("fullscreen") === "1";
+const isPriorityMapsPage = isMapsPage && !isMapsFullscreen;
+const hasUnifiedWorldMapControls = isMapsPage || isEarthquakesPage || isHomePage;
 const FORCE_LIVE_FEEDS = false;
 const SKIP_BOOTSTRAP_PAYLOADS = FORCE_LIVE_FEEDS && isHomePage;
 const siteLocale =
@@ -740,13 +769,18 @@ function setHomeMirror(key, value, color = "") {
 
 function formatUtcLabel(input) {
   if (!input) {
-    return "--:-- UTC";
+    return "----/--/-- --:-- UTC";
   }
   const date = new Date(input);
   if (Number.isNaN(date.getTime())) {
-    return "--:-- UTC";
+    return "----/--/-- --:-- UTC";
   }
-  return `${date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false })} UTC`;
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  const hour = String(date.getUTCHours()).padStart(2, "0");
+  const minute = String(date.getUTCMinutes()).padStart(2, "0");
+  return `${year}/${month}/${day} ${hour}:${minute} UTC`;
 }
 
 function formatUpdatedAgo(input) {
@@ -777,6 +811,8 @@ function getMagnitudeBandLabel(band) {
     m5: "M5",
     m6: "M6",
     m7p: "M7+",
+    m45p: "M4.5+",
+    m45: "M4.5-4.9",
   };
   return labels[band] || "";
 }
@@ -792,6 +828,8 @@ function eventInMagnitudeBand(event, band) {
   if (band === "m5") return mag >= 5 && mag < 6;
   if (band === "m6") return mag >= 6 && mag < 7;
   if (band === "m7p") return mag >= 7;
+  if (band === "m45p") return mag >= 4.5;
+  if (band === "m45") return mag >= 4.5 && mag < 5;
   return true;
 }
 
@@ -804,11 +842,18 @@ function setMagnitudeFilterState(nextBand) {
   });
 }
 
-function getFilteredEarthquakeEvents() {
+function getFilteredEarthquakeEvents(baseEvents = allEarthquakeEvents) {
   if (!activeMagnitudeBand) {
-    return allEarthquakeEvents;
+    return baseEvents;
   }
-  return allEarthquakeEvents.filter((event) => eventInMagnitudeBand(event, activeMagnitudeBand));
+  return baseEvents.filter((event) => eventInMagnitudeBand(event, activeMagnitudeBand));
+}
+
+function getBaseEarthquakeEvents() {
+  if (isPriorityMapsPage) {
+    return allEarthquakeEvents.filter((event) => typeof event?.magnitude === "number" && event.magnitude >= 4.5);
+  }
+  return allEarthquakeEvents;
 }
 
 function filterEventsToCurrentMapViewport(events) {
@@ -1031,36 +1076,162 @@ function renderMap(events) {
         attributionControl: true,
       }).setView([14, 10], 2);
 
-      leafletLightTiles = window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 8,
-        minZoom: 2,
-        attribution: "&copy; OpenStreetMap contributors",
-      });
-      leafletDarkTiles = window.L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-        maxZoom: 8,
-        minZoom: 2,
-        attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
-      });
-      leafletNightLightsTiles = window.L.tileLayer(
-        "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/VIIRS_CityLights_2012/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpg",
-        {
-          maxZoom: 8,
-          minZoom: 2,
-          maxNativeZoom: 8,
-          opacity: 0.28,
-          attribution: "&copy; NASA Earth Observatory / NOAA NGDC",
-        }
-      );
+      if (hasUnifiedWorldMapControls) {
+        window.L.control.scale({
+          position: "bottomleft",
+          metric: true,
+          imperial: true,
+          maxWidth: 130,
+        }).addTo(leafletMap);
 
-      leafletLightTiles.addTo(leafletMap);
+        const formatCoord = (value, positiveLabel, negativeLabel) => {
+          const num = Number(value);
+          if (!Number.isFinite(num)) {
+            return "--";
+          }
+          const abs = Math.abs(num).toFixed(3);
+          return `${abs}${num >= 0 ? positiveLabel : negativeLabel}`;
+        };
+
+        let coordsValueEl = null;
+        const coordsControl = window.L.control({ position: "bottomright" });
+        coordsControl.onAdd = () => {
+          const container = window.L.DomUtil.create("div", "leaflet-control map-coords-control");
+          coordsValueEl = window.L.DomUtil.create("span", "map-coords-value", container);
+          coordsValueEl.textContent = "--";
+          return container;
+        };
+        coordsControl.addTo(leafletMap);
+
+        const updateCoords = (latlng) => {
+          if (!coordsValueEl) {
+            return;
+          }
+          const lat = latlng && Number.isFinite(latlng.lat) ? latlng.lat : leafletMap.getCenter().lat;
+          const lon = latlng && Number.isFinite(latlng.lng) ? latlng.lng : leafletMap.getCenter().lng;
+          coordsValueEl.textContent = `${formatCoord(lat, "°N", "°S")} : ${formatCoord(lon, "°E", "°W")}`;
+        };
+
+        leafletMap.on("mousemove", (evt) => updateCoords(evt?.latlng || null));
+        leafletMap.on("mouseout", () => updateCoords(null));
+        updateCoords(leafletMap.getCenter());
+
+        const styleControl = window.L.control({ position: "topright" });
+        styleControl.onAdd = () => {
+          const container = window.L.DomUtil.create("div", "leaflet-control map-style-control");
+          const quickThemeButton = window.L.DomUtil.create("button", "map-quick-theme-btn", container);
+          quickThemeButton.type = "button";
+          quickThemeButton.setAttribute("aria-label", "Toggle dark or light map");
+          quickThemeButton.setAttribute("title", "Scuro / Chiaro");
+          quickThemeButton.innerHTML = '<span class="map-quick-theme-icon" aria-hidden="true">☾</span>';
+
+          const trigger = window.L.DomUtil.create("button", "map-style-control-btn", container);
+          trigger.type = "button";
+          trigger.setAttribute("aria-label", "Personalize map style");
+          trigger.setAttribute("title", "Map style");
+          trigger.setAttribute("aria-expanded", "false");
+          trigger.innerHTML =
+            '<span class="map-style-icon" aria-hidden="true"><span></span><span></span><span></span></span>';
+
+          const panel = window.L.DomUtil.create("div", "map-style-panel", container);
+          panel.innerHTML = `
+            <div class="map-style-panel-section-label">Base map</div>
+            <div class="map-style-options" role="radiogroup" aria-label="Base layer">
+              <button class="map-style-option" type="button" role="radio" data-style="grayscale"><span class="dot"></span><span>Grayscale</span></button>
+              <button class="map-style-option" type="button" role="radio" data-style="ocean"><span class="dot"></span><span>Ocean</span></button>
+              <button class="map-style-option" type="button" role="radio" data-style="terrain"><span class="dot"></span><span>Terrain</span></button>
+              <button class="map-style-option" type="button" role="radio" data-style="street"><span class="dot"></span><span>Street</span></button>
+              <button class="map-style-option" type="button" role="radio" data-style="satellite"><span class="dot"></span><span>Satellite</span></button>
+            </div>
+            <div class="map-style-panel-divider"></div>
+            <div class="map-style-panel-section-label">Overlay layers</div>
+            <div class="map-style-overlays" role="group" aria-label="Overlay layers">
+              <button class="map-style-overlay-option" type="button" role="checkbox" data-overlay="heat" aria-checked="false"><span class="box"></span><span>Heat density</span></button>
+              <button class="map-style-overlay-option" type="button" role="checkbox" data-overlay="depth" aria-checked="false"><span class="box"></span><span>Depth contours</span></button>
+              <button class="map-style-overlay-option" type="button" role="checkbox" data-overlay="plates" aria-checked="false"><span class="box"></span><span>Plate boundaries</span></button>
+            </div>
+          `;
+
+          const closePanel = () => {
+            container.classList.remove("is-open");
+            trigger.setAttribute("aria-expanded", "false");
+          };
+
+          trigger.addEventListener("click", () => {
+            const nextOpen = !container.classList.contains("is-open");
+            container.classList.toggle("is-open", nextOpen);
+            trigger.setAttribute("aria-expanded", nextOpen ? "true" : "false");
+          });
+
+          mapStyleControlRoot = container;
+          mapStyleQuickThemeButton = quickThemeButton;
+          mapStyleOptions = Array.from(panel.querySelectorAll(".map-style-option"));
+          mapStyleOverlayOptions = Array.from(panel.querySelectorAll(".map-style-overlay-option"));
+
+          quickThemeButton.addEventListener("click", () => {
+            leafletDarkMode = !leafletDarkMode;
+            syncThemeToggleButton();
+            syncLeafletTheme();
+            syncInsightMapTheme();
+            if (latestEarthquakePayload) {
+              applyEarthquakeView();
+            }
+          });
+
+          mapStyleOptions.forEach((option) => {
+            option.addEventListener("click", () => {
+              const style = String(option.dataset.style || "").toLowerCase();
+              if (!style || style === leafletBaseStyle) {
+                return;
+              }
+              leafletBaseStyle = style;
+              syncLeafletTheme();
+              closePanel();
+            });
+          });
+
+          mapStyleOverlayOptions.forEach((option) => {
+            option.addEventListener("click", () => {
+              const key = String(option.dataset.overlay || "").toLowerCase();
+              if (!Object.prototype.hasOwnProperty.call(mapOverlayState, key)) {
+                return;
+              }
+              mapOverlayState[key] = !Boolean(mapOverlayState[key]);
+              syncMapStyleControlUi();
+              renderLeafletOverlays(allEarthquakeEvents);
+            });
+          });
+
+          document.addEventListener("click", (event) => {
+            const target = event.target;
+            if (!(target instanceof Node)) {
+              return;
+            }
+            if (!container.contains(target)) {
+              closePanel();
+            }
+          });
+
+          leafletMap.on("click", () => {
+            closePanel();
+          });
+
+          syncMapStyleControlUi();
+          window.L.DomEvent.disableClickPropagation(container);
+          window.L.DomEvent.disableScrollPropagation(container);
+          return container;
+        };
+        styleControl.addTo(leafletMap);
+      }
 
       leafletMap.on("zoomend", () => {
-        if (latestEarthquakePayload) {
+        refreshLeafletMarkerStyles();
+        if ((homeMapViewportOnly || mapsViewportOnly) && latestEarthquakePayload) {
           applyEarthquakeView();
         }
       });
       leafletMap.on("moveend", () => {
-        if (homeMapViewportOnly && latestEarthquakePayload) {
+        if ((homeMapViewportOnly || mapsViewportOnly) && latestEarthquakePayload) {
           applyEarthquakeView();
         }
       });
@@ -1108,6 +1279,8 @@ function renderMap(events) {
         event,
       });
     });
+
+    renderLeafletOverlays(events);
 
     if (isEarthquakesPage && pendingLeafletPulseEvents.length > 0) {
       const pulseCandidates = pendingLeafletPulseEvents
@@ -1194,6 +1367,25 @@ function syncLeafletMapSize() {
   leafletResizeRaf = window.requestAnimationFrame(() => {
     leafletMap?.invalidateSize(false);
     leafletResizeRaf = 0;
+  });
+}
+
+function refreshLeafletMarkerStyles() {
+  if (!leafletMap) {
+    return;
+  }
+  const zoom = leafletMap.getZoom();
+  mapEventLookup.forEach((entry) => {
+    const marker = entry?.marker;
+    const event = entry?.event;
+    if (!marker || !event || typeof marker.setRadius !== "function") {
+      return;
+    }
+    const magnitude = typeof event.magnitude === "number" ? event.magnitude : 0;
+    const zoomBoost = Math.max(0, (zoom - 2) * 0.55);
+    const baseRadius = Math.max(3.2, Math.min(14.5, 3.2 + magnitude * 1.25));
+    const radius = Math.min(18, baseRadius + zoomBoost);
+    marker.setRadius(radius);
   });
 }
 
@@ -1305,8 +1497,8 @@ function renderHomeContextEarthquakeRow(events, context) {
   homeContextEqList.innerHTML = rows
     .map((event) => {
       const when = event?.event_time_utc
-        ? new Date(event.event_time_utc).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-        : "--:--";
+        ? formatUtcLabel(event.event_time_utc)
+        : "----/--/-- --:-- UTC";
       return `
         <li class="home-context-earthquake-item">
           <strong style="color:${magnitudeColor(event.magnitude)}">${formatMagnitude(event.magnitude)}</strong>
@@ -2231,31 +2423,265 @@ function syncThemeToggleButton() {
   globalThemeToggle.setAttribute("title", label);
 }
 
-function syncLeafletTheme() {
-  if (!leafletMap || !leafletLightTiles || !leafletDarkTiles) {
+function getLeafletBaseLayerSpec(style, darkMode) {
+  const isDark = Boolean(darkMode);
+  switch (style) {
+    case "ocean":
+      return {
+        url: "https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
+        options: {
+          maxZoom: 8,
+          minZoom: 2,
+          attribution: "&copy; Esri, GEBCO, NOAA, National Geographic, DeLorme, HERE, Geonames.org",
+        },
+      };
+    case "terrain":
+      return {
+        url: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+        options: {
+          maxZoom: 8,
+          minZoom: 2,
+          subdomains: "abc",
+          attribution: "&copy; OpenStreetMap contributors, SRTM | OpenTopoMap",
+        },
+      };
+    case "street":
+      return {
+        url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        options: {
+          maxZoom: 8,
+          minZoom: 2,
+          attribution: "&copy; OpenStreetMap contributors",
+        },
+      };
+    case "satellite":
+      return {
+        url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        options: {
+          maxZoom: 8,
+          minZoom: 2,
+          attribution: "&copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community",
+        },
+      };
+    case "grayscale":
+    default:
+      return isDark
+        ? {
+            url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+            options: {
+              maxZoom: 8,
+              minZoom: 2,
+              attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
+            },
+          }
+        : {
+            url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+            options: {
+              maxZoom: 8,
+              minZoom: 2,
+              attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
+            },
+          };
+  }
+}
+
+function getLeafletBaseLayer(style, darkMode) {
+  if (typeof window === "undefined" || !window.L) {
+    return null;
+  }
+  const key = `${style}:${darkMode ? "dark" : "light"}`;
+  if (leafletBaseLayerCache.has(key)) {
+    return leafletBaseLayerCache.get(key) || null;
+  }
+  const spec = getLeafletBaseLayerSpec(style, darkMode);
+  const layer = window.L.tileLayer(spec.url, spec.options);
+  leafletBaseLayerCache.set(key, layer);
+  return layer;
+}
+
+function ensureOverlayLayers() {
+  if (!leafletMap || typeof window === "undefined" || !window.L) {
     return;
   }
-  if (leafletDarkMode) {
-    if (leafletMap.hasLayer(leafletLightTiles)) {
-      leafletMap.removeLayer(leafletLightTiles);
+  if (!mapOverlayHeatLayer) {
+    mapOverlayHeatLayer = window.L.layerGroup();
+  }
+  if (!mapOverlayDepthLayer) {
+    mapOverlayDepthLayer = window.L.layerGroup();
+  }
+  if (!mapOverlayPlatesLayer) {
+    mapOverlayPlatesLayer = window.L.layerGroup();
+  }
+  if (!mapOverlayFaultsLayer) {
+    mapOverlayFaultsLayer = window.L.layerGroup();
+  }
+}
+
+function clearOverlayLayer(layer) {
+  if (!layer) {
+    return;
+  }
+  if (typeof layer.clearLayers === "function") {
+    layer.clearLayers();
+  }
+}
+
+function syncOverlayLayerVisibility(layer, enabled) {
+  if (!leafletMap || !layer) {
+    return;
+  }
+  if (enabled) {
+    if (!leafletMap.hasLayer(layer)) {
+      layer.addTo(leafletMap);
     }
-    if (!leafletMap.hasLayer(leafletDarkTiles)) {
-      leafletDarkTiles.addTo(leafletMap);
+    return;
+  }
+  if (leafletMap.hasLayer(layer)) {
+    leafletMap.removeLayer(layer);
+  }
+}
+
+async function renderPlateBoundaryOverlay() {
+  if (!leafletMap || !mapOverlayPlatesLayer || !mapOverlayFaultsLayer || !mapOverlayState.plates || !window.L) {
+    return;
+  }
+  const runToken = ++mapOverlayPlateRenderToken;
+  clearOverlayLayer(mapOverlayPlatesLayer);
+  clearOverlayLayer(mapOverlayFaultsLayer);
+  const context = await loadTectonicContext();
+  if (!context || runToken !== mapOverlayPlateRenderToken || !mapOverlayState.plates) {
+    return;
+  }
+  if (context.plates && Array.isArray(context.plates.features)) {
+    window.L.geoJSON(context.plates, {
+      style: {
+        color: "#ff6f59",
+        weight: 1.5,
+        opacity: 0.78,
+      },
+      interactive: false,
+    }).addTo(mapOverlayPlatesLayer);
+  }
+  if (context.faults && Array.isArray(context.faults.features)) {
+    window.L.geoJSON(context.faults, {
+      style: {
+        color: "#5de4c7",
+        weight: 1,
+        opacity: 0.4,
+      },
+      interactive: false,
+    }).addTo(mapOverlayFaultsLayer);
+  }
+}
+
+function renderLeafletOverlays(events) {
+  if (!leafletMap || typeof window === "undefined" || !window.L) {
+    return;
+  }
+  ensureOverlayLayers();
+  const scoped = Array.isArray(events) ? events : [];
+
+  if (mapOverlayHeatLayer) {
+    clearOverlayLayer(mapOverlayHeatLayer);
+    if (mapOverlayState.heat) {
+      scoped.slice(0, 180).forEach((event) => {
+        if (typeof event?.latitude !== "number" || typeof event?.longitude !== "number") {
+          return;
+        }
+        const magnitude = typeof event.magnitude === "number" ? event.magnitude : 0;
+        const radius = Math.max(22000, Math.min(145000, 22000 + magnitude * 13500));
+        window.L.circle([event.latitude, event.longitude], {
+          radius,
+          color: "transparent",
+          fillColor: magnitudeColor(event.magnitude),
+          fillOpacity: 0.08,
+          interactive: false,
+        }).addTo(mapOverlayHeatLayer);
+      });
     }
-    if (leafletNightLightsTiles && !leafletMap.hasLayer(leafletNightLightsTiles)) {
-      leafletNightLightsTiles.addTo(leafletMap);
+    syncOverlayLayerVisibility(mapOverlayHeatLayer, mapOverlayState.heat);
+  }
+
+  if (mapOverlayDepthLayer) {
+    clearOverlayLayer(mapOverlayDepthLayer);
+    if (mapOverlayState.depth) {
+      scoped.slice(0, 220).forEach((event) => {
+        if (typeof event?.latitude !== "number" || typeof event?.longitude !== "number") {
+          return;
+        }
+        const depth = typeof event.depth_km === "number" ? Math.max(0, event.depth_km) : 0;
+        const depthRadius = Math.max(4, Math.min(12, 4 + depth / 60));
+        const depthTone = depth < 70 ? "#5de4c7" : depth < 300 ? "#f8d84a" : "#ff8a5c";
+        window.L.circleMarker([event.latitude, event.longitude], {
+          radius: depthRadius,
+          color: depthTone,
+          weight: 1.1,
+          fillColor: "transparent",
+          fillOpacity: 0,
+          opacity: 0.85,
+          interactive: false,
+        }).addTo(mapOverlayDepthLayer);
+      });
     }
-  } else {
-    if (leafletMap.hasLayer(leafletDarkTiles)) {
-      leafletMap.removeLayer(leafletDarkTiles);
-    }
-    if (leafletNightLightsTiles && leafletMap.hasLayer(leafletNightLightsTiles)) {
-      leafletMap.removeLayer(leafletNightLightsTiles);
-    }
-    if (!leafletMap.hasLayer(leafletLightTiles)) {
-      leafletLightTiles.addTo(leafletMap);
+    syncOverlayLayerVisibility(mapOverlayDepthLayer, mapOverlayState.depth);
+  }
+
+  if (mapOverlayPlatesLayer && mapOverlayFaultsLayer) {
+    syncOverlayLayerVisibility(mapOverlayPlatesLayer, mapOverlayState.plates);
+    syncOverlayLayerVisibility(mapOverlayFaultsLayer, mapOverlayState.plates);
+    if (mapOverlayState.plates) {
+      void renderPlateBoundaryOverlay();
     }
   }
+}
+
+function syncMapStyleControlUi() {
+  if (mapStyleQuickThemeButton) {
+    mapStyleQuickThemeButton.classList.toggle("is-active", leafletDarkMode);
+    mapStyleQuickThemeButton.setAttribute("aria-pressed", leafletDarkMode ? "true" : "false");
+    const icon = mapStyleQuickThemeButton.querySelector(".map-quick-theme-icon");
+    if (icon) {
+      icon.textContent = leafletDarkMode ? "☾" : "☀";
+    }
+    mapStyleQuickThemeButton.setAttribute("title", leafletDarkMode ? "Tema scuro" : "Tema chiaro");
+  }
+  if (mapStyleOptions.length) {
+    mapStyleOptions.forEach((button) => {
+      const selected = String(button.dataset.style || "") === leafletBaseStyle;
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-checked", selected ? "true" : "false");
+    });
+  }
+  if (mapStyleOverlayOptions.length) {
+    mapStyleOverlayOptions.forEach((button) => {
+      const key = String(button.dataset.overlay || "").toLowerCase();
+      const selected = Object.prototype.hasOwnProperty.call(mapOverlayState, key) && Boolean(mapOverlayState[key]);
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-checked", selected ? "true" : "false");
+    });
+  }
+}
+
+function syncLeafletTheme() {
+  if (!leafletMap) {
+    return;
+  }
+  const nextLayer = getLeafletBaseLayer(leafletBaseStyle, leafletDarkMode);
+  if (!nextLayer) {
+    return;
+  }
+  if (leafletActiveBaseLayer === nextLayer && leafletMap.hasLayer(nextLayer)) {
+    syncMapStyleControlUi();
+    return;
+  }
+  if (leafletActiveBaseLayer && leafletMap.hasLayer(leafletActiveBaseLayer)) {
+    leafletMap.removeLayer(leafletActiveBaseLayer);
+  }
+  if (!leafletMap.hasLayer(nextLayer)) {
+    nextLayer.addTo(leafletMap);
+  }
+  leafletActiveBaseLayer = nextLayer;
+  syncMapStyleControlUi();
 }
 
 function syncInsightMapTheme() {
@@ -2587,14 +3013,43 @@ function renderPriorityEvents(events) {
     return;
   }
 
+  let scopedEvents = mapsViewportOnly ? filterEventsToCurrentMapViewport(events) : events;
+  if (isMapsPage && mapsFeedFormatMode !== "magnitude") {
+    scopedEvents = scopedEvents.filter((event) => {
+      if (mapsFeedFormatMode === "dyfi") {
+        return typeof event?.dyfi === "number" && event.dyfi > 0;
+      }
+      if (mapsFeedFormatMode === "shakemap") {
+        return Boolean(event?.shakemap || event?.shakemap_url || event?.intensity);
+      }
+      if (mapsFeedFormatMode === "pager") {
+        const pager = String(event?.pager || "").toLowerCase();
+        return pager === "green" || pager === "yellow" || pager === "orange" || pager === "red";
+      }
+      return true;
+    });
+  }
   const listMode = (eventsList.dataset.order || "priority").toLowerCase();
   if (listMode === "chronological") {
-    const rows = [...events]
-      .sort((a, b) => {
-        const aTime = a.event_time_utc ? new Date(a.event_time_utc).getTime() : 0;
-        const bTime = b.event_time_utc ? new Date(b.event_time_utc).getTime() : 0;
+    const rows = [...scopedEvents].sort((a, b) => {
+      const aTime = a.event_time_utc ? new Date(a.event_time_utc).getTime() : 0;
+      const bTime = b.event_time_utc ? new Date(b.event_time_utc).getTime() : 0;
+      const aMag = typeof a.magnitude === "number" ? a.magnitude : -1;
+      const bMag = typeof b.magnitude === "number" ? b.magnitude : -1;
+
+      if (mapsFeedSortMode === "oldest") {
+        return aTime - bTime;
+      }
+      if (mapsFeedSortMode === "largest") {
+        if (bMag !== aMag) return bMag - aMag;
         return bTime - aTime;
-      });
+      }
+      if (mapsFeedSortMode === "smallest") {
+        if (aMag !== bMag) return aMag - bMag;
+        return bTime - aTime;
+      }
+      return bTime - aTime;
+    });
 
     if (rows.length === 0) {
       eventsList.innerHTML = "<li class='event-item'>No recent events available.</li>";
@@ -2605,6 +3060,7 @@ function renderPriorityEvents(events) {
       .map((event) => {
         const mag = formatMagnitude(event.magnitude);
         const color = magnitudeColor(event.magnitude);
+        const isStrongMag = typeof event.magnitude === "number" && event.magnitude > 4.5;
         const depth = typeof event.depth_km === "number" ? `${event.depth_km.toFixed(1)} km` : "N/A depth";
         const time = event.event_time_utc
           ? new Date(event.event_time_utc).toLocaleString()
@@ -2613,7 +3069,7 @@ function renderPriorityEvents(events) {
         const detailUrl = eventDetailUrl(event);
         return `
         <li class="event-item event-item-compact event-item-clickable" data-event-key="${eventKey}" data-event-url="${detailUrl}">
-          <div class="event-main">
+          <div class="event-main ${isStrongMag ? "event-main-strong" : ""}">
             <span class="event-mag" style="color:${color}">${mag}</span>
             <span class="event-place">${event.place}</span>
           </div>
@@ -2676,7 +3132,7 @@ function renderPriorityEvents(events) {
   };
 
   const deduped = [];
-  events.forEach((event) => {
+  scopedEvents.forEach((event) => {
     const duplicateIndex = deduped.findIndex((current) => isLikelyDuplicate(current, event));
     if (duplicateIndex === -1) {
       deduped.push(event);
@@ -2706,6 +3162,7 @@ function renderPriorityEvents(events) {
     .map((event, index) => {
       const mag = formatMagnitude(event.magnitude);
       const color = magnitudeColor(event.magnitude);
+      const isStrongMag = typeof event.magnitude === "number" && event.magnitude > 4.5;
       const depth = typeof event.depth_km === "number" ? `${event.depth_km.toFixed(1)} km` : "N/A depth";
       const time = event.event_time_utc
         ? new Date(event.event_time_utc).toLocaleString()
@@ -2715,7 +3172,7 @@ function renderPriorityEvents(events) {
       const detailUrl = eventDetailUrl(event);
       return `
         <li class="${rowClass} event-item-clickable" data-event-key="${eventKey}" data-event-url="${detailUrl}">
-          <div class="event-main">
+          <div class="event-main ${isStrongMag ? "event-main-strong" : ""}">
             <span class="event-mag" style="color:${color}">${mag}</span>
             <span class="event-place">${event.place}</span>
           </div>
@@ -2799,8 +3256,7 @@ function renderKpis(events, payload) {
       : "--";
   }
   if (kpiSource) {
-    const mode = payload.from_cache ? "cache" : "live";
-    kpiSource.textContent = `Source: ${payload.provider || "Quakrs API"} (${mode})`;
+    kpiSource.textContent = `Source: ${payload.provider || "Quakrs API"}`;
   }
 }
 
@@ -2923,9 +3379,10 @@ function renderHomeSnapshot(events, payload) {
           const timeLabel = eventDate
             ? eventDate.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false })
             : "--:--";
+          const isStrongMag = typeof event.magnitude === "number" && event.magnitude > 4.5;
           return `
             <li class="snapshot-row">
-              <div class="snapshot-main">
+              <div class="snapshot-main ${isStrongMag ? "event-main-strong" : ""}">
                 <strong style="color:${magnitudeColor(event.magnitude)}">${formatMagnitude(event.magnitude)}</strong>
                 <span>${shortPlaceLabel(event.place)}</span>
               </div>
@@ -2999,12 +3456,13 @@ function applyEarthquakeView() {
     eventLookupByKey.set(getEventKey(event), event);
   });
 
-  const filteredEvents = getFilteredEarthquakeEvents();
+  const baseEvents = getBaseEarthquakeEvents();
+  const filteredEvents = getFilteredEarthquakeEvents(baseEvents);
   if (feedMeta) {
     const updatedAt = latestEarthquakePayload?.generated_at || latestEarthquakePayload?.feed_updated_at || null;
     const updatedText = updatedAt ? ` · ${formatUpdatedAgo(updatedAt)}` : "";
     const filterText = activeMagnitudeBand ? ` · filtered ${getMagnitudeBandLabel(activeMagnitudeBand)}` : "";
-    feedMeta.textContent = `${filteredEvents.length}/${allEarthquakeEvents.length} events shown${filterText}${updatedText}`;
+    feedMeta.textContent = `${filteredEvents.length}/${baseEvents.length} events shown${filterText}${updatedText}`;
   }
 
   renderKpis(filteredEvents, latestEarthquakePayload);
@@ -3091,7 +3549,7 @@ async function loadEarthquakes() {
       homeContextMode.textContent = "Feed unavailable";
     }
     if (homeContextSummary) {
-      homeContextSummary.textContent = "Earthquake feed unavailable in this runtime. Check local API routing/cache.";
+      homeContextSummary.textContent = "Earthquake feed unavailable in this runtime. Please try again shortly.";
     }
     if (homeContextRegion) {
       homeContextRegion.textContent = "Area: --";
@@ -3285,6 +3743,96 @@ if (homeMapViewportOnlyToggle) {
     }
   });
 }
+if (mapsViewportOnlyToggle) {
+  mapsViewportOnlyToggle.addEventListener("change", () => {
+    mapsViewportOnly = Boolean(mapsViewportOnlyToggle.checked);
+    if (latestEarthquakePayload) {
+      applyEarthquakeView();
+    }
+  });
+}
+const mapsFeedDropdowns = [mapsFeedFormatDropdown, mapsFeedSortDropdown].filter(Boolean);
+function closeMapsDropdowns() {
+  mapsFeedDropdowns.forEach((dropdown) => {
+    if (!(dropdown instanceof HTMLElement)) {
+      return;
+    }
+    dropdown.classList.remove("is-open");
+    const trigger = dropdown.querySelector(".maps-feed-dropdown-trigger");
+    if (trigger instanceof HTMLElement) {
+      trigger.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+function initMapsFeedDropdown(dropdown, onChange) {
+  if (!(dropdown instanceof HTMLElement)) {
+    return;
+  }
+  const trigger = dropdown.querySelector(".maps-feed-dropdown-trigger");
+  const valueNode = dropdown.querySelector(".maps-feed-dropdown-value");
+  const options = Array.from(dropdown.querySelectorAll(".maps-feed-option"));
+  if (!(trigger instanceof HTMLElement) || !(valueNode instanceof HTMLElement) || options.length === 0) {
+    return;
+  }
+
+  trigger.addEventListener("click", (event) => {
+    event.preventDefault();
+    const shouldOpen = !dropdown.classList.contains("is-open");
+    closeMapsDropdowns();
+    if (shouldOpen) {
+      dropdown.classList.add("is-open");
+      trigger.setAttribute("aria-expanded", "true");
+    }
+  });
+
+  options.forEach((optionNode) => {
+    if (!(optionNode instanceof HTMLElement)) {
+      return;
+    }
+    optionNode.addEventListener("click", () => {
+      const value = String(optionNode.dataset.value || "").toLowerCase();
+      if (!value) {
+        return;
+      }
+      options.forEach((node) => {
+        const selected = node === optionNode;
+        node.classList.toggle("is-selected", selected);
+        node.setAttribute("aria-selected", selected ? "true" : "false");
+      });
+      valueNode.textContent = optionNode.textContent || value;
+      closeMapsDropdowns();
+      onChange(value);
+    });
+  });
+}
+
+if (mapsFeedSortDropdown && eventsList) {
+  initMapsFeedDropdown(mapsFeedSortDropdown, (value) => {
+    mapsFeedSortMode = value || "newest";
+    eventsList.dataset.order = "chronological";
+    if (latestEarthquakePayload) {
+      applyEarthquakeView();
+    }
+  });
+}
+if (mapsFeedFormatDropdown) {
+  initMapsFeedDropdown(mapsFeedFormatDropdown, (value) => {
+    mapsFeedFormatMode = value || "magnitude";
+    if (latestEarthquakePayload) {
+      applyEarthquakeView();
+    }
+  });
+}
+document.addEventListener("click", (event) => {
+  if (!mapsFeedDropdowns.length) {
+    return;
+  }
+  const target = event.target;
+  const inside = mapsFeedDropdowns.some((dropdown) => dropdown instanceof HTMLElement && dropdown.contains(target));
+  if (!inside) {
+    closeMapsDropdowns();
+  }
+});
 if (bootstrapPayloads && !SKIP_BOOTSTRAP_PAYLOADS) {
   const eqBootstrap = bootstrapPayloads.earthquakes;
   if (eqBootstrap && Array.isArray(eqBootstrap.events)) {
@@ -3367,6 +3915,10 @@ mapFilterButtons.forEach((button) => {
   });
 });
 
+if (isPriorityMapsPage && !activeMagnitudeBand) {
+  setMagnitudeFilterState("m45p");
+}
+
 globalThemeToggle?.addEventListener("click", () => {
   leafletDarkMode = !leafletDarkMode;
   syncThemeToggleButton();
@@ -3375,6 +3927,7 @@ globalThemeToggle?.addEventListener("click", () => {
     applyEarthquakeView();
   }
   syncInsightMapTheme();
+  syncMapStyleControlUi();
 });
 
 syncThemeToggleButton();

@@ -11,9 +11,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Data / Reports</p>
-    <h1>Institutional Situation Reports.</h1>
-    <p class="sub">Rolling operational summaries built from source feeds without editorial commentary.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.data_reports.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.data_reports.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.data_reports.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 

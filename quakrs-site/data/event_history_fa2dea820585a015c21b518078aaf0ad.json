@@ -1,0 +1,944 @@
+{
+    "ok": true,
+    "provider": "USGS FDSN Historical Archive",
+    "generated_at_ts": 1773677059,
+    "generated_at": "2026-03-16T16:04:19+00:00",
+    "query": {
+        "lat": 36.7224,
+        "lon": -2.5368,
+        "radius_km": 100,
+        "min_magnitude": null,
+        "start": "1899-12-31",
+        "end": "2026-03-15"
+    },
+    "page": 1,
+    "per_page": 80,
+    "total_pages": 1,
+    "total_events": 0,
+    "events_count": 80,
+    "events": [
+        {
+            "id": "us6000s9fm",
+            "magnitude": 4.3,
+            "place": "4 km WSW of Turrillas, Spain",
+            "event_time_utc": "2026-02-15T23:55:22+00:00",
+            "depth_km": 9.295,
+            "latitude": 37.0208,
+            "longitude": -2.3134,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000s9fm"
+        },
+        {
+            "id": "us6000rp62",
+            "magnitude": 4.3,
+            "place": "29 km S of El Ejido, Spain",
+            "event_time_utc": "2025-10-29T21:38:20+00:00",
+            "depth_km": 10,
+            "latitude": 36.5109,
+            "longitude": -2.8188,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rp62"
+        },
+        {
+            "id": "us7000qcif",
+            "magnitude": 5.2,
+            "place": "23 km E of San Jos?, Spain",
+            "event_time_utc": "2025-07-14T05:13:28+00:00",
+            "depth_km": 10,
+            "latitude": 36.7449,
+            "longitude": -1.8443,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000qcif"
+        },
+        {
+            "id": "us7000l7f4",
+            "magnitude": 2.8,
+            "place": "4 km S of Lanjar\u00f3n, Spain",
+            "event_time_utc": "2023-10-29T20:30:35+00:00",
+            "depth_km": 10,
+            "latitude": 36.8754,
+            "longitude": -3.4809,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000l7f4"
+        },
+        {
+            "id": "us7000j178",
+            "magnitude": 4.2,
+            "place": "1 km SSE of Turre, Spain",
+            "event_time_utc": "2022-12-31T07:05:53+00:00",
+            "depth_km": 9.693,
+            "latitude": 37.1379,
+            "longitude": -1.8845,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000j178"
+        },
+        {
+            "id": "us2000arfq",
+            "magnitude": 2.8,
+            "place": "4 km NNE of Albox, Spain",
+            "event_time_utc": "2017-09-20T01:56:23+00:00",
+            "depth_km": 7.84,
+            "latitude": 37.4306,
+            "longitude": -2.1386,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us2000arfq"
+        },
+        {
+            "id": "us20005csd",
+            "magnitude": 3.9,
+            "place": "14 km SSE of Torrenueva, Spain",
+            "event_time_utc": "2016-03-25T12:05:33+00:00",
+            "depth_km": 10,
+            "latitude": 36.5924,
+            "longitude": -3.4103,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20005csd"
+        },
+        {
+            "id": "us20004w5y",
+            "magnitude": 4.9,
+            "place": "17 km S of Adra, Spain",
+            "event_time_utc": "2016-01-31T16:25:27+00:00",
+            "depth_km": 10,
+            "latitude": 36.5911,
+            "longitude": -3.0498,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20004w5y"
+        },
+        {
+            "id": "us200040kb",
+            "magnitude": 3.2,
+            "place": "1 km ESE of Albox, Spain",
+            "event_time_utc": "2015-10-29T18:55:28+00:00",
+            "depth_km": 0,
+            "latitude": 37.3832,
+            "longitude": -2.1387,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us200040kb"
+        },
+        {
+            "id": "usc000n4te",
+            "magnitude": 3.8,
+            "place": "24 km S of El Ejido, Spain",
+            "event_time_utc": "2014-02-24T14:24:51+00:00",
+            "depth_km": 10,
+            "latitude": 36.56,
+            "longitude": -2.8,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usc000n4te"
+        },
+        {
+            "id": "usp000jj63",
+            "magnitude": 4.3,
+            "place": "33 km S of Roquetas de Mar, Spain",
+            "event_time_utc": "2012-04-18T09:47:25+00:00",
+            "depth_km": 3.4,
+            "latitude": 36.462,
+            "longitude": -2.633,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000jj63"
+        },
+        {
+            "id": "usp000j9v7",
+            "magnitude": 3.7,
+            "place": "2 km NNE of Cuevas del Almanzora, Spain",
+            "event_time_utc": "2011-10-24T23:35:24+00:00",
+            "depth_km": 11.2,
+            "latitude": 37.32,
+            "longitude": -1.874,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000j9v7"
+        },
+        {
+            "id": "usp000hez0",
+            "magnitude": 3.7,
+            "place": "30 km SW of San Jos\u00e9, Spain",
+            "event_time_utc": "2010-07-06T14:45:22+00:00",
+            "depth_km": 0,
+            "latitude": 36.541,
+            "longitude": -2.323,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hez0"
+        },
+        {
+            "id": "usp000hexf",
+            "magnitude": 3.8,
+            "place": "23 km SW of San Jos\u00e9, Spain",
+            "event_time_utc": "2010-07-05T10:41:10+00:00",
+            "depth_km": 0,
+            "latitude": 36.597,
+            "longitude": -2.284,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hexf"
+        },
+        {
+            "id": "usp000hb7n",
+            "magnitude": 6.3,
+            "place": "1 km S of Nig\u00fcelas, Spain",
+            "event_time_utc": "2010-04-11T22:08:12+00:00",
+            "depth_km": 609.8,
+            "latitude": 36.965,
+            "longitude": -3.542,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hb7n"
+        },
+        {
+            "id": "usp000gpad",
+            "magnitude": 2.5,
+            "place": "2 km ESE of G\u00e9rgal, Spain",
+            "event_time_utc": "2008-11-23T21:33:36+00:00",
+            "depth_km": 0,
+            "latitude": 37.11,
+            "longitude": -2.516,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gpad"
+        },
+        {
+            "id": "usp000gnmm",
+            "magnitude": 2.7,
+            "place": "20 km SE of Roquetas de Mar, Spain",
+            "event_time_utc": "2008-11-13T21:06:15+00:00",
+            "depth_km": 9.8,
+            "latitude": 36.635,
+            "longitude": -2.455,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gnmm"
+        },
+        {
+            "id": "usp000gn5y",
+            "magnitude": 2.5,
+            "place": "32 km S of Roquetas de Mar, Spain",
+            "event_time_utc": "2008-11-07T13:52:40+00:00",
+            "depth_km": 10.5,
+            "latitude": 36.477,
+            "longitude": -2.569,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gn5y"
+        },
+        {
+            "id": "usp000gn5u",
+            "magnitude": 2.5,
+            "place": "33 km SSE of Roquetas de Mar, Spain",
+            "event_time_utc": "2008-11-07T13:04:15+00:00",
+            "depth_km": 0,
+            "latitude": 36.469,
+            "longitude": -2.528,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gn5u"
+        },
+        {
+            "id": "usp000gm1f",
+            "magnitude": 3.4,
+            "place": "37 km S of Roquetas de Mar, Spain",
+            "event_time_utc": "2008-10-26T00:51:21+00:00",
+            "depth_km": 10,
+            "latitude": 36.43,
+            "longitude": -2.56,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gm1f"
+        },
+        {
+            "id": "usp000gkrr",
+            "magnitude": 2.5,
+            "place": "31 km S of Roquetas de Mar, Spain",
+            "event_time_utc": "2008-10-21T15:19:48+00:00",
+            "depth_km": 3.7,
+            "latitude": 36.483,
+            "longitude": -2.549,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gkrr"
+        },
+        {
+            "id": "usp000gkrg",
+            "magnitude": 2.6,
+            "place": "31 km S of Roquetas de Mar, Spain",
+            "event_time_utc": "2008-10-21T13:50:17+00:00",
+            "depth_km": 0,
+            "latitude": 36.486,
+            "longitude": -2.578,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gkrg"
+        },
+        {
+            "id": "usp000gkr9",
+            "magnitude": 3.4,
+            "place": "Strait of Gibraltar",
+            "event_time_utc": "2008-10-21T12:50:56+00:00",
+            "depth_km": 7,
+            "latitude": 36.466,
+            "longitude": -2.522,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gkr9"
+        },
+        {
+            "id": "usp000gkqe",
+            "magnitude": 2.5,
+            "place": "31 km S of Roquetas de Mar, Spain",
+            "event_time_utc": "2008-10-21T03:31:30+00:00",
+            "depth_km": 0,
+            "latitude": 36.484,
+            "longitude": -2.59,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gkqe"
+        },
+        {
+            "id": "usp000gkqd",
+            "magnitude": 3.9,
+            "place": "35 km S of Roquetas de Mar, Spain",
+            "event_time_utc": "2008-10-21T03:28:53+00:00",
+            "depth_km": 0,
+            "latitude": 36.45,
+            "longitude": -2.55,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gkqd"
+        },
+        {
+            "id": "usp000gkpa",
+            "magnitude": 3,
+            "place": "34 km SSE of Roquetas de Mar, Spain",
+            "event_time_utc": "2008-10-20T20:02:31+00:00",
+            "depth_km": 10.7,
+            "latitude": 36.462,
+            "longitude": -2.537,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gkpa"
+        },
+        {
+            "id": "usp000gknj",
+            "magnitude": 3.4,
+            "place": "32 km S of Roquetas de Mar, Spain",
+            "event_time_utc": "2008-10-20T09:46:11+00:00",
+            "depth_km": 8.8,
+            "latitude": 36.471,
+            "longitude": -2.556,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gknj"
+        },
+        {
+            "id": "usp000gefq",
+            "magnitude": 2.9,
+            "place": "49 km S of Roquetas de Mar, Spain",
+            "event_time_utc": "2008-08-12T03:36:42+00:00",
+            "depth_km": 12.4,
+            "latitude": 36.322,
+            "longitude": -2.71,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gefq"
+        },
+        {
+            "id": "usp000gbcr",
+            "magnitude": 3.2,
+            "place": "3 km NNE of G\u00e1dor, Spain",
+            "event_time_utc": "2008-07-05T09:25:27+00:00",
+            "depth_km": 0,
+            "latitude": 36.981,
+            "longitude": -2.476,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gbcr"
+        },
+        {
+            "id": "usp000g4tx",
+            "magnitude": 2.8,
+            "place": "0 km WSW of G\u00e9rgal, Spain",
+            "event_time_utc": "2008-04-25T14:09:11+00:00",
+            "depth_km": 0,
+            "latitude": 37.117,
+            "longitude": -2.544,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000g4tx"
+        },
+        {
+            "id": "usp000fzzr",
+            "magnitude": 2.8,
+            "place": "3 km SSW of Lucainena de las Torres, Spain",
+            "event_time_utc": "2008-02-26T05:59:37+00:00",
+            "depth_km": 0,
+            "latitude": 37.009,
+            "longitude": -2.21,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fzzr"
+        },
+        {
+            "id": "usp000fytw",
+            "magnitude": 2.7,
+            "place": "30 km SSW of Adra, Spain",
+            "event_time_utc": "2008-02-13T12:20:46+00:00",
+            "depth_km": 0,
+            "latitude": 36.491,
+            "longitude": -3.155,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fytw"
+        },
+        {
+            "id": "usp000fyau",
+            "magnitude": 4.1,
+            "place": "8 km SSE of N\u00edjar, Spain",
+            "event_time_utc": "2008-02-06T17:53:00+00:00",
+            "depth_km": 10.8,
+            "latitude": 36.898,
+            "longitude": -2.17,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fyau"
+        },
+        {
+            "id": "usp000fsb6",
+            "magnitude": 3,
+            "place": "37 km SSW of Roquetas de Mar, Spain",
+            "event_time_utc": "2007-11-10T21:20:51+00:00",
+            "depth_km": 11.6,
+            "latitude": 36.44,
+            "longitude": -2.713,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fsb6"
+        },
+        {
+            "id": "usp000fr0v",
+            "magnitude": 1.6,
+            "place": "7 km WNW of Berja, Spain",
+            "event_time_utc": "2007-10-21T18:09:09+00:00",
+            "depth_km": 1.9,
+            "latitude": 36.883,
+            "longitude": -3.017,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fr0v"
+        },
+        {
+            "id": "usp000fpjx",
+            "magnitude": 2.9,
+            "place": "5 km ESE of N\u00edjar, Spain",
+            "event_time_utc": "2007-09-30T20:14:23+00:00",
+            "depth_km": 7.6,
+            "latitude": 36.949,
+            "longitude": -2.153,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fpjx"
+        },
+        {
+            "id": "usp000fmbw",
+            "magnitude": 3.2,
+            "place": "3 km E of Cuevas del Almanzora, Spain",
+            "event_time_utc": "2007-09-03T13:21:17+00:00",
+            "depth_km": 11.2,
+            "latitude": 37.301,
+            "longitude": -1.842,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fmbw"
+        },
+        {
+            "id": "usp000fk5w",
+            "magnitude": 2.9,
+            "place": "19 km SE of Adra, Spain",
+            "event_time_utc": "2007-08-19T02:39:42+00:00",
+            "depth_km": 0,
+            "latitude": 36.604,
+            "longitude": -2.887,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fk5w"
+        },
+        {
+            "id": "usp000fhpj",
+            "magnitude": 3.1,
+            "place": "14 km SSW of El Ejido, Spain",
+            "event_time_utc": "2007-08-02T09:51:02+00:00",
+            "depth_km": 12.1,
+            "latitude": 36.668,
+            "longitude": -2.895,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fhpj"
+        },
+        {
+            "id": "usp000f222",
+            "magnitude": 2.7,
+            "place": "4 km NW of Olula de Castro, Spain",
+            "event_time_utc": "2007-01-09T17:44:38+00:00",
+            "depth_km": 10.7,
+            "latitude": 37.201,
+            "longitude": -2.519,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000f222"
+        },
+        {
+            "id": "usp000f18c",
+            "magnitude": 2.7,
+            "place": "10 km N of L\u00facar, Spain",
+            "event_time_utc": "2006-12-29T06:33:52+00:00",
+            "depth_km": 3.3,
+            "latitude": 37.494,
+            "longitude": -2.442,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000f18c"
+        },
+        {
+            "id": "usp000eure",
+            "magnitude": 2.5,
+            "place": "23 km SSE of Adra, Spain",
+            "event_time_utc": "2006-10-09T03:11:22+00:00",
+            "depth_km": 0,
+            "latitude": 36.548,
+            "longitude": -2.932,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000eure"
+        },
+        {
+            "id": "usp000ep1m",
+            "magnitude": 2.7,
+            "place": "5 km N of Olula del R\u00edo, Spain",
+            "event_time_utc": "2006-07-19T01:32:55+00:00",
+            "depth_km": 3.2,
+            "latitude": 37.405,
+            "longitude": -2.298,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ep1m"
+        },
+        {
+            "id": "usp000emnj",
+            "magnitude": 1.9,
+            "place": "0 km E of Berja, Spain",
+            "event_time_utc": "2006-06-30T19:57:19+00:00",
+            "depth_km": 0,
+            "latitude": 36.847,
+            "longitude": -2.946,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000emnj"
+        },
+        {
+            "id": "usp000em5d",
+            "magnitude": 2.3,
+            "place": "2 km WNW of Lucainena de las Torres, Spain",
+            "event_time_utc": "2006-06-24T14:15:05+00:00",
+            "depth_km": 4.7,
+            "latitude": 37.049,
+            "longitude": -2.231,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000em5d"
+        },
+        {
+            "id": "usp000efxn",
+            "magnitude": 2.7,
+            "place": "38 km S of Torrenueva, Spain",
+            "event_time_utc": "2006-05-01T04:07:31+00:00",
+            "depth_km": 11,
+            "latitude": 36.359,
+            "longitude": -3.477,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000efxn"
+        },
+        {
+            "id": "usp000efw9",
+            "magnitude": 3.1,
+            "place": "41 km S of Torrenueva, Spain",
+            "event_time_utc": "2006-04-30T22:39:33+00:00",
+            "depth_km": 0,
+            "latitude": 36.328,
+            "longitude": -3.503,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000efw9"
+        },
+        {
+            "id": "usp000e8gb",
+            "magnitude": 2.1,
+            "place": "5 km SSE of Retamar, Spain",
+            "event_time_utc": "2006-01-19T18:15:08+00:00",
+            "depth_km": 9.5,
+            "latitude": 36.788,
+            "longitude": -2.29,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000e8gb"
+        },
+        {
+            "id": "usp000dywj",
+            "magnitude": 2.2,
+            "place": "2 km E of Viator, Spain",
+            "event_time_utc": "2005-09-06T22:21:14+00:00",
+            "depth_km": 22.1,
+            "latitude": 36.886,
+            "longitude": -2.394,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dywj"
+        },
+        {
+            "id": "usp000dywh",
+            "magnitude": 3.3,
+            "place": "5 km NNE of Rioja, Spain",
+            "event_time_utc": "2005-09-06T22:14:40+00:00",
+            "depth_km": 2.2,
+            "latitude": 36.993,
+            "longitude": -2.439,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dywh"
+        },
+        {
+            "id": "usp000du6q",
+            "magnitude": 4.6,
+            "place": "45 km SE of Carboneras, Spain",
+            "event_time_utc": "2005-06-30T01:19:22+00:00",
+            "depth_km": 5.1,
+            "latitude": 36.686,
+            "longitude": -1.565,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000du6q"
+        },
+        {
+            "id": "usp000dtug",
+            "magnitude": 2.8,
+            "place": "46 km SE of Carboneras, Spain",
+            "event_time_utc": "2005-06-24T17:06:22+00:00",
+            "depth_km": 5.7,
+            "latitude": 36.673,
+            "longitude": -1.557,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dtug"
+        },
+        {
+            "id": "usp000dtr2",
+            "magnitude": 2.4,
+            "place": "11 km S of Adra, Spain",
+            "event_time_utc": "2005-06-23T11:08:27+00:00",
+            "depth_km": 2.5,
+            "latitude": 36.646,
+            "longitude": -3.018,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dtr2"
+        },
+        {
+            "id": "usp000dskd",
+            "magnitude": 2.9,
+            "place": "3 km WSW of Arboleas, Spain",
+            "event_time_utc": "2005-06-09T14:22:36+00:00",
+            "depth_km": 3.2,
+            "latitude": 37.341,
+            "longitude": -2.11,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dskd"
+        },
+        {
+            "id": "usp000drs4",
+            "magnitude": 2.6,
+            "place": "27 km SSW of Adra, Spain",
+            "event_time_utc": "2005-05-29T01:21:42+00:00",
+            "depth_km": 0.7,
+            "latitude": 36.522,
+            "longitude": -3.15,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000drs4"
+        },
+        {
+            "id": "usp000dnxe",
+            "magnitude": 3.4,
+            "place": "28 km SSW of Adra, Spain",
+            "event_time_utc": "2005-04-21T16:12:27+00:00",
+            "depth_km": 4.9,
+            "latitude": 36.513,
+            "longitude": -3.149,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dnxe"
+        },
+        {
+            "id": "usp000dkry",
+            "magnitude": 3.6,
+            "place": "34 km S of Castell de Ferro, Spain",
+            "event_time_utc": "2005-03-31T06:06:54+00:00",
+            "depth_km": 2.6,
+            "latitude": 36.415,
+            "longitude": -3.298,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dkry"
+        },
+        {
+            "id": "usp000df9s",
+            "magnitude": 2.5,
+            "place": "4 km ENE of Albond\u00f3n, Spain",
+            "event_time_utc": "2005-01-31T12:44:06+00:00",
+            "depth_km": 10.9,
+            "latitude": 36.845,
+            "longitude": -3.16,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000df9s"
+        },
+        {
+            "id": "usp000dd2r",
+            "magnitude": 2.5,
+            "place": "3 km SSE of Albu\u00f1ol, Spain",
+            "event_time_utc": "2005-01-11T12:52:39+00:00",
+            "depth_km": 0,
+            "latitude": 36.757,
+            "longitude": -3.196,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dd2r"
+        },
+        {
+            "id": "usp000d7tr",
+            "magnitude": 3.5,
+            "place": "3 km E of Castell de Ferro, Spain",
+            "event_time_utc": "2004-11-06T13:24:26+00:00",
+            "depth_km": 0,
+            "latitude": 36.73,
+            "longitude": -3.311,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000d7tr"
+        },
+        {
+            "id": "usp000d5q2",
+            "magnitude": 1.7,
+            "place": "5 km SSE of El Ejido, Spain",
+            "event_time_utc": "2004-10-03T18:43:26+00:00",
+            "depth_km": 0,
+            "latitude": 36.735,
+            "longitude": -2.786,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000d5q2"
+        },
+        {
+            "id": "usp000d1xa",
+            "magnitude": 3.1,
+            "place": "22 km S of Torrenueva, Spain",
+            "event_time_utc": "2004-08-11T01:18:23+00:00",
+            "depth_km": 2.1,
+            "latitude": 36.501,
+            "longitude": -3.526,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000d1xa"
+        },
+        {
+            "id": "usp000cz98",
+            "magnitude": 1.6,
+            "place": "2 km SSW of Albox, Spain",
+            "event_time_utc": "2004-06-30T17:24:06+00:00",
+            "depth_km": 10.7,
+            "latitude": 37.363,
+            "longitude": -2.16,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cz98"
+        },
+        {
+            "id": "usp000cz94",
+            "magnitude": 1.1,
+            "place": "1 km SSW of Albox, Spain",
+            "event_time_utc": "2004-06-30T17:10:05+00:00",
+            "depth_km": 9,
+            "latitude": 37.377,
+            "longitude": -2.155,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cz94"
+        },
+        {
+            "id": "usp000cyj5",
+            "magnitude": 2.1,
+            "place": "1 km S of Hu\u00e9neja, Spain",
+            "event_time_utc": "2004-06-23T01:26:06+00:00",
+            "depth_km": 10.6,
+            "latitude": 37.164,
+            "longitude": -2.949,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cyj5"
+        },
+        {
+            "id": "usp000cyad",
+            "magnitude": 1.5,
+            "place": "40 km ESE of San Jos\u00e9, Spain",
+            "event_time_utc": "2004-06-20T06:30:40+00:00",
+            "depth_km": 0,
+            "latitude": 36.573,
+            "longitude": -1.724,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cyad"
+        },
+        {
+            "id": "usp000cy77",
+            "magnitude": 1.3,
+            "place": "1 km NE of Purchena, Spain",
+            "event_time_utc": "2004-06-18T23:07:25+00:00",
+            "depth_km": 0,
+            "latitude": 37.357,
+            "longitude": -2.345,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cy77"
+        },
+        {
+            "id": "usp000cy5a",
+            "magnitude": 1.6,
+            "place": "1 km NNW of Cuevas del Almanzora, Spain",
+            "event_time_utc": "2004-06-18T01:51:18+00:00",
+            "depth_km": 16.8,
+            "latitude": 37.312,
+            "longitude": -1.888,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cy5a"
+        },
+        {
+            "id": "usp000cxnt",
+            "magnitude": 1.7,
+            "place": "2 km WNW of Dal\u00edas, Spain",
+            "event_time_utc": "2004-06-11T05:17:53+00:00",
+            "depth_km": 0,
+            "latitude": 36.827,
+            "longitude": -2.901,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cxnt"
+        },
+        {
+            "id": "usp000cxnh",
+            "magnitude": 1.5,
+            "place": "6 km SSW of El Ejido, Spain",
+            "event_time_utc": "2004-06-11T02:57:42+00:00",
+            "depth_km": 30.8,
+            "latitude": 36.721,
+            "longitude": -2.847,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cxnh"
+        },
+        {
+            "id": "usp000cxne",
+            "magnitude": 0.8,
+            "place": "10 km S of Padules, Spain",
+            "event_time_utc": "2004-06-11T01:48:34+00:00",
+            "depth_km": 6,
+            "latitude": 36.901,
+            "longitude": -2.761,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cxne"
+        },
+        {
+            "id": "usp000cwwm",
+            "magnitude": 1.2,
+            "place": "11 km NNE of Albox, Spain",
+            "event_time_utc": "2004-06-02T04:52:38+00:00",
+            "depth_km": 0,
+            "latitude": 37.474,
+            "longitude": -2.079,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cwwm"
+        },
+        {
+            "id": "usp000cwv3",
+            "magnitude": 1.5,
+            "place": "0 km WSW of Chercos, Spain",
+            "event_time_utc": "2004-06-01T17:47:06+00:00",
+            "depth_km": 6.7,
+            "latitude": 37.25,
+            "longitude": -2.276,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cwv3"
+        },
+        {
+            "id": "usp000cwgu",
+            "magnitude": 1.5,
+            "place": "15 km WNW of Oria, Spain",
+            "event_time_utc": "2004-05-29T04:43:55+00:00",
+            "depth_km": 2,
+            "latitude": 37.538,
+            "longitude": -2.452,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cwgu"
+        },
+        {
+            "id": "usp000cwge",
+            "magnitude": 1.5,
+            "place": "11 km N of Trev\u00e9lez, Spain",
+            "event_time_utc": "2004-05-29T00:54:26+00:00",
+            "depth_km": 10.4,
+            "latitude": 37.1,
+            "longitude": -3.244,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cwge"
+        },
+        {
+            "id": "usp000cw3p",
+            "magnitude": 0.9,
+            "place": "9 km E of Cuevas del Almanzora, Spain",
+            "event_time_utc": "2004-05-24T20:02:30+00:00",
+            "depth_km": 0,
+            "latitude": 37.302,
+            "longitude": -1.772,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cw3p"
+        },
+        {
+            "id": "usp000cvy6",
+            "magnitude": 1.3,
+            "place": "2 km W of Laujar de Andarax, Spain",
+            "event_time_utc": "2004-05-23T02:03:54+00:00",
+            "depth_km": 6.9,
+            "latitude": 36.999,
+            "longitude": -2.915,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cvy6"
+        },
+        {
+            "id": "usp000cvqh",
+            "magnitude": 1,
+            "place": "13 km S of Orce, Spain",
+            "event_time_utc": "2004-05-20T22:28:21+00:00",
+            "depth_km": 0,
+            "latitude": 37.604,
+            "longitude": -2.466,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cvqh"
+        },
+        {
+            "id": "usp000cvpt",
+            "magnitude": 1.3,
+            "place": "5 km S of Lubr\u00edn, Spain",
+            "event_time_utc": "2004-05-20T17:11:06+00:00",
+            "depth_km": 0,
+            "latitude": 37.17,
+            "longitude": -2.07,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cvpt"
+        },
+        {
+            "id": "usp000cvhc",
+            "magnitude": 2,
+            "place": "1 km N of Adra, Spain",
+            "event_time_utc": "2004-05-19T03:15:37+00:00",
+            "depth_km": 0.7,
+            "latitude": 36.765,
+            "longitude": -3.022,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cvhc"
+        }
+    ],
+    "strongest_events": [
+        {
+            "id": "iscgem16958090",
+            "magnitude": 6.42,
+            "place": "61 km SSE of Castell de Ferro, Spain",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 36.185,
+            "longitude": -3.194,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem16958090"
+        },
+        {
+            "id": "usp000hb7n",
+            "magnitude": 6.3,
+            "place": "1 km S of Nig\u00fcelas, Spain",
+            "event_time_utc": "2010-04-11T22:08:12+00:00",
+            "depth_km": 609.8,
+            "latitude": 36.965,
+            "longitude": -3.542,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hb7n"
+        },
+        {
+            "id": "usp0000ug8",
+            "magnitude": 5.6,
+            "place": "14 km SSE of Roquetas de Mar, Spain",
+            "event_time_utc": "1978-05-11T04:51:23+00:00",
+            "depth_km": 26,
+            "latitude": 36.642,
+            "longitude": -2.543,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0000ug8"
+        },
+        {
+            "id": "iscgem906051",
+            "magnitude": 5.56,
+            "place": "6 km WSW of Tabernas, Spain",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 37.034,
+            "longitude": -2.466,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem906051"
+        },
+        {
+            "id": "usp00065gm",
+            "magnitude": 5.3,
+            "place": "7 km E of Adra, Spain",
+            "event_time_utc": "1993-12-23T14:22:35+00:00",
+            "depth_km": 27.4,
+            "latitude": 36.756,
+            "longitude": -2.937,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp00065gm"
+        },
+        {
+            "id": "us7000qcif",
+            "magnitude": 5.2,
+            "place": "23 km E of San Jos?, Spain",
+            "event_time_utc": "2025-07-14T05:13:28+00:00",
+            "depth_km": 10,
+            "latitude": 36.7449,
+            "longitude": -1.8443,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000qcif"
+        },
+        {
+            "id": "usp000axsy",
+            "magnitude": 5,
+            "place": "6 km WSW of G\u00e9rgal, Spain",
+            "event_time_utc": "2002-02-04T20:09:30+00:00",
+            "depth_km": 20.9,
+            "latitude": 37.103,
+            "longitude": -2.609,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000axsy"
+        },
+        {
+            "id": "usp00065zy",
+            "magnitude": 4.9,
+            "place": "13 km S of El Ejido, Spain",
+            "event_time_utc": "1994-01-04T08:03:15+00:00",
+            "depth_km": 22.2,
+            "latitude": 36.651,
+            "longitude": -2.822,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp00065zy"
+        },
+        {
+            "id": "us20004w5y",
+            "magnitude": 4.9,
+            "place": "17 km S of Adra, Spain",
+            "event_time_utc": "2016-01-31T16:25:27+00:00",
+            "depth_km": 10,
+            "latitude": 36.5911,
+            "longitude": -3.0498,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20004w5y"
+        },
+        {
+            "id": "usp0001s0z",
+            "magnitude": 4.8,
+            "place": "17 km SW of San Jos\u00e9, Spain",
+            "event_time_utc": "1983-01-06T21:55:53+00:00",
+            "depth_km": 10,
+            "latitude": 36.646,
+            "longitude": -2.241,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0001s0z"
+        },
+        {
+            "id": "iscgemsup909869",
+            "magnitude": 4.74,
+            "place": "15 km SW of San Jos\u00e9, Spain",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 36.655,
+            "longitude": -2.229,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgemsup909869"
+        },
+        {
+            "id": "usp0008484",
+            "magnitude": 4.6,
+            "place": "34 km SSW of Adra, Spain",
+            "event_time_utc": "1997-07-02T09:38:40+00:00",
+            "depth_km": 10,
+            "latitude": 36.443,
+            "longitude": -3.104,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0008484"
+        }
+    ],
+    "from_cache": false
+}

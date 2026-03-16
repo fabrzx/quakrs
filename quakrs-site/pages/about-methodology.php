@@ -11,11 +11,10 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">About / Methodology</p>
-    <h1>Pipeline, Caching &amp; Output Rules.</h1>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.about_methodology.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.about_methodology.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
     <p class="sub">
-      The frontend reads local API outputs only. Feed ingestion, normalization and cache refresh
-      are handled server-side to keep UI responses consistent and fast.
+      <?= htmlspecialchars(qk_t('page.about_methodology.sub'), ENT_QUOTES, 'UTF-8'); ?>
     </p>
   </div>
 </main>
@@ -30,8 +29,8 @@ require __DIR__ . '/../partials/topbar.php';
     <p>Earthquake records are harmonized on magnitude, depth, UTC time, coordinates and provider attribution before rendering.</p>
   </article>
   <article class="card page-card">
-    <h3>Cache Strategy</h3>
-    <p>Each feed writes local JSON snapshots in `/data`; APIs serve cache first and expose stale flags when upstream is degraded.</p>
+    <h3>Snapshot Strategy</h3>
+    <p>Each feed writes local JSON snapshots in `/data`; APIs serve the latest available snapshot when upstream is degraded.</p>
   </article>
   <article class="card page-card">
     <h3>Refresh Cadence</h3>

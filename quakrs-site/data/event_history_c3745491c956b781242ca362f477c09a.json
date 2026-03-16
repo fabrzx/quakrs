@@ -1,0 +1,944 @@
+{
+    "ok": true,
+    "provider": "USGS FDSN Historical Archive",
+    "generated_at_ts": 1773675777,
+    "generated_at": "2026-03-16T15:42:57+00:00",
+    "query": {
+        "lat": 33.53083,
+        "lon": -116.7215,
+        "radius_km": 500,
+        "min_magnitude": null,
+        "start": "1899-12-31",
+        "end": "2026-03-15"
+    },
+    "page": 1,
+    "per_page": 80,
+    "total_pages": 1,
+    "total_events": 0,
+    "events_count": 80,
+    "events": [
+        {
+            "id": "nn00912667",
+            "magnitude": 1.6,
+            "place": "43 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T23:28:13+00:00",
+            "depth_km": 2.4482,
+            "latitude": 37.1878,
+            "longitude": -117.1013,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912667"
+        },
+        {
+            "id": "ci41204311",
+            "magnitude": 0.38,
+            "place": "7 km SW of Anza, CA",
+            "event_time_utc": "2026-03-14T22:03:18+00:00",
+            "depth_km": 4.05,
+            "latitude": 33.518,
+            "longitude": -116.739833333333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204311"
+        },
+        {
+            "id": "ci41204303",
+            "magnitude": 1.32,
+            "place": "15 km NNE of Indio, CA",
+            "event_time_utc": "2026-03-14T21:24:08+00:00",
+            "depth_km": 3.25,
+            "latitude": 33.8496666666667,
+            "longitude": -116.167833333333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204303"
+        },
+        {
+            "id": "ci41204295",
+            "magnitude": 0.952443359159076,
+            "place": "10 km SSW of Idyllwild, CA",
+            "event_time_utc": "2026-03-14T21:03:13+00:00",
+            "depth_km": 13.289999961853,
+            "latitude": 33.6506652832031,
+            "longitude": -116.754669189453,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204295"
+        },
+        {
+            "id": "ci41204287",
+            "magnitude": 0.9,
+            "place": "12 km NE of Little Lake, CA",
+            "event_time_utc": "2026-03-14T19:48:14+00:00",
+            "depth_km": 1.74,
+            "latitude": 36.0026666666667,
+            "longitude": -117.802666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204287"
+        },
+        {
+            "id": "ci41204271",
+            "magnitude": 0.75,
+            "place": "12 km NE of Little Lake, CA",
+            "event_time_utc": "2026-03-14T19:39:39+00:00",
+            "depth_km": 1.55,
+            "latitude": 36.0036666666667,
+            "longitude": -117.800666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204271"
+        },
+        {
+            "id": "ci41204263",
+            "magnitude": 0.67,
+            "place": "16 km W of Searles Valley, CA",
+            "event_time_utc": "2026-03-14T19:16:48+00:00",
+            "depth_km": 3.67,
+            "latitude": 35.7541666666667,
+            "longitude": -117.584666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204263"
+        },
+        {
+            "id": "ci41204255",
+            "magnitude": 0.76,
+            "place": "12 km NE of Little Lake, CA",
+            "event_time_utc": "2026-03-14T18:53:34+00:00",
+            "depth_km": 1.34,
+            "latitude": 36.0045,
+            "longitude": -117.801666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204255"
+        },
+        {
+            "id": "ci41204231",
+            "magnitude": 0.87,
+            "place": "4 km W of Lake Henshaw, CA",
+            "event_time_utc": "2026-03-14T18:05:18+00:00",
+            "depth_km": 11.95,
+            "latitude": 33.2453333333333,
+            "longitude": -116.801166666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204231"
+        },
+        {
+            "id": "ci41204223",
+            "magnitude": 0.84,
+            "place": "9 km NE of Julian, CA",
+            "event_time_utc": "2026-03-14T17:45:09+00:00",
+            "depth_km": 6.51,
+            "latitude": 33.1471666666667,
+            "longitude": -116.541833333333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204223"
+        },
+        {
+            "id": "ci41204215",
+            "magnitude": 1.53,
+            "place": "4 km W of Lake Henshaw, CA",
+            "event_time_utc": "2026-03-14T17:14:25+00:00",
+            "depth_km": 10.12,
+            "latitude": 33.2446666666667,
+            "longitude": -116.8055,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204215"
+        },
+        {
+            "id": "nc75327377",
+            "magnitude": 1.58,
+            "place": "2 km WSW of Huron, CA",
+            "event_time_utc": "2026-03-14T17:05:08+00:00",
+            "depth_km": 10.8299999237061,
+            "latitude": 36.1983337402344,
+            "longitude": -120.121002197266,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327377"
+        },
+        {
+            "id": "nc75327372",
+            "magnitude": 2.87,
+            "place": "2 km E of Huron, CA",
+            "event_time_utc": "2026-03-14T16:32:52+00:00",
+            "depth_km": 10.7700004577637,
+            "latitude": 36.2008323669434,
+            "longitude": -120.084503173828,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327372"
+        },
+        {
+            "id": "nn00912648",
+            "magnitude": 0.84,
+            "place": "29 km NNW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T16:03:20+00:00",
+            "depth_km": 0.0073,
+            "latitude": 37.1532,
+            "longitude": -116.893,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912648"
+        },
+        {
+            "id": "nn00912646",
+            "magnitude": 1.6,
+            "place": "54 km W of Rachel, Nevada",
+            "event_time_utc": "2026-03-14T16:00:09+00:00",
+            "depth_km": 13.4041,
+            "latitude": 37.5696,
+            "longitude": -116.3557,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912646"
+        },
+        {
+            "id": "nn00912642",
+            "magnitude": 1.32,
+            "place": "57 km NE of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T15:38:38+00:00",
+            "depth_km": 13.2289,
+            "latitude": 37.3176,
+            "longitude": -116.3647,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912642"
+        },
+        {
+            "id": "nn00912633",
+            "magnitude": 1.15,
+            "place": "47 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T14:48:45+00:00",
+            "depth_km": 1.9242,
+            "latitude": 37.2396,
+            "longitude": -117.1019,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912633"
+        },
+        {
+            "id": "ci41204127",
+            "magnitude": 0.42,
+            "place": "8 km SW of Idyllwild, CA",
+            "event_time_utc": "2026-03-14T14:37:30+00:00",
+            "depth_km": 15.65,
+            "latitude": 33.689,
+            "longitude": -116.772666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204127"
+        },
+        {
+            "id": "ci41204111",
+            "magnitude": 0.7,
+            "place": "12 km NE of Borrego Springs, CA",
+            "event_time_utc": "2026-03-14T14:25:19+00:00",
+            "depth_km": 11.36,
+            "latitude": 33.3321666666667,
+            "longitude": -116.289,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204111"
+        },
+        {
+            "id": "nn00912632",
+            "magnitude": 1.04,
+            "place": "46 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T13:18:33+00:00",
+            "depth_km": 0.008,
+            "latitude": 37.2113,
+            "longitude": -117.1262,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912632"
+        },
+        {
+            "id": "nn00912629",
+            "magnitude": 1.3,
+            "place": "45 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T12:50:32+00:00",
+            "depth_km": 0.0133,
+            "latitude": 37.2086,
+            "longitude": -117.1159,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912629"
+        },
+        {
+            "id": "nn00912627",
+            "magnitude": 0.92,
+            "place": "51 km ESE of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T12:40:08+00:00",
+            "depth_km": 7.3142,
+            "latitude": 36.6724,
+            "longitude": -116.2568,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912627"
+        },
+        {
+            "id": "nn00912625",
+            "magnitude": 0.53,
+            "place": "51 km ESE of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T12:21:40+00:00",
+            "depth_km": 6.9941,
+            "latitude": 36.6677,
+            "longitude": -116.2641,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912625"
+        },
+        {
+            "id": "nc75327262",
+            "magnitude": 1.63,
+            "place": "8 km NE of Round Valley, CA",
+            "event_time_utc": "2026-03-14T11:38:42+00:00",
+            "depth_km": 13.5500001907349,
+            "latitude": 37.454833984375,
+            "longitude": -118.524833679199,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327262"
+        },
+        {
+            "id": "nn00912619",
+            "magnitude": 0.89,
+            "place": "47 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T10:03:26+00:00",
+            "depth_km": 1.5464,
+            "latitude": 37.2403,
+            "longitude": -117.1032,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912619"
+        },
+        {
+            "id": "nn00912616",
+            "magnitude": 1.31,
+            "place": "45 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T09:17:20+00:00",
+            "depth_km": 0.03,
+            "latitude": 37.2155,
+            "longitude": -117.1065,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912616"
+        },
+        {
+            "id": "ci41204079",
+            "magnitude": 1.16,
+            "place": "24 km NNW of California City, CA",
+            "event_time_utc": "2026-03-14T08:32:37+00:00",
+            "depth_km": 7.19,
+            "latitude": 35.3303333333333,
+            "longitude": -118.0855,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204079"
+        },
+        {
+            "id": "nn00912612",
+            "magnitude": 1.17,
+            "place": "47 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T08:32:22+00:00",
+            "depth_km": 0.0008,
+            "latitude": 37.2198,
+            "longitude": -117.1191,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912612"
+        },
+        {
+            "id": "ci41204071",
+            "magnitude": 0.98,
+            "place": "4 km WSW of Yucaipa, CA",
+            "event_time_utc": "2026-03-14T08:25:38+00:00",
+            "depth_km": 18.33,
+            "latitude": 34.021,
+            "longitude": -117.079666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204071"
+        },
+        {
+            "id": "nn00912607",
+            "magnitude": 1.2,
+            "place": "46 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T08:25:20+00:00",
+            "depth_km": 1.6995,
+            "latitude": 37.2157,
+            "longitude": -117.1176,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912607"
+        },
+        {
+            "id": "ci41204063",
+            "magnitude": 0.94,
+            "place": "10 km NE of Indio, CA",
+            "event_time_utc": "2026-03-14T08:23:24+00:00",
+            "depth_km": 6.75,
+            "latitude": 33.7768333333333,
+            "longitude": -116.1355,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204063"
+        },
+        {
+            "id": "ci41204055",
+            "magnitude": 0.7,
+            "place": "9 km NE of Indio, CA",
+            "event_time_utc": "2026-03-14T08:18:29+00:00",
+            "depth_km": 5.93,
+            "latitude": 33.7738333333333,
+            "longitude": -116.137666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204055"
+        },
+        {
+            "id": "ci41204047",
+            "magnitude": 1.01,
+            "place": "1 km NW of Universal City, CA",
+            "event_time_utc": "2026-03-14T08:14:00+00:00",
+            "depth_km": 15.54,
+            "latitude": 34.1451666666667,
+            "longitude": -118.362,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204047"
+        },
+        {
+            "id": "nn00912605",
+            "magnitude": 0.85,
+            "place": "47 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T07:48:47+00:00",
+            "depth_km": 2.0331,
+            "latitude": 37.229,
+            "longitude": -117.1209,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912605"
+        },
+        {
+            "id": "nc75327212",
+            "magnitude": 1.83,
+            "place": "1 km S of Huron, CA",
+            "event_time_utc": "2026-03-14T06:53:09+00:00",
+            "depth_km": 8.72999954223633,
+            "latitude": 36.1946678161621,
+            "longitude": -120.100997924805,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327212"
+        },
+        {
+            "id": "nn00912599",
+            "magnitude": 0.68,
+            "place": "46 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T05:53:02+00:00",
+            "depth_km": 4.9068,
+            "latitude": 37.2185,
+            "longitude": -117.1188,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912599"
+        },
+        {
+            "id": "nn00912597",
+            "magnitude": 1.24,
+            "place": "46 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T05:41:05+00:00",
+            "depth_km": 0.0444,
+            "latitude": 37.2164,
+            "longitude": -117.1175,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912597"
+        },
+        {
+            "id": "nn00912595",
+            "magnitude": 1.23,
+            "place": "47 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T05:33:47+00:00",
+            "depth_km": 0.0643,
+            "latitude": 37.2216,
+            "longitude": -117.118,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912595"
+        },
+        {
+            "id": "ci41204015",
+            "magnitude": 1.19,
+            "place": "18 km ESE of Little Lake, CA",
+            "event_time_utc": "2026-03-14T04:59:02+00:00",
+            "depth_km": 6.02,
+            "latitude": 35.8901666666667,
+            "longitude": -117.714,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204015"
+        },
+        {
+            "id": "nn00912594",
+            "magnitude": 0.78,
+            "place": "47 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T04:51:38+00:00",
+            "depth_km": 0.0006,
+            "latitude": 37.2368,
+            "longitude": -117.1053,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912594"
+        },
+        {
+            "id": "ci41204007",
+            "magnitude": 1.06,
+            "place": "6 km NW of Lake Henshaw, CA",
+            "event_time_utc": "2026-03-14T04:50:31+00:00",
+            "depth_km": 12.26,
+            "latitude": 33.2805,
+            "longitude": -116.802666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204007"
+        },
+        {
+            "id": "nn00912593",
+            "magnitude": 1.12,
+            "place": "47 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T04:49:55+00:00",
+            "depth_km": 0.0456,
+            "latitude": 37.2225,
+            "longitude": -117.1141,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912593"
+        },
+        {
+            "id": "ci41203999",
+            "magnitude": 1.35,
+            "place": "16 km W of Johannesburg, CA",
+            "event_time_utc": "2026-03-14T04:23:24+00:00",
+            "depth_km": 8.34,
+            "latitude": 35.3465,
+            "longitude": -117.811166666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203999"
+        },
+        {
+            "id": "ci41203991",
+            "magnitude": 0.82,
+            "place": "23 km WNW of Searles Valley, CA",
+            "event_time_utc": "2026-03-14T04:07:18+00:00",
+            "depth_km": 4.09,
+            "latitude": 35.8435,
+            "longitude": -117.6415,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203991"
+        },
+        {
+            "id": "nn00912592",
+            "magnitude": 1.11,
+            "place": "39 km S of Goldfield, Nevada",
+            "event_time_utc": "2026-03-14T03:55:16+00:00",
+            "depth_km": 3.3783,
+            "latitude": 37.3542,
+            "longitude": -117.2731,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912592"
+        },
+        {
+            "id": "nn00912591",
+            "magnitude": 0.84,
+            "place": "48 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T03:45:10+00:00",
+            "depth_km": 0.0006,
+            "latitude": 37.2456,
+            "longitude": -117.1001,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912591"
+        },
+        {
+            "id": "nn00912589",
+            "magnitude": 0.97,
+            "place": "47 km NW of Beatty, Nevada",
+            "event_time_utc": "2026-03-14T03:31:35+00:00",
+            "depth_km": 0.0045,
+            "latitude": 37.2316,
+            "longitude": -117.1153,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912589"
+        },
+        {
+            "id": "nn00912585",
+            "magnitude": 1.11,
+            "place": "50 km S of Goldfield, Nevada",
+            "event_time_utc": "2026-03-14T03:13:43+00:00",
+            "depth_km": 0.063,
+            "latitude": 37.2589,
+            "longitude": -117.2845,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912585"
+        },
+        {
+            "id": "nc75327137",
+            "magnitude": 1.98,
+            "place": "22 km NNE of San Ardo, CA",
+            "event_time_utc": "2026-03-14T02:58:38+00:00",
+            "depth_km": 6.71000003814697,
+            "latitude": 36.1855010986328,
+            "longitude": -120.770332336426,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327137"
+        },
+        {
+            "id": "ci41203943",
+            "magnitude": 0.72,
+            "place": "4 km SSE of Lytle Creek, CA",
+            "event_time_utc": "2026-03-14T02:37:39+00:00",
+            "depth_km": 9.55,
+            "latitude": 34.2291666666667,
+            "longitude": -117.486,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203943"
+        },
+        {
+            "id": "nn00912579",
+            "magnitude": 0.85,
+            "place": "59 km ENE of Independence, California",
+            "event_time_utc": "2026-03-14T01:08:59+00:00",
+            "depth_km": 0.0214,
+            "latitude": 37.0092,
+            "longitude": -117.5889,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912579"
+        },
+        {
+            "id": "ci41203935",
+            "magnitude": 1.17,
+            "place": "11 km N of Borrego Springs, CA",
+            "event_time_utc": "2026-03-14T00:52:55+00:00",
+            "depth_km": 11.89,
+            "latitude": 33.3568333333333,
+            "longitude": -116.392666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203935"
+        },
+        {
+            "id": "ci41203927",
+            "magnitude": 1.16,
+            "place": "11 km NNE of Coso Junction, CA",
+            "event_time_utc": "2026-03-14T00:16:23+00:00",
+            "depth_km": 3.93,
+            "latitude": 36.1266666666667,
+            "longitude": -117.889166666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203927"
+        },
+        {
+            "id": "ci41203911",
+            "magnitude": 1.69,
+            "place": "2 km NE of Colton, CA",
+            "event_time_utc": "2026-03-14T00:07:38+00:00",
+            "depth_km": 14.9,
+            "latitude": 34.0848333333333,
+            "longitude": -117.3035,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203911"
+        },
+        {
+            "id": "nn00912575",
+            "magnitude": 0.77,
+            "place": "52 km SE of Beatty, Nevada",
+            "event_time_utc": "2026-03-13T22:46:23+00:00",
+            "depth_km": 7.4329,
+            "latitude": 36.6464,
+            "longitude": -116.2706,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912575"
+        },
+        {
+            "id": "ci41203887",
+            "magnitude": 1.77,
+            "place": "4 km SSE of Home Gardens, CA",
+            "event_time_utc": "2026-03-13T22:40:10+00:00",
+            "depth_km": 2.36,
+            "latitude": 33.8431666666667,
+            "longitude": -117.4975,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203887"
+        },
+        {
+            "id": "ci41203855",
+            "magnitude": 0.93,
+            "place": "4 km S of Bloomington, CA",
+            "event_time_utc": "2026-03-13T21:44:53+00:00",
+            "depth_km": 18.9,
+            "latitude": 34.0336666666667,
+            "longitude": -117.396166666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203855"
+        },
+        {
+            "id": "ci41203847",
+            "magnitude": 0.92,
+            "place": "8 km S of Llano, CA",
+            "event_time_utc": "2026-03-13T21:43:08+00:00",
+            "depth_km": 6.68,
+            "latitude": 34.4173333333333,
+            "longitude": -117.778,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203847"
+        },
+        {
+            "id": "ci41203839",
+            "magnitude": 0.57,
+            "place": "7 km WSW of Anza, CA",
+            "event_time_utc": "2026-03-13T21:41:02+00:00",
+            "depth_km": 3.51,
+            "latitude": 33.5226666666667,
+            "longitude": -116.738,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203839"
+        },
+        {
+            "id": "nn00912568",
+            "magnitude": 1.65,
+            "place": "8 km NW of Summerlin South, Nevada",
+            "event_time_utc": "2026-03-13T21:28:25+00:00",
+            "depth_km": 15.9884,
+            "latitude": 36.1761,
+            "longitude": -115.3939,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912568"
+        },
+        {
+            "id": "ci41203831",
+            "magnitude": 1.03,
+            "place": "2 km N of Colton, CA",
+            "event_time_utc": "2026-03-13T21:23:32+00:00",
+            "depth_km": 17.59,
+            "latitude": 34.094,
+            "longitude": -117.316666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203831"
+        },
+        {
+            "id": "ci41203799",
+            "magnitude": 0.76,
+            "place": "11 km NE of Julian, CA",
+            "event_time_utc": "2026-03-13T20:53:16+00:00",
+            "depth_km": 5.5,
+            "latitude": 33.1511666666667,
+            "longitude": -116.5295,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203799"
+        },
+        {
+            "id": "ci41203791",
+            "magnitude": 1.47,
+            "place": "3 km SSE of Home Gardens, CA",
+            "event_time_utc": "2026-03-13T20:49:22+00:00",
+            "depth_km": 0.97,
+            "latitude": 33.855,
+            "longitude": -117.506166666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203791"
+        },
+        {
+            "id": "ci41203775",
+            "magnitude": 1.32,
+            "place": "10 km NW of Pine Valley, CA",
+            "event_time_utc": "2026-03-13T20:34:29+00:00",
+            "depth_km": 8.13,
+            "latitude": 32.8935,
+            "longitude": -116.597666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203775"
+        },
+        {
+            "id": "ci41203759",
+            "magnitude": 0.96,
+            "place": "3 km E of Brea, CA",
+            "event_time_utc": "2026-03-13T20:33:14+00:00",
+            "depth_km": 14.53,
+            "latitude": 33.9121666666667,
+            "longitude": -117.8635,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203759"
+        },
+        {
+            "id": "ci41203751",
+            "magnitude": -0.15,
+            "place": "9 km SE of Winchester, CA",
+            "event_time_utc": "2026-03-13T20:02:52+00:00",
+            "depth_km": 9.86,
+            "latitude": 33.6566666666667,
+            "longitude": -117.006666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203751"
+        },
+        {
+            "id": "ci41203743",
+            "magnitude": 0.92,
+            "place": "8 km SE of Winchester, CA",
+            "event_time_utc": "2026-03-13T20:00:25+00:00",
+            "depth_km": 10.67,
+            "latitude": 33.6675,
+            "longitude": -117.018333333333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203743"
+        },
+        {
+            "id": "nn00912566",
+            "magnitude": 0.55,
+            "place": "20 km NNE of Indian Springs, Nevada",
+            "event_time_utc": "2026-03-13T19:25:09+00:00",
+            "depth_km": 1.7538,
+            "latitude": 36.7457,
+            "longitude": -115.5893,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912566"
+        },
+        {
+            "id": "ci41203727",
+            "magnitude": 1.73,
+            "place": "8 km SSW of Mojave, CA",
+            "event_time_utc": "2026-03-13T18:57:10+00:00",
+            "depth_km": -0.91,
+            "latitude": 34.9863333333333,
+            "longitude": -118.191833333333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203727"
+        },
+        {
+            "id": "ci41203719",
+            "magnitude": 1.53,
+            "place": "16 km W of Searles Valley, CA",
+            "event_time_utc": "2026-03-13T18:46:57+00:00",
+            "depth_km": 7.58,
+            "latitude": 35.7541666666667,
+            "longitude": -117.577333333333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203719"
+        },
+        {
+            "id": "nn00912561",
+            "magnitude": 0.65,
+            "place": "52 km SE of Beatty, Nevada",
+            "event_time_utc": "2026-03-13T17:45:37+00:00",
+            "depth_km": 7.2653,
+            "latitude": 36.6465,
+            "longitude": -116.2696,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912561"
+        },
+        {
+            "id": "ci41203687",
+            "magnitude": 1.06,
+            "place": "8 km SW of Beaumont, CA",
+            "event_time_utc": "2026-03-13T17:38:17+00:00",
+            "depth_km": 16.68,
+            "latitude": 33.8843333333333,
+            "longitude": -117.04,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203687"
+        },
+        {
+            "id": "ci41203671",
+            "magnitude": 0.8,
+            "place": "7 km WSW of Anza, CA",
+            "event_time_utc": "2026-03-13T17:12:35+00:00",
+            "depth_km": 5.96,
+            "latitude": 33.5251666666667,
+            "longitude": -116.734666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203671"
+        },
+        {
+            "id": "nc75326932",
+            "magnitude": 1.98,
+            "place": "23 km NNE of San Ardo, CA",
+            "event_time_utc": "2026-03-13T15:28:05+00:00",
+            "depth_km": 6.57999992370605,
+            "latitude": 36.195499420166,
+            "longitude": -120.763999938965,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75326932"
+        },
+        {
+            "id": "nc75326927",
+            "magnitude": 2.84,
+            "place": "21 km NNE of San Ardo, CA",
+            "event_time_utc": "2026-03-13T15:27:08+00:00",
+            "depth_km": 6.07999992370605,
+            "latitude": 36.1828346252441,
+            "longitude": -120.779663085938,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75326927"
+        },
+        {
+            "id": "ci41203615",
+            "magnitude": 1.06,
+            "place": "15 km W of Searles Valley, CA",
+            "event_time_utc": "2026-03-13T14:42:35+00:00",
+            "depth_km": 8.27,
+            "latitude": 35.7488333333333,
+            "longitude": -117.571833333333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203615"
+        },
+        {
+            "id": "ci41203607",
+            "magnitude": 0.49,
+            "place": "7 km S of Idyllwild, CA",
+            "event_time_utc": "2026-03-13T14:16:04+00:00",
+            "depth_km": 14.22,
+            "latitude": 33.679,
+            "longitude": -116.733,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203607"
+        },
+        {
+            "id": "ci41203591",
+            "magnitude": 0.63,
+            "place": "5 km ENE of Cabazon, CA",
+            "event_time_utc": "2026-03-13T12:51:58+00:00",
+            "depth_km": 16.8,
+            "latitude": 33.9343333333333,
+            "longitude": -116.739666666667,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203591"
+        },
+        {
+            "id": "ci41203575",
+            "magnitude": 1.02,
+            "place": "21 km W of Westmorland, CA",
+            "event_time_utc": "2026-03-13T11:33:36+00:00",
+            "depth_km": 3.29,
+            "latitude": 33.0411666666667,
+            "longitude": -115.8485,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203575"
+        },
+        {
+            "id": "ci41203567",
+            "magnitude": 1.51,
+            "place": "6 km NE of Brea, CA",
+            "event_time_utc": "2026-03-13T11:30:01+00:00",
+            "depth_km": 14.29,
+            "latitude": 33.9475,
+            "longitude": -117.846333333333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41203567"
+        }
+    ],
+    "strongest_events": [
+        {
+            "id": "ci3319401",
+            "magnitude": 7.5,
+            "place": "The 1952 Kern County, California Earthquake",
+            "event_time_utc": null,
+            "depth_km": 6,
+            "latitude": 34.9581667,
+            "longitude": -118.998,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci3319401"
+        },
+        {
+            "id": "ci3031111",
+            "magnitude": 7.3,
+            "place": "The 1992 Landers, California Earthquake",
+            "event_time_utc": "1992-06-28T11:57:34+00:00",
+            "depth_km": -0.097,
+            "latitude": 34.2,
+            "longitude": -116.437,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci3031111"
+        },
+        {
+            "id": "ci14607652",
+            "magnitude": 7.2,
+            "place": "The 2010 Sierra El Mayor, B.C., Mexico Earthquake",
+            "event_time_utc": "2010-04-04T22:40:42+00:00",
+            "depth_km": 9.987,
+            "latitude": 32.2861667,
+            "longitude": -115.2953333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci14607652"
+        },
+        {
+            "id": "ci9108652",
+            "magnitude": 7.1,
+            "place": "The 1999 Hector Mine, California Earthquake",
+            "event_time_utc": "1999-10-16T09:46:44+00:00",
+            "depth_km": 13.73,
+            "latitude": 34.6033333,
+            "longitude": -116.265,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci9108652"
+        },
+        {
+            "id": "ci38457511",
+            "magnitude": 7.1,
+            "place": "Ridgecrest Earthquake Sequence",
+            "event_time_utc": "2019-07-06T03:19:53+00:00",
+            "depth_km": 8,
+            "latitude": 35.7695,
+            "longitude": -117.5993333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci38457511"
+        },
+        {
+            "id": "iscgem909604",
+            "magnitude": 6.9,
+            "place": "The 1927 Lompoc, California Earthquake",
+            "event_time_utc": null,
+            "depth_km": 10,
+            "latitude": 34.68,
+            "longitude": -120.705,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem909604"
+        },
+        {
+            "id": "ci3365279",
+            "magnitude": 6.9,
+            "place": "The 1940 Imperial Valley, California Earthquake",
+            "event_time_utc": null,
+            "depth_km": 6,
+            "latitude": 32.8441667,
+            "longitude": -115.381,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci3365279"
+        },
+        {
+            "id": "ci37161284",
+            "magnitude": 6.82,
+            "place": "The 1925 Santa Barbara, California Earthquake",
+            "event_time_utc": null,
+            "depth_km": 10,
+            "latitude": 34.3,
+            "longitude": -119.8,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci37161284"
+        },
+        {
+            "id": "ci3297521",
+            "magnitude": 6.8,
+            "place": "34km ENE of Maneadero, B.C., MX",
+            "event_time_utc": null,
+            "depth_km": 6,
+            "latitude": 31.8321667,
+            "longitude": -116.2308333,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci3297521"
+        },
+        {
+            "id": "nc1091100",
+            "magnitude": 6.7,
+            "place": "The 1983 Coalinga, California Earthquake",
+            "event_time_utc": "1983-05-02T23:42:38+00:00",
+            "depth_km": 9.578,
+            "latitude": 36.2316667,
+            "longitude": -120.312,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc1091100"
+        },
+        {
+            "id": "iscgem913126",
+            "magnitude": 6.7,
+            "place": "The 1918 San Jacinto, California Earthquake",
+            "event_time_utc": null,
+            "depth_km": 10,
+            "latitude": 33.762,
+            "longitude": -116.972,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgem913126"
+        },
+        {
+            "id": "ci3144585",
+            "magnitude": 6.7,
+            "place": "Northridge, California, earthquake",
+            "event_time_utc": "1994-01-17T12:30:55+00:00",
+            "depth_km": 18.202,
+            "latitude": 34.213,
+            "longitude": -118.537,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci3144585"
+        }
+    ],
+    "from_cache": false
+}

@@ -12,9 +12,9 @@ require __DIR__ . '/../partials/topbar.php';
 
 <main class="hero compact-hero">
   <div>
-    <p class="eyebrow">Maps / Depth View</p>
-    <h1>Hypocenter Depth Layers.</h1>
-    <p class="sub">Mappa stratificata con filtri profondita, marker ridimensionati e legenda cromatica completa.</p>
+    <p class="eyebrow"><?= htmlspecialchars(qk_t('page.maps_depth.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
+    <h1><?= htmlspecialchars(qk_t('page.maps_depth.title'), ENT_QUOTES, 'UTF-8'); ?></h1>
+    <p class="sub"><?= htmlspecialchars(qk_t('page.maps_depth.sub'), ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </main>
 
@@ -46,7 +46,7 @@ require __DIR__ . '/../partials/topbar.php';
     <div class="feed-head">
       <div class="map-head-left">
         <h3>Depth Overlay Map</h3>
-        <button id="depth-theme-toggle" class="map-mini-toggle" type="button" aria-pressed="false" aria-label="Attiva modalita notturna" title="Attiva modalita notturna">☀</button>
+        <button id="depth-theme-toggle" class="map-mini-toggle" type="button" aria-pressed="true" aria-label="Disattiva modalita notturna" title="Disattiva modalita notturna">☾</button>
       </div>
       <p class="feed-meta">Depth-filtered events on live basemap</p>
     </div>
@@ -118,7 +118,7 @@ require __DIR__ . '/../partials/topbar.php';
           attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
         })
       : null;
-    let darkMode = false;
+    let darkMode = true;
 
     const applyTheme = () => {
       if (!map || !lightTiles || !darkTiles) return;
@@ -139,8 +139,8 @@ require __DIR__ . '/../partials/topbar.php';
       }
     };
 
-    if (map && lightTiles) {
-      lightTiles.addTo(map);
+    if (map && darkTiles) {
+      darkTiles.addTo(map);
     }
 
     const setError = () => {
@@ -211,7 +211,7 @@ require __DIR__ . '/../partials/topbar.php';
         const provider = Array.isArray(payload.providers) && payload.providers.length > 0
           ? payload.providers.join(" + ")
           : (payload.provider || "Quakrs API");
-        kpiSource.textContent = `Source: ${provider}${payload.from_cache ? " (cache)" : ""}`;
+        kpiSource.textContent = `Source: ${provider}`;
       }
 
       if (deepestList) {
