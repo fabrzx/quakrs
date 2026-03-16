@@ -84,9 +84,46 @@ function inclusive_days_between(string $fromYmd, string $toYmd): int
     return ((int) $diff->days) + 1;
 }
 
-function usgs_query_url(array $params): string
+function source_config(string $source): array
 {
-    return 'https://earthquake.usgs.gov/fdsnws/event/1/query?' . http_build_query($params, '', '&', PHP_QUERY_RFC3986);
+    $key = strtolower(trim($source));
+    if ($key === 'ingv') {
+        return [
+            'key' => 'ingv',
+            'provider' => 'INGV',
+            'base_url' => 'https://webservices.ingv.it/fdsnws/event/1/query',
+        ];
+    }
+    return [
+        'key' => 'usgs',
+        'provider' => 'USGS',
+        'base_url' => 'https://earthquake.usgs.gov/fdsnws/event/1/query',
+    ];
+}
+
+function source_query_url(array $sourceCfg, array $params): string
+{
+    return (string) $sourceCfg['base_url'] . '?' . http_build_query($params, '', '&', PHP_QUERY_RFC3986);
+}
+
+function normalize_feature_time_utc(mixed $rawTime): ?string
+{
+    if (is_numeric($rawTime)) {
+        $time = (int) $rawTime;
+        if ($time > 9999999999) {
+            $time = (int) floor($time / 1000);
+        }
+        if ($time === 0) {
+            return null;
+        }
+        return gmdate('c', $time);
+    }
+
+    if (!is_string($rawTime) || trim($rawTime) === '') {
+        return null;
+    }
+    $parsed = strtotime(trim($rawTime));
+    return is_int($parsed) ? gmdate('c', $parsed) : null;
 }
 
 function fetch_json_diagnostic(string $url, int $timeoutSeconds): array
@@ -152,7 +189,7 @@ function fetch_json_diagnostic(string $url, int $timeoutSeconds): array
     return $result;
 }
 
-function parse_usgs_events(array $features): array
+function parse_geojson_events(array $features, string $provider): array
 {
     $rows = [];
     foreach ($features as $feature) {
@@ -166,21 +203,10 @@ function parse_usgs_events(array $features): array
             continue;
         }
 
-        $timeRaw = $properties['time'] ?? null;
-        if (!is_numeric($timeRaw)) {
+        $eventTimeUtc = normalize_feature_time_utc($properties['time'] ?? null);
+        if (!is_string($eventTimeUtc) || $eventTimeUtc === '') {
             continue;
         }
-
-        $timeMs = (int) $timeRaw;
-        $timeTs = (int) floor($timeMs / 1000);
-
-        if ($timeMs === 0) {
-            continue;
-        }
-
-        $eventTimeUtc = (new DateTimeImmutable('@' . $timeTs))
-            ->setTimezone(new DateTimeZone('UTC'))
-            ->format('c');
 
         $rows[] = [
             'id' => (string) ($feature['id'] ?? ''),
@@ -191,8 +217,8 @@ function parse_usgs_events(array $features): array
             'longitude' => isset($coords[0]) && is_numeric($coords[0]) ? (float) $coords[0] : null,
             'event_time_utc' => $eventTimeUtc,
             'source_url' => (string) ($properties['url'] ?? ''),
-            'source_provider' => 'USGS',
-            'source_providers' => ['USGS'],
+            'source_provider' => $provider,
+            'source_providers' => [$provider],
         ];
     }
     return $rows;
@@ -235,6 +261,7 @@ if ($requiredToken !== '') {
     }
 }
 
+$sourceCfg = source_config((string) ($_GET['source'] ?? 'usgs'));
 $startDate = normalize_date_value((string) ($_GET['start'] ?? '1900-01-01'), '1900-01-01');
 $hasEndParam = isset($_GET['end']) && trim((string) $_GET['end']) !== '';
 $requestedEndDate = normalize_date_value((string) ($_GET['end'] ?? gmdate('Y-m-d')), gmdate('Y-m-d'));
@@ -265,12 +292,13 @@ if (!$db instanceof mysqli) {
 $archiveCfg = earthquake_archive_mysql_config($appConfig);
 $table = (string) ($archiveCfg['table'] ?? 'earthquake_events');
 
-$checkpointPath = $appConfig['data_dir'] . '/backfill_earthquakes_http_checkpoint.json';
+$checkpointPath = $appConfig['data_dir'] . '/backfill_earthquakes_' . $sourceCfg['key'] . '_http_checkpoint.json';
 $state = $reset ? null : checkpoint_read($checkpointPath);
 
-if (!is_array($state) || ($state['mode'] ?? '') !== 'http_backfill_v1') {
+if (!is_array($state) || ($state['mode'] ?? '') !== 'http_backfill_v2') {
     $state = [
-        'mode' => 'http_backfill_v1',
+        'mode' => 'http_backfill_v2',
+        'source' => $sourceCfg['key'],
         'range_start' => $startDate,
         'range_end' => $requestedEndDate,
         'min_magnitude' => $minMagnitude,
@@ -288,6 +316,20 @@ if (!is_array($state) || ($state['mode'] ?? '') !== 'http_backfill_v1') {
         'pages_total' => 0,
         'rows_written_total' => 0,
     ];
+}
+
+$stateSource = strtolower((string) ($state['source'] ?? ''));
+if ($stateSource !== (string) $sourceCfg['key']) {
+    $state['source'] = $sourceCfg['key'];
+    $state['range_start'] = $startDate;
+    $state['range_end'] = $requestedEndDate;
+    $state['cursor_date'] = $startDate;
+    $state['count_mode'] = 'known';
+    $state['window_start'] = null;
+    $state['window_end'] = null;
+    $state['window_events'] = 0;
+    $state['window_pages'] = 0;
+    $state['next_page'] = 1;
 }
 
 $endDate = is_string($state['range_end'] ?? null) ? (string) $state['range_end'] : $requestedEndDate;
@@ -363,7 +405,7 @@ if ($needsWindowResolution) {
             $countParams['minmagnitude'] = number_format($minMagnitude, 2, '.', '');
         }
 
-        $countUrl = usgs_query_url($countParams);
+        $countUrl = source_query_url($sourceCfg, $countParams);
         $countResult = fetch_json_diagnostic($countUrl, (int) $appConfig['http_timeout_seconds']);
         $state['requests_total'] = (int) ($state['requests_total'] ?? 0) + 1;
 
@@ -372,7 +414,8 @@ if ($needsWindowResolution) {
             $db->close();
             $payload = [
                 'ok' => false,
-                'error' => 'Unable to count USGS events for current window',
+                'error' => 'Unable to count source events for current window',
+                'source' => $sourceCfg['provider'],
                 'window_start' => $wStart,
                 'window_end' => $wEnd,
             ];
@@ -389,7 +432,7 @@ if ($needsWindowResolution) {
 
         $hasCount = isset($countPayload['metadata']) && is_array($countPayload['metadata']) && array_key_exists('count', $countPayload['metadata']);
         if (!$hasCount) {
-            // Some USGS responses omit metadata.count: process pages until one returns fewer rows than page_size.
+            // Some source responses omit metadata.count: process pages until one returns fewer rows than page_size.
             $state['count_mode'] = 'unknown';
             $state['window_start'] = $wStart;
             $state['window_end'] = $wEnd;
@@ -449,7 +492,7 @@ if ($windowPages > 0 || $unknownCount) {
         $pageParams['minmagnitude'] = number_format($minMagnitude, 2, '.', '');
     }
 
-    $pageUrl = usgs_query_url($pageParams);
+    $pageUrl = source_query_url($sourceCfg, $pageParams);
     $pageResult = fetch_json_diagnostic($pageUrl, (int) $appConfig['http_timeout_seconds']);
     $state['requests_total'] = (int) ($state['requests_total'] ?? 0) + 1;
     $pagePayload = is_array($pageResult['json'] ?? null) ? $pageResult['json'] : null;
@@ -457,7 +500,8 @@ if ($windowPages > 0 || $unknownCount) {
         $db->close();
         $payload = [
             'ok' => false,
-            'error' => 'Unable to load USGS page for current window',
+            'error' => 'Unable to load source page for current window',
+            'source' => $sourceCfg['provider'],
             'window_start' => $state['window_start'],
             'window_end' => $state['window_end'],
             'page' => $page,
@@ -473,7 +517,7 @@ if ($windowPages > 0 || $unknownCount) {
         json_response(502, $payload);
     }
 
-    $events = parse_usgs_events($pagePayload['features']);
+    $events = parse_geojson_events($pagePayload['features'], (string) $sourceCfg['provider']);
     $rowsFetchedThisPage = count($events);
     $before = db_count_rows($db, $table);
     $rowsWritten = $rowsFetchedThisPage > 0 ? earthquake_archive_ingest($db, $events, time(), $table) : 0;
@@ -509,6 +553,8 @@ $db->close();
 json_response(200, [
     'ok' => true,
     'done' => $done,
+    'source' => $sourceCfg['provider'],
+    'source_key' => $sourceCfg['key'],
     'range_start' => $startDate,
     'range_end' => $endDate,
     'checkpoint_path' => basename($checkpointPath),

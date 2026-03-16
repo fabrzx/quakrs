@@ -25,6 +25,7 @@ return [
     'nav.depth_view' => 'Vista profondità',
     'nav.volcano_cams' => 'Cam vulcani',
     'nav.eruption_hotspots' => 'Hotspot eruttivi',
+    'nav.italy' => 'Italia',
     'nav.archive' => 'Archivio',
     'nav.energy' => 'Energia',
     'nav.reports' => 'Report',
@@ -50,4 +51,3 @@ return [
     'footer.terms' => 'Termini',
     'footer.copyright' => 'Interfaccia di monitoraggio in tempo reale.',
 ];
-

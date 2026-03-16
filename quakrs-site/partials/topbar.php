@@ -43,6 +43,7 @@ $menuItems = [
         'key' => 'data',
         'label' => qk_t('nav.data'),
         'children' => [
+            ['key' => 'data-italia', 'label' => qk_t('nav.italy'), 'href' => '/data-italia.php'],
             ['key' => 'data-archive', 'label' => qk_t('nav.archive'), 'href' => '/data-archive.php'],
             ['key' => 'data-energy', 'label' => qk_t('nav.energy'), 'href' => '/data-energy.php'],
             ['key' => 'data-reports', 'label' => qk_t('nav.reports'), 'href' => '/data-reports.php'],
@@ -86,6 +87,8 @@ $legacyTopLevelMap = [
     'analytics' => 'data',
     'tremors' => 'data',
     'data-energy' => 'data',
+    'data-italia' => 'data',
+    'data-italia-sciame' => 'data',
     'data-clusters' => 'data',
     'data-archive' => 'data',
     'data-reports' => 'data',

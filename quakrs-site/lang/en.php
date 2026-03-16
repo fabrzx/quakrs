@@ -25,6 +25,7 @@ return [
     'nav.depth_view' => 'Depth View',
     'nav.volcano_cams' => 'Volcano Cams',
     'nav.eruption_hotspots' => 'Eruption Hotspots',
+    'nav.italy' => 'Italy',
     'nav.archive' => 'Archive',
     'nav.energy' => 'Energy',
     'nav.reports' => 'Reports',
@@ -50,4 +51,3 @@ return [
     'footer.terms' => 'Terms',
     'footer.copyright' => 'Real-time monitoring interface.',
 ];
-

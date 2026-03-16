@@ -42,12 +42,49 @@ function normalize_date_arg(?string $value, string $fallback): string
     return $dt->setTimezone(new DateTimeZone('UTC'))->format('Y-m-d');
 }
 
-function usgs_url(array $params): string
+function source_config(string $source): array
 {
-    return 'https://earthquake.usgs.gov/fdsnws/event/1/query?' . http_build_query($params, '', '&', PHP_QUERY_RFC3986);
+    $key = strtolower(trim($source));
+    if ($key === 'ingv') {
+        return [
+            'key' => 'ingv',
+            'provider' => 'INGV',
+            'base_url' => 'https://webservices.ingv.it/fdsnws/event/1/query',
+        ];
+    }
+    return [
+        'key' => 'usgs',
+        'provider' => 'USGS',
+        'base_url' => 'https://earthquake.usgs.gov/fdsnws/event/1/query',
+    ];
 }
 
-function parse_usgs_features(array $features): array
+function source_query_url(array $sourceCfg, array $params): string
+{
+    return (string) $sourceCfg['base_url'] . '?' . http_build_query($params, '', '&', PHP_QUERY_RFC3986);
+}
+
+function normalize_feature_time_utc(mixed $rawTime): ?string
+{
+    if (is_numeric($rawTime)) {
+        $time = (int) $rawTime;
+        if ($time > 9999999999) {
+            $time = (int) floor($time / 1000);
+        }
+        if ($time === 0) {
+            return null;
+        }
+        return gmdate('c', $time);
+    }
+
+    if (!is_string($rawTime) || trim($rawTime) === '') {
+        return null;
+    }
+    $parsed = strtotime(trim($rawTime));
+    return is_int($parsed) ? gmdate('c', $parsed) : null;
+}
+
+function parse_geojson_features(array $features, string $provider): array
 {
     $events = [];
     foreach ($features as $feature) {
@@ -61,11 +98,8 @@ function parse_usgs_features(array $features): array
             continue;
         }
 
-        $timeRaw = $properties['time'] ?? null;
-        $timeMs = is_numeric($timeRaw) ? (int) $timeRaw : 0;
-        $timeTs = $timeMs > 0 ? (int) floor($timeMs / 1000) : 0;
-        // Keep historical rows (negative timestamps). Skip only invalid/zero times.
-        if ($timeTs === 0) {
+        $eventTimeUtc = normalize_feature_time_utc($properties['time'] ?? null);
+        if (!is_string($eventTimeUtc) || $eventTimeUtc === '') {
             continue;
         }
 
@@ -81,10 +115,10 @@ function parse_usgs_features(array $features): array
             'depth_km' => $depth !== null ? abs($depth) : null,
             'latitude' => $lat,
             'longitude' => $lon,
-            'event_time_utc' => gmdate('c', $timeTs),
+            'event_time_utc' => $eventTimeUtc,
             'source_url' => (string) ($properties['url'] ?? ''),
-            'source_provider' => 'USGS',
-            'source_providers' => ['USGS'],
+            'source_provider' => $provider,
+            'source_providers' => [$provider],
         ];
     }
     return $events;
@@ -127,6 +161,7 @@ Usage:
   php scripts/backfill-earthquakes-history.php [options]
 
 Options:
+  --source=usgs|ingv            Default: usgs
   --start=YYYY-MM-DD            Default: 1900-01-01
   --end=YYYY-MM-DD              Default: today (UTC)
   --min-magnitude=FLOAT         Optional USGS filter
@@ -141,6 +176,7 @@ Options:
 
 Examples:
   php scripts/backfill-earthquakes-history.php --resume
+  php scripts/backfill-earthquakes-history.php --source=ingv --resume
   php scripts/backfill-earthquakes-history.php --start=1970-01-01 --min-magnitude=3.0
 TXT;
     fwrite(STDOUT, $help . PHP_EOL);
@@ -151,6 +187,8 @@ if (cli_bool($argv, 'help')) {
     exit(0);
 }
 
+$sourceInput = trim((string) cli_arg($argv, 'source', 'usgs'));
+$sourceCfg = source_config($sourceInput);
 $startDate = normalize_date_arg(cli_arg($argv, 'start'), '1900-01-01');
 $endDate = normalize_date_arg(cli_arg($argv, 'end'), gmdate('Y-m-d'));
 $minMagnitudeRaw = cli_arg($argv, 'min-magnitude');
@@ -164,7 +202,7 @@ $resume = cli_bool($argv, 'resume');
 $resetCheckpoint = cli_bool($argv, 'reset-checkpoint');
 $dryRun = cli_bool($argv, 'dry-run');
 
-$defaultCheckpointPath = $appConfig['data_dir'] . '/backfill_earthquakes_usgs_checkpoint.json';
+$defaultCheckpointPath = $appConfig['data_dir'] . '/backfill_earthquakes_' . $sourceCfg['key'] . '_checkpoint.json';
 $checkpointPath = trim((string) cli_arg($argv, 'checkpoint', $defaultCheckpointPath));
 if ($checkpointPath === '') {
     $checkpointPath = $defaultCheckpointPath;
@@ -212,7 +250,8 @@ $windowCount = 0;
 $hadError = false;
 
 fwrite(STDOUT, sprintf(
-    "Backfill start | range=%s..%s | min_mag=%s | max_window_days=%d | max_events_per_window=%d | page_size=%d | dry_run=%s\n",
+    "Backfill start | source=%s | range=%s..%s | min_mag=%s | max_window_days=%d | max_events_per_window=%d | page_size=%d | dry_run=%s\n",
+    $sourceCfg['provider'],
     $startDate,
     $endDate,
     $minMagnitude !== null ? (string) $minMagnitude : 'all',
@@ -242,17 +281,18 @@ while ($cursorTs <= $endTs) {
     $countParams = $baseParams;
     $countParams['limit'] = 1;
     $countParams['offset'] = 1;
-    $countPayload = fetch_external_json(usgs_url($countParams), (int) $appConfig['http_timeout_seconds']);
+    $countPayload = fetch_external_json(source_query_url($sourceCfg, $countParams), (int) $appConfig['http_timeout_seconds']);
     $requestCount += 1;
 
-    if (!is_array($countPayload) || !isset($countPayload['metadata']['count'])) {
+    if (!is_array($countPayload)) {
         fwrite(STDERR, sprintf("Count failed for %s..%s\n", $windowStart, $windowEnd));
         $hadError = true;
         break;
     }
 
-    $totalEvents = max(0, (int) ($countPayload['metadata']['count'] ?? 0));
-    if ($totalEvents > $maxEventsPerWindow && $windowDays > 1) {
+    $hasCount = isset($countPayload['metadata']) && is_array($countPayload['metadata']) && array_key_exists('count', $countPayload['metadata']);
+    $totalEvents = $hasCount ? max(0, (int) ($countPayload['metadata']['count'] ?? 0)) : -1;
+    if ($hasCount && $totalEvents > $maxEventsPerWindow && $windowDays > 1) {
         $maxWindowDays = max(1, (int) floor($windowDays / 2));
         fwrite(STDOUT, sprintf(
             "Split window %s..%s (events=%d > %d), new max_window_days=%d\n",
@@ -266,7 +306,7 @@ while ($cursorTs <= $endTs) {
     }
 
     $windowCount += 1;
-    if ($totalEvents === 0) {
+    if ($hasCount && $totalEvents === 0) {
         fwrite(STDOUT, sprintf("[%d] %s..%s | events=0\n", $windowCount, $windowStart, $windowEnd));
         $cursorTs = $windowEndTs + 86400;
         save_checkpoint($checkpointPath, [
@@ -279,19 +319,20 @@ while ($cursorTs <= $endTs) {
         continue;
     }
 
-    $totalPages = max(1, (int) ceil($totalEvents / $pageSize));
+    $unknownCount = !$hasCount;
+    $totalPages = $unknownCount ? 0 : max(1, (int) ceil($totalEvents / $pageSize));
     $windowFetched = 0;
     $windowWritten = 0;
     $windowInsertedEstimate = 0;
 
     $beforeCount = (!$dryRun && $db instanceof mysqli) ? db_total_count($db, $table) : 0;
-    for ($page = 1; $page <= $totalPages; $page++) {
+    for ($page = 1; $unknownCount || $page <= $totalPages; $page++) {
         $offset = (($page - 1) * $pageSize) + 1;
         $pageParams = $baseParams;
         $pageParams['orderby'] = 'time-asc';
         $pageParams['limit'] = $pageSize;
         $pageParams['offset'] = $offset;
-        $payload = fetch_external_json(usgs_url($pageParams), (int) $appConfig['http_timeout_seconds']);
+        $payload = fetch_external_json(source_query_url($sourceCfg, $pageParams), (int) $appConfig['http_timeout_seconds']);
         $requestCount += 1;
 
         if (!is_array($payload) || !isset($payload['features']) || !is_array($payload['features'])) {
@@ -300,7 +341,7 @@ while ($cursorTs <= $endTs) {
             break 2;
         }
 
-        $events = parse_usgs_features($payload['features']);
+        $events = parse_geojson_features($payload['features'], (string) $sourceCfg['provider']);
         $fetched = count($events);
         $windowFetched += $fetched;
         $globalFetched += $fetched;
@@ -309,6 +350,10 @@ while ($cursorTs <= $endTs) {
             $written = earthquake_archive_ingest($db, $events, time(), $table);
             $windowWritten += $written;
             $globalWritten += $written;
+        }
+
+        if ($unknownCount && $fetched < $pageSize) {
+            break;
         }
     }
 
@@ -324,11 +369,11 @@ while ($cursorTs <= $endTs) {
     }
 
     fwrite(STDOUT, sprintf(
-        "[%d] %s..%s | events=%d | fetched=%d | written=%d | inserted~=%d | updated~=%d\n",
+        "[%d] %s..%s | events=%s | fetched=%d | written=%d | inserted~=%d | updated~=%d\n",
         $windowCount,
         $windowStart,
         $windowEnd,
-        $totalEvents,
+        $unknownCount ? 'unknown' : (string) $totalEvents,
         $windowFetched,
         $windowWritten,
         $windowInsertedEstimate,
@@ -340,7 +385,7 @@ while ($cursorTs <= $endTs) {
         'next_start' => gmdate('Y-m-d', $cursorTs),
         'last_window_start' => $windowStart,
         'last_window_end' => $windowEnd,
-        'last_window_events' => $totalEvents,
+        'last_window_events' => $unknownCount ? null : $totalEvents,
         'last_window_fetched' => $windowFetched,
         'last_window_written' => $windowWritten,
         'requests' => $requestCount,

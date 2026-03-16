@@ -214,7 +214,7 @@ require __DIR__ . '/../partials/topbar.php';
     const insightDepth = document.querySelector("#archive-insight-depth");
     const insightProviders = document.querySelector("#archive-insight-providers");
 
-    const perPage = 220;
+    const perPage = 500;
     let debounceTimer = null;
 
     let map = null;
@@ -238,6 +238,7 @@ require __DIR__ . '/../partials/topbar.php';
     let feedbackHideTimer = null;
     let feedbackProgress = 0;
     let currentVisibleRows = [];
+    let activeArchiveController = null;
     const locationGeoMap = new Map();
 
     const escapeHtml = (value) => String(value ?? "")
@@ -888,8 +889,7 @@ require __DIR__ . '/../partials/topbar.php';
     const updateKpisAndInsights = (payload, rows) => {
       if (kpiVisible) kpiVisible.textContent = String(Array.isArray(rows) ? rows.length : 0);
       if (kpiVisibleNote) {
-        const pageSize = Number(payload?.per_page || perPage);
-        kpiVisibleNote.textContent = `Rows loaded on current page (max ${Number.isFinite(pageSize) ? pageSize : perPage})`;
+        kpiVisibleNote.textContent = "Rows loaded in current filtered result set";
       }
       if (kpiTotal) kpiTotal.textContent = String(Number(payload.total_count || 0));
 
@@ -927,7 +927,7 @@ require __DIR__ . '/../partials/topbar.php';
       if (insightProviders) {
         insightProviders.innerHTML = providers.length > 0
           ? providers.map((name) => `<span class=\"insight-pill\">${escapeHtml(name)}</span>`).join("")
-          : "<span class='insight-pill'>No providers in current page</span>";
+          : "<span class='insight-pill'>No providers in current result set</span>";
       }
 
       if (kpiSource) {
@@ -938,34 +938,39 @@ require __DIR__ . '/../partials/topbar.php';
 
     const fetchArchive = async () => {
       const seq = ++requestSeq;
+      if (activeArchiveController) {
+        activeArchiveController.abort();
+      }
+      activeArchiveController = new AbortController();
       const actionReason = pendingFetchReason || "Ricerca in corso";
       beginFeedbackProgress(actionReason);
       try {
         const query = collectQuery();
-        const response = await fetch(`/api/earthquakes-archive.php?${query.toString()}`, { headers: { Accept: "application/json" } });
-        if (!response.ok) {
+        const firstResponse = await fetch(`/api/earthquakes-archive.php?${query.toString()}`, {
+          headers: { Accept: "application/json" },
+          signal: activeArchiveController.signal,
+        });
+        if (!firstResponse.ok) {
           throw new Error("Archive request failed");
         }
-
-        const payload = await response.json();
+        const firstPayload = await firstResponse.json();
         if (seq !== requestSeq) return;
-        const rowsRaw = Array.isArray(payload.events) ? payload.events : [];
+        if (!firstPayload || typeof firstPayload !== "object") return;
 
-        if (payload.center && typeof payload.center.latitude === "number" && typeof payload.center.longitude === "number") {
-          resolvedCenter = payload.center;
+        if (firstPayload.center && typeof firstPayload.center.latitude === "number" && typeof firstPayload.center.longitude === "number") {
+          resolvedCenter = firstPayload.center;
         } else if (manualCenter) {
           resolvedCenter = manualCenter;
         } else {
           resolvedCenter = null;
         }
 
-        const rows = (resolvedCenter && typeof resolvedCenter.latitude === "number" && typeof resolvedCenter.longitude === "number")
-          ? rowsRaw.filter((row) => {
-              if (typeof row?.latitude !== "number" || typeof row?.longitude !== "number") return false;
-              return haversineKm(resolvedCenter.latitude, resolvedCenter.longitude, row.latitude, row.longitude) <= radiusKm();
-            })
-          : rowsRaw;
-        currentVisibleRows = rows;
+        const totalCountRaw = Number(firstPayload.total_count);
+        const expectedTotal = Number.isFinite(totalCountRaw) && totalCountRaw >= 0 ? Math.floor(totalCountRaw) : null;
+        const totalPagesRaw = Number(firstPayload.total_pages);
+        const pageCount = Number.isFinite(totalPagesRaw) && totalPagesRaw >= 1 ? Math.floor(totalPagesRaw) : 1;
+        const providerSet = new Set(Array.isArray(firstPayload.providers) ? firstPayload.providers : []);
+        let rows = Array.isArray(firstPayload.events) ? firstPayload.events.slice() : [];
 
         setCenterStatus(resolvedCenter);
         const typedCenter = String(pinnedCenterPlace || normalizeSelectedLocation()).trim();
@@ -977,23 +982,75 @@ require __DIR__ . '/../partials/topbar.php';
 
         ensureMap();
         drawCenterGeometry();
-        renderMapEvents(rows);
-        renderList(currentVisibleRows);
-        const payloadForUi = {
-          ...payload,
-          total_count: resolvedCenter ? rows.length : (payload.total_count || rows.length),
-          events_count: rows.length,
+        const renderProgress = (done) => {
+          currentVisibleRows = rows;
+          renderMapEvents(rows);
+          renderList(currentVisibleRows);
+          const payloadForUi = {
+            ...firstPayload,
+            providers: Array.from(providerSet),
+            total_count: expectedTotal ?? rows.length,
+            events_count: rows.length,
+          };
+          updateKpisAndInsights(payloadForUi, rows);
+          if (kpiVisibleNote) {
+            const totalLabel = expectedTotal !== null ? expectedTotal : rows.length;
+            kpiVisibleNote.textContent = done
+              ? `Loaded ${rows.length} / ${totalLabel} rows`
+              : `Loading ${rows.length} / ${totalLabel} rows...`;
+          }
+          if (feedMeta) {
+            const totalLabel = expectedTotal !== null ? expectedTotal : rows.length;
+            feedMeta.textContent = done
+              ? `${rows.length} matching rows in archive`
+              : `Loading archive rows ${rows.length} / ${totalLabel}...`;
+          }
         };
-        updateKpisAndInsights(payloadForUi, rows);
+
+        renderProgress(pageCount <= 1);
+
+        for (let page = 2; page <= pageCount; page += 1) {
+          const pageQuery = new URLSearchParams(query.toString());
+          pageQuery.set("page", String(page));
+          const response = await fetch(`/api/earthquakes-archive.php?${pageQuery.toString()}`, {
+            headers: { Accept: "application/json" },
+            signal: activeArchiveController.signal,
+          });
+          if (!response.ok) {
+            throw new Error("Archive paginated request failed");
+          }
+          const payload = await response.json();
+          if (seq !== requestSeq) return;
+          const pageRows = Array.isArray(payload?.events) ? payload.events : [];
+          if (pageRows.length > 0) {
+            rows = rows.concat(pageRows);
+          }
+          if (Array.isArray(payload?.providers)) {
+            payload.providers.forEach((name) => {
+              if (typeof name === "string" && name.trim() !== "") {
+                providerSet.add(name);
+              }
+            });
+          }
+          renderProgress(page >= pageCount);
+        }
+
         finishFeedbackProgress(true, `${actionReason} completata`);
         setActionButtonsBusy(false);
         pendingFetchReason = "Ricerca in corso";
+        if (activeArchiveController && activeArchiveController.signal.aborted === false) {
+          activeArchiveController = null;
+        }
       } catch (error) {
         if (seq !== requestSeq) return;
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
         setError();
         finishFeedbackProgress(false, "Richiesta non riuscita");
         setActionButtonsBusy(false);
         pendingFetchReason = "Ricerca in corso";
+        activeArchiveController = null;
       }
     };
 
@@ -1047,6 +1104,46 @@ require __DIR__ . '/../partials/topbar.php';
       }
     };
 
+    const activateCenterFromLocationInput = async () => {
+      const location = normalizeSelectedLocation();
+      if (location === "") {
+        manualCenter = null;
+        resolvedCenter = null;
+        pinnedCenterPlace = "";
+        pendingMapFocus = false;
+        drawCenterGeometry();
+        setCenterStatus(resolvedCenter);
+        return;
+      }
+
+      let resolved = selectedSuggestion();
+      if (!resolved) {
+        resolved = await resolveLocation(location);
+      }
+      if (!resolved) {
+        manualCenter = null;
+        resolvedCenter = null;
+        pinnedCenterPlace = "";
+        pendingMapFocus = false;
+        drawCenterGeometry();
+        setCenterStatus(resolvedCenter);
+        return;
+      }
+
+      manualCenter = resolved;
+      resolvedCenter = resolved;
+      pinnedCenterPlace = resolved.name || location;
+      ensureMap();
+      drawCenterGeometry();
+      setCenterStatus(resolvedCenter);
+      if (mapMeta) {
+        mapMeta.textContent = `Center ${resolvedCenter.name || "selected"} ready · radius ${radiusKm()} km`;
+      }
+      if (map && typeof resolvedCenter.latitude === "number" && typeof resolvedCenter.longitude === "number") {
+        map.flyTo([resolvedCenter.latitude, resolvedCenter.longitude], targetZoomForRadius(), { duration: 0.35 });
+      }
+    };
+
     const bindFilters = () => {
       filterLocation?.addEventListener("input", () => {
         manualCenter = null;
@@ -1058,7 +1155,9 @@ require __DIR__ . '/../partials/topbar.php';
           fetchLocationSuggestions(q);
         }, 180);
       });
-      filterLocation?.addEventListener("change", () => {});
+      filterLocation?.addEventListener("change", () => {
+        activateCenterFromLocationInput();
+      });
       filterLocation?.addEventListener("keydown", (event) => {
         if (!(event instanceof KeyboardEvent)) return;
         if (event.key === "Enter") {
@@ -1067,7 +1166,7 @@ require __DIR__ . '/../partials/topbar.php';
         }
       });
       filterLocation?.addEventListener("blur", () => {
-        // keep user text; validation happens on apply
+        // Keep user text; center activation is handled on explicit selection/change.
       });
 
       filterWindow?.addEventListener("change", () => {

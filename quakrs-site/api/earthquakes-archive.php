@@ -100,6 +100,39 @@ function mysqli_stmt_bind_dynamic(mysqli_stmt $stmt, string $types, array $value
     return $stmt->bind_param(...$args);
 }
 
+function archive_cache_read(string $path, int $ttlSeconds): ?array
+{
+    if ($ttlSeconds <= 0 || !file_exists($path)) {
+        return null;
+    }
+    $raw = file_get_contents($path);
+    if (!is_string($raw) || $raw === '') {
+        return null;
+    }
+    $decoded = json_decode($raw, true);
+    if (!is_array($decoded)) {
+        return null;
+    }
+    $savedAt = isset($decoded['saved_at_ts']) && is_numeric($decoded['saved_at_ts']) ? (int) $decoded['saved_at_ts'] : 0;
+    if ($savedAt <= 0 || (time() - $savedAt) > $ttlSeconds) {
+        return null;
+    }
+    $payload = $decoded['payload'] ?? null;
+    return is_array($payload) ? $payload : null;
+}
+
+function archive_cache_write(string $path, array $payload): void
+{
+    $body = json_encode([
+        'saved_at_ts' => time(),
+        'payload' => $payload,
+    ], JSON_UNESCAPED_SLASHES);
+    if (!is_string($body) || $body === '') {
+        return;
+    }
+    @file_put_contents($path, $body, LOCK_EX);
+}
+
 $page = query_int('page', 1, 1, 1000000);
 $perPage = query_int('per_page', 120, 1, 500);
 $offset = ($page - 1) * $perPage;
@@ -274,8 +307,20 @@ if ($centerLat !== null && $centerLon !== null) {
 
 $radiusApplied = false;
 if ($radiusKm !== null && $radiusKm > 0 && is_array($resolvedCenter)) {
+    $centerLatValue = (float) $resolvedCenter['latitude'];
+    $centerLonValue = (float) $resolvedCenter['longitude'];
+    $latDelta = $radiusKm / 111.32;
+    $cosLat = cos(deg2rad($centerLatValue));
+    $lonDelta = abs($cosLat) > 0.00001 ? ($radiusKm / (111.32 * abs($cosLat))) : 180.0;
+    $minLat = max(-90.0, $centerLatValue - $latDelta);
+    $maxLat = min(90.0, $centerLatValue + $latDelta);
+    $minLon = max(-180.0, $centerLonValue - $lonDelta);
+    $maxLon = min(180.0, $centerLonValue + $lonDelta);
+
     $where[] = 'latitude IS NOT NULL
         AND longitude IS NOT NULL
+        AND latitude BETWEEN ? AND ?
+        AND longitude BETWEEN ? AND ?
         AND (
             6371.0 * 2.0 * ASIN(SQRT(
                 POWER(SIN(RADIANS(latitude - ?) / 2.0), 2.0) +
@@ -283,62 +328,105 @@ if ($radiusKm !== null && $radiusKm > 0 && is_array($resolvedCenter)) {
                 POWER(SIN(RADIANS(longitude - ?) / 2.0), 2.0)
             ))
         ) <= ?';
-    $types .= 'dddd';
-    $params[] = (float) $resolvedCenter['latitude'];
-    $params[] = (float) $resolvedCenter['latitude'];
-    $params[] = (float) $resolvedCenter['longitude'];
+    $types .= 'dddddddd';
+    $params[] = $minLat;
+    $params[] = $maxLat;
+    $params[] = $minLon;
+    $params[] = $maxLon;
+    $params[] = $centerLatValue;
+    $params[] = $centerLatValue;
+    $params[] = $centerLonValue;
     $params[] = $radiusKm;
     $radiusApplied = true;
 }
 
 $whereSql = count($where) > 0 ? ('WHERE ' . implode(' AND ', $where)) : '';
 
-$countSql = sprintf('SELECT COUNT(*) AS c FROM `%s` %s', $table, $whereSql);
-$countStmt = $db->prepare($countSql);
-if (!$countStmt instanceof mysqli_stmt) {
-    json_response(500, [
-        'ok' => false,
-        'error' => 'Unable to prepare count query',
-    ]);
-}
-if (!mysqli_stmt_bind_dynamic($countStmt, $types, $params) || !$countStmt->execute()) {
-    json_response(500, [
-        'ok' => false,
-        'error' => 'Unable to execute count query',
-    ]);
-}
-$countResult = $countStmt->get_result();
-$countRow = $countResult instanceof mysqli_result ? $countResult->fetch_assoc() : null;
-$totalCount = is_array($countRow) ? (int) ($countRow['c'] ?? 0) : 0;
-if ($countResult instanceof mysqli_result) {
-    $countResult->free();
-}
-$countStmt->close();
-
+$needsAggregateMeta = $page === 1;
+$totalCount = null;
 $maxMagnitude = null;
-$maxSql = sprintf('SELECT MAX(magnitude) AS m FROM `%s` %s', $table, $whereSql);
-$maxStmt = $db->prepare($maxSql);
-if (!$maxStmt instanceof mysqli_stmt) {
-    json_response(500, [
-        'ok' => false,
-        'error' => 'Unable to prepare max magnitude query',
-    ]);
+$aggregateCacheTtl = 120;
+$facetsCacheTtl = 900;
+$cacheDir = $appConfig['data_dir'] . '/archive_meta_cache';
+if (!is_dir($cacheDir)) {
+    @mkdir($cacheDir, 0775, true);
 }
-if (!mysqli_stmt_bind_dynamic($maxStmt, $types, $params) || !$maxStmt->execute()) {
-    json_response(500, [
-        'ok' => false,
-        'error' => 'Unable to execute max magnitude query',
-    ]);
+$aggregateCacheKey = sha1(json_encode([
+    'table' => $table,
+    'where_sql' => $whereSql,
+    'types' => $types,
+    'params' => array_map(static function (mixed $v): mixed {
+        if (is_float($v)) {
+            return round($v, 6);
+        }
+        return $v;
+    }, $params),
+], JSON_UNESCAPED_SLASHES));
+$aggregateCachePath = $cacheDir . '/agg_' . $aggregateCacheKey . '.json';
+$facetsCachePath = $cacheDir . '/facets_' . $table . '.json';
+
+if ($needsAggregateMeta) {
+    $aggregateCached = archive_cache_read($aggregateCachePath, $aggregateCacheTtl);
+    if (is_array($aggregateCached)) {
+        $totalCount = isset($aggregateCached['total_count']) && is_numeric($aggregateCached['total_count'])
+            ? (int) $aggregateCached['total_count']
+            : 0;
+        $maxMagnitude = isset($aggregateCached['filtered_max_magnitude']) && is_numeric($aggregateCached['filtered_max_magnitude'])
+            ? (float) $aggregateCached['filtered_max_magnitude']
+            : null;
+    } else {
+        $countSql = sprintf('SELECT COUNT(*) AS c FROM `%s` %s', $table, $whereSql);
+        $countStmt = $db->prepare($countSql);
+        if (!$countStmt instanceof mysqli_stmt) {
+            json_response(500, [
+                'ok' => false,
+                'error' => 'Unable to prepare count query',
+            ]);
+        }
+        if (!mysqli_stmt_bind_dynamic($countStmt, $types, $params) || !$countStmt->execute()) {
+            json_response(500, [
+                'ok' => false,
+                'error' => 'Unable to execute count query',
+            ]);
+        }
+        $countResult = $countStmt->get_result();
+        $countRow = $countResult instanceof mysqli_result ? $countResult->fetch_assoc() : null;
+        $totalCount = is_array($countRow) ? (int) ($countRow['c'] ?? 0) : 0;
+        if ($countResult instanceof mysqli_result) {
+            $countResult->free();
+        }
+        $countStmt->close();
+
+        $maxSql = sprintf('SELECT MAX(magnitude) AS m FROM `%s` %s', $table, $whereSql);
+        $maxStmt = $db->prepare($maxSql);
+        if (!$maxStmt instanceof mysqli_stmt) {
+            json_response(500, [
+                'ok' => false,
+                'error' => 'Unable to prepare max magnitude query',
+            ]);
+        }
+        if (!mysqli_stmt_bind_dynamic($maxStmt, $types, $params) || !$maxStmt->execute()) {
+            json_response(500, [
+                'ok' => false,
+                'error' => 'Unable to execute max magnitude query',
+            ]);
+        }
+        $maxResult = $maxStmt->get_result();
+        $maxRow = $maxResult instanceof mysqli_result ? $maxResult->fetch_assoc() : null;
+        if (is_array($maxRow) && isset($maxRow['m']) && is_numeric($maxRow['m'])) {
+            $maxMagnitude = (float) $maxRow['m'];
+        }
+        if ($maxResult instanceof mysqli_result) {
+            $maxResult->free();
+        }
+        $maxStmt->close();
+
+        archive_cache_write($aggregateCachePath, [
+            'total_count' => $totalCount,
+            'filtered_max_magnitude' => $maxMagnitude,
+        ]);
+    }
 }
-$maxResult = $maxStmt->get_result();
-$maxRow = $maxResult instanceof mysqli_result ? $maxResult->fetch_assoc() : null;
-if (is_array($maxRow) && isset($maxRow['m']) && is_numeric($maxRow['m'])) {
-    $maxMagnitude = (float) $maxRow['m'];
-}
-if ($maxResult instanceof mysqli_result) {
-    $maxResult->free();
-}
-$maxStmt->close();
 
 $selectSql = sprintf(
     'SELECT event_id, place, magnitude, depth_km, latitude, longitude, event_time_utc, source_url, source_provider, source_providers_json
@@ -401,48 +489,66 @@ if ($result instanceof mysqli_result) {
 $selectStmt->close();
 
 $countryValues = [];
-$countrySql = sprintf(
-    'SELECT TRIM(SUBSTRING_INDEX(place, \',\', -1)) AS country, COUNT(*) AS c
-     FROM `%s`
-     WHERE place IS NOT NULL AND TRIM(place) <> \'\'
-     GROUP BY country
-     HAVING country IS NOT NULL AND TRIM(country) <> \'\'
-     ORDER BY c DESC, country ASC
-     LIMIT 250',
-    $table
-);
-$countryResult = $db->query($countrySql);
-if ($countryResult instanceof mysqli_result) {
-    while ($countryRow = $countryResult->fetch_assoc()) {
-        $label = trim((string) ($countryRow['country'] ?? ''));
-        if ($label === '') {
-            continue;
+$locationValues = [];
+if ($page === 1) {
+    $facetsCached = archive_cache_read($facetsCachePath, $facetsCacheTtl);
+    if (is_array($facetsCached)) {
+        $countryValues = isset($facetsCached['countries']) && is_array($facetsCached['countries'])
+            ? $facetsCached['countries']
+            : [];
+        $locationValues = isset($facetsCached['locations']) && is_array($facetsCached['locations'])
+            ? $facetsCached['locations']
+            : [];
+    } else {
+        $countrySql = sprintf(
+            'SELECT TRIM(SUBSTRING_INDEX(place, \',\', -1)) AS country, COUNT(*) AS c
+             FROM `%s`
+             WHERE place IS NOT NULL AND TRIM(place) <> \'\'
+             GROUP BY country
+             HAVING country IS NOT NULL AND TRIM(country) <> \'\'
+             ORDER BY c DESC, country ASC
+             LIMIT 250',
+            $table
+        );
+        $countryResult = $db->query($countrySql);
+        if ($countryResult instanceof mysqli_result) {
+            while ($countryRow = $countryResult->fetch_assoc()) {
+                $label = trim((string) ($countryRow['country'] ?? ''));
+                if ($label === '') {
+                    continue;
+                }
+                $countryValues[] = $label;
+            }
+            $countryResult->free();
         }
-        $countryValues[] = $label;
-    }
-    $countryResult->free();
-}
 
-$locationMap = [];
-$locationSql = sprintf(
-    'SELECT place, COUNT(*) AS c
-     FROM `%s`
-     WHERE place IS NOT NULL AND TRIM(place) <> \'\'
-     GROUP BY place
-     ORDER BY c DESC
-     LIMIT 2000',
-    $table
-);
-$locationResult = $db->query($locationSql);
-if ($locationResult instanceof mysqli_result) {
-    while ($locationRow = $locationResult->fetch_assoc()) {
-        $place = trim((string) ($locationRow['place'] ?? ''));
-        if ($place === '') {
-            continue;
+        $locationMap = [];
+        $locationSql = sprintf(
+            'SELECT place, COUNT(*) AS c
+             FROM `%s`
+             WHERE place IS NOT NULL AND TRIM(place) <> \'\'
+             GROUP BY place
+             ORDER BY c DESC
+             LIMIT 2000',
+            $table
+        );
+        $locationResult = $db->query($locationSql);
+        if ($locationResult instanceof mysqli_result) {
+            while ($locationRow = $locationResult->fetch_assoc()) {
+                $place = trim((string) ($locationRow['place'] ?? ''));
+                if ($place === '') {
+                    continue;
+                }
+                location_index_add($locationMap, $place);
+            }
+            $locationResult->free();
         }
-        location_index_add($locationMap, $place);
+        $locationValues = array_slice(array_values(array_keys($locationMap)), 0, 1200);
+        archive_cache_write($facetsCachePath, [
+            'countries' => array_values(array_unique($countryValues)),
+            'locations' => $locationValues,
+        ]);
     }
-    $locationResult->free();
 }
 $db->close();
 
@@ -455,12 +561,12 @@ $payload = [
     'per_page' => $perPage,
     'total_count' => $totalCount,
     'filtered_max_magnitude' => $maxMagnitude,
-    'total_pages' => $perPage > 0 ? (int) ceil($totalCount / $perPage) : 0,
+    'total_pages' => ($needsAggregateMeta && is_int($totalCount) && $perPage > 0) ? (int) ceil($totalCount / $perPage) : null,
     'events_count' => count($rows),
     'events' => $rows,
     'providers' => array_values(array_keys($providers)),
     'countries' => array_values(array_unique($countryValues)),
-    'locations' => array_slice(array_values(array_keys($locationMap)), 0, 1200),
+    'locations' => $locationValues,
     'center' => $resolvedCenter,
     'filters_applied' => [
         'year' => $year,

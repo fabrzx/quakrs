@@ -1,7 +1,7 @@
 {
     "ok": true,
-    "generated_at_ts": 1773446762,
-    "generated_at": "2026-03-14T00:06:02+00:00",
+    "generated_at_ts": 1773650773,
+    "generated_at": "2026-03-16T08:46:13+00:00",
     "history_by_volcano": {
         "akan|japan": [
             {
@@ -43,6 +43,20 @@
                 "ts": 1773446400,
                 "time_utc": "2026-03-14T00:00:00+00:00",
                 "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 38,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 35,
                 "reports": 1,
                 "new_eruptive": 1
             }
@@ -89,6 +103,20 @@
                 "score": 50,
                 "reports": 1,
                 "new_eruptive": 1
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 38,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 35,
+                "reports": 1,
+                "new_eruptive": 1
             }
         ],
         "lewotobi|indonesia": [
@@ -131,6 +159,20 @@
                 "ts": 1773446400,
                 "time_utc": "2026-03-14T00:00:00+00:00",
                 "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 38,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 35,
                 "reports": 1,
                 "new_eruptive": 1
             }
@@ -177,6 +219,20 @@
                 "score": 50,
                 "reports": 1,
                 "new_eruptive": 1
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 38,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 35,
+                "reports": 1,
+                "new_eruptive": 1
             }
         ],
         "tambora|indonesia": [
@@ -219,6 +275,20 @@
                 "ts": 1773446400,
                 "time_utc": "2026-03-14T00:00:00+00:00",
                 "score": 42,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 27,
                 "reports": 1,
                 "new_eruptive": 0
             }
@@ -265,6 +335,20 @@
                 "score": 50,
                 "reports": 1,
                 "new_eruptive": 1
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 38,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 35,
+                "reports": 1,
+                "new_eruptive": 1
             }
         ],
         "whakaari white island|new zealand": [
@@ -307,6 +391,20 @@
                 "ts": 1773446400,
                 "time_utc": "2026-03-14T00:00:00+00:00",
                 "score": 50,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 38,
+                "reports": 1,
+                "new_eruptive": 1
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 35,
                 "reports": 1,
                 "new_eruptive": 1
             }
@@ -353,6 +451,20 @@
                 "score": 36,
                 "reports": 1,
                 "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
+                "reports": 1,
+                "new_eruptive": 0
             }
         ],
         "great sitkin|united states": [
@@ -395,6 +507,20 @@
                 "ts": 1773446400,
                 "time_utc": "2026-03-14T00:00:00+00:00",
                 "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
                 "reports": 1,
                 "new_eruptive": 0
             }
@@ -441,6 +567,20 @@
                 "score": 36,
                 "reports": 1,
                 "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
+                "reports": 1,
+                "new_eruptive": 0
             }
         ],
         "ibu|indonesia": [
@@ -483,6 +623,20 @@
                 "ts": 1773446400,
                 "time_utc": "2026-03-14T00:00:00+00:00",
                 "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
                 "reports": 1,
                 "new_eruptive": 0
             }
@@ -529,6 +683,20 @@
                 "score": 36,
                 "reports": 1,
                 "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
+                "reports": 1,
+                "new_eruptive": 0
             }
         ],
         "lewotolok|indonesia": [
@@ -571,6 +739,20 @@
                 "ts": 1773446400,
                 "time_utc": "2026-03-14T00:00:00+00:00",
                 "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
                 "reports": 1,
                 "new_eruptive": 0
             }
@@ -617,6 +799,20 @@
                 "score": 36,
                 "reports": 1,
                 "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
+                "reports": 1,
+                "new_eruptive": 0
             }
         ],
         "mayon|philippines": [
@@ -659,6 +855,20 @@
                 "ts": 1773446400,
                 "time_utc": "2026-03-14T00:00:00+00:00",
                 "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
                 "reports": 1,
                 "new_eruptive": 0
             }
@@ -705,6 +915,20 @@
                 "score": 36,
                 "reports": 1,
                 "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
+                "reports": 1,
+                "new_eruptive": 0
             }
         ],
         "nevado del ruiz|colombia": [
@@ -747,6 +971,20 @@
                 "ts": 1773446400,
                 "time_utc": "2026-03-14T00:00:00+00:00",
                 "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
                 "reports": 1,
                 "new_eruptive": 0
             }
@@ -793,6 +1031,20 @@
                 "score": 36,
                 "reports": 1,
                 "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
+                "reports": 1,
+                "new_eruptive": 0
             }
         ],
         "semeru|indonesia": [
@@ -835,6 +1087,20 @@
                 "ts": 1773446400,
                 "time_utc": "2026-03-14T00:00:00+00:00",
                 "score": 36,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
                 "reports": 1,
                 "new_eruptive": 0
             }
@@ -881,6 +1147,20 @@
                 "score": 36,
                 "reports": 1,
                 "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 24,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 21,
+                "reports": 1,
+                "new_eruptive": 0
             }
         ],
         "fisher|united states": [
@@ -923,6 +1203,20 @@
                 "ts": 1773446400,
                 "time_utc": "2026-03-14T00:00:00+00:00",
                 "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 18,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 15,
                 "reports": 1,
                 "new_eruptive": 0
             }
@@ -969,6 +1263,20 @@
                 "score": 30,
                 "reports": 1,
                 "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 18,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 15,
+                "reports": 1,
+                "new_eruptive": 0
             }
         ],
         "westdahl|united states": [
@@ -1011,6 +1319,20 @@
                 "ts": 1773446400,
                 "time_utc": "2026-03-14T00:00:00+00:00",
                 "score": 30,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773617400,
+                "time_utc": "2026-03-15T23:30:00+00:00",
+                "score": 18,
+                "reports": 1,
+                "new_eruptive": 0
+            },
+            {
+                "ts": 1773649800,
+                "time_utc": "2026-03-16T08:30:00+00:00",
+                "score": 15,
                 "reports": 1,
                 "new_eruptive": 0
             }
