@@ -258,6 +258,127 @@ function space_weather_series_window(array $rows, int $startTs, int $endTs): arr
     return $window === [] ? $rows : $window;
 }
 
+function space_weather_parse_magnetometer_rows(mixed $payload): array
+{
+    if (!is_array($payload) || $payload === []) {
+        return [];
+    }
+
+    $rows = [];
+    $first = $payload[0] ?? null;
+
+    if (is_array($first) && isset($first[0]) && is_string($first[0])) {
+        $header = [];
+        foreach ($first as $idx => $name) {
+            if (is_string($name)) {
+                $header[strtolower($name)] = (int) $idx;
+            }
+        }
+
+        $timeIndex = $header['time_tag'] ?? $header['time'] ?? null;
+        $hpIndex = $header['hp'] ?? $header['h_p'] ?? null;
+        $heIndex = $header['he'] ?? $header['h_e'] ?? null;
+
+        if ($timeIndex === null) {
+            return [];
+        }
+
+        foreach ($payload as $index => $row) {
+            if ($index === 0 || !is_array($row)) {
+                continue;
+            }
+
+            $ts = space_weather_parse_time($row[$timeIndex] ?? null);
+            if (!is_int($ts)) {
+                continue;
+            }
+
+            $hp = $hpIndex !== null ? space_weather_parse_numeric($row[$hpIndex] ?? null) : null;
+            $he = $heIndex !== null ? space_weather_parse_numeric($row[$heIndex] ?? null) : null;
+            if (!is_float($hp) && !is_float($he)) {
+                continue;
+            }
+
+            $rows[] = [
+                'time_ts' => $ts,
+                'time_utc' => gmdate('c', $ts),
+                'hp' => $hp,
+                'he' => $he,
+            ];
+        }
+    } else {
+        foreach ($payload as $row) {
+            if (!is_array($row)) {
+                continue;
+            }
+
+            $normalized = [];
+            foreach ($row as $key => $value) {
+                if (is_string($key)) {
+                    $normalized[strtolower($key)] = $value;
+                }
+            }
+
+            $ts = space_weather_parse_time($normalized['time_tag'] ?? $normalized['time'] ?? null);
+            if (!is_int($ts)) {
+                continue;
+            }
+
+            $hp = space_weather_parse_numeric($normalized['hp'] ?? $normalized['h_p'] ?? null);
+            $he = space_weather_parse_numeric($normalized['he'] ?? $normalized['h_e'] ?? null);
+            if (!is_float($hp) && !is_float($he)) {
+                continue;
+            }
+
+            $rows[] = [
+                'time_ts' => $ts,
+                'time_utc' => gmdate('c', $ts),
+                'hp' => $hp,
+                'he' => $he,
+            ];
+        }
+    }
+
+    usort($rows, static fn(array $a, array $b): int => $a['time_ts'] <=> $b['time_ts']);
+    return $rows;
+}
+
+function space_weather_moon_phase(int $nowTs): array
+{
+    $synodic = 29.53058867;
+    $referenceNewMoon = strtotime('2000-01-06 18:14:00 UTC');
+    if (!is_int($referenceNewMoon)) {
+        $referenceNewMoon = 947182440;
+    }
+
+    $days = ($nowTs - $referenceNewMoon) / 86400;
+    $age = fmod($days, $synodic);
+    if ($age < 0) {
+        $age += $synodic;
+    }
+
+    $fraction = $age / $synodic;
+    $illum = (1 - cos(2 * M_PI * $fraction)) / 2;
+    $illumPct = max(0, min(100, $illum * 100));
+
+    $name = match (true) {
+        $fraction < 0.03 || $fraction >= 0.97 => 'New Moon',
+        $fraction < 0.22 => 'Waxing Crescent',
+        $fraction < 0.28 => 'First Quarter',
+        $fraction < 0.47 => 'Waxing Gibbous',
+        $fraction < 0.53 => 'Full Moon',
+        $fraction < 0.72 => 'Waning Gibbous',
+        $fraction < 0.78 => 'Last Quarter',
+        default => 'Waning Crescent',
+    };
+
+    return [
+        'name' => $name,
+        'illumination_pct' => round($illumPct, 1),
+        'age_days' => round($age, 1),
+    ];
+}
+
 function space_weather_enrich_payload(array $payload): array
 {
     $currentKp = isset($payload['kp_index_current']) && is_numeric($payload['kp_index_current']) ? (float) $payload['kp_index_current'] : null;
@@ -322,16 +443,30 @@ function space_weather_enrich_payload(array $payload): array
     $payload['solar_wind_speed_current'] = isset($payload['solar_wind_speed_current']) && is_numeric($payload['solar_wind_speed_current']) ? (float) $payload['solar_wind_speed_current'] : null;
     $payload['solar_wind_speed_max_24h'] = isset($payload['solar_wind_speed_max_24h']) && is_numeric($payload['solar_wind_speed_max_24h']) ? (float) $payload['solar_wind_speed_max_24h'] : null;
     $payload['solar_wind_speed_series_24h'] = isset($payload['solar_wind_speed_series_24h']) && is_array($payload['solar_wind_speed_series_24h']) ? $payload['solar_wind_speed_series_24h'] : [];
+    $payload['solar_wind_density_current'] = isset($payload['solar_wind_density_current']) && is_numeric($payload['solar_wind_density_current']) ? (float) $payload['solar_wind_density_current'] : null;
+    $payload['solar_wind_density_max_24h'] = isset($payload['solar_wind_density_max_24h']) && is_numeric($payload['solar_wind_density_max_24h']) ? (float) $payload['solar_wind_density_max_24h'] : null;
+    $payload['solar_wind_density_series_24h'] = isset($payload['solar_wind_density_series_24h']) && is_array($payload['solar_wind_density_series_24h']) ? $payload['solar_wind_density_series_24h'] : [];
 
     $payload['imf_bz_current'] = isset($payload['imf_bz_current']) && is_numeric($payload['imf_bz_current']) ? (float) $payload['imf_bz_current'] : null;
     $payload['imf_bz_min_24h'] = isset($payload['imf_bz_min_24h']) && is_numeric($payload['imf_bz_min_24h']) ? (float) $payload['imf_bz_min_24h'] : null;
     $payload['imf_bz_max_24h'] = isset($payload['imf_bz_max_24h']) && is_numeric($payload['imf_bz_max_24h']) ? (float) $payload['imf_bz_max_24h'] : null;
     $payload['imf_bz_series_24h'] = isset($payload['imf_bz_series_24h']) && is_array($payload['imf_bz_series_24h']) ? $payload['imf_bz_series_24h'] : [];
+    $payload['imf_bt_current'] = isset($payload['imf_bt_current']) && is_numeric($payload['imf_bt_current']) ? (float) $payload['imf_bt_current'] : null;
+    $payload['imf_bt_max_24h'] = isset($payload['imf_bt_max_24h']) && is_numeric($payload['imf_bt_max_24h']) ? (float) $payload['imf_bt_max_24h'] : null;
+    $payload['imf_bt_series_24h'] = isset($payload['imf_bt_series_24h']) && is_array($payload['imf_bt_series_24h']) ? $payload['imf_bt_series_24h'] : [];
+
+    $payload['dst_current'] = isset($payload['dst_current']) && is_numeric($payload['dst_current']) ? (float) $payload['dst_current'] : null;
+    $payload['dst_min_24h'] = isset($payload['dst_min_24h']) && is_numeric($payload['dst_min_24h']) ? (float) $payload['dst_min_24h'] : null;
+    $payload['dst_series_24h'] = isset($payload['dst_series_24h']) && is_array($payload['dst_series_24h']) ? $payload['dst_series_24h'] : [];
+
+    $payload['magnetometers_series_24h'] = isset($payload['magnetometers_series_24h']) && is_array($payload['magnetometers_series_24h']) ? $payload['magnetometers_series_24h'] : [];
+    $payload['auroral_oval_url'] = isset($payload['auroral_oval_url']) && is_string($payload['auroral_oval_url']) ? $payload['auroral_oval_url'] : null;
+    $payload['moon_phase'] = isset($payload['moon_phase']) && is_array($payload['moon_phase']) ? $payload['moon_phase'] : space_weather_moon_phase(time());
 
     return $payload;
 }
 
-function space_weather_apply_static_defaults(array $payload, string $sunImageUrl, int $now): array
+function space_weather_apply_static_defaults(array $payload, string $sunImageUrl, string $auroralOvalUrl, int $now): array
 {
     if ($sunImageUrl !== '') {
         $payload['sun_image_url'] = $sunImageUrl . '?t=' . $now;
@@ -343,6 +478,14 @@ function space_weather_apply_static_defaults(array $payload, string $sunImageUrl
             'https://sdo.gsfc.nasa.gov/assets/img/latest/latest_512_0171.jpg?t=' . $now,
             'https://soho.nascom.nasa.gov/data/realtime/eit_304/512/latest.jpg?t=' . $now,
         ];
+    }
+
+    if ($auroralOvalUrl !== '') {
+        $payload['auroral_oval_url'] = $auroralOvalUrl . '?t=' . $now;
+    }
+
+    if (!isset($payload['moon_phase']) || !is_array($payload['moon_phase'])) {
+        $payload['moon_phase'] = space_weather_moon_phase($now);
     }
 
     return $payload;
@@ -360,10 +503,11 @@ $cacheAge = is_array($cachedPayload) && isset($cachedPayload['generated_at_ts'])
 $cacheIsStale = !is_int($cacheAge) || $cacheAge > $cacheTtl;
 
 $sunImageUrl = '/api/space-weather-sun.php';
+$auroralOvalUrl = (string) ($feedConfig['space_weather']['auroral_oval_url'] ?? '');
 
 if (!$forceRefresh && is_array($cachedPayload) && !$cacheIsStale) {
     $cachedPayload = space_weather_enrich_payload($cachedPayload);
-    $cachedPayload = space_weather_apply_static_defaults($cachedPayload, $sunImageUrl, $now);
+    $cachedPayload = space_weather_apply_static_defaults($cachedPayload, $sunImageUrl, $auroralOvalUrl, $now);
     $cachedPayload['from_cache'] = true;
     $cachedPayload['stale_cache'] = false;
     json_response(200, $cachedPayload);
@@ -375,6 +519,8 @@ $kpForecastUrl = (string) ($feedConfig['space_weather']['kp_forecast_url'] ?? ''
 $xrayUrl = (string) ($feedConfig['space_weather']['xray_url'] ?? '');
 $plasmaUrl = (string) ($feedConfig['space_weather']['solar_wind_plasma_url'] ?? '');
 $magUrl = (string) ($feedConfig['space_weather']['solar_wind_mag_url'] ?? '');
+$dstUrl = (string) ($feedConfig['space_weather']['dst_url'] ?? '');
+$magnetometersUrl = (string) ($feedConfig['space_weather']['magnetometers_url'] ?? '');
 
 $timeout = (int) $appConfig['http_timeout_seconds'];
 
@@ -383,6 +529,8 @@ $forecastRaw = fetch_external_json($kpForecastUrl, $timeout);
 $xrayRaw = fetch_external_json($xrayUrl, $timeout);
 $plasmaRaw = fetch_external_json($plasmaUrl, $timeout);
 $magRaw = fetch_external_json($magUrl, $timeout);
+$dstRaw = fetch_external_json($dstUrl, $timeout);
+$magnetometersRaw = fetch_external_json($magnetometersUrl, $timeout);
 
 $kpRows = space_weather_parse_kp_rows($kpRaw);
 $forecastRows = space_weather_parse_kp_rows($forecastRaw);
@@ -392,7 +540,7 @@ if ($kpRows === []) {
 
     if (is_array($cachedPayload)) {
         $cachedPayload = space_weather_enrich_payload($cachedPayload);
-        $cachedPayload = space_weather_apply_static_defaults($cachedPayload, $sunImageUrl, $now);
+        $cachedPayload = space_weather_apply_static_defaults($cachedPayload, $sunImageUrl, $auroralOvalUrl, $now);
         $cachedPayload['from_cache'] = true;
         $cachedPayload['stale_cache'] = true;
         json_response(200, $cachedPayload);
@@ -510,6 +658,18 @@ $solarWindSeries = array_map(static function (array $row): array {
     ];
 }, array_slice($plasmaWindow, -180));
 
+$densityRows = space_weather_parse_series_rows($plasmaRaw, ['time_tag', 'time'], ['density', 'density_p', 'proton_density']);
+$densityWindow = space_weather_series_window($densityRows, $windowStart, $now);
+$densityValues = array_map(static fn(array $row): float => (float) $row['value'], $densityWindow);
+$densityCurrent = $densityWindow !== [] ? (float) $densityWindow[count($densityWindow) - 1]['value'] : null;
+$densityMax = $densityValues !== [] ? max($densityValues) : null;
+$densitySeries = array_map(static function (array $row): array {
+    return [
+        'time_utc' => (string) $row['time_utc'],
+        'density' => (float) $row['value'],
+    ];
+}, array_slice($densityWindow, -180));
+
 $magRows = space_weather_parse_series_rows($magRaw, ['time_tag', 'time'], ['bz_gsm', 'bz']);
 $magWindow = space_weather_series_window($magRows, $windowStart, $now);
 $magValues = array_map(static fn(array $row): float => (float) $row['value'], $magWindow);
@@ -522,6 +682,42 @@ $imfBzSeries = array_map(static function (array $row): array {
         'bz' => (float) $row['value'],
     ];
 }, array_slice($magWindow, -180));
+
+$btRows = space_weather_parse_series_rows($magRaw, ['time_tag', 'time'], ['bt', 'bt_nt', 'total_field']);
+$btWindow = space_weather_series_window($btRows, $windowStart, $now);
+$btValues = array_map(static fn(array $row): float => (float) $row['value'], $btWindow);
+$imfBtCurrent = $btWindow !== [] ? (float) $btWindow[count($btWindow) - 1]['value'] : null;
+$imfBtMax = $btValues !== [] ? max($btValues) : null;
+$imfBtSeries = array_map(static function (array $row): array {
+    return [
+        'time_utc' => (string) $row['time_utc'],
+        'bt' => (float) $row['value'],
+    ];
+}, array_slice($btWindow, -180));
+
+$dstRows = space_weather_parse_series_rows($dstRaw, ['time_tag', 'time', 'datetime', 'timestamp'], ['dst', 'dst_index']);
+$dstWindow = space_weather_series_window($dstRows, $windowStart, $now);
+$dstValues = array_map(static fn(array $row): float => (float) $row['value'], $dstWindow);
+$dstCurrent = $dstWindow !== [] ? (float) $dstWindow[count($dstWindow) - 1]['value'] : null;
+$dstMin = $dstValues !== [] ? min($dstValues) : null;
+$dstSeries = array_map(static function (array $row): array {
+    return [
+        'time_utc' => (string) $row['time_utc'],
+        'dst' => (float) $row['value'],
+    ];
+}, array_slice($dstWindow, -180));
+
+$magnetometerRows = space_weather_parse_magnetometer_rows($magnetometersRaw);
+$magnetometerWindow = space_weather_series_window($magnetometerRows, $windowStart, $now);
+$magnetometerSeries = array_map(static function (array $row): array {
+    return [
+        'time_utc' => (string) $row['time_utc'],
+        'hp' => isset($row['hp']) && is_numeric($row['hp']) ? (float) $row['hp'] : null,
+        'he' => isset($row['he']) && is_numeric($row['he']) ? (float) $row['he'] : null,
+    ];
+}, array_slice($magnetometerWindow, -180));
+
+$moonPhase = space_weather_moon_phase($now);
 
 $payload = [
     'ok' => true,
@@ -563,11 +759,23 @@ $payload = [
     'solar_wind_speed_current' => $solarWindCurrent,
     'solar_wind_speed_max_24h' => $solarWindMax,
     'solar_wind_speed_series_24h' => $solarWindSeries,
+    'solar_wind_density_current' => $densityCurrent,
+    'solar_wind_density_max_24h' => $densityMax,
+    'solar_wind_density_series_24h' => $densitySeries,
 
     'imf_bz_current' => $imfBzCurrent,
     'imf_bz_min_24h' => $imfBzMin,
     'imf_bz_max_24h' => $imfBzMax,
     'imf_bz_series_24h' => $imfBzSeries,
+    'imf_bt_current' => $imfBtCurrent,
+    'imf_bt_max_24h' => $imfBtMax,
+    'imf_bt_series_24h' => $imfBtSeries,
+    'dst_current' => $dstCurrent,
+    'dst_min_24h' => $dstMin,
+    'dst_series_24h' => $dstSeries,
+    'magnetometers_series_24h' => $magnetometerSeries,
+    'auroral_oval_url' => $auroralOvalUrl !== '' ? ($auroralOvalUrl . '?t=' . $now) : null,
+    'moon_phase' => $moonPhase,
 
     'from_cache' => false,
 ];

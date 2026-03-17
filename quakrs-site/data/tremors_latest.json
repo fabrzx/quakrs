@@ -1,80 +1,1790 @@
 {
     "ok": true,
     "provider": "USGS (Tremor Signals Model)",
-    "generated_at_ts": 1773679575,
-    "generated_at": "2026-03-16T16:46:15+00:00",
+    "generated_at_ts": 1773756240,
+    "generated_at": "2026-03-17T14:04:00+00:00",
     "methodology": "Derived from low-magnitude events (M3.5 and below) in the USGS last-24h feed.",
-    "signals_count": 216,
+    "signals_count": 213,
     "clusters_count": 8,
-    "peak_hour_utc": "10:00",
-    "peak_hour_count": 15,
+    "peak_hour_utc": "02:00",
+    "peak_hour_count": 21,
     "clusters": [
         {
             "region": "The Geysers, CA",
-            "count": 27,
-            "max_magnitude": 2.26
-        },
-        {
-            "region": "Tonopah, Nevada",
-            "count": 11,
-            "max_magnitude": 2.47
+            "count": 32,
+            "max_magnitude": 2.22
         },
         {
             "region": "Cobb, CA",
-            "count": 10,
-            "max_magnitude": 0.82
+            "count": 14,
+            "max_magnitude": 1.49
         },
         {
-            "region": "Whites City, New Mexico",
+            "region": "Yakutat, Alaska",
             "count": 9,
-            "max_magnitude": 3.5
+            "max_magnitude": 2.3
         },
         {
             "region": "P\u0101hala, Hawaii",
             "count": 9,
-            "max_magnitude": 2.67
+            "max_magnitude": 2.22
         },
         {
-            "region": "Anza, CA",
-            "count": 8,
-            "max_magnitude": 0.85
+            "region": "Whites City, New Mexico",
+            "count": 9,
+            "max_magnitude": 2
         },
         {
-            "region": "Cantwell, Alaska",
-            "count": 4,
-            "max_magnitude": 2.4
+            "region": "Toyah, Texas",
+            "count": 6,
+            "max_magnitude": 1.9
         },
         {
-            "region": "Parkfield, CA",
-            "count": 4,
-            "max_magnitude": 1.72
+            "region": "Tonopah, Nevada",
+            "count": 5,
+            "max_magnitude": 2.92
+        },
+        {
+            "region": "Adak, Alaska",
+            "count": 5,
+            "max_magnitude": 2.7
         }
     ],
     "events": [
         {
-            "id": "aka2026fhcyhe",
-            "place": "14 km ENE of Sterling, Alaska",
-            "region": "Sterling, Alaska",
-            "magnitude": 1.9,
-            "depth_km": 57,
-            "event_time_utc": "2026-03-16T16:41:38+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhcyhe"
+            "id": "nc75328807",
+            "place": "7 km ENE of Gilroy, CA",
+            "region": "Gilroy, CA",
+            "magnitude": 1,
+            "depth_km": 5.82000017166138,
+            "event_time_utc": "2026-03-17T13:56:12+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328807"
         },
         {
-            "id": "tx2026fhcmkf",
+            "id": "nc75328802",
+            "place": "9 km ENE of Gilroy, CA",
+            "region": "Gilroy, CA",
+            "magnitude": 1.26,
+            "depth_km": 9.85999965667725,
+            "event_time_utc": "2026-03-17T13:50:55+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328802"
+        },
+        {
+            "id": "nc75328797",
+            "place": "8 km ENE of Gilroy, CA",
+            "region": "Gilroy, CA",
+            "magnitude": 3.36,
+            "depth_km": 6.84999990463257,
+            "event_time_utc": "2026-03-17T13:48:36+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328797"
+        },
+        {
+            "id": "aka2026fistki",
+            "place": "22 km NW of Susitna, Alaska",
+            "region": "Susitna, Alaska",
+            "magnitude": 3,
+            "depth_km": 63.9,
+            "event_time_utc": "2026-03-17T13:43:13+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fistki"
+        },
+        {
+            "id": "tx2026fisrlc",
+            "place": "52 km SSE of Whites City, New Mexico",
+            "region": "Whites City, New Mexico",
+            "magnitude": 1.9,
+            "depth_km": 4.0531,
+            "event_time_utc": "2026-03-17T13:40:55+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fisrlc"
+        },
+        {
+            "id": "tx2026fisqyj",
+            "place": "52 km SSE of Whites City, New Mexico",
+            "region": "Whites City, New Mexico",
+            "magnitude": 1.7,
+            "depth_km": 4.0854,
+            "event_time_utc": "2026-03-17T13:40:24+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fisqyj"
+        },
+        {
+            "id": "aka2026fispfa",
+            "place": "47 km N of Chase, Alaska",
+            "region": "Chase, Alaska",
+            "magnitude": 2.3,
+            "depth_km": 78,
+            "event_time_utc": "2026-03-17T13:38:21+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fispfa"
+        },
+        {
+            "id": "aka2026firwhz",
+            "place": "64 km WNW of Tyonek, Alaska",
+            "region": "Tyonek, Alaska",
+            "magnitude": 0.9,
+            "depth_km": 4.6,
+            "event_time_utc": "2026-03-17T13:16:25+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026firwhz"
+        },
+        {
+            "id": "hv74917947",
+            "place": "13 km S of Fern Forest, Hawaii",
+            "region": "Fern Forest, Hawaii",
+            "magnitude": 1.86,
+            "depth_km": -0.800000011920929,
+            "event_time_utc": "2026-03-17T13:12:13+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917947"
+        },
+        {
+            "id": "tx2026firred",
+            "place": "59 km S of Whites City, New Mexico",
+            "region": "Whites City, New Mexico",
+            "magnitude": 1.6,
+            "depth_km": 3.9131,
+            "event_time_utc": "2026-03-17T13:10:26+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026firred"
+        },
+        {
+            "id": "nc75328777",
+            "place": "9 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.06,
+            "depth_km": 0.980000019073486,
+            "event_time_utc": "2026-03-17T12:54:51+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328777"
+        },
+        {
+            "id": "aka2026fiqsij",
+            "place": "65 km WNW of Ninilchik, Alaska",
+            "region": "Ninilchik, Alaska",
+            "magnitude": 1.8,
+            "depth_km": 116,
+            "event_time_utc": "2026-03-17T12:41:36+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fiqsij"
+        },
+        {
+            "id": "nc75328767",
+            "place": "14 km WSW of Petrolia, CA",
+            "region": "Petrolia, CA",
+            "magnitude": 2.27,
+            "depth_km": 18.1000003814697,
+            "event_time_utc": "2026-03-17T12:37:11+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328767"
+        },
+        {
+            "id": "ci41205959",
+            "place": "20 km NNE of Indio, CA",
+            "region": "Indio, CA",
+            "magnitude": 0.78,
+            "depth_km": 4.2,
+            "event_time_utc": "2026-03-17T12:24:50+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205959"
+        },
+        {
+            "id": "nc75328757",
+            "place": "10 km W of Templeton, CA",
+            "region": "Templeton, CA",
+            "magnitude": 1.2,
+            "depth_km": 5.80000019073486,
+            "event_time_utc": "2026-03-17T12:15:11+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328757"
+        },
+        {
+            "id": "nc75328752",
+            "place": "9 km WNW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.43,
+            "depth_km": 1.99000000953674,
+            "event_time_utc": "2026-03-17T12:13:28+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328752"
+        },
+        {
+            "id": "hv74917937",
+            "place": "10 km NE of P\u0101hala, Hawaii",
+            "region": "P\u0101hala, Hawaii",
+            "magnitude": 1.77,
+            "depth_km": 27.4599990844727,
+            "event_time_utc": "2026-03-17T12:12:09+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917937"
+        },
+        {
+            "id": "nc75328747",
+            "place": "11 km W of Petrolia, CA",
+            "region": "Petrolia, CA",
+            "magnitude": 2.68,
+            "depth_km": 14.5900001525879,
+            "event_time_utc": "2026-03-17T11:44:32+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328747"
+        },
+        {
+            "id": "nc75328742",
+            "place": "8 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.95,
+            "depth_km": 0.800000011920929,
+            "event_time_utc": "2026-03-17T11:41:55+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328742"
+        },
+        {
+            "id": "nc75328737",
+            "place": "9 km SE of Lake Pillsbury, CA",
+            "region": "Lake Pillsbury, CA",
+            "magnitude": 1.48,
+            "depth_km": 7.09999990463257,
+            "event_time_utc": "2026-03-17T11:39:04+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328737"
+        },
+        {
+            "id": "hv74917917",
+            "place": "38 km SSE of Volcano, Hawaii",
+            "region": "Volcano, Hawaii",
+            "magnitude": 1.91,
+            "depth_km": 43.3300018310547,
+            "event_time_utc": "2026-03-17T11:34:06+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917917"
+        },
+        {
+            "id": "nc75328732",
+            "place": "9 km WNW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.15,
+            "depth_km": 2.03999996185303,
+            "event_time_utc": "2026-03-17T11:30:56+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328732"
+        },
+        {
+            "id": "hv74917907",
+            "place": "35 km ESE of P\u0101hala, Hawaii",
+            "region": "P\u0101hala, Hawaii",
+            "magnitude": 1.87,
+            "depth_km": 42.1399993896484,
+            "event_time_utc": "2026-03-17T11:15:22+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917907"
+        },
+        {
+            "id": "tx2026finmtk",
             "place": "54 km S of Whites City, New Mexico",
             "region": "Whites City, New Mexico",
-            "magnitude": 1.2,
-            "depth_km": 3.9898,
-            "event_time_utc": "2026-03-16T16:27:54+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhcmkf"
+            "magnitude": 1.8,
+            "depth_km": 6.0999,
+            "event_time_utc": "2026-03-17T11:04:38+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026finmtk"
+        },
+        {
+            "id": "tx2026fimzmn",
+            "place": "37 km WSW of Ackerly, Texas",
+            "region": "Ackerly, Texas",
+            "magnitude": 0.6,
+            "depth_km": 6.2012,
+            "event_time_utc": "2026-03-17T10:49:15+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fimzmn"
+        },
+        {
+            "id": "nc75328727",
+            "place": "6 km WNW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.77,
+            "depth_km": 3.22000002861023,
+            "event_time_utc": "2026-03-17T10:45:14+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328727"
+        },
+        {
+            "id": "uu80006513",
+            "place": "27 km NNW of Bitter Springs, Arizona",
+            "region": "Bitter Springs, Arizona",
+            "magnitude": 1.87,
+            "depth_km": 6.02,
+            "event_time_utc": "2026-03-17T10:44:12+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uu80006513"
+        },
+        {
+            "id": "tx2026fimroj",
+            "place": "13 km WSW of Stanton, Texas",
+            "region": "Stanton, Texas",
+            "magnitude": 1.3,
+            "depth_km": 8.8623,
+            "event_time_utc": "2026-03-17T10:40:03+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fimroj"
+        },
+        {
+            "id": "nc75328722",
+            "place": "7 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.02,
+            "depth_km": 2.90000009536743,
+            "event_time_utc": "2026-03-17T10:19:03+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328722"
+        },
+        {
+            "id": "nc75328717",
+            "place": "16 km NW of Pacific Grove, CA",
+            "region": "Pacific Grove, CA",
+            "magnitude": 2.36,
+            "depth_km": 9.14999961853027,
+            "event_time_utc": "2026-03-17T10:00:16+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328717"
+        },
+        {
+            "id": "nc75328712",
+            "place": "7 km WNW of Cobb, CA",
+            "region": "Cobb, CA",
+            "magnitude": 0.77,
+            "depth_km": 1.80999994277954,
+            "event_time_utc": "2026-03-17T09:57:52+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328712"
+        },
+        {
+            "id": "ci41205935",
+            "place": "11 km N of Borrego Springs, CA",
+            "region": "Borrego Springs, CA",
+            "magnitude": 1.16,
+            "depth_km": 11.41,
+            "event_time_utc": "2026-03-17T09:53:01+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205935"
+        },
+        {
+            "id": "nn00912808",
+            "place": "79 km NE of Tonopah, Nevada",
+            "region": "Tonopah, Nevada",
+            "magnitude": 2.24,
+            "depth_km": 3.7852,
+            "event_time_utc": "2026-03-17T09:52:57+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912808"
+        },
+        {
+            "id": "pr71510048",
+            "place": "10 km SSW of Gu\u00e1nica, Puerto Rico",
+            "region": "Gu\u00e1nica, Puerto Rico",
+            "magnitude": 2.07,
+            "depth_km": 11.27,
+            "event_time_utc": "2026-03-17T09:23:28+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/pr71510048"
+        },
+        {
+            "id": "tx2026fikdaz",
+            "place": "56 km S of Whites City, New Mexico",
+            "region": "Whites City, New Mexico",
+            "magnitude": 1.1,
+            "depth_km": 6.0168,
+            "event_time_utc": "2026-03-17T09:23:10+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fikdaz"
+        },
+        {
+            "id": "ci41205927",
+            "place": "18 km ESE of Johannesburg, CA",
+            "region": "Johannesburg, CA",
+            "magnitude": 1.74,
+            "depth_km": 3.22,
+            "event_time_utc": "2026-03-17T09:20:13+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205927"
+        },
+        {
+            "id": "ci41205919",
+            "place": "18 km ESE of Johannesburg, CA",
+            "region": "Johannesburg, CA",
+            "magnitude": 2.43,
+            "depth_km": 3.07,
+            "event_time_utc": "2026-03-17T09:17:49+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205919"
+        },
+        {
+            "id": "ci41205911",
+            "place": "11 km NE of Julian, CA",
+            "region": "Julian, CA",
+            "magnitude": 0.72,
+            "depth_km": 4.52,
+            "event_time_utc": "2026-03-17T09:10:35+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205911"
+        },
+        {
+            "id": "uu80132236",
+            "place": "43 km NE of Samak, Utah",
+            "region": "Samak, Utah",
+            "magnitude": 1.56,
+            "depth_km": 12.62,
+            "event_time_utc": "2026-03-17T08:44:00+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uu80132236"
+        },
+        {
+            "id": "nc75328692",
+            "place": "2 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.42,
+            "depth_km": 2.77999997138977,
+            "event_time_utc": "2026-03-17T08:35:59+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328692"
+        },
+        {
+            "id": "uw62236041",
+            "place": "7 km SE of Mineral, Washington",
+            "region": "Mineral, Washington",
+            "magnitude": 2.1767144203186035,
+            "depth_km": 21.1800003051758,
+            "event_time_utc": "2026-03-17T08:32:58+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62236041"
+        },
+        {
+            "id": "nc75328687",
+            "place": "6 km NNW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.08,
+            "depth_km": 2.27999997138977,
+            "event_time_utc": "2026-03-17T08:31:01+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328687"
+        },
+        {
+            "id": "aka2026fihxwf",
+            "place": "70 km S of Kokhanok, Alaska",
+            "region": "Kokhanok, Alaska",
+            "magnitude": 2.2,
+            "depth_km": 125.9,
+            "event_time_utc": "2026-03-17T08:16:28+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fihxwf"
+        },
+        {
+            "id": "uu80006518",
+            "place": "9 km NW of Panguitch, Utah",
+            "region": "Panguitch, Utah",
+            "magnitude": 1.71,
+            "depth_km": 3.36,
+            "event_time_utc": "2026-03-17T08:12:07+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uu80006518"
+        },
+        {
+            "id": "hv74917887",
+            "place": "3 km SW of P\u0101hala, Hawaii",
+            "region": "P\u0101hala, Hawaii",
+            "magnitude": 1.73,
+            "depth_km": 28.5400009155273,
+            "event_time_utc": "2026-03-17T08:07:39+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917887"
+        },
+        {
+            "id": "nn00912803",
+            "place": "81 km NE of Tonopah, Nevada",
+            "region": "Tonopah, Nevada",
+            "magnitude": 1.68,
+            "depth_km": 15.9949,
+            "event_time_utc": "2026-03-17T07:40:41+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912803"
+        },
+        {
+            "id": "nc75328677",
+            "place": "7 km WNW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.75,
+            "depth_km": 1.0900000333786,
+            "event_time_utc": "2026-03-17T07:23:31+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328677"
+        },
+        {
+            "id": "ci41205903",
+            "place": "3 km ESE of Monterey Park, CA",
+            "region": "Monterey Park, CA",
+            "magnitude": 1.42,
+            "depth_km": 17.6,
+            "event_time_utc": "2026-03-17T07:19:22+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205903"
+        },
+        {
+            "id": "ci41205895",
+            "place": "12 km E of Coso Junction, CA",
+            "region": "Coso Junction, CA",
+            "magnitude": 0.85,
+            "depth_km": 1.19,
+            "event_time_utc": "2026-03-17T07:05:00+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205895"
+        },
+        {
+            "id": "nc75328672",
+            "place": "7 km W of Cobb, CA",
+            "region": "Cobb, CA",
+            "magnitude": 0.71,
+            "depth_km": 1.77999997138977,
+            "event_time_utc": "2026-03-17T06:56:31+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328672"
+        },
+        {
+            "id": "nc75328667",
+            "place": "4 km NE of Guerneville, CA",
+            "region": "Guerneville, CA",
+            "magnitude": 1.81,
+            "depth_km": 2.44000005722046,
+            "event_time_utc": "2026-03-17T06:51:49+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328667"
+        },
+        {
+            "id": "ci41205887",
+            "place": "5 km SSE of Lytle Creek, CA",
+            "region": "Lytle Creek, CA",
+            "magnitude": 1.1,
+            "depth_km": 4.28,
+            "event_time_utc": "2026-03-17T06:51:14+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205887"
+        },
+        {
+            "id": "hv74917857",
+            "place": "5 km S of Honaunau-Napoopoo, Hawaii",
+            "region": "Honaunau-Napoopoo, Hawaii",
+            "magnitude": 1.73,
+            "depth_km": 10.289999961853,
+            "event_time_utc": "2026-03-17T06:01:03+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917857"
+        },
+        {
+            "id": "aka2026fidlcr",
+            "place": "67 km S of Cantwell, Alaska",
+            "region": "Cantwell, Alaska",
+            "magnitude": 1.9,
+            "depth_km": 8.7,
+            "event_time_utc": "2026-03-17T06:01:02+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fidlcr"
+        },
+        {
+            "id": "ci41205871",
+            "place": "14 km S of Tehachapi, CA",
+            "region": "Tehachapi, CA",
+            "magnitude": 1.37,
+            "depth_km": 10.6,
+            "event_time_utc": "2026-03-17T05:50:08+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205871"
+        },
+        {
+            "id": "aka2026fidacy",
+            "place": "38 km SW of Skwentna, Alaska",
+            "region": "Skwentna, Alaska",
+            "magnitude": 3,
+            "depth_km": 105.6,
+            "event_time_utc": "2026-03-17T05:48:32+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fidacy"
+        },
+        {
+            "id": "aka2026ficyzx",
+            "place": "12 km SSE of Elmendorf Air Force Base, Alaska",
+            "region": "Elmendorf Air Force Base, Alaska",
+            "magnitude": 2.2,
+            "depth_km": 28.1,
+            "event_time_utc": "2026-03-17T05:46:58+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ficyzx"
+        },
+        {
+            "id": "ci41205863",
+            "place": "12 km E of Coso Junction, CA",
+            "region": "Coso Junction, CA",
+            "magnitude": 0.7,
+            "depth_km": 1.63,
+            "event_time_utc": "2026-03-17T05:44:29+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205863"
+        },
+        {
+            "id": "nn00912801",
+            "place": "17 km ENE of Mono City, California",
+            "region": "Mono City, California",
+            "magnitude": 1.32,
+            "depth_km": 3.1109,
+            "event_time_utc": "2026-03-17T05:38:18+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912801"
+        },
+        {
+            "id": "tx2026ficbdx",
+            "place": "15 km NNE of Midland, Texas",
+            "region": "Midland, Texas",
+            "magnitude": 0.6,
+            "depth_km": 8.1055,
+            "event_time_utc": "2026-03-17T05:19:25+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026ficbdx"
+        },
+        {
+            "id": "aka2026fibzok",
+            "place": "26 km SW of Glacier View, Alaska",
+            "region": "Glacier View, Alaska",
+            "magnitude": 1.7,
+            "depth_km": 1.5,
+            "event_time_utc": "2026-03-17T05:17:27+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fibzok"
+        },
+        {
+            "id": "tx2026fibzow",
+            "place": "10 km WSW of Rotan, Texas",
+            "region": "Rotan, Texas",
+            "magnitude": 1.6,
+            "depth_km": 3.833,
+            "event_time_utc": "2026-03-17T05:17:27+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fibzow"
+        },
+        {
+            "id": "nc75328637",
+            "place": "3 km NNW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.08,
+            "depth_km": 3.47000002861023,
+            "event_time_utc": "2026-03-17T05:12:34+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328637"
+        },
+        {
+            "id": "nn00912800",
+            "place": "88 km NE of Tonopah, Nevada",
+            "region": "Tonopah, Nevada",
+            "magnitude": 1.87,
+            "depth_km": 1.1585,
+            "event_time_utc": "2026-03-17T05:10:00+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912800"
+        },
+        {
+            "id": "nc75328632",
+            "place": "7 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.95,
+            "depth_km": 2.78999996185303,
+            "event_time_utc": "2026-03-17T04:54:24+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328632"
+        },
+        {
+            "id": "nc75328622",
+            "place": "2 km NNE of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.06,
+            "depth_km": 0.430000007152557,
+            "event_time_utc": "2026-03-17T04:35:51+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328622"
+        },
+        {
+            "id": "nc75328617",
+            "place": "6 km WNW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.06,
+            "depth_km": 3.46000003814697,
+            "event_time_utc": "2026-03-17T04:19:25+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328617"
+        },
+        {
+            "id": "nc75328607",
+            "place": "6 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.08,
+            "depth_km": 2.89000010490417,
+            "event_time_utc": "2026-03-17T04:06:28+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328607"
+        },
+        {
+            "id": "aka2026fhzewk",
+            "place": "46 km NE of Pedro Bay, Alaska",
+            "region": "Pedro Bay, Alaska",
+            "magnitude": 1.9,
+            "depth_km": 145.8,
+            "event_time_utc": "2026-03-17T03:53:03+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhzewk"
+        },
+        {
+            "id": "ci41205847",
+            "place": "15 km SSW of Searles Valley, CA",
+            "region": "Searles Valley, CA",
+            "magnitude": 0.97,
+            "depth_km": 4.66,
+            "event_time_utc": "2026-03-17T03:50:55+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205847"
+        },
+        {
+            "id": "uw62236021",
+            "place": "7 km SE of Mineral, Washington",
+            "region": "Mineral, Washington",
+            "magnitude": 2.52,
+            "depth_km": 21.37,
+            "event_time_utc": "2026-03-17T03:50:26+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62236021"
+        },
+        {
+            "id": "nc75328602",
+            "place": "6 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 2.22,
+            "depth_km": 2.8199999332428,
+            "event_time_utc": "2026-03-17T03:48:25+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328602"
+        },
+        {
+            "id": "nc75328597",
+            "place": "8 km WNW of Cobb, CA",
+            "region": "Cobb, CA",
+            "magnitude": 0.25,
+            "depth_km": 1.86000001430511,
+            "event_time_utc": "2026-03-17T03:48:18+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328597"
+        },
+        {
+            "id": "aka2026fhyzye",
+            "place": "80 km W of Salamatof, Alaska",
+            "region": "Salamatof, Alaska",
+            "magnitude": 2,
+            "depth_km": 128.6,
+            "event_time_utc": "2026-03-17T03:47:21+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhyzye"
+        },
+        {
+            "id": "ci41205839",
+            "place": "17 km NNE of Indio, CA",
+            "region": "Indio, CA",
+            "magnitude": 1.32,
+            "depth_km": 5.27,
+            "event_time_utc": "2026-03-17T03:47:04+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205839"
+        },
+        {
+            "id": "nc75328592",
+            "place": "4 km SE of San Ramon, CA",
+            "region": "San Ramon, CA",
+            "magnitude": 1.71,
+            "depth_km": 7.5,
+            "event_time_utc": "2026-03-17T03:43:26+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328592"
+        },
+        {
+            "id": "ok2026fhhw",
+            "place": "8 km SE of Ratliff City, Oklahoma",
+            "region": "Ratliff City, Oklahoma",
+            "magnitude": 2.08,
+            "depth_km": 4.665795326,
+            "event_time_utc": "2026-03-17T03:35:59+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026fhhw"
+        },
+        {
+            "id": "us6000sgri",
+            "place": "32 km SSE of Punta Cana, Dominican Republic",
+            "region": "Punta Cana, Dominican Republic",
+            "magnitude": 2.7,
+            "depth_km": 10.184,
+            "event_time_utc": "2026-03-17T03:32:53+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000sgri"
+        },
+        {
+            "id": "nc75328587",
+            "place": "8 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.75,
+            "depth_km": 1.62000000476837,
+            "event_time_utc": "2026-03-17T03:21:27+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328587"
+        },
+        {
+            "id": "nc75328582",
+            "place": "8 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.71,
+            "depth_km": 1.5,
+            "event_time_utc": "2026-03-17T03:17:53+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328582"
+        },
+        {
+            "id": "aka2026fhxuhh",
+            "place": "108 km N of Yakutat, Alaska",
+            "region": "Yakutat, Alaska",
+            "magnitude": 2.1,
+            "depth_km": 11.5,
+            "event_time_utc": "2026-03-17T03:10:39+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhxuhh"
+        },
+        {
+            "id": "ci41205823",
+            "place": "40 km ENE of Maneadero, B.C., MX",
+            "region": "Maneadero, B.C., MX",
+            "magnitude": 2.71,
+            "depth_km": 13.67,
+            "event_time_utc": "2026-03-17T03:06:19+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205823"
+        },
+        {
+            "id": "uu80132226",
+            "place": "7 km NNW of Saratoga Springs, Utah",
+            "region": "Saratoga Springs, Utah",
+            "magnitude": 1.05,
+            "depth_km": 3.7,
+            "event_time_utc": "2026-03-17T02:57:18+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uu80132226"
+        },
+        {
+            "id": "nc75328577",
+            "place": "7 km NNE of Lake Pillsbury, CA",
+            "region": "Lake Pillsbury, CA",
+            "magnitude": 2.02,
+            "depth_km": 10.0699996948242,
+            "event_time_utc": "2026-03-17T02:56:26+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328577"
+        },
+        {
+            "id": "nc75328572",
+            "place": "8 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.71,
+            "depth_km": 1.02999997138977,
+            "event_time_utc": "2026-03-17T02:50:21+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328572"
+        },
+        {
+            "id": "nc75328567",
+            "place": "7 km W of Cobb, CA",
+            "region": "Cobb, CA",
+            "magnitude": 0.7,
+            "depth_km": 2.10999989509583,
+            "event_time_utc": "2026-03-17T02:48:09+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328567"
+        },
+        {
+            "id": "ci41205815",
+            "place": "5 km SW of Palomar Observatory, CA",
+            "region": "Palomar Observatory, CA",
+            "magnitude": 0.52,
+            "depth_km": 18.99,
+            "event_time_utc": "2026-03-17T02:47:08+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205815"
+        },
+        {
+            "id": "ci41205807",
+            "place": "13 km E of Desert Hot Springs, CA",
+            "region": "Desert Hot Springs, CA",
+            "magnitude": 0.91,
+            "depth_km": 7.48,
+            "event_time_utc": "2026-03-17T02:42:43+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205807"
+        },
+        {
+            "id": "pr71509993",
+            "place": "6 km S of Gu\u00e1nica, Puerto Rico",
+            "region": "Gu\u00e1nica, Puerto Rico",
+            "magnitude": 2.56,
+            "depth_km": 9.92,
+            "event_time_utc": "2026-03-17T02:41:00+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/pr71509993"
+        },
+        {
+            "id": "aka2026fhwrln",
+            "place": "45 km NW of Ninilchik, Alaska",
+            "region": "Ninilchik, Alaska",
+            "magnitude": 2,
+            "depth_km": 91.1,
+            "event_time_utc": "2026-03-17T02:37:10+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhwrln"
+        },
+        {
+            "id": "aka2026fhwpya",
+            "place": "135 km WSW of Adak, Alaska",
+            "region": "Adak, Alaska",
+            "magnitude": 2,
+            "depth_km": 36.6,
+            "event_time_utc": "2026-03-17T02:35:25+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhwpya"
+        },
+        {
+            "id": "aka2026fhwnmu",
+            "place": "112 km N of Yakutat, Alaska",
+            "region": "Yakutat, Alaska",
+            "magnitude": 2.2,
+            "depth_km": 3.2,
+            "event_time_utc": "2026-03-17T02:32:31+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhwnmu"
+        },
+        {
+            "id": "aka2026fhwkli",
+            "place": "14 km W of Fox River, Alaska",
+            "region": "Fox River, Alaska",
+            "magnitude": 2.2,
+            "depth_km": 54,
+            "event_time_utc": "2026-03-17T02:29:01+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhwkli"
+        },
+        {
+            "id": "aka2026fhwiaz",
+            "place": "26 km ENE of Chase, Alaska",
+            "region": "Chase, Alaska",
+            "magnitude": 1.9,
+            "depth_km": 53.7,
+            "event_time_utc": "2026-03-17T02:26:15+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhwiaz"
+        },
+        {
+            "id": "aka2026fhwhrm",
+            "place": "121 km N of Yakutat, Alaska",
+            "region": "Yakutat, Alaska",
+            "magnitude": 2.1,
+            "depth_km": 9.8,
+            "event_time_utc": "2026-03-17T02:25:49+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhwhrm"
+        },
+        {
+            "id": "ci41205799",
+            "place": "4 km N of Julian, CA",
+            "region": "Julian, CA",
+            "magnitude": 0.83,
+            "depth_km": 14.42,
+            "event_time_utc": "2026-03-17T02:23:04+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205799"
+        },
+        {
+            "id": "nc75328562",
+            "place": "23 km SSW of South Dos Palos, CA",
+            "region": "South Dos Palos, CA",
+            "magnitude": 2.08,
+            "depth_km": 7.32000017166138,
+            "event_time_utc": "2026-03-17T02:20:49+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328562"
+        },
+        {
+            "id": "tx2026fhvzcq",
+            "place": "31 km NW of Toyah, Texas",
+            "region": "Toyah, Texas",
+            "magnitude": 1.7,
+            "depth_km": 7.5867,
+            "event_time_utc": "2026-03-17T02:18:17+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhvzcq"
+        },
+        {
+            "id": "tx2026fhvxaw",
+            "place": "54 km S of Whites City, New Mexico",
+            "region": "Whites City, New Mexico",
+            "magnitude": 2,
+            "depth_km": 6.9035,
+            "event_time_utc": "2026-03-17T02:13:28+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhvxaw"
+        },
+        {
+            "id": "tx2026fhvvef",
+            "place": "54 km S of Whites City, New Mexico",
+            "region": "Whites City, New Mexico",
+            "magnitude": 2,
+            "depth_km": 6.0999,
+            "event_time_utc": "2026-03-17T02:13:28+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhvvef"
+        },
+        {
+            "id": "nn00912794",
+            "place": "57 km WNW of Rachel, Nevada",
+            "region": "Rachel, Nevada",
+            "magnitude": 1.46,
+            "depth_km": 10.3462,
+            "event_time_utc": "2026-03-17T02:10:10+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912794"
+        },
+        {
+            "id": "nn00912792",
+            "place": "49 km NE of Tonopah, Nevada",
+            "region": "Tonopah, Nevada",
+            "magnitude": 1.8,
+            "depth_km": 5.804,
+            "event_time_utc": "2026-03-17T02:07:50+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912792"
+        },
+        {
+            "id": "nc75328552",
+            "place": "6 km WNW of Cobb, CA",
+            "region": "Cobb, CA",
+            "magnitude": 1.49,
+            "depth_km": 0.949999988079071,
+            "event_time_utc": "2026-03-17T02:05:43+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328552"
+        },
+        {
+            "id": "aka2026fhvjvd",
+            "place": "27 km ESE of Skwentna, Alaska",
+            "region": "Skwentna, Alaska",
+            "magnitude": 3.1,
+            "depth_km": 57.8,
+            "event_time_utc": "2026-03-17T01:58:09+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhvjvd"
+        },
+        {
+            "id": "ci41205791",
+            "place": "14 km S of Tehachapi, CA",
+            "region": "Tehachapi, CA",
+            "magnitude": 0.95,
+            "depth_km": 7.7,
+            "event_time_utc": "2026-03-17T01:52:14+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205791"
+        },
+        {
+            "id": "nc75328542",
+            "place": "7 km WNW of Cobb, CA",
+            "region": "Cobb, CA",
+            "magnitude": 0.7,
+            "depth_km": 1.61000001430511,
+            "event_time_utc": "2026-03-17T01:46:32+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328542"
+        },
+        {
+            "id": "nc75328537",
+            "place": "4 km NNW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.75,
+            "depth_km": 3.29999995231628,
+            "event_time_utc": "2026-03-17T01:40:37+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328537"
+        },
+        {
+            "id": "nn00912785",
+            "place": "74 km ENE of Tonopah, Nevada",
+            "region": "Tonopah, Nevada",
+            "magnitude": 2.92,
+            "depth_km": 9.1887,
+            "event_time_utc": "2026-03-17T01:27:47+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912785"
+        },
+        {
+            "id": "uw62236006",
+            "place": "8 km S of Seabeck, Washington",
+            "region": "Seabeck, Washington",
+            "magnitude": 1.1500000000000001,
+            "depth_km": 19.62,
+            "event_time_utc": "2026-03-17T01:25:19+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62236006"
+        },
+        {
+            "id": "nn00912783",
+            "place": "59 km SSW of Goldfield, Nevada",
+            "region": "Goldfield, Nevada",
+            "magnitude": 0.84,
+            "depth_km": 13.9775,
+            "event_time_utc": "2026-03-17T01:23:15+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912783"
+        },
+        {
+            "id": "nc75328527",
+            "place": "5 km WNW of Cobb, CA",
+            "region": "Cobb, CA",
+            "magnitude": 0.69,
+            "depth_km": 1.89999997615814,
+            "event_time_utc": "2026-03-17T01:22:33+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328527"
+        },
+        {
+            "id": "aka2026fhuddf",
+            "place": "130 km WSW of Adak, Alaska",
+            "region": "Adak, Alaska",
+            "magnitude": 1.8,
+            "depth_km": 10.7,
+            "event_time_utc": "2026-03-17T01:20:12+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhuddf"
+        },
+        {
+            "id": "aka2026fhublu",
+            "place": "73 km SW of Nikolski, Alaska",
+            "region": "Nikolski, Alaska",
+            "magnitude": 3.1,
+            "depth_km": 17.1,
+            "event_time_utc": "2026-03-17T01:17:56+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhublu"
+        },
+        {
+            "id": "nc75328512",
+            "place": "15 km W of Greenfield, CA",
+            "region": "Greenfield, CA",
+            "magnitude": 1.21,
+            "depth_km": 12.1300001144409,
+            "event_time_utc": "2026-03-17T00:53:49+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328512"
+        },
+        {
+            "id": "tx2026fhtdpb",
+            "place": "41 km NW of Toyah, Texas",
+            "region": "Toyah, Texas",
+            "magnitude": 1.5,
+            "depth_km": 7.8943,
+            "event_time_utc": "2026-03-17T00:50:50+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhtdpb"
+        },
+        {
+            "id": "nc75328507",
+            "place": "8 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.28,
+            "depth_km": 1.99000000953674,
+            "event_time_utc": "2026-03-17T00:39:13+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328507"
+        },
+        {
+            "id": "tx2026fhsrhj",
+            "place": "31 km NW of Toyah, Texas",
+            "region": "Toyah, Texas",
+            "magnitude": 1.6,
+            "depth_km": 7.2278,
+            "event_time_utc": "2026-03-17T00:36:20+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhsrhj"
+        },
+        {
+            "id": "nc75328502",
+            "place": "3 km W of Cobb, CA",
+            "region": "Cobb, CA",
+            "magnitude": 1.11,
+            "depth_km": 1.67999994754791,
+            "event_time_utc": "2026-03-17T00:24:26+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328502"
+        },
+        {
+            "id": "uw62235986",
+            "place": "30 km S of Morton, Washington",
+            "region": "Morton, Washington",
+            "magnitude": 0.26,
+            "depth_km": 5.02,
+            "event_time_utc": "2026-03-17T00:19:02+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62235986"
+        },
+        {
+            "id": "ci41205751",
+            "place": "10 km NNE of San Dimas, CA",
+            "region": "San Dimas, CA",
+            "magnitude": 0.96,
+            "depth_km": 9.18,
+            "event_time_utc": "2026-03-17T00:18:04+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205751"
+        },
+        {
+            "id": "tx2026fhrxlz",
+            "place": "64 km NNE of Van Horn, Texas",
+            "region": "Van Horn, Texas",
+            "magnitude": 1.7,
+            "depth_km": 0,
+            "event_time_utc": "2026-03-17T00:13:17+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhrxlz"
+        },
+        {
+            "id": "aka2026fhrwhf",
+            "place": "73 km S of Adak, Alaska",
+            "region": "Adak, Alaska",
+            "magnitude": 2.2,
+            "depth_km": 26.1,
+            "event_time_utc": "2026-03-17T00:12:01+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhrwhf"
+        },
+        {
+            "id": "nn00912778",
+            "place": "31 km NW of Pahrump, Nevada",
+            "region": "Pahrump, Nevada",
+            "magnitude": 0.52,
+            "depth_km": 15.9742,
+            "event_time_utc": "2026-03-17T00:08:33+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912778"
+        },
+        {
+            "id": "ci41205743",
+            "place": "17 km W of Searles Valley, CA",
+            "region": "Searles Valley, CA",
+            "magnitude": 0.66,
+            "depth_km": 7.92,
+            "event_time_utc": "2026-03-17T00:06:50+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205743"
+        },
+        {
+            "id": "ci41205735",
+            "place": "10 km NE of Mexicali, B.C., MX",
+            "region": "Mexicali, B.C., MX",
+            "magnitude": 1.7,
+            "depth_km": 11.13,
+            "event_time_utc": "2026-03-17T00:05:14+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205735"
+        },
+        {
+            "id": "aka2026fhrcfb",
+            "place": "112 km N of Yakutat, Alaska",
+            "region": "Yakutat, Alaska",
+            "magnitude": 2.2,
+            "depth_km": 4.1,
+            "event_time_utc": "2026-03-16T23:48:36+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhrcfb"
+        },
+        {
+            "id": "ci41205711",
+            "place": "3 km NNW of Altadena, CA",
+            "region": "Altadena, CA",
+            "magnitude": 1.66,
+            "depth_km": 9.23,
+            "event_time_utc": "2026-03-16T23:42:50+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205711"
+        },
+        {
+            "id": "ci41205687",
+            "place": "4 km W of Lake Henshaw, CA",
+            "region": "Lake Henshaw, CA",
+            "magnitude": 0.79,
+            "depth_km": 12.36,
+            "event_time_utc": "2026-03-16T23:26:08+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205687"
+        },
+        {
+            "id": "us6000sgqu",
+            "place": "Rat Islands, Aleutian Islands, Alaska",
+            "region": "Alaska",
+            "magnitude": 3.4,
+            "depth_km": 16.368,
+            "event_time_utc": "2026-03-16T23:17:55+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000sgqu"
+        },
+        {
+            "id": "us6000sgqv",
+            "place": "103 km SE of False Pass, Alaska",
+            "region": "False Pass, Alaska",
+            "magnitude": 2.6,
+            "depth_km": 10,
+            "event_time_utc": "2026-03-16T23:14:44+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000sgqv"
+        },
+        {
+            "id": "nc75328477",
+            "place": "11 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.09,
+            "depth_km": 5.67000007629395,
+            "event_time_utc": "2026-03-16T23:11:22+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328477"
+        },
+        {
+            "id": "aka2026fhptpg",
+            "place": "12 km E of Fox, Alaska",
+            "region": "Fox, Alaska",
+            "magnitude": 1.5,
+            "depth_km": 1.4,
+            "event_time_utc": "2026-03-16T23:08:27+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhptpg"
+        },
+        {
+            "id": "ci41205671",
+            "place": "16 km W of Alberto Oviedo Mota, B.C., MX",
+            "region": "Alberto Oviedo Mota, B.C., MX",
+            "magnitude": 2.38,
+            "depth_km": 0.79,
+            "event_time_utc": "2026-03-16T22:57:39+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205671"
+        },
+        {
+            "id": "tx2026fhpjdm",
+            "place": "43 km NW of Toyah, Texas",
+            "region": "Toyah, Texas",
+            "magnitude": 1.5,
+            "depth_km": 6.0999,
+            "event_time_utc": "2026-03-16T22:56:32+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhpjdm"
+        },
+        {
+            "id": "nc75328472",
+            "place": "7 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.44,
+            "depth_km": 2.8199999332428,
+            "event_time_utc": "2026-03-16T22:49:49+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328472"
+        },
+        {
+            "id": "aka2026fhpdka",
+            "place": "79 km S of Kaktovik, Alaska",
+            "region": "Kaktovik, Alaska",
+            "magnitude": 3,
+            "depth_km": 15.4,
+            "event_time_utc": "2026-03-16T22:49:38+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhpdka"
+        },
+        {
+            "id": "nc75328467",
+            "place": "9 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.94,
+            "depth_km": 2.24000000953674,
+            "event_time_utc": "2026-03-16T22:48:33+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328467"
+        },
+        {
+            "id": "aka2026fhpazk",
+            "place": "38 km NNE of Chenega, Alaska",
+            "region": "Chenega, Alaska",
+            "magnitude": 2.1,
+            "depth_km": 12.5,
+            "event_time_utc": "2026-03-16T22:46:51+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhpazk"
+        },
+        {
+            "id": "aka2026fhovzr",
+            "place": "76 km S of Kaktovik, Alaska",
+            "region": "Kaktovik, Alaska",
+            "magnitude": 2.8,
+            "depth_km": 2.5,
+            "event_time_utc": "2026-03-16T22:42:21+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhovzr"
+        },
+        {
+            "id": "hv74917792",
+            "place": "14 km ESE of P\u0101hala, Hawaii",
+            "region": "P\u0101hala, Hawaii",
+            "magnitude": 1.74,
+            "depth_km": 29.39,
+            "event_time_utc": "2026-03-16T22:31:23+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917792"
+        },
+        {
+            "id": "aka2026fhonpt",
+            "place": "70 km ESE of Denali National Park, Alaska",
+            "region": "Denali National Park, Alaska",
+            "magnitude": 2.2,
+            "depth_km": 122.5,
+            "event_time_utc": "2026-03-16T22:31:20+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhonpt"
+        },
+        {
+            "id": "tx2026fhoiqt",
+            "place": "60 km S of Whites City, New Mexico",
+            "region": "Whites City, New Mexico",
+            "magnitude": 1.1,
+            "depth_km": 2.0435,
+            "event_time_utc": "2026-03-16T22:25:34+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhoiqt"
+        },
+        {
+            "id": "nc75328457",
+            "place": "2 km N of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.3,
+            "depth_km": 0.540000021457672,
+            "event_time_utc": "2026-03-16T22:24:44+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328457"
+        },
+        {
+            "id": "uw62235966",
+            "place": "11 km S of Princeton, Canada",
+            "region": "Princeton, Canada",
+            "magnitude": 1.96,
+            "depth_km": -0.51,
+            "event_time_utc": "2026-03-16T22:11:51+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62235966"
+        },
+        {
+            "id": "aka2026fhntfq",
+            "place": "55 km SSW of Nanwalek, Alaska",
+            "region": "Nanwalek, Alaska",
+            "magnitude": 2.6,
+            "depth_km": 47.6,
+            "event_time_utc": "2026-03-16T22:07:44+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhntfq"
+        },
+        {
+            "id": "aka2026fhnqrb",
+            "place": "56 km NNW of Petersville, Alaska",
+            "region": "Petersville, Alaska",
+            "magnitude": 2.2,
+            "depth_km": 111.2,
+            "event_time_utc": "2026-03-16T22:04:42+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhnqrb"
+        },
+        {
+            "id": "tx2026fhnqfe",
+            "place": "30 km NW of Toyah, Texas",
+            "region": "Toyah, Texas",
+            "magnitude": 1.5,
+            "depth_km": 7.8943,
+            "event_time_utc": "2026-03-16T22:04:16+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhnqfe"
+        },
+        {
+            "id": "tx2026fhnlul",
+            "place": "30 km NW of Toyah, Texas",
+            "region": "Toyah, Texas",
+            "magnitude": 1.9,
+            "depth_km": 7.8046,
+            "event_time_utc": "2026-03-16T22:02:30+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhnlul"
+        },
+        {
+            "id": "aka2026fhnhem",
+            "place": "13 km WSW of Big Lake, Alaska",
+            "region": "Big Lake, Alaska",
+            "magnitude": 2.1,
+            "depth_km": 27,
+            "event_time_utc": "2026-03-16T21:55:02+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhnhem"
+        },
+        {
+            "id": "aka2026fhmzbh",
+            "place": "104 km N of Yakutat, Alaska",
+            "region": "Yakutat, Alaska",
+            "magnitude": 2,
+            "depth_km": 8.7,
+            "event_time_utc": "2026-03-16T21:44:08+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhmzbh"
+        },
+        {
+            "id": "aka2026fhmxau",
+            "place": "13 km S of Trapper Creek, Alaska",
+            "region": "Trapper Creek, Alaska",
+            "magnitude": 2,
+            "depth_km": 65,
+            "event_time_utc": "2026-03-16T21:41:55+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhmxau"
+        },
+        {
+            "id": "uw62235946",
+            "place": "11 km W of Greenwater, Washington",
+            "region": "Greenwater, Washington",
+            "magnitude": 1.5029422044754028,
+            "depth_km": 23.8500003814697,
+            "event_time_utc": "2026-03-16T21:37:57+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62235946"
+        },
+        {
+            "id": "ci41205495",
+            "place": "4 km W of Lake Henshaw, CA",
+            "region": "Lake Henshaw, CA",
+            "magnitude": 1.07,
+            "depth_km": 11.51,
+            "event_time_utc": "2026-03-16T21:36:42+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205495"
+        },
+        {
+            "id": "ci41205487",
+            "place": "2 km NW of El Centro, CA",
+            "region": "El Centro, CA",
+            "magnitude": 1.34,
+            "depth_km": 11.35,
+            "event_time_utc": "2026-03-16T21:26:23+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205487"
+        },
+        {
+            "id": "ci41205471",
+            "place": "3 km W of Lake Henshaw, CA",
+            "region": "Lake Henshaw, CA",
+            "magnitude": 0.68,
+            "depth_km": 12.82,
+            "event_time_utc": "2026-03-16T21:18:08+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205471"
+        },
+        {
+            "id": "nc75328442",
+            "place": "10 km NNW of Lopez Point, CA",
+            "region": "Lopez Point, CA",
+            "magnitude": 1.57,
+            "depth_km": 12.5,
+            "event_time_utc": "2026-03-16T21:06:52+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328442"
+        },
+        {
+            "id": "nc75328437",
+            "place": "3 km NE of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.75,
+            "depth_km": 1.44000005722046,
+            "event_time_utc": "2026-03-16T20:57:19+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328437"
+        },
+        {
+            "id": "aka2026fhlenp",
+            "place": "74 km SE of Adak, Alaska",
+            "region": "Adak, Alaska",
+            "magnitude": 2.7,
+            "depth_km": 19.1,
+            "event_time_utc": "2026-03-16T20:50:16+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhlenp"
+        },
+        {
+            "id": "tx2026fhldij",
+            "place": "20 km NW of Stanton, Texas",
+            "region": "Stanton, Texas",
+            "magnitude": 0.7,
+            "depth_km": 8.8623,
+            "event_time_utc": "2026-03-16T20:48:52+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhldij"
+        },
+        {
+            "id": "uw62235896",
+            "place": "0 km NNW of Harbor, Oregon",
+            "region": "Harbor, Oregon",
+            "magnitude": 1.43,
+            "depth_km": -0.53,
+            "event_time_utc": "2026-03-16T20:19:14+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62235896"
+        },
+        {
+            "id": "ci41205431",
+            "place": "1 km NE of Silver Lake, CA",
+            "region": "Silver Lake, CA",
+            "magnitude": 1.53,
+            "depth_km": 12.53,
+            "event_time_utc": "2026-03-16T20:10:05+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205431"
+        },
+        {
+            "id": "nc75328417",
+            "place": "8 km E of Hydesville, CA",
+            "region": "Hydesville, CA",
+            "magnitude": 1.97,
+            "depth_km": 26.6499996185303,
+            "event_time_utc": "2026-03-16T20:07:17+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328417"
+        },
+        {
+            "id": "nc75328412",
+            "place": "1 km N of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.74,
+            "depth_km": 1.20000004768372,
+            "event_time_utc": "2026-03-16T19:47:17+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328412"
+        },
+        {
+            "id": "ci41205391",
+            "place": "8 km SW of Anza, CA",
+            "region": "Anza, CA",
+            "magnitude": 1,
+            "depth_km": 4.05,
+            "event_time_utc": "2026-03-16T19:41:17+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205391"
+        },
+        {
+            "id": "nc75328407",
+            "place": "5 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.31,
+            "depth_km": 0.0299999993294477,
+            "event_time_utc": "2026-03-16T19:36:23+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328407"
+        },
+        {
+            "id": "nn00912775",
+            "place": "8 km ENE of Carson City, Nevada",
+            "region": "Carson City, Nevada",
+            "magnitude": 1.37,
+            "depth_km": 5.5415,
+            "event_time_utc": "2026-03-16T19:30:00+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912775"
+        },
+        {
+            "id": "tx2026fhiigs",
+            "place": "25 km SSE of Lindsay, Texas",
+            "region": "Lindsay, Texas",
+            "magnitude": 1.7,
+            "depth_km": 3.5356,
+            "event_time_utc": "2026-03-16T19:24:22+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhiigs"
+        },
+        {
+            "id": "ci41205367",
+            "place": "3 km W of Lake Henshaw, CA",
+            "region": "Lake Henshaw, CA",
+            "magnitude": 0.78,
+            "depth_km": 10.96,
+            "event_time_utc": "2026-03-16T19:10:31+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205367"
+        },
+        {
+            "id": "nc75328402",
+            "place": "8 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.44,
+            "depth_km": 2.24000000953674,
+            "event_time_utc": "2026-03-16T19:02:40+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328402"
+        },
+        {
+            "id": "ci41205351",
+            "place": "23 km SW of Ocotillo, CA",
+            "region": "Ocotillo, CA",
+            "magnitude": 1.47,
+            "depth_km": 12.33,
+            "event_time_utc": "2026-03-16T19:00:28+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205351"
+        },
+        {
+            "id": "uw62235871",
+            "place": "4 km SSE of Entiat, Washington",
+            "region": "Entiat, Washington",
+            "magnitude": -0.27,
+            "depth_km": 7.5,
+            "event_time_utc": "2026-03-16T18:56:33+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62235871"
+        },
+        {
+            "id": "nc75328392",
+            "place": "5 km WNW of Cobb, CA",
+            "region": "Cobb, CA",
+            "magnitude": 0.52,
+            "depth_km": 2.19000005722046,
+            "event_time_utc": "2026-03-16T18:53:26+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328392"
+        },
+        {
+            "id": "ci41205343",
+            "place": "20 km ESE of Anza, CA",
+            "region": "Anza, CA",
+            "magnitude": 1.02,
+            "depth_km": 13.67,
+            "event_time_utc": "2026-03-16T18:46:37+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205343"
+        },
+        {
+            "id": "ci41205319",
+            "place": "8 km SW of Beaumont, CA",
+            "region": "Beaumont, CA",
+            "magnitude": 1.38,
+            "depth_km": -0.6,
+            "event_time_utc": "2026-03-16T18:45:16+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205319"
+        },
+        {
+            "id": "aka2026fhhaqm",
+            "place": "97 km N of Yakutat, Alaska",
+            "region": "Yakutat, Alaska",
+            "magnitude": 2.2,
+            "depth_km": 3.9,
+            "event_time_utc": "2026-03-16T18:45:04+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhhaqm"
+        },
+        {
+            "id": "nc75328382",
+            "place": "9 km WNW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.9,
+            "depth_km": 1.94000005722046,
+            "event_time_utc": "2026-03-16T18:32:00+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328382"
+        },
+        {
+            "id": "aka2026fhgmmf",
+            "place": "92 km E of Akutan, Alaska",
+            "region": "Akutan, Alaska",
+            "magnitude": 2.6,
+            "depth_km": 70.7,
+            "event_time_utc": "2026-03-16T18:28:39+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhgmmf"
+        },
+        {
+            "id": "hv74917777",
+            "place": "9 km SE of P\u0101hala, Hawaii",
+            "region": "P\u0101hala, Hawaii",
+            "magnitude": 1.45,
+            "depth_km": 33.78,
+            "event_time_utc": "2026-03-16T18:24:08+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917777"
+        },
+        {
+            "id": "tx2026fhgalv",
+            "place": "50 km W of Mentone, Texas",
+            "region": "Mentone, Texas",
+            "magnitude": 1.8,
+            "depth_km": 6.651,
+            "event_time_utc": "2026-03-16T18:14:41+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhgalv"
+        },
+        {
+            "id": "uu80006508",
+            "place": "6 km ESE of Ephraim, Utah",
+            "region": "Ephraim, Utah",
+            "magnitude": 1.27,
+            "depth_km": 0.8,
+            "event_time_utc": "2026-03-16T18:14:05+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uu80006508"
+        },
+        {
+            "id": "nc75328372",
+            "place": "8 km WNW of Cobb, CA",
+            "region": "Cobb, CA",
+            "magnitude": 0.44,
+            "depth_km": 6.71000003814697,
+            "event_time_utc": "2026-03-16T18:13:26+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328372"
+        },
+        {
+            "id": "hv74917772",
+            "place": "4 km S of P\u0101hala, Hawaii",
+            "region": "P\u0101hala, Hawaii",
+            "magnitude": 1.76,
+            "depth_km": 29.4799995422363,
+            "event_time_utc": "2026-03-16T18:10:57+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917772"
+        },
+        {
+            "id": "uw62235841",
+            "place": "8 km SSW of Shelton, Washington",
+            "region": "Shelton, Washington",
+            "magnitude": 1.67,
+            "depth_km": -0.23,
+            "event_time_utc": "2026-03-16T18:09:30+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62235841"
+        },
+        {
+            "id": "aka2026fhftsv",
+            "place": "13 km ENE of Willow, Alaska",
+            "region": "Willow, Alaska",
+            "magnitude": 2.1,
+            "depth_km": 67.2,
+            "event_time_utc": "2026-03-16T18:06:41+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhftsv"
+        },
+        {
+            "id": "nc75328362",
+            "place": "2 km N of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 1.22,
+            "depth_km": 1.13999998569489,
+            "event_time_utc": "2026-03-16T18:06:08+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328362"
+        },
+        {
+            "id": "ci41205231",
+            "place": "21 km ESE of Bodfish, CA",
+            "region": "Bodfish, CA",
+            "magnitude": 1.24,
+            "depth_km": 2.35,
+            "event_time_utc": "2026-03-16T17:30:03+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205231"
+        },
+        {
+            "id": "ci41205207",
+            "place": "9 km NNE of Pine Mountain Club, CA",
+            "region": "Pine Mountain Club, CA",
+            "magnitude": 1.51,
+            "depth_km": 1.05,
+            "event_time_utc": "2026-03-16T17:19:45+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205207"
+        },
+        {
+            "id": "nc75328337",
+            "place": "1 km NW of The Geysers, CA",
+            "region": "The Geysers, CA",
+            "magnitude": 0.71,
+            "depth_km": 4.55999994277954,
+            "event_time_utc": "2026-03-16T17:14:03+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328337"
+        },
+        {
+            "id": "nc75328332",
+            "place": "11 km SW of Toms Place, CA",
+            "region": "Toms Place, CA",
+            "magnitude": 1.59,
+            "depth_km": 3.53999996185303,
+            "event_time_utc": "2026-03-16T16:54:39+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328332"
+        },
+        {
+            "id": "tx2026fhdfid",
+            "place": "35 km WSW of Ackerly, Texas",
+            "region": "Ackerly, Texas",
+            "magnitude": 2,
+            "depth_km": 8.9111,
+            "event_time_utc": "2026-03-16T16:50:00+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhdfid"
+        },
+        {
+            "id": "aka2026fhdcod",
+            "place": "74 km E of Ugashik, Alaska",
+            "region": "Ugashik, Alaska",
+            "magnitude": 2.2,
+            "depth_km": 10.9,
+            "event_time_utc": "2026-03-16T16:46:35+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhdcod"
+        },
+        {
+            "id": "aka2026fhcyhe",
+            "place": "13 km ENE of Sterling, Alaska",
+            "region": "Sterling, Alaska",
+            "magnitude": 2.2,
+            "depth_km": 55,
+            "event_time_utc": "2026-03-16T16:41:38+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhcyhe"
         },
         {
             "id": "tx2026fhckjk",
             "place": "14 km SW of Westbrook, Texas",
             "region": "Westbrook, Texas",
-            "magnitude": 1.7,
-            "depth_km": 2.5145,
+            "magnitude": 1.8,
+            "depth_km": 7.0068,
             "event_time_utc": "2026-03-16T16:25:33+00:00",
             "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhckjk"
         },
@@ -83,8 +1793,8 @@
             "place": "57 km S of Whites City, New Mexico",
             "region": "Whites City, New Mexico",
             "magnitude": 1.9,
-            "depth_km": 6.665,
-            "event_time_utc": "2026-03-16T16:22:10+00:00",
+            "depth_km": 7.3816,
+            "event_time_utc": "2026-03-16T16:22:11+00:00",
             "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fhcgdx"
         },
         {
@@ -97,20 +1807,11 @@
             "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205167"
         },
         {
-            "id": "ci41205159",
-            "place": "8 km N of Ramona, CA",
-            "region": "Ramona, CA",
-            "magnitude": 1.38001047851065,
-            "depth_km": -0.140000000596046,
-            "event_time_utc": "2026-03-16T16:21:19+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205159"
-        },
-        {
             "id": "ci41205151",
             "place": "19 km E of Little Lake, CA",
             "region": "Little Lake, CA",
             "magnitude": 0.64,
-            "depth_km": 7.86,
+            "depth_km": 8.02,
             "event_time_utc": "2026-03-16T16:15:58+00:00",
             "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205151"
         },
@@ -124,13 +1825,40 @@
             "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328317"
         },
         {
+            "id": "aka2026fhbqjh",
+            "place": "4 km ENE of Point Possession, Alaska",
+            "region": "Point Possession, Alaska",
+            "magnitude": 2.1,
+            "depth_km": 34.8,
+            "event_time_utc": "2026-03-16T16:02:17+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhbqjh"
+        },
+        {
+            "id": "aka2026fhbnma",
+            "place": "116 km N of Yakutat, Alaska",
+            "region": "Yakutat, Alaska",
+            "magnitude": 2.3,
+            "depth_km": 9.1,
+            "event_time_utc": "2026-03-16T15:58:55+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhbnma"
+        },
+        {
             "id": "hv74917762",
-            "place": "6 km SW of P\u0101hala, Hawaii",
+            "place": "6 km WSW of P\u0101hala, Hawaii",
             "region": "P\u0101hala, Hawaii",
-            "magnitude": 2.35,
-            "depth_km": -0.660000026226044,
+            "magnitude": 2.22,
+            "depth_km": -0.35,
             "event_time_utc": "2026-03-16T15:52:43+00:00",
             "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917762"
+        },
+        {
+            "id": "aka2026fhbgyf",
+            "place": "50 km SSW of Adak, Alaska",
+            "region": "Adak, Alaska",
+            "magnitude": 2.3,
+            "depth_km": 26.6,
+            "event_time_utc": "2026-03-16T15:51:21+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhbgyf"
         },
         {
             "id": "nc75328297",
@@ -161,19 +1889,19 @@
         },
         {
             "id": "aka2026fhatbo",
-            "place": "10 km WSW of Point Possession, Alaska",
+            "place": "9 km WSW of Point Possession, Alaska",
             "region": "Point Possession, Alaska",
-            "magnitude": 2.1,
-            "depth_km": 6.2,
-            "event_time_utc": "2026-03-16T15:35:15+00:00",
+            "magnitude": 2.2,
+            "depth_km": 7.5,
+            "event_time_utc": "2026-03-16T15:35:14+00:00",
             "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhatbo"
         },
         {
             "id": "hv74917757",
-            "place": "7 km SSE of P\u0101hala, Hawaii",
+            "place": "5 km SSE of P\u0101hala, Hawaii",
             "region": "P\u0101hala, Hawaii",
-            "magnitude": 2.12,
-            "depth_km": 27.5699996948242,
+            "magnitude": 2.13,
+            "depth_km": 31.28,
             "event_time_utc": "2026-03-16T15:31:49+00:00",
             "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917757"
         },
@@ -187,13 +1915,13 @@
             "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917752"
         },
         {
-            "id": "aka2026fhapnw",
-            "place": "53 km E of McCarthy, Alaska",
-            "region": "McCarthy, Alaska",
-            "magnitude": 1.4,
-            "depth_km": 15.3,
-            "event_time_utc": "2026-03-16T15:31:10+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhapnw"
+            "id": "aka2026fhaivb",
+            "place": "111 km N of Yakutat, Alaska",
+            "region": "Yakutat, Alaska",
+            "magnitude": 2,
+            "depth_km": 13.5,
+            "event_time_utc": "2026-03-16T15:23:22+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fhaivb"
         },
         {
             "id": "nc75328267",
@@ -218,7 +1946,7 @@
             "place": "19 km ESE of Little Lake, CA",
             "region": "Little Lake, CA",
             "magnitude": 0.55,
-            "depth_km": 10.18,
+            "depth_km": 10.46,
             "event_time_utc": "2026-03-16T14:43:41+00:00",
             "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205103"
         },
@@ -232,1768 +1960,13 @@
             "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205095"
         },
         {
-            "id": "nc75328232",
-            "place": "5 km WNW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.53,
-            "depth_km": 3.59999990463257,
-            "event_time_utc": "2026-03-16T13:57:06+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328232"
-        },
-        {
-            "id": "nc75328222",
-            "place": "18 km NNE of Upper Lake, CA",
-            "region": "Upper Lake, CA",
-            "magnitude": 1.89,
-            "depth_km": 2.23000001907349,
-            "event_time_utc": "2026-03-16T13:48:06+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328222"
-        },
-        {
-            "id": "ci41205087",
-            "place": "25 km SW of Maricopa, CA",
-            "region": "Maricopa, CA",
-            "magnitude": 1.27,
-            "depth_km": 7.61,
-            "event_time_utc": "2026-03-16T13:31:17+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205087"
-        },
-        {
-            "id": "uw62235796",
-            "place": "6 km SE of Mineral, Washington",
-            "region": "Mineral, Washington",
-            "magnitude": 1.62,
-            "depth_km": 21.3199996948242,
-            "event_time_utc": "2026-03-16T13:28:04+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uw62235796"
-        },
-        {
-            "id": "nn00912767",
-            "place": "14 km SW of Rachel, Nevada",
-            "region": "Rachel, Nevada",
-            "magnitude": 1.27,
-            "depth_km": 0.8212,
-            "event_time_utc": "2026-03-16T13:24:25+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912767"
-        },
-        {
-            "id": "aka2026fgvryc",
-            "place": "70 km WNW of Yakutat, Alaska",
+            "id": "aka2026fgxvnl",
+            "place": "116 km N of Yakutat, Alaska",
             "region": "Yakutat, Alaska",
             "magnitude": 2,
-            "depth_km": 1.2,
-            "event_time_utc": "2026-03-16T13:03:04+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgvryc"
-        },
-        {
-            "id": "ci41205079",
-            "place": "6 km S of Mentone, CA",
-            "region": "Mentone, CA",
-            "magnitude": 0.86,
-            "depth_km": 9.19,
-            "event_time_utc": "2026-03-16T13:00:38+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205079"
-        },
-        {
-            "id": "ci41205071",
-            "place": "3 km ESE of Loma Linda, CA",
-            "region": "Loma Linda, CA",
-            "magnitude": 0.82,
-            "depth_km": 14.55,
-            "event_time_utc": "2026-03-16T12:58:38+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205071"
-        },
-        {
-            "id": "ci41205063",
-            "place": "19 km NNE of Indio, CA",
-            "region": "Indio, CA",
-            "magnitude": 1.08,
-            "depth_km": 5.05,
-            "event_time_utc": "2026-03-16T12:40:59+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205063"
-        },
-        {
-            "id": "tx2026fguwss",
-            "place": "55 km S of Whites City, New Mexico",
-            "region": "Whites City, New Mexico",
-            "magnitude": 1.6,
-            "depth_km": 6.3906,
-            "event_time_utc": "2026-03-16T12:38:29+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fguwss"
-        },
-        {
-            "id": "ci41205055",
-            "place": "17 km WSW of Johannesburg, CA",
-            "region": "Johannesburg, CA",
-            "magnitude": 0.77,
-            "depth_km": 9.17,
-            "event_time_utc": "2026-03-16T12:36:28+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205055"
-        },
-        {
-            "id": "nn00912765",
-            "place": "76 km NE of Tonopah, Nevada",
-            "region": "Tonopah, Nevada",
-            "magnitude": 1.92,
-            "depth_km": 8.1928,
-            "event_time_utc": "2026-03-16T12:25:35+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912765"
-        },
-        {
-            "id": "ci41205047",
-            "place": "6 km WSW of Niland, CA",
-            "region": "Niland, CA",
-            "magnitude": 1.19,
-            "depth_km": 3.88,
-            "event_time_utc": "2026-03-16T12:07:48+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205047"
-        },
-        {
-            "id": "aka2026fgtlnr",
-            "place": "73 km N of Petersville, Alaska",
-            "region": "Petersville, Alaska",
-            "magnitude": 2.6,
-            "depth_km": 123.3,
-            "event_time_utc": "2026-03-16T11:55:19+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgtlnr"
-        },
-        {
-            "id": "ci41205039",
-            "place": "25 km SW of Maricopa, CA",
-            "region": "Maricopa, CA",
-            "magnitude": 1.99,
-            "depth_km": 8.66,
-            "event_time_utc": "2026-03-16T11:50:18+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205039"
-        },
-        {
-            "id": "hv74917727",
-            "place": "20 km SSE of P\u0101hala, Hawaii",
-            "region": "P\u0101hala, Hawaii",
-            "magnitude": 1.73,
-            "depth_km": 28.3400001525879,
-            "event_time_utc": "2026-03-16T11:43:05+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917727"
-        },
-        {
-            "id": "nc75328187",
-            "place": "1 km ESE of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.82,
-            "depth_km": 2.22000002861023,
-            "event_time_utc": "2026-03-16T11:33:49+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328187"
-        },
-        {
-            "id": "ci41205031",
-            "place": "6 km WSW of Niland, CA",
-            "region": "Niland, CA",
-            "magnitude": 1.2,
-            "depth_km": 3.55,
-            "event_time_utc": "2026-03-16T11:17:19+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205031"
-        },
-        {
-            "id": "nc75328182",
-            "place": "4 km NW of Redwood Valley, CA",
-            "region": "Redwood Valley, CA",
-            "magnitude": 1.24,
-            "depth_km": 6.25,
-            "event_time_utc": "2026-03-16T11:12:35+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328182"
-        },
-        {
-            "id": "ci41205023",
-            "place": "24 km SW of Maricopa, CA",
-            "region": "Maricopa, CA",
-            "magnitude": 2.51,
-            "depth_km": 8.36,
-            "event_time_utc": "2026-03-16T11:01:54+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205023"
-        },
-        {
-            "id": "aka2026fgrjvu",
-            "place": "30 km WNW of Salamatof, Alaska",
-            "region": "Salamatof, Alaska",
-            "magnitude": 1.7,
-            "depth_km": 88.1,
-            "event_time_utc": "2026-03-16T10:52:59+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgrjvu"
-        },
-        {
-            "id": "tx2026fgrcsn",
-            "place": "29 km NNE of Mentone, Texas",
-            "region": "Mentone, Texas",
-            "magnitude": 1.1,
-            "depth_km": 5.9076,
-            "event_time_utc": "2026-03-16T10:44:44+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fgrcsn"
-        },
-        {
-            "id": "nc75328167",
-            "place": "2 km NE of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.95,
-            "depth_km": 2.05999994277954,
-            "event_time_utc": "2026-03-16T10:42:06+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328167"
-        },
-        {
-            "id": "ci41205015",
-            "place": "4 km ESE of Calimesa, CA",
-            "region": "Calimesa, CA",
-            "magnitude": 0.43,
-            "depth_km": 13.56,
-            "event_time_utc": "2026-03-16T10:39:13+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205015"
-        },
-        {
-            "id": "nc75328162",
-            "place": "2 km ENE of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 2.26,
-            "depth_km": 1.62999999523163,
-            "event_time_utc": "2026-03-16T10:38:09+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328162"
-        },
-        {
-            "id": "hv74917722",
-            "place": "61 km ESE of Naalehu, Hawaii",
-            "region": "Naalehu, Hawaii",
-            "magnitude": 1.88,
-            "depth_km": 12.4399995803833,
-            "event_time_utc": "2026-03-16T10:31:31+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917722"
-        },
-        {
-            "id": "ci41205007",
-            "place": "21 km W of Westmorland, CA",
-            "region": "Westmorland, CA",
-            "magnitude": 0.9,
-            "depth_km": 10.46,
-            "event_time_utc": "2026-03-16T10:26:37+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41205007"
-        },
-        {
-            "id": "nn00912762",
-            "place": "81 km NE of Tonopah, Nevada",
-            "region": "Tonopah, Nevada",
-            "magnitude": 1.74,
-            "depth_km": 8.5548,
-            "event_time_utc": "2026-03-16T10:23:10+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912762"
-        },
-        {
-            "id": "ci41204999",
-            "place": "4 km NE of Ocotillo Wells, CA",
-            "region": "Ocotillo Wells, CA",
-            "magnitude": 0.88,
-            "depth_km": 10.4,
-            "event_time_utc": "2026-03-16T10:14:21+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204999"
-        },
-        {
-            "id": "tx2026fgqarn",
-            "place": "8 km NE of Barstow, Texas",
-            "region": "Barstow, Texas",
-            "magnitude": 1.5,
-            "depth_km": 2.5191,
-            "event_time_utc": "2026-03-16T10:12:29+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fgqarn"
-        },
-        {
-            "id": "tx2026fgpzwz",
-            "place": "11 km SW of Rotan, Texas",
-            "region": "Rotan, Texas",
-            "magnitude": 2.6,
-            "depth_km": 4.0283,
-            "event_time_utc": "2026-03-16T10:11:16+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fgpzwz"
-        },
-        {
-            "id": "pr71509948",
-            "place": "81 km NNE of Cruz Bay, U.S. Virgin Islands",
-            "region": "Cruz Bay, U.S. Virgin Islands",
-            "magnitude": 3.32,
-            "depth_km": 47.25,
-            "event_time_utc": "2026-03-16T10:04:43+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/pr71509948"
-        },
-        {
-            "id": "ci41204991",
-            "place": "17 km NE of Pine Valley, CA",
-            "region": "Pine Valley, CA",
-            "magnitude": 1.12,
-            "depth_km": 5.01,
-            "event_time_utc": "2026-03-16T10:02:35+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204991"
-        },
-        {
-            "id": "tx2026fgprzm",
-            "place": "30 km NW of Toyah, Texas",
-            "region": "Toyah, Texas",
-            "magnitude": 1.4,
-            "depth_km": 7.6508,
-            "event_time_utc": "2026-03-16T10:02:05+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fgprzm"
-        },
-        {
-            "id": "ci41204983",
-            "place": "7 km WSW of Anza, CA",
-            "region": "Anza, CA",
-            "magnitude": 0.6,
-            "depth_km": 3.71,
-            "event_time_utc": "2026-03-16T10:01:40+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204983"
-        },
-        {
-            "id": "aka2026fgphpf",
-            "place": "43 km SW of Nabesna, Alaska",
-            "region": "Nabesna, Alaska",
-            "magnitude": 1.2,
-            "depth_km": 26.4,
-            "event_time_utc": "2026-03-16T09:50:03+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgphpf"
-        },
-        {
-            "id": "ci41204975",
-            "place": "3 km NE of Ocotillo Wells, CA",
-            "region": "Ocotillo Wells, CA",
-            "magnitude": 2.17,
-            "depth_km": 9.75,
-            "event_time_utc": "2026-03-16T09:43:56+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204975"
-        },
-        {
-            "id": "aka2026fgpbls",
-            "place": "25 km SW of Tyonek, Alaska",
-            "region": "Tyonek, Alaska",
-            "magnitude": 1.9,
-            "depth_km": 69.6,
-            "event_time_utc": "2026-03-16T09:42:56+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgpbls"
-        },
-        {
-            "id": "hv74917707",
-            "place": "19 km SE of P\u0101hala, Hawaii",
-            "region": "P\u0101hala, Hawaii",
-            "magnitude": 1.7,
-            "depth_km": 32.1300010681152,
-            "event_time_utc": "2026-03-16T09:41:53+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917707"
-        },
-        {
-            "id": "nc75328147",
-            "place": "3 km ESE of San Ramon, CA",
-            "region": "San Ramon, CA",
-            "magnitude": 1.83,
-            "depth_km": 0.5,
-            "event_time_utc": "2026-03-16T09:41:15+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328147"
-        },
-        {
-            "id": "nc75328142",
-            "place": "7 km SW of Templeton, CA",
-            "region": "Templeton, CA",
-            "magnitude": 0.79,
-            "depth_km": 7.63000011444092,
-            "event_time_utc": "2026-03-16T09:39:58+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328142"
-        },
-        {
-            "id": "ci41204967",
-            "place": "4 km N of San Jacinto, CA",
-            "region": "San Jacinto, CA",
-            "magnitude": 0.83,
-            "depth_km": 13.84,
-            "event_time_utc": "2026-03-16T09:24:29+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204967"
-        },
-        {
-            "id": "nn00912760",
-            "place": "33 km N of Silver Peak, Nevada",
-            "region": "Silver Peak, Nevada",
-            "magnitude": 2.16,
-            "depth_km": 0.0334,
-            "event_time_utc": "2026-03-16T09:23:22+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912760"
-        },
-        {
-            "id": "nn00912758",
-            "place": "20 km ENE of Goldfield, Nevada",
-            "region": "Goldfield, Nevada",
-            "magnitude": 1.91,
-            "depth_km": 0.0006,
-            "event_time_utc": "2026-03-16T09:23:12+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912758"
-        },
-        {
-            "id": "nc75328137",
-            "place": "8 km NW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.34,
-            "depth_km": 1.30999994277954,
-            "event_time_utc": "2026-03-16T09:20:12+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328137"
-        },
-        {
-            "id": "hv74917697",
-            "place": "11 km NE of P\u0101hala, Hawaii",
-            "region": "P\u0101hala, Hawaii",
-            "magnitude": 2.09,
-            "depth_km": 31.5400009155273,
-            "event_time_utc": "2026-03-16T09:17:52+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917697"
-        },
-        {
-            "id": "ci41204959",
-            "place": "15 km NNE of Indio, CA",
-            "region": "Indio, CA",
-            "magnitude": 1.08,
-            "depth_km": 3.12,
-            "event_time_utc": "2026-03-16T09:14:23+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204959"
-        },
-        {
-            "id": "aka2026fgnuse",
-            "place": "65 km WNW of Beluga, Alaska",
-            "region": "Beluga, Alaska",
-            "magnitude": 1,
-            "depth_km": 6.6,
-            "event_time_utc": "2026-03-16T09:04:56+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgnuse"
-        },
-        {
-            "id": "nn00912756",
-            "place": "81 km NE of Tonopah, Nevada",
-            "region": "Tonopah, Nevada",
-            "magnitude": 1.97,
-            "depth_km": 3.5467,
-            "event_time_utc": "2026-03-16T09:02:56+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912756"
-        },
-        {
-            "id": "aka2026fgmykb",
-            "place": "62 km W of Anchor Point, Alaska",
-            "region": "Anchor Point, Alaska",
-            "magnitude": 2.1,
-            "depth_km": 97.3,
-            "event_time_utc": "2026-03-16T08:39:01+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgmykb"
-        },
-        {
-            "id": "tx2026fgmvlf",
-            "place": "5 km SE of Midland, Texas",
-            "region": "Midland, Texas",
-            "magnitude": 0.9,
-            "depth_km": 8.9111,
-            "event_time_utc": "2026-03-16T08:35:35+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fgmvlf"
-        },
-        {
-            "id": "aka2026fgmmib",
-            "place": "91 km SSE of Kokhanok, Alaska",
-            "region": "Kokhanok, Alaska",
-            "magnitude": 3.4,
-            "depth_km": 8.7,
-            "event_time_utc": "2026-03-16T08:24:59+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgmmib"
-        },
-        {
-            "id": "nc75328132",
-            "place": "8 km WNW of Cobb, CA",
-            "region": "Cobb, CA",
-            "magnitude": 0.69,
-            "depth_km": 1.57000005245209,
-            "event_time_utc": "2026-03-16T08:06:06+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328132"
-        },
-        {
-            "id": "nc75328127",
-            "place": "8 km NW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 1.39,
-            "depth_km": 1.79999995231628,
-            "event_time_utc": "2026-03-16T07:51:49+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328127"
-        },
-        {
-            "id": "ci41204943",
-            "place": "90 km ESE of Maneadero, B.C., MX",
-            "region": "Maneadero, B.C., MX",
-            "magnitude": 3.29,
-            "depth_km": 0.9,
-            "event_time_utc": "2026-03-16T07:45:43+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204943"
-        },
-        {
-            "id": "ok2026ffuf",
-            "place": "7 km ENE of Calumet, Oklahoma",
-            "region": "Calumet, Oklahoma",
-            "magnitude": 1.5,
-            "depth_km": 7.03,
-            "event_time_utc": "2026-03-16T07:37:40+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ok2026ffuf"
-        },
-        {
-            "id": "tx2026fgkltm",
-            "place": "57 km S of Whites City, New Mexico",
-            "region": "Whites City, New Mexico",
-            "magnitude": 1.8,
-            "depth_km": 6.0999,
-            "event_time_utc": "2026-03-16T07:25:47+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fgkltm"
-        },
-        {
-            "id": "ci41204935",
-            "place": "20 km E of Little Lake, CA",
-            "region": "Little Lake, CA",
-            "magnitude": 1.29,
-            "depth_km": 3.66,
-            "event_time_utc": "2026-03-16T07:25:14+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204935"
-        },
-        {
-            "id": "ci41204927",
-            "place": "3 km S of Mentone, CA",
-            "region": "Mentone, CA",
-            "magnitude": 0.92,
-            "depth_km": 4.92,
-            "event_time_utc": "2026-03-16T07:22:16+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204927"
-        },
-        {
-            "id": "ci41204919",
-            "place": "9 km SSW of Salton City, CA",
-            "region": "Salton City, CA",
-            "magnitude": 0.85,
-            "depth_km": 6.45,
-            "event_time_utc": "2026-03-16T07:17:30+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204919"
-        },
-        {
-            "id": "pr71509938",
-            "place": "108 km N of San Juan, Puerto Rico",
-            "region": "San Juan, Puerto Rico",
-            "magnitude": 3.34,
-            "depth_km": 59.31,
-            "event_time_utc": "2026-03-16T07:07:49+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/pr71509938"
-        },
-        {
-            "id": "tx2026fgjvcc",
-            "place": "57 km S of Whites City, New Mexico",
-            "region": "Whites City, New Mexico",
-            "magnitude": 1.8,
-            "depth_km": 6.0999,
-            "event_time_utc": "2026-03-16T07:05:05+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fgjvcc"
-        },
-        {
-            "id": "uu80006493",
-            "place": "28 km E of Torrey, Utah",
-            "region": "Torrey, Utah",
-            "magnitude": 1.4,
-            "depth_km": 1.82,
-            "event_time_utc": "2026-03-16T06:57:11+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uu80006493"
-        },
-        {
-            "id": "aka2026fgjncb",
-            "place": "61 km WNW of Ninilchik, Alaska",
-            "region": "Ninilchik, Alaska",
-            "magnitude": 1,
-            "depth_km": 41.8,
-            "event_time_utc": "2026-03-16T06:55:23+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgjncb"
-        },
-        {
-            "id": "nc75328122",
-            "place": "8 km SE of Willits, CA",
-            "region": "Willits, CA",
-            "magnitude": 1.53,
-            "depth_km": 0.379999995231628,
-            "event_time_utc": "2026-03-16T06:54:01+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328122"
-        },
-        {
-            "id": "tx2026fgjjld",
-            "place": "56 km S of Whites City, New Mexico",
-            "region": "Whites City, New Mexico",
-            "magnitude": 1.8,
-            "depth_km": 6.0999,
-            "event_time_utc": "2026-03-16T06:51:08+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fgjjld"
-        },
-        {
-            "id": "tx2026fgjfhc",
-            "place": "57 km S of Whites City, New Mexico",
-            "region": "Whites City, New Mexico",
-            "magnitude": 3,
-            "depth_km": 5.8948,
-            "event_time_utc": "2026-03-16T06:46:19+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fgjfhc"
-        },
-        {
-            "id": "nc75328117",
-            "place": "7 km NW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.75,
-            "depth_km": 2.5699999332428,
-            "event_time_utc": "2026-03-16T06:45:01+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328117"
-        },
-        {
-            "id": "tx2026fgjdaz",
-            "place": "40 km NW of Toyah, Texas",
-            "region": "Toyah, Texas",
-            "magnitude": 1.3,
-            "depth_km": 6.5613,
-            "event_time_utc": "2026-03-16T06:44:03+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fgjdaz"
-        },
-        {
-            "id": "ci41204911",
-            "place": "14 km S of Anza, CA",
-            "region": "Anza, CA",
-            "magnitude": 0.28,
-            "depth_km": 6.02,
-            "event_time_utc": "2026-03-16T06:41:12+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204911"
-        },
-        {
-            "id": "nn00912754",
-            "place": "52 km ESE of Beatty, Nevada",
-            "region": "Beatty, Nevada",
-            "magnitude": 1.62,
-            "depth_km": 0.0414,
-            "event_time_utc": "2026-03-16T06:39:21+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912754"
-        },
-        {
-            "id": "hv74917652",
-            "place": "16 km SSW of Volcano, Hawaii",
-            "region": "Volcano, Hawaii",
-            "magnitude": 1.91,
-            "depth_km": 1.86000001430511,
-            "event_time_utc": "2026-03-16T06:37:55+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917652"
-        },
-        {
-            "id": "uu80006498",
-            "place": "11 km NE of Hildale, Utah",
-            "region": "Hildale, Utah",
-            "magnitude": 1.12,
-            "depth_km": 17.14,
-            "event_time_utc": "2026-03-16T06:33:27+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uu80006498"
-        },
-        {
-            "id": "hv74917647",
-            "place": "18 km SSE of P\u0101hala, Hawaii",
-            "region": "P\u0101hala, Hawaii",
-            "magnitude": 2.67,
-            "depth_km": 32.9900016784668,
-            "event_time_utc": "2026-03-16T06:30:32+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917647"
-        },
-        {
-            "id": "nc75328107",
-            "place": "16 km NW of Parkfield, CA",
-            "region": "Parkfield, CA",
-            "magnitude": 0.54,
-            "depth_km": 10.8500003814697,
-            "event_time_utc": "2026-03-16T06:20:15+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328107"
-        },
-        {
-            "id": "nc75328092",
-            "place": "10 km ENE of Talmage, CA",
-            "region": "Talmage, CA",
-            "magnitude": 1.67,
-            "depth_km": 6.28000020980835,
-            "event_time_utc": "2026-03-16T06:12:08+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328092"
-        },
-        {
-            "id": "tx2026fghpxp",
-            "place": "36 km E of McKinney Acres, Texas",
-            "region": "McKinney Acres, Texas",
-            "magnitude": 0.6,
-            "depth_km": 4.713,
-            "event_time_utc": "2026-03-16T05:58:23+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026fghpxp"
-        },
-        {
-            "id": "aka2026fghjjd",
-            "place": "5 km WNW of Elmendorf Air Force Base, Alaska",
-            "region": "Elmendorf Air Force Base, Alaska",
-            "magnitude": 1.4,
-            "depth_km": 37.1,
-            "event_time_utc": "2026-03-16T05:50:43+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fghjjd"
-        },
-        {
-            "id": "ci41204903",
-            "place": "17 km NE of Pine Valley, CA",
-            "region": "Pine Valley, CA",
-            "magnitude": 0.7,
-            "depth_km": 5.56,
-            "event_time_utc": "2026-03-16T05:48:21+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204903"
-        },
-        {
-            "id": "hv74917637",
-            "place": "19 km SE of P\u0101hala, Hawaii",
-            "region": "P\u0101hala, Hawaii",
-            "magnitude": 1.93,
-            "depth_km": 32.189998626709,
-            "event_time_utc": "2026-03-16T05:47:17+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917637"
-        },
-        {
-            "id": "ci41204895",
-            "place": "2 km S of Lake Henshaw, CA",
-            "region": "Lake Henshaw, CA",
-            "magnitude": 0.58,
-            "depth_km": 9.37,
-            "event_time_utc": "2026-03-16T05:46:00+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204895"
-        },
-        {
-            "id": "nn00912752",
-            "place": "81 km NE of Tonopah, Nevada",
-            "region": "Tonopah, Nevada",
-            "magnitude": 1.62,
-            "depth_km": 0.0292,
-            "event_time_utc": "2026-03-16T05:19:28+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912752"
-        },
-        {
-            "id": "nc75328077",
-            "place": "22 km SW of Gustine, CA",
-            "region": "Gustine, CA",
-            "magnitude": 1.49,
-            "depth_km": 8.68000030517578,
-            "event_time_utc": "2026-03-16T05:18:09+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328077"
-        },
-        {
-            "id": "nc75328072",
-            "place": "20 km SW of Gustine, CA",
-            "region": "Gustine, CA",
-            "magnitude": 2.5,
-            "depth_km": 9.80000019073486,
-            "event_time_utc": "2026-03-16T05:12:14+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328072"
-        },
-        {
-            "id": "ci41204887",
-            "place": "4 km WSW of Fontana, CA",
-            "region": "Fontana, CA",
-            "magnitude": 0.99,
-            "depth_km": 10.81,
-            "event_time_utc": "2026-03-16T05:10:18+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204887"
-        },
-        {
-            "id": "ci41204879",
-            "place": "24 km ESE of Anza, CA",
-            "region": "Anza, CA",
-            "magnitude": 0.52,
-            "depth_km": 12.17,
-            "event_time_utc": "2026-03-16T04:56:44+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204879"
-        },
-        {
-            "id": "ci41204871",
-            "place": "7 km NE of Coso Junction, CA",
-            "region": "Coso Junction, CA",
-            "magnitude": 0.94,
-            "depth_km": 5.68,
-            "event_time_utc": "2026-03-16T04:55:52+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204871"
-        },
-        {
-            "id": "nc75328067",
-            "place": "3 km SE of Pacifica, CA",
-            "region": "Pacifica, CA",
-            "magnitude": 1.02,
-            "depth_km": 7.23999977111816,
-            "event_time_utc": "2026-03-16T04:49:35+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328067"
-        },
-        {
-            "id": "nc75328062",
-            "place": "1 km SW of Anderson Springs, CA",
-            "region": "Anderson Springs, CA",
-            "magnitude": 1.06,
-            "depth_km": 0.730000019073486,
-            "event_time_utc": "2026-03-16T04:45:14+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328062"
-        },
-        {
-            "id": "ci41204863",
-            "place": "15 km NNE of Indio, CA",
-            "region": "Indio, CA",
-            "magnitude": 0.8,
-            "depth_km": 3.24,
-            "event_time_utc": "2026-03-16T04:23:58+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204863"
-        },
-        {
-            "id": "aka2026fgejkl",
-            "place": "11 km S of Trapper Creek, Alaska",
-            "region": "Trapper Creek, Alaska",
-            "magnitude": 1.8,
-            "depth_km": 4.4,
-            "event_time_utc": "2026-03-16T04:20:15+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgejkl"
-        },
-        {
-            "id": "nn00912748",
-            "place": "46 km NE of Tonopah, Nevada",
-            "region": "Tonopah, Nevada",
-            "magnitude": 1.72,
-            "depth_km": 2.8689,
-            "event_time_utc": "2026-03-16T04:19:40+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912748"
-        },
-        {
-            "id": "nn00912744",
-            "place": "61 km ENE of Tonopah, Nevada",
-            "region": "Tonopah, Nevada",
-            "magnitude": 2.18,
-            "depth_km": 6.7167,
-            "event_time_utc": "2026-03-16T04:11:24+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912744"
-        },
-        {
-            "id": "ci41204855",
-            "place": "10 km NNE of Pine Mountain Club, CA",
-            "region": "Pine Mountain Club, CA",
-            "magnitude": 2.36,
-            "depth_km": 1.51,
-            "event_time_utc": "2026-03-16T04:10:46+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204855"
-        },
-        {
-            "id": "nn00912743",
-            "place": "29 km NW of Rachel, Nevada",
-            "region": "Rachel, Nevada",
-            "magnitude": 1.34,
-            "depth_km": 2.4807,
-            "event_time_utc": "2026-03-16T04:04:59+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912743"
-        },
-        {
-            "id": "nc75328052",
-            "place": "1 km NW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 1.01,
-            "depth_km": 4.19000005722046,
-            "event_time_utc": "2026-03-16T04:02:25+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328052"
-        },
-        {
-            "id": "nc75328047",
-            "place": "6 km WNW of Cobb, CA",
-            "region": "Cobb, CA",
-            "magnitude": 0.69,
-            "depth_km": 1.98000001907349,
-            "event_time_utc": "2026-03-16T03:51:21+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328047"
-        },
-        {
-            "id": "nn00912742",
-            "place": "45 km S of Silver Peak, Nevada",
-            "region": "Silver Peak, Nevada",
-            "magnitude": 1.04,
-            "depth_km": 3.7908,
-            "event_time_utc": "2026-03-16T03:48:50+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912742"
-        },
-        {
-            "id": "ci41204847",
-            "place": "17 km ESE of Anza, CA",
-            "region": "Anza, CA",
-            "magnitude": 0.57,
-            "depth_km": 9.92,
-            "event_time_utc": "2026-03-16T03:44:06+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204847"
-        },
-        {
-            "id": "nn00912740",
-            "place": "54 km W of Rachel, Nevada",
-            "region": "Rachel, Nevada",
-            "magnitude": 1.15,
-            "depth_km": 8.4693,
-            "event_time_utc": "2026-03-16T03:42:09+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912740"
-        },
-        {
-            "id": "nc75328042",
-            "place": "9 km WNW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 1.07,
-            "depth_km": 1.67999994754791,
-            "event_time_utc": "2026-03-16T03:38:01+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328042"
-        },
-        {
-            "id": "nc75328037",
-            "place": "9 km NW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 1.96,
-            "depth_km": 1.66999995708466,
-            "event_time_utc": "2026-03-16T03:37:10+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328037"
-        },
-        {
-            "id": "ci41204839",
-            "place": "20 km ESE of Little Lake, CA",
-            "region": "Little Lake, CA",
-            "magnitude": 0.99,
-            "depth_km": 4.72,
-            "event_time_utc": "2026-03-16T03:33:14+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204839"
-        },
-        {
-            "id": "aka2026fgcope",
-            "place": "35 km ENE of Chase, Alaska",
-            "region": "Chase, Alaska",
-            "magnitude": 1.2,
-            "depth_km": 13,
-            "event_time_utc": "2026-03-16T03:25:56+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgcope"
-        },
-        {
-            "id": "nn00912738",
-            "place": "79 km NE of Tonopah, Nevada",
-            "region": "Tonopah, Nevada",
-            "magnitude": 1.74,
-            "depth_km": 7.3424,
-            "event_time_utc": "2026-03-16T03:20:49+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912738"
-        },
-        {
-            "id": "nc75328027",
-            "place": "0 km SE of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.65,
-            "depth_km": 0.75,
-            "event_time_utc": "2026-03-16T03:20:14+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328027"
-        },
-        {
-            "id": "aka2026fgbzeh",
-            "place": "25 km NNE of Susitna North, Alaska",
-            "region": "Susitna North, Alaska",
-            "magnitude": 2,
-            "depth_km": 56.7,
-            "event_time_utc": "2026-03-16T03:08:03+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgbzeh"
-        },
-        {
-            "id": "aka2026fgbuau",
-            "place": "37 km NNW of Valdez, Alaska",
-            "region": "Valdez, Alaska",
-            "magnitude": 2.1,
-            "depth_km": 17.4,
-            "event_time_utc": "2026-03-16T03:02:05+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgbuau"
-        },
-        {
-            "id": "nc75328002",
-            "place": "6 km NNW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.7,
-            "depth_km": -0.689999997615814,
-            "event_time_utc": "2026-03-16T02:28:12+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75328002"
-        },
-        {
-            "id": "nc75327997",
-            "place": "5 km NNW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 1.07,
-            "depth_km": 1.46000003814697,
-            "event_time_utc": "2026-03-16T02:27:15+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327997"
-        },
-        {
-            "id": "nc75327992",
-            "place": "5 km NNW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 1.49,
-            "depth_km": 1.44000005722046,
-            "event_time_utc": "2026-03-16T02:21:44+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327992"
-        },
-        {
-            "id": "nc75327982",
-            "place": "2 km ESE of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.64,
-            "depth_km": 0.280000001192093,
-            "event_time_utc": "2026-03-16T02:07:42+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327982"
-        },
-        {
-            "id": "aka2026ffzydk",
-            "place": "0 km NW of Kachemak, Alaska",
-            "region": "Kachemak, Alaska",
-            "magnitude": 2,
-            "depth_km": 40.3,
-            "event_time_utc": "2026-03-16T02:06:30+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffzydk"
-        },
-        {
-            "id": "nn00912733",
-            "place": "74 km ENE of Tonopah, Nevada",
-            "region": "Tonopah, Nevada",
-            "magnitude": 2.47,
-            "depth_km": 10.9772,
-            "event_time_utc": "2026-03-16T02:04:18+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912733"
-        },
-        {
-            "id": "ci41204823",
-            "place": "20 km NE of Olancha, CA",
-            "region": "Olancha, CA",
-            "magnitude": 1.19,
-            "depth_km": 3.71,
-            "event_time_utc": "2026-03-16T02:04:01+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204823"
-        },
-        {
-            "id": "nc75327977",
-            "place": "4 km NW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.35,
-            "depth_km": 12.4799995422363,
-            "event_time_utc": "2026-03-16T01:48:37+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327977"
-        },
-        {
-            "id": "tx2026ffzaya",
-            "place": "55 km SSE of Whites City, New Mexico",
-            "region": "Whites City, New Mexico",
-            "magnitude": 1.7,
-            "depth_km": 6.3947,
-            "event_time_utc": "2026-03-16T01:39:47+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026ffzaya"
-        },
-        {
-            "id": "hv74917612",
-            "place": "14 km S of Fern Forest, Hawaii",
-            "region": "Fern Forest, Hawaii",
-            "magnitude": 2.04,
-            "depth_km": 3.76999998092651,
-            "event_time_utc": "2026-03-16T01:37:18+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917612"
-        },
-        {
-            "id": "ci41204799",
-            "place": "18 km E of Ridgecrest, CA",
-            "region": "Ridgecrest, CA",
-            "magnitude": 0.95,
-            "depth_km": 7.7,
-            "event_time_utc": "2026-03-16T01:26:26+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204799"
-        },
-        {
-            "id": "nc75327972",
-            "place": "9 km WNW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.76,
-            "depth_km": 2.24000000953674,
-            "event_time_utc": "2026-03-16T01:22:50+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327972"
-        },
-        {
-            "id": "tx2026ffyeyx",
-            "place": "54 km W of Mentone, Texas",
-            "region": "Mentone, Texas",
-            "magnitude": 1.9,
-            "depth_km": 7.4969,
-            "event_time_utc": "2026-03-16T01:14:10+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026ffyeyx"
-        },
-        {
-            "id": "aka2026ffxzpn",
-            "place": "52 km E of Denali National Park, Alaska",
-            "region": "Denali National Park, Alaska",
-            "magnitude": 1.7,
-            "depth_km": 0.1,
-            "event_time_utc": "2026-03-16T01:07:50+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffxzpn"
-        },
-        {
-            "id": "ci41204791",
-            "place": "10 km NE of Julian, CA",
-            "region": "Julian, CA",
-            "magnitude": 0.48,
-            "depth_km": 7.68,
-            "event_time_utc": "2026-03-16T01:04:28+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204791"
-        },
-        {
-            "id": "nn00912731",
-            "place": "36 km S of Caliente, Nevada",
-            "region": "Caliente, Nevada",
-            "magnitude": 1.58,
-            "depth_km": 15.9298,
-            "event_time_utc": "2026-03-16T01:02:57+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912731"
-        },
-        {
-            "id": "nc75327962",
-            "place": "11 km NW of Parkfield, CA",
-            "region": "Parkfield, CA",
-            "magnitude": 1.72,
-            "depth_km": 6.94999980926514,
-            "event_time_utc": "2026-03-16T00:56:53+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327962"
-        },
-        {
-            "id": "ci41204775",
-            "place": "13 km NNE of Julian, CA",
-            "region": "Julian, CA",
-            "magnitude": 0.72,
-            "depth_km": 16.03,
-            "event_time_utc": "2026-03-16T00:54:18+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204775"
-        },
-        {
-            "id": "aka2026ffxmpi",
-            "place": "44 km SSW of Cantwell, Alaska",
-            "region": "Cantwell, Alaska",
-            "magnitude": 1.8,
-            "depth_km": 0.2,
-            "event_time_utc": "2026-03-16T00:52:45+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffxmpi"
-        },
-        {
-            "id": "nc75327957",
-            "place": "9 km NW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.63,
-            "depth_km": 1.69000005722046,
-            "event_time_utc": "2026-03-16T00:52:09+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327957"
-        },
-        {
-            "id": "nc75327947",
-            "place": "12 km WSW of Rio Dell, CA",
-            "region": "Rio Dell, CA",
-            "magnitude": 3.3,
-            "depth_km": 26.0400009155273,
-            "event_time_utc": "2026-03-16T00:48:55+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327947"
-        },
-        {
-            "id": "nn00912729",
-            "place": "54 km WSW of Rachel, Nevada",
-            "region": "Rachel, Nevada",
-            "magnitude": 1.38,
-            "depth_km": 8.7586,
-            "event_time_utc": "2026-03-16T00:46:21+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912729"
-        },
-        {
-            "id": "hv74917602",
-            "place": "14 km S of Fern Forest, Hawaii",
-            "region": "Fern Forest, Hawaii",
-            "magnitude": 2.06,
-            "depth_km": 4.25,
-            "event_time_utc": "2026-03-16T00:32:40+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917602"
-        },
-        {
-            "id": "nn00912728",
-            "place": "35 km NE of Tonopah, Nevada",
-            "region": "Tonopah, Nevada",
-            "magnitude": 1.63,
-            "depth_km": 4.7942,
-            "event_time_utc": "2026-03-16T00:29:08+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912728"
-        },
-        {
-            "id": "nn00912725",
-            "place": "42 km NW of Pahrump, Nevada",
-            "region": "Pahrump, Nevada",
-            "magnitude": 1.13,
-            "depth_km": 1.7633,
-            "event_time_utc": "2026-03-16T00:24:08+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912725"
-        },
-        {
-            "id": "aka2026ffwkac",
-            "place": "41 km WNW of Valdez, Alaska",
-            "region": "Valdez, Alaska",
-            "magnitude": 1.5,
-            "depth_km": 7,
-            "event_time_utc": "2026-03-16T00:19:35+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffwkac"
-        },
-        {
-            "id": "nc75327937",
-            "place": "8 km SW of Huron, CA",
-            "region": "Huron, CA",
-            "magnitude": 1.8,
-            "depth_km": 5.53000020980835,
-            "event_time_utc": "2026-03-16T00:05:28+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327937"
-        },
-        {
-            "id": "aka2026ffvrqe",
-            "place": "26 km ENE of Sterling, Alaska",
-            "region": "Sterling, Alaska",
-            "magnitude": 2.8,
-            "depth_km": 37.9,
-            "event_time_utc": "2026-03-15T23:58:17+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffvrqe"
-        },
-        {
-            "id": "hv74917597",
-            "place": "10 km SW of Leilani Estates, Hawaii",
-            "region": "Leilani Estates, Hawaii",
-            "magnitude": 1.79,
-            "depth_km": -0.560000002384186,
-            "event_time_utc": "2026-03-15T23:47:11+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917597"
-        },
-        {
-            "id": "ci41204759",
-            "place": "5 km NW of Boron, CA",
-            "region": "Boron, CA",
-            "magnitude": 1.33,
-            "depth_km": -0.84,
-            "event_time_utc": "2026-03-15T23:41:17+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204759"
-        },
-        {
-            "id": "aka2026ffvcuk",
-            "place": "66 km ESE of Cantwell, Alaska",
-            "region": "Cantwell, Alaska",
-            "magnitude": 2.4,
-            "depth_km": 4.3,
-            "event_time_utc": "2026-03-15T23:41:02+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffvcuk"
-        },
-        {
-            "id": "aka2026ffuxwl",
-            "place": "32 km E of Rampart, Alaska",
-            "region": "Rampart, Alaska",
-            "magnitude": 1.5,
-            "depth_km": 5,
-            "event_time_utc": "2026-03-15T23:35:20+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffuxwl"
-        },
-        {
-            "id": "nc75327927",
-            "place": "0 km NW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 1.06,
-            "depth_km": 1.16999995708466,
-            "event_time_utc": "2026-03-15T23:31:39+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327927"
-        },
-        {
-            "id": "nc75327922",
-            "place": "24 km NW of Parkfield, CA",
-            "region": "Parkfield, CA",
-            "magnitude": 1.65,
-            "depth_km": 2.03999996185303,
-            "event_time_utc": "2026-03-15T23:23:44+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327922"
-        },
-        {
-            "id": "nc75327917",
-            "place": "5 km WNW of Bayview-Montalvin, CA",
-            "region": "Bayview-Montalvin, CA",
-            "magnitude": 0.83,
-            "depth_km": 1.87000000476837,
-            "event_time_utc": "2026-03-15T23:18:57+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327917"
-        },
-        {
-            "id": "aka2026fftzga",
-            "place": "7 km E of Fox, Alaska",
-            "region": "Fox, Alaska",
-            "magnitude": 1.2,
-            "depth_km": 5,
-            "event_time_utc": "2026-03-15T23:06:46+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fftzga"
-        },
-        {
-            "id": "ci41204743",
-            "place": "11 km N of Borrego Springs, CA",
-            "region": "Borrego Springs, CA",
-            "magnitude": 0.72,
-            "depth_km": 11.61,
-            "event_time_utc": "2026-03-15T23:06:13+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204743"
-        },
-        {
-            "id": "nn00912721",
-            "place": "39 km NW of Pahrump, Nevada",
-            "region": "Pahrump, Nevada",
-            "magnitude": 0.54,
-            "depth_km": 8.8453,
-            "event_time_utc": "2026-03-15T22:53:34+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912721"
-        },
-        {
-            "id": "nc75327902",
-            "place": "30 km W of Petrolia, CA",
-            "region": "Petrolia, CA",
-            "magnitude": 2.76,
-            "depth_km": 19.4500007629395,
-            "event_time_utc": "2026-03-15T22:50:30+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327902"
-        },
-        {
-            "id": "nn00912719",
-            "place": "32 km WSW of Empire, Nevada",
-            "region": "Empire, Nevada",
-            "magnitude": 1.9,
-            "depth_km": 0.7442,
-            "event_time_utc": "2026-03-15T22:43:39+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912719"
-        },
-        {
-            "id": "aka2026fftern",
-            "place": "11 km WNW of Glennallen, Alaska",
-            "region": "Glennallen, Alaska",
-            "magnitude": 1.6,
-            "depth_km": 4.6,
-            "event_time_utc": "2026-03-15T22:42:52+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fftern"
-        },
-        {
-            "id": "aka2026ffsxtw",
-            "place": "46 km NE of Fox River, Alaska",
-            "region": "Fox River, Alaska",
-            "magnitude": 1.7,
-            "depth_km": 46.9,
-            "event_time_utc": "2026-03-15T22:34:51+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffsxtw"
-        },
-        {
-            "id": "aka2026ffsvcz",
-            "place": "90 km E of McCarthy, Alaska",
-            "region": "McCarthy, Alaska",
-            "magnitude": 2,
-            "depth_km": 5,
-            "event_time_utc": "2026-03-15T22:31:47+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffsvcz"
-        },
-        {
-            "id": "hv74917587",
-            "place": "9 km NE of P\u0101hala, Hawaii",
-            "region": "P\u0101hala, Hawaii",
-            "magnitude": 1.73,
-            "depth_km": 30.7900009155273,
-            "event_time_utc": "2026-03-15T22:24:42+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv74917587"
-        },
-        {
-            "id": "nc75327892",
-            "place": "10 km NW of Parkfield, CA",
-            "region": "Parkfield, CA",
-            "magnitude": 1.61,
-            "depth_km": 10.1700000762939,
-            "event_time_utc": "2026-03-15T22:18:58+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327892"
-        },
-        {
-            "id": "uu80132196",
-            "place": "10 km NE of Hildale, Utah",
-            "region": "Hildale, Utah",
-            "magnitude": 1.86,
-            "depth_km": 15.99,
-            "event_time_utc": "2026-03-15T22:17:34+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/uu80132196"
-        },
-        {
-            "id": "nc75327887",
-            "place": "7 km WNW of Cobb, CA",
-            "region": "Cobb, CA",
-            "magnitude": 0.71,
-            "depth_km": 1.05999994277954,
-            "event_time_utc": "2026-03-15T22:10:02+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327887"
-        },
-        {
-            "id": "ci41204727",
-            "place": "6 km WSW of Anza, CA",
-            "region": "Anza, CA",
-            "magnitude": 0.35,
-            "depth_km": 3.07,
-            "event_time_utc": "2026-03-15T22:05:07+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204727"
-        },
-        {
-            "id": "tx2026ffrhgd",
-            "place": "21 km SSW of Ackerly, Texas",
-            "region": "Ackerly, Texas",
-            "magnitude": 1.2,
-            "depth_km": 11.8727,
-            "event_time_utc": "2026-03-15T21:45:30+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026ffrhgd"
-        },
-        {
-            "id": "nc75327882",
-            "place": "2 km E of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 1.04,
-            "depth_km": 2.02999997138977,
-            "event_time_utc": "2026-03-15T21:44:00+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327882"
-        },
-        {
-            "id": "ci41204719",
-            "place": "4 km W of Lake Henshaw, CA",
-            "region": "Lake Henshaw, CA",
-            "magnitude": 0.63,
-            "depth_km": 12.72,
-            "event_time_utc": "2026-03-15T21:37:20+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204719"
-        },
-        {
-            "id": "aka2026ffqxwe",
-            "place": "4 km WSW of Glennallen, Alaska",
-            "region": "Glennallen, Alaska",
-            "magnitude": 1.9,
-            "depth_km": 5,
-            "event_time_utc": "2026-03-15T21:34:36+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffqxwe"
-        },
-        {
-            "id": "nn00912718",
-            "place": "47 km NW of Beatty, Nevada",
-            "region": "Beatty, Nevada",
-            "magnitude": 1.08,
-            "depth_km": 0.039,
-            "event_time_utc": "2026-03-15T21:28:21+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912718"
-        },
-        {
-            "id": "nc75327877",
-            "place": "11 km SE of Pinnacles, CA",
-            "region": "Pinnacles, CA",
-            "magnitude": 1.65,
-            "depth_km": 0.209999993443489,
-            "event_time_utc": "2026-03-15T21:26:42+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327877"
-        },
-        {
-            "id": "aka2026ffqnha",
-            "place": "44 km NNW of Valdez, Alaska",
-            "region": "Valdez, Alaska",
-            "magnitude": 1.3,
-            "depth_km": 38.2,
-            "event_time_utc": "2026-03-15T21:22:20+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffqnha"
-        },
-        {
-            "id": "tx2026ffqmcg",
-            "place": "2 km NW of Garden City, Texas",
-            "region": "Garden City, Texas",
-            "magnitude": 1.5,
-            "depth_km": 8.6914,
-            "event_time_utc": "2026-03-15T21:20:58+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026ffqmcg"
-        },
-        {
-            "id": "nc75327872",
-            "place": "6 km WNW of Cobb, CA",
-            "region": "Cobb, CA",
-            "magnitude": 0.82,
-            "depth_km": 1.6599999666214,
-            "event_time_utc": "2026-03-15T21:16:12+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327872"
-        },
-        {
-            "id": "nc75327867",
-            "place": "6 km WNW of Cobb, CA",
-            "region": "Cobb, CA",
-            "magnitude": 0.5,
-            "depth_km": 1.79999995231628,
-            "event_time_utc": "2026-03-15T21:16:00+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327867"
-        },
-        {
-            "id": "nn00912716",
-            "place": "60 km ENE of Tonopah, Nevada",
-            "region": "Tonopah, Nevada",
-            "magnitude": 2.04,
-            "depth_km": 4.9318,
-            "event_time_utc": "2026-03-15T21:07:50+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912716"
-        },
-        {
-            "id": "aka2026ffpwxx",
-            "place": "14 km SE of Point Possession, Alaska",
-            "region": "Point Possession, Alaska",
-            "magnitude": 1.8,
-            "depth_km": 14.2,
-            "event_time_utc": "2026-03-15T21:03:21+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffpwxx"
-        },
-        {
-            "id": "ci41204711",
-            "place": "20 km ESE of Anza, CA",
-            "region": "Anza, CA",
-            "magnitude": 0.85,
-            "depth_km": 15.67,
-            "event_time_utc": "2026-03-15T20:57:47+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204711"
-        },
-        {
-            "id": "aka2026ffpbrz",
-            "place": "38 km NW of Beluga, Alaska",
-            "region": "Beluga, Alaska",
-            "magnitude": 1.4,
-            "depth_km": 76.9,
-            "event_time_utc": "2026-03-15T20:38:44+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffpbrz"
-        },
-        {
-            "id": "aka2026ffoxwo",
-            "place": "75 km ENE of Port Alsworth, Alaska",
-            "region": "Port Alsworth, Alaska",
-            "magnitude": 2.1,
-            "depth_km": 146.3,
-            "event_time_utc": "2026-03-15T20:34:19+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffoxwo"
-        },
-        {
-            "id": "tx2026ffolko",
-            "place": "53 km S of Whites City, New Mexico",
-            "region": "Whites City, New Mexico",
-            "magnitude": 3.5,
-            "depth_km": 4.8181,
-            "event_time_utc": "2026-03-15T20:20:12+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2026ffolko"
-        },
-        {
-            "id": "nc75327857",
-            "place": "4 km W of Cobb, CA",
-            "region": "Cobb, CA",
-            "magnitude": 0.7,
-            "depth_km": 2.45000004768372,
-            "event_time_utc": "2026-03-15T20:15:50+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327857"
-        },
-        {
-            "id": "nc75327852",
-            "place": "3 km SE of Pacifica, CA",
-            "region": "Pacifica, CA",
-            "magnitude": 1.02,
-            "depth_km": 9.09000015258789,
-            "event_time_utc": "2026-03-15T20:14:54+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327852"
-        },
-        {
-            "id": "aka2026ffogkg",
-            "place": "14 km ENE of Susitna, Alaska",
-            "region": "Susitna, Alaska",
-            "magnitude": 1.7,
-            "depth_km": 30.7,
-            "event_time_utc": "2026-03-15T20:14:01+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffogkg"
-        },
-        {
-            "id": "nc75327847",
-            "place": "2 km N of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 1.04,
-            "depth_km": 0.689999997615814,
-            "event_time_utc": "2026-03-15T20:13:19+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327847"
-        },
-        {
-            "id": "nc75327842",
-            "place": "7 km NW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.76,
-            "depth_km": 2.90000009536743,
-            "event_time_utc": "2026-03-15T20:04:00+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327842"
-        },
-        {
-            "id": "ci41204687",
-            "place": "6 km SSE of Loma Linda, CA",
-            "region": "Loma Linda, CA",
-            "magnitude": 1.03,
-            "depth_km": 10.86,
-            "event_time_utc": "2026-03-15T19:56:06+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204687"
-        },
-        {
-            "id": "nn00912714",
-            "place": "53 km NE of Tonopah, Nevada",
-            "region": "Tonopah, Nevada",
-            "magnitude": 1.89,
-            "depth_km": 0.1382,
-            "event_time_utc": "2026-03-15T19:43:48+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00912714"
-        },
-        {
-            "id": "aka2026ffmxvv",
-            "place": "34 km WNW of Clam Gulch, Alaska",
-            "region": "Clam Gulch, Alaska",
-            "magnitude": 2,
-            "depth_km": 77.2,
-            "event_time_utc": "2026-03-15T19:33:55+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffmxvv"
-        },
-        {
-            "id": "nc75327827",
-            "place": "4 km ESE of San Ramon, CA",
-            "region": "San Ramon, CA",
-            "magnitude": 1.57,
-            "depth_km": 7,
-            "event_time_utc": "2026-03-15T19:30:47+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327827"
-        },
-        {
-            "id": "nc75327822",
-            "place": "3 km NW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 1.38,
-            "depth_km": 2.92000007629395,
-            "event_time_utc": "2026-03-15T19:30:41+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327822"
-        },
-        {
-            "id": "aka2026ffmjyx",
-            "place": "52 km SW of Cantwell, Alaska",
-            "region": "Cantwell, Alaska",
-            "magnitude": 1.4,
-            "depth_km": 76.4,
-            "event_time_utc": "2026-03-15T19:17:50+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffmjyx"
-        },
-        {
-            "id": "ci41204671",
-            "place": "13 km SSW of Searles Valley, CA",
-            "region": "Searles Valley, CA",
-            "magnitude": 0.67,
-            "depth_km": 6.76,
-            "event_time_utc": "2026-03-15T19:12:17+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204671"
-        },
-        {
-            "id": "aka2026fflqih",
-            "place": "60 km N of Petersville, Alaska",
-            "region": "Petersville, Alaska",
-            "magnitude": 2.2,
-            "depth_km": 117.3,
-            "event_time_utc": "2026-03-15T18:55:01+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fflqih"
-        },
-        {
-            "id": "nc75327797",
-            "place": "10 km WNW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.93,
-            "depth_km": 2.28999996185303,
-            "event_time_utc": "2026-03-15T18:39:30+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327797"
-        },
-        {
-            "id": "nc75327792",
-            "place": "2 km SE of Pacifica, CA",
-            "region": "Pacifica, CA",
-            "magnitude": 1.14,
-            "depth_km": 9.72999954223633,
-            "event_time_utc": "2026-03-15T18:30:42+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327792"
-        },
-        {
-            "id": "aka2026ffklqv",
-            "place": "96 km WSW of Karluk, Alaska",
-            "region": "Karluk, Alaska",
-            "magnitude": 2.1,
-            "depth_km": 63.2,
-            "event_time_utc": "2026-03-15T18:19:25+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffklqv"
-        },
-        {
-            "id": "nc75327787",
-            "place": "5 km NE of Brooktrails, CA",
-            "region": "Brooktrails, CA",
-            "magnitude": 1.72,
-            "depth_km": 4.19999980926514,
-            "event_time_utc": "2026-03-15T18:03:55+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327787"
-        },
-        {
-            "id": "aka2026ffjrwj",
-            "place": "59 km S of Cantwell, Alaska",
-            "region": "Cantwell, Alaska",
-            "magnitude": 1.6,
-            "depth_km": 0.3,
-            "event_time_utc": "2026-03-15T17:56:27+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffjrwj"
-        },
-        {
-            "id": "aka2026ffjpxp",
-            "place": "41 km WSW of Anchor Point, Alaska",
-            "region": "Anchor Point, Alaska",
-            "magnitude": 1.8,
-            "depth_km": 76.9,
-            "event_time_utc": "2026-03-15T17:54:11+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffjpxp"
-        },
-        {
-            "id": "nc75327782",
-            "place": "6 km NW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 0.75,
-            "depth_km": 1.63999998569489,
-            "event_time_utc": "2026-03-15T17:51:47+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327782"
-        },
-        {
-            "id": "ci41204623",
-            "place": "10 km W of Pine Valley, CA",
-            "region": "Pine Valley, CA",
-            "magnitude": 1.07,
-            "depth_km": 16.68,
-            "event_time_utc": "2026-03-15T17:21:03+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41204623"
-        },
-        {
-            "id": "aka2026ffhzps",
-            "place": "18 km SSW of Tatitlek, Alaska",
-            "region": "Tatitlek, Alaska",
-            "magnitude": 2,
-            "depth_km": 19,
-            "event_time_utc": "2026-03-15T17:05:06+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffhzps"
-        },
-        {
-            "id": "aka2026ffhkgu",
-            "place": "84 km NNW of Karluk, Alaska",
-            "region": "Karluk, Alaska",
-            "magnitude": 2.3,
-            "depth_km": 0.3,
-            "event_time_utc": "2026-03-15T16:47:05+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ffhkgu"
-        },
-        {
-            "id": "nc75327772",
-            "place": "3 km NW of The Geysers, CA",
-            "region": "The Geysers, CA",
-            "magnitude": 1.95,
-            "depth_km": 3.51999998092651,
-            "event_time_utc": "2026-03-15T16:45:39+00:00",
-            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75327772"
+            "depth_km": 6.9,
+            "event_time_utc": "2026-03-16T14:07:36+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026fgxvnl"
         }
     ],
     "from_cache": false

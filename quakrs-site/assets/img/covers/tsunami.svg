@@ -1,28 +1,28 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 520'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 320' role='img' aria-label='Abstract tsunami alert strip'>
   <defs>
     <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
-      <stop offset='0%' stop-color='#071628'/>
-      <stop offset='54%' stop-color='#12324d'/>
-      <stop offset='100%' stop-color='#0a1e35'/>
+      <stop offset='0%' stop-color='#03050b'/>
+      <stop offset='100%' stop-color='#070b16'/>
     </linearGradient>
-    <radialGradient id='moon' cx='84%' cy='22%' r='28%'>
-      <stop offset='0%' stop-color='#f7d98a' stop-opacity='0.9'/>
-      <stop offset='100%' stop-color='#f7d98a' stop-opacity='0'/>
-    </radialGradient>
+    <linearGradient id='surge' x1='0' y1='0' x2='1' y2='0'>
+      <stop offset='0%' stop-color='#17e7ff'/>
+      <stop offset='58%' stop-color='#56f8ff'/>
+      <stop offset='100%' stop-color='#c8ff2f'/>
+    </linearGradient>
   </defs>
-  <rect width='1200' height='520' fill='url(#bg)'/>
-  <rect width='1200' height='520' fill='url(#moon)'/>
 
-  <circle cx='980' cy='118' r='36' fill='#f7d98a' fill-opacity='0.76'/>
+  <rect width='1600' height='320' rx='26' fill='url(#bg)'/>
+  <rect x='0' y='0' width='1600' height='9' fill='#0b1730'/>
 
-  <path d='M60 336 C210 262, 366 252, 516 336 C640 404, 760 402, 1120 220' fill='none' stroke='#7be2cd' stroke-width='17' stroke-linecap='round'/>
-  <path d='M126 372 C290 310, 442 306, 562 364 C654 410, 760 404, 1050 286' fill='none' stroke='#32bfd0' stroke-width='10' stroke-opacity='0.68' stroke-linecap='round'/>
-  <path d='M210 404 C346 360, 470 360, 590 400 C672 426, 760 418, 952 338' fill='none' stroke='#22a7c7' stroke-width='6' stroke-opacity='0.48' stroke-linecap='round'/>
+  <rect x='0' y='0' width='108' height='320' fill='#111f3d'/>
+  <path d='M108 236 C314 132 542 142 758 198 C980 256 1204 254 1600 108 V320 H108 Z' fill='#09162b'/>
+  <path d='M124 228 C326 126 548 136 764 192 C990 252 1210 252 1600 102' fill='none' stroke='#13294b' stroke-width='34' stroke-linecap='round'/>
+  <path d='M124 228 C326 126 548 136 764 192 C990 252 1210 252 1600 102' fill='none' stroke='url(#surge)' stroke-width='18' stroke-linecap='round'/>
 
-  <g fill='#d6ecf4' opacity='0.22'>
-    <circle cx='104' cy='92' r='1.5'/><circle cx='182' cy='72' r='1.2'/><circle cx='276' cy='98' r='1.3'/>
-    <circle cx='744' cy='84' r='1.2'/><circle cx='820' cy='66' r='1.3'/>
-  </g>
+  <path d='M850 190 L1040 128 L1600 92 V150 L1050 198 Z' fill='#ff2fa6' fill-opacity='0.36'/>
+  <path d='M940 210 L1128 158 L1600 126 V172 L1136 220 Z' fill='#17e7ff' fill-opacity='0.34'/>
 
-  <path d='M82 442 L1118 442' stroke='#37557a' stroke-opacity='0.42'/>
+  <path d='M76 64 H98' stroke='#c8ff2f' stroke-width='6'/>
+  <path d='M76 94 H98' stroke='#ffd84a' stroke-width='6'/>
+  <path d='M76 124 H98' stroke='#ff2fa6' stroke-width='6'/>
 </svg>

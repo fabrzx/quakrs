@@ -28,6 +28,7 @@ if (!empty($currentPage) && is_string($currentPage)) {
     }
 }
 $bodyTokens[] = 'site-2026';
+$bodyTokens[] = 'site-acid-balanced';
 if (!empty($bodyClass) && is_string($bodyClass)) {
     foreach (preg_split('/\s+/', trim($bodyClass)) ?: [] as $token) {
         if ($token !== '') {
@@ -44,7 +45,7 @@ $bodyClassAttr = implode(' ', $bodyTokens);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="<?= htmlspecialchars($pageDescription, ENT_QUOTES, 'UTF-8'); ?>" />
-    <meta name="theme-color" content="#070b14" />
+    <meta name="theme-color" content="#050816" />
     <link rel="canonical" href="<?= htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8'); ?>" />
     <title><?= htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></title>
     <link rel="icon" href="/assets/icons/favicon.svg?v=<?= urlencode($faviconVersion); ?>" type="image/svg+xml" />

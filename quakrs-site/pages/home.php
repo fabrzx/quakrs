@@ -5,7 +5,7 @@ $pageTitle = 'Quakrs.com - Global Seismic Platform';
 $pageDescription = 'Real-time earthquakes, volcanoes, tsunami alerts, space weather and operational data views.';
 $currentPage = 'home';
 $includeLeaflet = true;
-$bodyClass = 'home-page home-2026';
+$bodyClass = 'home-page home-2026 home-acid-balanced';
 
 require __DIR__ . '/../partials/head.php';
 require __DIR__ . '/../partials/topbar.php';

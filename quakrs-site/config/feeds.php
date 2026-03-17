@@ -49,6 +49,9 @@ return [
         'xray_url' => 'https://services.swpc.noaa.gov/json/goes/primary/xrays-1-day.json',
         'solar_wind_plasma_url' => 'https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json',
         'solar_wind_mag_url' => 'https://services.swpc.noaa.gov/products/solar-wind/mag-1-day.json',
+        'dst_url' => 'https://services.swpc.noaa.gov/products/kyoto-dst.json',
+        'magnetometers_url' => 'https://services.swpc.noaa.gov/json/goes/primary/magnetometers-1-day.json',
+        'auroral_oval_url' => 'https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg',
         'sun_image_url' => 'https://services.swpc.noaa.gov/images/animations/suvi/primary/171/latest.png',
     ],
     'volcano_cams' => [

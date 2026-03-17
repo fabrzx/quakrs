@@ -80,22 +80,22 @@ require __DIR__ . '/../partials/topbar.php';
     <p id="space-source-line" class="sources-line">Source loading...</p>
   </article>
 
-  <article class="card">
-    <div class="feed-head">
-      <h3>Kp Timeline</h3>
-      <p class="feed-meta">Observed + forecast</p>
-    </div>
-    <div class="space-kp-chart-wrap">
+  <article class="card space-kp-card">
+    <div class="space-kp-chart-wrap space-kp-chart-wrap-kp">
+      <div class="space-chart-head-inline">
+        <h3>Kp Timeline</h3>
+        <p class="feed-meta">Observed + forecast</p>
+      </div>
       <svg id="space-kp-chart" class="space-kp-chart" viewBox="0 0 560 220" role="img" aria-label="Kp trend chart"></svg>
-    </div>
-    <div class="space-chart-legend">
-      <span><i class="space-dot-live"></i>Observed Kp</span>
-      <span><i class="space-dot-forecast"></i>Forecast Kp</span>
+      <div class="space-chart-legend space-chart-legend-inline">
+        <span><i class="space-dot-live"></i>Observed Kp</span>
+        <span><i class="space-dot-forecast"></i>Forecast Kp</span>
+      </div>
     </div>
   </article>
 </section>
 
-<section class="panel panel-charts space-extra-charts">
+<section class="panel panel-charts space-extra-charts space-chart-row-primary">
   <article class="card">
     <div class="feed-head">
       <h3>X-ray Flux / Flare Channel</h3>
@@ -129,6 +129,78 @@ require __DIR__ . '/../partials/topbar.php';
     </div>
     <div class="space-kp-chart-wrap">
       <svg id="space-bz-chart" class="space-kp-chart" viewBox="0 0 560 220" role="img" aria-label="IMF Bz chart"></svg>
+    </div>
+  </article>
+</section>
+
+<section class="panel panel-charts space-extra-charts">
+  <article class="card">
+    <div class="feed-head">
+      <h3>Solar Wind Density</h3>
+      <p class="feed-meta">p/cm3 last 24h</p>
+    </div>
+    <div class="space-kp-chart-wrap">
+      <svg id="space-density-chart" class="space-kp-chart" viewBox="0 0 560 220" role="img" aria-label="Solar wind density chart"></svg>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="feed-head">
+      <h3>Interplanetary Magnetic Field Bt</h3>
+      <p class="feed-meta">nT last 24h</p>
+    </div>
+    <div class="space-kp-chart-wrap">
+      <svg id="space-bt-chart" class="space-kp-chart" viewBox="0 0 560 220" role="img" aria-label="Interplanetary magnetic field Bt chart"></svg>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="feed-head">
+      <h3>Dst Index</h3>
+      <p class="feed-meta">Disturbance storm time</p>
+    </div>
+    <div class="space-kp-chart-wrap">
+      <svg id="space-dst-chart" class="space-kp-chart" viewBox="0 0 560 220" role="img" aria-label="Dst index chart"></svg>
+    </div>
+  </article>
+</section>
+
+<section class="panel panel-charts space-triple-panel">
+  <article class="card">
+    <div class="feed-head">
+      <h3>Magnetometers (GOES)</h3>
+      <p class="feed-meta">Hp / He components</p>
+    </div>
+    <div class="space-kp-chart-wrap">
+      <svg id="space-mag-chart" class="space-kp-chart" viewBox="0 0 560 220" role="img" aria-label="GOES magnetometers chart"></svg>
+    </div>
+    <div class="space-chart-legend">
+      <span><i class="space-dot-mag-hp"></i>Hp</span>
+      <span><i class="space-dot-mag-he"></i>He</span>
+    </div>
+  </article>
+
+  <article class="card side-card space-aurora-card">
+    <div class="feed-head">
+      <h3>Auroral Oval</h3>
+      <p class="feed-meta">Latest OVATION map</p>
+    </div>
+    <div class="space-aurora-wrap">
+      <img id="space-aurora-image" class="space-aurora-image" src="" alt="Auroral oval map" loading="lazy" />
+    </div>
+  </article>
+
+  <article class="card space-moon-card">
+    <div class="feed-head">
+      <h3>Moon Phase</h3>
+      <p id="space-moon-name" class="feed-meta">Loading moon phase...</p>
+    </div>
+    <div class="space-moon-block">
+      <div class="space-moon-visual" aria-hidden="true"></div>
+      <p id="space-moon-meta" class="kpi-note">Illumination --</p>
+      <div class="space-moon-meter" role="img" aria-label="Moon illumination">
+        <span id="space-moon-meter-fill"></span>
+      </div>
     </div>
   </article>
 </section>
@@ -178,6 +250,10 @@ require __DIR__ . '/../partials/topbar.php';
     const chartXray = document.querySelector("#space-xray-chart");
     const chartWind = document.querySelector("#space-wind-chart");
     const chartBz = document.querySelector("#space-bz-chart");
+    const chartDensity = document.querySelector("#space-density-chart");
+    const chartBt = document.querySelector("#space-bt-chart");
+    const chartDst = document.querySelector("#space-dst-chart");
+    const chartMag = document.querySelector("#space-mag-chart");
 
     const listReadings = document.querySelector("#space-readings-list");
     const listForecast = document.querySelector("#space-forecast-list");
@@ -206,6 +282,10 @@ require __DIR__ . '/../partials/topbar.php';
     const sunModal = document.querySelector("#space-sun-modal");
     const sunModalImage = document.querySelector("#space-sun-modal-image");
     const sunModalClose = document.querySelector("#space-sun-modal-close");
+    const auroraImage = document.querySelector("#space-aurora-image");
+    const moonName = document.querySelector("#space-moon-name");
+    const moonMeta = document.querySelector("#space-moon-meta");
+    const moonMeterFill = document.querySelector("#space-moon-meter-fill");
 
     const formatTime = (iso) => (iso
       ? new Date(iso).toLocaleString([], { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit" })
@@ -231,6 +311,44 @@ require __DIR__ . '/../partials/topbar.php';
       return "flare-a";
     };
 
+    const clamp01 = (value) => Math.max(0, Math.min(1, value));
+    const lerp = (a, b, t) => a + ((b - a) * t);
+    const lerpColor = (from, to, t) => [
+      Math.round(lerp(from[0], to[0], t)),
+      Math.round(lerp(from[1], to[1], t)),
+      Math.round(lerp(from[2], to[2], t)),
+    ];
+
+    const windToneFromSpeed = (speed) => {
+      const yellow = [247, 210, 30];
+      const orange = [255, 137, 91];
+      const red = [255, 95, 69];
+      const violet = [166, 109, 255];
+
+      if (speed <= 560) return yellow;
+      if (speed <= 600) return lerpColor(yellow, orange, clamp01((speed - 560) / 40));
+      if (speed <= 800) return lerpColor(orange, red, clamp01((speed - 600) / 200));
+      if (speed <= 1000) return lerpColor(red, violet, clamp01((speed - 800) / 200));
+      return violet;
+    };
+
+    const applyWindSeverityTheme = (svg, points) => {
+      if (!svg) return;
+      if (!Array.isArray(points) || points.length === 0) return;
+
+      let maxSpeed = -Infinity;
+      points.forEach((row) => {
+        if (typeof row?.value === "number" && Number.isFinite(row.value) && row.value > maxSpeed) {
+          maxSpeed = row.value;
+        }
+      });
+      if (!Number.isFinite(maxSpeed)) return;
+      const [r, g, b] = windToneFromSpeed(maxSpeed);
+      const fillAlpha = maxSpeed >= 1000 ? 0.52 : maxSpeed >= 800 ? 0.48 : maxSpeed >= 600 ? 0.44 : 0.36;
+      svg.style.setProperty("--space-wind-stroke", `rgb(${r}, ${g}, ${b})`);
+      svg.style.setProperty("--space-wind-fill", `rgba(${r}, ${g}, ${b}, ${fillAlpha})`);
+    };
+
     const ensureChartTooltip = (svg) => {
       const wrap = svg?.closest(".space-kp-chart-wrap");
       if (!wrap) return null;
@@ -244,9 +362,45 @@ require __DIR__ . '/../partials/topbar.php';
       return tooltip;
     };
 
+    let chartHoverGuardsBound = false;
+    const hideAllChartHovers = (exceptWrap = null) => {
+      document.querySelectorAll(".space-kp-chart-wrap").forEach((node) => {
+        if (exceptWrap && node === exceptWrap) return;
+        const tooltip = node.querySelector(".space-chart-tooltip");
+        if (tooltip) tooltip.hidden = true;
+        const svg = node.querySelector("svg");
+        if (!svg) return;
+        const line = svg.querySelector(".space-hover-line");
+        const dot = svg.querySelector(".space-hover-dot");
+        if (line) line.style.display = "none";
+        if (dot) dot.style.display = "none";
+      });
+    };
+
+    const ensureChartHoverGuards = () => {
+      if (chartHoverGuardsBound) return;
+      chartHoverGuardsBound = true;
+
+      document.addEventListener("pointermove", (event) => {
+        const target = event.target;
+        if (!(target instanceof Element) || !target.closest(".space-kp-chart-wrap")) {
+          hideAllChartHovers();
+        }
+      });
+
+      document.addEventListener("scroll", () => hideAllChartHovers(), { passive: true });
+      window.addEventListener("blur", () => hideAllChartHovers());
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) hideAllChartHovers();
+      });
+    };
+
     const bindChartHover = (svg, projected, formatter) => {
-      if (!svg || !Array.isArray(projected) || projected.length === 0) {
-        return;
+      if (!svg) return;
+      ensureChartHoverGuards();
+      if (typeof svg.__spaceHoverCleanup === "function") {
+        svg.__spaceHoverCleanup();
+        svg.__spaceHoverCleanup = null;
       }
 
       const tooltip = ensureChartTooltip(svg);
@@ -278,6 +432,11 @@ require __DIR__ . '/../partials/topbar.php';
         hoverDot.style.display = "none";
         tooltip.hidden = true;
       };
+      hide();
+
+      if (!Array.isArray(projected) || projected.length === 0) {
+        return;
+      }
 
       const onMove = (event) => {
         const rect = svg.getBoundingClientRect();
@@ -304,6 +463,7 @@ require __DIR__ . '/../partials/topbar.php';
         hoverDot.setAttribute("cy", String(nearest.y));
         hoverDot.style.display = "block";
 
+        hideAllChartHovers(wrap);
         tooltip.innerHTML = formatter(nearest);
         tooltip.hidden = false;
 
@@ -320,12 +480,31 @@ require __DIR__ . '/../partials/topbar.php';
 
       svg.addEventListener("mousemove", onMove);
       svg.addEventListener("mouseleave", hide);
-      svg.addEventListener("touchstart", (event) => {
+      svg.addEventListener("pointerleave", hide);
+      wrap.addEventListener("mouseleave", hide);
+      wrap.addEventListener("pointerleave", hide);
+
+      const onTouchStart = (event) => {
         const touch = event.touches && event.touches[0];
         if (!touch) return;
         onMove(touch);
-      }, { passive: true });
+      };
+
+      svg.addEventListener("touchstart", onTouchStart, { passive: true });
       svg.addEventListener("touchend", hide);
+      svg.addEventListener("touchcancel", hide);
+
+      svg.__spaceHoverCleanup = () => {
+        hide();
+        svg.removeEventListener("mousemove", onMove);
+        svg.removeEventListener("mouseleave", hide);
+        svg.removeEventListener("pointerleave", hide);
+        wrap.removeEventListener("mouseleave", hide);
+        wrap.removeEventListener("pointerleave", hide);
+        svg.removeEventListener("touchstart", onTouchStart);
+        svg.removeEventListener("touchend", hide);
+        svg.removeEventListener("touchcancel", hide);
+      };
     };
 
     const renderLineChart = (svg, series, options = {}) => {
@@ -383,9 +562,128 @@ require __DIR__ . '/../partials/topbar.php';
         path += `${idx === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)} `;
       });
 
+      const buildSplitPath = (rows, sign) => {
+        if (!Array.isArray(rows) || rows.length < 2) return "";
+        const chunks = [];
+        let current = [];
+        const flush = () => {
+          if (current.length < 2) {
+            current = [];
+            return;
+          }
+          let part = "";
+          current.forEach((p, idx) => {
+            part += `${idx === 0 ? "M" : "L"}${p.x.toFixed(2)} ${p.y.toFixed(2)} `;
+          });
+          chunks.push(part.trim());
+          current = [];
+        };
+
+        const inside = (value) => (sign === "positive" ? value >= 0 : value <= 0);
+        for (let i = 0; i < rows.length - 1; i += 1) {
+          const a = rows[i];
+          const b = rows[i + 1];
+          const aIn = inside(a.value);
+          const bIn = inside(b.value);
+
+          if (aIn && current.length === 0) current.push(a);
+          if (aIn && bIn) {
+            current.push(b);
+            continue;
+          }
+
+          if ((a.value < 0 && b.value > 0) || (a.value > 0 && b.value < 0)) {
+            const t = (0 - a.value) / (b.value - a.value);
+            const cx = a.x + ((b.x - a.x) * t);
+            const cy = a.y + ((b.y - a.y) * t);
+            const cross = { x: cx, y: cy, value: 0 };
+            if (aIn) {
+              current.push(cross);
+              flush();
+            } else if (bIn) {
+              current.push(cross);
+              current.push(b);
+            }
+            continue;
+          }
+
+          if (aIn && !bIn) {
+            flush();
+          }
+        }
+        flush();
+        return chunks.join(" ");
+      };
+
       const cls = options.pathClass || "space-path-live";
-      svg.insertAdjacentHTML("beforeend", `<path d="${path.trim()}" class="${cls}" />`);
+      if (options.fillClass && projected.length > 1) {
+        const fillTo = typeof options.fillToValue === "number" ? options.fillToValue : yMin;
+        const clampedFill = Math.max(yMin, Math.min(yMax, fillTo));
+        const fillY = toY(clampedFill);
+        const firstPoint = projected[0];
+        const lastPoint = projected[projected.length - 1];
+        const areaPath = `${path.trim()} L${lastPoint.x.toFixed(2)} ${fillY.toFixed(2)} L${firstPoint.x.toFixed(2)} ${fillY.toFixed(2)} Z`;
+        svg.insertAdjacentHTML("beforeend", `<path d="${areaPath}" class="${options.fillClass}" />`);
+      }
+      if (options.splitAtZero) {
+        const posPath = buildSplitPath(projected, "positive");
+        const negPath = buildSplitPath(projected, "negative");
+        if (posPath) svg.insertAdjacentHTML("beforeend", `<path d="${posPath}" class="${options.positivePathClass || cls}" />`);
+        if (negPath) svg.insertAdjacentHTML("beforeend", `<path d="${negPath}" class="${options.negativePathClass || cls}" />`);
+      } else {
+        svg.insertAdjacentHTML("beforeend", `<path d="${path.trim()}" class="${cls}" />`);
+      }
       return { projected, yMin, yMax, xOffset, width, yOffset, height };
+    };
+
+    const renderMagnetometersChart = (svg, rows) => {
+      if (!svg) return { projected: [] };
+      svg.innerHTML = "";
+
+      const points = Array.isArray(rows)
+        ? rows
+          .map((row) => ({
+            time_utc: typeof row?.time_utc === "string" ? row.time_utc : null,
+            hp: typeof row?.hp === "number" ? row.hp : null,
+            he: typeof row?.he === "number" ? row.he : null,
+          }))
+          .filter((row) => row.hp !== null || row.he !== null)
+        : [];
+
+      if (points.length < 2) {
+        svg.innerHTML = "<text x='12' y='22' fill='currentColor'>No chart data</text>";
+        return { projected: [] };
+      }
+
+      const values = points.flatMap((row) => [row.hp, row.he]).filter((v) => typeof v === "number");
+      const yMin = Math.min(...values);
+      const yMax = Math.max(...values);
+      const hpSeries = points.map((row) => ({ value: row.hp, time_utc: row.time_utc })).filter((row) => typeof row.value === "number");
+      const heSeries = points.map((row) => ({ value: row.he, time_utc: row.time_utc })).filter((row) => typeof row.value === "number");
+
+      const base = renderLineChart(svg, hpSeries, { yMin, yMax, pathClass: "space-path-mag-hp" });
+      if (!base || heSeries.length < 2) return base || { projected: [] };
+
+      const range = Math.max(1e-6, base.yMax - base.yMin);
+      const step = heSeries.length > 1 ? base.width / (heSeries.length - 1) : base.width;
+      let path = "";
+      const heProjected = [];
+      heSeries.forEach((row, idx) => {
+        const x = base.xOffset + (idx * step);
+        const y = base.yOffset + (base.height - (((row.value - base.yMin) / range) * base.height));
+        heProjected.push({ x, y, value: row.value, time_utc: row.time_utc });
+        path += `${idx === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)} `;
+      });
+      svg.insertAdjacentHTML("beforeend", `<path d="${path.trim()}" class="space-path-mag-he" />`);
+
+      const hover = base.projected.map((point, idx) => ({
+        x: point.x,
+        y: point.y,
+        time_utc: point.time_utc || heProjected[idx]?.time_utc || null,
+        hp: point.value,
+        he: heProjected[idx]?.value ?? null,
+      }));
+      return { projected: hover };
     };
 
     const renderKpChart = (observedRows, forecastRows) => {
@@ -469,6 +767,8 @@ require __DIR__ . '/../partials/topbar.php';
       if (listFlares) listFlares.innerHTML = "<li class='timeline-row'>Unable to load flare events.</li>";
       if (summary) summary.textContent = "Space weather streams unavailable right now.";
       if (kpiSource) kpiSource.textContent = "Source unavailable";
+      if (moonName) moonName.textContent = "Moon phase unavailable";
+      if (moonMeta) moonMeta.textContent = "Illumination --";
     };
 
     const load = async () => {
@@ -659,7 +959,11 @@ require __DIR__ . '/../partials/topbar.php';
       const windPoints = windSeries
         .map((row) => ({ value: typeof row.speed === "number" ? row.speed : null, time_utc: row.time_utc, label: "Solar wind" }))
         .filter((row) => row.value !== null);
-      const windRender = renderLineChart(chartWind, windPoints, { pathClass: "space-path-wind" });
+      const windRender = renderLineChart(chartWind, windPoints, {
+        pathClass: "space-path-wind",
+        fillClass: "space-area-wind",
+      });
+      applyWindSeverityTheme(chartWind, windRender?.projected || []);
       bindChartHover(chartWind, windRender?.projected || [], (point) => {
         const when = point.time_utc ? formatTime(point.time_utc) : "n/a";
         return `<strong>Solar wind</strong><span>${when}</span><span>${formatNumber(point.value, 0)} km/s</span>`;
@@ -669,11 +973,75 @@ require __DIR__ . '/../partials/topbar.php';
       const bzPoints = bzSeries
         .map((row) => ({ value: typeof row.bz === "number" ? row.bz : null, time_utc: row.time_utc, label: "IMF Bz" }))
         .filter((row) => row.value !== null);
-      const bzRender = renderLineChart(chartBz, bzPoints, { pathClass: "space-path-bz", zeroAt: 0 });
+      const bzRender = renderLineChart(chartBz, bzPoints, {
+        pathClass: "space-path-bz",
+        zeroAt: 0,
+        splitAtZero: true,
+        positivePathClass: "space-path-bz-pos",
+        negativePathClass: "space-path-bz-neg",
+      });
       bindChartHover(chartBz, bzRender?.projected || [], (point) => {
         const when = point.time_utc ? formatTime(point.time_utc) : "n/a";
         return `<strong>IMF Bz</strong><span>${when}</span><span>${formatNumber(point.value, 1)} nT</span>`;
       });
+
+      const densitySeries = Array.isArray(payload.solar_wind_density_series_24h) ? payload.solar_wind_density_series_24h : [];
+      const densityPoints = densitySeries
+        .map((row) => ({ value: typeof row.density === "number" ? row.density : null, time_utc: row.time_utc }))
+        .filter((row) => row.value !== null);
+      const densityRender = renderLineChart(chartDensity, densityPoints, { pathClass: "space-path-density", fillClass: "space-area-density", yMin: 0 });
+      bindChartHover(chartDensity, densityRender?.projected || [], (point) => {
+        const when = point.time_utc ? formatTime(point.time_utc) : "n/a";
+        return `<strong>Solar wind density</strong><span>${when}</span><span>${formatNumber(point.value, 2)} p/cm3</span>`;
+      });
+
+      const btSeries = Array.isArray(payload.imf_bt_series_24h) ? payload.imf_bt_series_24h : [];
+      const btPoints = btSeries
+        .map((row) => ({ value: typeof row.bt === "number" ? row.bt : null, time_utc: row.time_utc }))
+        .filter((row) => row.value !== null);
+      const btRender = renderLineChart(chartBt, btPoints, { pathClass: "space-path-bt", fillClass: "space-area-bt", yMin: 0 });
+      bindChartHover(chartBt, btRender?.projected || [], (point) => {
+        const when = point.time_utc ? formatTime(point.time_utc) : "n/a";
+        return `<strong>IMF Bt</strong><span>${when}</span><span>${formatNumber(point.value, 1)} nT</span>`;
+      });
+
+      const dstSeries = Array.isArray(payload.dst_series_24h) ? payload.dst_series_24h : [];
+      const dstPoints = dstSeries
+        .map((row) => ({ value: typeof row.dst === "number" ? row.dst : null, time_utc: row.time_utc }))
+        .filter((row) => row.value !== null);
+      const dstRender = renderLineChart(chartDst, dstPoints, { pathClass: "space-path-dst", zeroAt: 0 });
+      bindChartHover(chartDst, dstRender?.projected || [], (point) => {
+        const when = point.time_utc ? formatTime(point.time_utc) : "n/a";
+        return `<strong>Dst index</strong><span>${when}</span><span>${formatNumber(point.value, 0)} nT</span>`;
+      });
+
+      const magSeries = Array.isArray(payload.magnetometers_series_24h) ? payload.magnetometers_series_24h : [];
+      const magRender = renderMagnetometersChart(chartMag, magSeries);
+      bindChartHover(chartMag, magRender?.projected || [], (point) => {
+        const when = point.time_utc ? formatTime(point.time_utc) : "n/a";
+        return `<strong>GOES magnetometers</strong><span>${when}</span><span>Hp ${formatNumber(point.hp, 1)} · He ${formatNumber(point.he, 1)}</span>`;
+      });
+
+      if (auroraImage) {
+        const auroraUrl = typeof payload.auroral_oval_url === "string" ? payload.auroral_oval_url : "";
+        if (auroraUrl) {
+          auroraImage.src = auroraUrl;
+        }
+      }
+
+      const moon = payload.moon_phase && typeof payload.moon_phase === "object" ? payload.moon_phase : null;
+      if (moonName) {
+        moonName.textContent = typeof moon?.name === "string" ? moon.name : "Moon phase unavailable";
+      }
+      if (moonMeta) {
+        const illum = typeof moon?.illumination_pct === "number" ? `${formatNumber(moon.illumination_pct, 1)}%` : "--";
+        const age = typeof moon?.age_days === "number" ? `${formatNumber(moon.age_days, 1)}d` : "--";
+        moonMeta.textContent = `Illumination ${illum} · Age ${age}`;
+      }
+      if (moonMeterFill) {
+        const illumValue = typeof moon?.illumination_pct === "number" ? Math.max(0, Math.min(100, moon.illumination_pct)) : 0;
+        moonMeterFill.style.width = `${illumValue}%`;
+      }
       } catch (error) {
         setError();
       }
