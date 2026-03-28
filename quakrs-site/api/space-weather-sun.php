@@ -52,7 +52,12 @@ foreach ($sources as $sourceUrl) {
 
     $contentType = str_contains(strtolower($sourceUrl), '.png') ? 'image/png' : 'image/jpeg';
 
-    @file_put_contents($cacheBodyPath, $body, LOCK_EX);
+    $tmpBodyPath = sprintf('%s.tmp.%d.%s', $cacheBodyPath, getmypid(), str_replace('.', '', uniqid('', true)));
+    if (@file_put_contents($tmpBodyPath, $body, LOCK_EX) !== false) {
+        @rename($tmpBodyPath, $cacheBodyPath);
+    } else {
+        @unlink($tmpBodyPath);
+    }
     write_json_file($cacheMetaPath, [
         'generated_at_ts' => $now,
         'generated_at' => gmdate('c', $now),

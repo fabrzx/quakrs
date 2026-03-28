@@ -23,20 +23,52 @@ function earthquake_archive_key(array $event): string
     return implode('|', [$lat, $lon, $mag, $timeMinute]);
 }
 
-function earthquake_archive_mysql_config(array $appConfig): array
+function earthquake_mysql_role_config(array $appConfig, string $role): array
 {
-    $cfg = is_array($appConfig['archive_mysql'] ?? null) ? $appConfig['archive_mysql'] : [];
-    $tableRaw = trim((string) ($cfg['table'] ?? 'earthquake_events'));
+    $normalizedRole = strtolower(trim($role));
+    $roleCfgs = is_array($appConfig['mysql_databases'] ?? null) ? $appConfig['mysql_databases'] : [];
+    $legacyCfg = is_array($appConfig['archive_mysql'] ?? null) ? $appConfig['archive_mysql'] : [];
+    $cfg = is_array($roleCfgs[$normalizedRole] ?? null) ? $roleCfgs[$normalizedRole] : [];
+    if (count($cfg) === 0 && $normalizedRole === 'archive') {
+        $cfg = $legacyCfg;
+    }
+
+    $pickString = static function (array $primary, array $fallback, string $key, string $default = ''): string {
+        $primaryValue = trim((string) ($primary[$key] ?? ''));
+        if ($primaryValue !== '') {
+            return $primaryValue;
+        }
+        $fallbackValue = trim((string) ($fallback[$key] ?? ''));
+        if ($fallbackValue !== '') {
+            return $fallbackValue;
+        }
+        return $default;
+    };
+
+    $host = $pickString($cfg, $legacyCfg, 'host');
+    $port = (int) ($cfg['port'] ?? ($legacyCfg['port'] ?? 3306));
+    $database = $pickString($cfg, $legacyCfg, 'database');
+    $user = $pickString($cfg, $legacyCfg, 'user');
+    $password = (string) (($cfg['password'] ?? '') !== '' ? $cfg['password'] : ($legacyCfg['password'] ?? ''));
+    $charset = $pickString($cfg, $legacyCfg, 'charset', 'utf8mb4');
+    $tableRaw = $pickString($cfg, $legacyCfg, 'table', 'earthquake_events');
     $table = preg_match('/^[a-zA-Z0-9_]+$/', $tableRaw) ? $tableRaw : 'earthquake_events';
+
     return [
-        'host' => trim((string) ($cfg['host'] ?? '')),
-        'port' => (int) ($cfg['port'] ?? 3306),
-        'database' => trim((string) ($cfg['database'] ?? '')),
-        'user' => trim((string) ($cfg['user'] ?? '')),
-        'password' => (string) ($cfg['password'] ?? ''),
-        'charset' => trim((string) ($cfg['charset'] ?? 'utf8mb4')) ?: 'utf8mb4',
+        'role' => $normalizedRole,
+        'host' => $host,
+        'port' => $port,
+        'database' => $database,
+        'user' => $user,
+        'password' => $password,
+        'charset' => $charset,
         'table' => $table,
     ];
+}
+
+function earthquake_archive_mysql_config(array $appConfig): array
+{
+    return earthquake_mysql_role_config($appConfig, 'archive');
 }
 
 function earthquake_archive_table_sql(string $table): string
@@ -65,16 +97,32 @@ function earthquake_archive_table_sql(string $table): string
     );
 }
 
-function earthquake_archive_open(array $appConfig, ?string &$reason = null): ?mysqli
+function earthquake_stats_table_sql(string $table): string
+{
+    return sprintf(
+        'CREATE TABLE IF NOT EXISTS `%s` (
+            date_utc DATE PRIMARY KEY,
+            updated_at_ts INT UNSIGNED NOT NULL,
+            events_24h INT UNSIGNED NOT NULL DEFAULT 0,
+            providers_json TEXT NULL,
+            max_magnitude DECIMAL(4,2) NULL,
+            generated_at_utc VARCHAR(40) NOT NULL,
+            INDEX idx_updated_at_ts (updated_at_ts)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',
+        $table
+    );
+}
+
+function earthquake_mysql_open(array $appConfig, string $role, ?string &$reason = null): ?mysqli
 {
     if (!function_exists('mysqli_init')) {
         $reason = 'mysqli extension unavailable';
         return null;
     }
 
-    $cfg = earthquake_archive_mysql_config($appConfig);
+    $cfg = earthquake_mysql_role_config($appConfig, $role);
     if ($cfg['host'] === '' || $cfg['database'] === '' || $cfg['user'] === '') {
-        $reason = 'missing MySQL archive configuration';
+        $reason = sprintf('missing MySQL %s configuration', $cfg['role']);
         return null;
     }
 
@@ -99,17 +147,24 @@ function earthquake_archive_open(array $appConfig, ?string &$reason = null): ?my
         }
 
         $mysqli->set_charset($cfg['charset']);
-        $createSql = earthquake_archive_table_sql($cfg['table']);
+        $createSql = $cfg['role'] === 'stats'
+            ? earthquake_stats_table_sql($cfg['table'])
+            : earthquake_archive_table_sql($cfg['table']);
         if ($mysqli->query($createSql) !== true) {
-            $reason = 'MySQL schema init failed';
+            $reason = sprintf('MySQL schema init failed (%s)', $cfg['role']);
             return null;
         }
     } catch (Throwable $e) {
-        $reason = 'MySQL exception: ' . $e->getMessage();
+        $reason = sprintf('MySQL exception (%s): %s', $cfg['role'], $e->getMessage());
         return null;
     }
 
     return $mysqli;
+}
+
+function earthquake_archive_open(array $appConfig, ?string &$reason = null): ?mysqli
+{
+    return earthquake_mysql_open($appConfig, 'archive', $reason);
 }
 
 function earthquake_archive_ingest(mysqli $db, array $events, int $nowTs, string $table): int
@@ -213,4 +268,42 @@ function earthquake_archive_ingest(mysqli $db, array $events, int $nowTs, string
 
     $stmt->close();
     return $written;
+}
+
+function earthquake_stats_upsert_daily(
+    mysqli $db,
+    string $table,
+    int $nowTs,
+    int $events24h,
+    array $providers,
+    ?float $maxMagnitude
+): bool {
+    $providersJson = json_encode(array_values(array_unique(array_filter($providers, static fn (mixed $v): bool => is_string($v) && trim($v) !== ''))), JSON_UNESCAPED_SLASHES);
+    if (!is_string($providersJson) || $providersJson === '') {
+        $providersJson = '[]';
+    }
+    $dateUtc = gmdate('Y-m-d', $nowTs);
+    $generatedAt = gmdate('c', $nowTs);
+    $maxMagText = $maxMagnitude !== null ? (string) $maxMagnitude : null;
+    $eventsInt = max(0, $events24h);
+    $nowInt = max(0, $nowTs);
+
+    $sql = sprintf(
+        'INSERT INTO `%s` (date_utc, updated_at_ts, events_24h, providers_json, max_magnitude, generated_at_utc)
+         VALUES (?, ?, ?, ?, ?, ?)
+         ON DUPLICATE KEY UPDATE
+            updated_at_ts = VALUES(updated_at_ts),
+            events_24h = VALUES(events_24h),
+            providers_json = VALUES(providers_json),
+            max_magnitude = VALUES(max_magnitude),
+            generated_at_utc = VALUES(generated_at_utc)',
+        $table
+    );
+    $stmt = $db->prepare($sql);
+    if (!$stmt instanceof mysqli_stmt) {
+        return false;
+    }
+    $ok = $stmt->bind_param('siisss', $dateUtc, $nowInt, $eventsInt, $providersJson, $maxMagText, $generatedAt) && $stmt->execute();
+    $stmt->close();
+    return $ok;
 }

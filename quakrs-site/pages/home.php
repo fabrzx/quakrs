@@ -5,7 +5,7 @@ $pageTitle = 'Quakrs.com - Global Seismic Platform';
 $pageDescription = 'Real-time earthquakes, volcanoes, tsunami alerts, space weather and operational data views.';
 $currentPage = 'home';
 $includeLeaflet = true;
-$bodyClass = 'home-page home-2026 home-acid-balanced';
+$bodyClass = 'home-page home-2026 home-acid-balanced home-acid-brutalist';
 
 require __DIR__ . '/../partials/head.php';
 require __DIR__ . '/../partials/topbar.php';
@@ -25,7 +25,7 @@ require __DIR__ . '/../partials/topbar.php';
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="/earthquakes.php"><?= htmlspecialchars(qk_t('home.hero.open_monitors'), ENT_QUOTES, 'UTF-8'); ?></a>
-        <a class="btn btn-ghost" href="/data-archive.php"><?= htmlspecialchars(qk_t('home.hero.browse_archive'), ENT_QUOTES, 'UTF-8'); ?></a>
+        <a class="btn btn-ghost" href="/archive.php"><?= htmlspecialchars(qk_t('home.hero.browse_archive'), ENT_QUOTES, 'UTF-8'); ?></a>
       </div>
     </div>
 
@@ -189,7 +189,7 @@ require __DIR__ . '/../partials/topbar.php';
       <p class="home-section-kicker"><?= htmlspecialchars(qk_t('home.monitoring_layers'), ENT_QUOTES, 'UTF-8'); ?></p>
       <h3><?= htmlspecialchars(qk_t('home.monitors'), ENT_QUOTES, 'UTF-8'); ?></h3>
     </div>
-    <a class="inline-link home-dashboard-archive-link" href="/data-archive.php"><?= htmlspecialchars(qk_t('home.browse_archive'), ENT_QUOTES, 'UTF-8'); ?></a>
+    <a class="inline-link home-dashboard-archive-link" href="/archive.php"><?= htmlspecialchars(qk_t('home.browse_archive'), ENT_QUOTES, 'UTF-8'); ?></a>
   </div>
   <div class="home-dashboard-monitors-grid">
     <article id="home-panel-clusters" class="snapshot-card home-priority-module home-neo-module home-dashboard-monitor">
@@ -271,7 +271,7 @@ require __DIR__ . '/../partials/topbar.php';
       <h4><?= htmlspecialchars(qk_t('nav.space_weather'), ENT_QUOTES, 'UTF-8'); ?></h4>
       <p><?= htmlspecialchars(qk_t('home.cover_space_desc'), ENT_QUOTES, 'UTF-8'); ?></p>
     </a>
-    <a class="card home-v2-cover-card" href="/data-archive.php">
+    <a class="card home-v2-cover-card" href="/archive.php">
       <span class="home-v2-cover-tag"><?= htmlspecialchars(qk_t('home.cover_historic_search'), ENT_QUOTES, 'UTF-8'); ?></span>
       <div class="home-v2-cover-media home-v2-cover-media-archive" aria-hidden="true"></div>
       <h4><?= htmlspecialchars(qk_t('nav.archive'), ENT_QUOTES, 'UTF-8'); ?></h4>
@@ -282,29 +282,29 @@ require __DIR__ . '/../partials/topbar.php';
 
 <section class="panel home-v2-trust">
   <p class="launch-copy"><?= htmlspecialchars(qk_t('home.trusted_sources'), ENT_QUOTES, 'UTF-8'); ?></p>
-  <div class="home-v2-trust-row card" aria-label="<?= htmlspecialchars(qk_t('home.aria_sources_partners'), ENT_QUOTES, 'UTF-8'); ?>">
+  <div class="home-v2-trust-row" aria-label="<?= htmlspecialchars(qk_t('home.aria_sources_partners'), ENT_QUOTES, 'UTF-8'); ?>">
     <span class="home-v2-trust-item">
-      <img class="home-v2-trust-logo" src="/assets/icons/providers/usgs-mark.svg" alt="" loading="lazy" />
+      <img class="home-v2-trust-logo" src="/assets/icons/providers/usgs-mark.svg" alt="" />
       <span>USGS</span>
     </span>
     <span class="home-v2-trust-item">
-      <img class="home-v2-trust-logo" src="/assets/icons/providers/emsc.png" alt="" loading="lazy" />
+      <img class="home-v2-trust-logo" src="/assets/icons/providers/emsc.png" alt="" />
       <span>EMSC</span>
     </span>
     <span class="home-v2-trust-item">
-      <img class="home-v2-trust-logo" src="/assets/icons/providers/noaa.svg" alt="" loading="lazy" />
+      <img class="home-v2-trust-logo" src="/assets/icons/providers/noaa.svg" alt="" />
       <span>NOAA</span>
     </span>
     <span class="home-v2-trust-item">
-      <img class="home-v2-trust-logo" src="/assets/icons/providers/cnp.svg" alt="" loading="lazy" />
+      <img class="home-v2-trust-logo" src="/assets/icons/providers/cnp.svg" alt="" />
       <span><?= htmlspecialchars(qk_t('home.trust_earthquakes_cnp'), ENT_QUOTES, 'UTF-8'); ?></span>
     </span>
     <span class="home-v2-trust-item">
-      <img class="home-v2-trust-logo" src="/assets/icons/providers/gvp-mark.svg" alt="" loading="lazy" />
+      <img class="home-v2-trust-logo" src="/assets/icons/providers/gvp-mark.svg" alt="" />
       <span>Smithsonian GVP</span>
     </span>
     <span class="home-v2-trust-item">
-      <img class="home-v2-trust-logo" src="/assets/icons/providers/ingv.ico" alt="" loading="lazy" />
+      <img class="home-v2-trust-logo" src="/assets/icons/providers/ingv.ico" alt="" />
       <span>INGV</span>
     </span>
   </div>

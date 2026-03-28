@@ -18,7 +18,7 @@ require __DIR__ . '/../partials/topbar.php';
   </div>
 </main>
 
-<section class="panel panel-kpi">
+<section class="panel panel-kpi aftershocks-kpi-panel">
   <article class="card kpi-card">
     <p class="kpi-label">Active Sequences</p>
     <p id="aftershocks-kpi-active" class="kpi-value">--</p>
@@ -41,8 +41,8 @@ require __DIR__ . '/../partials/topbar.php';
   </article>
 </section>
 
-<section class="panel">
-  <article class="card">
+<section class="panel aftershocks-map-panel">
+  <article class="card aftershocks-map-card">
     <div class="feed-head">
       <h3>Sequence Map</h3>
       <p id="aftershocks-map-meta" class="feed-meta">Waiting for sequence selection...</p>
@@ -53,48 +53,48 @@ require __DIR__ . '/../partials/topbar.php';
   </article>
 </section>
 
-<section class="panel panel-main">
-  <article class="card">
+<section class="panel panel-main aftershocks-main-panel">
+  <article class="card aftershocks-sequences-card">
     <div class="feed-head">
       <h3>1) Pick A Sequence</h3>
       <p id="aftershocks-sequences-meta" class="feed-meta">Loading active sequences...</p>
     </div>
-    <ul id="aftershocks-sequences-list" class="events-list live-feed-scroll">
+    <ul id="aftershocks-sequences-list" class="events-list live-feed-scroll aftershocks-sequences-list">
       <li class="event-item">Loading sequence index...</li>
     </ul>
   </article>
 
-  <article class="card side-card">
+  <article class="card side-card aftershocks-detail-card">
     <div class="feed-head">
       <h3 id="aftershocks-detail-title">2) Sequence Detail</h3>
       <p id="aftershocks-detail-meta" class="feed-meta">Awaiting selection...</p>
     </div>
-    <ul id="aftershocks-detail-kpis" class="events-list">
+    <ul id="aftershocks-detail-kpis" class="events-list aftershocks-detail-kpis">
       <li class="event-item">Waiting for sequence data...</li>
     </ul>
-    <h4>Recent Aftershock Stream</h4>
-    <ul id="aftershocks-events-list" class="events-list live-feed-scroll">
+    <h4 class="aftershocks-stream-title">Recent Aftershock Stream</h4>
+    <ul id="aftershocks-events-list" class="events-list live-feed-scroll aftershocks-events-list">
       <li class="event-item">Select a sequence to inspect events.</li>
     </ul>
   </article>
 </section>
 
-<section class="panel panel-charts">
-  <article class="card">
+<section class="panel panel-charts aftershocks-charts-panel">
+  <article class="card aftershocks-chart-card">
     <div class="feed-head">
       <h3>3) Aftershock Timeline</h3>
       <p id="aftershocks-timeline-meta" class="feed-meta">Daily counts in sequence window.</p>
     </div>
-    <ul id="aftershocks-timeline-bars" class="events-list">
+    <ul id="aftershocks-timeline-bars" class="events-list aftershocks-bars-list">
       <li class="event-item">Select a sequence to load timeline.</li>
     </ul>
   </article>
-  <article class="card">
+  <article class="card aftershocks-chart-card">
     <div class="feed-head">
       <h3>4) Magnitude Distribution</h3>
       <p id="aftershocks-mag-meta" class="feed-meta">Histogram by aftershock magnitude.</p>
     </div>
-    <ul id="aftershocks-mag-bars" class="events-list">
+    <ul id="aftershocks-mag-bars" class="events-list aftershocks-bars-list">
       <li class="event-item">Select a sequence to load distribution.</li>
     </ul>
   </article>
@@ -132,15 +132,26 @@ require __DIR__ . '/../partials/topbar.php';
 
     const fmtMag = (value) => (typeof value === "number" && Number.isFinite(value) ? `M${value.toFixed(1)}` : "M?");
     const fmtUtc = (iso) => {
-      if (!iso) return "----/--/-- --:-- UTC";
+      if (!iso) return "----/--/-- --:--";
       const dt = new Date(iso);
-      if (Number.isNaN(dt.getTime())) return "----/--/-- --:-- UTC";
-      const y = dt.getUTCFullYear();
-      const m = String(dt.getUTCMonth() + 1).padStart(2, "0");
-      const d = String(dt.getUTCDate()).padStart(2, "0");
-      const h = String(dt.getUTCHours()).padStart(2, "0");
-      const min = String(dt.getUTCMinutes()).padStart(2, "0");
-      return `${y}/${m}/${d} ${h}:${min} UTC`;
+      if (Number.isNaN(dt.getTime())) return "----/--/-- --:--";
+      return dt.toLocaleString("it-IT", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      });
+    };
+    const dayKeyItaly = (input) => {
+      const dt = new Date(input);
+      if (Number.isNaN(dt.getTime())) return "";
+      return dt.toLocaleDateString("en-CA", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      });
     };
 
     const escapeHtml = (value) =>
@@ -236,16 +247,21 @@ require __DIR__ . '/../partials/topbar.php';
       }
 
       const rows = Array.isArray(sequence.aftershocks) ? sequence.aftershocks : [];
+      const baseZoom = map.getZoom();
+      const lowZoom = baseZoom <= 2.2;
+      const midZoom = baseZoom > 2.2 && baseZoom <= 3;
+      const strokeOpacity = lowZoom ? 0.42 : (midZoom ? 0.62 : 0.78);
       rows.forEach((event) => {
         const lat = Number(event.latitude);
         const lon = Number(event.longitude);
         if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
         const marker = window.L.circleMarker([lat, lon], {
           radius: mapRadius(Number(event.magnitude)),
-          color: "#d1d5db",
-          weight: 1,
+          color: `rgba(255,255,255,${strokeOpacity})`,
+          opacity: strokeOpacity,
+          weight: lowZoom ? 0.55 : (midZoom ? 0.75 : 0.9),
           fillColor: magColor(Number(event.magnitude)),
-          fillOpacity: 0.85,
+          fillOpacity: lowZoom ? 0.78 : (midZoom ? 0.82 : 0.85),
         });
         marker.bindTooltip(`${fmtMag(event.magnitude)} · ${event.place || "Unknown"}`);
         marker.addTo(aftershockLayer);
@@ -283,16 +299,14 @@ require __DIR__ . '/../partials/topbar.php';
       const byDay = new Map();
       for (let i = 0; i < days; i++) {
         const ts = mainTs + i * 86400000;
-        const dt = new Date(ts);
-        const key = `${dt.getUTCFullYear()}/${String(dt.getUTCMonth() + 1).padStart(2, "0")}/${String(dt.getUTCDate()).padStart(2, "0")}`;
+        const key = dayKeyItaly(ts);
         byDay.set(key, 0);
       }
 
       rows.forEach((event) => {
         const ts = Date.parse(event.event_time_utc || "");
         if (!Number.isFinite(ts)) return;
-        const dt = new Date(ts);
-        const key = `${dt.getUTCFullYear()}/${String(dt.getUTCMonth() + 1).padStart(2, "0")}/${String(dt.getUTCDate()).padStart(2, "0")}`;
+        const key = dayKeyItaly(ts);
         if (byDay.has(key)) {
           byDay.set(key, Number(byDay.get(key) || 0) + 1);
         }
@@ -304,11 +318,11 @@ require __DIR__ . '/../partials/topbar.php';
         .map(([label, count]) => {
           const width = Math.round((count / maxCount) * 100);
           return `
-            <li class="event-item">
-              <strong>${escapeHtml(label)}</strong><br />
-              ${count} event(s)
-              <div style="margin-top:6px;height:7px;border-radius:999px;background:rgba(148,163,184,0.2);overflow:hidden;">
-                <div style="height:100%;width:${width}%;background:linear-gradient(90deg,#22d3ee,#38bdf8,#6366f1);"></div>
+            <li class="event-item aftershocks-bar-item">
+              <strong>${escapeHtml(label)}</strong>
+              <span class="aftershocks-bar-count">${count} event(s)</span>
+              <div class="aftershocks-meter">
+                <div class="aftershocks-meter-fill is-timeline" style="width:${width}%"></div>
               </div>
             </li>
           `;
@@ -353,11 +367,11 @@ require __DIR__ . '/../partials/topbar.php';
         .map((bin) => {
           const width = Math.round((bin.count / maxCount) * 100);
           return `
-            <li class="event-item">
-              <strong>M${escapeHtml(bin.key)}</strong><br />
-              ${bin.count} event(s)
-              <div style="margin-top:6px;height:7px;border-radius:999px;background:rgba(148,163,184,0.2);overflow:hidden;">
-                <div style="height:100%;width:${width}%;background:linear-gradient(90deg,#14b8a6,#22c55e,#84cc16);"></div>
+            <li class="event-item aftershocks-bar-item">
+              <strong>M${escapeHtml(bin.key)}</strong>
+              <span class="aftershocks-bar-count">${bin.count} event(s)</span>
+              <div class="aftershocks-meter">
+                <div class="aftershocks-meter-fill is-magnitude" style="width:${width}%"></div>
               </div>
             </li>
           `;
@@ -418,11 +432,10 @@ require __DIR__ . '/../partials/topbar.php';
           const isActive = sid === activeSequenceId;
           const href = `/aftershocks.php?sequence_id=${encodeURIComponent(sid)}`;
           return `
-            <li class="event-item">
-              <strong>${escapeHtml(fmtMag(mainshock.magnitude))} · ${escapeHtml(mainshock.place || "Unknown location")}</strong><br />
-              Mainshock: ${escapeHtml(fmtUtc(mainshock.event_time_utc))}<br />
-              Aftershocks: ${Number(row.aftershocks_count || 0)} total · ${Number(row.aftershocks_24h_count || 0)} in 24h
-              <br />
+            <li class="event-item aftershocks-sequence-item">
+              <strong>${escapeHtml(fmtMag(mainshock.magnitude))} · ${escapeHtml(mainshock.place || "Unknown location")}</strong>
+              <span class="aftershocks-sequence-meta">Mainshock: ${escapeHtml(fmtUtc(mainshock.event_time_utc))}</span>
+              <span class="aftershocks-sequence-meta">Aftershocks: ${Number(row.aftershocks_count || 0)} total · ${Number(row.aftershocks_24h_count || 0)} in 24h</span>
               <a class="inline-link ${isActive ? "is-active" : ""}" href="${href}">${isActive ? "Viewing sequence" : "Open sequence"}</a>
             </li>
           `;
@@ -431,8 +444,13 @@ require __DIR__ . '/../partials/topbar.php';
     }
 
     function renderSequence(sequencePayload) {
-      const sequence = sequencePayload?.sequence;
-      if (!sequence || typeof sequence !== "object") {
+      const sequence =
+        sequencePayload && typeof sequencePayload === "object"
+          ? (sequencePayload.sequence && typeof sequencePayload.sequence === "object"
+              ? sequencePayload.sequence
+              : sequencePayload)
+          : null;
+      if (!sequence || typeof sequence !== "object" || !sequence.mainshock) {
         if (detailTitle) detailTitle.textContent = "Sequence Detail";
         if (detailMeta) detailMeta.textContent = "Sequence unavailable.";
         if (detailKpis) detailKpis.innerHTML = "<li class='event-item'>No detail payload available.</li>";
@@ -452,10 +470,10 @@ require __DIR__ . '/../partials/topbar.php';
       }
       if (detailKpis) {
         detailKpis.innerHTML = `
-          <li class="event-item"><strong>Status</strong><br />${escapeHtml(sequence.status || "active")}</li>
-          <li class="event-item"><strong>Total aftershocks</strong><br />${Number(sequence.aftershocks_count || 0)}</li>
-          <li class="event-item"><strong>Last 24h</strong><br />${Number(sequence.aftershocks_24h_count || 0)}</li>
-          <li class="event-item"><strong>Strongest aftershock</strong><br />${escapeHtml(fmtMag(sequence.strongest_aftershock_magnitude))}</li>
+          <li class="event-item aftershocks-detail-kpi"><strong>Status</strong><span>${escapeHtml(sequence.status || "active")}</span></li>
+          <li class="event-item aftershocks-detail-kpi"><strong>Total aftershocks</strong><span>${Number(sequence.aftershocks_count || 0)}</span></li>
+          <li class="event-item aftershocks-detail-kpi"><strong>Last 24h</strong><span>${Number(sequence.aftershocks_24h_count || 0)}</span></li>
+          <li class="event-item aftershocks-detail-kpi"><strong>Strongest aftershock</strong><span>${escapeHtml(fmtMag(sequence.strongest_aftershock_magnitude))}</span></li>
         `;
       }
 
@@ -466,9 +484,9 @@ require __DIR__ . '/../partials/topbar.php';
         } else {
           eventsList.innerHTML = rows
             .map((event) => `
-              <li class="event-item">
-                <strong>${escapeHtml(fmtMag(event.magnitude))} · ${escapeHtml(event.place || "Unknown location")}</strong><br />
-                ${escapeHtml(fmtUtc(event.event_time_utc))} · ${Number(event.distance_km_from_mainshock || 0).toFixed(1)} km from mainshock
+              <li class="event-item aftershocks-stream-item">
+                <strong>${escapeHtml(fmtMag(event.magnitude))} · ${escapeHtml(event.place || "Unknown location")}</strong>
+                <span class="aftershocks-stream-meta">${escapeHtml(fmtUtc(event.event_time_utc))} · ${Number(event.distance_km_from_mainshock || 0).toFixed(1)} km from mainshock</span>
               </li>
             `)
             .join("");

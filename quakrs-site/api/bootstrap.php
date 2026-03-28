@@ -66,7 +66,21 @@ function write_json_file(string $path, array $payload): bool
         return false;
     }
 
-    return file_put_contents($path, $encoded . PHP_EOL, LOCK_EX) !== false;
+    $dir = dirname($path);
+    if (!is_dir($dir)) {
+        return false;
+    }
+
+    $tmpPath = sprintf('%s/.%s.tmp.%d.%s', $dir, basename($path), getmypid(), str_replace('.', '', uniqid('', true)));
+    $written = @file_put_contents($tmpPath, $encoded . PHP_EOL, LOCK_EX);
+    if ($written === false) {
+        return false;
+    }
+    if (!@rename($tmpPath, $path)) {
+        @unlink($tmpPath);
+        return false;
+    }
+    return true;
 }
 
 function write_log(string $logsDir, string $message): void

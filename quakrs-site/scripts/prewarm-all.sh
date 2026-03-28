@@ -5,15 +5,24 @@ BASE_URL="${1:-https://www.quakrs.com}"
 TIMEOUT="${TIMEOUT:-30}"
 HISTORY_POINTS="${HISTORY_POINTS:-14}"
 TOKEN="${QUAKRS_REFRESH_TOKEN:-}"
+LOCK_FILE="${LOCK_FILE:-/tmp/quakrs-prewarm-all.lock}"
 
 if [ -z "$TOKEN" ]; then
   echo "Missing QUAKRS_REFRESH_TOKEN" >&2
   exit 1
 fi
 
+if command -v flock >/dev/null 2>&1; then
+  exec 9>"$LOCK_FILE"
+  if ! flock -n 9; then
+    echo "[prewarm] skipped: lock busy (${LOCK_FILE})"
+    exit 0
+  fi
+fi
+
 echo "[prewarm] base=${BASE_URL}"
 
-for endpoint in earthquakes aftershocks volcanoes tremors tsunami space-weather volcano-cams hotspots bulletins; do
+for endpoint in earthquakes aftershocks volcanoes tremors tsunami space-weather earthquake-cams weather-cams space-weather-cams tsunami-cams volcano-cams hotspots bulletins; do
   echo "[prewarm] refresh ${endpoint}"
   curl -fsS --max-time "$TIMEOUT" \
     -H 'Accept: application/json' \

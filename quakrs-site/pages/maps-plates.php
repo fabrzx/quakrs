@@ -62,9 +62,9 @@ require __DIR__ . '/../partials/topbar.php';
       <button class="map-filter-btn band-m7p is-active" data-layer="faults" type="button" aria-pressed="true">Faults ON</button>
     </div>
   </article>
-  <article class="card side-card">
+  <article class="card side-card map-side-list-card">
     <h3>Strongest Events</h3>
-    <ul id="plates-strongest-list" class="events-list">
+    <ul id="plates-strongest-list" class="events-list map-side-list-scroll">
       <li class="event-item">Loading tectonic context...</li>
     </ul>
   </article>
@@ -99,6 +99,18 @@ require __DIR__ . '/../partials/topbar.php';
     let platesGeoJson = null;
     let faultsGeoJson = null;
     let tectonicBundle = null;
+    const rootStyles = window.getComputedStyle(document.documentElement);
+    const cssVar = (name, fallback) => {
+      const value = rootStyles.getPropertyValue(name);
+      return value ? value.trim() : fallback;
+    };
+    const platesPalette = {
+      plates: cssVar("--hazard-tsunami", "#20e0ff"),
+      faults: cssVar("--hazard-critical", "#ff7a00"),
+      m4: cssVar("--hazard-earthquake", "#b7ff00"),
+      m5: cssVar("--hazard-space", "#ffe600"),
+      m6: cssVar("--danger-acid", "#ff4d6d"),
+    };
 
     const map = mapContainer && window.L
       ? window.L.map(mapContainer, { zoomControl: true, worldCopyJump: true, preferCanvas: true }).setView([16, 8], 2)
@@ -253,7 +265,7 @@ require __DIR__ . '/../partials/topbar.php';
         let segments = 0;
         window.L.geoJSON(data, {
           style: {
-            color: "#22d3ee",
+            color: platesPalette.plates,
             weight: 1.25,
             opacity: 0.8,
           },
@@ -268,7 +280,7 @@ require __DIR__ . '/../partials/topbar.php';
 
       fallbackPlateLines.forEach((line) => {
         window.L.polyline(line, {
-          color: "#22d3ee",
+          color: platesPalette.plates,
           weight: 1.5,
           opacity: 0.75,
           dashArray: "6 6",
@@ -299,7 +311,7 @@ require __DIR__ . '/../partials/topbar.php';
           if (geometry.coordinates.length < 2) return;
           traces += 1;
             window.L.polyline(geometry.coordinates.map(([lng, lat]) => [lat, lng]), {
-              color: "#ff7a5f",
+              color: platesPalette.faults,
               weight: faultWeight,
               opacity: faultOpacity,
               interactive: false,
@@ -312,7 +324,7 @@ require __DIR__ . '/../partials/topbar.php';
             if (!Array.isArray(line) || line.length < 2) return;
             traces += 1;
             window.L.polyline(line.map(([lng, lat]) => [lat, lng]), {
-              color: "#ff7a5f",
+              color: platesPalette.faults,
               weight: faultWeight,
               opacity: faultOpacity,
               interactive: false,
@@ -331,19 +343,24 @@ require __DIR__ . '/../partials/topbar.php';
       const filtered = events.filter((event) => typeof event.magnitude === "number" && event.magnitude >= minMagnitude);
       const zoom = map ? map.getZoom() : 2;
       const zoomBoost = Math.max(0, (zoom - 2) * 0.55);
+      const lowZoomScale = zoom <= 2.2 ? 0.82 : (zoom <= 3 ? 0.9 : 1);
+      const lowZoom = zoom <= 2.2;
+      const midZoom = zoom > 2.2 && zoom <= 3;
       filtered.slice(0, 600).forEach((event) => {
         if (typeof event.latitude !== "number" || typeof event.longitude !== "number") return;
         const mag = event.magnitude;
         const baseRadius = Math.max(2.8, Math.min(12.5, 2.8 + mag * 1.14));
-        const radius = Math.min(16, baseRadius + zoomBoost);
-        const color = mag >= 6 ? "#ef4444" : (mag >= 5 ? "#f97316" : (mag >= 4 ? "#f59e0b" : "#22c55e"));
+        const radius = Math.min(16, (baseRadius + zoomBoost) * lowZoomScale);
+        const color = mag >= 6 ? platesPalette.m6 : (mag >= 5 ? platesPalette.m5 : platesPalette.m4);
+        const strokeOpacity = lowZoom ? 0.42 : (midZoom ? 0.62 : 0.9);
 
         window.L.circleMarker([event.latitude, event.longitude], {
           radius,
-          color: "rgba(255,255,255,0.9)",
-          weight: 1,
+          color: `rgba(255,255,255,${strokeOpacity})`,
+          opacity: strokeOpacity,
+          weight: lowZoom ? 0.55 : (midZoom ? 0.75 : 1),
           fillColor: color,
-          fillOpacity: 0.88,
+          fillOpacity: lowZoom ? 0.8 : (midZoom ? 0.84 : 0.88),
         })
           .bindTooltip(`M${mag.toFixed(1)} - ${event.place || "Unknown"}`)
           .addTo(eventsLayer);

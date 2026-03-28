@@ -1,12 +1,33 @@
 {
     "ok": true,
     "provider": "Curated Observatory Cameras",
-    "generated_at_ts": 1773745754,
-    "generated_at": "2026-03-17T11:09:14+00:00",
-    "cams_count": 12,
-    "countries_count": 4,
-    "snapshot_enabled_count": 8,
+    "generated_at_ts": 1774645064,
+    "generated_at": "2026-03-27T20:57:44+00:00",
+    "cams_count": 30,
+    "countries_count": 7,
+    "snapshot_enabled_count": 10,
     "cams": [
+        {
+            "id": "popocatepetl-mexico",
+            "name": "Popocatepetl",
+            "volcano": "Popocatepetl",
+            "country": "Mexico",
+            "source": "CENAPRED",
+            "status": "Monitoring",
+            "stream_url": "https://www.cenapred.gob.mx/es/reportesVolcanesMX/",
+            "embed_url": "http://www.atlasnacionalderiesgos.gob.mx/app/BoletinPopo/sync3.html",
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 58,
+            "priority_reasons": [
+                "Inline live player",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
         {
             "id": "kilauea-b1cam-united-states",
             "name": "Kilauea B1cam",
@@ -176,6 +197,69 @@
             "hotspot_new_eruptive_reports": 0
         },
         {
+            "id": "fuego-guatemala",
+            "name": "Fuego",
+            "volcano": "Fuego",
+            "country": "Guatemala",
+            "source": "Michigan Tech (with INSIVUMEH support)",
+            "status": "Monitoring",
+            "stream_url": "https://ovfuego-norte.geo.mtu.edu/animations.php",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 42,
+            "priority_reasons": [
+                "External-only source",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "great-sitkin-webcams-united-states",
+            "name": "Great Sitkin Webcams",
+            "volcano": "Great Sitkin",
+            "country": "United States",
+            "source": "USGS AVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/great-sitkin/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 42,
+            "priority_reasons": [
+                "External-only source",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "merapi-camera-indonesia",
+            "name": "Merapi Camera",
+            "volcano": "Merapi",
+            "country": "Indonesia",
+            "source": "Magma Indonesia",
+            "status": "Monitoring",
+            "stream_url": "https://magma.esdm.go.id/v1/gunung-api/laporan-harian",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 42,
+            "priority_reasons": [
+                "External-only source",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
             "id": "etna-live-stream-italy",
             "name": "Etna Live Stream",
             "volcano": "Etna",
@@ -184,25 +268,6 @@
             "status": "Monitoring",
             "stream_url": "https://www.ct.ingv.it/sezioniesterne/StreamingEtna.php",
             "embed_url": "https://garr.tv/videos/embed/c6c70a03-e711-4eed-9835-1d02f5a5ec58",
-            "snapshot_url": null,
-            "snapshot_fallback_available": false,
-            "priority_score": 26,
-            "priority_reasons": [
-                "Inline live player"
-            ],
-            "hotspot_status": null,
-            "hotspot_reports": 0,
-            "hotspot_new_eruptive_reports": 0
-        },
-        {
-            "id": "popocatepetl-mexico",
-            "name": "Popocatepetl",
-            "volcano": "Popocatepetl",
-            "country": "Mexico",
-            "source": "CENAPRED",
-            "status": "Monitoring",
-            "stream_url": "https://www.cenapred.gob.mx/es/reportesVolcanesMX/",
-            "embed_url": "http://www.atlasnacionalderiesgos.gob.mx/app/BoletinPopo/sync3.html",
             "snapshot_url": null,
             "snapshot_fallback_available": false,
             "priority_score": 26,
@@ -233,13 +298,298 @@
             "hotspot_new_eruptive_reports": 0
         },
         {
-            "id": "fuego-guatemala",
-            "name": "Fuego",
-            "volcano": "Fuego",
-            "country": "Guatemala",
-            "source": "Michigan Tech (with INSIVUMEH support)",
+            "id": "mauna-loa-m1cam-united-states",
+            "name": "Mauna Loa M1cam",
+            "volcano": "Mauna Loa",
+            "country": "United States",
+            "source": "USGS HVO",
             "status": "Monitoring",
-            "stream_url": "https://ovfuego-norte.geo.mtu.edu/animations.php",
+            "stream_url": "https://www.usgs.gov/volcanoes/mauna-loa/webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/M1cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 19,
+            "priority_reasons": [
+                "Direct snapshot available"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mauna-loa-m2cam-united-states",
+            "name": "Mauna Loa M2cam",
+            "volcano": "Mauna Loa",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mauna-loa/webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/M2cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 19,
+            "priority_reasons": [
+                "Direct snapshot available"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "crater-lake-webcams-united-states",
+            "name": "Crater Lake Webcams",
+            "volcano": "Crater Lake",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/crater-lake/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mauna-loa-webcams-united-states",
+            "name": "Mauna Loa Webcams",
+            "volcano": "Mauna Loa",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mauna-loa/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mount-adams-volcano-webcams-united-states",
+            "name": "Mount Adams Volcano Webcams",
+            "volcano": "Mount Adams",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mount-adams/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mount-baker-volcano-webcams-united-states",
+            "name": "Mount Baker Volcano Webcams",
+            "volcano": "Mount Baker",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mount-baker/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mount-hood-volcano-webcams-united-states",
+            "name": "Mount Hood Volcano Webcams",
+            "volcano": "Mount Hood",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mount-hood/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mount-rainier-volcano-webcams-united-states",
+            "name": "Mount Rainier Volcano Webcams",
+            "volcano": "Mount Rainier",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mount-rainier/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mount-st-helens-webcams-united-states",
+            "name": "Mount St. Helens Webcams",
+            "volcano": "Mount St. Helens",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mount-st-helens/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "newberry-volcano-webcams-united-states",
+            "name": "Newberry Volcano Webcams",
+            "volcano": "Newberry",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/newberry/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "pavlof-webcams-united-states",
+            "name": "Pavlof Webcams",
+            "volcano": "Pavlof",
+            "country": "United States",
+            "source": "USGS AVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/pavlof/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "reykjanes-peninsula-live-cams-iceland",
+            "name": "Reykjanes Peninsula Live Cams",
+            "volcano": "Reykjanes",
+            "country": "Iceland",
+            "source": "Live From Iceland",
+            "status": "Monitoring",
+            "stream_url": "https://www.livefromiceland.is/webcams/reykjanes/",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "sakurajima-camera-japan",
+            "name": "Sakurajima Camera",
+            "volcano": "Sakurajima",
+            "country": "Japan",
+            "source": "Kagoshima Prefecture",
+            "status": "Monitoring",
+            "stream_url": "https://www.kagoshima-yokanavi.jp/en/feature/sakurajima-livecamera",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "semeru-camera-indonesia",
+            "name": "Semeru Camera",
+            "volcano": "Semeru",
+            "country": "Indonesia",
+            "source": "Magma Indonesia",
+            "status": "Monitoring",
+            "stream_url": "https://magma.esdm.go.id/v1/gunung-api/laporan-harian",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "shishaldin-webcams-united-states",
+            "name": "Shishaldin Webcams",
+            "volcano": "Shishaldin",
+            "country": "United States",
+            "source": "USGS AVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/shishaldin/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "three-sisters-volcano-webcams-united-states",
+            "name": "Three Sisters Volcano Webcams",
+            "volcano": "Three Sisters",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/three-sisters/webcams",
             "embed_url": null,
             "snapshot_url": null,
             "snapshot_fallback_available": false,
@@ -254,6 +604,27 @@
     ],
     "hot_now": [
         {
+            "id": "popocatepetl-mexico",
+            "name": "Popocatepetl",
+            "volcano": "Popocatepetl",
+            "country": "Mexico",
+            "source": "CENAPRED",
+            "status": "Monitoring",
+            "stream_url": "https://www.cenapred.gob.mx/es/reportesVolcanesMX/",
+            "embed_url": "http://www.atlasnacionalderiesgos.gob.mx/app/BoletinPopo/sync3.html",
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 58,
+            "priority_reasons": [
+                "Inline live player",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
             "id": "kilauea-b1cam-united-states",
             "name": "Kilauea B1cam",
             "volcano": "Kilauea",
@@ -295,84 +666,6 @@
             "hotspot_reports": 1,
             "hotspot_new_eruptive_reports": 0
         },
-        {
-            "id": "etna-live-stream-italy",
-            "name": "Etna Live Stream",
-            "volcano": "Etna",
-            "country": "Italy",
-            "source": "INGV Catania",
-            "status": "Monitoring",
-            "stream_url": "https://www.ct.ingv.it/sezioniesterne/StreamingEtna.php",
-            "embed_url": "https://garr.tv/videos/embed/c6c70a03-e711-4eed-9835-1d02f5a5ec58",
-            "snapshot_url": null,
-            "snapshot_fallback_available": false,
-            "priority_score": 26,
-            "priority_reasons": [
-                "Inline live player"
-            ],
-            "hotspot_status": null,
-            "hotspot_reports": 0,
-            "hotspot_new_eruptive_reports": 0
-        },
-        {
-            "id": "popocatepetl-mexico",
-            "name": "Popocatepetl",
-            "volcano": "Popocatepetl",
-            "country": "Mexico",
-            "source": "CENAPRED",
-            "status": "Monitoring",
-            "stream_url": "https://www.cenapred.gob.mx/es/reportesVolcanesMX/",
-            "embed_url": "http://www.atlasnacionalderiesgos.gob.mx/app/BoletinPopo/sync3.html",
-            "snapshot_url": null,
-            "snapshot_fallback_available": false,
-            "priority_score": 26,
-            "priority_reasons": [
-                "Inline live player"
-            ],
-            "hotspot_status": null,
-            "hotspot_reports": 0,
-            "hotspot_new_eruptive_reports": 0
-        },
-        {
-            "id": "stromboli-live-italy",
-            "name": "Stromboli Live",
-            "volcano": "Stromboli",
-            "country": "Italy",
-            "source": "INGV Catania",
-            "status": "Monitoring",
-            "stream_url": "https://www.ct.ingv.it/sezioniesterne/StreamingEolie.php",
-            "embed_url": "https://garr.tv/videos/embed/8790a7a8-211c-4794-bcb2-41e24cd2e322",
-            "snapshot_url": null,
-            "snapshot_fallback_available": false,
-            "priority_score": 26,
-            "priority_reasons": [
-                "Inline live player"
-            ],
-            "hotspot_status": null,
-            "hotspot_reports": 0,
-            "hotspot_new_eruptive_reports": 0
-        },
-        {
-            "id": "fuego-guatemala",
-            "name": "Fuego",
-            "volcano": "Fuego",
-            "country": "Guatemala",
-            "source": "Michigan Tech (with INSIVUMEH support)",
-            "status": "Monitoring",
-            "stream_url": "https://ovfuego-norte.geo.mtu.edu/animations.php",
-            "embed_url": null,
-            "snapshot_url": null,
-            "snapshot_fallback_available": false,
-            "priority_score": 10,
-            "priority_reasons": [
-                "External-only source"
-            ],
-            "hotspot_status": null,
-            "hotspot_reports": 0,
-            "hotspot_new_eruptive_reports": 0
-        }
-    ],
-    "rotating_candidates": [
         {
             "id": "kilauea-k2cam-united-states",
             "name": "Kilauea K2cam",
@@ -497,6 +790,413 @@
             ],
             "hotspot_status": "Continuing Eruptive Activity",
             "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "fuego-guatemala",
+            "name": "Fuego",
+            "volcano": "Fuego",
+            "country": "Guatemala",
+            "source": "Michigan Tech (with INSIVUMEH support)",
+            "status": "Monitoring",
+            "stream_url": "https://ovfuego-norte.geo.mtu.edu/animations.php",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 42,
+            "priority_reasons": [
+                "External-only source",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "great-sitkin-webcams-united-states",
+            "name": "Great Sitkin Webcams",
+            "volcano": "Great Sitkin",
+            "country": "United States",
+            "source": "USGS AVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/great-sitkin/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 42,
+            "priority_reasons": [
+                "External-only source",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "merapi-camera-indonesia",
+            "name": "Merapi Camera",
+            "volcano": "Merapi",
+            "country": "Indonesia",
+            "source": "Magma Indonesia",
+            "status": "Monitoring",
+            "stream_url": "https://magma.esdm.go.id/v1/gunung-api/laporan-harian",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 42,
+            "priority_reasons": [
+                "External-only source",
+                "Continuing eruptive activity",
+                "1 hotspot reports"
+            ],
+            "hotspot_status": "Continuing Eruptive Activity",
+            "hotspot_reports": 1,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "etna-live-stream-italy",
+            "name": "Etna Live Stream",
+            "volcano": "Etna",
+            "country": "Italy",
+            "source": "INGV Catania",
+            "status": "Monitoring",
+            "stream_url": "https://www.ct.ingv.it/sezioniesterne/StreamingEtna.php",
+            "embed_url": "https://garr.tv/videos/embed/c6c70a03-e711-4eed-9835-1d02f5a5ec58",
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 26,
+            "priority_reasons": [
+                "Inline live player"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "stromboli-live-italy",
+            "name": "Stromboli Live",
+            "volcano": "Stromboli",
+            "country": "Italy",
+            "source": "INGV Catania",
+            "status": "Monitoring",
+            "stream_url": "https://www.ct.ingv.it/sezioniesterne/StreamingEolie.php",
+            "embed_url": "https://garr.tv/videos/embed/8790a7a8-211c-4794-bcb2-41e24cd2e322",
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 26,
+            "priority_reasons": [
+                "Inline live player"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mauna-loa-m1cam-united-states",
+            "name": "Mauna Loa M1cam",
+            "volcano": "Mauna Loa",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mauna-loa/webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/M1cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 19,
+            "priority_reasons": [
+                "Direct snapshot available"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mauna-loa-m2cam-united-states",
+            "name": "Mauna Loa M2cam",
+            "volcano": "Mauna Loa",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mauna-loa/webcams",
+            "embed_url": null,
+            "snapshot_url": "https://volcanoes.usgs.gov/observatories/hvo/cams/M2cam/images/M.jpg",
+            "snapshot_fallback_available": true,
+            "priority_score": 19,
+            "priority_reasons": [
+                "Direct snapshot available"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        }
+    ],
+    "rotating_candidates": [
+        {
+            "id": "crater-lake-webcams-united-states",
+            "name": "Crater Lake Webcams",
+            "volcano": "Crater Lake",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/crater-lake/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mauna-loa-webcams-united-states",
+            "name": "Mauna Loa Webcams",
+            "volcano": "Mauna Loa",
+            "country": "United States",
+            "source": "USGS HVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mauna-loa/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mount-adams-volcano-webcams-united-states",
+            "name": "Mount Adams Volcano Webcams",
+            "volcano": "Mount Adams",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mount-adams/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mount-baker-volcano-webcams-united-states",
+            "name": "Mount Baker Volcano Webcams",
+            "volcano": "Mount Baker",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mount-baker/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mount-hood-volcano-webcams-united-states",
+            "name": "Mount Hood Volcano Webcams",
+            "volcano": "Mount Hood",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mount-hood/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mount-rainier-volcano-webcams-united-states",
+            "name": "Mount Rainier Volcano Webcams",
+            "volcano": "Mount Rainier",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mount-rainier/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "mount-st-helens-webcams-united-states",
+            "name": "Mount St. Helens Webcams",
+            "volcano": "Mount St. Helens",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/mount-st-helens/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "newberry-volcano-webcams-united-states",
+            "name": "Newberry Volcano Webcams",
+            "volcano": "Newberry",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/newberry/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "pavlof-webcams-united-states",
+            "name": "Pavlof Webcams",
+            "volcano": "Pavlof",
+            "country": "United States",
+            "source": "USGS AVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/pavlof/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "reykjanes-peninsula-live-cams-iceland",
+            "name": "Reykjanes Peninsula Live Cams",
+            "volcano": "Reykjanes",
+            "country": "Iceland",
+            "source": "Live From Iceland",
+            "status": "Monitoring",
+            "stream_url": "https://www.livefromiceland.is/webcams/reykjanes/",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "sakurajima-camera-japan",
+            "name": "Sakurajima Camera",
+            "volcano": "Sakurajima",
+            "country": "Japan",
+            "source": "Kagoshima Prefecture",
+            "status": "Monitoring",
+            "stream_url": "https://www.kagoshima-yokanavi.jp/en/feature/sakurajima-livecamera",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "semeru-camera-indonesia",
+            "name": "Semeru Camera",
+            "volcano": "Semeru",
+            "country": "Indonesia",
+            "source": "Magma Indonesia",
+            "status": "Monitoring",
+            "stream_url": "https://magma.esdm.go.id/v1/gunung-api/laporan-harian",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "shishaldin-webcams-united-states",
+            "name": "Shishaldin Webcams",
+            "volcano": "Shishaldin",
+            "country": "United States",
+            "source": "USGS AVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/shishaldin/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
+            "hotspot_new_eruptive_reports": 0
+        },
+        {
+            "id": "three-sisters-volcano-webcams-united-states",
+            "name": "Three Sisters Volcano Webcams",
+            "volcano": "Three Sisters",
+            "country": "United States",
+            "source": "USGS CVO",
+            "status": "Monitoring",
+            "stream_url": "https://www.usgs.gov/volcanoes/three-sisters/webcams",
+            "embed_url": null,
+            "snapshot_url": null,
+            "snapshot_fallback_available": false,
+            "priority_score": 10,
+            "priority_reasons": [
+                "External-only source"
+            ],
+            "hotspot_status": null,
+            "hotspot_reports": 0,
             "hotspot_new_eruptive_reports": 0
         }
     ],

@@ -16,11 +16,51 @@ Use these jobs in production to keep data preloaded and avoid empty/slow blocks.
 */15 * * * * QUAKRS_REFRESH_TOKEN=YOUR_REFRESH_TOKEN HISTORY_POINTS=18 /bin/sh /var/www/quakrs-site/scripts/prewarm-all.sh https://www.quakrs.com >> /var/log/quakrs/prewarm-all.log 2>&1
 ```
 
+3. Italy statistics refresh every 30 minutes (for instant recap on page load)
+
+```cron
+*/30 * * * * QUAKRS_REFRESH_TOKEN=YOUR_REFRESH_TOKEN /bin/sh /var/www/quakrs-site/scripts/refresh-italy-statistics.sh https://www.quakrs.com >> /var/log/quakrs/refresh-italy-statistics.log 2>&1
+```
+
 ## Notes
 
 - `refresh-feeds.sh` refreshes core/hazard/derived feeds and tectonic cache.
 - `prewarm-all.sh` also preloads `event-history` for active seismic zones.
 - Keep both jobs; they serve different latencies and payload weights.
+
+## Cache Garbage Collection (query-based files)
+
+Use this lightweight job to prevent unbounded disk growth from query-shaped cache files:
+- `data/event_history_*.json` (older than 24h)
+- `data/archive_meta_cache/agg_*.json` (older than 3h)
+- `data/archive_meta_cache/facets_*.json` (older than 3h)
+
+For shared hosting / no shell access, use the protected HTTP endpoint:
+- `/api/cache-gc.php?force_refresh=1&token=YOUR_REFRESH_TOKEN`
+
+cronjob.org example (every hour):
+
+```text
+https://www.quakrs.com/api/cache-gc.php?force_refresh=1&token=YOUR_REFRESH_TOKEN
+```
+
+Recommended cronjob.org settings:
+- Schedule: every 1 hour
+- Request method: GET
+- Timeout: at least 30s
+- Notify on failure: enabled
+
+Safety notes:
+- Endpoint is protected by refresh token.
+- No external cleanup parameters are accepted.
+- Cleanup scope is limited to strict cache filename prefixes only.
+- A non-blocking lock prevents overlapping executions.
+
+If you do have server cron access, you can still use:
+
+```cron
+20 * * * * /bin/sh /var/www/quakrs-site/scripts/cache-gc.sh >> /var/log/quakrs/cache-gc.log 2>&1
+```
 
 ## Historical Archive Backfill (MySQL)
 
@@ -71,3 +111,27 @@ Optional query params:
 
 HTTP checkpoint file:
 - `data/backfill_earthquakes_http_checkpoint.json`
+
+## Live -> Archive Rollover (DB1 -> DB2)
+
+Use this recurring job to keep `live` slim and automatically move old rows to `archive`.
+
+Phase A (temporary catch-up, then disable):
+
+```cron
+*/5 * * * * curl -fsS "https://www.quakrs.com/api/rollover-earthquakes.php?force_refresh=1&token=YOUR_REFRESH_TOKEN&retention_days=90&limit=20000" >/dev/null
+```
+
+Run this until `eligible_rows` drops below ~`50000` in dry-run output.
+
+Phase B (steady-state maintenance):
+
+```cron
+35 2 * * * curl -fsS "https://www.quakrs.com/api/rollover-earthquakes.php?force_refresh=1&token=YOUR_REFRESH_TOKEN&retention_days=90&limit=5000" >/dev/null
+```
+
+Dry run (manual check):
+
+```text
+https://www.quakrs.com/api/rollover-earthquakes.php?force_refresh=1&token=YOUR_REFRESH_TOKEN&retention_days=90&limit=5000&dry_run=1
+```

@@ -1,0 +1,91 @@
+{
+    "sequence_id": "30f086d3fabeb3329faa",
+    "mainshock_key": "id:us7000s789",
+    "mainshock": {
+        "id": "us7000s789",
+        "key": "id:us7000s789",
+        "place": "166 km W of Neiafu, Tonga",
+        "magnitude": 7.5,
+        "depth_km": 229.453,
+        "latitude": -18.6678,
+        "longitude": -175.5601,
+        "event_time_utc": "2026-03-24T04:37:50+00:00",
+        "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s789",
+        "source_provider": "USGS"
+    },
+    "mainshock_ts": 1774327070,
+    "trigger_magnitude": 6,
+    "radius_km": 150,
+    "window_hours": 168,
+    "min_aftershock_magnitude": 1,
+    "aftershocks": [
+        {
+            "id": "20260324_0000101",
+            "key": "id:20260324_0000101",
+            "place": "TONGA",
+            "magnitude": 4.6,
+            "depth_km": 218,
+            "latitude": -18.5574,
+            "longitude": -175.3964,
+            "event_time_utc": "2026-03-24T06:45:59+00:00",
+            "source_url": "",
+            "source_provider": "EMSC",
+            "distance_km_from_mainshock": 21.2
+        },
+        {
+            "id": "us7000s79u",
+            "key": "id:us7000s79u",
+            "place": "158 km W of Neiafu, Tonga",
+            "magnitude": 4.6,
+            "depth_km": 192.935,
+            "latitude": -18.5916,
+            "longitude": -175.4885,
+            "event_time_utc": "2026-03-24T06:45:57+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s79u",
+            "source_provider": "USGS",
+            "distance_km_from_mainshock": 11.3
+        },
+        {
+            "id": "us7000s79e",
+            "key": "id:us7000s79e",
+            "place": "157 km W of Neiafu, Tonga",
+            "magnitude": 5.2,
+            "depth_km": 216.14,
+            "latitude": -18.4693,
+            "longitude": -175.46,
+            "event_time_utc": "2026-03-24T05:22:24+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s79e",
+            "source_provider": "USGS",
+            "distance_km_from_mainshock": 24.5
+        },
+        {
+            "id": "us7000s799",
+            "key": "id:us7000s799",
+            "place": "145 km WNW of Neiafu, Tonga",
+            "magnitude": 4.9,
+            "depth_km": 230.034,
+            "latitude": -18.2032,
+            "longitude": -175.2732,
+            "event_time_utc": "2026-03-24T05:18:32+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s799",
+            "source_provider": "USGS",
+            "distance_km_from_mainshock": 59.9
+        }
+    ],
+    "aftershock_keys": [
+        "id:20260324_0000101",
+        "id:us7000s79u",
+        "id:us7000s79e",
+        "id:us7000s799"
+    ],
+    "generated_at_ts": 1774645123,
+    "generated_at": "2026-03-27T20:58:43+00:00",
+    "status": "active",
+    "expires_at_ts": 1774931870,
+    "expires_at": "2026-03-31T04:37:50+00:00",
+    "aftershocks_count": 4,
+    "aftershocks_24h_count": 0,
+    "strongest_aftershock_magnitude": 5.2,
+    "latest_aftershock_time_utc": "2026-03-24T06:45:59+00:00",
+    "aftershock_rate_per_hour": 0.045
+}

@@ -21,6 +21,10 @@ require __DIR__ . '/../partials/topbar.php';
 
 <section class="panel page-grid">
   <article class="card page-card">
+    <h3>Sources + Status bridge</h3>
+    <p>Open <a class="inline-link" href="<?= htmlspecialchars(qk_localized_url('/sources-status.php'), ENT_QUOTES, 'UTF-8'); ?>">Sources & Reliability</a> for a unified view of provenance, latency, freshness, and known feed limits.</p>
+  </article>
+  <article class="card page-card">
     <h3>Earthquakes</h3>
     <p>USGS, INGV and EMSC feeds are merged into one operational stream for map, timeline and regional activity modules.</p>
   </article>

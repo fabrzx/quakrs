@@ -102,6 +102,22 @@ function haversine_distance_km(float $lat1, float $lon1, float $lat2, float $lon
     return $earthRadiusKm * $c;
 }
 
+function event_is_italy_region(array $event): bool
+{
+    $lat = isset($event['latitude']) && is_numeric($event['latitude']) ? (float) $event['latitude'] : null;
+    $lon = isset($event['longitude']) && is_numeric($event['longitude']) ? (float) $event['longitude'] : null;
+    if ($lat === null || $lon === null) {
+        return false;
+    }
+    // Align with the Italy viewport used by the dedicated Italy feed.
+    return $lat >= 35.0 && $lat <= 48.8 && $lon >= 6.0 && $lon <= 19.6;
+}
+
+function event_provider_is_ingv(array $event): bool
+{
+    return strtolower((string) ($event['source_provider'] ?? '')) === 'ingv';
+}
+
 function events_are_probable_duplicate(array $a, array $b): bool
 {
     $aTs = isset($a['event_time_utc']) ? strtotime((string) $a['event_time_utc']) : false;
@@ -193,6 +209,22 @@ function dedupe_events(array $events, int $maxEvents): array
             is_array($event['source_providers'] ?? null) ? $event['source_providers'] : [(string) ($event['source_provider'] ?? '')]
         )));
 
+        $italyScoped = event_is_italy_region($existing) || event_is_italy_region($event);
+        if ($italyScoped) {
+            $existingIsIngv = event_provider_is_ingv($existing);
+            $candidateIsIngv = event_provider_is_ingv($event);
+            if ($candidateIsIngv && !$existingIsIngv) {
+                $event['source_providers'] = $providers;
+                $merged[$mergedIndex] = $event;
+                continue;
+            }
+            if ($existingIsIngv && !$candidateIsIngv) {
+                $existing['source_providers'] = $providers;
+                $merged[$mergedIndex] = $existing;
+                continue;
+            }
+        }
+
         if ($candidateScore > $existingScore) {
             $event['source_providers'] = $providers;
             $merged[$mergedIndex] = $event;
@@ -247,6 +279,7 @@ if (count($sourceConfigs) === 0) {
 }
 
 $events = [];
+$ingestRawEvents = [];
 $sourceStatus = [];
 $providersUsed = [];
 $recentWindowSeconds = 24 * 60 * 60;
@@ -284,7 +317,12 @@ foreach ($sourceConfigs as $sourceConfig) {
         }
 
         $eventTs = isset($normalized['event_time_utc']) ? strtotime((string) $normalized['event_time_utc']) : false;
-        if (!is_int($eventTs) || $eventTs < $recentCutoffTs) {
+        if (!is_int($eventTs)) {
+            continue;
+        }
+
+        $ingestRawEvents[] = $normalized;
+        if ($eventTs < $recentCutoffTs) {
             continue;
         }
 
@@ -342,26 +380,96 @@ $payload = [
     'from_cache' => false,
 ];
 
-$archiveReason = null;
-$archiveDb = earthquake_archive_open($appConfig, $archiveReason);
-$archiveCfg = earthquake_archive_mysql_config($appConfig);
-$archiveTable = (string) ($archiveCfg['table'] ?? 'earthquake_events');
-if ($archiveDb instanceof mysqli) {
-    $written = earthquake_archive_ingest($archiveDb, $deduped, $now, $archiveTable);
-    $archiveDb->close();
-    $payload['archive'] = [
+$liveReason = null;
+$liveDb = earthquake_mysql_open($appConfig, 'live', $liveReason);
+$liveCfg = earthquake_mysql_role_config($appConfig, 'live');
+$liveTable = (string) ($liveCfg['table'] ?? 'earthquake_events');
+if ($liveDb instanceof mysqli) {
+    $written = earthquake_archive_ingest($liveDb, $deduped, $now, $liveTable);
+    $liveDb->close();
+    $payload['live'] = [
         'enabled' => true,
         'db' => 'mysql',
-        'table' => $archiveTable,
+        'table' => $liveTable,
         'written' => $written,
     ];
 } else {
-    $payload['archive'] = [
+    $payload['live'] = [
         'enabled' => false,
         'db' => 'mysql',
-        'reason' => $archiveReason ?: 'not configured',
+        'reason' => $liveReason ?: 'not configured',
     ];
-    write_log($appConfig['logs_dir'], 'Earthquakes archive unavailable: ' . ($archiveReason ?: 'not configured'));
+    write_log($appConfig['logs_dir'], 'Earthquakes live DB unavailable: ' . ($liveReason ?: 'not configured'));
+}
+
+$archiveCfg = earthquake_archive_mysql_config($appConfig);
+$archiveTable = (string) ($archiveCfg['table'] ?? 'earthquake_events');
+$payload['archive'] = [
+    'enabled' => false,
+    'db' => 'mysql',
+    'table' => $archiveTable,
+    'reason' => 'archive is populated by rollover/backfill only',
+];
+
+$ingestReason = null;
+$ingestDb = earthquake_mysql_open($appConfig, 'ingest', $ingestReason);
+$ingestCfg = earthquake_mysql_role_config($appConfig, 'ingest');
+$ingestTable = (string) ($ingestCfg['table'] ?? 'earthquake_events_raw');
+if ($ingestDb instanceof mysqli) {
+    $written = earthquake_archive_ingest($ingestDb, $ingestRawEvents, $now, $ingestTable);
+    $ingestDb->close();
+    $payload['ingest'] = [
+        'enabled' => true,
+        'db' => 'mysql',
+        'table' => $ingestTable,
+        'written' => $written,
+        'raw_events_count' => count($ingestRawEvents),
+    ];
+} else {
+    $payload['ingest'] = [
+        'enabled' => false,
+        'db' => 'mysql',
+        'reason' => $ingestReason ?: 'not configured',
+    ];
+}
+
+$maxMagnitude = null;
+foreach ($deduped as $event) {
+    if (!is_array($event) || !isset($event['magnitude']) || !is_numeric($event['magnitude'])) {
+        continue;
+    }
+    $mag = (float) $event['magnitude'];
+    if ($maxMagnitude === null || $mag > $maxMagnitude) {
+        $maxMagnitude = $mag;
+    }
+}
+
+$statsReason = null;
+$statsDb = earthquake_mysql_open($appConfig, 'stats', $statsReason);
+$statsCfg = earthquake_mysql_role_config($appConfig, 'stats');
+$statsTable = (string) ($statsCfg['table'] ?? 'earthquake_daily_stats');
+if ($statsDb instanceof mysqli) {
+    $statsOk = earthquake_stats_upsert_daily(
+        $statsDb,
+        $statsTable,
+        $now,
+        count($deduped),
+        array_values(array_unique($providersUsed)),
+        $maxMagnitude
+    );
+    $statsDb->close();
+    $payload['stats'] = [
+        'enabled' => true,
+        'db' => 'mysql',
+        'table' => $statsTable,
+        'updated' => $statsOk,
+    ];
+} else {
+    $payload['stats'] = [
+        'enabled' => false,
+        'db' => 'mysql',
+        'reason' => $statsReason ?: 'not configured',
+    ];
 }
 
 if (!write_json_file($cachePath, $payload)) {

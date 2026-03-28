@@ -1,0 +1,9 @@
+.git/
+.gitignore
+.DS_Store
+*.log
+tmp/
+cache/
+scripts/deploy.env
+scripts/deploy-ftp.env
+config/app.local.php

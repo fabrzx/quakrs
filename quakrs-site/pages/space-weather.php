@@ -29,14 +29,9 @@ require __DIR__ . '/../partials/topbar.php';
     <p class="kpi-note">Geomagnetic class</p>
   </article>
   <article class="card kpi-card">
-    <p class="kpi-label">Forecast Kp Max</p>
-    <p id="space-kpi-forecast" class="kpi-value">--</p>
-    <p class="kpi-note">Next 24h</p>
-  </article>
-  <article class="card kpi-card">
-    <p class="kpi-label">Flare Peak (24h)</p>
-    <p id="space-kpi-flare" class="kpi-value">--</p>
-    <p class="kpi-note">GOES X-ray class</p>
+    <p class="kpi-label">IMF Bz</p>
+    <p id="space-kpi-bz" class="kpi-value">--</p>
+    <p id="space-kpi-source" class="kpi-note">Loading source...</p>
   </article>
   <article class="card kpi-card">
     <p class="kpi-label">Solar Wind</p>
@@ -44,9 +39,29 @@ require __DIR__ . '/../partials/topbar.php';
     <p class="kpi-note">km/s current speed</p>
   </article>
   <article class="card kpi-card">
-    <p class="kpi-label">IMF Bz</p>
-    <p id="space-kpi-bz" class="kpi-value">--</p>
-    <p id="space-kpi-source" class="kpi-note">Loading source...</p>
+    <p class="kpi-label">Dst</p>
+    <p id="space-kpi-forecast" class="kpi-value">--</p>
+    <p class="kpi-note">Disturbance storm time (nT)</p>
+  </article>
+  <article class="card kpi-card">
+    <p class="kpi-label">Flare Peak (24h)</p>
+    <p id="space-kpi-flare" class="kpi-value">--</p>
+    <p class="kpi-note">GOES X-ray class</p>
+  </article>
+</section>
+
+<section class="panel">
+  <article class="card space-alerts-card">
+    <div class="feed-head">
+      <h3>Avvisi</h3>
+      <p id="space-alerts-meta" class="feed-meta">Valutazione in corso...</p>
+    </div>
+    <div id="space-alerts-grid" class="space-alerts-grid">
+      <article class="space-alert-item space-alert-info">
+        <h4>Inizializzazione</h4>
+        <p>Costruzione avvisi operativi...</p>
+      </article>
+    </div>
   </article>
 </section>
 
@@ -58,7 +73,7 @@ require __DIR__ . '/../partials/topbar.php';
     </div>
     <div class="space-solar-body">
       <div class="space-sun-wrap space-sun-clickable" id="space-sun-wrap" role="button" tabindex="0" aria-label="Open solar image zoom">
-        <img id="space-sun-image" class="space-sun-image" src="" alt="Latest solar disk image" loading="lazy" />
+        <img id="space-sun-image" class="space-sun-image" src="" alt="Latest solar disk image" loading="eager" fetchpriority="high" decoding="async" />
         <div id="space-sun-fallback" class="space-sun-fallback" aria-hidden="true"></div>
       </div>
       <ul class="space-solar-metrics">
@@ -196,7 +211,9 @@ require __DIR__ . '/../partials/topbar.php';
       <p id="space-moon-name" class="feed-meta">Loading moon phase...</p>
     </div>
     <div class="space-moon-block">
-      <div class="space-moon-visual" aria-hidden="true"></div>
+      <div id="space-moon-visual" class="space-moon-visual" aria-hidden="true">
+        <canvas id="space-moon-canvas" class="space-moon-canvas" width="320" height="320" aria-hidden="true"></canvas>
+      </div>
       <p id="space-moon-meta" class="kpi-note">Illumination --</p>
       <div class="space-moon-meter" role="img" aria-label="Moon illumination">
         <span id="space-moon-meter-fill"></span>
@@ -205,7 +222,7 @@ require __DIR__ . '/../partials/topbar.php';
   </article>
 </section>
 
-<section class="panel panel-main">
+<section class="panel panel-main space-main-panel">
   <article class="card recent-card">
     <div class="feed-head">
       <h3>Recent Flare Peaks</h3>
@@ -223,7 +240,7 @@ require __DIR__ . '/../partials/topbar.php';
     </ul>
   </article>
 
-  <article class="card side-card">
+  <article class="card side-card space-main-side-card">
     <h3>Forecast Steps</h3>
     <ul id="space-forecast-list" class="timeline-list">
       <li class="timeline-row">Loading forecast rows...</li>
@@ -275,6 +292,8 @@ require __DIR__ . '/../partials/topbar.php';
     const generatedAt = document.querySelector("#space-generated-at");
     const trendNote = document.querySelector("#space-trend-note");
     const summary = document.querySelector("#space-solar-summary");
+    const alertsMeta = document.querySelector("#space-alerts-meta");
+    const alertsGrid = document.querySelector("#space-alerts-grid");
 
     const sunImage = document.querySelector("#space-sun-image");
     const sunFallback = document.querySelector("#space-sun-fallback");
@@ -286,12 +305,54 @@ require __DIR__ . '/../partials/topbar.php';
     const moonName = document.querySelector("#space-moon-name");
     const moonMeta = document.querySelector("#space-moon-meta");
     const moonMeterFill = document.querySelector("#space-moon-meter-fill");
+    const moonCanvas = document.querySelector("#space-moon-canvas");
+    let lastMoonPhase = null;
+    const moonTexture = new Image();
+    let moonTextureData = null;
+    let moonTextureWidth = 0;
+    let moonTextureHeight = 0;
+
+    const showRealSun = () => {
+      if (sunFallback) sunFallback.style.display = "none";
+      if (sunImage) sunImage.style.display = "block";
+    };
+
+    const showFallbackSun = () => {
+      if (sunImage) sunImage.style.display = "none";
+      if (sunFallback) sunFallback.style.display = "block";
+    };
+
+    const primeSunImage = () => {
+      if (!sunImage) return;
+      let settled = false;
+      const timeoutId = window.setTimeout(() => {
+        if (settled) return;
+        settled = true;
+        showFallbackSun();
+      }, 1500);
+      sunImage.onload = () => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeoutId);
+        showRealSun();
+      };
+      sunImage.onerror = () => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeoutId);
+        showFallbackSun();
+      };
+      sunImage.src = "/api/space-weather-sun.php";
+    };
 
     const formatTime = (iso) => (iso
       ? new Date(iso).toLocaleString([], { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit" })
       : "n/a");
 
     const formatNumber = (value, digits = 1) => (typeof value === "number" && Number.isFinite(value) ? value.toFixed(digits) : "--");
+    const MAX_FLARE_ROWS = 6;
+    const MAX_FORECAST_ROWS = 6;
+    const MAX_READING_ROWS = 8;
 
     const inferBand = (kp) => {
       if (typeof kp !== "number") return "Unknown";
@@ -300,6 +361,189 @@ require __DIR__ . '/../partials/topbar.php';
       if (kp >= 3) return "Active";
       if (kp >= 2) return "Unsettled";
       return "Quiet";
+    };
+
+    const stormCodeOnly = (stormLevelText) => {
+      if (typeof stormLevelText === "string") {
+        const match = stormLevelText.match(/\bG[1-5]\b/i);
+        if (match && match[0]) return match[0].toUpperCase();
+      }
+      return "G0";
+    };
+
+    const alertRank = (level) => {
+      if (level === "g5") return 9;
+      if (level === "g4") return 8;
+      if (level === "g3") return 7;
+      if (level === "g2") return 6;
+      if (level === "g1") return 5;
+      if (level === "critical") return 4;
+      if (level === "elevated") return 3;
+      if (level === "watch") return 2;
+      return 1;
+    };
+
+    const formatAuroraPlaces = (rows, max = 3) => {
+      if (!Array.isArray(rows) || rows.length === 0) return "";
+      return rows
+        .slice(0, max)
+        .map((row) => {
+          const city = typeof row?.city === "string" ? row.city : "";
+          const country = typeof row?.country === "string" ? row.country : "";
+          if (city && country) return `${city} (${country})`;
+          return city || country;
+        })
+        .filter(Boolean)
+        .join(", ");
+    };
+
+    const selectAuroraTargets = (auroraTargets) => {
+      const high = Array.isArray(auroraTargets?.high) ? auroraTargets.high : [];
+      const moderate = Array.isArray(auroraTargets?.moderate) ? auroraTargets.moderate : [];
+      const watch = Array.isArray(auroraTargets?.watch) ? auroraTargets.watch : [];
+      if (high.length > 0) return high;
+      if (moderate.length > 0) return moderate;
+      if (watch.length > 0) return watch;
+      return [];
+    };
+
+    const evaluateOperationalAlerts = (scenario) => {
+      const alerts = [];
+      const kp = typeof scenario.kp === "number" ? scenario.kp : null;
+      const wind = typeof scenario.wind === "number" ? scenario.wind : null;
+      const density = typeof scenario.density === "number" ? scenario.density : null;
+      const bz = typeof scenario.bz === "number" ? scenario.bz : null;
+      const dst = typeof scenario.dst === "number" ? scenario.dst : null;
+      const stormLabel = scenario.storm || "G0";
+      const auroraTargets = scenario.auroraTargets && typeof scenario.auroraTargets === "object"
+        ? scenario.auroraTargets
+        : { high: [], moderate: [], watch: [] };
+
+      if (kp !== null && kp >= 9) {
+        alerts.push({
+          level: "g5",
+          title: `${stormLabel} - tempesta geomagnetica estrema`,
+          body: `Kp ${formatNumber(kp, 1)}: tempesta geomagnetica estrema in corso.`,
+        });
+      } else if (kp !== null && kp >= 8) {
+        alerts.push({
+          level: "g4",
+          title: `${stormLabel} - tempesta geomagnetica severa`,
+          body: `Kp ${formatNumber(kp, 1)}: tempesta geomagnetica severa in corso.`,
+        });
+      } else if (kp !== null && kp >= 7) {
+        alerts.push({
+          level: "g3",
+          title: `${stormLabel} - tempesta geomagnetica forte`,
+          body: `Kp ${formatNumber(kp, 1)}: tempesta geomagnetica forte in corso.`,
+        });
+      } else if (kp !== null && kp >= 6) {
+        alerts.push({
+          level: "g2",
+          title: `${stormLabel} - tempesta geomagnetica moderata`,
+          body: `Kp ${formatNumber(kp, 1)}: tempesta geomagnetica moderata in corso.`,
+        });
+      } else if (kp !== null && kp >= 5) {
+        alerts.push({
+          level: "g1",
+          title: `${stormLabel} - tempesta geomagnetica minore`,
+          body: `Kp ${formatNumber(kp, 1)}: tempesta geomagnetica minore in corso.`,
+        });
+      }
+
+      if (wind !== null && density !== null && wind >= 500 && density >= 20) {
+        alerts.push({
+          level: "elevated",
+          title: "Flusso solare sostenuto",
+          body: `Solar wind ${formatNumber(wind, 0)} km/s e densita ${formatNumber(density, 1)} p/cm3: input solare elevato.`,
+        });
+      } else if ((wind !== null && wind >= 470) || (density !== null && density >= 18)) {
+        alerts.push({
+          level: "watch",
+          title: "Flusso solare in aumento",
+          body: `Solar wind ${formatNumber(wind, 0)} km/s e densita ${formatNumber(density, 1)} p/cm3: condizioni da seguire.`,
+        });
+      }
+
+      if (bz !== null && bz <= -8) {
+        const ovationRows = selectAuroraTargets(auroraTargets);
+        const places = formatAuroraPlaces(ovationRows, 2);
+        alerts.push({
+          level: "critical",
+          title: "Bz molto negativo: alta probabilità di aurore",
+          body: places
+            ? `Bz ${formatNumber(bz, 1)} nT: possibile osservazione nel breve termine (${places}).`
+            : `Bz ${formatNumber(bz, 1)} nT: possibile osservazione nel breve termine alle alte latitudini.`,
+          ovationPlaces: ovationRows,
+          ovationForecast: typeof auroraTargets?.forecast_time_utc === "string" ? auroraTargets.forecast_time_utc : null,
+        });
+      }
+
+      if (dst !== null && dst <= -100) {
+        alerts.push({
+          level: "critical",
+          title: "Dst severo",
+          body: `Dst ${formatNumber(dst, 0)} nT: tempesta geomagnetica intensa in corso.`,
+        });
+      } else if (dst !== null && dst <= -60) {
+        alerts.push({
+          level: "elevated",
+          title: "Dst moderato",
+          body: `Dst ${formatNumber(dst, 0)} nT: tempesta geomagnetica moderata in corso.`,
+        });
+      }
+
+      if (alerts.length === 0) {
+        alerts.push({
+          level: "info",
+          title: "Nessuna anomalia operativa",
+          body: "Nessuna soglia di allerta superata nei parametri principali.",
+        });
+      }
+
+      return alerts.sort((a, b) => alertRank(b.level) - alertRank(a.level)).slice(0, 4);
+    };
+
+    const renderOperationalAlerts = (alerts) => {
+      if (!alertsGrid || !alertsMeta) return;
+      const escapeHtml = (value) => String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+
+      if (!Array.isArray(alerts) || alerts.length === 0) {
+        alertsMeta.textContent = "Nessun avviso disponibile";
+        alertsGrid.innerHTML = "<article class='space-alert-item space-alert-info'><h4>Nessuna anomalia operativa</h4><p>Parametri attuali sotto soglie di attenzione.</p></article>";
+        return;
+      }
+
+      alertsMeta.textContent = `${alerts.length} avvisi attivi`;
+      alertsGrid.innerHTML = alerts.map((alert) => {
+        const level = typeof alert.level === "string" ? alert.level : "info";
+        const title = typeof alert.title === "string" ? alert.title : "Avviso operativo";
+        const body = typeof alert.body === "string" ? alert.body : "";
+        const places = Array.isArray(alert.ovationPlaces) ? alert.ovationPlaces : [];
+        const hasPopover = places.length > 0;
+        const forecastLabel = typeof alert.ovationForecast === "string" ? formatTime(alert.ovationForecast) : "n/a";
+        const placesList = hasPopover
+          ? places
+            .slice(0, 8)
+            .map((row) => {
+              const city = escapeHtml(typeof row?.city === "string" ? row.city : "");
+              const country = escapeHtml(typeof row?.country === "string" ? row.country : "");
+              const value = typeof row?.value === "number" ? `${row.value}%` : "--";
+              const place = city && country ? `${city} (${country})` : (city || country || "n/a");
+              return `<li><span>${place}</span><strong>${value}</strong></li>`;
+            })
+            .join("")
+          : "";
+        const popover = hasPopover
+          ? `<details class="space-alert-popover"><summary title="Mostra località previste" aria-label="Mostra località previste">i</summary><div class="space-alert-popover-card"><p class="space-alert-popover-meta">Previsione aurora: ${escapeHtml(forecastLabel)}</p><ul>${placesList}</ul></div></details>`
+          : "";
+        return `<article class="space-alert-item space-alert-${level}"><div class="space-alert-title-row"><h4>${escapeHtml(title)}</h4>${popover}</div><p>${escapeHtml(body)}</p></article>`;
+      }).join("");
     };
 
     const flareTier = (flareClass) => {
@@ -357,6 +601,7 @@ require __DIR__ . '/../partials/topbar.php';
         tooltip = document.createElement("div");
         tooltip.className = "space-chart-tooltip";
         tooltip.hidden = true;
+        tooltip.style.display = "none";
         wrap.appendChild(tooltip);
       }
       return tooltip;
@@ -431,6 +676,7 @@ require __DIR__ . '/../partials/topbar.php';
         hoverLine.style.display = "none";
         hoverDot.style.display = "none";
         tooltip.hidden = true;
+        tooltip.style.display = "none";
       };
       hide();
 
@@ -466,6 +712,7 @@ require __DIR__ . '/../partials/topbar.php';
         hideAllChartHovers(wrap);
         tooltip.innerHTML = formatter(nearest);
         tooltip.hidden = false;
+        tooltip.style.display = "grid";
 
         const wrapRect = wrap.getBoundingClientRect();
         let left = event.clientX - wrapRect.left + 12;
@@ -769,7 +1016,146 @@ require __DIR__ . '/../partials/topbar.php';
       if (kpiSource) kpiSource.textContent = "Source unavailable";
       if (moonName) moonName.textContent = "Moon phase unavailable";
       if (moonMeta) moonMeta.textContent = "Illumination --";
+      updateMoonVisual(null);
     };
+
+    const moonIsWaxing = (moon) => {
+      if (typeof moon?.age_days === "number" && Number.isFinite(moon.age_days)) {
+        const synodic = 29.53058867;
+        const cycle = ((moon.age_days % synodic) + synodic) % synodic;
+        return cycle <= (synodic / 2);
+      }
+      const name = typeof moon?.name === "string" ? moon.name.toLowerCase() : "";
+      if (name.includes("waning") || name.includes("last quarter")) return false;
+      if (name.includes("waxing") || name.includes("first quarter")) return true;
+      return true;
+    };
+
+    const hydrateMoonTexture = () => {
+      if (!moonTexture.complete || !moonTexture.naturalWidth || !moonTexture.naturalHeight) {
+        moonTextureData = null;
+        moonTextureWidth = 0;
+        moonTextureHeight = 0;
+        return;
+      }
+      const sampleCanvas = document.createElement("canvas");
+      moonTextureWidth = moonTexture.naturalWidth;
+      moonTextureHeight = moonTexture.naturalHeight;
+      sampleCanvas.width = moonTextureWidth;
+      sampleCanvas.height = moonTextureHeight;
+      const sampleCtx = sampleCanvas.getContext("2d");
+      if (!sampleCtx) {
+        moonTextureData = null;
+        moonTextureWidth = 0;
+        moonTextureHeight = 0;
+        return;
+      }
+      sampleCtx.drawImage(moonTexture, 0, 0, moonTextureWidth, moonTextureHeight);
+      moonTextureData = sampleCtx.getImageData(0, 0, moonTextureWidth, moonTextureHeight).data;
+    };
+
+    const updateMoonVisual = (moon) => {
+      if (!moonCanvas) return;
+      const ctx = moonCanvas.getContext("2d", { willReadFrequently: true });
+      if (!ctx) return;
+
+      const size = moonCanvas.width;
+      const center = size / 2;
+      const radius = size * 0.47;
+      const rawIllum = typeof moon?.illumination_pct === "number" && Number.isFinite(moon.illumination_pct) ? moon.illumination_pct : 0;
+      const illumination = Math.max(0, Math.min(1, rawIllum / 100));
+      const waxing = moonIsWaxing(moon);
+      const cosAlpha = Math.max(-1, Math.min(1, (2 * illumination) - 1));
+      const alpha = Math.acos(cosAlpha);
+      const sx = (waxing ? -1 : 1) * Math.sin(alpha);
+      const sz = Math.cos(alpha);
+      const earthshine = 0.002 + (Math.pow(illumination, 1.8) * 0.026);
+      const textureReady = Boolean(moonTextureData && moonTextureWidth > 0 && moonTextureHeight > 0);
+
+      ctx.clearRect(0, 0, size, size);
+      const image = ctx.createImageData(size, size);
+      const data = image.data;
+
+      for (let py = 0; py < size; py += 1) {
+        for (let px = 0; px < size; px += 1) {
+          const idx = (py * size * 4) + (px * 4);
+          const nx = (px + 0.5 - center) / radius;
+          const ny = (py + 0.5 - center) / radius;
+          const rr = (nx * nx) + (ny * ny);
+          if (rr > 1) {
+            data[idx + 3] = 0;
+            continue;
+          }
+
+          const nz = Math.sqrt(Math.max(0, 1 - rr));
+          const lambert = Math.max(0, (nx * sx) + (nz * sz));
+          const limb = Math.pow(Math.max(0, nz), 0.68);
+          let albedo = 0.82;
+
+          if (textureReady) {
+            const lon = Math.atan2(nx, nz);
+            const lat = Math.asin(Math.max(-1, Math.min(1, ny)));
+            let u = (lon / (2 * Math.PI)) + 0.5;
+            if (u < 0) u += 1;
+            if (u >= 1) u -= 1;
+            const v = 0.5 - (lat / Math.PI);
+            const tx = Math.max(0, Math.min(moonTextureWidth - 1, Math.floor(u * (moonTextureWidth - 1))));
+            const ty = Math.max(0, Math.min(moonTextureHeight - 1, Math.floor(v * (moonTextureHeight - 1))));
+            const tIdx = ((ty * moonTextureWidth) + tx) * 4;
+            const tr = moonTextureData[tIdx];
+            const tg = moonTextureData[tIdx + 1];
+            const tb = moonTextureData[tIdx + 2];
+            const lum = ((0.2126 * tr) + (0.7152 * tg) + (0.0722 * tb)) / 255;
+            albedo = 0.56 + (lum * 0.62);
+          } else {
+            const t1 = Math.sin((nx * 16.2) + (ny * 9.7));
+            const t2 = Math.sin((nx * 33.1) - (ny * 19.4));
+            const t3 = Math.sin((nx * 57.2) + (ny * 41.8));
+            albedo = 0.64 + (0.22 * t1) + (0.12 * t2) + (0.08 * t3);
+          }
+
+          albedo = Math.max(0.12, Math.min(1.22, albedo));
+          const direct = lambert > 0 ? Math.pow(lambert, 0.72) : 0;
+          const crescentGain = illumination < 0.12
+            ? 1.15 + (((0.12 - illumination) / 0.12) * 0.85)
+            : 1.15;
+          const lit = earthshine + (direct * crescentGain);
+          const intensity = Math.max(0, Math.min(1, (lit * albedo) * (0.28 + (0.72 * limb))));
+          const rim = Math.pow(Math.max(0, 1 - nz), 1.35) * Math.pow(Math.max(0, lambert), 0.35);
+          const rimBoost = rim * (0.16 + ((1 - illumination) * 0.2));
+
+          data[idx] = Math.round(8 + (intensity * 236) + (rimBoost * 34));
+          data[idx + 1] = Math.round(12 + (intensity * 240) + (rimBoost * 38));
+          data[idx + 2] = Math.round(18 + (intensity * 246) + (rimBoost * 46));
+          data[idx + 3] = 255;
+        }
+      }
+
+      ctx.putImageData(image, 0, 0);
+
+      ctx.save();
+      ctx.globalCompositeOperation = "source-atop";
+      const vignette = ctx.createRadialGradient(center, center, radius * 0.58, center, center, radius);
+      vignette.addColorStop(0, "rgba(0, 0, 0, 0)");
+      vignette.addColorStop(1, "rgba(0, 0, 0, 0.32)");
+      ctx.fillStyle = vignette;
+      ctx.fillRect(0, 0, size, size);
+      ctx.restore();
+    };
+
+    moonTexture.decoding = "async";
+    moonTexture.loading = "eager";
+    moonTexture.addEventListener("load", () => {
+      hydrateMoonTexture();
+      updateMoonVisual(lastMoonPhase);
+    });
+    moonTexture.addEventListener("error", () => {
+      moonTextureData = null;
+      moonTextureWidth = 0;
+      moonTextureHeight = 0;
+      updateMoonVisual(lastMoonPhase);
+    });
+    moonTexture.src = "/assets/img/moon-texture-1024.jpg";
 
     const load = async () => {
       try {
@@ -783,10 +1169,12 @@ require __DIR__ . '/../partials/topbar.php';
       const flarePeakClass = payload.xray_class_peak_24h || "--";
       const windCurrent = typeof payload.solar_wind_speed_current === "number" ? payload.solar_wind_speed_current : null;
       const bzCurrent = typeof payload.imf_bz_current === "number" ? payload.imf_bz_current : null;
+      const densityCurrent = typeof payload.solar_wind_density_current === "number" ? payload.solar_wind_density_current : null;
+      const dstCurrent = typeof payload.dst_current === "number" ? payload.dst_current : null;
 
       if (kpiCurrent) kpiCurrent.textContent = formatNumber(currentKp, 1);
-      if (kpiLevel) kpiLevel.textContent = payload.storm_level || "Unknown";
-      if (kpiForecast) kpiForecast.textContent = formatNumber(forecastKp, 1);
+      if (kpiLevel) kpiLevel.textContent = stormCodeOnly(payload.storm_level);
+      if (kpiForecast) kpiForecast.textContent = dstCurrent !== null ? `${formatNumber(dstCurrent, 0)}` : "--";
       if (kpiFlare) kpiFlare.textContent = flarePeakClass;
       if (kpiWind) kpiWind.textContent = windCurrent !== null ? `${formatNumber(windCurrent, 0)}` : "--";
       if (kpiBz) kpiBz.textContent = bzCurrent !== null ? `${formatNumber(bzCurrent, 1)}` : "--";
@@ -812,15 +1200,16 @@ require __DIR__ . '/../partials/topbar.php';
         trendNote.textContent = `24h trend: ${dir} (${delta >= 0 ? "+" : ""}${delta.toFixed(1)} Kp).`;
       }
 
-      const showRealSun = () => {
-        if (sunFallback) sunFallback.style.display = "none";
-        if (sunImage) sunImage.style.display = "block";
-      };
-
-      const showFallbackSun = () => {
-        if (sunImage) sunImage.style.display = "none";
-        if (sunFallback) sunFallback.style.display = "block";
-      };
+      const operationalAlerts = evaluateOperationalAlerts({
+        kp: currentKp,
+        wind: windCurrent,
+        density: densityCurrent,
+        bz: bzCurrent,
+        dst: dstCurrent,
+        storm: payload.storm_level,
+        auroraTargets: payload.aurora_targets,
+      });
+      renderOperationalAlerts(operationalAlerts);
 
       const openSunModal = () => {
         if (!sunModal || !sunModalImage || !sunImage) return;
@@ -888,7 +1277,7 @@ require __DIR__ . '/../partials/topbar.php';
               if (settled) return;
               settled = true;
               trySunCandidate(index + 1);
-            }, 2400);
+            }, 1400);
 
             sunImage.onload = () => {
               if (settled) return;
@@ -920,26 +1309,41 @@ require __DIR__ . '/../partials/topbar.php';
       const forecastRows = Array.isArray(payload.forecast_readings_24h) ? payload.forecast_readings_24h : [];
 
       if (listReadings) {
+        const shownReadings = readings.slice().reverse().slice(0, MAX_READING_ROWS);
+        const extraReadings = Math.max(0, readings.length - shownReadings.length);
         listReadings.innerHTML = readings.length === 0
           ? "<li class='timeline-row'>No Kp readings available.</li>"
-          : readings.slice().reverse().map((row) => `<li class='timeline-row'><strong>${formatTime(row.time_utc)}</strong><span>Kp ${formatNumber(row.kp_index, 1)}</span></li>`).join("");
+          : [
+            ...shownReadings.map((row) => `<li class='timeline-row'><strong>${formatTime(row.time_utc)}</strong><span>Kp ${formatNumber(row.kp_index, 1)}</span></li>`),
+            extraReadings > 0 ? `<li class='timeline-row'><span>+${extraReadings} older readings</span></li>` : "",
+          ].join("");
       }
 
       if (listForecast) {
+        const shownForecast = forecastRows.slice(0, MAX_FORECAST_ROWS);
+        const extraForecast = Math.max(0, forecastRows.length - shownForecast.length);
         listForecast.innerHTML = forecastRows.length === 0
           ? "<li class='timeline-row'>No forecast rows available.</li>"
-          : forecastRows.slice(0, 10).map((row) => `<li class='timeline-row'><strong>${formatTime(row.time_utc)}</strong><span>Forecast Kp ${formatNumber(row.kp_index, 1)}</span></li>`).join("");
+          : [
+            ...shownForecast.map((row) => `<li class='timeline-row'><strong>${formatTime(row.time_utc)}</strong><span>Forecast Kp ${formatNumber(row.kp_index, 1)}</span></li>`),
+            extraForecast > 0 ? `<li class='timeline-row'><span>+${extraForecast} more forecast steps</span></li>` : "",
+          ].join("");
       }
 
       const flares = Array.isArray(payload.flare_events) ? payload.flare_events : [];
       if (listFlares) {
+        const shownFlares = flares.slice(0, MAX_FLARE_ROWS);
+        const extraFlares = Math.max(0, flares.length - shownFlares.length);
         listFlares.innerHTML = flares.length === 0
           ? "<li class='timeline-row'>No C/M/X flare peaks detected in this window.</li>"
-          : flares.map((row) => {
+          : [
+            ...shownFlares.map((row) => {
             const cls = row.class || "--";
             const tier = flareTier(cls);
             return `<li class='timeline-row'><div class='timeline-head'><strong>${formatTime(row.time_utc)}</strong><span class='flare-tag ${tier}'>${cls}</span></div><span>Flux ${typeof row.flux === "number" ? row.flux.toExponential(2) : "--"} W/m²</span></li>`;
-          }).join("");
+            }),
+            extraFlares > 0 ? `<li class='timeline-row'><span>+${extraFlares} more flare peaks</span></li>` : "",
+          ].join("");
       }
 
       renderBars(payload.kp_band_distribution || []);
@@ -1030,6 +1434,7 @@ require __DIR__ . '/../partials/topbar.php';
       }
 
       const moon = payload.moon_phase && typeof payload.moon_phase === "object" ? payload.moon_phase : null;
+      lastMoonPhase = moon;
       if (moonName) {
         moonName.textContent = typeof moon?.name === "string" ? moon.name : "Moon phase unavailable";
       }
@@ -1042,6 +1447,7 @@ require __DIR__ . '/../partials/topbar.php';
         const illumValue = typeof moon?.illumination_pct === "number" ? Math.max(0, Math.min(100, moon.illumination_pct)) : 0;
         moonMeterFill.style.width = `${illumValue}%`;
       }
+      updateMoonVisual(moon);
       } catch (error) {
         setError();
       }
@@ -1060,6 +1466,7 @@ require __DIR__ . '/../partials/topbar.php';
     };
 
     refresh();
+    primeSunImage();
     window.setInterval(() => {
       if (document.hidden) return;
       void refresh();

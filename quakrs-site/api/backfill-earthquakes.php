@@ -287,6 +287,17 @@ $archiveCfg = earthquake_archive_mysql_config($appConfig);
 $table = (string) ($archiveCfg['table'] ?? 'earthquake_events');
 
 $checkpointPath = $appConfig['data_dir'] . '/backfill_earthquakes_' . $sourceCfg['key'] . '_http_checkpoint.json';
+$checkpointLockPath = $appConfig['data_dir'] . '/backfill_earthquakes_' . $sourceCfg['key'] . '_http_checkpoint.lock';
+$checkpointLockHandle = @fopen($checkpointLockPath, 'c');
+if (is_resource($checkpointLockHandle)) {
+    @flock($checkpointLockHandle, LOCK_EX);
+    register_shutdown_function(static function () use ($checkpointLockHandle): void {
+        if (is_resource($checkpointLockHandle)) {
+            @flock($checkpointLockHandle, LOCK_UN);
+            @fclose($checkpointLockHandle);
+        }
+    });
+}
 $state = $reset ? null : checkpoint_read($checkpointPath);
 
 if (!is_array($state) || ($state['mode'] ?? '') !== 'http_backfill_v2') {

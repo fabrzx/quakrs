@@ -58,13 +58,13 @@ require __DIR__ . '/../partials/topbar.php';
       <button class="map-filter-btn band-m4" data-grid="5" type="button" aria-pressed="true">Grid 5°</button>
       <button class="map-filter-btn band-m5" data-grid="10" type="button" aria-pressed="false">Grid 10°</button>
       <button class="map-filter-btn band-m6" data-overlay="events" type="button" aria-pressed="true">Events ON</button>
-      <span style="background:#14b8a6">Low</span>
-      <span style="background:#ef4444">High</span>
+      <span class="map-legend-swatch map-legend-heat-low">Low</span>
+      <span class="map-legend-swatch map-legend-heat-high">High</span>
     </div>
   </article>
-  <article class="card side-card">
+  <article class="card side-card map-side-list-card">
     <h3>Top Heat Cells</h3>
-    <ul id="heat-cells-list" class="events-list">
+    <ul id="heat-cells-list" class="events-list map-side-list-scroll">
       <li class="event-item">Loading heat cells...</li>
     </ul>
   </article>
@@ -86,15 +86,29 @@ require __DIR__ . '/../partials/topbar.php';
     let cellSize = 5;
     let showEventsOverlay = true;
     let cachedPayload = null;
+    const rootStyles = window.getComputedStyle(document.documentElement);
+    const cssVar = (name, fallback) => {
+      const value = rootStyles.getPropertyValue(name);
+      return value ? value.trim() : fallback;
+    };
+    const palette = {
+      base: cssVar("--acid-cyan", "#20e0ff"),
+      low: cssVar("--info-acid", "#39d5ff"),
+      mild: cssVar("--success-acid", "#7dff3a"),
+      moderate: cssVar("--warning-acid", "#ffd400"),
+      elevated: cssVar("--acid-orange", "#ff7a00"),
+      high: cssVar("--danger-acid", "#ff4d6d"),
+      markerFill: cssVar("--bg-2", "#0d1630"),
+    };
 
     const intensityColor = (ratio) => {
       const clamped = Math.max(0, Math.min(1, ratio));
-      if (clamped > 0.86) return "#ef4444";
-      if (clamped > 0.68) return "#f97316";
-      if (clamped > 0.5) return "#f59e0b";
-      if (clamped > 0.34) return "#eab308";
-      if (clamped > 0.2) return "#22c55e";
-      return "#14b8a6";
+      if (clamped > 0.86) return palette.high;
+      if (clamped > 0.68) return palette.elevated;
+      if (clamped > 0.5) return palette.moderate;
+      if (clamped > 0.34) return palette.mild;
+      if (clamped > 0.2) return palette.low;
+      return palette.base;
     };
 
     const map = mapContainer && window.L
@@ -206,17 +220,22 @@ require __DIR__ . '/../partials/topbar.php';
       if (!showEventsOverlay) return;
 
       const zoomBoost = Math.max(0, (zoom - 2) * 0.45);
+      const lowZoomScale = zoom <= 2.2 ? 0.82 : (zoom <= 3 ? 0.9 : 1);
+      const lowZoom = zoom <= 2.2;
+      const midZoom = zoom > 2.2 && zoom <= 3;
       events.slice(0, 500).forEach((event) => {
         if (typeof event.latitude !== "number" || typeof event.longitude !== "number") return;
         const mag = typeof event.magnitude === "number" ? event.magnitude : 0;
         const baseRadius = Math.max(2.2, Math.min(7.4, 2.2 + mag * 0.62));
-        const radius = Math.min(11, baseRadius + zoomBoost);
+        const radius = Math.min(11, (baseRadius + zoomBoost) * lowZoomScale);
+        const strokeOpacity = lowZoom ? 0.42 : (midZoom ? 0.62 : 0.85);
         window.L.circleMarker([event.latitude, event.longitude], {
           radius,
-          color: "rgba(255,255,255,0.85)",
-          weight: 1,
-          fillColor: "#0f172a",
-          fillOpacity: 0.25,
+          color: `rgba(255,255,255,${strokeOpacity})`,
+          opacity: strokeOpacity,
+          weight: lowZoom ? 0.55 : (midZoom ? 0.75 : 1),
+          fillColor: palette.markerFill,
+          fillOpacity: lowZoom ? 0.2 : (midZoom ? 0.22 : 0.25),
         })
           .bindTooltip(`M${mag.toFixed(1)} - ${event.place || "Unknown"}`)
           .addTo(eventsLayer);

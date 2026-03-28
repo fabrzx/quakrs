@@ -109,6 +109,7 @@
 - Do not change layout structure/spacing unless explicitly requested.
 - Do not introduce new fonts.
 - Keep editorial clarity first, visual punch second.
+- Avoid edge-touching text inside cards: keep the same page-family paddings used across existing sections (for KPI cards and content cards) so labels/values never sit on card borders.
 
 ## Scope
 - Applies only to `/quakrs-site`.

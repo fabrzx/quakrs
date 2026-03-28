@@ -145,6 +145,13 @@ require __DIR__ . '/../partials/topbar.php';
 </section>
 
 <section class="panel">
+  <article class="card page-card">
+    <h3>Need source provenance context?</h3>
+    <p class="insight-lead">Open <a class="inline-link" href="<?= htmlspecialchars(qk_localized_url('/sources-status.php'), ENT_QUOTES, 'UTF-8'); ?>">Sources & Reliability</a> to combine provider coverage, expected cadence, latency targets, and known data limits with this technical status view.</p>
+  </article>
+</section>
+
+<section class="panel">
   <article class="card">
     <div class="feed-head">
       <h3><?= htmlspecialchars(qk_t('data_status.health_title'), ENT_QUOTES, 'UTF-8'); ?></h3>
@@ -167,6 +174,50 @@ require __DIR__ . '/../partials/topbar.php';
     <div id="health-feed-pills" class="insight-pills" style="margin-top:0.8rem">
       <span class="insight-pill"><?= htmlspecialchars(qk_t('data_status.health_loading'), ENT_QUOTES, 'UTF-8'); ?></span>
     </div>
+  </article>
+</section>
+
+<section class="panel">
+  <article class="card">
+    <div class="feed-head">
+      <h3>Operational Impact</h3>
+      <p class="feed-meta">Component-level health and user-visible impact</p>
+    </div>
+    <div class="page-grid">
+      <div class="event-item">
+        <strong>User Impact</strong><br />
+        <span id="health-user-impact">Loading impact...</span>
+      </div>
+      <div class="event-item">
+        <strong>Degraded Components</strong><br />
+        <span id="health-components-degraded">--</span>
+      </div>
+    </div>
+    <ul id="health-components-list" class="events-list" style="margin-top:0.8rem;">
+      <li class="event-item">Loading component matrix...</li>
+    </ul>
+  </article>
+</section>
+
+<section class="panel">
+  <article class="card">
+    <div class="feed-head">
+      <h3>Incident Log (MVP)</h3>
+      <p class="feed-meta">Auto-generated from live feed/component degradation signals.</p>
+    </div>
+    <div class="page-grid">
+      <div class="event-item">
+        <strong>Active incidents</strong><br />
+        <span id="health-incidents-count">--</span>
+      </div>
+      <div class="event-item">
+        <strong>Highest severity</strong><br />
+        <span id="health-incidents-severity">--</span>
+      </div>
+    </div>
+    <ul id="health-incidents-list" class="events-list" style="margin-top:0.8rem;">
+      <li class="event-item">Loading incident log...</li>
+    </ul>
   </article>
 </section>
 
@@ -199,6 +250,12 @@ require __DIR__ . '/../partials/topbar.php';
     const archiveNode = document.querySelector("#health-archive");
     const countsNode = document.querySelector("#health-counts");
     const pillsNode = document.querySelector("#health-feed-pills");
+    const impactNode = document.querySelector("#health-user-impact");
+    const degradedComponentsNode = document.querySelector("#health-components-degraded");
+    const componentsListNode = document.querySelector("#health-components-list");
+    const incidentsCountNode = document.querySelector("#health-incidents-count");
+    const incidentsSeverityNode = document.querySelector("#health-incidents-severity");
+    const incidentsListNode = document.querySelector("#health-incidents-list");
 
     const i18n = {
       unavailable: <?= json_encode(qk_t('data_status.health_unavailable', 'Health data unavailable'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
@@ -209,6 +266,146 @@ require __DIR__ . '/../partials/topbar.php';
       if (archiveNode) archiveNode.textContent = "--";
       if (countsNode) countsNode.textContent = "--";
       if (pillsNode) pillsNode.innerHTML = `<span class="insight-pill">${i18n.unavailable}</span>`;
+      if (impactNode) impactNode.textContent = i18n.unavailable;
+      if (degradedComponentsNode) degradedComponentsNode.textContent = "--";
+      if (componentsListNode) {
+        componentsListNode.innerHTML = `<li class="event-item">${i18n.unavailable}</li>`;
+      }
+      if (incidentsCountNode) incidentsCountNode.textContent = "--";
+      if (incidentsSeverityNode) incidentsSeverityNode.textContent = "--";
+      if (incidentsListNode) incidentsListNode.innerHTML = `<li class="event-item">${i18n.unavailable}</li>`;
+    };
+
+    const severityWeight = (severity) => {
+      switch (String(severity || "minor")) {
+        case "critical":
+          return 4;
+        case "major":
+          return 3;
+        case "minor":
+          return 2;
+        default:
+          return 1;
+      }
+    };
+
+    const formatSince = (isoValue) => {
+      if (!isoValue) return "since unknown";
+      const ts = new Date(isoValue).getTime();
+      if (!Number.isFinite(ts)) return "since unknown";
+      return `since ${new Date(ts).toLocaleString()}`;
+    };
+
+    const formatAt = (isoValue) => {
+      if (!isoValue) return "time unknown";
+      const ts = new Date(isoValue).getTime();
+      if (!Number.isFinite(ts)) return "time unknown";
+      return new Date(ts).toLocaleString();
+    };
+
+    const inferSeverityFromFeed = (status) => {
+      if (status === "missing") return "critical";
+      if (status === "outdated") return "major";
+      if (status === "lagging") return "minor";
+      return "notice";
+    };
+
+    const inferSeverityFromComponent = (status, impact) => {
+      if (status !== "degraded") return "notice";
+      if (impact === "visible") return "major";
+      if (impact === "limited") return "minor";
+      return "minor";
+    };
+
+    const buildIncidents = (feeds, components) => {
+      const incidents = [];
+
+      feeds.forEach((feed) => {
+        const status = String(feed?.status || "unknown");
+        if (!["missing", "outdated", "lagging"].includes(status)) {
+          return;
+        }
+        const key = String(feed?.key || "feed");
+        const severity = inferSeverityFromFeed(status);
+        const maxAge = Number(feed?.max_age_minutes);
+        const age = Number(feed?.age_minutes);
+        const delayedBy = Number.isFinite(age) && Number.isFinite(maxAge) ? Math.max(0, Math.round(age - maxAge)) : null;
+        incidents.push({
+          key: `feed:${key}`,
+          severity,
+          label: `Feed ${key} is ${status}`,
+          detail: delayedBy !== null ? `delay +${delayedBy} min` : "delay unknown",
+          since: formatSince(feed?.last_success_at),
+        });
+      });
+
+      components.forEach((component) => {
+        const status = String(component?.status || "unknown");
+        if (status !== "degraded") {
+          return;
+        }
+        const impact = String(component?.impact || "none");
+        const key = String(component?.key || "component");
+        const severity = inferSeverityFromComponent(status, impact);
+        incidents.push({
+          key: `component:${key}`,
+          severity,
+          label: `Component ${key} degraded`,
+          detail: `impact ${impact}`,
+          since: formatSince(component?.since),
+        });
+      });
+
+      incidents.sort((a, b) => {
+        const sevDelta = severityWeight(b.severity) - severityWeight(a.severity);
+        if (sevDelta !== 0) return sevDelta;
+        return a.label.localeCompare(b.label);
+      });
+      return incidents;
+    };
+
+    const renderIncidents = (payload, fallbackIncidents) => {
+      const activeIncidents = Array.isArray(payload?.incidents_active) ? payload.incidents_active : [];
+      const historyEvents = Array.isArray(payload?.incidents_history) ? payload.incidents_history : [];
+      const summary = payload?.incidents_summary && typeof payload.incidents_summary === "object" ? payload.incidents_summary : {};
+
+      const activeCount = Number.isFinite(Number(summary.active_count))
+        ? Number(summary.active_count)
+        : activeIncidents.length;
+      const highestSeverity = String(summary.highest_severity || (activeIncidents[0]?.severity || "none")).toUpperCase();
+
+      if (incidentsCountNode) incidentsCountNode.textContent = String(activeCount);
+      if (incidentsSeverityNode) incidentsSeverityNode.textContent = highestSeverity;
+
+      if (!incidentsListNode) {
+        return;
+      }
+
+      if (historyEvents.length > 0) {
+        incidentsListNode.innerHTML = historyEvents.slice(0, 20).map((eventRow) => {
+          const eventType = String(eventRow?.event || "event");
+          const at = formatAt(eventRow?.at);
+          const incident = eventRow?.incident && typeof eventRow.incident === "object" ? eventRow.incident : {};
+          const severity = String(incident.severity || "notice").toUpperCase();
+          const title = String(incident.title || incident.key || "Incident");
+          const detail = String(incident.detail || "");
+          const lifecycle = eventType === "resolved"
+            ? `resolved ${at}`
+            : eventType === "opened"
+              ? `opened ${at}`
+              : `updated ${at}`;
+          return `<li class="event-item"><strong>${severity} · ${title}</strong><br />${detail ? `${detail} · ` : ""}${lifecycle}</li>`;
+        }).join("");
+        return;
+      }
+
+      if (fallbackIncidents.length === 0) {
+        incidentsListNode.innerHTML = "<li class='event-item'>No active incidents. System currently nominal.</li>";
+      } else {
+        incidentsListNode.innerHTML = fallbackIncidents.map((incident) => {
+          return `<li class="event-item"><strong>${incident.severity.toUpperCase()} · ${incident.label}</strong><br />${incident.detail} · ${incident.since}</li>`;
+        }).join("");
+      }
     };
 
     const renderHealth = (payload) => {
@@ -221,6 +418,10 @@ require __DIR__ . '/../partials/topbar.php';
       const overall = String(payload.overall_status || "unknown");
       const archive = payload.archive_mysql?.status ? String(payload.archive_mysql.status) : "unknown";
       const feeds = Array.isArray(payload.feeds) ? payload.feeds : [];
+      const components = Array.isArray(payload.components) ? payload.components : [];
+      const userImpact = String(payload.user_impact || "No impact details available.");
+      const degradedComponents = Number(payload.degraded_components || 0);
+      const incidents = buildIncidents(feeds, components);
 
       if (overallNode) overallNode.textContent = overall;
       if (archiveNode) archiveNode.textContent = archive;
@@ -235,15 +436,37 @@ require __DIR__ . '/../partials/topbar.php';
       if (pillsNode) {
         if (feeds.length === 0) {
           pillsNode.innerHTML = `<span class="insight-pill">no feeds</span>`;
-          return;
+        } else {
+          pillsNode.innerHTML = feeds.map((feed) => {
+            const key = String(feed.key || "feed");
+            const status = String(feed.status || "unknown");
+            const age = Number.isFinite(Number(feed.age_minutes)) ? `${Number(feed.age_minutes)}m` : "n/a";
+            return `<span class="insight-pill">${key}: ${status} (${age})</span>`;
+          }).join("");
         }
-        pillsNode.innerHTML = feeds.map((feed) => {
-          const key = String(feed.key || "feed");
-          const status = String(feed.status || "unknown");
-          const age = Number.isFinite(Number(feed.age_minutes)) ? `${Number(feed.age_minutes)}m` : "n/a";
-          return `<span class="insight-pill">${key}: ${status} (${age})</span>`;
-        }).join("");
       }
+
+      if (impactNode) {
+        impactNode.textContent = userImpact;
+      }
+      if (degradedComponentsNode) {
+        degradedComponentsNode.textContent = String(degradedComponents);
+      }
+      if (componentsListNode) {
+        if (components.length === 0) {
+          componentsListNode.innerHTML = "<li class='event-item'>No component details available.</li>";
+        } else {
+          componentsListNode.innerHTML = components.map((component) => {
+            const key = String(component.key || "component");
+            const status = String(component.status || "unknown");
+            const impact = String(component.impact || "none");
+            const note = String(component.note || "");
+            return `<li class="event-item"><strong>${key}</strong><br />${status} · impact ${impact}${note ? ` · ${note}` : ""}</li>`;
+          }).join("");
+        }
+      }
+
+      renderIncidents(payload, incidents);
     };
 
     const load = async () => {

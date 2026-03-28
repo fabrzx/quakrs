@@ -1,2 +1,4 @@
 config/app.local.php
 logs/*.log
+scripts/deploy.env
+scripts/deploy-ftp.env

@@ -49,7 +49,7 @@ require __DIR__ . '/../partials/topbar.php';
   </article>
   <article class="card">
     <div class="feed-head">
-      <h3>Activity by Hour (UTC)</h3>
+      <h3>Activity by Hour</h3>
       <p class="feed-meta">Last 24 hours</p>
     </div>
     <div id="energy-hourly-chart" class="bars-vertical bars-hourly-vertical"></div>

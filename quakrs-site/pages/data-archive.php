@@ -18,6 +18,13 @@ require __DIR__ . '/../partials/topbar.php';
   </div>
 </main>
 
+<section class="panel">
+  <article class="card page-card">
+    <h3>Looking for multi-hazard archive navigation?</h3>
+    <p class="insight-lead">Use the federated entry page <a class="inline-link" href="<?= htmlspecialchars(qk_localized_url('/archive.php'), ENT_QUOTES, 'UTF-8'); ?>">/archive.php</a>. This page remains the advanced seismic archive module.</p>
+  </article>
+</section>
+
 <section class="panel panel-kpi">
   <article class="card kpi-card">
     <p class="kpi-label"><?= htmlspecialchars(qk_t('data_archive.kpi_visible'), ENT_QUOTES, 'UTF-8'); ?></p>
@@ -557,9 +564,13 @@ require __DIR__ . '/../partials/topbar.php';
       }).addTo(map);
     };
 
-    const markerRadius = (mag) => {
-      if (typeof mag !== "number") return 3.5;
-      return Math.max(3.5, Math.min(10, 2.4 + (mag * 0.95)));
+    const markerRadius = (mag, zoomLevel) => {
+      const zoom = Number.isFinite(zoomLevel) ? zoomLevel : 2;
+      const base = typeof mag === "number"
+        ? Math.max(2.2, Math.min(7.8, 1.9 + (mag * 0.72)))
+        : 2.2;
+      const lowZoomScale = zoom <= 2.2 ? 0.74 : (zoom <= 3 ? 0.84 : 1);
+      return Math.max(1.8, base * lowZoomScale);
     };
 
     const magnitudeBandClass = (magnitude) => {
@@ -654,6 +665,11 @@ require __DIR__ . '/../partials/topbar.php';
     const renderMapEvents = (rows) => {
       if (!map || !Array.isArray(rows)) return;
       clearMapEvents();
+      const zoom = map.getZoom();
+      const lowZoom = zoom <= 2.2;
+      const midZoom = zoom > 2.2 && zoom <= 3;
+      const markerWeight = lowZoom ? 0.6 : (midZoom ? 0.85 : 1.2);
+      const markerFillOpacity = lowZoom ? 0.68 : (midZoom ? 0.73 : 0.78);
 
       rows.forEach((row, index) => {
         if (typeof row?.latitude !== "number" || typeof row?.longitude !== "number") {
@@ -665,11 +681,11 @@ require __DIR__ . '/../partials/topbar.php';
         const magBand = magnitudeBandClass(magValue);
         const magColor = magnitudeColor(magValue);
         const marker = window.L.circleMarker([row.latitude, row.longitude], {
-          radius: markerRadius(row.magnitude),
+          radius: markerRadius(row.magnitude, zoom),
           color: magColor,
-          weight: 1.2,
+          weight: markerWeight,
           fillColor: magColor,
-          fillOpacity: 0.78,
+          fillOpacity: markerFillOpacity,
         });
 
         const mag = typeof row.magnitude === "number" ? `M${row.magnitude.toFixed(1)}` : "M?";

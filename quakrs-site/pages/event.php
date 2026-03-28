@@ -22,8 +22,8 @@ $historyRadiusKm = 30;
 $timeNote = 'Awaiting tectonic context';
 if ($time !== '') {
   try {
-    $dt = new DateTimeImmutable($time);
-    $timeNote = sprintf('Event time %s UTC', $dt->setTimezone(new DateTimeZone('UTC'))->format('Y-m-d H:i'));
+    new DateTimeImmutable($time);
+    $timeNote = 'Event time available';
   } catch (Throwable $e) {
     $timeNote = 'Event time available';
   }
@@ -51,7 +51,7 @@ require __DIR__ . '/../partials/topbar.php';
       <span id="event-title-place" class="event-title-place"><?= htmlspecialchars($titlePlace, ENT_QUOTES, 'UTF-8'); ?></span>
     </h1>
     <p id="event-meta-line" class="event-meta-line">
-      Pending date · Pending UTC · Depth <?= htmlspecialchars($depth !== '' ? "{$depth} km" : 'Pending depth', ENT_QUOTES, 'UTF-8'); ?> · Coordinates pending
+      Pending date · Pending Italy time · Depth <?= htmlspecialchars($depth !== '' ? "{$depth} km" : 'Pending depth', ENT_QUOTES, 'UTF-8'); ?> · Coordinates pending
     </p>
     <p id="event-context-line" class="event-context-line">Classification pending · Region pending · Inland · Automatic</p>
   </div>
@@ -231,7 +231,7 @@ require __DIR__ . '/../partials/topbar.php';
       notAvailable: <?= json_encode(qk_t('page.event.js_not_available', 'Not available'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
       pendingTime: <?= json_encode(qk_t('page.event.js_pending_time', 'Pending time'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
       pendingDate: <?= json_encode(qk_t('page.event.js_pending_date', 'Pending date'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
-      pendingUtc: <?= json_encode(qk_t('page.event.js_pending_utc', 'Pending UTC'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
+      pendingUtc: <?= json_encode(qk_t('page.event.js_pending_utc', 'Pending time'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
       coordinatesPending: <?= json_encode(qk_t('page.event.js_coordinates_pending', 'Coordinates pending'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
       pendingClassification: <?= json_encode(qk_t('page.event.js_pending_classification', 'Pending classification'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
       faultNameUnavailable: <?= json_encode(qk_t('page.event.js_fault_name_unavailable', 'Fault segment (name unavailable)'), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>,
@@ -406,7 +406,7 @@ require __DIR__ . '/../partials/topbar.php';
       const depth = asDepth(row.depth_km);
       const href = eventDetailHref(row);
       const context = historyRowContext(selected, row);
-      return `<li class="event-item"><a class="snapshot-row-anchor" href="${href}"><strong>${magnitudeText(row.magnitude)} ${row.place || i18n.unknown}</strong><span class="event-history-row-meta"><span class="event-history-row-meta-left">${safeTimeHistory(row.event_time_utc)} · depth ${depth}</span><span class="event-history-row-meta-right">${context.distanceDirection}</span></span></a></li>`;
+      return `<li class="event-item"><a class="snapshot-row-anchor" href="${escapeHtml(href)}"><strong>${magnitudeText(row.magnitude)} ${escapeHtml(row.place || i18n.unknown)}</strong><span class="event-history-row-meta"><span class="event-history-row-meta-left">${escapeHtml(safeTimeHistory(row.event_time_utc))} · depth ${escapeHtml(depth)}</span><span class="event-history-row-meta-right">${escapeHtml(context.distanceDirection)}</span></span></a></li>`;
     };
 
     const parseRegion = (place) => {
@@ -551,9 +551,12 @@ require __DIR__ . '/../partials/topbar.php';
       return map;
     };
 
-    const safeTime = (iso) => (iso ? new Date(iso).toLocaleString([], { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit" }) : i18n.pendingTime);
+    const eventLocale = document.documentElement?.lang?.toLowerCase().startsWith("it") ? "it-IT" : "en-GB";
+    const safeTime = (iso) => (iso
+      ? new Date(iso).toLocaleString(eventLocale, { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false })
+      : i18n.pendingTime);
     const safeTimeHistory = (iso) => (iso
-      ? new Date(iso).toLocaleString([], { year: "numeric", month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit" })
+      ? new Date(iso).toLocaleString(eventLocale, { year: "numeric", month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false })
       : i18n.pendingTime);
     const asMagnitude = (value) => (Number.isFinite(value) ? `M${value.toFixed(1)}` : i18n.unavailable);
     const asMagnitudeTitle = (value) => (Number.isFinite(value) ? `M ${value.toFixed(1)}` : "M ?");
@@ -571,6 +574,13 @@ require __DIR__ . '/../partials/topbar.php';
       if (!Number.isFinite(value)) return i18n.unavailable;
       return `${approximate ? "~" : ""}${value.toFixed(0)} km`;
     };
+    const escapeHtml = (value) =>
+      String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
     const severityLabel = (magnitude) => {
       if (!Number.isFinite(magnitude)) return i18n.pendingClassification;
       if (magnitude < 2) return "Microquake";
@@ -594,14 +604,12 @@ require __DIR__ . '/../partials/topbar.php';
             day: "2-digit",
             month: "short",
             year: "numeric",
-            timeZone: "UTC",
           });
-          timePart = `${dt.toLocaleTimeString("en-GB", {
+          timePart = `${dt.toLocaleTimeString(eventLocale, {
             hour: "2-digit",
             minute: "2-digit",
             hour12: false,
-            timeZone: "UTC",
-          })} UTC`;
+          })}`;
         }
       }
       const depthPart = `Depth ${asDepth(depthKm)}`;
@@ -956,20 +964,25 @@ require __DIR__ . '/../partials/topbar.php';
               direction: row.direction || i18n.directionN,
             });
             const delta = formatDeltaFromMain(selected.event_time_utc, row.event_time_utc);
-            return `<li class="event-item"><strong>${magnitudeText(row.magnitude)} ${row.place || i18n.unknown}</strong><br />${distanceDirection} · ${delta}</li>`;
+            return `<li class="event-item"><strong>${magnitudeText(row.magnitude)} ${escapeHtml(row.place || i18n.unknown)}</strong><br />${escapeHtml(distanceDirection)} · ${escapeHtml(delta)}</li>`;
           }).join("")
           : `<li class='event-item'>${interpolate(i18n.noM5NearbyInRadius, { radius: radii.sequence })}</li>`;
       }
       if (layerStrong) {
         layerStrong.clearLayers();
+        const currentZoom = map && typeof map.getZoom === "function" ? map.getZoom() : 6;
+        const lowZoom = currentZoom <= 2.2;
+        const midZoom = currentZoom > 2.2 && currentZoom <= 3;
+        const strokeOpacity = lowZoom ? 0.42 : (midZoom ? 0.62 : 0.9);
         nearby.slice(0, 20).forEach((row) => {
           if (!Number.isFinite(row.latitude) || !Number.isFinite(row.longitude)) return;
           window.L.circleMarker([row.latitude, row.longitude], {
             radius: Math.max(5, Math.min(11, 2 + row.magnitude)),
-            color: "rgba(255,255,255,0.9)",
-            weight: 1,
+            color: `rgba(255,255,255,${strokeOpacity})`,
+            opacity: strokeOpacity,
+            weight: lowZoom ? 0.55 : (midZoom ? 0.75 : 1),
             fillColor: magnitudeColor(row.magnitude),
-            fillOpacity: 0.82,
+            fillOpacity: lowZoom ? 0.78 : (midZoom ? 0.8 : 0.82),
           }).bindTooltip(`M${row.magnitude.toFixed(1)} · ${row.distanceKm.toFixed(0)} km`).addTo(layerStrong);
         });
       }
@@ -1145,7 +1158,7 @@ require __DIR__ . '/../partials/topbar.php';
       if (faultList) {
         faultList.innerHTML = localSignals.length > 0
           ? localSignals.map((row) => {
-            return `<li class="event-item"><strong>${row.place || i18n.regionalSeismicLine}</strong><br />${row.distanceKm.toFixed(0)} km · ${magnitudeText(row.magnitude)} signal</li>`;
+            return `<li class="event-item"><strong>${escapeHtml(row.place || i18n.regionalSeismicLine)}</strong><br />${escapeHtml(row.distanceKm.toFixed(0))} km · ${magnitudeText(row.magnitude)} signal</li>`;
           }).join("")
           : `<li class='event-item'>${i18n.noNearbyStrongProxy}</li>`;
       }

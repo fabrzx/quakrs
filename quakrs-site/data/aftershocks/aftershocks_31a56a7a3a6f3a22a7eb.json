@@ -1,0 +1,49 @@
+{
+    "sequence_id": "31a56a7a3a6f3a22a7eb",
+    "mainshock_key": "id:us6000shlp",
+    "mainshock": {
+        "id": "us6000shlp",
+        "key": "id:us6000shlp",
+        "place": "South Shetland Islands",
+        "magnitude": 6.6,
+        "depth_km": 4.869,
+        "latitude": -61.1525,
+        "longitude": -56.2683,
+        "event_time_utc": "2026-03-20T00:22:02+00:00",
+        "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000shlp",
+        "source_provider": "USGS"
+    },
+    "mainshock_ts": 1773966122,
+    "trigger_magnitude": 6,
+    "radius_km": 150,
+    "window_hours": 168,
+    "min_aftershock_magnitude": 1,
+    "aftershocks": [
+        {
+            "id": "us6000shmv",
+            "key": "id:us6000shmv",
+            "place": "South Shetland Islands",
+            "magnitude": 5.1,
+            "depth_km": 10,
+            "latitude": -61.1312,
+            "longitude": -56.134,
+            "event_time_utc": "2026-03-20T01:15:54+00:00",
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000shmv",
+            "source_provider": "USGS",
+            "distance_km_from_mainshock": 7.6
+        }
+    ],
+    "aftershock_keys": [
+        "id:us6000shmv"
+    ],
+    "generated_at_ts": 1774385806,
+    "generated_at": "2026-03-24T20:56:46+00:00",
+    "status": "active",
+    "expires_at_ts": 1774570922,
+    "expires_at": "2026-03-27T00:22:02+00:00",
+    "aftershocks_count": 1,
+    "aftershocks_24h_count": 0,
+    "strongest_aftershock_magnitude": 5.1,
+    "latest_aftershock_time_utc": "2026-03-20T01:15:54+00:00",
+    "aftershock_rate_per_hour": 0.009
+}

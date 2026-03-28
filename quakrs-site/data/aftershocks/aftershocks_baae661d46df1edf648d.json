@@ -1,0 +1,49 @@
+{
+    "sequence_id": "baae661d46df1edf648d",
+    "mainshock_key": "id:us6000si5l",
+    "mainshock": {
+        "id": "us6000si5l",
+        "key": "id:us6000si5l",
+        "place": "northern Mid-Atlantic Ridge",
+        "magnitude": 6.7,
+        "depth_km": 10,
+        "latitude": 23.8862,
+        "longitude": -45.8413,
+        "event_time_utc": "2026-03-21T12:16:46+00:00",
+        "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000si5l",
+        "source_provider": "USGS"
+    },
+    "mainshock_ts": 1774095406,
+    "trigger_magnitude": 6,
+    "radius_km": 150,
+    "window_hours": 168,
+    "min_aftershock_magnitude": 1,
+    "aftershocks": [
+        {
+            "id": "45092801",
+            "key": "id:45092801",
+            "place": "Northern Mid-Atlantic Ridge [Sea]",
+            "magnitude": 6.5,
+            "depth_km": 11.7,
+            "latitude": 23.7305,
+            "longitude": -45.7334,
+            "event_time_utc": "2026-03-21T12:16:49+00:00",
+            "source_url": "",
+            "source_provider": "INGV",
+            "distance_km_from_mainshock": 20.5
+        }
+    ],
+    "aftershock_keys": [
+        "id:45092801"
+    ],
+    "generated_at_ts": 1774645123,
+    "generated_at": "2026-03-27T20:58:43+00:00",
+    "status": "active",
+    "expires_at_ts": 1774700206,
+    "expires_at": "2026-03-28T12:16:46+00:00",
+    "aftershocks_count": 1,
+    "aftershocks_24h_count": 0,
+    "strongest_aftershock_magnitude": 6.5,
+    "latest_aftershock_time_utc": "2026-03-21T12:16:49+00:00",
+    "aftershock_rate_per_hour": 0.007
+}

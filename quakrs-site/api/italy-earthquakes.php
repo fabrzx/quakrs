@@ -14,7 +14,10 @@ function italy_event_time(mixed $rawTime): ?int
         return $time > 0 ? $time : null;
     }
     if (is_string($rawTime) && trim($rawTime) !== '') {
-        $parsed = strtotime(trim($rawTime));
+        $raw = trim($rawTime);
+        $hasTimezone = (bool) preg_match('/(?:Z|[+\-]\d{2}:?\d{2})$/i', $raw);
+        $input = $hasTimezone ? $raw : ($raw . ' UTC');
+        $parsed = strtotime($input);
         return is_int($parsed) ? $parsed : null;
     }
     return null;
@@ -347,80 +350,11 @@ function italy_events_from_mysql_archive(mysqli $db, string $table, int $fromTs,
     return $rows;
 }
 
-function italy_events_from_sqlite_archive(string $sqlitePath, int $fromTs, int $toTs, int $limit = 50000): array
-{
-    if (!class_exists('SQLite3') || !file_exists($sqlitePath)) {
-        return [];
-    }
-    try {
-        $db = new SQLite3($sqlitePath, SQLITE3_OPEN_READONLY);
-        $stmt = $db->prepare(
-            'SELECT event_id, place, magnitude, depth_km, latitude, longitude, event_time_utc, event_time_ts, source_url, source_provider
-             FROM earthquake_events
-             WHERE CAST(event_time_ts AS INTEGER) >= :from_ts
-               AND CAST(event_time_ts AS INTEGER) <= :to_ts
-               AND latitude IS NOT NULL
-               AND longitude IS NOT NULL
-               AND CAST(latitude AS REAL) BETWEEN 35.0 AND 48.8
-               AND CAST(longitude AS REAL) BETWEEN 6.0 AND 19.6
-             ORDER BY CAST(event_time_ts AS INTEGER) DESC
-             LIMIT :lim'
-        );
-        if (!$stmt instanceof SQLite3Stmt) {
-            $db->close();
-            return [];
-        }
-        $stmt->bindValue(':from_ts', $fromTs, SQLITE3_INTEGER);
-        $stmt->bindValue(':to_ts', $toTs, SQLITE3_INTEGER);
-        $stmt->bindValue(':lim', $limit, SQLITE3_INTEGER);
-        $result = $stmt->execute();
-        if (!$result instanceof SQLite3Result) {
-            $db->close();
-            return [];
-        }
-        $rows = [];
-        while (($row = $result->fetchArray(SQLITE3_ASSOC)) !== false) {
-            $lat = is_numeric($row['latitude'] ?? null) ? (float) $row['latitude'] : null;
-            $lon = is_numeric($row['longitude'] ?? null) ? (float) $row['longitude'] : null;
-            if (!is_float($lat) || !is_float($lon) || !italy_bbox_filter($lat, $lon)) {
-                continue;
-            }
-            $ts = is_numeric($row['event_time_ts'] ?? null) ? (int) $row['event_time_ts'] : null;
-            if (!is_int($ts)) {
-                $parsed = isset($row['event_time_utc']) ? strtotime((string) $row['event_time_utc']) : false;
-                $ts = is_int($parsed) ? $parsed : null;
-            }
-            if (!is_int($ts)) {
-                continue;
-            }
-            $place = (string) ($row['place'] ?? 'Unknown location');
-            $rows[] = [
-                'id' => (string) ($row['event_id'] ?? ''),
-                'place' => $place,
-                'region' => italy_parse_region($place),
-                'magnitude' => is_numeric($row['magnitude'] ?? null) ? (float) $row['magnitude'] : null,
-                'depth_km' => is_numeric($row['depth_km'] ?? null) ? abs((float) $row['depth_km']) : null,
-                'latitude' => $lat,
-                'longitude' => $lon,
-                'event_time_ts' => $ts,
-                'event_time_utc' => gmdate('c', $ts),
-                'source_url' => (string) ($row['source_url'] ?? ''),
-                'source_provider' => (string) ($row['source_provider'] ?? 'SQLite archive'),
-            ];
-        }
-        $result->finalize();
-        $db->close();
-        return $rows;
-    } catch (Throwable $e) {
-        return [];
-    }
-}
-
 $nowTs = time();
 $forceRefresh = isset($_GET['force_refresh']) && (string) $_GET['force_refresh'] === '1';
 $swarmRequestedId = isset($_GET['swarm']) ? trim((string) $_GET['swarm']) : '';
 $cachePath = $appConfig['data_dir'] . '/italy_earthquakes_latest.json';
-$cacheTtl = 3600;
+$cacheTtl = max(60, min(3600, (int) ($appConfig['italy_cache_ttl_seconds'] ?? 300)));
 
 $cached = read_json_file($cachePath);
 $cacheAge = is_array($cached) && isset($cached['generated_at_ts']) ? ($nowTs - (int) $cached['generated_at_ts']) : null;
@@ -467,17 +401,6 @@ if (count($events24h) === 0 || count($events31d) === 0) {
         if (count($events24h) > 0 && count($events31d) > 0) {
             $sourceMode = 'Archive MySQL';
         }
-    }
-}
-
-if (count($events24h) === 0 || count($events31d) === 0) {
-    $sqlitePath = $appConfig['data_dir'] . '/earthquakes_archive.sqlite';
-    $sql24 = italy_events_from_sqlite_archive($sqlitePath, $start24hTs, $nowTs, 15000);
-    $sql31 = italy_events_from_sqlite_archive($sqlitePath, $start31dTs, $nowTs, 80000);
-    if (count($sql24) > 0 && count($sql31) > 0) {
-        $events24h = $sql24;
-        $events31d = $sql31;
-        $sourceMode = 'Archive SQLite';
     }
 }
 

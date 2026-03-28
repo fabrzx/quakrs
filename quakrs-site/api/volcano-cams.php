@@ -192,32 +192,12 @@ usort($cams, static function (array $a, array $b): int {
     return strcmp((string) ($a['name'] ?? ''), (string) ($b['name'] ?? ''));
 });
 
-$hotNowCount = min(8, max(6, (int) ceil(count($cams) * 0.45)));
-$maxPerVolcanoInHot = 2;
-$hotNow = [];
-$deferred = [];
-$volcanoCounter = [];
+$hotNow = array_values(array_filter($cams, static function (array $cam): bool {
+    return (int) ($cam['priority_score'] ?? 0) > 10;
+}));
 
-foreach ($cams as $cam) {
-    $volcanoKey = normalize_volcano_key((string) ($cam['volcano'] ?? $cam['name'] ?? ''));
-    $currentCount = (int) ($volcanoCounter[$volcanoKey] ?? 0);
-
-    if (count($hotNow) < $hotNowCount && $currentCount < $maxPerVolcanoInHot) {
-        $hotNow[] = $cam;
-        $volcanoCounter[$volcanoKey] = $currentCount + 1;
-        continue;
-    }
-
-    $deferred[] = $cam;
-}
-
-if (count($hotNow) < $hotNowCount) {
-    foreach ($deferred as $cam) {
-        $hotNow[] = $cam;
-        if (count($hotNow) >= $hotNowCount) {
-            break;
-        }
-    }
+if ($hotNow === []) {
+    $hotNow = array_slice($cams, 0, min(6, count($cams)));
 }
 
 $hotIds = array_fill_keys(array_map(static fn(array $cam): string => (string) $cam['id'], $hotNow), true);

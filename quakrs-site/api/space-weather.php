@@ -343,6 +343,195 @@ function space_weather_parse_magnetometer_rows(mixed $payload): array
     return $rows;
 }
 
+function space_weather_norm_lon_360(float $lon): float
+{
+    $normalized = fmod($lon, 360.0);
+    if ($normalized < 0) {
+        $normalized += 360.0;
+    }
+    return $normalized;
+}
+
+function space_weather_local_hour_from_lon(int $utcTs, float $lon): float
+{
+    $utcHour = (int) gmdate('G', $utcTs);
+    $utcMinute = (int) gmdate('i', $utcTs);
+    $utcBase = $utcHour + ($utcMinute / 60);
+    $offset = $lon / 15.0;
+    $local = fmod($utcBase + $offset, 24.0);
+    if ($local < 0) {
+        $local += 24.0;
+    }
+    return $local;
+}
+
+function space_weather_is_local_night(int $utcTs, float $lon): bool
+{
+    $hour = space_weather_local_hour_from_lon($utcTs, $lon);
+    return $hour >= 18.0 || $hour <= 6.0;
+}
+
+function space_weather_ovation_grid_value(array $grid, float $lon, float $lat): ?int
+{
+    $lonNorm = space_weather_norm_lon_360($lon);
+    $lonIndex = (int) round($lonNorm);
+    if ($lonIndex >= 360) {
+        $lonIndex = 0;
+    }
+    $latIndex = (int) round(max(-90.0, min(90.0, $lat)));
+
+    if (isset($grid[$lonIndex][$latIndex]) && is_int($grid[$lonIndex][$latIndex])) {
+        return $grid[$lonIndex][$latIndex];
+    }
+
+    for ($radius = 1; $radius <= 2; $radius++) {
+        for ($dLon = -$radius; $dLon <= $radius; $dLon++) {
+            $candidateLon = ($lonIndex + $dLon) % 360;
+            if ($candidateLon < 0) {
+                $candidateLon += 360;
+            }
+
+            for ($dLat = -$radius; $dLat <= $radius; $dLat++) {
+                $candidateLat = $latIndex + $dLat;
+                if ($candidateLat < -90 || $candidateLat > 90) {
+                    continue;
+                }
+
+                if (isset($grid[$candidateLon][$candidateLat]) && is_int($grid[$candidateLon][$candidateLat])) {
+                    return $grid[$candidateLon][$candidateLat];
+                }
+            }
+        }
+    }
+
+    return null;
+}
+
+function space_weather_extract_aurora_targets(mixed $ovationRaw): array
+{
+    $empty = [
+        'observation_time_utc' => null,
+        'forecast_time_utc' => null,
+        'high' => [],
+        'moderate' => [],
+        'watch' => [],
+    ];
+
+    if (!is_array($ovationRaw)) {
+        return $empty;
+    }
+
+    $coordinates = $ovationRaw['coordinates'] ?? null;
+    if (!is_array($coordinates) || $coordinates === []) {
+        return $empty;
+    }
+
+    $grid = [];
+    foreach ($coordinates as $row) {
+        if (!is_array($row) || count($row) < 3) {
+            continue;
+        }
+        $lon = space_weather_parse_numeric($row[0] ?? null);
+        $lat = space_weather_parse_numeric($row[1] ?? null);
+        $aurora = space_weather_parse_numeric($row[2] ?? null);
+        if (!is_float($lon) || !is_float($lat) || !is_float($aurora)) {
+            continue;
+        }
+
+        $lonIndex = (int) round(space_weather_norm_lon_360($lon));
+        if ($lonIndex >= 360) {
+            $lonIndex = 0;
+        }
+        $latIndex = (int) round(max(-90.0, min(90.0, $lat)));
+        $value = (int) round(max(0.0, min(100.0, $aurora)));
+
+        if (!isset($grid[$lonIndex])) {
+            $grid[$lonIndex] = [];
+        }
+        $grid[$lonIndex][$latIndex] = $value;
+    }
+
+    if ($grid === []) {
+        return $empty;
+    }
+
+    $forecastTs = space_weather_parse_time($ovationRaw['Forecast Time'] ?? null);
+    if (!is_int($forecastTs)) {
+        $forecastTs = time();
+    }
+    $observationTs = space_weather_parse_time($ovationRaw['Observation Time'] ?? null);
+
+    $candidates = [
+        ['city' => 'Reykjavik', 'country' => 'Islanda', 'lat' => 64.1466, 'lon' => -21.9426],
+        ['city' => 'Nuuk', 'country' => 'Groenlandia', 'lat' => 64.1814, 'lon' => -51.6941],
+        ['city' => 'Torshavn', 'country' => 'Isole Faroe', 'lat' => 62.0079, 'lon' => -6.7900],
+        ['city' => 'Tromso', 'country' => 'Norvegia', 'lat' => 69.6492, 'lon' => 18.9553],
+        ['city' => 'Kiruna', 'country' => 'Svezia', 'lat' => 67.8558, 'lon' => 20.2253],
+        ['city' => 'Rovaniemi', 'country' => 'Finlandia', 'lat' => 66.5039, 'lon' => 25.7294],
+        ['city' => 'Sodankyla', 'country' => 'Finlandia', 'lat' => 67.4156, 'lon' => 26.6044],
+        ['city' => 'Murmansk', 'country' => 'Russia', 'lat' => 68.9585, 'lon' => 33.0827],
+        ['city' => 'Arkhangelsk', 'country' => 'Russia', 'lat' => 64.5399, 'lon' => 40.5158],
+        ['city' => 'Longyearbyen', 'country' => 'Svalbard', 'lat' => 78.2232, 'lon' => 15.6469],
+        ['city' => 'Fairbanks', 'country' => 'Stati Uniti (Alaska)', 'lat' => 64.8378, 'lon' => -147.7164],
+        ['city' => 'Anchorage', 'country' => 'Stati Uniti (Alaska)', 'lat' => 61.2181, 'lon' => -149.9003],
+        ['city' => 'Yellowknife', 'country' => 'Canada', 'lat' => 62.4540, 'lon' => -114.3718],
+        ['city' => 'Whitehorse', 'country' => 'Canada', 'lat' => 60.7212, 'lon' => -135.0568],
+        ['city' => 'Iqaluit', 'country' => 'Canada', 'lat' => 63.7467, 'lon' => -68.5170],
+        ['city' => 'St Johns', 'country' => 'Canada', 'lat' => 47.5615, 'lon' => -52.7126],
+        ['city' => 'Edimburgo', 'country' => 'Regno Unito', 'lat' => 55.9533, 'lon' => -3.1883],
+        ['city' => 'Bergen', 'country' => 'Norvegia', 'lat' => 60.3913, 'lon' => 5.3221],
+        ['city' => 'Oslo', 'country' => 'Norvegia', 'lat' => 59.9139, 'lon' => 10.7522],
+        ['city' => 'Stoccolma', 'country' => 'Svezia', 'lat' => 59.3293, 'lon' => 18.0686],
+        ['city' => 'Helsinki', 'country' => 'Finlandia', 'lat' => 60.1699, 'lon' => 24.9384],
+    ];
+
+    $scored = [];
+    foreach ($candidates as $candidate) {
+        $lat = (float) $candidate['lat'];
+        $lon = (float) $candidate['lon'];
+        $value = space_weather_ovation_grid_value($grid, $lon, $lat);
+        if (!is_int($value) || $value <= 0) {
+            continue;
+        }
+        if (!space_weather_is_local_night($forecastTs, $lon)) {
+            continue;
+        }
+
+        $scored[] = [
+            'city' => (string) $candidate['city'],
+            'country' => (string) $candidate['country'],
+            'value' => $value,
+        ];
+    }
+
+    usort($scored, static fn(array $a, array $b): int => $b['value'] <=> $a['value']);
+
+    $high = [];
+    $moderate = [];
+    $watch = [];
+    foreach ($scored as $row) {
+        if ($row['value'] >= 70) {
+            $high[] = $row;
+            continue;
+        }
+        if ($row['value'] >= 50) {
+            $moderate[] = $row;
+            continue;
+        }
+        if ($row['value'] >= 35) {
+            $watch[] = $row;
+        }
+    }
+
+    return [
+        'observation_time_utc' => is_int($observationTs) ? gmdate('c', $observationTs) : null,
+        'forecast_time_utc' => gmdate('c', $forecastTs),
+        'high' => array_slice($high, 0, 6),
+        'moderate' => array_slice($moderate, 0, 6),
+        'watch' => array_slice($watch, 0, 6),
+    ];
+}
+
 function space_weather_moon_phase(int $nowTs): array
 {
     $synodic = 29.53058867;
@@ -461,6 +650,13 @@ function space_weather_enrich_payload(array $payload): array
 
     $payload['magnetometers_series_24h'] = isset($payload['magnetometers_series_24h']) && is_array($payload['magnetometers_series_24h']) ? $payload['magnetometers_series_24h'] : [];
     $payload['auroral_oval_url'] = isset($payload['auroral_oval_url']) && is_string($payload['auroral_oval_url']) ? $payload['auroral_oval_url'] : null;
+    $payload['aurora_targets'] = isset($payload['aurora_targets']) && is_array($payload['aurora_targets']) ? $payload['aurora_targets'] : [
+        'observation_time_utc' => null,
+        'forecast_time_utc' => null,
+        'high' => [],
+        'moderate' => [],
+        'watch' => [],
+    ];
     $payload['moon_phase'] = isset($payload['moon_phase']) && is_array($payload['moon_phase']) ? $payload['moon_phase'] : space_weather_moon_phase(time());
 
     return $payload;
@@ -521,6 +717,7 @@ $plasmaUrl = (string) ($feedConfig['space_weather']['solar_wind_plasma_url'] ?? 
 $magUrl = (string) ($feedConfig['space_weather']['solar_wind_mag_url'] ?? '');
 $dstUrl = (string) ($feedConfig['space_weather']['dst_url'] ?? '');
 $magnetometersUrl = (string) ($feedConfig['space_weather']['magnetometers_url'] ?? '');
+$ovationJsonUrl = (string) ($feedConfig['space_weather']['ovation_json_url'] ?? '');
 
 $timeout = (int) $appConfig['http_timeout_seconds'];
 
@@ -531,6 +728,7 @@ $plasmaRaw = fetch_external_json($plasmaUrl, $timeout);
 $magRaw = fetch_external_json($magUrl, $timeout);
 $dstRaw = fetch_external_json($dstUrl, $timeout);
 $magnetometersRaw = fetch_external_json($magnetometersUrl, $timeout);
+$ovationRaw = fetch_external_json($ovationJsonUrl, $timeout);
 
 $kpRows = space_weather_parse_kp_rows($kpRaw);
 $forecastRows = space_weather_parse_kp_rows($forecastRaw);
@@ -718,6 +916,7 @@ $magnetometerSeries = array_map(static function (array $row): array {
 }, array_slice($magnetometerWindow, -180));
 
 $moonPhase = space_weather_moon_phase($now);
+$auroraTargets = space_weather_extract_aurora_targets($ovationRaw);
 
 $payload = [
     'ok' => true,
@@ -775,6 +974,7 @@ $payload = [
     'dst_series_24h' => $dstSeries,
     'magnetometers_series_24h' => $magnetometerSeries,
     'auroral_oval_url' => $auroralOvalUrl !== '' ? ($auroralOvalUrl . '?t=' . $now) : null,
+    'aurora_targets' => $auroraTargets,
     'moon_phase' => $moonPhase,
 
     'from_cache' => false,

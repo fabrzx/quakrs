@@ -34,13 +34,46 @@ require __DIR__ . '/../partials/topbar.php';
     min-height: 36rem;
   }
 
-  .swarm-map-legend span {
-    color: #0d121a;
-    font-weight: 700;
+  .swarm-map-legend {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   }
 
-  .swarm-map-legend span:last-child {
-    color: #fff;
+  .swarm-map-legend .map-filter-btn {
+    width: 100%;
+    min-width: 0;
+    padding: 0.42rem 0.3rem;
+    font-size: 0.66rem;
+    color: color-mix(in srgb, var(--text) 92%, white 8%);
+  }
+
+  .swarm-map-legend .map-filter-btn.band-m1-2 {
+    --band-bg: #22d3ee;
+    --band-fg: #04131b;
+  }
+
+  .swarm-map-legend .map-filter-btn.band-m3 {
+    --band-bg: #5de4c7;
+    --band-fg: #082218;
+  }
+
+  .swarm-map-legend .map-filter-btn.band-m4 {
+    --band-bg: #f7d21e;
+    --band-fg: #231b02;
+  }
+
+  .swarm-map-legend .map-filter-btn.band-m6 {
+    --band-bg: #ff7a00;
+    --band-fg: #241101;
+  }
+
+  .swarm-map-legend .map-filter-btn.band-m7p {
+    --band-bg: #ff1f2d;
+    --band-fg: #ffffff;
+  }
+
+  .swarm-map-legend .map-filter-btn.band-m8p {
+    --band-bg: #b84dff;
+    --band-fg: #ffffff;
   }
 
   .swarm-mini-note {
@@ -116,10 +149,12 @@ require __DIR__ . '/../partials/topbar.php';
       <div id="swarm-map" class="world-map-leaflet" aria-label="Mappa dettaglio sciame"></div>
     </div>
     <div class="map-legend swarm-map-legend">
-      <span style="background:#22d3ee">M &lt; 2</span>
-      <span style="background:#5de4c7">M 2-3</span>
-      <span style="background:#f7d21e">M 3-4</span>
-      <span style="background:#ff5f45">M 4+</span>
+      <button class="map-filter-btn band-m1-2" data-band="m1-2" type="button" aria-pressed="false">M &lt; 2</button>
+      <button class="map-filter-btn band-m3" data-band="m3" type="button" aria-pressed="false">M 2.0-2.9</button>
+      <button class="map-filter-btn band-m4" data-band="m4" type="button" aria-pressed="false">M 3.0-4.9</button>
+      <button class="map-filter-btn band-m6" data-band="m6" type="button" aria-pressed="false">M 5.0-5.9</button>
+      <button class="map-filter-btn band-m7p" data-band="m7p" type="button" aria-pressed="false">M 6.0-6.9</button>
+      <button class="map-filter-btn band-m8p" data-band="m8p" type="button" aria-pressed="false">M 7+</button>
     </div>
     <p id="swarm-window" class="swarm-mini-note">Intervallo: --</p>
   </article>
@@ -151,7 +186,7 @@ require __DIR__ . '/../partials/topbar.php';
   <article class="card">
     <div class="feed-head">
       <h3>Hourly pattern (24h)</h3>
-      <p class="feed-meta">Distribuzione UTC 00-23</p>
+      <p class="feed-meta">Distribuzione ora 00-23</p>
     </div>
     <div id="swarm-chart-hourly" class="bars-vertical"></div>
   </article>
@@ -203,20 +238,163 @@ require __DIR__ . '/../partials/topbar.php';
       story: document.querySelector("#swarm-story"),
       map: document.querySelector("#swarm-map"),
       toggle: document.querySelector("#swarm-theme-toggle"),
+      legend: document.querySelector(".swarm-map-legend"),
     };
+    const swarmBandButtons = Array.from(document.querySelectorAll(".swarm-map-legend .map-filter-btn"));
 
     const formatUtc = (raw) => {
       if (!raw) return "n/a";
       const d = new Date(String(raw));
       if (Number.isNaN(d.getTime())) return "n/a";
-      return d.toISOString().replace("T", " ").slice(0, 16) + " UTC";
+      return d.toLocaleString("it-IT", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      });
+    };
+    const hourUtcToLocal = (hourUtc) => {
+      const hh = String(hourUtc || "00").padStart(2, "0").slice(0, 2);
+      const d = new Date(`1970-01-01T${hh}:00:00Z`);
+      if (Number.isNaN(d.getTime())) return "--";
+      return d.toLocaleTimeString("it-IT", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      });
     };
 
     const markerColor = (mag) => {
-      if (mag >= 4) return "#ff5f45";
+      if (mag >= 7) return "#b84dff";
+      if (mag >= 6) return "#ff1f2d";
+      if (mag >= 5) return "#ff7a00";
       if (mag >= 3) return "#f7d21e";
       if (mag >= 2) return "#5de4c7";
       return "#22d3ee";
+    };
+
+    const eventInBand = (event, band) => {
+      const mag = Number(event?.magnitude);
+      if (!Number.isFinite(mag)) return false;
+      if (band === "m1-2") return mag < 2;
+      if (band === "m3") return mag >= 2 && mag < 3;
+      if (band === "m4") return mag >= 3 && mag < 5;
+      if (band === "m6") return mag >= 5 && mag < 6;
+      if (band === "m7p") return mag >= 6 && mag < 7;
+      if (band === "m8p") return mag >= 7;
+      return true;
+    };
+
+    const magBandCounts = (events) => {
+      const counts = { "m1-2": 0, m3: 0, m4: 0, m6: 0, m7p: 0, m8p: 0 };
+      events.forEach((event) => {
+        if (eventInBand(event, "m1-2")) counts["m1-2"] += 1;
+        else if (eventInBand(event, "m3")) counts.m3 += 1;
+        else if (eventInBand(event, "m4")) counts.m4 += 1;
+        else if (eventInBand(event, "m6")) counts.m6 += 1;
+        else if (eventInBand(event, "m7p")) counts.m7p += 1;
+        else if (eventInBand(event, "m8p")) counts.m8p += 1;
+      });
+      return counts;
+    };
+
+    let allSwarmEvents = [];
+    let activeMagBand = null;
+
+    const syncBandButtonsUi = () => {
+      swarmBandButtons.forEach((button) => {
+        const isActive = button.dataset.band === activeMagBand;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    };
+
+    const syncBandVisibility = (events) => {
+      const counts = magBandCounts(events);
+      let visibleCount = 0;
+      swarmBandButtons.forEach((button) => {
+        const band = String(button.dataset.band || "");
+        const count = Number(counts[band] || 0);
+        const shouldShow = count > 0;
+        button.hidden = !shouldShow;
+        button.disabled = !shouldShow;
+        button.setAttribute("aria-disabled", shouldShow ? "false" : "true");
+        if (shouldShow) {
+          visibleCount += 1;
+          button.title = `${count} eventi`;
+        } else {
+          button.removeAttribute("title");
+        }
+      });
+      if (activeMagBand && Number(counts[activeMagBand] || 0) === 0) {
+        activeMagBand = null;
+      }
+      if (els.legend) {
+        els.legend.hidden = visibleCount === 0;
+      }
+      syncBandButtonsUi();
+    };
+
+    const filteredSwarmEvents = () => {
+      if (!activeMagBand) return allSwarmEvents;
+      return allSwarmEvents.filter((event) => eventInBand(event, activeMagBand));
+    };
+
+    const renderSwarmEventsList = (events) => {
+      if (!els.events) return;
+      els.events.innerHTML = events.length > 0
+        ? events.slice(0, 100).map((event) => {
+            const magNum = typeof event.magnitude === "number" ? event.magnitude : null;
+            const mag = magNum !== null ? `M${magNum.toFixed(1)}` : "M?";
+            const depth = typeof event.depth_km === "number" ? `${event.depth_km.toFixed(1)} km` : "n/a";
+            const magStyle = magNum !== null ? ` style=\"color:${markerColor(magNum)}\"` : "";
+            return `<li class=\"event-item\"><strong${magStyle}>${mag}</strong> · ${depth}<br />${event.place || "Unknown"}<br /><span class=\"swarm-mini-note\">${formatUtc(event.event_time_utc)}</span></li>`;
+          }).join("")
+        : "<li class='event-item'>Nessun evento disponibile.</li>";
+    };
+
+    const renderSwarmMarkers = (events) => {
+      if (!map || !markersLayer || !window.L) return;
+      markersLayer.clearLayers();
+      const latlngs = [];
+      const zoom = map && typeof map.getZoom === "function" ? map.getZoom() : 7;
+      const lowZoomScale = zoom <= 5.8 ? 0.88 : (zoom <= 7.2 ? 0.94 : 1);
+      const lowZoom = zoom <= 5.8;
+      const midZoom = zoom > 5.8 && zoom <= 7.2;
+      events.forEach((event, idx) => {
+        if (typeof event.latitude !== "number" || typeof event.longitude !== "number") return;
+        const mag = typeof event.magnitude === "number" ? event.magnitude : 0;
+        const depth = typeof event.depth_km === "number" ? `${event.depth_km.toFixed(1)} km` : "n/a";
+        const baseRadius = Math.max(2.2, Math.min(11, 2 + (mag * 1.3)));
+        const radius = baseRadius * lowZoomScale;
+        const opacity = idx < 120 ? 0.92 : 0.62;
+        const strokeOpacity = lowZoom ? 0.52 : (midZoom ? 0.68 : 0.85);
+        latlngs.push([event.latitude, event.longitude]);
+        window.L.circleMarker([event.latitude, event.longitude], {
+          radius,
+          color: `rgba(255,255,255,${strokeOpacity})`,
+          opacity: strokeOpacity,
+          weight: lowZoom ? 0.7 : (midZoom ? 0.85 : 1),
+          fillColor: markerColor(mag),
+          fillOpacity: lowZoom ? opacity * 0.9 : opacity,
+        })
+          .bindTooltip(`M${mag.toFixed(1)} · ${depth} · ${event.place || "Unknown"}`)
+          .addTo(markersLayer);
+      });
+      if (latlngs.length > 1) {
+        map.fitBounds(window.L.latLngBounds(latlngs), { padding: [14, 14], maxZoom: 12 });
+      } else if (latlngs.length === 1) {
+        map.setView(latlngs[0], 10.2);
+      }
+    };
+
+    const applyMagBandFilter = () => {
+      const filtered = filteredSwarmEvents();
+      renderSwarmEventsList(filtered);
+      renderSwarmMarkers(filtered);
+      syncBandButtonsUi();
     };
 
     const renderVerticalChart = (container, rows, options = {}) => {
@@ -306,6 +484,9 @@ require __DIR__ . '/../partials/topbar.php';
       if (els.sub) els.sub.textContent = message;
       if (els.events) els.events.innerHTML = `<li class=\"event-item swarm-empty\">${message}</li>`;
       if (els.cues) els.cues.innerHTML = "<li class='event-item'>Nessun dato disponibile.</li>";
+      allSwarmEvents = [];
+      activeMagBand = null;
+      syncBandVisibility([]);
     };
 
     const load = async () => {
@@ -356,7 +537,7 @@ require __DIR__ . '/../partials/topbar.php';
         })), { thickness: 13 });
 
         renderVerticalChart(els.chartHourly, hourly.map((row) => ({
-          label: `${String(row.hour_utc || "00")}`,
+          label: hourUtcToLocal(row.hour_utc),
           value: Number(row.count || 0),
           display: String(Number(row.count || 0)),
           color: "#22d3ee",
@@ -376,15 +557,9 @@ require __DIR__ . '/../partials/topbar.php';
           { label: "70+ km", value: Number(depthBands["70+"] || 0), display: String(Number(depthBands["70+"] || 0)) },
         ]);
 
-        if (els.events) {
-          els.events.innerHTML = events.length > 0
-            ? events.slice(0, 100).map((event) => {
-              const mag = typeof event.magnitude === "number" ? `M${event.magnitude.toFixed(1)}` : "M?";
-              const depth = typeof event.depth_km === "number" ? `${event.depth_km.toFixed(1)} km` : "n/a";
-              return `<li class=\"event-item\"><strong>${mag}</strong> · ${depth}<br />${event.place || "Unknown"}<br /><span class=\"swarm-mini-note\">${formatUtc(event.event_time_utc)}</span></li>`;
-            }).join("")
-            : "<li class='event-item'>Nessun evento disponibile.</li>";
-        }
+        allSwarmEvents = events;
+        syncBandVisibility(allSwarmEvents);
+        applyMagBandFilter();
 
         const cueRows = [];
         if (Number(detail.events_24h || 0) >= 12) cueRows.push("Concentrazione elevata 24h: mantenere monitoraggio stretto locale.");
@@ -410,40 +585,22 @@ require __DIR__ . '/../partials/topbar.php';
           els.story.textContent = `Cluster ${detail.swarm_id || swarmId}: ${Number(detail.events_30d || 0)} eventi in 30 giorni, ${Number(detail.events_24h || 0)} nelle ultime 24h, picco storico locale ${max30}.`; 
         }
 
-        if (map && markersLayer && window.L) {
-          markersLayer.clearLayers();
-
-          const latlngs = [];
-          events.forEach((event, idx) => {
-            if (typeof event.latitude !== "number" || typeof event.longitude !== "number") return;
-            const mag = typeof event.magnitude === "number" ? event.magnitude : 0;
-            const depth = typeof event.depth_km === "number" ? `${event.depth_km.toFixed(1)} km` : "n/a";
-            const radius = Math.max(2.2, Math.min(11, 2 + (mag * 1.3)));
-            const opacity = idx < 120 ? 0.92 : 0.62;
-            latlngs.push([event.latitude, event.longitude]);
-            window.L.circleMarker([event.latitude, event.longitude], {
-              radius,
-              color: "rgba(255,255,255,0.85)",
-              weight: 1,
-              fillColor: markerColor(mag),
-              fillOpacity: opacity,
-            })
-              .bindTooltip(`M${mag.toFixed(1)} · ${depth} · ${event.place || "Unknown"}`)
-              .addTo(markersLayer);
-          });
-
-          if (latlngs.length > 1) {
-            map.fitBounds(window.L.latLngBounds(latlngs), { padding: [14, 14], maxZoom: 12 });
-          } else if (latlngs.length === 1) {
-            map.setView(latlngs[0], 10.2);
-          }
-        }
       } catch (error) {
         setError("Errore nel caricamento del dettaglio sciame.");
       }
     };
 
+    swarmBandButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (button.disabled) return;
+        const band = String(button.dataset.band || "");
+        activeMagBand = activeMagBand === band ? null : band;
+        applyMagBandFilter();
+      });
+    });
+
     applyTheme();
+    syncBandButtonsUi();
     load();
   })();
 </script>

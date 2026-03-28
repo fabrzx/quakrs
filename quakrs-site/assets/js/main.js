@@ -71,6 +71,9 @@ const homeMirrorNodes = document.querySelectorAll("[data-home-mirror]");
 const footerUpdateInterval = document.querySelector("#footer-update-interval");
 const footerDataLatency = document.querySelector("#footer-data-latency");
 const mapFilterButtons = document.querySelectorAll(".map-filter-btn");
+const priorityMapLegend = document.querySelector(".priority-map-main .map-legend");
+const earthquakesMapLegend = document.querySelector(".earthquakes-main-layout .map-legend");
+const mapsFullscreenLegend = document.querySelector(".maps-fullscreen-map .map-legend");
 const globalThemeToggle = document.querySelector("#global-theme-toggle");
 const eventInsightPanel = document.querySelector("#event-insight-panel");
 const eventInsightTitle = document.querySelector("#event-insight-title");
@@ -114,6 +117,17 @@ const homeHazardsState = {
   spaceKp: null,
   spaceStormLevel: null,
   spacePayload: null,
+};
+
+const seismicContextState = {
+  ready: false,
+  source: "none",
+  cellSize: 1,
+  p30: 0,
+  p70: 0,
+  cells: new Map(),
+  fetchedAtTs: 0,
+  loading: false,
 };
 
 let timelineExpanded = false;
@@ -194,6 +208,34 @@ const siteLocale =
       ? "it"
       : "en"
     : "en";
+const LOCAL_LOCALE = siteLocale === "it" ? "it-IT" : "en-GB";
+const cssToken = (tokenName, fallback) => {
+  if (typeof window === "undefined" || typeof document === "undefined") {
+    return fallback;
+  }
+  const computed = window.getComputedStyle(document.documentElement).getPropertyValue(tokenName);
+  return computed ? computed.trim() : fallback;
+};
+const UI_COLORS = {
+  neutral: cssToken("--text-3", "#7f8cad"),
+  m1: cssToken("--info-acid", "#39d5ff"),
+  m2: cssToken("--acid-cyan", "#20e0ff"),
+  m3: cssToken("--acid-cyan", "#20e0ff"),
+  m4: cssToken("--hazard-earthquake", "#b7ff00"),
+  m5: cssToken("--hazard-space", "#ffe600"),
+  m6: cssToken("--acid-orange", "#ff7a00"),
+  m7: cssToken("--danger-acid", "#ff4d6d"),
+  m8: cssToken("--hazard-volcano", "#ff2bd6"),
+  m9: cssToken("--acid-magenta", "#ff2bd6"),
+  plateLine: cssToken("--hazard-tsunami", "#20e0ff"),
+  faultLine: cssToken("--hazard-critical", "#ff7a00"),
+  depthShallow: cssToken("--hazard-tsunami", "#20e0ff"),
+  depthIntermediate: cssToken("--hazard-space", "#ffe600"),
+  depthDeep: cssToken("--danger-acid", "#ff4d6d"),
+  barDefault: cssToken("--acid-cyan", "#20e0ff"),
+  barMid: cssToken("--hazard-earthquake", "#b7ff00"),
+  barHigh: cssToken("--acid-orange", "#ff7a00"),
+};
 const homeI18n = {
   en: {
     mode_regional_focus: "Regional focus",
@@ -204,7 +246,7 @@ const homeI18n = {
       "{focusCount} events in the last {lookbackHours}h across {regionLabel}, peaking at {focusStrongest}. Current activity is elevated versus the global baseline.",
     summary_global:
       "Distributed activity across {workingSetSize} recent events, with no single dominant area right now.",
-    label_area: "Area: {regionLabel}",
+    label_area: "Area focus: {regionLabel}",
     label_window: "Window: last {lookbackHours}h",
     label_intensity: "Intensity: {pressure}",
     label_activity_index: "Activity index: {probability}/100",
@@ -233,7 +275,7 @@ const homeI18n = {
       "{focusCount} eventi nelle ultime {lookbackHours}h in area {regionLabel}, con picco {focusStrongest}. Attività attuale elevata rispetto al quadro globale.",
     summary_global:
       "Attività distribuita su {workingSetSize} eventi recenti, senza una singola area dominante in questo momento.",
-    label_area: "Area: {regionLabel}",
+    label_area: "Area focus: {regionLabel}",
     label_window: "Finestra: ultime {lookbackHours}h",
     label_intensity: "Intensità: {pressure}",
     label_activity_index: "Indice attività: {probability}/100",
@@ -407,6 +449,85 @@ function initMobileNavToggle() {
   });
 }
 
+function initTopbarSearchDialog() {
+  const triggers = Array.from(document.querySelectorAll("[data-search-trigger]")).filter(
+    (node) => node instanceof HTMLButtonElement
+  );
+  const dialog = document.querySelector("#topbar-search-dialog");
+  const input = document.querySelector("#topbar-search-input");
+  const closeButtons = Array.from(document.querySelectorAll("[data-search-close]"));
+
+  if (triggers.length === 0 || !(dialog instanceof HTMLDialogElement)) {
+    return;
+  }
+
+  const advancedHref = triggers[0].dataset.advancedHref || "/search.php";
+
+  const closeDialog = () => {
+    if (dialog.open) {
+      dialog.close();
+    }
+  };
+
+  const openDialog = () => {
+    if (typeof dialog.showModal !== "function") {
+      window.location.href = advancedHref;
+      return;
+    }
+    dialog.showModal();
+    document.body.classList.add("is-search-dialog-open");
+    window.setTimeout(() => {
+      if (input instanceof HTMLInputElement) {
+        input.focus();
+        input.select();
+      }
+    }, 10);
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      openDialog();
+    });
+  });
+
+  closeButtons.forEach((button) => {
+    if (button instanceof HTMLButtonElement) {
+      button.addEventListener("click", () => {
+        closeDialog();
+      });
+    }
+  });
+
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) {
+      closeDialog();
+    }
+  });
+
+  dialog.addEventListener("close", () => {
+    document.body.classList.remove("is-search-dialog-open");
+  });
+
+  dialog.addEventListener("cancel", () => {
+    document.body.classList.remove("is-search-dialog-open");
+  });
+
+  const form = dialog.querySelector("form");
+  if (form instanceof HTMLFormElement) {
+    form.addEventListener("submit", (event) => {
+      if (!(input instanceof HTMLInputElement)) {
+        return;
+      }
+      if (input.value.trim() !== "") {
+        return;
+      }
+      event.preventDefault();
+      input.focus();
+    });
+  }
+}
+
 function updateHomeBrief() {
   if (!homeSnapshotBrief) {
     return;
@@ -519,7 +640,13 @@ function renderHomeSituationContext(context) {
     }
   }
   if (homeContextRegion) {
-    homeContextRegion.textContent = tHome("label_area", { regionLabel: context.regionLabel });
+    const focusHref = buildFocusAreaHref(context.regionLabel);
+    if (focusHref) {
+      const labelPrefix = tHome("label_area", { regionLabel: "" }).trimEnd();
+      homeContextRegion.innerHTML = `${escapeHtml(labelPrefix)} <a class="inline-link" href="${focusHref}">${escapeHtml(context.regionLabel)}</a>`;
+    } else {
+      homeContextRegion.textContent = tHome("label_area", { regionLabel: context.regionLabel });
+    }
   }
   if (homeContextWindow) {
     homeContextWindow.textContent = tHome("label_window", { lookbackHours: context.lookbackHours });
@@ -563,22 +690,29 @@ function renderClustersList() {
     return;
   }
 
-  const rows = [];
-  rows.push({
+  const clusters = homeHazardsState.tremorClusters;
+  const signals = homeHazardsState.tremorSignals;
+  const peakHour = homeHazardsState.tremorPeakHour || "--:00";
+  const peakCount = homeHazardsState.tremorPeakCount;
+
+  const rows = [{
     kind: "summary",
-    label: "Tremor overview",
-    value: homeHazardsState.tremorSignals !== null ? `${homeHazardsState.tremorSignals} signals` : "--",
-    meta:
-      homeHazardsState.tremorClusters !== null && homeHazardsState.tremorPeakCount !== null
-        ? `${homeHazardsState.tremorClusters} active clusters, peak ${homeHazardsState.tremorPeakHour || "--:00"} UTC (${homeHazardsState.tremorPeakCount} signals)`
+    label: "Now",
+    value:
+      clusters !== null && signals !== null
+        ? `${clusters} clusters · ${signals} signals`
         : "Loading tremor feed",
+    meta:
+      peakCount !== null
+        ? `Peak ${peakHour} (${peakCount} signals)`
+        : "Waiting peak window",
     href: "/data-clusters.php",
-  });
+  }];
 
   const clusterRows = Array.isArray(homeHazardsState.tremorTopClusters)
-    ? homeHazardsState.tremorTopClusters.slice(0, 3).map((cluster) => ({
+    ? homeHazardsState.tremorTopClusters.slice(0, 2).map((cluster) => ({
         kind: "cluster",
-        label: cluster.region || "Unknown cluster",
+        label: cluster.region || "Cluster",
         value: `${cluster.count ?? 0} signals`,
         meta: `Max ${typeof cluster.max_magnitude === "number" ? formatMagnitude(cluster.max_magnitude) : "M?"}`,
         href: "/data-clusters.php",
@@ -613,7 +747,7 @@ function renderVolcanoList() {
     ? `${homeHazardsState.latestVolcano}, ${homeHazardsState.latestCountry}`
     : homeHazardsState.latestVolcano || "No recent volcano item";
   const latestTime = homeHazardsState.latestVolcanoTime
-    ? `${homeHazardsState.latestVolcanoTime.toLocaleDateString(undefined, { day: "2-digit", month: "short" })} · ${homeHazardsState.latestVolcanoTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })} UTC`
+    ? formatLocalDateTime(homeHazardsState.latestVolcanoTime, { withDate: true, withYear: false, fallback: "Time unavailable" })
     : "Time unavailable";
   const topZones = Array.isArray(homeHazardsState.topVolcanoCountries) && homeHazardsState.topVolcanoCountries.length > 0
     ? homeHazardsState.topVolcanoCountries.join(" · ")
@@ -624,25 +758,20 @@ function renderVolcanoList() {
 
   const rows = [
     {
-      label: "Latest bulletin",
-      value: `${homeHazardsState.latestVolcanoStatus || "Weekly activity update"} · ${latestLabel}`,
-      meta:
-        homeHazardsState.newEruptive !== null && homeHazardsState.volcanoReports !== null
-          ? `${latestTime} · ${homeHazardsState.volcanoReports} reports in this cycle`
-          : "Loading volcano activity",
+      label: "Now",
+      value: homeHazardsState.latestVolcanoStatus || "Weekly activity update",
+      meta: `${latestLabel} · ${latestTime}`,
     },
     {
-      label: "New eruptive volcanoes",
-      value: homeHazardsState.newEruptive !== null ? `${homeHazardsState.newEruptive} detected` : "--",
-      meta: newEruptiveList,
-    },
-    {
-      label: "Most reported zones",
-      value: topZones,
+      label: "Cycle",
+      value:
+        homeHazardsState.volcanoReports !== null && homeHazardsState.volcanoes !== null
+          ? `${homeHazardsState.volcanoReports} reports · ${homeHazardsState.volcanoes} monitored`
+          : "Loading volcano cycle",
       meta:
-        homeHazardsState.volcanoes !== null
-          ? `${homeHazardsState.volcanoes} volcanoes monitored this cycle`
-          : "Tracking volcano zones",
+        homeHazardsState.newEruptive !== null
+          ? `New eruptive: ${homeHazardsState.newEruptive} · Focus: ${topZones}`
+          : newEruptiveList,
     },
   ];
 
@@ -707,20 +836,20 @@ function renderHazardStatusCards() {
 
 function magnitudeColor(magnitude) {
   if (magnitude === null || Number.isNaN(magnitude)) {
-    return "#6b7280";
+    return UI_COLORS.neutral;
   }
 
   const bucket = Math.max(1, Math.min(9, Math.floor(magnitude)));
   const palette = {
-    1: "#3b82f6",
-    2: "#06b6d4",
-    3: "#14b8a6",
-    4: "#22c55e",
-    5: "#eab308",
-    6: "#f59e0b",
-    7: "#f97316",
-    8: "#d946ef",
-    9: "#7e22ce",
+    1: UI_COLORS.m1,
+    2: UI_COLORS.m2,
+    3: UI_COLORS.m3,
+    4: UI_COLORS.m4,
+    5: UI_COLORS.m5,
+    6: UI_COLORS.m6,
+    7: UI_COLORS.m7,
+    8: UI_COLORS.m8,
+    9: UI_COLORS.m9,
   };
 
   return palette[bucket];
@@ -767,20 +896,79 @@ function setHomeMirror(key, value, color = "") {
   });
 }
 
-function formatUtcLabel(input) {
+function parseDateInput(input) {
   if (!input) {
-    return "----/--/-- --:-- UTC";
+    return null;
   }
-  const date = new Date(input);
-  if (Number.isNaN(date.getTime())) {
-    return "----/--/-- --:-- UTC";
+  const date = input instanceof Date ? input : new Date(input);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function formatLocalDateTime(input, { withDate = true, withYear = true, fallback = "n/a" } = {}) {
+  const date = parseDateInput(input);
+  if (!date) {
+    return fallback;
   }
-  const year = date.getUTCFullYear();
-  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
-  const day = String(date.getUTCDate()).padStart(2, "0");
-  const hour = String(date.getUTCHours()).padStart(2, "0");
-  const minute = String(date.getUTCMinutes()).padStart(2, "0");
-  return `${year}/${month}/${day} ${hour}:${minute} UTC`;
+  const options = {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  };
+  if (withDate) {
+    options.day = "2-digit";
+    options.month = withYear ? "2-digit" : "short";
+    if (withYear) {
+      options.year = "numeric";
+    }
+  }
+  return date.toLocaleString(LOCAL_LOCALE, options);
+}
+
+function formatLocalTime(input, fallback = "--:--") {
+  const date = parseDateInput(input);
+  if (!date) {
+    return fallback;
+  }
+  return date.toLocaleTimeString(LOCAL_LOCALE, {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+}
+
+function formatLocalHourSlotLabel(input, fallback = "--:00") {
+  const date = parseDateInput(input);
+  if (!date) {
+    return fallback;
+  }
+  return `${date.toLocaleTimeString(LOCAL_LOCALE, {
+    hour: "2-digit",
+    hour12: false,
+  })}:00`;
+}
+
+function formatLocalLabel(input) {
+  const label = formatLocalDateTime(input, { withDate: true, withYear: true, fallback: "" });
+  if (!label) {
+    return "----/--/-- --:--";
+  }
+  return label.replaceAll(".", "/");
+}
+
+function formatLocalLabelNoYear(input) {
+  const date = parseDateInput(input);
+  if (!date) {
+    return "--/--, --:--";
+  }
+  return date
+    .toLocaleString(LOCAL_LOCALE, {
+      day: "2-digit",
+      month: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    })
+    .replaceAll(".", "/");
 }
 
 function formatUpdatedAgo(input) {
@@ -840,6 +1028,54 @@ function setMagnitudeFilterState(nextBand) {
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", isActive ? "true" : "false");
   });
+}
+
+function syncPriorityMapBandVisibility(baseEvents) {
+  const isMagnitudeFilterPage = isPriorityMapsPage || isEarthquakesPage || isMapsFullscreen;
+  if (!isMagnitudeFilterPage || mapFilterButtons.length === 0) {
+    return;
+  }
+  const events = Array.isArray(baseEvents) ? baseEvents : [];
+  const pageDefaultBand = isPriorityMapsPage ? "m45p" : null;
+  let firstVisibleBand = null;
+  const visibleBands = new Set();
+  mapFilterButtons.forEach((button) => {
+    const band = String(button.dataset.band || "");
+    if (!band) return;
+    const count = events.reduce((total, event) => total + (eventInMagnitudeBand(event, band) ? 1 : 0), 0);
+    const shouldShow = count > 0;
+    button.hidden = !shouldShow;
+    button.disabled = !shouldShow;
+    button.setAttribute("aria-disabled", shouldShow ? "false" : "true");
+    if (shouldShow) {
+      visibleBands.add(band);
+      if (!firstVisibleBand) firstVisibleBand = band;
+      button.title = `${count} events`;
+    } else {
+      button.removeAttribute("title");
+    }
+  });
+
+  if (activeMagnitudeBand && !visibleBands.has(activeMagnitudeBand)) {
+    activeMagnitudeBand = null;
+  }
+  if (!activeMagnitudeBand && pageDefaultBand) {
+    if (visibleBands.has(pageDefaultBand)) {
+      activeMagnitudeBand = pageDefaultBand;
+    } else if (firstVisibleBand) {
+      activeMagnitudeBand = firstVisibleBand;
+    }
+  }
+  if (priorityMapLegend) {
+    priorityMapLegend.hidden = visibleBands.size === 0;
+  }
+  if (earthquakesMapLegend) {
+    earthquakesMapLegend.hidden = visibleBands.size === 0;
+  }
+  if (mapsFullscreenLegend) {
+    mapsFullscreenLegend.hidden = visibleBands.size === 0;
+  }
+  setMagnitudeFilterState(activeMagnitudeBand);
 }
 
 function getFilteredEarthquakeEvents(baseEvents = allEarthquakeEvents) {
@@ -1074,6 +1310,7 @@ function renderMap(events) {
         zoomControl: true,
         worldCopyJump: true,
         attributionControl: true,
+        maxZoom: isMapsFullscreen ? 18 : 8,
       }).setView([14, 10], 2);
 
       if (hasUnifiedWorldMapControls) {
@@ -1244,6 +1481,24 @@ function renderMap(events) {
     leafletMarkers = [];
     mapEventLookup.clear();
 
+    const markerVisual = (magnitudeValue, zoomValue) => {
+      const magnitude = typeof magnitudeValue === "number" ? magnitudeValue : 0;
+      const zoom = typeof zoomValue === "number" ? zoomValue : 2;
+      const zoomBoost = Math.max(0, (zoom - 2) * 0.95);
+      const baseRadius = Math.max(2.4, Math.min(11.5, 2.4 + magnitude * 0.95));
+      const lowZoomScale = zoom <= 2.2 ? 0.82 : zoom <= 3 ? 0.9 : 1;
+      const fullscreenScale = isMapsFullscreen ? 0.9 : 1;
+      const radius = Math.min(18, (baseRadius + zoomBoost) * lowZoomScale * fullscreenScale);
+      const lowZoom = zoom <= 2.2;
+      const midZoom = zoom > 2.2 && zoom <= 3;
+      return {
+        radius,
+        weight: lowZoom ? 0.55 : midZoom ? 0.75 : 1,
+        strokeOpacity: lowZoom ? 0.42 : midZoom ? 0.62 : 0.92,
+        fillOpacity: lowZoom ? 0.8 : midZoom ? 0.84 : 0.88,
+      };
+    };
+
     events.forEach((event) => {
       if (typeof event.latitude !== "number" || typeof event.longitude !== "number") {
         return;
@@ -1251,15 +1506,14 @@ function renderMap(events) {
 
       const magnitude = typeof event.magnitude === "number" ? event.magnitude : 0;
       const zoom = leafletMap ? leafletMap.getZoom() : 2;
-      const zoomBoost = Math.max(0, (zoom - 2) * 0.55);
-      const baseRadius = Math.max(3.2, Math.min(14.5, 3.2 + magnitude * 1.25));
-      const radius = Math.min(18, baseRadius + zoomBoost);
+      const visual = markerVisual(magnitude, zoom);
       const marker = window.L.circleMarker([event.latitude, event.longitude], {
-        radius,
-        color: "rgba(255,255,255,0.92)",
-        weight: 1,
+        radius: visual.radius,
+        color: `rgba(255,255,255,${visual.strokeOpacity})`,
+        opacity: visual.strokeOpacity,
+        weight: visual.weight,
         fillColor: magnitudeColor(event.magnitude),
-        fillOpacity: 0.88,
+        fillOpacity: visual.fillOpacity,
       }).bindTooltip(`${formatMagnitude(event.magnitude)} - ${event.place}`, {
         direction: "top",
         offset: [0, -4],
@@ -1382,10 +1636,22 @@ function refreshLeafletMarkerStyles() {
       return;
     }
     const magnitude = typeof event.magnitude === "number" ? event.magnitude : 0;
-    const zoomBoost = Math.max(0, (zoom - 2) * 0.55);
-    const baseRadius = Math.max(3.2, Math.min(14.5, 3.2 + magnitude * 1.25));
-    const radius = Math.min(18, baseRadius + zoomBoost);
+    const zoomBoost = Math.max(0, (zoom - 2) * 0.95);
+    const baseRadius = Math.max(2.4, Math.min(11.5, 2.4 + magnitude * 0.95));
+    const lowZoomScale = zoom <= 2.2 ? 0.82 : zoom <= 3 ? 0.9 : 1;
+    const fullscreenScale = isMapsFullscreen ? 0.9 : 1;
+    const radius = Math.min(18, (baseRadius + zoomBoost) * lowZoomScale * fullscreenScale);
+    const lowZoom = zoom <= 2.2;
+    const midZoom = zoom > 2.2 && zoom <= 3;
+    const strokeOpacity = lowZoom ? 0.42 : midZoom ? 0.62 : 0.92;
     marker.setRadius(radius);
+    marker.setStyle({
+      color: `rgba(255,255,255,${strokeOpacity})`,
+      opacity: strokeOpacity,
+      weight: lowZoom ? 0.55 : midZoom ? 0.75 : 1,
+      fillOpacity: lowZoom ? 0.8 : midZoom ? 0.84 : 0.88,
+      fillColor: magnitudeColor(event.magnitude),
+    });
   });
 }
 
@@ -1426,6 +1692,17 @@ function formatRegionLabel(region) {
   return normalized.replace(/\b\w/g, (char) => char.toUpperCase());
 }
 
+function buildFocusAreaHref(regionLabel) {
+  const safeRegion = String(regionLabel || "").trim();
+  if (!safeRegion || safeRegion === "--" || safeRegion.toLowerCase() === "unknown") {
+    return "";
+  }
+  const params = new URLSearchParams();
+  params.set("area", safeRegion);
+  params.set("window", "6h");
+  return `/focus-area.php?${params.toString()}`;
+}
+
 function renderHomeAiInsight(context, events) {
   if (!homeAiTech && !homeAiText) {
     return;
@@ -1447,7 +1724,7 @@ function renderHomeAiInsight(context, events) {
   const leadPlace = leadEvent ? shortPlaceLabel(leadEvent.place) : context.regionLabel;
 
   if (homeAiTech) {
-    const magColor = leadEvent ? magnitudeColor(leadEvent.magnitude) : "#6b7280";
+    const magColor = leadEvent ? magnitudeColor(leadEvent.magnitude) : UI_COLORS.neutral;
     homeAiTech.innerHTML = `<span style="color:${magColor}">${escapeHtml(leadMag)}</span> · ${escapeHtml(leadPlace)}`;
   }
   if (homeAiText) {
@@ -1497,8 +1774,8 @@ function renderHomeContextEarthquakeRow(events, context) {
   homeContextEqList.innerHTML = rows
     .map((event) => {
       const when = event?.event_time_utc
-        ? formatUtcLabel(event.event_time_utc)
-        : "----/--/-- --:-- UTC";
+        ? formatLocalLabel(event.event_time_utc)
+        : "----/--/-- --:--";
       return `
         <li class="home-context-earthquake-item">
           <strong style="color:${magnitudeColor(event.magnitude)}">${formatMagnitude(event.magnitude)}</strong>
@@ -1583,7 +1860,7 @@ function ensureBulletinEllipsis(text) {
 function buildPriorityEditorialNotes(event, relatedEvents = []) {
   const notes = [];
   const primary = ensureBulletinEllipsis(
-    clampEditorialText(event?.editorial_note || event?.summary || event?.status || ""),
+    clampEditorialText(event?.editorial_note || event?.summary || event?.status || "", 320),
   );
   if (primary) {
     notes.push({
@@ -1601,7 +1878,7 @@ function buildPriorityEditorialNotes(event, relatedEvents = []) {
   if (secondary && shouldAddSecondary) {
     const lead = secondary.title || secondary.location_or_subject || "Secondary signal";
     const detail = secondary.editorial_note || secondary.summary || secondary.status || "";
-    const merged = ensureBulletinEllipsis(clampEditorialText(`${detail}`.trim()));
+    const merged = ensureBulletinEllipsis(clampEditorialText(`${detail}`.trim(), 220));
     if (merged) {
       notes.push({
         kind: "related",
@@ -1646,6 +1923,113 @@ function priorityLevelWeight(level) {
   return 1;
 }
 
+function hasSettlementReference(place) {
+  const label = String(place || "").toLowerCase();
+  if (!label) return false;
+  return /\b\d{1,3}\s?km\b/.test(label) || /\bof\b/.test(label) || /\bnear\b/.test(label);
+}
+
+function toCellBucket(value, cellSize) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric) || !Number.isFinite(cellSize) || cellSize <= 0) return null;
+  return Math.floor(numeric / cellSize) * cellSize;
+}
+
+function cellKeyForEvent(event) {
+  const lat = Number(event?.latitude);
+  const lon = Number(event?.longitude);
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+  const cellLat = toCellBucket(lat, seismicContextState.cellSize);
+  const cellLon = toCellBucket(lon, seismicContextState.cellSize);
+  if (!Number.isFinite(cellLat) || !Number.isFinite(cellLon)) return null;
+  return `${cellLat.toFixed(2)}|${cellLon.toFixed(2)}`;
+}
+
+function cellDailyAvgForEvent(event) {
+  const key = cellKeyForEvent(event);
+  if (!key) return 0;
+  const row = seismicContextState.cells.get(key);
+  if (!row || typeof row.dailyAvg !== "number") return 0;
+  return row.dailyAvg;
+}
+
+function haversineKm(lat1, lon1, lat2, lon2) {
+  const toRad = (value) => (value * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+  return 6371 * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+}
+
+function localSwarmCount(referenceEvent, events) {
+  if (!referenceEvent || !Array.isArray(events)) return 0;
+  const lat = Number(referenceEvent?.latitude);
+  const lon = Number(referenceEvent?.longitude);
+  const ts = referenceEvent?.event_time_utc ? new Date(referenceEvent.event_time_utc).getTime() : 0;
+  if (!Number.isFinite(lat) || !Number.isFinite(lon) || ts <= 0) return 0;
+
+  return events.reduce((count, candidate) => {
+    const cLat = Number(candidate?.latitude);
+    const cLon = Number(candidate?.longitude);
+    const cTs = candidate?.event_time_utc ? new Date(candidate.event_time_utc).getTime() : 0;
+    const cMag = Number(candidate?.magnitude);
+    if (!Number.isFinite(cLat) || !Number.isFinite(cLon) || cTs <= 0 || !Number.isFinite(cMag)) return count;
+    if (Math.abs(ts - cTs) > 36 * 60 * 60 * 1000) return count;
+    if (cMag < 1.5) return count;
+    const distance = haversineKm(lat, lon, cLat, cLon);
+    if (!Number.isFinite(distance) || distance > 140) return count;
+    return count + 1;
+  }, 0);
+}
+
+function deriveSeismicContext(event, swarm, nearSettlement) {
+  const dailyAvg = cellDailyAvgForEvent(event);
+  const hasBaseline = seismicContextState.ready && seismicContextState.p70 > 0;
+  const high = hasBaseline ? dailyAvg >= seismicContextState.p70 : swarm >= 8;
+  const low = hasBaseline ? (dailyAvg > 0 && dailyAvg <= seismicContextState.p30) : (swarm <= 2 && !nearSettlement);
+  return { high, low, dailyAvg, hasBaseline };
+}
+
+function p3UpperBoundForContext(event, swarm, nearSettlement) {
+  const ctx = deriveSeismicContext(event, swarm, nearSettlement);
+  if (ctx.high) return 4.0;
+  if (ctx.low && !nearSettlement) return 3.0;
+  return 3.5;
+}
+
+function minMagnitudeForPriority(event, swarm, nearSettlement) {
+  const ctx = deriveSeismicContext(event, swarm, nearSettlement);
+  if (ctx.high) return 3.0;
+  if (ctx.low && !nearSettlement) return 2.9;
+  if (swarm <= 2 && !nearSettlement) return 2.7;
+  return 2.5;
+}
+
+function earthquakePriorityLevel(event, events) {
+  const magnitude = Number(event?.magnitude);
+  if (!Number.isFinite(magnitude)) return null;
+
+  const depth = Number(event?.depth_km);
+  const depthAbs = Number.isFinite(depth) ? Math.abs(depth) : NaN;
+  const ts = event?.event_time_utc ? new Date(event.event_time_utc).getTime() : 0;
+  const ageMinutes = ts > 0 ? Math.max(0, (Date.now() - ts) / 60000) : 9999;
+  const nearSettlement = hasSettlementReference(event?.place);
+  const swarm = localSwarmCount(event, events);
+  const minMagnitude = minMagnitudeForPriority(event, swarm, nearSettlement);
+  if (magnitude < minMagnitude) return null;
+  const p3UpperBound = p3UpperBoundForContext(event, swarm, nearSettlement);
+
+  if (magnitude >= 6.8) return "P1";
+  if (magnitude >= 6.2 && ageMinutes <= 120) return "P1";
+  if (magnitude >= 5) return "P2";
+  if (magnitude >= 4.2 && Number.isFinite(depthAbs) && depthAbs <= 35) return "P2";
+  if (magnitude >= 3.4 && swarm >= 5) return "P2";
+  if (magnitude < p3UpperBound) return "P3";
+  return "P2";
+}
+
 function normalizeEarthquakeEvents(events) {
   return [...events]
     .filter((event) => typeof event?.magnitude === "number")
@@ -1656,7 +2040,8 @@ function normalizeEarthquakeEvents(events) {
       const ageMinutes = ts > 0 ? Math.max(0, (Date.now() - ts) / 60000) : 9999;
       const recencyBoost = Math.max(0, 160 - ageMinutes) / 9;
       const score = magnitude * 14 + recencyBoost + (depth !== null && depth < 50 ? 5 : 0);
-      const level = magnitude >= 6.8 || (magnitude >= 6.2 && ageMinutes <= 120) ? "P1" : magnitude >= 5 ? "P2" : "P3";
+      const level = earthquakePriorityLevel(event, events);
+      if (!level) return null;
       return {
         id: `eq:${getEventKey(event)}`,
         type: "earthquake",
@@ -1678,7 +2063,8 @@ function normalizeEarthquakeEvents(events) {
         detail_url: eventDetailUrl(event),
         monitor_url: "/earthquakes.php",
       };
-    });
+    })
+    .filter(Boolean);
 }
 
 function normalizeVolcanoEvents() {
@@ -1848,7 +2234,17 @@ function buildHomePriorityModel(events) {
   return { mode, boardEvents, railEvents, allEvents: normalized };
 }
 
+function homePriorityTypeClass(eventType) {
+  const raw = String(eventType || "signal").toLowerCase().replace(/[_\s]+/g, "-");
+  if (raw === "earthquake" || raw === "earthquakes") return "is-earthquake";
+  if (raw === "volcano" || raw === "volcanoes") return "is-volcano";
+  if (raw === "tsunami" || raw === "tsunami-alerts") return "is-tsunami";
+  if (raw === "space-weather" || raw === "space" || raw === "spaceweather") return "is-space-weather";
+  return "is-signal";
+}
+
 function renderPriorityCard(event, compact = false, options = {}) {
+  const priorityTypeClass = homePriorityTypeClass(event.type);
   const levelClass = `is-${String(event.priority_level || "P3").toLowerCase()}`;
   const metrics = [
     { label: "Main", value: event.main_value || "--" },
@@ -1878,8 +2274,8 @@ function renderPriorityCard(event, compact = false, options = {}) {
     return `
       <article class="home-priority-card home-priority-card-compact ${levelClass}">
         <p class="home-priority-card-top">
-          <span class="home-priority-chip">${safeType}</span>
-          <span class="home-priority-chip home-priority-chip-level">${safeLevel}</span>
+          <span class="home-priority-chip ${priorityTypeClass}">${safeType}</span>
+          <span class="home-priority-chip home-priority-chip-level ${levelClass}">${safeLevel}</span>
         </p>
         <h4>${safeTitle}</h4>
         <p class="home-priority-card-meta">${escapeHtml(event.main_value || "--")} · ${safeFreshness}</p>
@@ -1893,8 +2289,8 @@ function renderPriorityCard(event, compact = false, options = {}) {
       <div class="home-priority-card-head">
         <div class="home-priority-card-metahead">
           <div class="home-priority-card-badges">
-            <span class="home-priority-chip">${safeType}</span>
-            <span class="home-priority-chip home-priority-chip-level">${safeLevel}</span>
+            <span class="home-priority-chip ${priorityTypeClass}">${safeType}</span>
+            <span class="home-priority-chip home-priority-chip-level ${levelClass}">${safeLevel}</span>
           </div>
           <span class="home-priority-card-freshness">${safeFreshness}</span>
         </div>
@@ -1984,16 +2380,18 @@ function renderAttentionWatch(events) {
       <div class="home-priority-watch-list">
         ${rows
           .map((event) => {
+            const priorityTypeClass = homePriorityTypeClass(event.type);
+            const levelClass = `is-${String(event.priority_level || "P2").toLowerCase()}`;
             const safeTitle = escapeHtml(event.title || "Signal");
             const safeType = escapeHtml((event.type || "signal").replace("_", " "));
             const safeLevel = escapeHtml(event.priority_level || "P2");
             const safeMeta = escapeHtml(`${event.main_value || "--"} · ${formatUpdatedAgo(event.timestamp)}`);
             const cta = escapeHtml(event.type === "earthquake" ? "Open details" : "Open monitor");
             return `
-              <article class="home-priority-watch-row">
+              <article class="home-priority-watch-row ${levelClass}">
                 <div class="home-priority-watch-row-top">
-                  <span class="home-priority-chip">${safeType}</span>
-                  <span class="home-priority-chip home-priority-chip-level">${safeLevel}</span>
+                  <span class="home-priority-chip ${priorityTypeClass}">${safeType}</span>
+                  <span class="home-priority-chip home-priority-chip-level ${levelClass}">${safeLevel}</span>
                 </div>
                 <h4>${safeTitle}</h4>
                 <p class="home-priority-watch-meta">${safeMeta}</p>
@@ -2088,14 +2486,15 @@ function renderSignificantRail(model) {
   homeSignificantList.innerHTML = rows
     .map((event) => {
       const safeType = escapeHtml((event.type || "signal").replace("_", " ").toUpperCase());
+      const typeClass = homePriorityTypeClass(event.type);
       return `
         <li class="snapshot-row">
           <a class="snapshot-row-anchor" href="${event.detail_url || event.monitor_url || "#"}">
             <div class="snapshot-main">
-              <strong>${safeType}</strong>
+              <strong class="home-priority-type-label ${typeClass}">${safeType}</strong>
               <span>${escapeHtml(event.main_value || "--")} · ${escapeHtml(event.location_or_subject || "--")}</span>
             </div>
-            <div class="snapshot-meta">${escapeHtml(formatUtcLabel(event.timestamp))}</div>
+            <div class="snapshot-meta">${escapeHtml(formatLocalLabelNoYear(event.timestamp))}</div>
           </a>
         </li>
       `;
@@ -2115,7 +2514,7 @@ function renderEarthquakesModule(events) {
       const bTime = b?.event_time_utc ? new Date(b.event_time_utc).getTime() : 0;
       return bTime - aTime;
     })
-    .slice(0, 3);
+    .slice(0, 2);
   if (rows.length === 0) {
     homeModuleEarthquakesList.innerHTML = "<li class='snapshot-row'>No earthquake events available.</li>";
     return;
@@ -2130,7 +2529,7 @@ function renderEarthquakesModule(events) {
               <strong>${escapeHtml(formatMagnitude(event.magnitude))}</strong>
               <span>${escapeHtml(shortPlaceLabel(event.place))}</span>
             </div>
-            <div class="snapshot-meta">${escapeHtml(formatUtcLabel(event.event_time_utc))}</div>
+            <div class="snapshot-meta">${escapeHtml(formatLocalLabelNoYear(event.event_time_utc))}</div>
           </a>
         </li>
       `;
@@ -2153,10 +2552,10 @@ function renderTsunamiModule() {
     <li class="snapshot-row">
       <a class="snapshot-row-anchor" href="/tsunami.php">
         <div class="snapshot-main">
-          <strong>${alerts} active alerts</strong>
-          <span>Highest level: ${escapeHtml(highestLevel)}</span>
+          <strong>Now</strong>
+          <span>${alerts} active alerts</span>
         </div>
-        <div class="snapshot-meta">${regions} region(s) in bulletin</div>
+        <div class="snapshot-meta">Highest level: ${escapeHtml(highestLevel)} · ${regions} region(s)</div>
       </a>
     </li>
   `;
@@ -2179,8 +2578,8 @@ function renderSpaceModule() {
     <li class="snapshot-row">
       <a class="snapshot-row-anchor" href="/space-weather.php">
         <div class="snapshot-main">
-          <strong>Kp ${kpNow}</strong>
-          <span>${escapeHtml(stormLevel)}</span>
+          <strong>Now</strong>
+          <span>Kp ${kpNow} · ${escapeHtml(stormLevel)}</span>
         </div>
         <div class="snapshot-meta">Forecast max (24h): Kp ${forecastMax}</div>
       </a>
@@ -2425,13 +2824,17 @@ function syncThemeToggleButton() {
 
 function getLeafletBaseLayerSpec(style, darkMode) {
   const isDark = Boolean(darkMode);
+  const mapMinZoom = 2;
+  const mapMaxNativeZoom = 8;
+  const mapMaxZoom = isMapsFullscreen ? 18 : 8;
   switch (style) {
     case "ocean":
       return {
         url: "https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
         options: {
-          maxZoom: 8,
-          minZoom: 2,
+          maxZoom: mapMaxZoom,
+          minZoom: mapMinZoom,
+          maxNativeZoom: mapMaxNativeZoom,
           attribution: "&copy; Esri, GEBCO, NOAA, National Geographic, DeLorme, HERE, Geonames.org",
         },
       };
@@ -2439,8 +2842,9 @@ function getLeafletBaseLayerSpec(style, darkMode) {
       return {
         url: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
         options: {
-          maxZoom: 8,
-          minZoom: 2,
+          maxZoom: mapMaxZoom,
+          minZoom: mapMinZoom,
+          maxNativeZoom: mapMaxNativeZoom,
           subdomains: "abc",
           attribution: "&copy; OpenStreetMap contributors, SRTM | OpenTopoMap",
         },
@@ -2449,8 +2853,9 @@ function getLeafletBaseLayerSpec(style, darkMode) {
       return {
         url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         options: {
-          maxZoom: 8,
-          minZoom: 2,
+          maxZoom: mapMaxZoom,
+          minZoom: mapMinZoom,
+          maxNativeZoom: mapMaxNativeZoom,
           attribution: "&copy; OpenStreetMap contributors",
         },
       };
@@ -2458,8 +2863,9 @@ function getLeafletBaseLayerSpec(style, darkMode) {
       return {
         url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
         options: {
-          maxZoom: 8,
-          minZoom: 2,
+          maxZoom: mapMaxZoom,
+          minZoom: mapMinZoom,
+          maxNativeZoom: mapMaxNativeZoom,
           attribution: "&copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community",
         },
       };
@@ -2469,16 +2875,18 @@ function getLeafletBaseLayerSpec(style, darkMode) {
         ? {
             url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
             options: {
-              maxZoom: 8,
-              minZoom: 2,
+              maxZoom: mapMaxZoom,
+              minZoom: mapMinZoom,
+              maxNativeZoom: mapMaxNativeZoom,
               attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
             },
           }
         : {
             url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
             options: {
-              maxZoom: 8,
-              minZoom: 2,
+              maxZoom: mapMaxZoom,
+              minZoom: mapMinZoom,
+              maxNativeZoom: mapMaxNativeZoom,
               attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
             },
           };
@@ -2553,22 +2961,22 @@ async function renderPlateBoundaryOverlay() {
     return;
   }
   if (context.plates && Array.isArray(context.plates.features)) {
-    window.L.geoJSON(context.plates, {
-      style: {
-        color: "#ff6f59",
-        weight: 1.5,
-        opacity: 0.78,
-      },
+        window.L.geoJSON(context.plates, {
+          style: {
+            color: UI_COLORS.faultLine,
+            weight: 1.5,
+            opacity: 0.78,
+          },
       interactive: false,
     }).addTo(mapOverlayPlatesLayer);
   }
   if (context.faults && Array.isArray(context.faults.features)) {
-    window.L.geoJSON(context.faults, {
-      style: {
-        color: "#5de4c7",
-        weight: 1,
-        opacity: 0.4,
-      },
+        window.L.geoJSON(context.faults, {
+          style: {
+            color: UI_COLORS.plateLine,
+            weight: 1,
+            opacity: 0.4,
+          },
       interactive: false,
     }).addTo(mapOverlayFaultsLayer);
   }
@@ -2611,7 +3019,8 @@ function renderLeafletOverlays(events) {
         }
         const depth = typeof event.depth_km === "number" ? Math.max(0, event.depth_km) : 0;
         const depthRadius = Math.max(4, Math.min(12, 4 + depth / 60));
-        const depthTone = depth < 70 ? "#5de4c7" : depth < 300 ? "#f8d84a" : "#ff8a5c";
+        const depthTone =
+          depth < 70 ? UI_COLORS.depthShallow : depth < 300 ? UI_COLORS.depthIntermediate : UI_COLORS.depthDeep;
         window.L.circleMarker([event.latitude, event.longitude], {
           radius: depthRadius,
           color: depthTone,
@@ -2636,6 +3045,9 @@ function renderLeafletOverlays(events) {
 }
 
 function syncMapStyleControlUi() {
+  if (mapStyleControlRoot) {
+    mapStyleControlRoot.classList.toggle("is-light", !leafletDarkMode);
+  }
   if (mapStyleQuickThemeButton) {
     mapStyleQuickThemeButton.classList.toggle("is-active", leafletDarkMode);
     mapStyleQuickThemeButton.setAttribute("aria-pressed", leafletDarkMode ? "true" : "false");
@@ -2665,6 +3077,12 @@ function syncMapStyleControlUi() {
 function syncLeafletTheme() {
   if (!leafletMap) {
     return;
+  }
+  if (mapLeafletContainer) {
+    mapLeafletContainer.classList.remove("map-style-dark-ocean", "map-style-dark-terrain", "map-style-dark-street", "map-style-dark-satellite");
+    if (leafletDarkMode && leafletBaseStyle !== "grayscale") {
+      mapLeafletContainer.classList.add(`map-style-dark-${leafletBaseStyle}`);
+    }
   }
   const nextLayer = getLeafletBaseLayer(leafletBaseStyle, leafletDarkMode);
   if (!nextLayer) {
@@ -2726,7 +3144,7 @@ async function renderEventInsight(eventKey) {
   }
   if (eventInsightSummary) {
     const depth = typeof selected.depth_km === "number" ? `${selected.depth_km.toFixed(1)} km` : "n/a";
-    const when = selected.event_time_utc ? new Date(selected.event_time_utc).toLocaleString() : "n/a";
+    const when = selected.event_time_utc ? formatLocalDateTime(selected.event_time_utc, { withDate: true, withYear: true, fallback: "n/a" }) : "n/a";
     eventInsightSummary.textContent = `Depth ${depth} · ${when}`;
   }
 
@@ -2737,7 +3155,7 @@ async function renderEventInsight(eventKey) {
         ? strongNearby
             .map((row) => {
               const when = row.event_time_utc
-                ? new Date(row.event_time_utc).toLocaleString([], { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit" })
+                ? formatLocalDateTime(row.event_time_utc, { withDate: true, withYear: false, fallback: "n/a" })
                 : "n/a";
               return `<li class="event-item"><strong>${formatMagnitude(row.magnitude)} ${row.place || "Unknown"}</strong><br />${row.distanceKm.toFixed(0)} km · ${when}</li>`;
             })
@@ -2766,14 +3184,19 @@ async function renderEventInsight(eventKey) {
     .bindTooltip(`Selected: ${formatMagnitude(selected.magnitude)} ${selected.place || "Unknown"}`, { direction: "top", opacity: 0.95 })
     .addTo(eventInsightEventLayer);
 
+  const insightZoom = eventInsightMap ? eventInsightMap.getZoom() : 5;
+  const insightLowZoom = insightZoom <= 2.2;
+  const insightMidZoom = insightZoom > 2.2 && insightZoom <= 3;
+  const insightStrokeOpacity = insightLowZoom ? 0.42 : insightMidZoom ? 0.62 : 0.9;
   strongNearby.forEach((row) => {
     if (typeof row.latitude !== "number" || typeof row.longitude !== "number") return;
     window.L.circleMarker([row.latitude, row.longitude], {
       radius: Math.max(5, Math.min(11, 2 + (row.magnitude || 0))),
-      color: "rgba(255,255,255,0.9)",
-      weight: 1,
+      color: `rgba(255,255,255,${insightStrokeOpacity})`,
+      opacity: insightStrokeOpacity,
+      weight: insightLowZoom ? 0.55 : insightMidZoom ? 0.75 : 1,
       fillColor: magnitudeColor(row.magnitude),
-      fillOpacity: 0.8,
+      fillOpacity: insightLowZoom ? 0.76 : insightMidZoom ? 0.78 : 0.8,
     })
       .bindTooltip(`${formatMagnitude(row.magnitude)} · ${row.distanceKm.toFixed(0)} km`, { direction: "top", opacity: 0.9 })
       .addTo(eventInsightStrongLayer);
@@ -2804,7 +3227,7 @@ async function renderEventInsight(eventKey) {
       nearestPlateKm = nearbyPlates[0].km;
       nearbyPlates.forEach((row) => {
         window.L.geoJSON(row.feature, {
-          style: { color: "#22d3ee", weight: 2.1, opacity: 0.78 },
+          style: { color: UI_COLORS.plateLine, weight: 2.1, opacity: 0.78 },
         }).addTo(eventInsightPlateLayer);
       });
     }
@@ -2814,7 +3237,7 @@ async function renderEventInsight(eventKey) {
       nearestFaultFeature = nearbyFaults[0].feature;
       nearbyFaults.forEach((row) => {
         window.L.geoJSON(row.feature, {
-          style: { color: "#ff7a5f", weight: 1.5, opacity: 0.62 },
+          style: { color: UI_COLORS.faultLine, weight: 1.5, opacity: 0.62 },
         }).addTo(eventInsightFaultLayer);
       });
     }
@@ -2862,7 +3285,7 @@ function setBarRows(container, rows) {
     labelEl.textContent = row.label;
     valueEl.textContent = String(row.value);
     fillEl.style.width = `${(row.value / maxValue) * 100}%`;
-    fillEl.style.background = row.color || "linear-gradient(90deg, #22d3ee, #f7d21e, #ff7a5f)";
+    fillEl.style.background = row.color || UI_COLORS.barDefault;
     container.appendChild(fragment);
   });
 }
@@ -2874,10 +3297,31 @@ function setBarColumns(container, rows, options = {}) {
 
   const labelStep = Number.isFinite(options.labelStep) && options.labelStep > 0 ? Math.floor(options.labelStep) : 1;
   const compact = Boolean(options.compact);
+  const externalAxes = Boolean(options.externalAxes);
   container.innerHTML = "";
 
   const maxValue = Math.max(1, ...rows.map((row) => row.value));
   container.style.setProperty("--bar-count", String(Math.max(1, rows.length)));
+
+  let barsHost = container;
+  let topAxis = null;
+  let bottomAxis = null;
+
+  if (externalAxes) {
+    container.classList.add("has-external-axes");
+
+    topAxis = document.createElement("div");
+    topAxis.className = "hourly-axis hourly-axis-top";
+
+    barsHost = document.createElement("div");
+    barsHost.className = "bars-hourly-grid";
+    barsHost.style.setProperty("--bar-count", String(Math.max(1, rows.length)));
+
+    bottomAxis = document.createElement("div");
+    bottomAxis.className = "hourly-axis hourly-axis-bottom";
+  } else {
+    container.classList.remove("has-external-axes");
+  }
 
   rows.forEach((row, idx) => {
     const col = document.createElement("div");
@@ -2898,18 +3342,38 @@ function setBarColumns(container, rows, options = {}) {
     const fillEl = document.createElement("div");
     fillEl.className = "bar-col-fill";
     fillEl.style.height = `${(row.value / maxValue) * 100}%`;
-    fillEl.style.background = row.color || "linear-gradient(0deg, #22d3ee, #f7d21e, #ff7a5f)";
+    fillEl.style.background = row.color || UI_COLORS.barDefault;
     trackEl.appendChild(fillEl);
 
     const labelEl = document.createElement("div");
     labelEl.className = "bar-col-label";
-    labelEl.textContent = idx % labelStep === 0 ? row.label : "";
+    labelEl.textContent = externalAxes ? "" : idx % labelStep === 0 ? row.label : "";
 
     col.appendChild(valueEl);
     col.appendChild(trackEl);
     col.appendChild(labelEl);
-    container.appendChild(col);
+    barsHost.appendChild(col);
+
+    if (externalAxes && topAxis && bottomAxis) {
+      const topCell = document.createElement("div");
+      topCell.className = "hourly-axis-cell";
+      topCell.textContent = String(row.value);
+      topAxis.appendChild(topCell);
+
+      const bottomCell = document.createElement("div");
+      bottomCell.className = "hourly-axis-cell";
+      bottomCell.textContent = idx % labelStep === 0 ? row.label : "";
+      bottomAxis.appendChild(bottomCell);
+    }
   });
+
+  if (externalAxes && topAxis && bottomAxis) {
+    topAxis.style.setProperty("--bar-count", String(Math.max(1, rows.length)));
+    bottomAxis.style.setProperty("--bar-count", String(Math.max(1, rows.length)));
+    container.appendChild(topAxis);
+    container.appendChild(barsHost);
+    container.appendChild(bottomAxis);
+  }
 }
 
 function renderMagnitudeChart(events) {
@@ -2930,7 +3394,7 @@ function renderMagnitudeChart(events) {
     return {
       label: bin.label,
       value: count,
-      color: `linear-gradient(0deg, ${magnitudeColor(bin.min + 0.2)}, ${magnitudeColor(bin.max - 0.2)})`,
+      color: magnitudeColor((bin.min + bin.max) / 2),
     };
   });
 
@@ -2942,15 +3406,12 @@ function hourlyActivityColor(value, maxValue) {
   const ratio = Math.max(0, Math.min(1, value / safeMax));
 
   if (ratio < 0.34) {
-    // Low activity: keep the bar in cool tones.
-    return "linear-gradient(0deg, #22d3ee, #5de4c7)";
+    return UI_COLORS.barDefault;
   }
   if (ratio < 0.67) {
-    // Medium activity: transition to yellow but avoid orange highlights.
-    return "linear-gradient(0deg, #22d3ee, #f7d21e)";
+    return UI_COLORS.barMid;
   }
-  // High activity: warm top for immediate visual emphasis.
-  return "linear-gradient(0deg, #22d3ee, #f7d21e, #ff7a5f)";
+  return UI_COLORS.barHigh;
 }
 
 function renderHourlyChart(events) {
@@ -2959,7 +3420,7 @@ function renderHourlyChart(events) {
 
   for (let i = 23; i >= 0; i -= 1) {
     const slot = new Date(now);
-    slot.setUTCHours(now.getUTCHours() - i, 0, 0, 0);
+    slot.setHours(now.getHours() - i, 0, 0, 0);
     const slotStart = slot.getTime();
     const slotEnd = slotStart + 60 * 60 * 1000;
 
@@ -2970,7 +3431,7 @@ function renderHourlyChart(events) {
 
     rows.push({
       label: i === 0 ? "now" : `${i}h`,
-      tooltipLabel: `${String(slot.getUTCHours()).padStart(2, "0")}:00 UTC · ${i === 0 ? "current hour" : `${i}h ago`}`,
+      tooltipLabel: `${formatLocalHourSlotLabel(slot)} · ${i === 0 ? "current hour" : `${i}h ago`}`,
       value: count,
     });
   }
@@ -2980,7 +3441,7 @@ function renderHourlyChart(events) {
     row.color = hourlyActivityColor(row.value, maxCount);
   });
 
-  setBarColumns(hourlyChart, rows, { compact: true, labelStep: 2 });
+  setBarColumns(hourlyChart, rows, { compact: true, labelStep: 3, externalAxes: true });
 }
 
 function renderRegions(events) {
@@ -3061,17 +3522,20 @@ function renderPriorityEvents(events) {
         const mag = formatMagnitude(event.magnitude);
         const color = magnitudeColor(event.magnitude);
         const isStrongMag = typeof event.magnitude === "number" && event.magnitude > 4.5;
+        const isM5Plus = typeof event.magnitude === "number" && event.magnitude >= 5;
+        const place = event.place || "Unknown place";
+        const safePlace = escapeHtml(place);
         const depth = typeof event.depth_km === "number" ? `${event.depth_km.toFixed(1)} km` : "N/A depth";
         const time = event.event_time_utc
-          ? new Date(event.event_time_utc).toLocaleString()
+          ? formatLocalDateTime(event.event_time_utc, { withDate: true, withYear: false, fallback: "Unknown time" })
           : "Unknown time";
         const eventKey = getEventKey(event);
         const detailUrl = eventDetailUrl(event);
         return `
-        <li class="event-item event-item-compact event-item-clickable" data-event-key="${eventKey}" data-event-url="${detailUrl}">
+        <li class="event-item event-item-compact event-item-clickable ${isM5Plus ? "is-m5plus" : ""}" data-event-key="${eventKey}" data-event-url="${detailUrl}" title="${safePlace}">
           <div class="event-main ${isStrongMag ? "event-main-strong" : ""}">
             <span class="event-mag" style="color:${color}">${mag}</span>
-            <span class="event-place">${event.place}</span>
+            <span class="event-place" title="${safePlace}">${safePlace}</span>
           </div>
           <div class="event-meta">${depth} · ${time}</div>
         </li>
@@ -3152,7 +3616,7 @@ function renderPriorityEvents(events) {
     return magB - magA;
   });
 
-  const rows = ordered.slice(0, 9);
+  const rows = ordered;
   if (rows.length === 0) {
     eventsList.innerHTML = "<li class='event-item'>No recent events available.</li>";
     return;
@@ -3163,18 +3627,21 @@ function renderPriorityEvents(events) {
       const mag = formatMagnitude(event.magnitude);
       const color = magnitudeColor(event.magnitude);
       const isStrongMag = typeof event.magnitude === "number" && event.magnitude > 4.5;
+      const isM5Plus = typeof event.magnitude === "number" && event.magnitude >= 5;
+      const place = event.place || "Unknown place";
+      const safePlace = escapeHtml(place);
       const depth = typeof event.depth_km === "number" ? `${event.depth_km.toFixed(1)} km` : "N/A depth";
       const time = event.event_time_utc
-        ? new Date(event.event_time_utc).toLocaleString()
+        ? formatLocalDateTime(event.event_time_utc, { withDate: true, withYear: false, fallback: "Unknown time" })
         : "Unknown time";
       const rowClass = index === 0 ? "event-item event-item-featured" : "event-item event-item-compact";
       const eventKey = getEventKey(event);
       const detailUrl = eventDetailUrl(event);
       return `
-        <li class="${rowClass} event-item-clickable" data-event-key="${eventKey}" data-event-url="${detailUrl}">
+        <li class="${rowClass} event-item-clickable ${isM5Plus ? "is-m5plus" : ""}" data-event-key="${eventKey}" data-event-url="${detailUrl}" title="${safePlace}">
           <div class="event-main ${isStrongMag ? "event-main-strong" : ""}">
             <span class="event-mag" style="color:${color}">${mag}</span>
-            <span class="event-place">${event.place}</span>
+            <span class="event-place" title="${safePlace}">${safePlace}</span>
           </div>
           <div class="event-meta">${depth} · ${time}</div>
         </li>
@@ -3209,7 +3676,7 @@ function renderTimeline(events) {
   timelineList.innerHTML = visibleRows
     .map((event) => {
       const time = event.event_time_utc
-        ? new Date(event.event_time_utc).toLocaleString()
+        ? formatLocalDateTime(event.event_time_utc, { withDate: true, withYear: true, fallback: "Unknown time" })
         : "Unknown time";
       const depth = typeof event.depth_km === "number" ? `${event.depth_km.toFixed(1)} km` : "N/A";
       const eventKey = getEventKey(event);
@@ -3252,7 +3719,7 @@ function renderKpis(events, payload) {
   }
   if (kpiUpdated) {
     kpiUpdated.textContent = payload.generated_at
-      ? new Date(payload.generated_at).toLocaleTimeString()
+      ? formatLocalTime(payload.generated_at, "--")
       : "--";
   }
   if (kpiSource) {
@@ -3327,10 +3794,10 @@ function renderHomeSnapshot(events, payload) {
   setHomeMirror("significant", String(significant));
   if (homeKpiUpdated) {
     homeKpiUpdated.textContent = payload.generated_at
-      ? new Date(payload.generated_at).toLocaleTimeString()
+      ? formatLocalTime(payload.generated_at, "--")
       : "--";
   }
-  setHomeMirror("updated", payload.generated_at ? new Date(payload.generated_at).toLocaleTimeString() : "--");
+  setHomeMirror("updated", payload.generated_at ? formatLocalTime(payload.generated_at, "--") : "--");
   if (homeKpiSource) {
     homeKpiSource.textContent = `Source: ${payload.provider || "Quakrs API"}`;
   }
@@ -3376,12 +3843,11 @@ function renderHomeSnapshot(events, payload) {
       homeMapFeedList.innerHTML = listRows
         .map((event) => {
           const eventDate = event.event_time_utc ? new Date(event.event_time_utc) : null;
-          const timeLabel = eventDate
-            ? eventDate.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false })
-            : "--:--";
+          const timeLabel = eventDate ? formatLocalTime(eventDate, "--:--") : "--:--";
           const isStrongMag = typeof event.magnitude === "number" && event.magnitude > 4.5;
+          const isM5Plus = typeof event.magnitude === "number" && event.magnitude > 5;
           return `
-            <li class="snapshot-row">
+            <li class="snapshot-row ${isM5Plus ? "is-m5plus" : ""}">
               <div class="snapshot-main ${isStrongMag ? "event-main-strong" : ""}">
                 <strong style="color:${magnitudeColor(event.magnitude)}">${formatMagnitude(event.magnitude)}</strong>
                 <span>${shortPlaceLabel(event.place)}</span>
@@ -3457,6 +3923,7 @@ function applyEarthquakeView() {
   });
 
   const baseEvents = getBaseEarthquakeEvents();
+  syncPriorityMapBandVisibility(baseEvents);
   const filteredEvents = getFilteredEarthquakeEvents(baseEvents);
   if (feedMeta) {
     const updatedAt = latestEarthquakePayload?.generated_at || latestEarthquakePayload?.feed_updated_at || null;
@@ -3485,6 +3952,53 @@ function applyEarthquakeView() {
   }
 }
 
+function applySeismicContextPayload(payload) {
+  if (!payload || typeof payload !== "object") {
+    return;
+  }
+  const cellSize = Number(payload.cell_size_deg);
+  const p30 = Number(payload?.distribution?.p30_daily_avg);
+  const p70 = Number(payload?.distribution?.p70_daily_avg);
+  const rawCells = payload.cells && typeof payload.cells === "object" ? payload.cells : {};
+  const nextCells = new Map();
+  Object.entries(rawCells).forEach(([key, value]) => {
+    const count = Number(value?.count);
+    const dailyAvg = Number(value?.daily_avg);
+    if (!Number.isFinite(count) || !Number.isFinite(dailyAvg) || count <= 0) return;
+    nextCells.set(String(key), { count, dailyAvg });
+  });
+  seismicContextState.ready = nextCells.size > 0;
+  seismicContextState.source = String(payload.source || "none");
+  seismicContextState.cellSize = Number.isFinite(cellSize) && cellSize > 0 ? cellSize : 1;
+  seismicContextState.p30 = Number.isFinite(p30) ? p30 : 0;
+  seismicContextState.p70 = Number.isFinite(p70) ? p70 : 0;
+  seismicContextState.cells = nextCells;
+  seismicContextState.fetchedAtTs = Date.now();
+}
+
+async function ensureSeismicContextLoaded() {
+  const maxAgeMs = 6 * 60 * 60 * 1000;
+  if (seismicContextState.loading) {
+    return;
+  }
+  if (seismicContextState.ready && (Date.now() - seismicContextState.fetchedAtTs) <= maxAgeMs) {
+    return;
+  }
+  seismicContextState.loading = true;
+  try {
+    const response = await fetchApiJson("/api/seismicity-context.php?days=30&cell_size=1.0&min_magnitude=2.5", false);
+    if (!response.ok) {
+      return;
+    }
+    const payload = await response.json();
+    applySeismicContextPayload(payload);
+  } catch (_) {
+    // Keep previous context if refresh fails.
+  } finally {
+    seismicContextState.loading = false;
+  }
+}
+
 async function loadEarthquakes() {
   const hasEarthquakeTargets =
     !!homeSnapshot ||
@@ -3501,7 +4015,10 @@ async function loadEarthquakes() {
   }
 
   try {
-    const response = await fetchApiJson("/api/earthquakes.php", FORCE_LIVE_FEEDS);
+    const [response] = await Promise.all([
+      fetchApiJson("/api/earthquakes.php", FORCE_LIVE_FEEDS),
+      ensureSeismicContextLoaded(),
+    ]);
 
     if (!response.ok) {
       throw new Error("Feed request failed");
@@ -3552,7 +4069,7 @@ async function loadEarthquakes() {
       homeContextSummary.textContent = "Earthquake feed unavailable in this runtime. Please try again shortly.";
     }
     if (homeContextRegion) {
-      homeContextRegion.textContent = "Area: --";
+      homeContextRegion.textContent = "Area focus: --";
     }
     if (homeContextWindow) {
       homeContextWindow.textContent = "Window: --";
@@ -3608,13 +4125,15 @@ async function loadVolcanoes() {
 }
 
 function renderTremorSnapshot(payload) {
-  if (!homeClustersList && !homeSnapshotBrief) {
+  if (!homeClustersList && !homeSnapshotBrief && !homeStatusTremorClusters && !homeStatusTremorNote) {
     return;
   }
 
   const signals = typeof payload.signals_count === "number" ? payload.signals_count : 0;
   const clustersCount = typeof payload.clusters_count === "number" ? payload.clusters_count : 0;
-  const peakHour = payload.peak_hour_utc || "--:00";
+  const peakHour = payload.peak_hour_utc
+    ? formatLocalHourSlotLabel(new Date(`1970-01-01T${String(payload.peak_hour_utc).slice(0, 2)}:00:00Z`))
+    : "--:00";
   const peakCount = typeof payload.peak_hour_count === "number" ? payload.peak_hour_count : 0;
   const clusters = Array.isArray(payload.clusters) ? payload.clusters.slice(0, 3) : [];
 
@@ -3632,7 +4151,7 @@ function renderTremorSnapshot(payload) {
 }
 
 async function loadTremors() {
-  if (!homeClustersList && !homeSnapshotBrief && !homeSourcesLine) {
+  if (!homeClustersList && !homeSnapshotBrief && !homeSourcesLine && !homeStatusTremorClusters && !homeStatusTremorNote) {
     return;
   }
 
@@ -3865,6 +4384,7 @@ if (bootstrapPayloads && !SKIP_BOOTSTRAP_PAYLOADS) {
 }
 initMobileNavToggle();
 initMobileNavDropdowns();
+initTopbarSearchDialog();
 loadEarthquakes();
 loadVolcanoes();
 loadTremors();
@@ -3908,6 +4428,9 @@ timelineMoreButton?.addEventListener("click", () => {
 
 mapFilterButtons.forEach((button) => {
   button.addEventListener("click", () => {
+    if (button.disabled) {
+      return;
+    }
     const band = button.dataset.band || null;
     const nextBand = activeMagnitudeBand === band ? null : band;
     setMagnitudeFilterState(nextBand);

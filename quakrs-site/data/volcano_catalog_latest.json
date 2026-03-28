@@ -2,8 +2,8 @@
     "ok": true,
     "schema_version": 2,
     "provider": "Smithsonian GVP Volcanoes of the World",
-    "generated_at_ts": 1773440480,
-    "generated_at": "2026-03-13T22:21:20+00:00",
+    "generated_at_ts": 1774639232,
+    "generated_at": "2026-03-27T19:20:32+00:00",
     "catalog_count": 1222,
     "catalog": [
         {
@@ -199,7 +199,7 @@
             "tectonic_setting": "Intraplate / Continental crust (>25 km)",
             "dominant_rock_type": "Phonolite",
             "profile_url": "https://volcano.si.edu/volcano.cfm?vn=390020",
-            "eruption_start_date": "1972 Dec 16 (on or before) ± 15 days",
+            "eruption_start_date": "1972 Dec 16 (on or before) \u00b1 15 days",
             "eruption_type": "Lava Lake",
             "eruption_last_known_activity": "2025 Dec 29 (continuing)",
             "is_currently_erupting": true
@@ -925,7 +925,7 @@
             "tectonic_setting": "Intraplate / Oceanic crust (< 15 km)",
             "dominant_rock_type": "Trachybasalt / Tephrite Basanite",
             "profile_url": "https://volcano.si.edu/volcano.cfm?vn=234010",
-            "eruption_start_date": "2012 Sep 5 ± 4 days",
+            "eruption_start_date": "2012 Sep 5 \u00b1 4 days",
             "eruption_type": "Lava Lake",
             "eruption_last_known_activity": "2025 Dec 26 (continuing)",
             "is_currently_erupting": true
@@ -2938,7 +2938,7 @@
             "country": "Chile",
             "continent": "South America",
             "region_group": "Southern Pacific Volcanic Regions",
-            "region": "Salas y Gómez Ridge Volcano Group",
+            "region": "Salas y G\u00f3mez Ridge Volcano Group",
             "landform": "Shield",
             "primary_type": "Shield(s)",
             "activity_evidence": "Evidence Credible",
@@ -5024,7 +5024,7 @@
         },
         {
             "volcano_number": "334070",
-            "volcano": "Galapagos Rift at 86°W",
+            "volcano": "Galapagos Rift at 86\u00b0W",
             "country": "Ecuador",
             "continent": "South America",
             "region_group": "Eastern Pacific Volcanic Regions",
@@ -6491,7 +6491,7 @@
             "tectonic_setting": "Rift zone / Intermediate crust (15-25 km)",
             "dominant_rock_type": "Basalt / Picro-Basalt",
             "profile_url": "https://volcano.si.edu/volcano.cfm?vn=221080",
-            "eruption_start_date": "1967 Jul 2 ± 182 days",
+            "eruption_start_date": "1967 Jul 2 \u00b1 182 days",
             "eruption_type": "Explosive / Effusive",
             "eruption_last_known_activity": "2025 Dec 17 (continuing)",
             "is_currently_erupting": true
@@ -14044,7 +14044,7 @@
         },
         {
             "volcano_number": "290130",
-            "volcano": "Kuril Arc at 46.3°N",
+            "volcano": "Kuril Arc at 46.3\u00b0N",
             "country": "Japan - administered by Russia",
             "continent": "Asia",
             "region_group": "Northwestern Pacific Volcanic Regions",
@@ -15078,7 +15078,7 @@
         },
         {
             "volcano_number": "334021",
-            "volcano": "Northern EPR at 16°N",
+            "volcano": "Northern EPR at 16\u00b0N",
             "country": "Mexico",
             "continent": "North America",
             "region_group": "Eastern Pacific Volcanic Regions",
@@ -15100,7 +15100,7 @@
         },
         {
             "volcano_number": "334020",
-            "volcano": "Northern EPR at 17°N",
+            "volcano": "Northern EPR at 17\u00b0N",
             "country": "Mexico",
             "continent": "North America",
             "region_group": "Eastern Pacific Volcanic Regions",
@@ -17630,7 +17630,7 @@
         },
         {
             "volcano_number": "272050",
-            "volcano": "Cabalían",
+            "volcano": "Cabal\u00edan",
             "country": "Philippines",
             "continent": "Asia",
             "region_group": "Western Pacific Volcanic Regions",
@@ -20754,7 +20754,7 @@
         },
         {
             "volcano_number": "255061",
-            "volcano": "New Georgia at 8.9°S",
+            "volcano": "New Georgia at 8.9\u00b0S",
             "country": "Solomon Islands",
             "continent": "Oceania",
             "region_group": "Southwestern Pacific Volcanic Regions",
@@ -22118,7 +22118,7 @@
         },
         {
             "volcano_number": "377020",
-            "volcano": "East Gakkel Ridge at 85°E",
+            "volcano": "East Gakkel Ridge at 85\u00b0E",
             "country": "Undersea Features",
             "continent": "Unknown",
             "region_group": "Atlantic Ocean Volcanic Regions",
@@ -22162,7 +22162,7 @@
         },
         {
             "volcano_number": "334040",
-            "volcano": "Northern EPR at 10.7°N",
+            "volcano": "Northern EPR at 10.7\u00b0N",
             "country": "Undersea Features",
             "continent": "Unknown",
             "region_group": "Eastern Pacific Volcanic Regions",
@@ -22184,7 +22184,7 @@
         },
         {
             "volcano_number": "334050",
-            "volcano": "Northern EPR at 9.8°N",
+            "volcano": "Northern EPR at 9.8\u00b0N",
             "country": "Undersea Features",
             "continent": "Unknown",
             "region_group": "Eastern Pacific Volcanic Regions",
@@ -22250,7 +22250,7 @@
         },
         {
             "volcano_number": "334120",
-            "volcano": "Southern EPR at 17.5°S (Segment K)",
+            "volcano": "Southern EPR at 17.5\u00b0S (Segment K)",
             "country": "Undersea Features",
             "continent": "Unknown",
             "region_group": "Southern Pacific Volcanic Regions",
@@ -22272,7 +22272,7 @@
         },
         {
             "volcano_number": "334130",
-            "volcano": "Southern EPR at 18.2°S (Segment J)",
+            "volcano": "Southern EPR at 18.2\u00b0S (Segment J)",
             "country": "Undersea Features",
             "continent": "Unknown",
             "region_group": "Southern Pacific Volcanic Regions",
@@ -22294,7 +22294,7 @@
         },
         {
             "volcano_number": "334140",
-            "volcano": "Southern EPR at 18.5°S (Segment I)",
+            "volcano": "Southern EPR at 18.5\u00b0S (Segment I)",
             "country": "Undersea Features",
             "continent": "Unknown",
             "region_group": "Southern Pacific Volcanic Regions",
@@ -22316,7 +22316,7 @@
         },
         {
             "volcano_number": "334100",
-            "volcano": "Southern EPR at 8°S",
+            "volcano": "Southern EPR at 8\u00b0S",
             "country": "Undersea Features",
             "continent": "Unknown",
             "region_group": "Southern Pacific Volcanic Regions",
@@ -22360,7 +22360,7 @@
         },
         {
             "volcano_number": "385052",
-            "volcano": "Walvis Ridge at 33°S",
+            "volcano": "Walvis Ridge at 33\u00b0S",
             "country": "Undersea Features",
             "continent": "Unknown",
             "region_group": "Atlantic Ocean Volcanic Regions",
@@ -24802,7 +24802,7 @@
         },
         {
             "volcano_number": "284305",
-            "volcano": "Mariana Back-Arc Segment at 15.5°N",
+            "volcano": "Mariana Back-Arc Segment at 15.5\u00b0N",
             "country": "United States",
             "continent": "North America",
             "region_group": "Northwestern Pacific Volcanic Regions",
@@ -26621,7 +26621,7 @@
             "tectonic_setting": "Subduction zone / Intermediate crust (15-25 km)",
             "dominant_rock_type": "Andesite / Basaltic Andesite",
             "profile_url": "https://volcano.si.edu/volcano.cfm?vn=257100",
-            "eruption_start_date": "1270 ± 110 years",
+            "eruption_start_date": "1270 \u00b1 110 years",
             "eruption_type": "Explosive / Effusive",
             "eruption_last_known_activity": "2025 Dec 17 (continuing)",
             "is_currently_erupting": true
@@ -26891,6 +26891,5 @@
             "is_currently_erupting": false
         }
     ],
-    "from_cache": true,
-    "stale_cache": false
+    "from_cache": false
 }

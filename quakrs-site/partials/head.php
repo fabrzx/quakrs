@@ -18,6 +18,7 @@ if ($scriptFile === 'event.php') {
     }
 }
 $canonicalUrl = $canonicalBase . $canonicalPath;
+$mainCssVersion = @filemtime(__DIR__ . '/../assets/css/styles.css') ?: time();
 
 $bodyTokens = [];
 if (!empty($currentPage) && is_string($currentPage)) {
@@ -54,7 +55,7 @@ $bodyClassAttr = implode(' ', $bodyTokens);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=IBM+Plex+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
       rel="stylesheet"
     />
     <?php if (!empty($includeLeaflet)): ?>
@@ -65,7 +66,7 @@ $bodyClassAttr = implode(' ', $bodyTokens);
       />
       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <?php endif; ?>
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=<?= urlencode((string) $mainCssVersion); ?>" />
   </head>
   <body class="<?= htmlspecialchars($bodyClassAttr, ENT_QUOTES, 'UTF-8'); ?>">
     <div class="ambient ambient-a"></div>

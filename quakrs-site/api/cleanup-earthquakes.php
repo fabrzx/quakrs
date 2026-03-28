@@ -11,48 +11,63 @@ if (!$forceRefresh) {
 
 require_refresh_token($appConfig);
 
-$archiveReason = null;
-$db = earthquake_archive_open($appConfig, $archiveReason);
-if (!$db instanceof mysqli) {
-    json_response(503, [
-        'ok' => false,
-        'error' => 'Archive database unavailable',
-        'reason' => $archiveReason ?: 'not configured',
-    ]);
-}
-
-$archiveCfg = earthquake_archive_mysql_config($appConfig);
-$table = (string) ($archiveCfg['table'] ?? 'earthquake_events');
-
 $cutoffTs = time() - (48 * 60 * 60);
-$sql = sprintf(
-    "DELETE FROM `%s`
-     WHERE event_time_ts < ?
-       AND source_provider IN ('USGS', 'EMSC')
-       AND (magnitude IS NULL OR magnitude < 2.5)",
-    $table
-);
+$targets = [
+    'live' => earthquake_mysql_role_config($appConfig, 'live'),
+    'archive' => earthquake_mysql_role_config($appConfig, 'archive'),
+];
 
-$stmt = $db->prepare($sql);
-if (!$stmt instanceof mysqli_stmt) {
-    $db->close();
-    json_response(500, ['ok' => false, 'error' => 'Unable to prepare cleanup query']);
-}
+$deletedByDb = [];
+foreach ($targets as $role => $cfg) {
+    $reason = null;
+    $db = earthquake_mysql_open($appConfig, $role, $reason);
+    if (!$db instanceof mysqli) {
+        json_response(503, [
+            'ok' => false,
+            'error' => sprintf('%s database unavailable', ucfirst($role)),
+            'reason' => $reason ?: 'not configured',
+        ]);
+    }
 
-$cutoffText = (string) $cutoffTs;
-if (!$stmt->bind_param('s', $cutoffText) || !$stmt->execute()) {
+    $table = (string) ($cfg['table'] ?? 'earthquake_events');
+    $sql = sprintf(
+        "DELETE FROM `%s`
+         WHERE event_time_ts < ?
+           AND source_provider IN ('USGS', 'EMSC')
+           AND (magnitude IS NULL OR magnitude < 2.5)",
+        $table
+    );
+    $stmt = $db->prepare($sql);
+    if (!$stmt instanceof mysqli_stmt) {
+        $db->close();
+        json_response(500, ['ok' => false, 'error' => sprintf('Unable to prepare cleanup query (%s)', $role)]);
+    }
+
+    if (!$stmt->bind_param('i', $cutoffTs) || !$stmt->execute()) {
+        $stmt->close();
+        $db->close();
+        json_response(500, ['ok' => false, 'error' => sprintf('Unable to execute cleanup query (%s)', $role)]);
+    }
+
+    $deletedByDb[$role] = [
+        'database' => (string) ($cfg['database'] ?? ''),
+        'table' => $table,
+        'deleted_rows' => max(0, (int) $stmt->affected_rows),
+    ];
+
     $stmt->close();
     $db->close();
-    json_response(500, ['ok' => false, 'error' => 'Unable to execute cleanup query']);
 }
 
-$deletedRows = $stmt->affected_rows;
-$stmt->close();
-$db->close();
+$deletedRows = 0;
+foreach ($deletedByDb as $row) {
+    $deletedRows += (int) ($row['deleted_rows'] ?? 0);
+}
 
 json_response(200, [
     'ok' => true,
-    'deleted_rows' => max(0, (int) $deletedRows),
+    'deleted_rows' => $deletedRows,
+    'deleted_by_db' => $deletedByDb,
     'cutoff_utc' => gmdate('c', $cutoffTs),
     'providers' => ['USGS', 'EMSC'],
     'rule' => 'Delete rows older than 48h where magnitude is NULL or < 2.5',

@@ -41,7 +41,7 @@ require __DIR__ . '/../partials/topbar.php';
 </section>
 
 <section class="panel">
-  <article class="card">
+  <article class="card card--hot">
     <div class="feed-head">
       <h3>Hot Now</h3>
       <p class="feed-meta">Cams ordinate per attività vulcanica e disponibilità stream</p>
@@ -56,7 +56,7 @@ require __DIR__ . '/../partials/topbar.php';
 </section>
 
 <section class="panel">
-  <article class="card">
+  <article class="card card--rotation">
     <div class="feed-head">
       <h3>Rotation Pool</h3>
       <p id="cams-rotation-meta" class="feed-meta">Rotating view loading...</p>
@@ -85,6 +85,9 @@ require __DIR__ . '/../partials/topbar.php';
       const playerUrl = cam.embed_url || null;
       const hasSnapshot = !!cam.snapshot_url;
       const reasons = Array.isArray(cam.priority_reasons) ? cam.priority_reasons.slice(0, 2).join(" · ") : "";
+      const statusText = String(cam.status || "").trim();
+      const showStatus = statusText !== "" && statusText.toLowerCase() !== "monitoring";
+      const locationMeta = showStatus ? `${cam.country} · ${statusText}` : cam.country;
 
       let mediaBlock = `
         <div class="cam-media">
@@ -117,7 +120,7 @@ require __DIR__ . '/../partials/topbar.php';
         <article class="card page-card cam-card">
           <div class="cam-body">
           <h3>${cam.name}</h3>
-          <p>${cam.country} · ${cam.status || "Monitoring"}</p>
+          <p class="cam-meta">${locationMeta}</p>
           ${mediaBlock}
           ${reasons ? `<p class="kpi-note">Priority: ${reasons}</p>` : ""}
           <p class="kpi-note">Source: ${cam.source || "Unknown"}</p>

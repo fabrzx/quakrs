@@ -1,0 +1,944 @@
+{
+    "ok": true,
+    "provider": "USGS FDSN Historical Archive",
+    "generated_at_ts": 1773790448,
+    "generated_at": "2026-03-17T23:34:08+00:00",
+    "query": {
+        "lat": 44.3372,
+        "lon": 9.5768,
+        "radius_km": 50,
+        "min_magnitude": null,
+        "start": "1899-12-31",
+        "end": "2026-03-16"
+    },
+    "page": 1,
+    "per_page": 80,
+    "total_pages": 1,
+    "total_events": 0,
+    "events_count": 80,
+    "events": [
+        {
+            "id": "us6000pwt2",
+            "magnitude": 2.5,
+            "place": "2 km NNW of Carrara, Italy",
+            "event_time_utc": "2025-03-04T15:00:13+00:00",
+            "depth_km": 10,
+            "latitude": 44.1014,
+            "longitude": 10.0806,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000pwt2"
+        },
+        {
+            "id": "us6000iqv4",
+            "magnitude": 3.1,
+            "place": "2 km NW of Bogliasco, Italy",
+            "event_time_utc": "2022-10-04T21:41:09+00:00",
+            "depth_km": 8.399,
+            "latitude": 44.3921,
+            "longitude": 9.0472,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000iqv4"
+        },
+        {
+            "id": "us7000ia6e",
+            "magnitude": 4.4,
+            "place": "3 km SW of Bargagli, Italy",
+            "event_time_utc": "2022-09-22T13:40:00+00:00",
+            "depth_km": 10,
+            "latitude": 44.4266,
+            "longitude": 9.0637,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ia6e"
+        },
+        {
+            "id": "us70008xgd",
+            "magnitude": 4.5,
+            "place": "2 km SE of Marsaglia, Italy",
+            "event_time_utc": "2020-04-16T09:42:53+00:00",
+            "depth_km": 10,
+            "latitude": 44.7,
+            "longitude": 9.4064,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us70008xgd"
+        },
+        {
+            "id": "us600054gs",
+            "magnitude": 4.6,
+            "place": "4 km SW of Stazione Valmozzola, Italy",
+            "event_time_utc": "2019-08-13T11:17:18+00:00",
+            "depth_km": 10,
+            "latitude": 44.5526,
+            "longitude": 9.8945,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us600054gs"
+        },
+        {
+            "id": "us2000668w",
+            "magnitude": 4.2,
+            "place": "0 km SW of Romito Magra, Italy",
+            "event_time_utc": "2016-06-23T14:37:56+00:00",
+            "depth_km": 10.14,
+            "latitude": 44.0943,
+            "longitude": 9.9234,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us2000668w"
+        },
+        {
+            "id": "usb000t1db",
+            "magnitude": 4,
+            "place": "3 km NW of Santo Stefano d'Aveto, Italy",
+            "event_time_utc": "2014-11-30T09:34:25+00:00",
+            "depth_km": 12,
+            "latitude": 44.57,
+            "longitude": 9.43,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usb000t1db"
+        },
+        {
+            "id": "usb000jeq1",
+            "magnitude": 2.9,
+            "place": "3 km SW of Casola in Lunigiana, Italy",
+            "event_time_utc": "2013-09-01T15:00:46+00:00",
+            "depth_km": 10.1,
+            "latitude": 44.173,
+            "longitude": 10.146,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usb000jeq1"
+        },
+        {
+            "id": "usc000hyhh",
+            "magnitude": 4.7,
+            "place": "6 km WSW of Minucciano, Italy",
+            "event_time_utc": "2013-06-23T15:01:35+00:00",
+            "depth_km": 10.1,
+            "latitude": 44.137,
+            "longitude": 10.135,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usc000hyhh"
+        },
+        {
+            "id": "usp000k1d6",
+            "magnitude": 4.5,
+            "place": "5 km SSW of Casola in Lunigiana, Italy",
+            "event_time_utc": "2013-06-21T14:23:22+00:00",
+            "depth_km": 8,
+            "latitude": 44.16,
+            "longitude": 10.14,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000k1d6"
+        },
+        {
+            "id": "usc000hx23",
+            "magnitude": 4.1,
+            "place": "5 km SW of Casola in Lunigiana, Italy",
+            "event_time_utc": "2013-06-21T12:19:58+00:00",
+            "depth_km": 4.4,
+            "latitude": 44.168,
+            "longitude": 10.12,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usc000hx23"
+        },
+        {
+            "id": "usc000hx22",
+            "magnitude": 4.5,
+            "place": "2 km S of Comano, Italy",
+            "event_time_utc": "2013-06-21T12:12:42+00:00",
+            "depth_km": 10,
+            "latitude": 44.271,
+            "longitude": 10.129,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usc000hx22"
+        },
+        {
+            "id": "usc000hx16",
+            "magnitude": 5.2,
+            "place": "6 km WSW of Minucciano, Italy",
+            "event_time_utc": "2013-06-21T10:33:57+00:00",
+            "depth_km": 5.1,
+            "latitude": 44.153,
+            "longitude": 10.135,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usc000hx16"
+        },
+        {
+            "id": "usp000jfu7",
+            "magnitude": 4.7,
+            "place": "3 km NNW of Santo Stefano d'Aveto, Italy",
+            "event_time_utc": "2012-03-05T15:15:07+00:00",
+            "depth_km": 9.2,
+            "latitude": 44.57,
+            "longitude": 9.434,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000jfu7"
+        },
+        {
+            "id": "usp000je1g",
+            "magnitude": 5,
+            "place": "4 km SE of Berceto, Italy",
+            "event_time_utc": "2012-01-27T14:53:13+00:00",
+            "depth_km": 60,
+            "latitude": 44.48,
+            "longitude": 10.03,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000je1g"
+        },
+        {
+            "id": "usp000j9kh",
+            "magnitude": 4.2,
+            "place": "3 km N of Santo Stefano d'Aveto, Italy",
+            "event_time_utc": "2011-10-20T06:11:22+00:00",
+            "depth_km": 24.7,
+            "latitude": 44.58,
+            "longitude": 9.445,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000j9kh"
+        },
+        {
+            "id": "usp000j9kg",
+            "magnitude": 4.2,
+            "place": "2 km E of Rezzoaglio, Italy",
+            "event_time_utc": "2011-10-20T06:10:51+00:00",
+            "depth_km": 10,
+            "latitude": 44.526,
+            "longitude": 9.415,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000j9kg"
+        },
+        {
+            "id": "usp000ggwf",
+            "magnitude": 2.8,
+            "place": "6 km SW of Terenzo, Italy",
+            "event_time_utc": "2008-09-11T23:11:28+00:00",
+            "depth_km": 10,
+            "latitude": 44.564,
+            "longitude": 10.038,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ggwf"
+        },
+        {
+            "id": "usp000ggty",
+            "magnitude": 2.7,
+            "place": "2 km WSW of Moneglia, Italy",
+            "event_time_utc": "2008-09-10T21:17:49+00:00",
+            "depth_km": 2,
+            "latitude": 44.229,
+            "longitude": 9.457,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ggty"
+        },
+        {
+            "id": "usp000gfbz",
+            "magnitude": 3.4,
+            "place": "4 km SW of Fivizzano, Italy",
+            "event_time_utc": "2008-08-23T21:36:07+00:00",
+            "depth_km": 7,
+            "latitude": 44.209,
+            "longitude": 10.084,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000gfbz"
+        },
+        {
+            "id": "usp000ga1n",
+            "magnitude": 3,
+            "place": "0 km ESE of Mulazzo, Italy",
+            "event_time_utc": "2008-06-19T02:20:06+00:00",
+            "depth_km": 9.3,
+            "latitude": 44.313,
+            "longitude": 9.901,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ga1n"
+        },
+        {
+            "id": "usp000g4dk",
+            "magnitude": 2.5,
+            "place": "1 km NE of Bore, Italy",
+            "event_time_utc": "2008-04-20T09:14:49+00:00",
+            "depth_km": 10,
+            "latitude": 44.729,
+            "longitude": 9.803,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000g4dk"
+        },
+        {
+            "id": "usp000g30k",
+            "magnitude": 3.6,
+            "place": "3 km N of Solignano, Italy",
+            "event_time_utc": "2008-04-03T05:07:29+00:00",
+            "depth_km": 18.3,
+            "latitude": 44.64,
+            "longitude": 9.982,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000g30k"
+        },
+        {
+            "id": "usp000g2d9",
+            "magnitude": 4.2,
+            "place": "3 km ESE of Patigno, Italy",
+            "event_time_utc": "2008-03-26T09:19:30+00:00",
+            "depth_km": 72.2,
+            "latitude": 44.342,
+            "longitude": 9.81,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000g2d9"
+        },
+        {
+            "id": "usp000fvzb",
+            "magnitude": 2.5,
+            "place": "2 km WSW of Calice al Cornoviglio, Italy",
+            "event_time_utc": "2008-01-04T20:28:58+00:00",
+            "depth_km": 10,
+            "latitude": 44.235,
+            "longitude": 9.811,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fvzb"
+        },
+        {
+            "id": "usp000fukh",
+            "magnitude": 2.9,
+            "place": "5 km NNE of Comano, Italy",
+            "event_time_utc": "2007-12-16T22:35:32+00:00",
+            "depth_km": 2.4,
+            "latitude": 44.34,
+            "longitude": 10.15,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fukh"
+        },
+        {
+            "id": "usp000fnmk",
+            "magnitude": 2.6,
+            "place": "1 km ESE of Deiva Marina, Italy",
+            "event_time_utc": "2007-09-18T20:24:04+00:00",
+            "depth_km": 10,
+            "latitude": 44.217,
+            "longitude": 9.535,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fnmk"
+        },
+        {
+            "id": "usp000ffz0",
+            "magnitude": 3.1,
+            "place": "2 km WSW of Rovegno, Italy",
+            "event_time_utc": "2007-07-11T08:43:48+00:00",
+            "depth_km": 3,
+            "latitude": 44.57,
+            "longitude": 9.25,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ffz0"
+        },
+        {
+            "id": "usp000ff0e",
+            "magnitude": 2.7,
+            "place": "1 km NNE of Fivizzano, Italy",
+            "event_time_utc": "2007-06-28T05:51:13+00:00",
+            "depth_km": 8,
+            "latitude": 44.248,
+            "longitude": 10.131,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ff0e"
+        },
+        {
+            "id": "usp000fekg",
+            "magnitude": 3.1,
+            "place": "2 km SW of Corniglio, Italy",
+            "event_time_utc": "2007-06-22T20:50:57+00:00",
+            "depth_km": 25.8,
+            "latitude": 44.46,
+            "longitude": 10.07,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fekg"
+        },
+        {
+            "id": "usp000fdfr",
+            "magnitude": 2.6,
+            "place": "5 km N of Varese Ligure, Italy",
+            "event_time_utc": "2007-06-06T09:04:02+00:00",
+            "depth_km": 11.3,
+            "latitude": 44.422,
+            "longitude": 9.599,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000fdfr"
+        },
+        {
+            "id": "usp000f8zv",
+            "magnitude": 2.9,
+            "place": "0 km ENE of Cerignale, Italy",
+            "event_time_utc": "2007-04-07T13:50:22+00:00",
+            "depth_km": 1.2,
+            "latitude": 44.68,
+            "longitude": 9.36,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000f8zv"
+        },
+        {
+            "id": "usp000f7br",
+            "magnitude": 3.2,
+            "place": "5 km S of Bardi, Italy",
+            "event_time_utc": "2007-03-25T03:11:15+00:00",
+            "depth_km": 10,
+            "latitude": 44.585,
+            "longitude": 9.726,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000f7br"
+        },
+        {
+            "id": "usp000f69e",
+            "magnitude": 2.8,
+            "place": "6 km ENE of Berceto, Italy",
+            "event_time_utc": "2007-03-07T18:16:45+00:00",
+            "depth_km": 6.8,
+            "latitude": 44.539,
+            "longitude": 10.06,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000f69e"
+        },
+        {
+            "id": "usp000f4pn",
+            "magnitude": 2.9,
+            "place": "7 km ESE of Borgo Val di Taro, Italy",
+            "event_time_utc": "2007-02-11T18:55:38+00:00",
+            "depth_km": 10,
+            "latitude": 44.466,
+            "longitude": 9.855,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000f4pn"
+        },
+        {
+            "id": "usp000f33q",
+            "magnitude": 2.6,
+            "place": "1 km NNE of Cerignale, Italy",
+            "event_time_utc": "2007-01-21T02:03:45+00:00",
+            "depth_km": 5,
+            "latitude": 44.687,
+            "longitude": 9.357,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000f33q"
+        },
+        {
+            "id": "usp000f19u",
+            "magnitude": 2.5,
+            "place": "4 km E of Solignano, Italy",
+            "event_time_utc": "2006-12-30T01:48:12+00:00",
+            "depth_km": 5.3,
+            "latitude": 44.616,
+            "longitude": 10.028,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000f19u"
+        },
+        {
+            "id": "usp000f0d9",
+            "magnitude": 2.8,
+            "place": "3 km ESE of Ferriere, Italy",
+            "event_time_utc": "2006-12-17T06:26:42+00:00",
+            "depth_km": 5.9,
+            "latitude": 44.629,
+            "longitude": 9.535,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000f0d9"
+        },
+        {
+            "id": "usp000ex6c",
+            "magnitude": 2.7,
+            "place": "4 km S of Pellegrino Parmense, Italy",
+            "event_time_utc": "2006-11-11T22:38:19+00:00",
+            "depth_km": 10,
+            "latitude": 44.685,
+            "longitude": 9.924,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ex6c"
+        },
+        {
+            "id": "usp000eu9b",
+            "magnitude": 3.2,
+            "place": "2 km NW of Maissana, Italy",
+            "event_time_utc": "2006-10-01T19:17:58+00:00",
+            "depth_km": 11.4,
+            "latitude": 44.354,
+            "longitude": 9.512,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000eu9b"
+        },
+        {
+            "id": "usp000eu98",
+            "magnitude": 2.9,
+            "place": "1 km NW of Maissana, Italy",
+            "event_time_utc": "2006-10-01T19:04:08+00:00",
+            "depth_km": 12.5,
+            "latitude": 44.348,
+            "longitude": 9.523,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000eu98"
+        },
+        {
+            "id": "usp000eq8c",
+            "magnitude": 2.6,
+            "place": "6 km WNW of Varese Ligure, Italy",
+            "event_time_utc": "2006-08-04T19:58:35+00:00",
+            "depth_km": 2,
+            "latitude": 44.41,
+            "longitude": 9.522,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000eq8c"
+        },
+        {
+            "id": "usp000enjy",
+            "magnitude": 3.2,
+            "place": "5 km ENE of Pontremoli, Italy",
+            "event_time_utc": "2006-07-14T06:36:52+00:00",
+            "depth_km": 16.8,
+            "latitude": 44.389,
+            "longitude": 9.951,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000enjy"
+        },
+        {
+            "id": "usp000emzz",
+            "magnitude": 3.2,
+            "place": "3 km WNW of Comano, Italy",
+            "event_time_utc": "2006-07-06T10:44:35+00:00",
+            "depth_km": 5,
+            "latitude": 44.301,
+            "longitude": 10.09,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000emzz"
+        },
+        {
+            "id": "usp000ektm",
+            "magnitude": 2.8,
+            "place": "4 km SSE of Berceto, Italy",
+            "event_time_utc": "2006-06-19T13:53:00+00:00",
+            "depth_km": 5.9,
+            "latitude": 44.476,
+            "longitude": 10.012,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ektm"
+        },
+        {
+            "id": "usp000ehcx",
+            "magnitude": 2.7,
+            "place": "2 km NW of Gorreto, Italy",
+            "event_time_utc": "2006-05-18T03:51:26+00:00",
+            "depth_km": 4.1,
+            "latitude": 44.621,
+            "longitude": 9.265,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ehcx"
+        },
+        {
+            "id": "usp000efzr",
+            "magnitude": 3,
+            "place": "2 km SSW of Terenzo, Italy",
+            "event_time_utc": "2006-05-01T18:06:19+00:00",
+            "depth_km": 6.7,
+            "latitude": 44.59,
+            "longitude": 10.08,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000efzr"
+        },
+        {
+            "id": "usp000efqf",
+            "magnitude": 2.7,
+            "place": "2 km SW of Terenzo, Italy",
+            "event_time_utc": "2006-04-28T20:21:28+00:00",
+            "depth_km": 5.7,
+            "latitude": 44.595,
+            "longitude": 10.063,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000efqf"
+        },
+        {
+            "id": "usp000efqe",
+            "magnitude": 2.7,
+            "place": "3 km WSW of Terenzo, Italy",
+            "event_time_utc": "2006-04-28T19:57:59+00:00",
+            "depth_km": 3.2,
+            "latitude": 44.596,
+            "longitude": 10.055,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000efqe"
+        },
+        {
+            "id": "usp000edwu",
+            "magnitude": 3.6,
+            "place": "3 km NE of Zeri, Italy",
+            "event_time_utc": "2006-04-07T14:01:16+00:00",
+            "depth_km": 10,
+            "latitude": 44.373,
+            "longitude": 9.799,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000edwu"
+        },
+        {
+            "id": "usp000edw7",
+            "magnitude": 2.6,
+            "place": "3 km SSE of Pontremoli, Italy",
+            "event_time_utc": "2006-04-07T08:06:22+00:00",
+            "depth_km": 10,
+            "latitude": 44.349,
+            "longitude": 9.898,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000edw7"
+        },
+        {
+            "id": "usp000edw6",
+            "magnitude": 3.7,
+            "place": "6 km SE of Patigno, Italy",
+            "event_time_utc": "2006-04-07T07:35:43+00:00",
+            "depth_km": 10,
+            "latitude": 44.31,
+            "longitude": 9.81,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000edw6"
+        },
+        {
+            "id": "usp000edr6",
+            "magnitude": 2.8,
+            "place": "6 km NE of Pontremoli, Italy",
+            "event_time_utc": "2006-04-05T09:39:10+00:00",
+            "depth_km": 10,
+            "latitude": 44.417,
+            "longitude": 9.941,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000edr6"
+        },
+        {
+            "id": "usp000edf9",
+            "magnitude": 3.9,
+            "place": "7 km N of Pontremoli, Italy",
+            "event_time_utc": "2006-04-01T16:42:27+00:00",
+            "depth_km": 10,
+            "latitude": 44.44,
+            "longitude": 9.89,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000edf9"
+        },
+        {
+            "id": "usp000e4r3",
+            "magnitude": 3.1,
+            "place": "2 km W of Borgo Val di Taro, Italy",
+            "event_time_utc": "2005-11-23T00:33:08+00:00",
+            "depth_km": 8.3,
+            "latitude": 44.492,
+            "longitude": 9.74,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000e4r3"
+        },
+        {
+            "id": "usp000dzbh",
+            "magnitude": 3.7,
+            "place": "northern Italy",
+            "event_time_utc": "2005-09-12T21:34:26+00:00",
+            "depth_km": 25.1,
+            "latitude": 44.568,
+            "longitude": 10.099,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dzbh"
+        },
+        {
+            "id": "usp000ds8m",
+            "magnitude": 2.7,
+            "place": "5 km ESE of Ferriere, Italy",
+            "event_time_utc": "2005-06-05T04:20:38+00:00",
+            "depth_km": 10,
+            "latitude": 44.623,
+            "longitude": 9.561,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ds8m"
+        },
+        {
+            "id": "usp000ds8k",
+            "magnitude": 4,
+            "place": "5 km ESE of Cerignale, Italy",
+            "event_time_utc": "2005-06-05T04:18:47+00:00",
+            "depth_km": 10,
+            "latitude": 44.668,
+            "longitude": 9.413,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ds8k"
+        },
+        {
+            "id": "usp000drfm",
+            "magnitude": 2.9,
+            "place": "2 km S of Marsaglia, Italy",
+            "event_time_utc": "2005-05-24T04:11:05+00:00",
+            "depth_km": 4.3,
+            "latitude": 44.692,
+            "longitude": 9.385,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000drfm"
+        },
+        {
+            "id": "usp000dpvm",
+            "magnitude": 2.5,
+            "place": "6 km SE of Borgo Val di Taro, Italy",
+            "event_time_utc": "2005-05-03T22:59:51+00:00",
+            "depth_km": 7.7,
+            "latitude": 44.441,
+            "longitude": 9.826,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dpvm"
+        },
+        {
+            "id": "usp000dpr9",
+            "magnitude": 3,
+            "place": "2 km SSW of Marsaglia, Italy",
+            "event_time_utc": "2005-05-02T05:48:56+00:00",
+            "depth_km": 6.2,
+            "latitude": 44.693,
+            "longitude": 9.375,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dpr9"
+        },
+        {
+            "id": "usp000dpr8",
+            "magnitude": 2.5,
+            "place": "2 km W of Coli, Italy",
+            "event_time_utc": "2005-05-02T05:35:04+00:00",
+            "depth_km": 5.1,
+            "latitude": 44.741,
+            "longitude": 9.38,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dpr8"
+        },
+        {
+            "id": "usp000dpk6",
+            "magnitude": 3.6,
+            "place": "0 km NE of Marsaglia, Italy",
+            "event_time_utc": "2005-04-30T08:10:26+00:00",
+            "depth_km": 1.1,
+            "latitude": 44.717,
+            "longitude": 9.39,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dpk6"
+        },
+        {
+            "id": "usp000dnrf",
+            "magnitude": 2.8,
+            "place": "4 km NNE of Morfasso, Italy",
+            "event_time_utc": "2005-04-19T09:45:51+00:00",
+            "depth_km": 0.2,
+            "latitude": 44.759,
+            "longitude": 9.734,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dnrf"
+        },
+        {
+            "id": "usp000dnp4",
+            "magnitude": 2.5,
+            "place": "5 km SE of Ottone, Italy",
+            "event_time_utc": "2005-04-18T11:04:17+00:00",
+            "depth_km": 1.7,
+            "latitude": 44.581,
+            "longitude": 9.379,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dnp4"
+        },
+        {
+            "id": "usp000dnp3",
+            "magnitude": 4.9,
+            "place": "2 km WSW of Marsaglia, Italy",
+            "event_time_utc": "2005-04-18T10:59:18+00:00",
+            "depth_km": 0.1,
+            "latitude": 44.707,
+            "longitude": 9.349,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dnp3"
+        },
+        {
+            "id": "usp000dn8x",
+            "magnitude": 3.7,
+            "place": "2 km WSW of Coli, Italy",
+            "event_time_utc": "2005-04-13T18:46:08+00:00",
+            "depth_km": 0.9,
+            "latitude": 44.74,
+            "longitude": 9.382,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dn8x"
+        },
+        {
+            "id": "usp000djpa",
+            "magnitude": 2.6,
+            "place": "4 km NW of Morfasso, Italy",
+            "event_time_utc": "2005-03-21T04:57:17+00:00",
+            "depth_km": 2.6,
+            "latitude": 44.755,
+            "longitude": 9.666,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000djpa"
+        },
+        {
+            "id": "usp000djp9",
+            "magnitude": 2.9,
+            "place": "3 km NW of Morfasso, Italy",
+            "event_time_utc": "2005-03-21T04:50:12+00:00",
+            "depth_km": 27.3,
+            "latitude": 44.745,
+            "longitude": 9.677,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000djp9"
+        },
+        {
+            "id": "usp000dh68",
+            "magnitude": 2.5,
+            "place": "3 km NNE of Licciana Nardi, Italy",
+            "event_time_utc": "2005-02-28T13:18:27+00:00",
+            "depth_km": 7.9,
+            "latitude": 44.293,
+            "longitude": 10.052,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dh68"
+        },
+        {
+            "id": "usp000dgyt",
+            "magnitude": 3.2,
+            "place": "3 km SSE of Cerignale, Italy",
+            "event_time_utc": "2005-02-25T22:30:11+00:00",
+            "depth_km": 5,
+            "latitude": 44.65,
+            "longitude": 9.37,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dgyt"
+        },
+        {
+            "id": "usp000dfdk",
+            "magnitude": 2.8,
+            "place": "4 km WSW of Portofino, Italy",
+            "event_time_utc": "2005-02-02T13:41:50+00:00",
+            "depth_km": 9.1,
+            "latitude": 44.291,
+            "longitude": 9.154,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dfdk"
+        },
+        {
+            "id": "usp000damh",
+            "magnitude": 2.5,
+            "place": "3 km S of Fivizzano, Italy",
+            "event_time_utc": "2004-12-13T17:46:42+00:00",
+            "depth_km": 7.1,
+            "latitude": 44.207,
+            "longitude": 10.13,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000damh"
+        },
+        {
+            "id": "usp000d2av",
+            "magnitude": 2.9,
+            "place": "1 km SE of Marsaglia, Italy",
+            "event_time_utc": "2004-08-17T11:17:01+00:00",
+            "depth_km": 7,
+            "latitude": 44.704,
+            "longitude": 9.395,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000d2av"
+        },
+        {
+            "id": "usp000d2au",
+            "magnitude": 3,
+            "place": "1 km E of Marsaglia, Italy",
+            "event_time_utc": "2004-08-17T11:15:42+00:00",
+            "depth_km": 5.9,
+            "latitude": 44.713,
+            "longitude": 9.398,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000d2au"
+        },
+        {
+            "id": "usp000cy9p",
+            "magnitude": 2.2,
+            "place": "2 km ESE of Licciana Nardi, Italy",
+            "event_time_utc": "2004-06-20T00:17:48+00:00",
+            "depth_km": 5.9,
+            "latitude": 44.254,
+            "longitude": 10.064,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cy9p"
+        },
+        {
+            "id": "usp000cxqg",
+            "magnitude": 2.8,
+            "place": "0 km WNW of Camogli, Italy",
+            "event_time_utc": "2004-06-11T22:36:36+00:00",
+            "depth_km": 7.1,
+            "latitude": 44.352,
+            "longitude": 9.149,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cxqg"
+        },
+        {
+            "id": "usp000cxc6",
+            "magnitude": 2.2,
+            "place": "2 km ENE of Pallerone, Italy",
+            "event_time_utc": "2004-06-07T16:54:57+00:00",
+            "depth_km": 3,
+            "latitude": 44.214,
+            "longitude": 10.03,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cxc6"
+        },
+        {
+            "id": "usp000cx24",
+            "magnitude": 1.7,
+            "place": "5 km ENE of Borgo Val di Taro, Italy",
+            "event_time_utc": "2004-06-04T04:18:06+00:00",
+            "depth_km": 1.8,
+            "latitude": 44.499,
+            "longitude": 9.837,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cx24"
+        },
+        {
+            "id": "usp000cwx6",
+            "magnitude": 1.8,
+            "place": "5 km E of Borgo Val di Taro, Italy",
+            "event_time_utc": "2004-06-02T10:22:28+00:00",
+            "depth_km": 1.7,
+            "latitude": 44.489,
+            "longitude": 9.832,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000cwx6"
+        }
+    ],
+    "strongest_events": [
+        {
+            "id": "iscgemsup902191",
+            "magnitude": 5.41,
+            "place": "5 km S of Monchio delle Corti, Italy",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 44.364,
+            "longitude": 10.126,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgemsup902191"
+        },
+        {
+            "id": "iscgemsup904985",
+            "magnitude": 5.36,
+            "place": "4 km S of Monchio delle Corti, Italy",
+            "event_time_utc": null,
+            "depth_km": 15,
+            "latitude": 44.372,
+            "longitude": 10.126,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgemsup904985"
+        },
+        {
+            "id": "usc000hx16",
+            "magnitude": 5.2,
+            "place": "6 km WSW of Minucciano, Italy",
+            "event_time_utc": "2013-06-21T10:33:57+00:00",
+            "depth_km": 5.1,
+            "latitude": 44.153,
+            "longitude": 10.135,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usc000hx16"
+        },
+        {
+            "id": "iscgemsup768689",
+            "magnitude": 5.18,
+            "place": "3 km ENE of Zeri, Italy",
+            "event_time_utc": "1972-10-25T21:56:06+00:00",
+            "depth_km": 15,
+            "latitude": 44.37,
+            "longitude": 9.803,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/iscgemsup768689"
+        },
+        {
+            "id": "usp000je1g",
+            "magnitude": 5,
+            "place": "4 km SE of Berceto, Italy",
+            "event_time_utc": "2012-01-27T14:53:13+00:00",
+            "depth_km": 60,
+            "latitude": 44.48,
+            "longitude": 10.03,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000je1g"
+        },
+        {
+            "id": "usp0000dm5",
+            "magnitude": 4.9,
+            "place": "2 km NE of Farini, Italy",
+            "event_time_utc": "1975-11-16T13:04:24+00:00",
+            "depth_km": 19,
+            "latitude": 44.726,
+            "longitude": 9.587,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0000dm5"
+        },
+        {
+            "id": "usp000dnp3",
+            "magnitude": 4.9,
+            "place": "2 km WSW of Marsaglia, Italy",
+            "event_time_utc": "2005-04-18T10:59:18+00:00",
+            "depth_km": 0.1,
+            "latitude": 44.707,
+            "longitude": 9.349,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000dnp3"
+        },
+        {
+            "id": "usp0000hzz",
+            "magnitude": 4.8,
+            "place": "8 km WSW of Bardi, Italy",
+            "event_time_utc": "1976-08-22T02:49:16+00:00",
+            "depth_km": 33,
+            "latitude": 44.604,
+            "longitude": 9.631,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0000hzz"
+        },
+        {
+            "id": "usp0000fbp",
+            "magnitude": 4.7,
+            "place": "8 km WSW of Bardi, Italy",
+            "event_time_utc": "1976-03-07T18:09:31+00:00",
+            "depth_km": 33,
+            "latitude": 44.605,
+            "longitude": 9.622,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0000fbp"
+        },
+        {
+            "id": "usp000jfu7",
+            "magnitude": 4.7,
+            "place": "3 km NNW of Santo Stefano d'Aveto, Italy",
+            "event_time_utc": "2012-03-05T15:15:07+00:00",
+            "depth_km": 9.2,
+            "latitude": 44.57,
+            "longitude": 9.434,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000jfu7"
+        },
+        {
+            "id": "usp00074ww",
+            "magnitude": 4.7,
+            "place": "2 km SSE of Pallerone, Italy",
+            "event_time_utc": "1995-10-10T06:54:22+00:00",
+            "depth_km": 10,
+            "latitude": 44.184,
+            "longitude": 10.013,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp00074ww"
+        },
+        {
+            "id": "usc000hyhh",
+            "magnitude": 4.7,
+            "place": "6 km WSW of Minucciano, Italy",
+            "event_time_utc": "2013-06-23T15:01:35+00:00",
+            "depth_km": 10.1,
+            "latitude": 44.137,
+            "longitude": 10.135,
+            "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usc000hyhh"
+        }
+    ],
+    "from_cache": false
+}

@@ -29,7 +29,7 @@ require __DIR__ . '/../partials/topbar.php';
     <p class="kpi-note">Top regional concentration zones</p>
   </article>
   <article class="card kpi-card">
-    <p class="kpi-label">Peak Hour (UTC)</p>
+    <p class="kpi-label">Peak Hour</p>
     <p id="clusters-kpi-peak" class="kpi-value">--</p>
     <p id="clusters-kpi-peak-note" class="kpi-note">Loading trend...</p>
   </article>
@@ -72,7 +72,17 @@ require __DIR__ . '/../partials/topbar.php';
     const bandsList = document.querySelector("#clusters-bands");
     const recentList = document.querySelector("#clusters-recent");
 
-    const safeTime = (iso) => (iso ? new Date(iso).toLocaleString([], { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit" }) : "n/a");
+    const safeTime = (iso) => (iso
+      ? new Date(iso).toLocaleString("it-IT", { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false })
+      : "n/a");
+    const safePeakHour = (peakHourUtc) => {
+      if (!peakHourUtc) return "--:00";
+      const hour = String(peakHourUtc).slice(0, 2);
+      const dt = new Date(`1970-01-01T${hour}:00:00Z`);
+      if (Number.isNaN(dt.getTime())) return "--:00";
+      const localHour = dt.toLocaleTimeString("it-IT", { hour: "2-digit", hour12: false });
+      return `${localHour}:00`;
+    };
 
     const setError = () => {
       const fallback = "<li class='event-item'>Cluster data unavailable right now.</li>";
@@ -95,7 +105,7 @@ require __DIR__ . '/../partials/topbar.php';
 
         if (kpiSignals) kpiSignals.textContent = String(typeof payload.signals_count === "number" ? payload.signals_count : events.length);
         if (kpiClusters) kpiClusters.textContent = String(typeof payload.clusters_count === "number" ? payload.clusters_count : clusters.length);
-        if (kpiPeak) kpiPeak.textContent = payload.peak_hour_utc || "--:00";
+        if (kpiPeak) kpiPeak.textContent = safePeakHour(payload.peak_hour_utc);
         if (kpiPeakNote) {
           const count = typeof payload.peak_hour_count === "number" ? payload.peak_hour_count : 0;
           kpiPeakNote.textContent = `${count} signals in peak slot`;

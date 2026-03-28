@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://quakrs.com/</loc></url>
+  <url><loc>https://quakrs.com/situation.php</loc></url>
+  <url><loc>https://quakrs.com/timeline.php</loc></url>
+  <url><loc>https://quakrs.com/alerts.php</loc></url>
+  <url><loc>https://quakrs.com/search.php</loc></url>
+  <url><loc>https://quakrs.com/my-quakrs.php</loc></url>
   <url><loc>https://quakrs.com/earthquakes.php</loc></url>
   <url><loc>https://quakrs.com/aftershocks.php</loc></url>
   <url><loc>https://quakrs.com/volcanoes.php</loc></url>
@@ -10,9 +15,14 @@
   <url><loc>https://quakrs.com/maps-heatmap.php</loc></url>
   <url><loc>https://quakrs.com/maps-plates.php</loc></url>
   <url><loc>https://quakrs.com/maps-depth.php</loc></url>
+  <url><loc>https://quakrs.com/cams-earthquakes.php</loc></url>
+  <url><loc>https://quakrs.com/cams-weather.php</loc></url>
+  <url><loc>https://quakrs.com/cams-space-weather.php</loc></url>
+  <url><loc>https://quakrs.com/cams-tsunami.php</loc></url>
   <url><loc>https://quakrs.com/cams-volcanoes.php</loc></url>
   <url><loc>https://quakrs.com/cams-hotspots.php</loc></url>
   <url><loc>https://quakrs.com/data-archive.php</loc></url>
+  <url><loc>https://quakrs.com/archive.php</loc></url>
   <url><loc>https://quakrs.com/data-italia.php</loc></url>
   <url><loc>https://quakrs.com/data-energy.php</loc></url>
   <url><loc>https://quakrs.com/data-reports.php</loc></url>
@@ -24,8 +34,10 @@
   <url><loc>https://quakrs.com/resources-bulletins.php</loc></url>
   <url><loc>https://quakrs.com/priority-levels.php</loc></url>
   <url><loc>https://quakrs.com/about-sources.php</loc></url>
+  <url><loc>https://quakrs.com/sources-status.php</loc></url>
   <url><loc>https://quakrs.com/about-methodology.php</loc></url>
   <url><loc>https://quakrs.com/about-energy.php</loc></url>
+  <url><loc>https://quakrs.com/updates.php</loc></url>
   <url><loc>https://quakrs.com/privacy.php</loc></url>
   <url><loc>https://quakrs.com/terms.php</loc></url>
 </urlset>

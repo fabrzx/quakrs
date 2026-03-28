@@ -1,115 +1,65 @@
 {
     "ok": true,
     "provider": "INGV",
-    "generated_at_ts": 1773745728,
-    "generated_at": "2026-03-17T11:08:48+00:00",
+    "generated_at_ts": 1774649543,
+    "generated_at": "2026-03-27T22:12:23+00:00",
     "window": {
-        "events_24h_start": "2026-03-16T11:08:48+00:00",
-        "events_24h_end": "2026-03-17T11:08:48+00:00"
+        "events_24h_start": "2026-03-26T22:12:23+00:00",
+        "events_24h_end": "2026-03-27T22:12:23+00:00"
     },
-    "events_count_24h": 60,
-    "max_magnitude_24h": 3.8,
-    "estimated_energy_j_24h": 38244293298.14669,
-    "top_region_24h": "1 km S Sant'Angelo in Pontano (MC)",
+    "events_count_24h": 27,
+    "max_magnitude_24h": 2.8,
+    "estimated_energy_j_24h": 2204023166.8852673,
+    "top_region_24h": "4 km NW Spoleto (PG)",
     "baseline": {
-        "today_count": 60,
-        "daily_avg_prev30": 50,
-        "delta_pct": 20,
-        "state": "Within normal",
+        "today_count": 27,
+        "daily_avg_prev30": 55.89655172413793,
+        "delta_pct": -51.696483652066625,
+        "state": "Below normal",
         "method": "rolling-30d"
     },
     "series_7d": [
         {
-            "date_utc": "2026-03-11",
-            "label": "Wed",
-            "count": 40
-        },
-        {
-            "date_utc": "2026-03-12",
-            "label": "Thu",
-            "count": 52
-        },
-        {
-            "date_utc": "2026-03-13",
-            "label": "Fri",
-            "count": 46
-        },
-        {
-            "date_utc": "2026-03-14",
+            "date_utc": "2026-03-21",
             "label": "Sat",
-            "count": 76
+            "count": 97
         },
         {
-            "date_utc": "2026-03-15",
+            "date_utc": "2026-03-22",
             "label": "Sun",
-            "count": 50
+            "count": 47
         },
         {
-            "date_utc": "2026-03-16",
+            "date_utc": "2026-03-23",
             "label": "Mon",
-            "count": 49
+            "count": 44
         },
         {
-            "date_utc": "2026-03-17",
+            "date_utc": "2026-03-24",
             "label": "Tue",
-            "count": 21
+            "count": 35
+        },
+        {
+            "date_utc": "2026-03-25",
+            "label": "Wed",
+            "count": 35
+        },
+        {
+            "date_utc": "2026-03-26",
+            "label": "Thu",
+            "count": 39
+        },
+        {
+            "date_utc": "2026-03-27",
+            "label": "Fri",
+            "count": 25
         }
     ],
     "series_30d": [
         {
-            "date_utc": "2026-02-16",
-            "label": "Mon",
-            "count": 27
-        },
-        {
-            "date_utc": "2026-02-17",
-            "label": "Tue",
-            "count": 27
-        },
-        {
-            "date_utc": "2026-02-18",
-            "label": "Wed",
-            "count": 26
-        },
-        {
-            "date_utc": "2026-02-19",
-            "label": "Thu",
-            "count": 19
-        },
-        {
-            "date_utc": "2026-02-20",
-            "label": "Fri",
-            "count": 23
-        },
-        {
-            "date_utc": "2026-02-21",
-            "label": "Sat",
-            "count": 21
-        },
-        {
-            "date_utc": "2026-02-22",
-            "label": "Sun",
-            "count": 30
-        },
-        {
-            "date_utc": "2026-02-23",
-            "label": "Mon",
-            "count": 37
-        },
-        {
-            "date_utc": "2026-02-24",
-            "label": "Tue",
-            "count": 38
-        },
-        {
-            "date_utc": "2026-02-25",
-            "label": "Wed",
-            "count": 58
-        },
-        {
             "date_utc": "2026-02-26",
             "label": "Thu",
-            "count": 45
+            "count": 44
         },
         {
             "date_utc": "2026-02-27",
@@ -119,57 +69,57 @@
         {
             "date_utc": "2026-02-28",
             "label": "Sat",
-            "count": 56
+            "count": 53
         },
         {
             "date_utc": "2026-03-01",
             "label": "Sun",
-            "count": 47
+            "count": 48
         },
         {
             "date_utc": "2026-03-02",
             "label": "Mon",
-            "count": 87
+            "count": 84
         },
         {
             "date_utc": "2026-03-03",
             "label": "Tue",
-            "count": 86
+            "count": 88
         },
         {
             "date_utc": "2026-03-04",
             "label": "Wed",
-            "count": 109
+            "count": 110
         },
         {
             "date_utc": "2026-03-05",
             "label": "Thu",
-            "count": 57
+            "count": 61
         },
         {
             "date_utc": "2026-03-06",
             "label": "Fri",
-            "count": 53
+            "count": 51
         },
         {
             "date_utc": "2026-03-07",
             "label": "Sat",
-            "count": 90
+            "count": 83
         },
         {
             "date_utc": "2026-03-08",
             "label": "Sun",
-            "count": 53
+            "count": 59
         },
         {
             "date_utc": "2026-03-09",
             "label": "Mon",
-            "count": 64
+            "count": 62
         },
         {
             "date_utc": "2026-03-10",
             "label": "Tue",
-            "count": 43
+            "count": 47
         },
         {
             "date_utc": "2026-03-11",
@@ -184,867 +134,443 @@
         {
             "date_utc": "2026-03-13",
             "label": "Fri",
-            "count": 46
+            "count": 42
         },
         {
             "date_utc": "2026-03-14",
             "label": "Sat",
-            "count": 76
+            "count": 78
         },
         {
             "date_utc": "2026-03-15",
             "label": "Sun",
-            "count": 50
+            "count": 52
         },
         {
             "date_utc": "2026-03-16",
             "label": "Mon",
-            "count": 49
+            "count": 46
         },
         {
             "date_utc": "2026-03-17",
             "label": "Tue",
-            "count": 21
+            "count": 49
+        },
+        {
+            "date_utc": "2026-03-18",
+            "label": "Wed",
+            "count": 29
+        },
+        {
+            "date_utc": "2026-03-19",
+            "label": "Thu",
+            "count": 32
+        },
+        {
+            "date_utc": "2026-03-20",
+            "label": "Fri",
+            "count": 73
+        },
+        {
+            "date_utc": "2026-03-21",
+            "label": "Sat",
+            "count": 97
+        },
+        {
+            "date_utc": "2026-03-22",
+            "label": "Sun",
+            "count": 47
+        },
+        {
+            "date_utc": "2026-03-23",
+            "label": "Mon",
+            "count": 44
+        },
+        {
+            "date_utc": "2026-03-24",
+            "label": "Tue",
+            "count": 35
+        },
+        {
+            "date_utc": "2026-03-25",
+            "label": "Wed",
+            "count": 35
+        },
+        {
+            "date_utc": "2026-03-26",
+            "label": "Thu",
+            "count": 39
+        },
+        {
+            "date_utc": "2026-03-27",
+            "label": "Fri",
+            "count": 25
         }
     ],
     "magnitude_bands_24h": {
-        "M0-1": 21,
-        "M1-2": 33,
-        "M2-3": 4,
-        "M3+": 2
+        "M0-1": 1,
+        "M1-2": 20,
+        "M2-3": 6,
+        "M3+": 0
     },
     "depth_bands_24h": {
-        "0-10": 30,
-        "10-30": 28,
-        "30-70": 0,
-        "70+": 2
+        "0-10": 13,
+        "10-30": 13,
+        "30-70": 1,
+        "70+": 0
     },
-    "swarms_24h": [
-        {
-            "swarm_id": "43.00|13.25",
-            "events": 10,
-            "max_magnitude": 2.3,
-            "duration_hours": 13,
-            "center_lat": 43.092,
-            "center_lon": 13.386,
-            "region": "1 km S Sant'Angelo in Pontano (MC)",
-            "first_event_utc": "2026-03-16T15:08:34+00:00",
-            "last_event_utc": "2026-03-17T04:07:56+00:00"
-        },
-        {
-            "swarm_id": "43.75|12.00",
-            "events": 6,
-            "max_magnitude": 2.4,
-            "duration_hours": 8.3,
-            "center_lat": 43.852,
-            "center_lon": 12.026,
-            "region": "5 km E Bagno di Romagna (FC)",
-            "first_event_utc": "2026-03-16T17:04:53+00:00",
-            "last_event_utc": "2026-03-17T01:25:34+00:00"
-        },
-        {
-            "swarm_id": "42.75|12.75",
-            "events": 5,
-            "max_magnitude": 1.6,
-            "duration_hours": 13,
-            "center_lat": 42.905,
-            "center_lon": 12.926,
-            "region": "1 km E Cerreto di Spoleto (PG)",
-            "first_event_utc": "2026-03-16T13:52:45+00:00",
-            "last_event_utc": "2026-03-17T02:52:47+00:00"
-        },
-        {
-            "swarm_id": "42.50|13.00",
-            "events": 5,
-            "max_magnitude": 1.2,
-            "duration_hours": 7.6,
-            "center_lat": 42.69,
-            "center_lon": 13.111,
-            "region": "5 km E Monteleone di Spoleto (PG)",
-            "first_event_utc": "2026-03-17T00:18:46+00:00",
-            "last_event_utc": "2026-03-17T07:53:49+00:00"
-        }
-    ],
+    "swarms_24h": [],
     "requested_swarm_id": null,
     "swarm_detail": null,
     "events": [
         {
             "id": "",
-            "place": "2 km W Serra San Quirico (AN)",
-            "region": "2 km W Serra San Quirico (AN)",
-            "magnitude": 0.9,
-            "depth_km": 2,
-            "latitude": 43.4422,
-            "longitude": 12.9895,
-            "event_time_ts": 1773741689,
-            "event_time_utc": "2026-03-17T10:01:29+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "6 km NW Arquata del Tronto (AP)",
-            "region": "6 km NW Arquata del Tronto (AP)",
-            "magnitude": 1.3,
-            "depth_km": 9.9,
-            "latitude": 42.7992,
-            "longitude": 13.2392,
-            "event_time_ts": 1773741275,
-            "event_time_utc": "2026-03-17T09:54:35+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "5 km W Pietralunga (PG)",
-            "region": "5 km W Pietralunga (PG)",
-            "magnitude": 2.3,
-            "depth_km": 6.8,
-            "latitude": 43.4525,
-            "longitude": 12.3722,
-            "event_time_ts": 1773739159,
-            "event_time_utc": "2026-03-17T09:19:19+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "4 km SW Serrapetrona (MC)",
-            "region": "4 km SW Serrapetrona (MC)",
-            "magnitude": 0.7,
-            "depth_km": 6,
-            "latitude": 43.1478,
-            "longitude": 13.1705,
-            "event_time_ts": 1773736951,
-            "event_time_utc": "2026-03-17T08:42:31+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km S Camerino (MC)",
-            "region": "2 km S Camerino (MC)",
+            "place": "10 km SW Serravalle di Chienti (MC)",
+            "region": "10 km SW Serravalle di Chienti (MC)",
             "magnitude": 0.6,
-            "depth_km": 10.6,
-            "latitude": 43.1155,
-            "longitude": 13.0617,
-            "event_time_ts": 1773734950,
-            "event_time_utc": "2026-03-17T08:09:10+00:00",
+            "depth_km": 3.9,
+            "latitude": 43.0057,
+            "longitude": 12.8795,
+            "event_time_ts": 1774647347,
+            "event_time_utc": "2026-03-27T21:35:47+00:00",
             "source_url": "",
             "source_provider": "INGV"
         },
         {
             "id": "",
-            "place": "5 km E Monteleone di Spoleto (PG)",
-            "region": "5 km E Monteleone di Spoleto (PG)",
-            "magnitude": 1,
-            "depth_km": 9.4,
-            "latitude": 42.6568,
-            "longitude": 13.0148,
-            "event_time_ts": 1773734029,
-            "event_time_utc": "2026-03-17T07:53:49+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "9 km W Accumoli (RI)",
-            "region": "9 km W Accumoli (RI)",
-            "magnitude": 0.5,
-            "depth_km": 10.4,
-            "latitude": 42.7167,
-            "longitude": 13.1445,
-            "event_time_ts": 1773726885,
-            "event_time_utc": "2026-03-17T05:54:45+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km NE San Giuliano del Sannio (CB)",
-            "region": "2 km NE San Giuliano del Sannio (CB)",
-            "magnitude": 1.2,
-            "depth_km": 12.3,
-            "latitude": 41.4693,
-            "longitude": 14.6497,
-            "event_time_ts": 1773726530,
-            "event_time_utc": "2026-03-17T05:48:50+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "5 km SE Genga (AN)",
-            "region": "5 km SE Genga (AN)",
-            "magnitude": 0.2,
-            "depth_km": 9.5,
-            "latitude": 43.3998,
-            "longitude": 12.9765,
-            "event_time_ts": 1773725677,
-            "event_time_utc": "2026-03-17T05:34:37+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "6 km N Visso (MC)",
-            "region": "6 km N Visso (MC)",
-            "magnitude": 0.4,
-            "depth_km": 11.3,
-            "latitude": 42.9843,
-            "longitude": 13.0742,
-            "event_time_ts": 1773722249,
-            "event_time_utc": "2026-03-17T04:37:29+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km S Sant'Angelo in Pontano (MC)",
-            "region": "1 km S Sant'Angelo in Pontano (MC)",
-            "magnitude": 2.3,
-            "depth_km": 22.8,
-            "latitude": 43.0877,
-            "longitude": 13.3917,
-            "event_time_ts": 1773720476,
-            "event_time_utc": "2026-03-17T04:07:56+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "5 km W Rocca Santa Maria (TE)",
-            "region": "5 km W Rocca Santa Maria (TE)",
-            "magnitude": 0.9,
-            "depth_km": 13.9,
-            "latitude": 42.6883,
-            "longitude": 13.4648,
-            "event_time_ts": 1773719634,
-            "event_time_utc": "2026-03-17T03:53:54+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "5 km W Poggio San Vicino (MC)",
-            "region": "5 km W Poggio San Vicino (MC)",
-            "magnitude": 0.6,
-            "depth_km": 10.4,
-            "latitude": 43.3587,
-            "longitude": 13.024,
-            "event_time_ts": 1773717258,
-            "event_time_utc": "2026-03-17T03:14:18+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km E Cerreto di Spoleto (PG)",
-            "region": "1 km E Cerreto di Spoleto (PG)",
-            "magnitude": 0.7,
-            "depth_km": 10.5,
-            "latitude": 42.8268,
-            "longitude": 12.9332,
-            "event_time_ts": 1773715967,
-            "event_time_utc": "2026-03-17T02:52:47+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km SW Pieve Torina (MC)",
-            "region": "3 km SW Pieve Torina (MC)",
-            "magnitude": 0.7,
-            "depth_km": 13.9,
-            "latitude": 43.0212,
-            "longitude": 13.0283,
-            "event_time_ts": 1773714643,
-            "event_time_utc": "2026-03-17T02:30:43+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "6 km N Sellano (PG)",
-            "region": "6 km N Sellano (PG)",
-            "magnitude": 0.5,
-            "depth_km": 9.5,
-            "latitude": 42.942,
-            "longitude": 12.9255,
-            "event_time_ts": 1773714203,
-            "event_time_utc": "2026-03-17T02:23:23+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "5 km E Bagno di Romagna (FC)",
-            "region": "5 km E Bagno di Romagna (FC)",
-            "magnitude": 0.8,
-            "depth_km": 9.7,
-            "latitude": 43.8498,
-            "longitude": 12.0365,
-            "event_time_ts": 1773710734,
-            "event_time_utc": "2026-03-17T01:25:34+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km E Cascia (PG)",
-            "region": "3 km E Cascia (PG)",
-            "magnitude": 0.8,
-            "depth_km": 10.2,
-            "latitude": 42.7242,
-            "longitude": 13.0478,
-            "event_time_ts": 1773710594,
-            "event_time_utc": "2026-03-17T01:23:14+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "6 km W Accumoli (RI)",
-            "region": "6 km W Accumoli (RI)",
-            "magnitude": 0.8,
-            "depth_km": 8.9,
-            "latitude": 42.686,
-            "longitude": 13.1742,
-            "event_time_ts": 1773707096,
-            "event_time_utc": "2026-03-17T00:24:56+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km W Moiola (CN)",
-            "region": "1 km W Moiola (CN)",
-            "magnitude": 1.1,
-            "depth_km": 10.6,
-            "latitude": 44.3223,
-            "longitude": 7.3802,
-            "event_time_ts": 1773706952,
-            "event_time_utc": "2026-03-17T00:22:32+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "5 km N Cittareale (RI)",
-            "region": "5 km N Cittareale (RI)",
-            "magnitude": 1.2,
-            "depth_km": 16.1,
-            "latitude": 42.6652,
-            "longitude": 13.1733,
-            "event_time_ts": 1773706726,
-            "event_time_utc": "2026-03-17T00:18:46+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km SE Tiglieto (GE)",
-            "region": "3 km SE Tiglieto (GE)",
-            "magnitude": 1.3,
-            "depth_km": 8.5,
-            "latitude": 44.4997,
-            "longitude": 8.6415,
-            "event_time_ts": 1773705512,
-            "event_time_utc": "2026-03-16T23:58:32+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km SE Pioraco (MC)",
-            "region": "2 km SE Pioraco (MC)",
-            "magnitude": 0.3,
-            "depth_km": 12.6,
-            "latitude": 43.1677,
-            "longitude": 13.0018,
-            "event_time_ts": 1773704587,
-            "event_time_utc": "2026-03-16T23:43:07+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km W Sant'Angelo in Pontano (MC)",
-            "region": "2 km W Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.3,
-            "depth_km": 24.2,
-            "latitude": 43.0922,
-            "longitude": 13.3752,
-            "event_time_ts": 1773704496,
-            "event_time_utc": "2026-03-16T23:41:36+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km S Malcesine (VR)",
-            "region": "3 km S Malcesine (VR)",
-            "magnitude": 1.1,
-            "depth_km": 8.4,
-            "latitude": 45.7357,
-            "longitude": 10.8105,
-            "event_time_ts": 1773703771,
-            "event_time_utc": "2026-03-16T23:29:31+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "5 km E Terni (TR)",
-            "region": "5 km E Terni (TR)",
-            "magnitude": 0.7,
-            "depth_km": 7.6,
-            "latitude": 42.5608,
-            "longitude": 12.7118,
-            "event_time_ts": 1773701669,
-            "event_time_utc": "2026-03-16T22:54:29+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "6 km NE Norcia (PG)",
-            "region": "6 km NE Norcia (PG)",
-            "magnitude": 0.8,
-            "depth_km": 8.8,
-            "latitude": 42.8397,
-            "longitude": 13.1323,
-            "event_time_ts": 1773699564,
-            "event_time_utc": "2026-03-16T22:19:24+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km S Sant'Angelo in Pontano (MC)",
-            "region": "1 km S Sant'Angelo in Pontano (MC)",
-            "magnitude": 0.8,
-            "depth_km": 23.9,
-            "latitude": 43.0923,
-            "longitude": 13.3943,
-            "event_time_ts": 1773697829,
-            "event_time_utc": "2026-03-16T21:50:29+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km W Sant'Angelo in Pontano (MC)",
-            "region": "2 km W Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.1,
-            "depth_km": 25.3,
-            "latitude": 43.0975,
-            "longitude": 13.3727,
-            "event_time_ts": 1773697317,
-            "event_time_utc": "2026-03-16T21:41:57+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "Vesuvio",
-            "region": "Vesuvio",
-            "magnitude": 1.4,
-            "depth_km": 0.1,
-            "latitude": 40.823667,
-            "longitude": 14.425333,
-            "event_time_ts": 1773696870,
-            "event_time_utc": "2026-03-16T21:34:30+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km E Roccasicura (IS)",
-            "region": "2 km E Roccasicura (IS)",
-            "magnitude": 1.2,
-            "depth_km": 19.1,
-            "latitude": 41.7048,
-            "longitude": 14.2587,
-            "event_time_ts": 1773696312,
-            "event_time_utc": "2026-03-16T21:25:12+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "4 km E Bagno di Romagna (FC)",
-            "region": "4 km E Bagno di Romagna (FC)",
-            "magnitude": 1.4,
-            "depth_km": 9.5,
-            "latitude": 43.8475,
-            "longitude": 12.0243,
-            "event_time_ts": 1773695359,
-            "event_time_utc": "2026-03-16T21:09:19+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km NE Miranda (IS)",
-            "region": "3 km NE Miranda (IS)",
-            "magnitude": 1.5,
-            "depth_km": 11.6,
-            "latitude": 41.6637,
-            "longitude": 14.2722,
-            "event_time_ts": 1773694837,
-            "event_time_utc": "2026-03-16T21:00:37+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "5 km SW Leonessa (RI)",
-            "region": "5 km SW Leonessa (RI)",
+            "place": "9 km SW Serravalle di Chienti (MC)",
+            "region": "9 km SW Serravalle di Chienti (MC)",
             "magnitude": 1.6,
-            "depth_km": 9.7,
-            "latitude": 42.524,
-            "longitude": 12.9472,
-            "event_time_ts": 1773694294,
-            "event_time_utc": "2026-03-16T20:51:34+00:00",
+            "depth_km": 7.1,
+            "latitude": 43.0077,
+            "longitude": 12.8778,
+            "event_time_ts": 1774647153,
+            "event_time_utc": "2026-03-27T21:32:33+00:00",
             "source_url": "",
             "source_provider": "INGV"
         },
         {
             "id": "",
-            "place": "1 km SW Sant'Angelo in Pontano (MC)",
-            "region": "1 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.1,
-            "depth_km": 24,
-            "latitude": 43.0945,
-            "longitude": 13.3932,
-            "event_time_ts": 1773693713,
-            "event_time_utc": "2026-03-16T20:41:53+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km E Bagno di Romagna (FC)",
-            "region": "3 km E Bagno di Romagna (FC)",
-            "magnitude": 1.1,
-            "depth_km": 9.7,
-            "latitude": 43.8527,
-            "longitude": 12.0188,
-            "event_time_ts": 1773691661,
-            "event_time_utc": "2026-03-16T20:07:41+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "4 km NW Terni (TR)",
-            "region": "4 km NW Terni (TR)",
-            "magnitude": 1.3,
-            "depth_km": 7.6,
-            "latitude": 42.5982,
-            "longitude": 12.6293,
-            "event_time_ts": 1773691134,
-            "event_time_utc": "2026-03-16T19:58:54+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "2 km SE Tiglieto (GE)",
-            "region": "2 km SE Tiglieto (GE)",
-            "magnitude": 2,
-            "depth_km": 7.2,
-            "latitude": 44.5117,
-            "longitude": 8.6372,
-            "event_time_ts": 1773690252,
-            "event_time_utc": "2026-03-16T19:44:12+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km SE Tiglieto (GE)",
-            "region": "3 km SE Tiglieto (GE)",
-            "magnitude": 1.7,
-            "depth_km": 8.1,
-            "latitude": 44.5,
-            "longitude": 8.6395,
-            "event_time_ts": 1773690241,
-            "event_time_utc": "2026-03-16T19:44:01+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "5 km SW Monte Cavallo (MC)",
-            "region": "5 km SW Monte Cavallo (MC)",
-            "magnitude": 0.7,
-            "depth_km": 10.7,
-            "latitude": 42.9542,
-            "longitude": 12.9727,
-            "event_time_ts": 1773689125,
-            "event_time_utc": "2026-03-16T19:25:25+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km SW Sant'Angelo in Pontano (MC)",
-            "region": "3 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.3,
-            "depth_km": 23.2,
-            "latitude": 43.0843,
-            "longitude": 13.3697,
-            "event_time_ts": 1773688736,
-            "event_time_utc": "2026-03-16T19:18:56+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km SW Sant'Angelo in Pontano (MC)",
-            "region": "1 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.5,
-            "depth_km": 23.9,
-            "latitude": 43.0917,
-            "longitude": 13.391,
-            "event_time_ts": 1773688539,
-            "event_time_utc": "2026-03-16T19:15:39+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km E Bagno di Romagna (FC)",
-            "region": "3 km E Bagno di Romagna (FC)",
-            "magnitude": 1.5,
-            "depth_km": 9.9,
-            "latitude": 43.8557,
-            "longitude": 12.0132,
-            "event_time_ts": 1773685871,
-            "event_time_utc": "2026-03-16T18:31:11+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km S Sant'Angelo in Pontano (MC)",
-            "region": "1 km S Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.7,
-            "depth_km": 23.1,
-            "latitude": 43.0908,
-            "longitude": 13.3932,
-            "event_time_ts": 1773684505,
-            "event_time_utc": "2026-03-16T18:08:25+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "1 km NE Norcia (PG)",
-            "region": "1 km NE Norcia (PG)",
-            "magnitude": 1.3,
-            "depth_km": 10.1,
-            "latitude": 42.8012,
-            "longitude": 13.1055,
-            "event_time_ts": 1773683364,
-            "event_time_utc": "2026-03-16T17:49:24+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km SE Sellano (PG)",
-            "region": "3 km SE Sellano (PG)",
-            "magnitude": 0.7,
-            "depth_km": 10.3,
-            "latitude": 42.8638,
-            "longitude": 12.9453,
-            "event_time_ts": 1773682689,
-            "event_time_utc": "2026-03-16T17:38:09+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "4 km E Bagno di Romagna (FC)",
-            "region": "4 km E Bagno di Romagna (FC)",
-            "magnitude": 1.3,
-            "depth_km": 9.5,
-            "latitude": 43.8573,
-            "longitude": 12.0302,
-            "event_time_ts": 1773682486,
-            "event_time_utc": "2026-03-16T17:34:46+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "5 km E Bagno di Romagna (FC)",
-            "region": "5 km E Bagno di Romagna (FC)",
+            "place": "7 km NE Parenti (CS)",
+            "region": "7 km NE Parenti (CS)",
             "magnitude": 2.4,
-            "depth_km": 9.9,
-            "latitude": 43.8502,
-            "longitude": 12.0342,
-            "event_time_ts": 1773680693,
-            "event_time_utc": "2026-03-16T17:04:53+00:00",
+            "depth_km": 9.8,
+            "latitude": 39.2163,
+            "longitude": 16.4602,
+            "event_time_ts": 1774644921,
+            "event_time_utc": "2026-03-27T20:55:21+00:00",
             "source_url": "",
             "source_provider": "INGV"
         },
         {
             "id": "",
-            "place": "Tirreno Meridionale (MARE)",
-            "region": "Tirreno Meridionale (MARE)",
-            "magnitude": 3.8,
-            "depth_km": 297.8,
-            "latitude": 38.7827,
-            "longitude": 14.7568,
-            "event_time_ts": 1773678569,
-            "event_time_utc": "2026-03-16T16:29:29+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km E Conco (VI)",
-            "region": "3 km E Conco (VI)",
+            "place": "Costa Siciliana nord-orientale (Messina)",
+            "region": "Costa Siciliana nord-orientale (Messina)",
             "magnitude": 1.6,
-            "depth_km": 27.5,
-            "latitude": 45.785,
-            "longitude": 11.643,
-            "event_time_ts": 1773678388,
-            "event_time_utc": "2026-03-16T16:26:28+00:00",
+            "depth_km": 7.8,
+            "latitude": 38.2555,
+            "longitude": 14.8862,
+            "event_time_ts": 1774641704,
+            "event_time_utc": "2026-03-27T20:01:44+00:00",
             "source_url": "",
             "source_provider": "INGV"
         },
         {
             "id": "",
-            "place": "Sant'Angelo in Pontano (MC)",
-            "region": "Sant'Angelo in Pontano (MC)",
+            "place": "4 km NW Spoleto (PG)",
+            "region": "4 km NW Spoleto (PG)",
             "magnitude": 1,
-            "depth_km": 23.7,
-            "latitude": 43.0992,
-            "longitude": 13.3952,
-            "event_time_ts": 1773673813,
-            "event_time_utc": "2026-03-16T15:10:13+00:00",
+            "depth_km": 11,
+            "latitude": 42.771,
+            "longitude": 12.7207,
+            "event_time_ts": 1774640991,
+            "event_time_utc": "2026-03-27T19:49:51+00:00",
             "source_url": "",
             "source_provider": "INGV"
         },
         {
             "id": "",
-            "place": "2 km SW Sant'Angelo in Pontano (MC)",
-            "region": "2 km SW Sant'Angelo in Pontano (MC)",
-            "magnitude": 1.6,
-            "depth_km": 25.2,
-            "latitude": 43.0858,
-            "longitude": 13.381,
-            "event_time_ts": 1773673714,
-            "event_time_utc": "2026-03-16T15:08:34+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "8 km NW Sellano (PG)",
-            "region": "8 km NW Sellano (PG)",
-            "magnitude": 1.6,
-            "depth_km": 9.6,
-            "latitude": 42.9358,
-            "longitude": 12.8548,
-            "event_time_ts": 1773669165,
-            "event_time_utc": "2026-03-16T13:52:45+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "4 km S Cingoli (MC)",
-            "region": "4 km S Cingoli (MC)",
-            "magnitude": 0.9,
-            "depth_km": 9.9,
-            "latitude": 43.3392,
-            "longitude": 13.217,
-            "event_time_ts": 1773668130,
-            "event_time_utc": "2026-03-16T13:35:30+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "5 km S Cingoli (MC)",
-            "region": "5 km S Cingoli (MC)",
-            "magnitude": 1.5,
-            "depth_km": 9.2,
-            "latitude": 43.3297,
-            "longitude": 13.2203,
-            "event_time_ts": 1773667796,
-            "event_time_utc": "2026-03-16T13:29:56+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "8 km E Roma (RM)",
-            "region": "8 km E Roma (RM)",
+            "place": "2 km NE Concerviano (RI)",
+            "region": "2 km NE Concerviano (RI)",
             "magnitude": 1.9,
-            "depth_km": 8,
-            "latitude": 41.8688,
-            "longitude": 12.5703,
-            "event_time_ts": 1773662289,
-            "event_time_utc": "2026-03-16T11:58:09+00:00",
+            "depth_km": 10.3,
+            "latitude": 42.3372,
+            "longitude": 12.9963,
+            "event_time_ts": 1774639952,
+            "event_time_utc": "2026-03-27T19:32:32+00:00",
             "source_url": "",
             "source_provider": "INGV"
         },
         {
             "id": "",
-            "place": "10 km W San Giovanni in Fiore (CS)",
-            "region": "10 km W San Giovanni in Fiore (CS)",
-            "magnitude": 1.3,
-            "depth_km": 7.8,
-            "latitude": 39.243,
-            "longitude": 16.5805,
-            "event_time_ts": 1773661547,
-            "event_time_utc": "2026-03-16T11:45:47+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "Costa Cilentana (Salerno)",
-            "region": "Costa Cilentana (Salerno)",
-            "magnitude": 3.3,
-            "depth_km": 300.4,
-            "latitude": 39.8083,
-            "longitude": 15.1917,
-            "event_time_ts": 1773660903,
-            "event_time_utc": "2026-03-16T11:35:03+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "7 km SE Rignano Garganico (FG)",
-            "region": "7 km SE Rignano Garganico (FG)",
-            "magnitude": 1.6,
-            "depth_km": 7.5,
-            "latitude": 41.6233,
-            "longitude": 15.629,
-            "event_time_ts": 1773657520,
-            "event_time_utc": "2026-03-16T10:38:40+00:00",
-            "source_url": "",
-            "source_provider": "INGV"
-        },
-        {
-            "id": "",
-            "place": "3 km NW Pacentro (AQ)",
-            "region": "3 km NW Pacentro (AQ)",
+            "place": "4 km NW Spoleto (PG)",
+            "region": "4 km NW Spoleto (PG)",
             "magnitude": 1.4,
-            "depth_km": 7.8,
-            "latitude": 42.0703,
-            "longitude": 13.9742,
-            "event_time_ts": 1773656160,
-            "event_time_utc": "2026-03-16T10:16:00+00:00",
+            "depth_km": 10.8,
+            "latitude": 42.7678,
+            "longitude": 12.7227,
+            "event_time_ts": 1774639814,
+            "event_time_utc": "2026-03-27T19:30:14+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "5 km N Spoleto (PG)",
+            "region": "5 km N Spoleto (PG)",
+            "magnitude": 1.8,
+            "depth_km": 9.8,
+            "latitude": 42.7785,
+            "longitude": 12.7255,
+            "event_time_ts": 1774639671,
+            "event_time_utc": "2026-03-27T19:27:51+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "2 km NE Concerviano (RI)",
+            "region": "2 km NE Concerviano (RI)",
+            "magnitude": 2.8,
+            "depth_km": 9.5,
+            "latitude": 42.3348,
+            "longitude": 13.0013,
+            "event_time_ts": 1774634401,
+            "event_time_utc": "2026-03-27T18:00:01+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "4 km NW Monte Cavallo (MC)",
+            "region": "4 km NW Monte Cavallo (MC)",
+            "magnitude": 1.1,
+            "depth_km": 13.1,
+            "latitude": 43.0237,
+            "longitude": 12.9813,
+            "event_time_ts": 1774630591,
+            "event_time_utc": "2026-03-27T16:56:31+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "4 km E Sellano (PG)",
+            "region": "4 km E Sellano (PG)",
+            "magnitude": 2,
+            "depth_km": 11.1,
+            "latitude": 42.8878,
+            "longitude": 12.9788,
+            "event_time_ts": 1774629885,
+            "event_time_utc": "2026-03-27T16:44:45+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "4 km E Verghereto (FC)",
+            "region": "4 km E Verghereto (FC)",
+            "magnitude": 1.3,
+            "depth_km": 9.4,
+            "latitude": 43.7963,
+            "longitude": 12.0518,
+            "event_time_ts": 1774625505,
+            "event_time_utc": "2026-03-27T15:31:45+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "3 km W Labro (RI)",
+            "region": "3 km W Labro (RI)",
+            "magnitude": 2.1,
+            "depth_km": 9.5,
+            "latitude": 42.5387,
+            "longitude": 12.7658,
+            "event_time_ts": 1774620712,
+            "event_time_utc": "2026-03-27T14:11:52+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "6 km E Foligno (PG)",
+            "region": "6 km E Foligno (PG)",
+            "magnitude": 1.1,
+            "depth_km": 11.1,
+            "latitude": 42.9468,
+            "longitude": 12.7797,
+            "event_time_ts": 1774613760,
+            "event_time_utc": "2026-03-27T12:16:00+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "5 km W Tramonti di Sopra (PN)",
+            "region": "5 km W Tramonti di Sopra (PN)",
+            "magnitude": 1.2,
+            "depth_km": 11.7,
+            "latitude": 46.3145,
+            "longitude": 12.7248,
+            "event_time_ts": 1774609952,
+            "event_time_utc": "2026-03-27T11:12:32+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "5 km E Montone (PG)",
+            "region": "5 km E Montone (PG)",
+            "magnitude": 1.2,
+            "depth_km": 5.8,
+            "latitude": 43.3627,
+            "longitude": 12.3893,
+            "event_time_ts": 1774609735,
+            "event_time_utc": "2026-03-27T11:08:55+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "1 km N Zoppola (PN)",
+            "region": "1 km N Zoppola (PN)",
+            "magnitude": 1.3,
+            "depth_km": 10,
+            "latitude": 45.9778,
+            "longitude": 12.768,
+            "event_time_ts": 1774601829,
+            "event_time_utc": "2026-03-27T08:57:09+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "3 km SE Rotonda (PZ)",
+            "region": "3 km SE Rotonda (PZ)",
+            "magnitude": 1.7,
+            "depth_km": 10.7,
+            "latitude": 39.9367,
+            "longitude": 16.0615,
+            "event_time_ts": 1774595331,
+            "event_time_utc": "2026-03-27T07:08:51+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "4 km W Gubbio (PG)",
+            "region": "4 km W Gubbio (PG)",
+            "magnitude": 1,
+            "depth_km": 6.1,
+            "latitude": 43.361,
+            "longitude": 12.5347,
+            "event_time_ts": 1774594993,
+            "event_time_utc": "2026-03-27T07:03:13+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "11 km NW Sella Giudicarie (TN)",
+            "region": "11 km NW Sella Giudicarie (TN)",
+            "magnitude": 1.6,
+            "depth_km": 9.9,
+            "latitude": 46.057,
+            "longitude": 10.5803,
+            "event_time_ts": 1774592800,
+            "event_time_utc": "2026-03-27T06:26:40+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "2 km NE Serravalle di Chienti (MC)",
+            "region": "2 km NE Serravalle di Chienti (MC)",
+            "magnitude": 1,
+            "depth_km": 12.5,
+            "latitude": 43.0887,
+            "longitude": 12.9645,
+            "event_time_ts": 1774589818,
+            "event_time_utc": "2026-03-27T05:36:58+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "4 km W Castellina in Chianti (SI)",
+            "region": "4 km W Castellina in Chianti (SI)",
+            "magnitude": 1.1,
+            "depth_km": 8.2,
+            "latitude": 43.4712,
+            "longitude": 11.2403,
+            "event_time_ts": 1774588272,
+            "event_time_utc": "2026-03-27T05:11:12+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "5 km W Saracena (CS)",
+            "region": "5 km W Saracena (CS)",
+            "magnitude": 1.5,
+            "depth_km": 8,
+            "latitude": 39.7898,
+            "longitude": 16.1043,
+            "event_time_ts": 1774576298,
+            "event_time_utc": "2026-03-27T01:51:38+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "2 km E Rocchetta di Vara (SP)",
+            "region": "2 km E Rocchetta di Vara (SP)",
+            "magnitude": 2.6,
+            "depth_km": 64.1,
+            "latitude": 44.2558,
+            "longitude": 9.7843,
+            "event_time_ts": 1774574380,
+            "event_time_utc": "2026-03-27T01:19:40+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "4 km W Castelgrande (PZ)",
+            "region": "4 km W Castelgrande (PZ)",
+            "magnitude": 1.4,
+            "depth_km": 14,
+            "latitude": 40.7713,
+            "longitude": 15.3937,
+            "event_time_ts": 1774571342,
+            "event_time_utc": "2026-03-27T00:29:02+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "5 km SW Castelgrande (PZ)",
+            "region": "5 km SW Castelgrande (PZ)",
+            "magnitude": 2.1,
+            "depth_km": 19.7,
+            "latitude": 40.7572,
+            "longitude": 15.3883,
+            "event_time_ts": 1774568860,
+            "event_time_utc": "2026-03-26T23:47:40+00:00",
+            "source_url": "",
+            "source_provider": "INGV"
+        },
+        {
+            "id": "",
+            "place": "2 km S Sellano (PG)",
+            "region": "2 km S Sellano (PG)",
+            "magnitude": 1.1,
+            "depth_km": 10.7,
+            "latitude": 42.8687,
+            "longitude": 12.9293,
+            "event_time_ts": 1774563494,
+            "event_time_utc": "2026-03-26T22:18:14+00:00",
             "source_url": "",
             "source_provider": "INGV"
         }

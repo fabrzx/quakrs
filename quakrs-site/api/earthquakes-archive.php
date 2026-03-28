@@ -46,6 +46,12 @@ function query_ts(string $key): ?int
     return is_int($ts) ? $ts : null;
 }
 
+function sql_safe_ident(string $value, string $fallback): string
+{
+    $raw = trim($value);
+    return preg_match('/^[a-zA-Z0-9_]+$/', $raw) ? $raw : $fallback;
+}
+
 function country_sql_expr(string $column): string
 {
     return sprintf('LOWER(TRIM(SUBSTRING_INDEX(%s, \',\', -1)))', $column);
@@ -123,14 +129,10 @@ function archive_cache_read(string $path, int $ttlSeconds): ?array
 
 function archive_cache_write(string $path, array $payload): void
 {
-    $body = json_encode([
+    write_json_file($path, [
         'saved_at_ts' => time(),
         'payload' => $payload,
-    ], JSON_UNESCAPED_SLASHES);
-    if (!is_string($body) || $body === '') {
-        return;
-    }
-    @file_put_contents($path, $body, LOCK_EX);
+    ]);
 }
 
 $page = query_int('page', 1, 1, 1000000);
@@ -173,23 +175,52 @@ if (!$db instanceof mysqli) {
 }
 
 $archiveCfg = earthquake_archive_mysql_config($appConfig);
-$table = (string) ($archiveCfg['table'] ?? 'earthquake_events');
+$liveCfg = earthquake_mysql_role_config($appConfig, 'live');
 
-$seedCount = 0;
-$seedResult = $db->query(sprintf('SELECT COUNT(*) AS c FROM `%s`', $table));
-if ($seedResult instanceof mysqli_result) {
-    $seedRow = $seedResult->fetch_assoc();
-    $seedCount = is_array($seedRow) ? (int) ($seedRow['c'] ?? 0) : 0;
-    $seedResult->free();
-}
-if ($seedCount === 0) {
-    $latestCache = read_json_file($appConfig['data_dir'] . '/earthquakes_latest.json');
-    $latestEvents = is_array($latestCache) && isset($latestCache['events']) && is_array($latestCache['events'])
-        ? $latestCache['events']
-        : [];
-    if (count($latestEvents) > 0) {
-        earthquake_archive_ingest($db, $latestEvents, time(), $table);
-    }
+$archiveDbName = sql_safe_ident((string) ($archiveCfg['database'] ?? ''), 'archive_db');
+$archiveTable = sql_safe_ident((string) ($archiveCfg['table'] ?? 'earthquake_events'), 'earthquake_events');
+$liveDbName = sql_safe_ident((string) ($liveCfg['database'] ?? ''), $archiveDbName);
+$liveTable = sql_safe_ident((string) ($liveCfg['table'] ?? 'earthquake_events'), 'earthquake_events');
+
+$archiveQualified = sprintf('`%s`.`%s`', $archiveDbName, $archiveTable);
+$liveQualified = sprintf('`%s`.`%s`', $liveDbName, $liveTable);
+$retentionDays = 90;
+$liveCutoffTs = time() - ($retentionDays * 86400);
+$sourceMode = 'archive-only';
+$sourceSql = sprintf(
+    'SELECT event_key, event_id, event_time_utc, event_time_ts, place, magnitude, depth_km, latitude, longitude, source_provider, source_providers_json, source_url
+     FROM %s',
+    $archiveQualified
+);
+$sourceDesc = $archiveDbName . '.' . $archiveTable;
+
+$rangeKnown = is_int($fromTs) || is_int($toTs);
+if ($rangeKnown && is_int($fromTs) && $fromTs >= $liveCutoffTs) {
+    $sourceMode = 'live-only-recent-range';
+    $sourceSql = sprintf(
+        'SELECT event_key, event_id, event_time_utc, event_time_ts, place, magnitude, depth_km, latitude, longitude, source_provider, source_providers_json, source_url
+         FROM %s',
+        $liveQualified
+    );
+    $sourceDesc = $liveDbName . '.' . $liveTable;
+} elseif ($rangeKnown && is_int($toTs) && $toTs < $liveCutoffTs) {
+    $sourceMode = 'archive-only-old-range';
+} elseif ($rangeKnown) {
+    $sourceMode = 'archive+live-split-range';
+    $sourceSql = sprintf(
+        'SELECT event_key, event_id, event_time_utc, event_time_ts, place, magnitude, depth_km, latitude, longitude, source_provider, source_providers_json, source_url
+         FROM %s
+         WHERE event_time_ts < %d
+         UNION ALL
+         SELECT event_key, event_id, event_time_utc, event_time_ts, place, magnitude, depth_km, latitude, longitude, source_provider, source_providers_json, source_url
+         FROM %s
+         WHERE event_time_ts >= %d',
+        $archiveQualified,
+        $liveCutoffTs,
+        $liveQualified,
+        $liveCutoffTs
+    );
+    $sourceDesc = $archiveDbName . '.' . $archiveTable . '+' . $liveDbName . '.' . $liveTable;
 }
 
 $where = [];
@@ -271,13 +302,13 @@ if ($centerLat !== null && $centerLon !== null) {
 } elseif ($centerPlace !== '') {
     $centerSql = sprintf(
         'SELECT place, latitude, longitude
-         FROM `%s`
+         FROM (%s) AS src
          WHERE latitude IS NOT NULL
            AND longitude IS NOT NULL
            AND LOWER(place) LIKE LOWER(?)
          ORDER BY event_time_ts DESC
          LIMIT 1',
-        $table
+        $sourceSql
     );
     $centerStmt = $db->prepare($centerSql);
     if ($centerStmt instanceof mysqli_stmt) {
@@ -352,7 +383,7 @@ if (!is_dir($cacheDir)) {
     @mkdir($cacheDir, 0775, true);
 }
 $aggregateCacheKey = sha1(json_encode([
-    'table' => $table,
+    'source' => $sourceDesc,
     'where_sql' => $whereSql,
     'types' => $types,
     'params' => array_map(static function (mixed $v): mixed {
@@ -363,7 +394,7 @@ $aggregateCacheKey = sha1(json_encode([
     }, $params),
 ], JSON_UNESCAPED_SLASHES));
 $aggregateCachePath = $cacheDir . '/agg_' . $aggregateCacheKey . '.json';
-$facetsCachePath = $cacheDir . '/facets_' . $table . '.json';
+$facetsCachePath = $cacheDir . '/facets_' . sha1($sourceDesc) . '.json';
 
 if ($needsAggregateMeta) {
     $aggregateCached = archive_cache_read($aggregateCachePath, $aggregateCacheTtl);
@@ -375,7 +406,7 @@ if ($needsAggregateMeta) {
             ? (float) $aggregateCached['filtered_max_magnitude']
             : null;
     } else {
-        $countSql = sprintf('SELECT COUNT(*) AS c FROM `%s` %s', $table, $whereSql);
+        $countSql = sprintf('SELECT COUNT(*) AS c FROM (%s) AS src %s', $sourceSql, $whereSql);
         $countStmt = $db->prepare($countSql);
         if (!$countStmt instanceof mysqli_stmt) {
             json_response(500, [
@@ -397,7 +428,7 @@ if ($needsAggregateMeta) {
         }
         $countStmt->close();
 
-        $maxSql = sprintf('SELECT MAX(magnitude) AS m FROM `%s` %s', $table, $whereSql);
+        $maxSql = sprintf('SELECT MAX(magnitude) AS m FROM (%s) AS src %s', $sourceSql, $whereSql);
         $maxStmt = $db->prepare($maxSql);
         if (!$maxStmt instanceof mysqli_stmt) {
             json_response(500, [
@@ -430,9 +461,9 @@ if ($needsAggregateMeta) {
 
 $selectSql = sprintf(
     'SELECT event_id, place, magnitude, depth_km, latitude, longitude, event_time_utc, source_url, source_provider, source_providers_json
-     FROM `%s` %s %s
+     FROM (%s) AS src %s %s
      LIMIT ? OFFSET ?',
-    $table,
+    $sourceSql,
     $whereSql,
     $sortBy === 'magnitude'
         ? sprintf('ORDER BY (magnitude IS NULL) ASC, magnitude %s, event_time_ts DESC', strtoupper($sortDir))
@@ -502,13 +533,13 @@ if ($page === 1) {
     } else {
         $countrySql = sprintf(
             'SELECT TRIM(SUBSTRING_INDEX(place, \',\', -1)) AS country, COUNT(*) AS c
-             FROM `%s`
+             FROM %s
              WHERE place IS NOT NULL AND TRIM(place) <> \'\'
              GROUP BY country
              HAVING country IS NOT NULL AND TRIM(country) <> \'\'
              ORDER BY c DESC, country ASC
              LIMIT 250',
-            $table
+            $archiveQualified
         );
         $countryResult = $db->query($countrySql);
         if ($countryResult instanceof mysqli_result) {
@@ -525,12 +556,12 @@ if ($page === 1) {
         $locationMap = [];
         $locationSql = sprintf(
             'SELECT place, COUNT(*) AS c
-             FROM `%s`
+             FROM %s
              WHERE place IS NOT NULL AND TRIM(place) <> \'\'
              GROUP BY place
              ORDER BY c DESC
              LIMIT 2000',
-            $table
+            $archiveQualified
         );
         $locationResult = $db->query($locationSql);
         if ($locationResult instanceof mysqli_result) {
@@ -555,6 +586,7 @@ $db->close();
 $payload = [
     'ok' => true,
     'provider' => 'Quakrs Earthquakes Archive',
+    'source_mode' => $sourceMode,
     'generated_at' => gmdate('c'),
     'generated_at_ts' => time(),
     'page' => $page,

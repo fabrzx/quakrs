@@ -13,15 +13,15 @@ if (!$forceRefresh) {
 
 $requestToken = require_refresh_token($appConfig);
 
-$host = isset($_SERVER['HTTP_HOST']) && is_string($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] !== ''
-    ? $_SERVER['HTTP_HOST']
-    : 'www.quakrs.com';
-$isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-    || ((string) ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
-$scheme = $isHttps ? 'https' : 'http';
-$baseUrl = $scheme . '://' . $host;
+$baseUrlRaw = trim((string) ($appConfig['public_base_url'] ?? 'https://www.quakrs.com'));
+$parsedBase = parse_url($baseUrlRaw);
+$baseScheme = is_array($parsedBase) ? strtolower((string) ($parsedBase['scheme'] ?? '')) : '';
+$baseHost = is_array($parsedBase) ? strtolower((string) ($parsedBase['host'] ?? '')) : '';
+$baseUrl = ($baseScheme === 'https' || $baseScheme === 'http') && $baseHost !== ''
+    ? rtrim($baseUrlRaw, '/')
+    : 'https://www.quakrs.com';
 
-$targets = ['earthquakes', 'aftershocks', 'volcanoes', 'volcano-catalog', 'tremors', 'tsunami', 'space-weather', 'volcano-cams', 'hotspots', 'bulletins'];
+$targets = ['earthquakes', 'aftershocks', 'volcanoes', 'volcano-catalog', 'tremors', 'tsunami', 'space-weather', 'earthquake-cams', 'weather-cams', 'space-weather-cams', 'tsunami-cams', 'volcano-cams', 'hotspots', 'bulletins'];
 $results = [];
 $okCount = 0;
 

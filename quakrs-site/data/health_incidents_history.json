@@ -1,0 +1,930 @@
+{
+    "updated_at": "2026-03-19T15:22:40+00:00",
+    "updated_at_ts": 1773933760,
+    "events": [
+        {
+            "event": "opened",
+            "at": "2026-03-19T15:22:39+00:00",
+            "incident": {
+                "key": "feed:earthquakes",
+                "scope": "feed",
+                "target": "earthquakes",
+                "severity": "minor",
+                "title": "Feed earthquakes is lagging",
+                "detail": "delay +12 min",
+                "status": "lagging",
+                "source_time": "2026-03-19T14:59:47+00:00",
+                "started_at": "2026-03-19T15:22:39+00:00",
+                "last_seen_at": "2026-03-19T15:22:39+00:00",
+                "last_change_at": "2026-03-19T15:22:39+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T15:22:39+00:00",
+            "incident": {
+                "key": "feed:aftershocks",
+                "scope": "feed",
+                "target": "aftershocks",
+                "severity": "major",
+                "title": "Feed aftershocks is outdated",
+                "detail": "delay +925 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:46:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T15:22:39+00:00",
+                "last_change_at": "2026-03-19T15:22:39+00:00"
+            }
+        },
+        {
+            "event": "opened",
+            "at": "2026-03-19T15:22:39+00:00",
+            "incident": {
+                "key": "feed:volcanoes",
+                "scope": "feed",
+                "target": "volcanoes",
+                "severity": "minor",
+                "title": "Feed volcanoes is lagging",
+                "detail": "delay +2 min",
+                "status": "lagging",
+                "source_time": "2026-03-19T14:59:56+00:00",
+                "started_at": "2026-03-19T15:22:39+00:00",
+                "last_seen_at": "2026-03-19T15:22:39+00:00",
+                "last_change_at": "2026-03-19T15:22:39+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T15:22:39+00:00",
+            "incident": {
+                "key": "feed:tremors",
+                "scope": "feed",
+                "target": "tremors",
+                "severity": "minor",
+                "title": "Feed tremors is lagging",
+                "detail": "delay +2 min",
+                "status": "lagging",
+                "source_time": "2026-03-19T14:59:57+00:00",
+                "started_at": "2026-03-19T10:08:30+00:00",
+                "last_seen_at": "2026-03-19T15:22:39+00:00",
+                "last_change_at": "2026-03-19T15:22:39+00:00"
+            }
+        },
+        {
+            "event": "opened",
+            "at": "2026-03-19T15:22:39+00:00",
+            "incident": {
+                "key": "feed:space_weather",
+                "scope": "feed",
+                "target": "space_weather",
+                "severity": "minor",
+                "title": "Feed space_weather is lagging",
+                "detail": "delay +2 min",
+                "status": "lagging",
+                "source_time": "2026-03-19T14:59:58+00:00",
+                "started_at": "2026-03-19T15:22:39+00:00",
+                "last_seen_at": "2026-03-19T15:22:39+00:00",
+                "last_change_at": "2026-03-19T15:22:39+00:00"
+            }
+        },
+        {
+            "event": "opened",
+            "at": "2026-03-19T15:22:39+00:00",
+            "incident": {
+                "key": "feed:bulletins",
+                "scope": "feed",
+                "target": "bulletins",
+                "severity": "major",
+                "title": "Feed bulletins is outdated",
+                "detail": "delay +264 min",
+                "status": "outdated",
+                "source_time": "2026-03-19T10:28:15+00:00",
+                "started_at": "2026-03-19T15:22:39+00:00",
+                "last_seen_at": "2026-03-19T15:22:39+00:00",
+                "last_change_at": "2026-03-19T15:22:39+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T15:22:39+00:00",
+            "incident": {
+                "key": "feed:hotspots",
+                "scope": "feed",
+                "target": "hotspots",
+                "severity": "major",
+                "title": "Feed hotspots is outdated",
+                "detail": "delay +941 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:11:05+00:00",
+                "started_at": "2026-03-18T23:47:28+00:00",
+                "last_seen_at": "2026-03-19T15:22:39+00:00",
+                "last_change_at": "2026-03-19T15:22:39+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T15:22:39+00:00",
+            "incident": {
+                "key": "feed:volcano_cams",
+                "scope": "feed",
+                "target": "volcano_cams",
+                "severity": "major",
+                "title": "Feed volcano_cams is outdated",
+                "detail": "delay +902 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:34:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T15:22:39+00:00",
+                "last_change_at": "2026-03-19T15:22:39+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:28:20+00:00",
+            "incident": {
+                "key": "feed:aftershocks",
+                "scope": "feed",
+                "target": "aftershocks",
+                "severity": "major",
+                "title": "Feed aftershocks is outdated",
+                "detail": "delay +631 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:46:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:28:20+00:00",
+                "last_change_at": "2026-03-19T10:28:20+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:28:20+00:00",
+            "incident": {
+                "key": "feed:tremors",
+                "scope": "feed",
+                "target": "tremors",
+                "severity": "minor",
+                "title": "Feed tremors is lagging",
+                "detail": "delay +22 min",
+                "status": "lagging",
+                "source_time": "2026-03-19T09:45:50+00:00",
+                "started_at": "2026-03-19T10:08:30+00:00",
+                "last_seen_at": "2026-03-19T10:28:20+00:00",
+                "last_change_at": "2026-03-19T10:28:20+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:28:20+00:00",
+            "incident": {
+                "key": "feed:hotspots",
+                "scope": "feed",
+                "target": "hotspots",
+                "severity": "major",
+                "title": "Feed hotspots is outdated",
+                "detail": "delay +647 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:11:05+00:00",
+                "started_at": "2026-03-18T23:47:28+00:00",
+                "last_seen_at": "2026-03-19T10:28:20+00:00",
+                "last_change_at": "2026-03-19T10:28:20+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:28:20+00:00",
+            "incident": {
+                "key": "feed:volcano_cams",
+                "scope": "feed",
+                "target": "volcano_cams",
+                "severity": "major",
+                "title": "Feed volcano_cams is outdated",
+                "detail": "delay +608 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:34:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:28:20+00:00",
+                "last_change_at": "2026-03-19T10:28:20+00:00"
+            }
+        },
+        {
+            "event": "resolved",
+            "at": "2026-03-19T10:28:20+00:00",
+            "incident": {
+                "key": "feed:bulletins",
+                "scope": "feed",
+                "target": "bulletins",
+                "severity": "major",
+                "title": "Feed bulletins is outdated",
+                "detail": "delay +2792 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:25:06+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-19T10:27:08+00:00",
+                "last_change_at": "2026-03-19T10:27:08+00:00",
+                "ended_at": "2026-03-19T10:28:20+00:00",
+                "duration_minutes": 659
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:27:08+00:00",
+            "incident": {
+                "key": "feed:aftershocks",
+                "scope": "feed",
+                "target": "aftershocks",
+                "severity": "major",
+                "title": "Feed aftershocks is outdated",
+                "detail": "delay +630 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:46:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:27:08+00:00",
+                "last_change_at": "2026-03-19T10:27:08+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:27:08+00:00",
+            "incident": {
+                "key": "feed:tremors",
+                "scope": "feed",
+                "target": "tremors",
+                "severity": "minor",
+                "title": "Feed tremors is lagging",
+                "detail": "delay +21 min",
+                "status": "lagging",
+                "source_time": "2026-03-19T09:45:50+00:00",
+                "started_at": "2026-03-19T10:08:30+00:00",
+                "last_seen_at": "2026-03-19T10:27:08+00:00",
+                "last_change_at": "2026-03-19T10:27:08+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:27:08+00:00",
+            "incident": {
+                "key": "feed:bulletins",
+                "scope": "feed",
+                "target": "bulletins",
+                "severity": "major",
+                "title": "Feed bulletins is outdated",
+                "detail": "delay +2792 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:25:06+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-19T10:27:08+00:00",
+                "last_change_at": "2026-03-19T10:27:08+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:27:08+00:00",
+            "incident": {
+                "key": "feed:hotspots",
+                "scope": "feed",
+                "target": "hotspots",
+                "severity": "major",
+                "title": "Feed hotspots is outdated",
+                "detail": "delay +646 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:11:05+00:00",
+                "started_at": "2026-03-18T23:47:28+00:00",
+                "last_seen_at": "2026-03-19T10:27:08+00:00",
+                "last_change_at": "2026-03-19T10:27:08+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:27:08+00:00",
+            "incident": {
+                "key": "feed:volcano_cams",
+                "scope": "feed",
+                "target": "volcano_cams",
+                "severity": "major",
+                "title": "Feed volcano_cams is outdated",
+                "detail": "delay +607 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:34:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:27:08+00:00",
+                "last_change_at": "2026-03-19T10:27:08+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:13:43+00:00",
+            "incident": {
+                "key": "feed:aftershocks",
+                "scope": "feed",
+                "target": "aftershocks",
+                "severity": "major",
+                "title": "Feed aftershocks is outdated",
+                "detail": "delay +616 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:46:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:13:43+00:00",
+                "last_change_at": "2026-03-19T10:13:43+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:13:43+00:00",
+            "incident": {
+                "key": "feed:tremors",
+                "scope": "feed",
+                "target": "tremors",
+                "severity": "minor",
+                "title": "Feed tremors is lagging",
+                "detail": "delay +7 min",
+                "status": "lagging",
+                "source_time": "2026-03-19T09:45:50+00:00",
+                "started_at": "2026-03-19T10:08:30+00:00",
+                "last_seen_at": "2026-03-19T10:13:43+00:00",
+                "last_change_at": "2026-03-19T10:13:43+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:13:43+00:00",
+            "incident": {
+                "key": "feed:bulletins",
+                "scope": "feed",
+                "target": "bulletins",
+                "severity": "major",
+                "title": "Feed bulletins is outdated",
+                "detail": "delay +2778 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:25:06+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-19T10:13:43+00:00",
+                "last_change_at": "2026-03-19T10:13:43+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:13:43+00:00",
+            "incident": {
+                "key": "feed:hotspots",
+                "scope": "feed",
+                "target": "hotspots",
+                "severity": "major",
+                "title": "Feed hotspots is outdated",
+                "detail": "delay +632 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:11:05+00:00",
+                "started_at": "2026-03-18T23:47:28+00:00",
+                "last_seen_at": "2026-03-19T10:13:43+00:00",
+                "last_change_at": "2026-03-19T10:13:43+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:13:43+00:00",
+            "incident": {
+                "key": "feed:volcano_cams",
+                "scope": "feed",
+                "target": "volcano_cams",
+                "severity": "major",
+                "title": "Feed volcano_cams is outdated",
+                "detail": "delay +593 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:34:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:13:43+00:00",
+                "last_change_at": "2026-03-19T10:13:43+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:12:33+00:00",
+            "incident": {
+                "key": "feed:aftershocks",
+                "scope": "feed",
+                "target": "aftershocks",
+                "severity": "major",
+                "title": "Feed aftershocks is outdated",
+                "detail": "delay +615 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:46:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:12:33+00:00",
+                "last_change_at": "2026-03-19T10:12:33+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:12:33+00:00",
+            "incident": {
+                "key": "feed:tremors",
+                "scope": "feed",
+                "target": "tremors",
+                "severity": "minor",
+                "title": "Feed tremors is lagging",
+                "detail": "delay +6 min",
+                "status": "lagging",
+                "source_time": "2026-03-19T09:45:50+00:00",
+                "started_at": "2026-03-19T10:08:30+00:00",
+                "last_seen_at": "2026-03-19T10:12:33+00:00",
+                "last_change_at": "2026-03-19T10:12:33+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:12:33+00:00",
+            "incident": {
+                "key": "feed:bulletins",
+                "scope": "feed",
+                "target": "bulletins",
+                "severity": "major",
+                "title": "Feed bulletins is outdated",
+                "detail": "delay +2777 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:25:06+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-19T10:12:33+00:00",
+                "last_change_at": "2026-03-19T10:12:33+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:12:33+00:00",
+            "incident": {
+                "key": "feed:hotspots",
+                "scope": "feed",
+                "target": "hotspots",
+                "severity": "major",
+                "title": "Feed hotspots is outdated",
+                "detail": "delay +631 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:11:05+00:00",
+                "started_at": "2026-03-18T23:47:28+00:00",
+                "last_seen_at": "2026-03-19T10:12:33+00:00",
+                "last_change_at": "2026-03-19T10:12:33+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:12:33+00:00",
+            "incident": {
+                "key": "feed:volcano_cams",
+                "scope": "feed",
+                "target": "volcano_cams",
+                "severity": "major",
+                "title": "Feed volcano_cams is outdated",
+                "detail": "delay +592 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:34:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:12:33+00:00",
+                "last_change_at": "2026-03-19T10:12:33+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:11:33+00:00",
+            "incident": {
+                "key": "feed:aftershocks",
+                "scope": "feed",
+                "target": "aftershocks",
+                "severity": "major",
+                "title": "Feed aftershocks is outdated",
+                "detail": "delay +614 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:46:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:11:33+00:00",
+                "last_change_at": "2026-03-19T10:11:33+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:11:33+00:00",
+            "incident": {
+                "key": "feed:tremors",
+                "scope": "feed",
+                "target": "tremors",
+                "severity": "minor",
+                "title": "Feed tremors is lagging",
+                "detail": "delay +5 min",
+                "status": "lagging",
+                "source_time": "2026-03-19T09:45:50+00:00",
+                "started_at": "2026-03-19T10:08:30+00:00",
+                "last_seen_at": "2026-03-19T10:11:33+00:00",
+                "last_change_at": "2026-03-19T10:11:33+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:11:33+00:00",
+            "incident": {
+                "key": "feed:bulletins",
+                "scope": "feed",
+                "target": "bulletins",
+                "severity": "major",
+                "title": "Feed bulletins is outdated",
+                "detail": "delay +2776 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:25:06+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-19T10:11:33+00:00",
+                "last_change_at": "2026-03-19T10:11:33+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:11:33+00:00",
+            "incident": {
+                "key": "feed:hotspots",
+                "scope": "feed",
+                "target": "hotspots",
+                "severity": "major",
+                "title": "Feed hotspots is outdated",
+                "detail": "delay +630 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:11:05+00:00",
+                "started_at": "2026-03-18T23:47:28+00:00",
+                "last_seen_at": "2026-03-19T10:11:33+00:00",
+                "last_change_at": "2026-03-19T10:11:33+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:11:33+00:00",
+            "incident": {
+                "key": "feed:volcano_cams",
+                "scope": "feed",
+                "target": "volcano_cams",
+                "severity": "major",
+                "title": "Feed volcano_cams is outdated",
+                "detail": "delay +591 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:34:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:11:33+00:00",
+                "last_change_at": "2026-03-19T10:11:33+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:08:30+00:00",
+            "incident": {
+                "key": "feed:aftershocks",
+                "scope": "feed",
+                "target": "aftershocks",
+                "severity": "major",
+                "title": "Feed aftershocks is outdated",
+                "detail": "delay +611 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:46:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:08:30+00:00",
+                "last_change_at": "2026-03-19T10:08:30+00:00"
+            }
+        },
+        {
+            "event": "opened",
+            "at": "2026-03-19T10:08:30+00:00",
+            "incident": {
+                "key": "feed:tremors",
+                "scope": "feed",
+                "target": "tremors",
+                "severity": "minor",
+                "title": "Feed tremors is lagging",
+                "detail": "delay +2 min",
+                "status": "lagging",
+                "source_time": "2026-03-19T09:45:50+00:00",
+                "started_at": "2026-03-19T10:08:30+00:00",
+                "last_seen_at": "2026-03-19T10:08:30+00:00",
+                "last_change_at": "2026-03-19T10:08:30+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:08:30+00:00",
+            "incident": {
+                "key": "feed:bulletins",
+                "scope": "feed",
+                "target": "bulletins",
+                "severity": "major",
+                "title": "Feed bulletins is outdated",
+                "detail": "delay +2773 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:25:06+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-19T10:08:30+00:00",
+                "last_change_at": "2026-03-19T10:08:30+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:08:30+00:00",
+            "incident": {
+                "key": "feed:hotspots",
+                "scope": "feed",
+                "target": "hotspots",
+                "severity": "major",
+                "title": "Feed hotspots is outdated",
+                "detail": "delay +627 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:11:05+00:00",
+                "started_at": "2026-03-18T23:47:28+00:00",
+                "last_seen_at": "2026-03-19T10:08:30+00:00",
+                "last_change_at": "2026-03-19T10:08:30+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:08:30+00:00",
+            "incident": {
+                "key": "feed:volcano_cams",
+                "scope": "feed",
+                "target": "volcano_cams",
+                "severity": "major",
+                "title": "Feed volcano_cams is outdated",
+                "detail": "delay +588 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:34:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:08:30+00:00",
+                "last_change_at": "2026-03-19T10:08:30+00:00"
+            }
+        },
+        {
+            "event": "opened",
+            "at": "2026-03-19T10:06:31+00:00",
+            "incident": {
+                "key": "feed:aftershocks",
+                "scope": "feed",
+                "target": "aftershocks",
+                "severity": "major",
+                "title": "Feed aftershocks is outdated",
+                "detail": "delay +609 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:46:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:06:31+00:00",
+                "last_change_at": "2026-03-19T10:06:31+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:06:31+00:00",
+            "incident": {
+                "key": "feed:bulletins",
+                "scope": "feed",
+                "target": "bulletins",
+                "severity": "major",
+                "title": "Feed bulletins is outdated",
+                "detail": "delay +2771 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:25:06+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-19T10:06:31+00:00",
+                "last_change_at": "2026-03-19T10:06:31+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-19T10:06:31+00:00",
+            "incident": {
+                "key": "feed:hotspots",
+                "scope": "feed",
+                "target": "hotspots",
+                "severity": "major",
+                "title": "Feed hotspots is outdated",
+                "detail": "delay +625 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:11:05+00:00",
+                "started_at": "2026-03-18T23:47:28+00:00",
+                "last_seen_at": "2026-03-19T10:06:31+00:00",
+                "last_change_at": "2026-03-19T10:06:31+00:00"
+            }
+        },
+        {
+            "event": "opened",
+            "at": "2026-03-19T10:06:31+00:00",
+            "incident": {
+                "key": "feed:volcano_cams",
+                "scope": "feed",
+                "target": "volcano_cams",
+                "severity": "major",
+                "title": "Feed volcano_cams is outdated",
+                "detail": "delay +586 min",
+                "status": "outdated",
+                "source_time": "2026-03-18T23:34:53+00:00",
+                "started_at": "2026-03-19T10:06:31+00:00",
+                "last_seen_at": "2026-03-19T10:06:31+00:00",
+                "last_change_at": "2026-03-19T10:06:31+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-18T23:47:28+00:00",
+            "incident": {
+                "key": "feed:bulletins",
+                "scope": "feed",
+                "target": "bulletins",
+                "severity": "major",
+                "title": "Feed bulletins is outdated",
+                "detail": "delay +2152 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:25:06+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-18T23:47:28+00:00",
+                "last_change_at": "2026-03-18T23:47:28+00:00"
+            }
+        },
+        {
+            "event": "opened",
+            "at": "2026-03-18T23:47:28+00:00",
+            "incident": {
+                "key": "feed:hotspots",
+                "scope": "feed",
+                "target": "hotspots",
+                "severity": "minor",
+                "title": "Feed hotspots is lagging",
+                "detail": "delay +6 min",
+                "status": "lagging",
+                "source_time": "2026-03-18T23:11:05+00:00",
+                "started_at": "2026-03-18T23:47:28+00:00",
+                "last_seen_at": "2026-03-18T23:47:28+00:00",
+                "last_change_at": "2026-03-18T23:47:28+00:00"
+            }
+        },
+        {
+            "event": "resolved",
+            "at": "2026-03-18T23:47:28+00:00",
+            "incident": {
+                "key": "feed:aftershocks",
+                "scope": "feed",
+                "target": "aftershocks",
+                "severity": "major",
+                "title": "Feed aftershocks is outdated",
+                "detail": "delay +2177 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:03:54+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-18T23:31:42+00:00",
+                "last_change_at": "2026-03-18T23:31:19+00:00",
+                "ended_at": "2026-03-18T23:47:28+00:00",
+                "duration_minutes": 19
+            }
+        },
+        {
+            "event": "resolved",
+            "at": "2026-03-18T23:47:28+00:00",
+            "incident": {
+                "key": "feed:volcano_cams",
+                "scope": "feed",
+                "target": "volcano_cams",
+                "severity": "major",
+                "title": "Feed volcano_cams is outdated",
+                "detail": "delay +2137 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:09:14+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-18T23:31:42+00:00",
+                "last_change_at": "2026-03-18T23:31:19+00:00",
+                "ended_at": "2026-03-18T23:47:28+00:00",
+                "duration_minutes": 19
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-18T23:31:19+00:00",
+            "incident": {
+                "key": "feed:aftershocks",
+                "scope": "feed",
+                "target": "aftershocks",
+                "severity": "major",
+                "title": "Feed aftershocks is outdated",
+                "detail": "delay +2177 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:03:54+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-18T23:31:19+00:00",
+                "last_change_at": "2026-03-18T23:31:19+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-18T23:31:19+00:00",
+            "incident": {
+                "key": "feed:bulletins",
+                "scope": "feed",
+                "target": "bulletins",
+                "severity": "major",
+                "title": "Feed bulletins is outdated",
+                "detail": "delay +2136 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:25:06+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-18T23:31:19+00:00",
+                "last_change_at": "2026-03-18T23:31:19+00:00"
+            }
+        },
+        {
+            "event": "updated",
+            "at": "2026-03-18T23:31:19+00:00",
+            "incident": {
+                "key": "feed:volcano_cams",
+                "scope": "feed",
+                "target": "volcano_cams",
+                "severity": "major",
+                "title": "Feed volcano_cams is outdated",
+                "detail": "delay +2137 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:09:14+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-18T23:31:19+00:00",
+                "last_change_at": "2026-03-18T23:31:19+00:00"
+            }
+        },
+        {
+            "event": "opened",
+            "at": "2026-03-18T23:28:23+00:00",
+            "incident": {
+                "key": "feed:aftershocks",
+                "scope": "feed",
+                "target": "aftershocks",
+                "severity": "major",
+                "title": "Feed aftershocks is outdated",
+                "detail": "delay +2174 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:03:54+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-18T23:28:23+00:00",
+                "last_change_at": "2026-03-18T23:28:23+00:00"
+            }
+        },
+        {
+            "event": "opened",
+            "at": "2026-03-18T23:28:23+00:00",
+            "incident": {
+                "key": "feed:bulletins",
+                "scope": "feed",
+                "target": "bulletins",
+                "severity": "major",
+                "title": "Feed bulletins is outdated",
+                "detail": "delay +2133 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:25:06+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-18T23:28:23+00:00",
+                "last_change_at": "2026-03-18T23:28:23+00:00"
+            }
+        },
+        {
+            "event": "opened",
+            "at": "2026-03-18T23:28:23+00:00",
+            "incident": {
+                "key": "feed:volcano_cams",
+                "scope": "feed",
+                "target": "volcano_cams",
+                "severity": "major",
+                "title": "Feed volcano_cams is outdated",
+                "detail": "delay +2134 min",
+                "status": "outdated",
+                "source_time": "2026-03-17T11:09:14+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-18T23:28:23+00:00",
+                "last_change_at": "2026-03-18T23:28:23+00:00"
+            }
+        },
+        {
+            "event": "opened",
+            "at": "2026-03-18T23:28:23+00:00",
+            "incident": {
+                "key": "component:feed_ingestion",
+                "scope": "component",
+                "target": "feed_ingestion",
+                "severity": "major",
+                "title": "Component feed_ingestion degraded",
+                "detail": "impact visible",
+                "status": "degraded",
+                "source_time": "2026-03-18T23:28:23+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-18T23:28:23+00:00",
+                "last_change_at": "2026-03-18T23:28:23+00:00"
+            }
+        },
+        {
+            "event": "opened",
+            "at": "2026-03-18T23:28:23+00:00",
+            "incident": {
+                "key": "component:archive_db",
+                "scope": "component",
+                "target": "archive_db",
+                "severity": "minor",
+                "title": "Component archive_db degraded",
+                "detail": "impact limited",
+                "status": "degraded",
+                "source_time": "2026-03-18T23:28:23+00:00",
+                "started_at": "2026-03-18T23:28:23+00:00",
+                "last_seen_at": "2026-03-18T23:28:23+00:00",
+                "last_change_at": "2026-03-18T23:28:23+00:00"
+            }
+        }
+    ]
+}

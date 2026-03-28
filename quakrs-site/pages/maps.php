@@ -17,6 +17,21 @@ if (!$isFullscreen) {
 ?>
 
 <?php if ($isFullscreen): ?>
+  <style>
+    .maps-fullscreen-map .map-legend {
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+
+    .maps-fullscreen-map .map-legend .map-filter-btn {
+      color: color-mix(in srgb, var(--text) 92%, white 8%);
+    }
+
+    .maps-fullscreen-map .map-legend .map-filter-btn.is-active,
+    .maps-fullscreen-map .map-legend .map-filter-btn[aria-pressed="true"] {
+      color: var(--band-fg);
+    }
+  </style>
+
   <main class="maps-fullscreen-shell" aria-label="Fullscreen global seismic map">
     <header class="maps-fullscreen-topbar">
       <a class="maps-fullscreen-brand" href="/" aria-label="Quakrs home">
@@ -81,6 +96,51 @@ if (!$isFullscreen) {
     </section>
   </main>
 <?php else: ?>
+  <style>
+    .priority-map-main .map-legend {
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+
+    .priority-map-main .map-legend .map-filter-btn {
+      color: color-mix(in srgb, var(--text) 92%, white 8%);
+    }
+
+    .priority-map-main .map-legend .map-filter-btn.is-active,
+    .priority-map-main .map-legend .map-filter-btn[aria-pressed="true"] {
+      color: var(--band-fg);
+    }
+
+    .priority-map-main .map-legend .map-filter-btn.band-m4,
+    .priority-map-main .map-legend .map-filter-btn.band-m5,
+    .priority-map-main .map-legend .map-filter-btn.band-m6,
+    .priority-map-main .map-legend .map-filter-btn.band-m7p {
+      border-color: color-mix(in srgb, var(--line) 62%, transparent);
+    }
+
+    .priority-map-main .map-legend .map-filter-btn.band-m4,
+    .priority-map-main .map-legend .map-filter-btn.band-m5 {
+      --band-fg: #111a06;
+    }
+
+    .priority-map-main .map-legend .map-filter-btn.band-m4 {
+      --band-bg: var(--hazard-earthquake);
+    }
+
+    .priority-map-main .map-legend .map-filter-btn.band-m5 {
+      --band-bg: var(--hazard-space);
+    }
+
+    .priority-map-main .map-legend .map-filter-btn.band-m6 {
+      --band-bg: var(--acid-orange);
+      --band-fg: #1f1102;
+    }
+
+    .priority-map-main .map-legend .map-filter-btn.band-m7p {
+      --band-bg: var(--danger-acid);
+      --band-fg: #24070f;
+    }
+  </style>
+
   <main class="hero compact-hero">
     <div>
       <p class="eyebrow"><?= htmlspecialchars(qk_t('page.maps.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
@@ -111,7 +171,7 @@ if (!$isFullscreen) {
     </article>
   </section>
 
-  <section class="panel panel-main earthquakes-main-layout">
+  <section class="panel panel-main earthquakes-main-layout priority-map-main">
     <article class="card map-card">
       <div class="feed-head">
         <h3>Global Seismic Map</h3>

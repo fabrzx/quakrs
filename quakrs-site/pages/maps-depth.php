@@ -54,18 +54,18 @@ require __DIR__ . '/../partials/topbar.php';
       <div id="depth-map-leaflet" class="world-map-leaflet" aria-label="Depth map"></div>
     </div>
     <div class="map-legend">
-      <button class="map-filter-btn band-m3" data-depth="all" type="button" aria-pressed="true">All</button>
-      <button class="map-filter-btn band-m1-2" data-depth="shallow" type="button" aria-pressed="false">Shallow</button>
-      <button class="map-filter-btn band-m5" data-depth="intermediate" type="button" aria-pressed="false">Intermediate</button>
-      <button class="map-filter-btn band-m7p" data-depth="deep" type="button" aria-pressed="false">Deep</button>
-      <span style="background:#22d3ee">&lt;70 km</span>
-      <span style="background:#f7d21e">70-300 km</span>
-      <span style="background:#ef4444">300+ km</span>
+      <button class="map-filter-btn depth-filter-all" data-depth="all" type="button" aria-pressed="true">All</button>
+      <button class="map-filter-btn depth-filter-shallow" data-depth="shallow" type="button" aria-pressed="false">Shallow</button>
+      <button class="map-filter-btn depth-filter-intermediate" data-depth="intermediate" type="button" aria-pressed="false">Intermediate</button>
+      <button class="map-filter-btn depth-filter-deep" data-depth="deep" type="button" aria-pressed="false">Deep</button>
+      <span class="map-legend-swatch map-legend-depth-shallow">&lt;70 km</span>
+      <span class="map-legend-swatch map-legend-depth-intermediate">70-300 km</span>
+      <span class="map-legend-swatch map-legend-depth-deep">300+ km</span>
     </div>
   </article>
-  <article class="card side-card">
+  <article class="card side-card map-side-list-card">
     <h3>Deepest Events</h3>
-    <ul id="depth-deepest-list" class="events-list">
+    <ul id="depth-deepest-list" class="events-list map-side-list-scroll">
       <li class="event-item">Loading depth layers...</li>
     </ul>
   </article>
@@ -85,6 +85,16 @@ require __DIR__ . '/../partials/topbar.php';
 
     let depthFilter = "all";
     let cachedPayload = null;
+    const rootStyles = window.getComputedStyle(document.documentElement);
+    const cssVar = (name, fallback) => {
+      const value = rootStyles.getPropertyValue(name);
+      return value ? value.trim() : fallback;
+    };
+    const depthPalette = {
+      shallow: cssVar("--hazard-tsunami", "#20e0ff"),
+      intermediate: cssVar("--hazard-space", "#ffe600"),
+      deep: cssVar("--danger-acid", "#ff4d6d"),
+    };
 
     const depthBand = (depth) => {
       if (depth < 70) return "shallow";
@@ -93,9 +103,9 @@ require __DIR__ . '/../partials/topbar.php';
     };
 
     const depthColor = (depth) => {
-      if (depth < 70) return "#22d3ee";
-      if (depth < 300) return "#f7d21e";
-      return "#ef4444";
+      if (depth < 70) return depthPalette.shallow;
+      if (depth < 300) return depthPalette.intermediate;
+      return depthPalette.deep;
     };
 
     const map = mapContainer && window.L
@@ -167,20 +177,25 @@ require __DIR__ . '/../partials/topbar.php';
 
       const zoom = map ? map.getZoom() : 2;
       const zoomBoost = Math.max(0, (zoom - 2) * 0.5);
+      const lowZoomScale = zoom <= 2.2 ? 0.82 : (zoom <= 3 ? 0.9 : 1);
+      const lowZoom = zoom <= 2.2;
+      const midZoom = zoom > 2.2 && zoom <= 3;
       events.slice(0, 700).forEach((event) => {
         if (typeof event.latitude !== "number" || typeof event.longitude !== "number") return;
         const depth = Math.abs(event.depth_km);
         const mag = typeof event.magnitude === "number" ? event.magnitude : 0;
         const baseRadius = Math.max(2.8, Math.min(11.5, 2.6 + mag * 1.02));
-        const radius = Math.min(16, baseRadius + zoomBoost);
+        const radius = Math.min(16, (baseRadius + zoomBoost) * lowZoomScale);
         const color = depthColor(depth);
+        const strokeOpacity = lowZoom ? 0.42 : (midZoom ? 0.62 : 0.88);
 
         window.L.circleMarker([event.latitude, event.longitude], {
           radius,
-          color: "rgba(255,255,255,0.88)",
-          weight: 1,
+          color: `rgba(255,255,255,${strokeOpacity})`,
+          opacity: strokeOpacity,
+          weight: lowZoom ? 0.55 : (midZoom ? 0.75 : 1),
           fillColor: color,
-          fillOpacity: 0.86,
+          fillOpacity: lowZoom ? 0.78 : (midZoom ? 0.82 : 0.86),
         })
           .bindTooltip(`M${mag.toFixed(1)} · ${depth.toFixed(0)} km · ${event.place || "Unknown"}`)
           .addTo(eventsLayer);

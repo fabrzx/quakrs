@@ -700,10 +700,14 @@ require __DIR__ . '/../partials/topbar.php';
       const pointMarkers = coords.map((point, idx) => `
         <circle
           class="volc-trend-dot${idx === coords.length - 1 ? "" : " volc-trend-dot-sub"}"
+          data-point-index="${idx}"
           cx="${point.x.toFixed(1)}"
           cy="${point.y.toFixed(1)}"
           r="${idx === coords.length - 1 ? "5.4" : "3.2"}"
-        ></circle>
+          tabindex="0"
+        >
+          <title>${esc(`${point.label} · score ${Math.round(point.score)}`)}</title>
+        </circle>
       `).join("");
       const startLabel = first?.label ? esc(clip(first.label, 24)) : "";
       const endLabel = last?.label ? esc(clip(last.label, 24)) : "";
@@ -718,19 +722,101 @@ require __DIR__ . '/../partials/topbar.php';
       trendSvg.innerHTML = `
         ${guides}
         ${coords.length > 1 ? `<polyline class="volc-trend-line" points="${line}"></polyline>` : ""}
+        <line class="volc-trend-hover-line" x1="${padX}" y1="${padY}" x2="${padX}" y2="${h - padY}" hidden></line>
+        <circle class="volc-trend-hover-dot" cx="${last.x.toFixed(1)}" cy="${last.y.toFixed(1)}" r="5.2" hidden></circle>
         ${pointMarkers}
         ${lastTag}
         ${axisLabels}
       `;
+      let summaryText = "No weekly points";
       if (bucket.reports <= 0 && points.length <= 1) {
-        trendNote.textContent = "No weekly points";
+        summaryText = "No weekly points";
       } else if (coords.length <= 1) {
-        trendNote.textContent = "1 point · waiting for more history";
+        summaryText = "1 point · waiting for more history";
       } else {
         const delta = last.score - first.score;
         const deltaText = delta > 0 ? `+${Math.round(delta)}` : `${Math.round(delta)}`;
-        trendNote.textContent = `${coords.length} history points · Δ ${deltaText}`;
+        summaryText = `${coords.length} history points · Δ ${deltaText}`;
       }
+      trendNote.textContent = summaryText;
+
+      const dots = Array.from(trendSvg.querySelectorAll(".volc-trend-dot"));
+      const hoverLine = trendSvg.querySelector(".volc-trend-hover-line");
+      const hoverDot = trendSvg.querySelector(".volc-trend-hover-dot");
+      const setHoverPoint = (idx) => {
+        const point = coords[idx];
+        if (!point) {
+          trendNote.textContent = summaryText;
+          if (hoverLine) hoverLine.setAttribute("hidden", "");
+          if (hoverDot) hoverDot.setAttribute("hidden", "");
+          dots.forEach((dot) => dot.classList.remove("is-active"));
+          return;
+        }
+        dots.forEach((dot) => dot.classList.remove("is-active"));
+        if (dots[idx]) dots[idx].classList.add("is-active");
+        if (hoverLine) {
+          hoverLine.removeAttribute("hidden");
+          hoverLine.setAttribute("x1", point.x.toFixed(1));
+          hoverLine.setAttribute("x2", point.x.toFixed(1));
+        }
+        if (hoverDot) {
+          hoverDot.removeAttribute("hidden");
+          hoverDot.setAttribute("cx", point.x.toFixed(1));
+          hoverDot.setAttribute("cy", point.y.toFixed(1));
+        }
+        trendNote.textContent = `${point.label} · score ${Math.round(point.score)}`;
+      };
+
+      const nearestPointIndex = (x) => {
+        let nearestIdx = 0;
+        let nearestDist = Number.POSITIVE_INFINITY;
+        coords.forEach((point, idx) => {
+          const dist = Math.abs(point.x - x);
+          if (dist < nearestDist) {
+            nearestDist = dist;
+            nearestIdx = idx;
+          }
+        });
+        return nearestIdx;
+      };
+
+      const pointerToSvgX = (clientX) => {
+        const rect = trendSvg.getBoundingClientRect();
+        if (!rect || rect.width <= 0) return padX;
+        const raw = ((clientX - rect.left) / rect.width) * w;
+        return Math.max(padX, Math.min(w - padX, raw));
+      };
+
+      dots.forEach((dot) => {
+        const idx = Number(dot.getAttribute("data-point-index"));
+        if (!Number.isFinite(idx)) return;
+        dot.addEventListener("mouseenter", () => setHoverPoint(idx));
+        dot.addEventListener("focus", () => setHoverPoint(idx));
+        dot.addEventListener("mouseleave", () => {
+          trendNote.textContent = summaryText;
+          dots.forEach((d) => d.classList.remove("is-active"));
+          if (hoverLine) hoverLine.setAttribute("hidden", "");
+          if (hoverDot) hoverDot.setAttribute("hidden", "");
+        });
+        dot.addEventListener("blur", () => { trendNote.textContent = summaryText; });
+      });
+
+      trendSvg.addEventListener("mousemove", (event) => {
+        const x = pointerToSvgX(event.clientX);
+        setHoverPoint(nearestPointIndex(x));
+      });
+
+      trendSvg.addEventListener("mouseenter", (event) => {
+        const x = pointerToSvgX(event.clientX);
+        setHoverPoint(nearestPointIndex(x));
+      });
+
+      trendSvg.addEventListener("mouseleave", () => {
+        trendNote.textContent = summaryText;
+        dots.forEach((dot) => dot.classList.remove("is-active"));
+        if (hoverLine) hoverLine.setAttribute("hidden", "");
+        if (hoverDot) hoverDot.setAttribute("hidden", "");
+      });
     }
 
     function renderGauge(bucket) {

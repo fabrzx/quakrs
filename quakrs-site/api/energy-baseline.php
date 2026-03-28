@@ -16,11 +16,7 @@ function baseline_cache_read(string $path): ?array
 
 function baseline_cache_write(string $path, array $payload): void
 {
-    $encoded = json_encode($payload, JSON_UNESCAPED_SLASHES);
-    if (!is_string($encoded) || $encoded === '') {
-        return;
-    }
-    @file_put_contents($path, $encoded, LOCK_EX);
+    write_json_file($path, $payload);
 }
 
 function baseline_state(float $deltaPct): string
@@ -62,33 +58,6 @@ function count_mysql_range(mysqli $db, string $table, int $fromTs, int $toTs, fl
     return is_array($row) ? (int) ($row['c'] ?? 0) : 0;
 }
 
-function count_sqlite_range(SQLite3 $db, string $table, int $fromTs, int $toTs, float $minMag): ?int
-{
-    $sql = sprintf(
-        'SELECT COUNT(*) AS c
-         FROM %s
-         WHERE CAST(event_time_ts AS INTEGER) >= :from_ts
-           AND CAST(event_time_ts AS INTEGER) <= :to_ts
-           AND magnitude IS NOT NULL
-           AND CAST(magnitude AS REAL) >= :min_mag',
-        preg_match('/^[a-zA-Z0-9_]+$/', $table) ? $table : 'earthquake_events'
-    );
-    $stmt = $db->prepare($sql);
-    if (!$stmt instanceof SQLite3Stmt) {
-        return null;
-    }
-    $stmt->bindValue(':from_ts', $fromTs, SQLITE3_INTEGER);
-    $stmt->bindValue(':to_ts', $toTs, SQLITE3_INTEGER);
-    $stmt->bindValue(':min_mag', $minMag, SQLITE3_FLOAT);
-    $result = $stmt->execute();
-    if (!$result instanceof SQLite3Result) {
-        return null;
-    }
-    $row = $result->fetchArray(SQLITE3_ASSOC);
-    $result->finalize();
-    return is_array($row) ? (int) ($row['c'] ?? 0) : 0;
-}
-
 function count_usgs_range(int $fromTs, int $toTs, float $minMag, int $timeoutSeconds): ?int
 {
     $params = [
@@ -108,21 +77,6 @@ function count_usgs_range(int $fromTs, int $toTs, float $minMag, int $timeoutSec
         return null;
     }
     return max(0, (int) ($payload['metadata']['count'] ?? 0));
-}
-
-function sqlite_has_recent_rows(SQLite3 $db, string $table, int $maxAgeSeconds): bool
-{
-    $safeTable = preg_match('/^[a-zA-Z0-9_]+$/', $table) ? $table : 'earthquake_events';
-    $query = sprintf('SELECT MAX(CAST(event_time_ts AS INTEGER)) AS latest_ts FROM %s', $safeTable);
-    $result = $db->querySingle($query, true);
-    if (!is_array($result) || !isset($result['latest_ts']) || !is_numeric($result['latest_ts'])) {
-        return false;
-    }
-    $latestTs = (int) $result['latest_ts'];
-    if ($latestTs <= 0) {
-        return false;
-    }
-    return (time() - $latestTs) <= $maxAgeSeconds;
 }
 
 function build_baseline_payload(callable $counter, float $minMag, string $source): ?array
@@ -282,6 +236,13 @@ $minMag = is_numeric($minMagRaw) ? max(-1.0, (float) $minMagRaw) : 2.5;
 $forceRefresh = isset($_GET['force_refresh']) && (string) $_GET['force_refresh'] === '1';
 
 $cachePath = $appConfig['data_dir'] . '/energy_baseline_latest.json';
+if (abs($minMag - 2.5) > 0.00001) {
+    $cachePath = sprintf(
+        '%s/energy_baseline_latest_m%s.json',
+        $appConfig['data_dir'],
+        str_replace('.', '_', number_format($minMag, 1, '.', ''))
+    );
+}
 $cacheTtl = 3600;
 $cached = baseline_cache_read($cachePath);
 $cacheAge = is_array($cached) && isset($cached['generated_at_ts']) ? time() - (int) $cached['generated_at_ts'] : null;
@@ -289,11 +250,9 @@ if (!$forceRefresh && is_array($cached) && is_int($cacheAge) && $cacheAge <= $ca
     $cacheUsable = true;
     $source = strtolower((string) ($cached['source'] ?? ''));
     $cachedToday = isset($cached['today_count']) && is_numeric($cached['today_count']) ? (int) $cached['today_count'] : 0;
-    if ($source === 'sqlite' && $cachedToday === 0) {
-        $liveToday = live_today_mag_count($appConfig['data_dir'], $minMag);
-        if ($liveToday > 0) {
-            $cacheUsable = false;
-        }
+    $liveToday = live_today_mag_count($appConfig['data_dir'], $minMag);
+    if ($cachedToday === 0 && $liveToday > 0) {
+        $cacheUsable = false;
     }
     if ($cacheUsable) {
         $cached['from_cache'] = true;
@@ -313,7 +272,7 @@ if ($mysql instanceof mysqli) {
         static fn(int $fromTs, int $toTs, float $minMagnitude): ?int
             => count_mysql_range($mysql, $table, $fromTs, $toTs, $minMagnitude),
         $minMag,
-        'mysql'
+        'archive-mysql'
     );
     $mysql->close();
 }
@@ -325,26 +284,6 @@ if (!is_array($payload)) {
         $minMag,
         'usgs-fdsn-count'
     );
-}
-
-if (!is_array($payload) && class_exists('SQLite3')) {
-    $sqlitePath = $appConfig['data_dir'] . '/earthquakes_archive.sqlite';
-    if (file_exists($sqlitePath)) {
-        try {
-            $sqlite = new SQLite3($sqlitePath, SQLITE3_OPEN_READONLY);
-            if (sqlite_has_recent_rows($sqlite, 'earthquake_events', 3 * 86400)) {
-                $payload = build_baseline_payload(
-                    static fn(int $fromTs, int $toTs, float $minMagnitude): ?int
-                        => count_sqlite_range($sqlite, 'earthquake_events', $fromTs, $toTs, $minMagnitude),
-                    $minMag,
-                    'sqlite'
-                );
-            }
-            $sqlite->close();
-        } catch (Throwable $e) {
-            write_log($appConfig['logs_dir'], 'energy-baseline sqlite fallback error: ' . $e->getMessage());
-        }
-    }
 }
 
 if (is_array($payload)) {

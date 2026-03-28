@@ -12,4 +12,56 @@ return [
         'charset' => 'utf8mb4',
         'table' => 'earthquake_events',
     ],
+    'mysql_databases' => [
+        // DB1 - live
+        'live' => [
+            'host' => '31.11.39.180',
+            'port' => 3306,
+            'database' => 'Sql1923763_1',
+            'user' => 'Sql1923763',
+            'password' => 'YOUR_PASSWORD_HERE',
+            'charset' => 'utf8mb4',
+            'table' => 'earthquake_events',
+        ],
+        // DB2 - archive
+        'archive' => [
+            'host' => '31.11.39.180',
+            'port' => 3306,
+            'database' => 'Sql1923763_2',
+            'user' => 'Sql1923763',
+            'password' => 'YOUR_PASSWORD_HERE',
+            'charset' => 'utf8mb4',
+            'table' => 'earthquake_events',
+        ],
+        // DB3 - ingest
+        'ingest' => [
+            'host' => '31.11.39.180',
+            'port' => 3306,
+            'database' => 'Sql1923763_3',
+            'user' => 'Sql1923763',
+            'password' => 'YOUR_PASSWORD_HERE',
+            'charset' => 'utf8mb4',
+            'table' => 'earthquake_events_raw',
+        ],
+        // DB4 - stats
+        'stats' => [
+            'host' => '31.11.39.180',
+            'port' => 3306,
+            'database' => 'Sql1923763_4',
+            'user' => 'Sql1923763',
+            'password' => 'YOUR_PASSWORD_HERE',
+            'charset' => 'utf8mb4',
+            'table' => 'earthquake_daily_stats',
+        ],
+        // DB5 - spare
+        'spare' => [
+            'host' => '31.11.39.180',
+            'port' => 3306,
+            'database' => 'Sql1923763_5',
+            'user' => 'Sql1923763',
+            'password' => 'YOUR_PASSWORD_HERE',
+            'charset' => 'utf8mb4',
+            'table' => 'spare_placeholder',
+        ],
+    ],
 ];
