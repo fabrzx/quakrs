@@ -1,470 +1,409 @@
-<?php
-declare(strict_types=1);
-
-$pageTitle = 'Quakrs.com - Global Seismic Platform';
-$pageDescription = 'Real-time earthquakes, volcanoes, tsunami alerts, space weather and operational data views.';
-$currentPage = 'home';
-$includeLeaflet = true;
-$bodyClass = 'home-page home-2026 home-acid-balanced home-acid-brutalist';
-$appConfig = require __DIR__ . '/../config/app.php';
-require_once __DIR__ . '/../lib/editorial_engine.php';
-
-/**
- * @return array{lead:string,trimmed:bool}
- */
-function qk_home_trim_preview(string $text, int $maxChars = 320): array
-{
-    $lead = preg_replace('/\s+/u', ' ', trim($text)) ?? trim($text);
-    if ($lead === '') {
-        return ['lead' => '', 'trimmed' => false];
-    }
-
-    if (mb_strlen($lead, 'UTF-8') <= $maxChars) {
-        return ['lead' => $lead, 'trimmed' => false];
-    }
-
-    $slice = rtrim(mb_substr($lead, 0, $maxChars, 'UTF-8'));
-    $slice = preg_replace('/\s+\S*$/u', '', $slice) ?? $slice;
-    if ($slice === '') {
-        $slice = rtrim(mb_substr($lead, 0, $maxChars, 'UTF-8'));
-    }
-
-    return ['lead' => $slice, 'trimmed' => true];
-}
-
-/**
- * @return array{url:string,title:string,lead:string}|null
- */
-function qk_home_latest_blog_from_grav(): ?array
-{
-    $pagesRoot = __DIR__ . '/../editoriale/user/pages/01.home';
-    if (!is_dir($pagesRoot)) {
-        return null;
-    }
-
-    $latestPath = null;
-    $latestMtime = 0;
-    foreach (glob($pagesRoot . '/*/item.md') ?: [] as $itemPath) {
-        if (!is_string($itemPath) || $itemPath === '') {
-            continue;
-        }
-        $mtime = @filemtime($itemPath);
-        $mtime = is_int($mtime) ? $mtime : 0;
-        if ($mtime >= $latestMtime) {
-            $latestMtime = $mtime;
-            $latestPath = $itemPath;
-        }
-    }
-
-    if (!is_string($latestPath) || $latestPath === '') {
-        return null;
-    }
-
-    $raw = @file_get_contents($latestPath);
-    if (!is_string($raw) || $raw === '') {
-        return null;
-    }
-
-    $frontmatter = '';
-    $body = $raw;
-    if (preg_match('/\A---\R(.*?)\R---\R(.*)\z/s', $raw, $parts) === 1) {
-        $frontmatter = (string) ($parts[1] ?? '');
-        $body = (string) ($parts[2] ?? '');
-    }
-
-    $title = '';
-    if (preg_match('/^title:\s*"?(.*?)"?\s*$/m', $frontmatter, $titleMatch) === 1) {
-        $title = trim((string) ($titleMatch[1] ?? ''));
-    }
-    if ($title === '') {
-        $title = 'Ultimo articolo del blog';
-    }
-
-    $lead = trim($body);
-    $lead = preg_replace('/```.*?```/s', ' ', $lead) ?? $lead;
-    $lead = preg_replace('/!\[[^\]]*\]\([^)]+\)/', ' ', $lead) ?? $lead;
-    $lead = preg_replace('/\[(.*?)\]\([^)]+\)/', '$1', $lead) ?? $lead;
-    $lead = preg_replace('/^#{1,6}\s+/m', '', $lead) ?? $lead;
-    $lead = preg_replace('/\s+/u', ' ', $lead) ?? $lead;
-    $lead = trim($lead);
-    $slug = basename(dirname($latestPath));
-    $url = '/blog/' . rawurlencode($slug);
-
-    return [
-        'url' => $url,
-        'title' => $title,
-        'lead' => $lead,
-    ];
-}
-
-$homeLatestEditorial = null;
-$editorialBundle = qk_editorial_load_bundle($appConfig);
-if (is_array($editorialBundle['articles'] ?? null)) {
-    foreach ($editorialBundle['articles'] as $article) {
-        if (!is_array($article) || (string) ($article['status'] ?? '') !== 'published') {
-            continue;
-        }
-        $homeLatestEditorial = $article;
-        break;
-    }
-}
-
-$homeLatestEditorialUrl = '/blog/';
-$homeLatestEditorialTitle = '';
-$homeLatestEditorialLead = '';
-$homeLatestEditorialLeadTrimmed = false;
-if (is_array($homeLatestEditorial)) {
-    $articleUrl = trim((string) ($homeLatestEditorial['url'] ?? ''));
-    if ($articleUrl !== '' && str_starts_with($articleUrl, '/')) {
-        if (preg_match('~^/editoriale/blog/([^/?#]+)~', $articleUrl, $match) === 1) {
-            $homeLatestEditorialUrl = '/blog/' . $match[1];
-        } elseif (preg_match('~^/editoriale/([^/?#]+)\.php$~', $articleUrl, $match) === 1) {
-            $homeLatestEditorialUrl = '/blog/' . $match[1];
-        } elseif ($articleUrl === '/editoriale/' || $articleUrl === '/editoriale') {
-            $homeLatestEditorialUrl = '/blog/';
-        } else {
-            $homeLatestEditorialUrl = $articleUrl;
-        }
-    }
-    $articleTitle = trim((string) ($homeLatestEditorial['title'] ?? ''));
-    if ($articleTitle !== '') {
-        $homeLatestEditorialTitle = $articleTitle;
-    }
-
-    $articleExcerpt = trim((string) ($homeLatestEditorial['excerpt'] ?? ''));
-    if ($articleExcerpt !== '') {
-        $homeLatestEditorialLead = $articleExcerpt;
-    } else {
-        $sections = is_array($homeLatestEditorial['sections'] ?? null) ? $homeLatestEditorial['sections'] : [];
-        $firstSection = is_array($sections[0] ?? null) ? $sections[0] : [];
-        $firstBody = trim((string) ($firstSection['body'] ?? ''));
-        if ($firstBody !== '') {
-            $homeLatestEditorialLead = $firstBody;
-        }
-    }
-}
-
-if ($homeLatestEditorialTitle === '' || $homeLatestEditorialLead === '') {
-    $gravLatest = qk_home_latest_blog_from_grav();
-    if (is_array($gravLatest)) {
-        $homeLatestEditorialUrl = (string) ($gravLatest['url'] ?? $homeLatestEditorialUrl);
-        $homeLatestEditorialTitle = trim((string) ($gravLatest['title'] ?? $homeLatestEditorialTitle));
-        $homeLatestEditorialLead = trim((string) ($gravLatest['lead'] ?? $homeLatestEditorialLead));
-    }
-}
-
-$preview = qk_home_trim_preview($homeLatestEditorialLead, 320);
-$homeLatestEditorialLead = $preview['lead'];
-$homeLatestEditorialLeadTrimmed = (bool) $preview['trimmed'];
-
-require __DIR__ . '/../partials/head.php';
-require __DIR__ . '/../partials/topbar.php';
-?>
-
-<main class="hero home-v2-hero home-priority-hero home-neo-hero">
-  <div class="home-hero-editorial-column">
-    <div class="home-v2-hero-main home-neo-hero-main">
-      <p class="eyebrow"><?= htmlspecialchars(qk_t('home.hero.eyebrow'), ENT_QUOTES, 'UTF-8'); ?></p>
-      <h1>
-        <span class="hero-line"><?= htmlspecialchars(qk_t('home.hero.title_line_1'), ENT_QUOTES, 'UTF-8'); ?></span>
-        <span class="hero-line"><?= htmlspecialchars(qk_t('home.hero.title_line_2'), ENT_QUOTES, 'UTF-8'); ?></span>
-        <span class="hero-line"><?= htmlspecialchars(qk_t('home.hero.title_line_3'), ENT_QUOTES, 'UTF-8'); ?></span>
-      </h1>
-      <p class="sub">
-        <?= htmlspecialchars(qk_t('home.hero.sub'), ENT_QUOTES, 'UTF-8'); ?>
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="/earthquakes.php"><?= htmlspecialchars(qk_t('home.hero.open_monitors'), ENT_QUOTES, 'UTF-8'); ?></a>
-        <a class="btn btn-ghost" href="/archive.php"><?= htmlspecialchars(qk_t('home.hero.browse_archive'), ENT_QUOTES, 'UTF-8'); ?></a>
-      </div>
-    </div>
-
-    <div class="home-hero-lower">
-      <aside class="card home-neo-editorial home-hero-editorial-card" aria-label="<?= htmlspecialchars(qk_t('home.editorial_brief'), ENT_QUOTES, 'UTF-8'); ?>">
-        <div class="home-neo-editorial-head">
-          <p class="home-neo-console-kicker"><?= htmlspecialchars(qk_t('home.editorial_brief'), ENT_QUOTES, 'UTF-8'); ?></p>
-          <span id="home-priority-now" class="home-neo-live-pill"><?= htmlspecialchars(qk_t('home.dynamic_focus'), ENT_QUOTES, 'UTF-8'); ?></span>
-        </div>
-        <div class="home-v2-context-room home-context-room">
-          <div class="home-context-layout">
-            <div class="home-context-copy">
-              <div class="snapshot-head home-context-head">
-                <h4 id="home-context-title"><?= htmlspecialchars(qk_t('home.global_watch_progress'), ENT_QUOTES, 'UTF-8'); ?></h4>
-                <span id="home-context-mode"><?= htmlspecialchars(qk_t('home.loading_mode'), ENT_QUOTES, 'UTF-8'); ?></span>
-              </div>
-              <p id="home-context-summary" class="home-context-summary"><?= htmlspecialchars(qk_t('home.loading_editorial_summary'), ENT_QUOTES, 'UTF-8'); ?></p>
-              <div class="home-context-facts">
-                <p id="home-context-region" class="home-context-fact"><?= htmlspecialchars(qk_t('home.area_label'), ENT_QUOTES, 'UTF-8'); ?>: --</p>
-                <p id="home-context-window" class="home-context-fact"><?= htmlspecialchars(qk_t('home.window_label'), ENT_QUOTES, 'UTF-8'); ?>: --</p>
-                <p id="home-context-pressure" class="home-context-fact"><?= htmlspecialchars(qk_t('home.intensity_label'), ENT_QUOTES, 'UTF-8'); ?>: --</p>
-                <p id="home-context-probability" class="home-context-fact"><?= htmlspecialchars(qk_t('home.activity_index_label'), ENT_QUOTES, 'UTF-8'); ?>: --</p>
-              </div>
-              <div class="home-context-earthquake-row">
-                <div class="home-context-earthquake-head">
-                  <h5 id="home-context-eq-title"><?= htmlspecialchars(qk_t('home.highlighted_earthquakes'), ENT_QUOTES, 'UTF-8'); ?></h5>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUAKRS - Live Global Monitor</title>
+    <!-- Brutalist Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="/assets/vendor/leaflet/leaflet.css"
+    >
+    <link rel="stylesheet" href="/assets/css/quakrs.css">
+</head>
+<body>
+    <!-- Heavy Duty Grid Container -->
+    <div class="monitor-container">
+        
+        <!-- Header -->
+        <header class="system-header border-bottom">
+            <div class="logo-area">
+                <h1>QUAKRS</h1>
+                <div class="sismograph-icon">
+                    <svg viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg" aria-label="Quakrs logo">
+                        <polyline points="0,15 20,15 25,5 30,25 35,2 40,28 45,10 50,20 55,15 100,15" fill="none" class="stroke-seismic" stroke-width="2"/>
+                    </svg>
                 </div>
-                <ul id="home-context-eq-list" class="home-context-earthquake-list">
-                  <li class="home-context-earthquake-item"><?= htmlspecialchars(qk_t('home.loading_contextual_events'), ENT_QUOTES, 'UTF-8'); ?></li>
-                </ul>
-              </div>
             </div>
-            <article class="home-context-editorial-feature">
-              <p class="home-context-editorial-kicker"><?= htmlspecialchars(qk_t('home.latest_editorial_article'), ENT_QUOTES, 'UTF-8'); ?></p>
-              <h5 class="home-context-editorial-title">
-                <a class="inline-link" href="<?= htmlspecialchars($homeLatestEditorialUrl, ENT_QUOTES, 'UTF-8'); ?>">
-                  <?= htmlspecialchars($homeLatestEditorialTitle !== '' ? $homeLatestEditorialTitle : qk_t('home.latest_editorial_fallback_title'), ENT_QUOTES, 'UTF-8'); ?>
-                </a>
-              </h5>
-              <p class="home-context-editorial-lead">
-                <?= htmlspecialchars($homeLatestEditorialLead !== '' ? $homeLatestEditorialLead : qk_t('home.latest_editorial_fallback_lead'), ENT_QUOTES, 'UTF-8'); ?>
-                <?php if ($homeLatestEditorialLeadTrimmed): ?>
-                  ...
-                  <a class="home-context-editorial-readmore" href="<?= htmlspecialchars($homeLatestEditorialUrl, ENT_QUOTES, 'UTF-8'); ?>">
-                    <?= htmlspecialchars(qk_t('home.read_more'), ENT_QUOTES, 'UTF-8'); ?>
-                  </a>
-                <?php endif; ?>
-              </p>
-            </article>
-          </div>
-        </div>
-      </aside>
-      <aside class="card home-hero-events-rail" aria-label="<?= htmlspecialchars(qk_t('home.aria_live_significant'), ENT_QUOTES, 'UTF-8'); ?>">
-        <div class="feed-head home-hero-events-head">
-          <div class="home-section-heading">
-            <p class="home-section-kicker"><?= htmlspecialchars(qk_t('home.priority_stream'), ENT_QUOTES, 'UTF-8'); ?></p>
-            <h3><?= htmlspecialchars(qk_t('home.live_significant'), ENT_QUOTES, 'UTF-8'); ?></h3>
-          </div>
-          <div class="home-priority-meta-links">
-            <span id="home-significant-head-note"><?= htmlspecialchars(qk_t('home.ranked_feed'), ENT_QUOTES, 'UTF-8'); ?></span>
-            <a class="home-priority-explain-link" href="/priority-levels.php"><?= htmlspecialchars(qk_t('home.how_priority'), ENT_QUOTES, 'UTF-8'); ?></a>
-          </div>
-        </div>
-        <ul id="home-significant-list" class="snapshot-list home-priority-rail-list home-hero-events-list">
-          <li class="snapshot-row"><?= htmlspecialchars(qk_t('home.loading_significant_events'), ENT_QUOTES, 'UTF-8'); ?></li>
-        </ul>
-      </aside>
+            <div class="status-toggle border-left">
+                <span class="mono-data toggle-label">LIVE STATUS: <span class="text-seismic">ACTIVE</span></span>
+                <div class="toggle-switch active" id="main-toggle">
+                    <div class="knob"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Bar (SPA Controls) -->
+        <nav class="system-nav border-bottom">
+            <!-- New data-color-class hooks to tell JS which Acid theme to apply to the active tab -->
+            <a href="#" class="nav-btn border-right active color-global" data-target="global" data-color-class="color-global">GLOBAL MAP</a>
+            <a href="#" class="nav-btn border-right" data-target="seismic" data-color-class="color-seismic">SEISMIC</a>
+            <a href="#" class="nav-btn border-right" data-target="volcanoes" data-color-class="color-volcanoes">VOLCANOES</a>
+            <a href="#" class="nav-btn border-right" data-target="tsunamis" data-color-class="color-tsunamis">TSUNAMIS</a>
+            <a href="#" class="nav-btn border-right" data-target="space" data-color-class="color-space">SPACE WEATHER</a>
+            <a href="#" class="nav-btn border-right" data-target="reports" data-color-class="color-reports">REPORTS/BLOG</a>
+            <a href="#" class="nav-btn border-right" data-target="network" data-color-class="color-network">NETWORK</a>
+            <button class="icon-btn search-btn border-left" style="margin-left: auto;">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="square">
+                    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Main Content Area Grid (Strict 3 Columns) -->
+        <main class="system-main">
+            <!-- LEFT PANEL CONTAINER -->
+            <section class="panel panel-left-container border-right relative">
+                
+                <!-- GLOBAL LEFT -->
+                <div class="tab-content left-tab-content active" id="left-global">
+                    <h2 class="panel-header border-bottom bg-black text-seismic">GLOBAL SEISMIC EVENTS</h2>
+                    <div class="list-container seismic-feed global-feed">
+                        <div class="seismic-feed-toolbar border-bottom">
+                            <button class="seismic-feed-btn border-all" type="button">7D VIEW</button>
+                            <button class="seismic-feed-btn active border-all" type="button">LIVE FEED</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEISMIC LEFT -->
+                <div class="tab-content left-tab-content" id="left-seismic">
+                    <h2 class="panel-header border-bottom bg-black text-seismic">GLOBAL SEISMIC EVENTS</h2>
+                    <div class="list-container seismic-feed">
+                        <div class="seismic-feed-toolbar border-bottom">
+                            <button class="seismic-feed-btn border-all" type="button">7D VIEW</button>
+                            <button class="seismic-feed-btn active border-all" type="button">LIVE FEED</button>
+                        </div>
+
+                        <article class="seismic-feed-entry border-bottom">
+                            <div class="seismic-feed-entry-top">
+                                <div class="seismic-mag mag-74">MAG 7.4</div>
+                                <div class="seismic-tag seismic-tag-danger">TSUNAMI WARNING</div>
+                            </div>
+                            <div class="seismic-loc">HONSHU, JAPAN - PACIFIC OCEAN</div>
+                            <div class="seismic-meta mono-data">
+                                <span>DEPTH: <strong>12.4 KM</strong></span>
+                                <span>UTC: <strong>11:24:02</strong></span>
+                            </div>
+                        </article>
+
+                        <article class="seismic-feed-entry border-bottom">
+                            <div class="seismic-feed-entry-top">
+                                <div class="seismic-mag mag-68">MAG 6.8</div>
+                                <div class="seismic-tag seismic-tag-neutral">MAJOR</div>
+                            </div>
+                            <div class="seismic-loc">SOUTH SANDWICH ISLANDS</div>
+                            <div class="seismic-meta mono-data">
+                                <span>DEPTH: <strong>35.0 KM</strong></span>
+                                <span>UTC: <strong>10:55:18</strong></span>
+                            </div>
+                        </article>
+
+                        <article class="seismic-feed-entry border-bottom">
+                            <div class="seismic-feed-entry-top">
+                                <div class="seismic-mag mag-52">MAG 5.2</div>
+                            </div>
+                            <div class="seismic-loc">REYKJANES RIDGE</div>
+                            <div class="seismic-meta mono-data">
+                                <span>DEPTH: <strong>10.0 KM</strong></span>
+                                <span>UTC: <strong>09:12:44</strong></span>
+                            </div>
+                        </article>
+
+                        <article class="seismic-feed-entry border-bottom">
+                            <div class="seismic-feed-entry-top">
+                                <div class="seismic-mag mag-49">MAG 4.9</div>
+                            </div>
+                            <div class="seismic-loc">BANDA SEA, INDONESIA</div>
+                            <div class="seismic-meta mono-data">
+                                <span>DEPTH: <strong>112.0 KM</strong></span>
+                                <span>UTC: <strong>08:44:21</strong></span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- VOLCANOES LEFT -->
+                <div class="tab-content left-tab-content" id="left-volcanoes">
+                    <h2 class="panel-header border-bottom bg-black text-volcano">ACTIVE VOLCANOES</h2>
+                    <div class="list-container">
+                        <!-- Radioactive Green Theme -->
+                        <article class="data-entry">
+                            <h3 class="mb-med border-bottom text-volcano bg-black p-small px-tiny">KRAKATOA <span class="text-white" style="float:right;">VEI 4</span></h3>
+                            <div class="mono-small">
+                                <div>REGION: INDONESIA</div>
+                                <div>STATUS: ERUPTING</div>
+                                <div>ALERT: <span class="bg-volcano px-tiny text-black font-bold">RED LEVEL</span></div>
+                                <div class="mt-small font-bold">ASH PLUME: 12,000 FT</div>
+                            </div>
+                        </article>
+                        <article class="data-entry">
+                            <h3 class="mb-med border-bottom p-small px-tiny">ETNA <span style="float:right;">VEI 2</span></h3>
+                            <div class="mono-small">
+                                <div>REGION: ITALY</div>
+                                <div>STATUS: STROMBOLIAN</div>
+                                <div>ALERT: <span class="bg-black px-tiny text-volcano font-bold">ELEVATED</span></div>
+                                <div class="mt-small">MAGMA: BASALTIC</div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- TSUNAMIS LEFT -->
+                <div class="tab-content left-tab-content" id="left-tsunamis">
+                    <h2 class="panel-header border-bottom bg-black text-tsunami">TSUNAMI WARNINGS</h2>
+                    <div class="list-container">
+                        <article class="data-entry">
+                            <h3 class="bg-black text-tsunami p-small px-tiny mb-med">WARNING: PACIFIC</h3>
+                            <div class="mono-small">
+                                <div>SOURCE: HONSHU EQ</div>
+                                <div>ETA: 45 MINUTES</div>
+                                <div>BUOY: 4203</div>
+                                <div class="mt-small font-bold text-tsunami bg-black display-ib px-small">WAVE: +4.2M</div>
+                            </div>
+                            <!-- Electric Cyan Bar Graph -->
+                            <div class="graph-bar-container mt-small border-all border-tsunami" style="height:20px;">
+                                <div class="graph-bar bg-tsunami pulse-bg" style="width: 100%"></div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- SPACE WEATHER LEFT -->
+                <div class="tab-content left-tab-content" id="left-space">
+                    <h2 class="panel-header border-bottom bg-black text-space">SPACE WEATHER</h2>
+                    <div class="list-container" style="background-color: #050505; color: var(--color-space);">
+                        <!-- Acid Yellow Theme (Oscilloscope UI style) -->
+                        <div class="p-med">
+                            <article class="oscilloscope-panel border-space text-space">
+                                <h3 class="mb-med border-bottom border-space">SOLAR FLARE: X-CLASS</h3>
+                                <div class="mono-small mb-med">
+                                    <div>FLUX: X2.1</div>
+                                    <div>RADIO BLACKOUT: R3</div>
+                                </div>
+                                <svg viewBox="0 0 100 30" width="100%" height="40" class="scope-wave">
+                                    <polyline points="0,25 20,25 30,5 40,28 50,15 60,25 100,25"/>
+                                </svg>
+                            </article>
+                            <article class="oscilloscope-panel border-space text-space">
+                                <h3 class="mb-med border-bottom border-space">Kp INDEX GRAPH</h3>
+                                <div class="mono-small mb-med">
+                                    <div>LEVEL: 7 (SEVERE STORM)</div>
+                                </div>
+                                <div class="flex-row" style="gap:4px; height:20px;">
+                                    <div class="bg-space" style="flex:1; opacity:0.3"></div>
+                                    <div class="bg-space" style="flex:1; opacity:0.3"></div>
+                                    <div class="bg-space" style="flex:1; opacity:0.6"></div>
+                                    <div class="bg-space" style="flex:1; opacity:0.6"></div>
+                                    <div class="bg-space" style="flex:1; opacity:0.9"></div>
+                                    <div class="bg-space" style="flex:1; opacity:1.0; border:var(--border-width) solid #FFF;"></div>
+                                    <div class="border-space" style="flex:1; border:1px solid var(--color-space);"></div>
+                                    <div class="border-space" style="flex:1; border:1px solid var(--color-space);"></div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REPORTS / BLOG LEFT -->
+                <div class="tab-content left-tab-content" id="left-reports">
+                    <h2 class="panel-header border-bottom bg-black text-white">FIELD REPORTS</h2>
+                    <div class="list-container">
+                        <article class="data-entry report-item bg-white text-black font-bold border-bottom" data-report-id="rep-01">
+                            <h3>REP-2026-A1</h3>
+                            <div class="mono-small">Honshu Post-Shock Analysis</div>
+                            <div class="mono-small mt-tiny text-seismic">SEISMIC LAB</div>
+                        </article>
+                        <article class="data-entry report-item" data-report-id="rep-02">
+                            <h3>REP-2026-V8</h3>
+                            <div class="mono-small">Krakatoa Tephra Dispersion</div>
+                            <div class="mono-small mt-tiny text-volcano">VULCANOLOGY</div>
+                        </article>
+                    </div>
+                </div>
+                
+                <!-- NETWORK LEFT -->
+                <div class="tab-content left-tab-content" id="left-network">
+                    <h2 class="panel-header border-bottom bg-black text-white">SYSTEM NETWORK</h2>
+                    <div class="list-container">
+                        <div class="p-med text-center">
+                            <h3>SENSORS ACTIVE: 412</h3>
+                            <div class="mt-med border-all p-med font-bold text-white bg-black">GLOBAL UPLINK OK</div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- CENTER PANEL CONTAINER -->
+            <section class="panel panel-center-container border-right relative">
+                
+                <!-- GIS MAP VIEW -->
+                <div class="tab-content center-tab-content active" id="center-map">
+                    <div class="panel-header-overlay bg-black border-bottom border-right">
+                        <h2 class="text-white">TOPOGRAPHIC MAP <span class="text-seismic" style="font-size:0.8rem">LIVE</span></h2>
+                    </div>
+                    
+                    <div class="map-container relative">
+                        <div class="map-grid"></div>
+                        <div id="brutalist-map" class="brutalist-map map-variant-graphite border-all"></div>
+                        <div class="map-cursor-coords mono-small border-all">LAT -- | LON --</div>
+
+                        <div class="map-legend border-top border-left bg-black text-white mono-small">
+                            <div class="legend-title border-bottom text-white mb-small pb-tiny">GIS LEGEND</div>
+                            <div class="legend-row"><span class="lg-chip lg-seismic"></span> SEISMIC EVENTS</div>
+                            <div class="legend-row"><span class="lg-chip lg-volcano"></span> VOLCANIC STATUS</div>
+                            <div class="legend-row"><span class="lg-chip lg-tsunami"></span> TSUNAMI WARNING</div>
+                            <div class="legend-row legend-note">GRID STEP: 30° / UTC FEED</div>
+                        </div>
+
+                        <div class="map-tics mono-small">
+                            <span class="tic-y" style="top: 25%" data-ratio="0.25">--</span>
+                            <span class="tic-y" style="top: 50%" data-ratio="0.50">--</span>
+                            <span class="tic-y" style="top: 75%" data-ratio="0.75">--</span>
+                            <span class="tic-x" style="left: 17%" data-ratio="0.17">--</span>
+                            <span class="tic-x" style="left: 50%" data-ratio="0.50">--</span>
+                            <span class="tic-x" style="left: 83%" data-ratio="0.83">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REPORT READER TEXT VIEW -->
+                <div class="tab-content center-tab-content terminal-text" id="center-reports">
+                    <div class="report-document mt-large">
+                        <h1 class="text-seismic border-bottom border-seismic">REP-2026-A1: HONSHU POST-SHOCK</h1>
+                        <p class="mono-small text-seismic mb-med">AUTHOR: J. DOE | DATE: 2026-03-30 09:00 UTC | CLASSIFICATION: OPEN</p>
+                        <p><strong>ABSTRACT:</strong><br>
+                        Initial telemetry confirms a massive rupture along the subduction boundary. Main shock magnitude recorded at 7.4 Mw, resulting in immediate geodetic deformation spanning a 400km radius.</p>
+                        <p><strong>STRUCTURAL IMPLICATIONS:</strong><br>
+                        Local infrastructure reports localized failures. Sensor array `TKY-01` through `TKY-12` experienced a +3.2g peak ground acceleration. Tsunami buoys in sector 4 rapidly displaced, signaling generation of a multi-meter anomalous wave form.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RIGHT PANEL CONTAINER (DYNAMIC SPA CATEGORY PANELS) -->
+            <aside class="panel panel-right-container relative">
+                
+                <!-- SEISMIC RIGHT PANELS -->
+                <div class="tab-content right-tab-content active" id="right-seismic">
+                    <div class="alert-block bg-seismic border-bottom text-black p-large">
+                         <h3 class="alert-header">
+                             <svg viewBox="0 0 24 24" fill="none" class="hazard-icon" stroke="#000000" stroke-width="2">
+                                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                 <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                             </svg> GLOBAL ALERT
+                         </h3>
+                         <div class="alert-msg mono-data font-bold">CRITICAL: PACIFIC SEISMIC ACTIVITY SURGE DETECTED.</div>
+                    </div>
+                    <!-- Analytics block -->
+                    <div class="analytics-block border-bottom bg-black text-white">
+                         <div class="analytics-title bg-white text-black flex-row" style="justify-content: space-between;">
+                             <span>SEISMIC SENSORS</span><span class="text-seismic">[LIVE]</span>
+                         </div>
+                         <div class="sensor-list mono-small">
+                             <div class="sensor-row">
+                                 <div class="sensor-info"><span class="font-bold">TOKYO (TKY)</span><span class="text-black bg-seismic px-tiny">FAULTING</span></div>
+                                 <svg viewBox="0 0 100 24" preserveAspectRatio="none" class="sensor-graph border-seismic border-all" style="background:#000; width:100px; height:24px"><polyline points="0,12 5,12 10,2 15,22 20,5 25,18 30,12 100,12" fill="none" class="stroke-seismic" stroke-width="1.5"/></svg>
+                             </div>
+                             <div class="sensor-row">
+                                 <div class="sensor-info"><span class="font-bold">SANTIAGO (STG)</span><span class="text-white bg-black px-tiny border-white border-all">OK</span></div>
+                                 <svg viewBox="0 0 100 24" preserveAspectRatio="none" class="sensor-graph" style="background:#000; width:100px; height:24px"><polyline points="0,12 20,12 25,10 30,14 35,12 100,12" fill="none" class="stroke-white" stroke-width="1.5"/></svg>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+
+                <!-- VOLCANOES RIGHT PANELS -->
+                <div class="tab-content right-tab-content" id="right-volcanoes">
+                    <div class="alert-block bg-volcano border-bottom text-black p-large">
+                         <h3 class="alert-header">GLOBAL ERUPTION METRICS</h3>
+                         <div class="alert-msg mono-data font-bold">VEI BASELINES ELEVATED ACCORDING TO GLOBAL SO2 EMISSIONS.</div>
+                    </div>
+                    <div class="analytics-block p-med bg-black text-volcano border-bottom flex-col" style="flex-grow:1;">
+                        <span class="font-bold mb-med border-bottom border-volcano">ATMOSPHERIC IMPACT</span>
+                        <div class="mono-small">GLOBAL ASH DISPERSION ZONES</div>
+                        <div style="width:100%; height:150px; background:#000; border:1px solid var(--color-volcano); margin-top:10px;" class="relative pulse-bg">
+                            <!-- Visual box for ash cloud representation -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TSUNAMIS RIGHT PANELS -->
+                <div class="tab-content right-tab-content" id="right-tsunamis">
+                    <div class="alert-block bg-tsunami border-bottom text-black p-large">
+                         <h3 class="alert-header">DART BUOY NETWORK</h3>
+                         <div class="alert-msg mono-data font-bold">DEEP-OCEAN ASSESSMENT & REPORTING.</div>
+                    </div>
+                    <div class="analytics-block p-med">
+                         <div class="mono-bold mb-small border-bottom border-tsunami text-tsunami">WATER COLUMN DISPLACEMENT</div>
+                         <div class="graph-bar-container border-all border-black mb-med"><div class="graph-bar bg-tsunami pulse-strong" style="width: 85%"></div></div>
+                    </div>
+                </div>
+
+                <!-- SPACE WEATHER RIGHT PANELS -->
+                <div class="tab-content right-tab-content" id="right-space">
+                    <div class="alert-block bg-space border-bottom text-black p-large">
+                         <h3 class="alert-header">NOAA SWPC FEED</h3>
+                         <div class="alert-msg mono-data font-bold">SOLAR CYCLE 25 PEAK ACTIVITY DETECTED.</div>
+                    </div>
+                    <div class="analytics-block p-med bg-black text-space" style="flex-grow:1;">
+                         <div class="mono-bold mb-small border-bottom border-space">MAGNETOSPHERE COMPRESSION</div>
+                         <div style="width:100%; height:100px; border:2px solid var(--color-space); background:#111;">
+                             <!-- Mock Oscilloscope wave -->
+                             <svg viewBox="0 0 100 30" width="100%" height="100" class="scope-wave pulse-bg">
+                                <polyline points="0,5 20,5 30,25 40,2 50,15 60,5 100,5" stroke="var(--color-space)" stroke-width="2" fill="none"/>
+                             </svg>
+                         </div>
+                    </div>
+                </div>
+
+                <!-- REPORTS / NETWORK OVERVIEW -->
+                <div class="tab-content right-tab-content text-white bg-black" id="right-reports" style="flex-grow:1;">
+                    <div class="p-large mono-small text-seismic border-bottom border-seismic">
+                        <h3>REMOTE ACCESS PORTAL</h3>
+                    </div>
+                    <div class="p-med mono-small opacity-50">DOCUMENT HISTORY UNAVAILABLE</div>
+                </div>
+
+                <div class="tab-content right-tab-content p-med bg-black text-white" id="right-network" style="flex-grow:1;">
+                     <div class="analytics-title border-bottom mb-med px-small text-white">SYSTEM LOAD & COMM LINK</div>
+                     <div class="mono-small">
+                         <div class="flex-row mb-small" style="justify-content: space-between;">
+                             <span>MAIN DB I/O:</span>
+                             <span class="text-seismic font-bold">94%</span>
+                         </div>
+                         <div class="graph-bar-container border-all border-white mb-med"><div class="graph-bar bg-seismic pulse-bg" style="width: 94%"></div></div>
+                         
+                         <div class="flex-row mb-small" style="justify-content: space-between;">
+                             <span>SATELLITE UPLINK:</span>
+                             <span class="font-bold text-volcano">OK (14ms)</span>
+                         </div>
+                         <div class="graph-bar-container border-all border-white"><div class="graph-bar bg-volcano" style="width: 100%"></div></div>
+                     </div>
+                </div>
+
+            </aside>
+        </main>
+
+        <!-- Footer -->
+        <footer class="system-footer mono-small flex-row px-large border-top">
+            <div class="footer-links text-white">
+                <a href="#" class="footer-link">SYS-INFO</a> | 
+                <a href="#" class="footer-link">SECURE COMM</a> | 
+                <a href="#" class="footer-link text-seismic">UN-DRR.ORG</a>
+            </div>
+            <div class="footer-timestamp text-right text-seismic font-bold">
+                <span id="live-time">LAST UPDATE: 2026-03-30 00:00:00 UTC</span> | TERMINAL V5.0
+            </div>
+        </footer>
     </div>
-  </div>
-</main>
 
-<section id="launch" class="launch home-v2-launch home-priority-launch home-neo-launch">
-  <article class="card home-priority-snapshot home-neo-snapshot" aria-label="<?= htmlspecialchars(qk_t('home.aria_global_snapshot'), ENT_QUOTES, 'UTF-8'); ?>">
-    <div class="feed-head">
-      <div class="home-section-heading">
-        <p class="home-section-kicker"><?= htmlspecialchars(qk_t('home.operational_overview'), ENT_QUOTES, 'UTF-8'); ?></p>
-        <h3><?= htmlspecialchars(qk_t('home.global_snapshot'), ENT_QUOTES, 'UTF-8'); ?></h3>
-      </div>
-    </div>
-    <div id="home-snapshot" class="launch-overview home-v2-overview home-neo-overview">
-      <article class="overview-item">
-        <p class="kpi-label"><?= htmlspecialchars(qk_t('home.events_24h'), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p class="kpi-value" data-home-mirror="total">--</p>
-        <p class="kpi-note"><?= htmlspecialchars(qk_t('home.earthquakes_latest_feed'), ENT_QUOTES, 'UTF-8'); ?></p>
-      </article>
-      <article class="overview-item home-v2-strongest">
-        <p class="kpi-label"><?= htmlspecialchars(qk_t('home.strongest_earthquake'), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p class="kpi-value" data-home-mirror="strongest">--</p>
-        <p class="kpi-note" data-home-mirror="strongest-place"><?= htmlspecialchars(qk_t('home.no_data'), ENT_QUOTES, 'UTF-8'); ?></p>
-      </article>
-      <article class="overview-item">
-        <p class="kpi-label"><?= htmlspecialchars(qk_t('home.tremor_clusters'), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p id="home-status-tremor-clusters" class="kpi-value">--</p>
-        <p id="home-status-tremor-note" class="kpi-note"><?= htmlspecialchars(qk_t('home.loading_tremor_signals'), ENT_QUOTES, 'UTF-8'); ?></p>
-      </article>
-      <article class="overview-item">
-        <p class="kpi-label"><?= htmlspecialchars(qk_t('home.active_volcanoes'), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p id="home-status-volcanoes" class="kpi-value">--</p>
-        <p id="home-status-volcano-note" class="kpi-note"><?= htmlspecialchars(qk_t('home.loading_volcano_status'), ENT_QUOTES, 'UTF-8'); ?></p>
-      </article>
-      <article class="overview-item">
-        <p class="kpi-label"><?= htmlspecialchars(qk_t('home.geomagnetic_kp'), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p id="home-status-kp" class="kpi-value">--</p>
-        <p id="home-status-space-note" class="kpi-note"><?= htmlspecialchars(qk_t('home.loading_space_weather'), ENT_QUOTES, 'UTF-8'); ?></p>
-      </article>
-      <article class="overview-item">
-        <p class="kpi-label"><?= htmlspecialchars(qk_t('home.tsunami_alerts'), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p id="home-status-tsunami" class="kpi-value">--</p>
-        <p id="home-status-tsunami-note" class="kpi-note"><?= htmlspecialchars(qk_t('home.loading_tsunami_status'), ENT_QUOTES, 'UTF-8'); ?></p>
-      </article>
-    </div>
-  </article>
-
-  <div class="home-dashboard-grid">
-    <div class="home-dashboard-main">
-      <article class="card home-priority-board" aria-live="polite">
-        <div class="snapshot-head">
-          <h3><?= htmlspecialchars(qk_t('home.priority_board'), ENT_QUOTES, 'UTF-8'); ?></h3>
-          <span id="home-priority-mode"><?= htmlspecialchars(qk_t('home.current_global_focus'), ENT_QUOTES, 'UTF-8'); ?></span>
-        </div>
-        <div id="home-priority-board-cards" class="home-priority-board-cards">
-          <p class="home-priority-loading"><?= htmlspecialchars(qk_t('home.loading_critical_signals'), ENT_QUOTES, 'UTF-8'); ?></p>
-        </div>
-        <p id="home-priority-support" class="home-priority-support">
-          <?= htmlspecialchars(qk_t('home.priority_support'), ENT_QUOTES, 'UTF-8'); ?>
-        </p>
-        <a class="home-priority-explain-link" href="/priority-levels.php"><?= htmlspecialchars(qk_t('home.understand_priority_logic'), ENT_QUOTES, 'UTF-8'); ?></a>
-      </article>
-    </div>
-
-    <aside class="home-dashboard-side">
-    </aside>
-
-    <section class="home-v2-map home-neo-map home-dashboard-map" aria-label="<?= htmlspecialchars(qk_t('home.global_activity_map'), ENT_QUOTES, 'UTF-8'); ?>">
-      <div class="feed-head">
-        <h3><?= htmlspecialchars(qk_t('home.global_activity_map'), ENT_QUOTES, 'UTF-8'); ?></h3>
-        <a class="btn btn-ghost home-v2-map-btn" href="/maps.php?fullscreen=1"><?= htmlspecialchars(qk_t('home.open_full_map'), ENT_QUOTES, 'UTF-8'); ?></a>
-      </div>
-      <div class="home-dashboard-map-frame">
-        <article class="card home-dashboard-earthquakes">
-          <label class="home-map-list-filter" for="home-map-viewport-only">
-            <input id="home-map-viewport-only" type="checkbox">
-            <span><?= htmlspecialchars(qk_t('home.only_list_earthquakes_shown'), ENT_QUOTES, 'UTF-8'); ?></span>
-          </label>
-          <ul id="home-map-feed-list" class="snapshot-list">
-            <li class="snapshot-row"><?= htmlspecialchars(qk_t('home.loading_earthquake_feed'), ENT_QUOTES, 'UTF-8'); ?></li>
-          </ul>
-          <a class="inline-link" href="/earthquakes.php"><?= htmlspecialchars(qk_t('home.open_earthquakes'), ENT_QUOTES, 'UTF-8'); ?></a>
-        </article>
-        <article class="card home-v2-map-card">
-          <div class="map-wrap insight-map-wrap">
-            <div
-              id="world-map-leaflet"
-              class="world-map-leaflet"
-              role="img"
-              aria-label="<?= htmlspecialchars(qk_t('home.aria_live_global_map'), ENT_QUOTES, 'UTF-8'); ?>"
-            ></div>
-          </div>
-        </article>
-      </div>
-    </section>
-  </div>
-</section>
-
-<section class="panel home-dashboard-monitors" aria-label="<?= htmlspecialchars(qk_t('home.aria_category_modules'), ENT_QUOTES, 'UTF-8'); ?>">
-  <div class="feed-head">
-    <div class="home-section-heading">
-      <p class="home-section-kicker"><?= htmlspecialchars(qk_t('home.monitoring_layers'), ENT_QUOTES, 'UTF-8'); ?></p>
-      <h3><?= htmlspecialchars(qk_t('home.monitors'), ENT_QUOTES, 'UTF-8'); ?></h3>
-    </div>
-    <a class="inline-link home-dashboard-archive-link" href="/archive.php"><?= htmlspecialchars(qk_t('home.browse_archive'), ENT_QUOTES, 'UTF-8'); ?></a>
-  </div>
-  <div class="home-dashboard-monitors-grid">
-    <article id="home-panel-clusters" class="snapshot-card home-priority-module home-neo-module home-dashboard-monitor">
-      <div class="snapshot-head">
-        <h4><a class="home-module-title-link" href="/data-clusters.php"><?= htmlspecialchars(qk_t('home.tremor_clusters'), ENT_QUOTES, 'UTF-8'); ?></a></h4>
-        <span><?= htmlspecialchars(qk_t('home.subsurface_pressure'), ENT_QUOTES, 'UTF-8'); ?></span>
-      </div>
-      <ul id="home-clusters-list" class="snapshot-list home-live-list home-hazard-list">
-        <li class="snapshot-row"><?= htmlspecialchars(qk_t('home.loading_tremor_clusters'), ENT_QUOTES, 'UTF-8'); ?></li>
-      </ul>
-    </article>
-    <article class="snapshot-card home-priority-module home-neo-module home-dashboard-monitor">
-      <div class="snapshot-head">
-        <h4><a class="home-module-title-link" href="/earthquakes.php"><?= htmlspecialchars(qk_t('nav.earthquakes'), ENT_QUOTES, 'UTF-8'); ?></a></h4>
-        <span><?= htmlspecialchars(qk_t('home.rapid_picks'), ENT_QUOTES, 'UTF-8'); ?></span>
-      </div>
-      <ul id="home-module-earthquakes-list" class="snapshot-list home-live-list">
-        <li class="snapshot-row"><?= htmlspecialchars(qk_t('home.loading_earthquakes'), ENT_QUOTES, 'UTF-8'); ?></li>
-      </ul>
-    </article>
-    <article id="home-panel-volcano" class="snapshot-card home-priority-module home-neo-module home-dashboard-monitor">
-      <div class="snapshot-head">
-        <h4><a class="home-module-title-link" href="/volcanoes.php"><?= htmlspecialchars(qk_t('nav.volcanoes'), ENT_QUOTES, 'UTF-8'); ?></a></h4>
-        <span><?= htmlspecialchars(qk_t('home.bulletin_cycle'), ENT_QUOTES, 'UTF-8'); ?></span>
-      </div>
-      <ul id="home-volcano-list" class="snapshot-list home-live-list home-volcano-list">
-        <li class="snapshot-row"><?= htmlspecialchars(qk_t('home.loading_volcano_feed'), ENT_QUOTES, 'UTF-8'); ?></li>
-      </ul>
-    </article>
-    <article id="home-panel-tsunami" class="snapshot-card home-priority-module home-neo-module home-dashboard-monitor">
-      <div class="snapshot-head">
-        <h4><a class="home-module-title-link" href="/tsunami.php"><?= htmlspecialchars(qk_t('home.tsunami_alerts'), ENT_QUOTES, 'UTF-8'); ?></a></h4>
-        <span><?= htmlspecialchars(qk_t('home.operational_alerting'), ENT_QUOTES, 'UTF-8'); ?></span>
-      </div>
-      <ul id="home-module-tsunami-list" class="snapshot-list home-live-list">
-        <li class="snapshot-row"><?= htmlspecialchars(qk_t('home.loading_tsunami_module'), ENT_QUOTES, 'UTF-8'); ?></li>
-      </ul>
-    </article>
-    <article id="home-panel-space" class="snapshot-card home-priority-module home-neo-module home-dashboard-monitor home-dashboard-monitor-wide">
-      <div class="snapshot-head">
-        <h4><a class="home-module-title-link" href="/space-weather.php"><?= htmlspecialchars(qk_t('nav.space_weather'), ENT_QUOTES, 'UTF-8'); ?></a></h4>
-        <span><?= htmlspecialchars(qk_t('home.solar_watch'), ENT_QUOTES, 'UTF-8'); ?></span>
-      </div>
-      <ul id="home-module-space-list" class="snapshot-list home-live-list">
-        <li class="snapshot-row"><?= htmlspecialchars(qk_t('home.loading_space_module'), ENT_QUOTES, 'UTF-8'); ?></li>
-      </ul>
-    </article>
-  </div>
-</section>
-
-<section class="panel home-dashboard-covers" aria-label="<?= htmlspecialchars(qk_t('home.aria_what_quakrs_covers'), ENT_QUOTES, 'UTF-8'); ?>">
-  <div class="home-section-heading">
-    <p class="home-section-kicker"><?= htmlspecialchars(qk_t('home.mission_scope'), ENT_QUOTES, 'UTF-8'); ?></p>
-    <h3><?= htmlspecialchars(qk_t('home.what_quakrs_covers'), ENT_QUOTES, 'UTF-8'); ?></h3>
-    <p class="home-section-note"><?= htmlspecialchars(qk_t('home.four_surfaces'), ENT_QUOTES, 'UTF-8'); ?></p>
-  </div>
-  <div class="home-v2-cover-grid home-dashboard-cover-grid">
-    <a class="card home-v2-cover-card" href="/earthquakes.php">
-      <span class="home-v2-cover-tag"><?= htmlspecialchars(qk_t('home.cover_live_monitor'), ENT_QUOTES, 'UTF-8'); ?></span>
-      <div class="home-v2-cover-media home-v2-cover-media-earthquakes" aria-hidden="true"></div>
-      <h4><?= htmlspecialchars(qk_t('nav.earthquakes'), ENT_QUOTES, 'UTF-8'); ?></h4>
-      <p><?= htmlspecialchars(qk_t('home.cover_earthquakes_desc'), ENT_QUOTES, 'UTF-8'); ?></p>
-    </a>
-    <a class="card home-v2-cover-card" href="/volcanoes.php">
-      <span class="home-v2-cover-tag"><?= htmlspecialchars(qk_t('home.cover_bulletins'), ENT_QUOTES, 'UTF-8'); ?></span>
-      <div class="home-v2-cover-media home-v2-cover-media-volcanoes" aria-hidden="true"></div>
-      <h4><?= htmlspecialchars(qk_t('nav.volcanoes'), ENT_QUOTES, 'UTF-8'); ?></h4>
-      <p><?= htmlspecialchars(qk_t('home.cover_volcanoes_desc'), ENT_QUOTES, 'UTF-8'); ?></p>
-    </a>
-    <a class="card home-v2-cover-card" href="/tsunami.php">
-      <span class="home-v2-cover-tag"><?= htmlspecialchars(qk_t('home.cover_alerts'), ENT_QUOTES, 'UTF-8'); ?></span>
-      <div class="home-v2-cover-media home-v2-cover-media-tsunami" aria-hidden="true"></div>
-      <h4><?= htmlspecialchars(qk_t('home.tsunami_alerts'), ENT_QUOTES, 'UTF-8'); ?></h4>
-      <p><?= htmlspecialchars(qk_t('home.cover_tsunami_desc'), ENT_QUOTES, 'UTF-8'); ?></p>
-    </a>
-    <a class="card home-v2-cover-card" href="/space-weather.php">
-      <span class="home-v2-cover-tag"><?= htmlspecialchars(qk_t('home.cover_solar_watch'), ENT_QUOTES, 'UTF-8'); ?></span>
-      <div class="home-v2-cover-media home-v2-cover-media-space" aria-hidden="true"></div>
-      <h4><?= htmlspecialchars(qk_t('nav.space_weather'), ENT_QUOTES, 'UTF-8'); ?></h4>
-      <p><?= htmlspecialchars(qk_t('home.cover_space_desc'), ENT_QUOTES, 'UTF-8'); ?></p>
-    </a>
-    <a class="card home-v2-cover-card" href="/archive.php">
-      <span class="home-v2-cover-tag"><?= htmlspecialchars(qk_t('home.cover_historic_search'), ENT_QUOTES, 'UTF-8'); ?></span>
-      <div class="home-v2-cover-media home-v2-cover-media-archive" aria-hidden="true"></div>
-      <h4><?= htmlspecialchars(qk_t('nav.archive'), ENT_QUOTES, 'UTF-8'); ?></h4>
-      <p><?= htmlspecialchars(qk_t('home.cover_archive_desc'), ENT_QUOTES, 'UTF-8'); ?></p>
-    </a>
-  </div>
-</section>
-
-<section class="panel home-v2-trust">
-  <p class="launch-copy"><?= htmlspecialchars(qk_t('home.trusted_sources'), ENT_QUOTES, 'UTF-8'); ?></p>
-  <div class="home-v2-trust-row" aria-label="<?= htmlspecialchars(qk_t('home.aria_sources_partners'), ENT_QUOTES, 'UTF-8'); ?>">
-    <span class="home-v2-trust-item">
-      <img class="home-v2-trust-logo" src="/assets/icons/providers/usgs-mark.svg" alt="" />
-      <span>USGS</span>
-    </span>
-    <span class="home-v2-trust-item">
-      <img class="home-v2-trust-logo" src="/assets/icons/providers/emsc.png" alt="" />
-      <span>EMSC</span>
-    </span>
-    <span class="home-v2-trust-item">
-      <img class="home-v2-trust-logo" src="/assets/icons/providers/noaa.svg" alt="" />
-      <span>NOAA</span>
-    </span>
-    <span class="home-v2-trust-item">
-      <img class="home-v2-trust-logo" src="/assets/icons/providers/cnp.svg" alt="" />
-      <span><?= htmlspecialchars(qk_t('home.trust_earthquakes_cnp'), ENT_QUOTES, 'UTF-8'); ?></span>
-    </span>
-    <span class="home-v2-trust-item">
-      <img class="home-v2-trust-logo" src="/assets/icons/providers/gvp-mark.svg" alt="" />
-      <span>Smithsonian GVP</span>
-    </span>
-    <span class="home-v2-trust-item">
-      <img class="home-v2-trust-logo" src="/assets/icons/providers/ingv.ico" alt="" />
-      <span>INGV</span>
-    </span>
-  </div>
-</section>
-
-<?php require __DIR__ . '/../partials/footer.php'; ?>
+    <script
+        src="/assets/vendor/leaflet/leaflet.js"
+    ></script>
+    <script src="/assets/js/quakrs.js"></script>
+</body>
+</html>

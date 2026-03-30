@@ -3,9 +3,34 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const MAP_LIMITS = {
+        minLat: -85,
+        maxLat: 85,
+        minLng: -180,
+        maxLng: 180
+    };
+    const WORLD_WRAP_RANGE = 15;
+
     const mapState = {
         instance: null
     };
+
+    function clamp(value, min, max) {
+        return Math.min(Math.max(value, min), max);
+    }
+
+    function normalizeLongitude(lng) {
+        const span = MAP_LIMITS.maxLng - MAP_LIMITS.minLng;
+        const offset = ((lng - MAP_LIMITS.minLng) % span + span) % span;
+        return MAP_LIMITS.minLng + offset;
+    }
+
+    function sanitizeLatLng(latlng) {
+        return {
+            lat: clamp(latlng.lat, MAP_LIMITS.minLat, MAP_LIMITS.maxLat),
+            lng: normalizeLongitude(latlng.lng)
+        };
+    }
 
     function formatLat(lat) {
         const abs = Math.round(Math.abs(lat));
@@ -36,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             el.textContent = 'LAT -- | LON --';
             return;
         }
-        el.textContent = `LAT ${formatLatDetailed(latlng.lat)} | LON ${formatLngDetailed(latlng.lng)}`;
+        const safeCoords = sanitizeLatLng(latlng);
+        el.textContent = `LAT ${formatLatDetailed(safeCoords.lat)} | LON ${formatLngDetailed(safeCoords.lng)}`;
     }
 
     function updateMapTics(map) {
@@ -49,13 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
         tics.querySelectorAll('.tic-y').forEach((el) => {
             const ratio = Number(el.dataset.ratio || 0.5);
             const point = L.point(mapSize.x * 0.03, mapSize.y * ratio);
-            const latlng = map.containerPointToLatLng(point);
+            const latlng = sanitizeLatLng(map.containerPointToLatLng(point));
             el.textContent = formatLat(latlng.lat);
         });
         tics.querySelectorAll('.tic-x').forEach((el) => {
             const ratio = Number(el.dataset.ratio || 0.5);
             const point = L.point(mapSize.x * ratio, mapSize.y * 0.97);
-            const latlng = map.containerPointToLatLng(point);
+            const latlng = sanitizeLatLng(map.containerPointToLatLng(point));
             el.textContent = formatLng(latlng.lng);
         });
     }
@@ -66,6 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
             volcanoes: { color: '#CCFF00', fillColor: '#CCFF00' },
             tsunamis: { color: '#00FFFF', fillColor: '#00FFFF' }
         };
+        const worldOffsets = [];
+        for (let offset = -WORLD_WRAP_RANGE; offset <= WORLD_WRAP_RANGE; offset += 1) {
+            worldOffsets.push(offset);
+        }
 
         const addLabel = (layer, labelText, className) => {
             layer.bindTooltip(labelText, {
@@ -76,45 +106,71 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        const seismicMain = L.circleMarker([38.2, 142.5], {
+        function buildWrappedCircleMarker(baseLat, baseLng, options, labelText, className) {
+            return L.layerGroup(worldOffsets.map((offset) => {
+                const marker = L.circleMarker([baseLat, baseLng + (offset * 360)], options);
+                addLabel(marker, labelText, className);
+                return marker;
+            }));
+        }
+
+        function buildWrappedIconMarker(baseLat, baseLng, iconOptions, labelText, className) {
+            return L.layerGroup(worldOffsets.map((offset) => {
+                const marker = L.marker([baseLat, baseLng + (offset * 360)], {
+                    icon: L.divIcon(iconOptions)
+                });
+                addLabel(marker, labelText, className);
+                return marker;
+            }));
+        }
+
+        const seismicMain = buildWrappedCircleMarker(38.2, 142.5, {
             radius: 7,
             color: categoryStyles.seismic.color,
             fillColor: categoryStyles.seismic.fillColor,
             fillOpacity: 1,
             weight: 2
-        });
-        const seismicChile = L.circleMarker([-33.1, -71.6], {
+        }, 'M7.4 HONSHU', 'label-seismic');
+
+        const seismicChile = buildWrappedCircleMarker(-33.1, -71.6, {
             radius: 6,
             color: categoryStyles.seismic.color,
             fillColor: categoryStyles.seismic.fillColor,
             fillOpacity: 1,
             weight: 2
-        });
+        }, 'M6.8 VALPARAISO', 'label-seismic');
 
-        addLabel(seismicMain, 'M7.4 HONSHU', 'label-seismic');
-        addLabel(seismicChile, 'M6.8 VALPARAISO', 'label-seismic');
+        const volcanoKrakatoa = buildWrappedIconMarker(-6.102, 105.423, {
+            className: 'marker-volcano',
+            iconSize: [16, 16],
+            iconAnchor: [8, 12]
+        }, 'KRAKATOA VEI4', 'label-volcano');
 
-        const volcanoKrakatoa = L.marker([-6.102, 105.423], {
-            icon: L.divIcon({ className: 'marker-volcano', iconSize: [16, 16], iconAnchor: [8, 12] })
-        });
-        const volcanoEtna = L.marker([37.751, 14.993], {
-            icon: L.divIcon({ className: 'marker-volcano', iconSize: [16, 16], iconAnchor: [8, 12] })
-        });
-        addLabel(volcanoKrakatoa, 'KRAKATOA VEI4', 'label-volcano');
-        addLabel(volcanoEtna, 'ETNA VEI2', 'label-volcano');
+        const volcanoEtna = buildWrappedIconMarker(37.751, 14.993, {
+            className: 'marker-volcano',
+            iconSize: [16, 16],
+            iconAnchor: [8, 12]
+        }, 'ETNA VEI2', 'label-volcano');
 
-        const tsunamiPacific = L.marker([35.5, 150.5], {
-            icon: L.divIcon({ className: 'marker-tsunami', iconSize: [12, 12], iconAnchor: [6, 6] })
-        });
-        addLabel(tsunamiPacific, 'PACIFIC WARNING', 'label-tsunami');
+        const tsunamiPacific = buildWrappedIconMarker(35.5, 150.5, {
+            className: 'marker-tsunami',
+            iconSize: [12, 12],
+            iconAnchor: [6, 6]
+        }, 'PACIFIC WARNING', 'label-tsunami');
+
+        const wrappedFaultLines = worldOffsets.map((offset) => L.polyline(
+            [[45, 140], [32, 155], [15, 165], [-5, 170], [-22, -175], [-40, -150]]
+                .map(([lat, lng]) => [lat, lng + (offset * 360)]),
+            {
+                color: '#FF6600',
+                weight: 2,
+                dashArray: '6 4'
+            }
+        ));
 
         return {
             seismic: L.layerGroup([
-                L.polyline([[45, 140], [32, 155], [15, 165], [-5, 170], [-22, -175], [-40, -150]], {
-                    color: '#FF6600',
-                    weight: 2,
-                    dashArray: '6 4'
-                }),
+                ...wrappedFaultLines,
                 seismicMain,
                 seismicChile
             ]),
@@ -131,21 +187,25 @@ document.addEventListener('DOMContentLoaded', () => {
             zoomControl: false,
             attributionControl: false,
             minZoom: 2,
-            maxZoom: 6,
+            maxZoom: 18,
+            zoomSnap: 0.25,
+            zoomDelta: 1,
+            wheelPxPerZoomLevel: 30,
             worldCopyJump: false,
             maxBoundsViscosity: 1.0
         }).setView([15, 20], 2);
 
-        map.setMaxBounds([[-85, -180], [85, 180]]);
+        // Block vertical over-pan into non-tiled polar area, keep horizontal travel effectively free.
+        map.setMaxBounds([[MAP_LIMITS.minLat, -5400], [MAP_LIMITS.maxLat, 5400]]);
 
         const tileProviders = [
             {
                 url: 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
-                options: { subdomains: 'abcd', maxZoom: 19, noWrap: true }
+                options: { subdomains: 'abcd', maxZoom: 19, noWrap: false }
             },
             {
                 url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                options: { subdomains: 'abc', maxZoom: 19, crossOrigin: true, noWrap: true }
+                options: { subdomains: 'abc', maxZoom: 19, crossOrigin: true, noWrap: false }
             }
         ];
         let providerIndex = 0;
