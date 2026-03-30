@@ -6,12 +6,17 @@ require __DIR__ . '/earthquakes-archive-lib.php';
 
 function normalize_event_time(mixed $rawTime): ?string
 {
+    $maxAcceptedTs = time() + 86400; // tolerate small upstream clock drift, reject far-future timestamps
+
     if (is_numeric($rawTime)) {
         $time = (int) $rawTime;
-        if ($time > 9999999999) {
+        while ($time > 9999999999) {
             $time = (int) floor($time / 1000);
         }
-        return $time > 0 ? gmdate('c', $time) : null;
+        if ($time <= 0 || $time > $maxAcceptedTs) {
+            return null;
+        }
+        return gmdate('c', $time);
     }
 
     if (is_string($rawTime) && $rawTime !== '') {
@@ -19,7 +24,10 @@ function normalize_event_time(mixed $rawTime): ?string
         $hasTimezone = (bool) preg_match('/(?:Z|[+\-]\d{2}:?\d{2})$/i', $raw);
         $input = $hasTimezone ? $raw : ($raw . ' UTC');
         $parsed = strtotime($input);
-        return $parsed !== false ? gmdate('c', $parsed) : null;
+        if (!is_int($parsed) || $parsed <= 0 || $parsed > $maxAcceptedTs) {
+            return null;
+        }
+        return gmdate('c', $parsed);
     }
 
     return null;
@@ -383,14 +391,16 @@ $payload = [
 $liveReason = null;
 $liveDb = earthquake_mysql_open($appConfig, 'live', $liveReason);
 $liveCfg = earthquake_mysql_role_config($appConfig, 'live');
+$liveTables = earthquake_mysql_role_tables($appConfig, 'live');
 $liveTable = (string) ($liveCfg['table'] ?? 'earthquake_events');
 if ($liveDb instanceof mysqli) {
-    $written = earthquake_archive_ingest($liveDb, $deduped, $now, $liveTable);
+    $written = earthquake_archive_ingest($liveDb, $deduped, $now, $liveTables);
     $liveDb->close();
     $payload['live'] = [
         'enabled' => true,
         'db' => 'mysql',
         'table' => $liveTable,
+        'tables' => $liveTables,
         'written' => $written,
     ];
 } else {
@@ -414,14 +424,16 @@ $payload['archive'] = [
 $ingestReason = null;
 $ingestDb = earthquake_mysql_open($appConfig, 'ingest', $ingestReason);
 $ingestCfg = earthquake_mysql_role_config($appConfig, 'ingest');
+$ingestTables = earthquake_mysql_role_tables($appConfig, 'ingest');
 $ingestTable = (string) ($ingestCfg['table'] ?? 'earthquake_events_raw');
 if ($ingestDb instanceof mysqli) {
-    $written = earthquake_archive_ingest($ingestDb, $ingestRawEvents, $now, $ingestTable);
+    $written = earthquake_archive_ingest($ingestDb, $ingestRawEvents, $now, $ingestTables);
     $ingestDb->close();
     $payload['ingest'] = [
         'enabled' => true,
         'db' => 'mysql',
         'table' => $ingestTable,
+        'tables' => $ingestTables,
         'written' => $written,
         'raw_events_count' => count($ingestRawEvents),
     ];

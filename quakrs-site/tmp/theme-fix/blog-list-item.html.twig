@@ -1,0 +1,42 @@
+{% set tags = page.header.taxonomy.tag|default([]) %}
+{% set kind = 'historical' %}
+{% if 'historical_today' in tags or 'scenario' in tags %}
+  {% set kind = 'scenario' %}
+{% elseif 'latest' in tags %}
+  {% set kind = 'latest' %}
+{% endif %}
+{% set q = page.header.quake|default(null) %}
+{% set area = (q and q.place) ? (q.place|split(',')|first|trim) : '' %}
+{% set mag = (q and q.magnitude is not null) ? ('MW ' ~ q.magnitude) : '' %}
+{% set depth = (q and q.depth_km is not null) ? (q.depth_km ~ ' KM') : '' %}
+{% set card_variant = card_variant|default('archive') %}
+{% set excerpt_limit = card_variant == 'secondary' ? 185 : 145 %}
+
+{% if page.summary != page.content %}
+  {% set excerpt = page.summary|striptags|trim %}
+{% else %}
+  {% set excerpt = page.content|striptags|trim %}
+{% endif %}
+{% set search_text = (page.title ~ ' ' ~ excerpt ~ ' ' ~ (tags|join(' ')) ~ ' ' ~ area ~ ' ' ~ mag ~ ' ' ~ depth)|lower %}
+
+<article class="editoriale-card editoriale-card-{{ card_variant }}" data-filterable="1" data-kind="{{ kind }}" data-search="{{ search_text|e('html_attr') }}">
+  <div class="card-header">
+    <p class="card-subtitle text-gray">
+      <span class="meta-row-item">{% include 'partials/blog/date.html.twig' with {page: page} %}</span>
+      <span class="meta-row-item kind">{{ kind|replace({'_':' '})|upper }}</span>
+    </p>
+    <h3 class="card-title"><a href="{{ page.url }}">{{ page.title }}</a></h3>
+  </div>
+
+  <div class="card-body">
+    <p>{{ excerpt|slice(0, excerpt_limit) }}{% if excerpt|length > excerpt_limit %}...{% endif %}</p>
+  </div>
+
+  <div class="card-footer meta-footer">
+    <span>{{ kind|replace({'_':' '})|upper }}</span>
+    <span>SISMA</span>
+    {% if area != '' %}<span>{{ area|upper }}</span>{% endif %}
+    {% if mag != '' %}<span>{{ mag }}</span>{% endif %}
+    {% if depth != '' %}<span>{{ depth }}</span>{% endif %}
+  </div>
+</article>

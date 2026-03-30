@@ -7594,7 +7594,8 @@ body:not(.maps-fullscreen-mode) > .site-footer {
 
 .home-context-summary {
   margin-top: 0.58rem;
-  max-width: 58ch;
+  max-width: none;
+  text-wrap: pretty;
   font-size: 0.84rem;
   line-height: 1.42;
 }
@@ -7608,6 +7609,77 @@ body:not(.maps-fullscreen-mode) > .site-footer {
   padding-top: 0.48rem;
   border-top: 1px solid color-mix(in srgb, var(--line) 28%, transparent);
   font-size: 0.7rem;
+}
+
+.home-context-editorial-feature {
+  grid-column: 1 / -1;
+  margin-top: 0.72rem;
+  border: 1px solid color-mix(in srgb, var(--line) 52%, transparent);
+  border-radius: 12px;
+  padding: 0.76rem 0.84rem 0.78rem;
+  min-height: 108px;
+  background:
+    radial-gradient(circle at 88% 16%, rgba(93, 228, 199, 0.12), transparent 54%),
+    linear-gradient(132deg, rgba(23, 42, 68, 0.62), transparent 68%),
+    rgba(11, 20, 36, 0.92);
+}
+
+.home-context-editorial-kicker {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--acid-yellow);
+}
+
+.home-2026 .home-context-editorial-feature .home-context-editorial-kicker {
+  color: var(--acid-yellow) !important;
+}
+
+.home-context-editorial-title {
+  margin: 0.4rem 0 0;
+  font: 800 clamp(0.96rem, 1.3vw, 1.14rem) / 1.22 "Space Grotesk", sans-serif;
+  text-wrap: pretty;
+}
+
+.home-context-editorial-title .inline-link {
+  margin-top: 0;
+  display: block;
+  color: color-mix(in srgb, var(--acid-lime) 88%, var(--text));
+}
+
+.site-2026 .home-context-editorial-title,
+.site-2026 .home-context-editorial-title .inline-link {
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: pretty;
+}
+
+.home-context-editorial-lead {
+  margin: 0.5rem 0 0;
+  font-size: 0.84rem;
+  line-height: 1.44;
+  color: color-mix(in srgb, var(--text) 92%, var(--muted));
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.home-context-editorial-readmore {
+  display: inline;
+  margin-left: 0.4rem;
+  color: color-mix(in srgb, var(--acid-cyan) 90%, var(--text-1));
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.home-context-editorial-readmore:hover,
+.home-context-editorial-readmore:focus-visible {
+  color: color-mix(in srgb, var(--acid-lime) 78%, var(--text-1));
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .home-context-earthquake-row {
@@ -8932,7 +9004,7 @@ body:not(.maps-fullscreen-mode) > .site-footer {
 }
 
 .home-page.home-2026.home-acid-brutalist .topbar {
-  border-bottom: 2px solid color-mix(in srgb, var(--acid-cyan) 38%, var(--line-soft));
+  border-bottom: 0;
   padding-bottom: 0.92rem;
 }
 
@@ -8974,7 +9046,7 @@ body:not(.maps-fullscreen-mode) > .site-footer {
     margin-right: 0.14rem;
     font-size: 2rem;
     letter-spacing: 0.01em;
-    border-right: 2px solid color-mix(in srgb, var(--line-soft) 82%, transparent);
+    border-right: 0;
   }
 
   .home-page.home-2026.home-acid-brutalist .topbar .main-nav {
@@ -10135,7 +10207,7 @@ body.site-2026::before {
     gap: 0.56rem;
     padding-top: 0.84rem;
     padding-bottom: 0.76rem;
-    border-bottom: 2px solid color-mix(in srgb, var(--acid-cyan) 34%, var(--site-line-soft));
+    border-bottom: 0;
   }
 
   .site-2026 .topbar .brand {
@@ -10146,7 +10218,7 @@ body.site-2026::before {
     margin-right: 0.14rem;
     font-size: 2rem;
     letter-spacing: 0.01em;
-    border-right: 2px solid color-mix(in srgb, var(--site-line-soft) 86%, transparent);
+    border-right: 0;
   }
 
   .site-2026 .topbar .main-nav {

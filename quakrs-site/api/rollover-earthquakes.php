@@ -100,6 +100,7 @@ if (!$archiveDb instanceof mysqli) {
 }
 $archiveCfg = earthquake_mysql_role_config($appConfig, 'archive');
 $archiveTable = (string) ($archiveCfg['table'] ?? 'earthquake_events');
+$archiveTables = earthquake_mysql_role_tables($appConfig, 'archive');
 
 $countSql = sprintf('SELECT COUNT(*) AS c FROM `%s` WHERE event_time_ts < ?', $liveTable);
 $countStmt = $liveDb->prepare($countSql);
@@ -178,7 +179,7 @@ $written = 0;
 $deleted = 0;
 
 if (!$dryRun && $selected > 0) {
-    $written = earthquake_archive_ingest($archiveDb, $rows, $nowTs, $archiveTable);
+    $written = earthquake_archive_ingest($archiveDb, $rows, $nowTs, $archiveTables);
 
     $eventKeys = array_values(array_filter(array_map(
         static fn (array $row): string => (string) ($row['event_key'] ?? ''),

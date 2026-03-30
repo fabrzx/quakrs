@@ -10,7 +10,14 @@ $faviconVersion = '3';
 $canonicalBase = 'https://quakrs.com';
 $scriptName = (string) ($_SERVER['SCRIPT_NAME'] ?? '/');
 $scriptFile = basename($scriptName);
-$canonicalPath = $scriptFile === 'index.php' ? '/' : ($scriptName !== '' ? $scriptName : '/');
+$scriptDir = str_replace('\\', '/', dirname($scriptName));
+if ($scriptFile === 'index.php') {
+    $canonicalPath = ($scriptDir === '' || $scriptDir === '.' || $scriptDir === '/')
+        ? '/'
+        : rtrim($scriptDir, '/') . '/';
+} else {
+    $canonicalPath = $scriptName !== '' ? $scriptName : '/';
+}
 if ($scriptFile === 'event.php') {
     $queryString = (string) ($_SERVER['QUERY_STRING'] ?? '');
     if ($queryString !== '') {
@@ -61,10 +68,10 @@ $bodyClassAttr = implode(' ', $bodyTokens);
     <?php if (!empty($includeLeaflet)): ?>
       <link
         rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        href="/assets/vendor/leaflet/leaflet.css"
         crossorigin=""
       />
-      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+      <script src="/assets/vendor/leaflet/leaflet.js" crossorigin=""></script>
     <?php endif; ?>
     <link rel="stylesheet" href="/assets/css/styles.css?v=<?= urlencode((string) $mainCssVersion); ?>" />
   </head>

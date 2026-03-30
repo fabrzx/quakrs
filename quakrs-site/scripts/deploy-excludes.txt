@@ -7,3 +7,16 @@ cache/
 scripts/deploy.env
 scripts/deploy-ftp.env
 config/app.local.php
+data/backfill_earthquakes_*_checkpoint.json
+data/backfill_earthquakes_*_http_checkpoint.json
+data/*.lock
+# Runtime/generated data should stay server-side.
+data/*.json
+data/*.sqlite
+data/*.sqlite-shm
+data/*.sqlite-wal
+data/aftershocks/*.json
+data/archive_meta_cache/
+
+# Keep Grav blog app server-managed
+editoriale/

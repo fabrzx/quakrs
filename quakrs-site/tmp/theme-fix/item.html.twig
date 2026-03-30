@@ -1,0 +1,308 @@
+{% extends 'partials/base.html.twig' %}
+{% set hero_image_name = page.header.hero_image %}
+{% set blog = page.parent %}
+{% set all_posts = blog ? blog.children.order('date', 'desc') : [] %}
+{% set post_tags = page.header.taxonomy.tag|default([]) %}
+{% set pivot = post_tags|first|default('') %}
+{% set recent_count = 0 %}
+{% set related_count = 0 %}
+{% set q = page.header.quake|default(null) %}
+{% set has_map_point = q and q.latitude is not null and q.longitude is not null %}
+{% set summary_text = page.header.metadata.description|default(page.summary|striptags|trim)|default('') %}
+{% set words = page.content|striptags|split(' ')|length %}
+{% set read_minutes = (words / 220)|round(0, 'ceil') %}
+{% if read_minutes < 1 %}{% set read_minutes = 1 %}{% endif %}
+{% set article_kind = pivot == 'historical' or pivot == 'historical_today' ? 'Retrospettiva' : 'Analisi tecnica' %}
+{% set prev_post = null %}
+{% set next_post = null %}
+{% for p in all_posts %}
+  {% if p.route == page.route %}
+    {% if loop.index0 > 0 %}{% set prev_post = all_posts[loop.index0 - 1] %}{% endif %}
+    {% if loop.index < all_posts|length %}{% set next_post = all_posts[loop.index] %}{% endif %}
+  {% endif %}
+{% endfor %}
+{% if has_map_point %}
+  {% set lat = q.latitude + 0 %}
+  {% set lon = q.longitude + 0 %}
+{% endif %}
+
+{% block hero %}{% endblock %}
+
+{% block body %}
+<section id="body-wrapper" class="section blog-listing editoriale-item-page">
+  <section class="container {{ grid_size }}">
+    <div class="editoriale-reading-layout">
+      <aside class="editoriale-reading-nav" aria-label="Indice articolo">
+        <div class="editoriale-reading-progress" aria-hidden="true"><span id="editoriale-reading-progress-bar"></span></div>
+        <p class="editoriale-reading-nav-title">Indice</p>
+        <nav id="editoriale-reading-toc" class="editoriale-reading-toc"></nav>
+      </aside>
+
+      <div class="editoriale-reading-main">
+        <div class="content-title editoriale-head-standalone">
+          <p class="editoriale-kicker">{{ article_kind }}</p>
+          <h1 class="editoriale-current-title">{{ page.title }}</h1>
+          {% if summary_text != '' %}
+            <p class="editoriale-deck">{{ summary_text }}</p>
+          {% endif %}
+          <div class="editoriale-meta-row">
+            <span class="editoriale-meta-pill">{% include 'partials/blog/date.html.twig' %}</span>
+            <span class="editoriale-meta-pill">{{ read_minutes }} min lettura</span>
+            {% if q and q.place %}<span class="editoriale-meta-pill">{{ q.place }}</span>{% endif %}
+            {% if q and q.magnitude is not null %}<span class="editoriale-meta-pill is-accent">Mw {{ q.magnitude }}</span>{% endif %}
+            {% if q and q.depth_km is not null %}<span class="editoriale-meta-pill">{{ q.depth_km }} km</span>{% endif %}
+            {% if q and q.id %}<span class="editoriale-meta-pill">ID {{ q.id|upper }}</span>{% endif %}
+          </div>
+          <div class="editoriale-taxonomy-wrap">{% include 'partials/blog/taxonomy.html.twig' %}</div>
+          <div class="editoriale-signal-strip">
+            <div class="editoriale-signal-card">
+              <span>Interpretazione</span>
+              <strong>Lettura tecnico-editoriale contestuale, non allerta operativa.</strong>
+            </div>
+            <div class="editoriale-signal-card">
+              <span>Limite dataset</span>
+              <strong>I parametri possono cambiare dopo revisione provider.</strong>
+            </div>
+          </div>
+        </div>
+
+        <article class="content-item h-entry editoriale-article-main">
+          {% if has_map_point %}
+            <div class="editoriale-map-module">
+              <figure class="editorial-map-shot">
+                <div id="editorial-article-map" class="editorial-map-canvas" aria-label="Mappa epicentro"></div>
+                <figcaption>
+                  <span class="editoriale-map-caption-kicker">MODULO MAPPA</span>
+                  Epicentro: {{ lat|number_format(3, '.', '') }}, {{ lon|number_format(3, '.', '') }}
+                  <div class="editorial-wave-legend" aria-label="Legenda isocrone onde sismiche">
+                    <div class="editorial-wave-legend-row">
+                      <span id="editorial-article-wave-p" class="editorial-wave-pill is-p"><span class="dot" aria-hidden="true"></span>P-wave --/--/--s</span>
+                      <span id="editorial-article-wave-s" class="editorial-wave-pill is-s"><span class="dot" aria-hidden="true"></span>S-wave --/--/--s</span>
+                    </div>
+                    <p id="editorial-article-wave-note" class="editorial-wave-note">Isocrone con velocita medie crostali e correzione ipocentro (modello semplificato).</p>
+                  </div>
+                </figcaption>
+              </figure>
+              <div class="editoriale-quickfacts">
+                {% if q and q.magnitude is not null %}
+                  <div class="editoriale-qf-card"><span>Dato chiave</span><strong>Mw {{ q.magnitude }}</strong></div>
+                {% endif %}
+                {% if q and q.depth_km is not null %}
+                  <div class="editoriale-qf-card"><span>Profondita</span><strong>{{ q.depth_km }} km</strong></div>
+                {% endif %}
+                {% if q and q.place %}
+                  <div class="editoriale-qf-card"><span>Contesto</span><strong>{{ q.place }}</strong></div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+
+          <div class="e-content">{{ page.content|raw }}</div>
+        </article>
+
+        {% if all_posts %}
+          <section class="editoriale-context-panel">
+            <div class="editoriale-filterbar" role="tablist" aria-label="Filtri articoli">
+              <button class="chip is-active" data-target="recent" type="button">Piu recenti</button>
+              <button class="chip" data-target="related" type="button">Correlati</button>
+            </div>
+
+            <div class="panel-list is-visible" data-panel="recent">
+              <p class="editoriale-panel-kicker">PIU RECENTI</p>
+              <div class="editoriale-grid">
+                {% for p in all_posts %}
+                  {% if p.route != page.route and recent_count < 6 %}
+                    {% set recent_count = recent_count + 1 %}
+                    {% include 'partials/blog-list-item.html.twig' with {page: p, card_variant: 'related'} %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+
+            <div class="panel-list" data-panel="related">
+              <p class="editoriale-panel-kicker">CORRELATI</p>
+              <div class="editoriale-grid">
+                {% for p in all_posts %}
+                  {% set tags = p.header.taxonomy.tag|default([]) %}
+                  {% if p.route != page.route and pivot != '' and pivot in tags and related_count < 6 %}
+                    {% set related_count = related_count + 1 %}
+                    {% include 'partials/blog-list-item.html.twig' with {page: p, card_variant: 'related'} %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {% if related_count == 0 %}
+                <p class="empty-related">Nessun correlato disponibile: usa "Piu recenti".</p>
+              {% endif %}
+            </div>
+          </section>
+        {% endif %}
+
+        <section class="editoriale-article-footer">
+          <div class="editoriale-footer-actions">
+            <button type="button" class="chip" id="copy-article-link">Copia link</button>
+            <a class="chip" href="https://x.com/intent/post?url={{ page.url(true)|url_encode }}&text={{ page.title|url_encode }}" target="_blank" rel="noopener">Condividi</a>
+          </div>
+          <div class="editoriale-footer-nav">
+            {% if prev_post %}<a class="inline-link" href="{{ prev_post.url }}">Articolo precedente</a>{% endif %}
+            {% if next_post %}<a class="inline-link" href="{{ next_post.url }}">Articolo successivo</a>{% endif %}
+          </div>
+          <p class="editoriale-footer-note">Quakrs Blog: analisi tecniche, contesto operativo e lettura critica dei dati sismici.</p>
+          <p class="editoriale-footer-cta"><a class="inline-link" href="/earthquakes.php">Pagina evento</a> · <a class="inline-link" href="/timeline.php">Timeline</a> · <a class="inline-link" href="/data-archive.php">Archivio</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<script>
+(function () {
+  const root = document.querySelector('.editoriale-context-panel');
+  const contentEl = document.querySelector('.editoriale-article-main .e-content');
+
+  if (root) {
+    const chips = root.querySelectorAll('.editoriale-filterbar .chip');
+    const panels = root.querySelectorAll('.panel-list');
+    chips.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-target');
+        chips.forEach((x) => x.classList.toggle('is-active', x === btn));
+        panels.forEach((p) => p.classList.toggle('is-visible', p.getAttribute('data-panel') === target));
+      });
+    });
+  }
+
+  if (contentEl) {
+    const toc = document.getElementById('editoriale-reading-toc');
+    const progressBar = document.getElementById('editoriale-reading-progress-bar');
+    const headings = Array.from(contentEl.querySelectorAll('h2, h3'));
+    const slugify = (text) => (text || '').toLowerCase().trim().replace(/[^a-z0-9\\s-]/g, '').replace(/\\s+/g, '-');
+    headings.forEach((h, idx) => {
+      if (!h.id) h.id = 'sec-' + slugify(h.textContent) + '-' + (idx + 1);
+      if (toc) {
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent || ('Sezione ' + (idx + 1));
+        a.className = h.tagName === 'H3' ? 'is-sub' : '';
+        toc.appendChild(a);
+      }
+    });
+    const setProgress = () => {
+      const rect = contentEl.getBoundingClientRect();
+      const viewport = window.innerHeight || document.documentElement.clientHeight;
+      const total = Math.max(1, rect.height + viewport);
+      const done = Math.min(Math.max(0, viewport - rect.top), total);
+      const pct = Math.min(100, Math.max(0, (done / total) * 100));
+      if (progressBar) progressBar.style.width = pct.toFixed(1) + '%';
+      const current = headings.find((h) => h.getBoundingClientRect().top > 120) || headings[headings.length - 1];
+      if (current && toc) {
+        toc.querySelectorAll('a').forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === '#' + current.id));
+      }
+    };
+    setProgress();
+    window.addEventListener('scroll', setProgress, { passive: true });
+    window.addEventListener('resize', setProgress);
+
+    contentEl.querySelectorAll('a').forEach((a) => {
+      const txt = (a.textContent || '').trim().toLowerCase();
+      if (txt === 'unknown') {
+        const span = document.createElement('span');
+        span.className = 'source-unknown';
+        span.textContent = 'non disponibile';
+        a.replaceWith(span);
+      }
+    });
+
+    // Insert one or two compact technical interludes to break long reading runs.
+    const paragraphs = Array.from(contentEl.querySelectorAll('p'));
+    const makeInterlude = (title, body) => {
+      const box = document.createElement('section');
+      box.className = 'editoriale-inline-interlude';
+      box.innerHTML = '<p class="interlude-kicker">' + title + '</p><p>' + body + '</p>';
+      return box;
+    };
+    if (paragraphs.length > 6) {
+      const one = makeInterlude('IN SINTESI', 'Lettura orientata al contesto: magnitudo, profondita, area esposta e dinamica sequenziale contano insieme.');
+      paragraphs[2].insertAdjacentElement('afterend', one);
+    }
+    if (paragraphs.length > 11) {
+      const two = makeInterlude('TAKEAWAY TECNICO', 'Confrontare finestre temporali consecutive riduce il rischio di sovrainterpretare variazioni brevi del dataset.');
+      paragraphs[7].insertAdjacentElement('afterend', two);
+    }
+  }
+
+  const copyBtn = document.getElementById('copy-article-link');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        copyBtn.textContent = 'Link copiato';
+        setTimeout(() => { copyBtn.textContent = 'Copia link'; }, 1400);
+      } catch (_err) {}
+    });
+  }
+
+  const mapEl = document.getElementById('editorial-article-map');
+  if (!mapEl || !window.L) return;
+  const lat = {{ has_map_point ? (lat|json_encode|raw) : 'null' }};
+  const lon = {{ has_map_point ? (lon|json_encode|raw) : 'null' }};
+  const magnitude = {{ (q and q.magnitude is not null) ? (q.magnitude + 0)|json_encode|raw : 'null' }};
+  const depthKm = {{ (q and q.depth_km is not null) ? (q.depth_km + 0)|json_encode|raw : 'null' }};
+
+  if (typeof lat !== 'number' || typeof lon !== 'number') return;
+
+  const map = window.L.map(mapEl, { zoomControl: true, dragging: false, scrollWheelZoom: false }).setView([lat, lon], 8);
+  window.L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 18,
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+  }).addTo(map);
+
+  const faultsLayer = window.L.layerGroup().addTo(map);
+  window.L.circleMarker([lat, lon], {
+    radius: 8,
+    color: '#ff7a00',
+    weight: 2,
+    fillColor: '#ff2bd6',
+    fillOpacity: 0.85
+  }).addTo(map);
+
+  fetch('/api/tectonic-context.php?scope=local&lat=' + encodeURIComponent(String(lat)) + '&lon=' + encodeURIComponent(String(lon)) + '&max_faults=220', { cache: 'no-store' })
+    .then((res) => (res.ok ? res.json() : null))
+    .then((payload) => {
+      if (!payload || !payload.faults || !Array.isArray(payload.faults.features)) return;
+      window.L.geoJSON(payload.faults, { style: () => ({ color: '#ff7a00', weight: 1.7, opacity: 0.6 }) }).addTo(faultsLayer);
+    })
+    .catch(() => {});
+
+  const hypoDepthKm = typeof depthKm === 'number' ? Math.max(0, depthKm) : 10;
+  const vp = 6.0;
+  const vs = 3.5;
+  const pLegend = document.getElementById('editorial-article-wave-p');
+  const sLegend = document.getElementById('editorial-article-wave-s');
+  const waveNote = document.getElementById('editorial-article-wave-note');
+  const magScale = typeof magnitude === 'number' ? Math.max(0.88, Math.min(1.35, 0.86 + ((magnitude - 5.0) * 0.12))) : 1.0;
+  const ringsLayer = window.L.layerGroup().addTo(map);
+
+  function horizontalRadiusMeters(velocityKmS, tSeconds) {
+    const hypoKm = velocityKmS * tSeconds;
+    const horizontalKm = Math.sqrt(Math.max(0, (hypoKm * hypoKm) - (hypoDepthKm * hypoDepthKm)));
+    return Math.round(horizontalKm * 1000 * magScale);
+  }
+  function addIsochrone(radius, opts) {
+    if (!(radius > 0)) return;
+    window.L.circle([lat, lon], { radius, color: opts.color, weight: opts.weight, opacity: opts.opacity, dashArray: opts.dash || null, fillOpacity: 0, interactive: false }).addTo(ringsLayer);
+  }
+
+  const pStart = Math.max(10, Math.ceil(hypoDepthKm / vp) + 5);
+  const sStart = Math.max(10, Math.ceil(hypoDepthKm / vs) + 5);
+  const pMarks = [pStart, pStart + 10, pStart + 20];
+  const sMarks = [sStart, sStart + 10, sStart + 20];
+
+  if (pLegend) pLegend.innerHTML = '<span class="dot" aria-hidden="true"></span>P-wave ' + pMarks.join('/') + 's';
+  if (sLegend) sLegend.innerHTML = '<span class="dot" aria-hidden="true"></span>S-wave ' + sMarks.join('/') + 's';
+  if (waveNote) waveNote.textContent = 'Isocrone con Vp ' + vp.toFixed(1) + ' km/s, Vs ' + vs.toFixed(1) + ' km/s, profondita ' + hypoDepthKm.toFixed(1) + ' km (modello semplificato).';
+
+  pMarks.forEach((t, idx) => addIsochrone(horizontalRadiusMeters(vp, t), { color: '#20e0ff', weight: idx === 0 ? 2 : 1.6, opacity: 0.45 - (idx * 0.08), dash: idx === 0 ? '6 4' : '4 6' }));
+  sMarks.forEach((t, idx) => addIsochrone(horizontalRadiusMeters(vs, t), { color: '#b7ff00', weight: idx === 0 ? 2 : 1.6, opacity: 0.42 - (idx * 0.08), dash: idx === 0 ? '10 6' : '6 8' }));
+})();
+</script>
+{% endblock %}

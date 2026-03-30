@@ -1,0 +1,360 @@
+{% extends 'partials/base.html.twig' %}
+{% set blog_image = page.media.images[page.header.hero_image] ?: page.media.images|first %}
+{% set collection = page.collection() %}
+{% set total_articles = collection|length %}
+{% set featured = collection|first %}
+{% set secondary = collection|slice(1, 2) %}
+{% set archive = collection|slice(3) %}
+{% set historical_count = 0 %}
+{% set latest_count = 0 %}
+{% set scenario_count = 0 %}
+{% for p in collection %}
+  {% set tags = p.header.taxonomy.tag|default([]) %}
+  {% if 'historical_today' in tags or 'scenario' in tags %}
+    {% set scenario_count = scenario_count + 1 %}
+  {% elseif 'latest' in tags %}
+    {% set latest_count = latest_count + 1 %}
+  {% else %}
+    {% set historical_count = historical_count + 1 %}
+  {% endif %}
+{% endfor %}
+
+{% block hero %}
+  {% set content %}
+    <p class="blog-hero-eyebrow">QUAKRS / BLOG / ANALISI E RETROSPETTIVE</p>
+    <h1>Blog</h1>
+    <p class="blog-hero-sub">Analisi, retrospettive e scenari per leggere meglio gli eventi sismici.</p>
+    <div class="blog-hero-metrics">
+      <span>{{ total_articles }} ARTICOLI</span>
+      <span>{{ historical_count }} STORICI</span>
+      <span>{{ scenario_count }} SCENARI</span>
+      {% if featured %}<span>ULTIMO UPDATE {{ featured.date|date("d M Y")|upper }}</span>{% endif %}
+    </div>
+  {% endset %}
+  {% include 'partials/hero.html.twig' with {id: 'blog-hero', content: content, hero_image: blog_image} %}
+{% endblock %}
+
+{% block body %}
+<section id="body-wrapper" class="section blog-listing editoriale-home">
+  <section class="container {{ grid_size }}">
+    {% if featured %}
+      {% set q = featured.header.quake|default(null) %}
+      {% set featured_tags = featured.header.taxonomy.tag|default([]) %}
+      {% set featured_kind = 'HISTORICAL' %}
+      {% if 'historical_today' in featured_tags or 'scenario' in featured_tags %}
+        {% set featured_kind = 'SCENARIO' %}
+      {% elseif 'latest' in featured_tags %}
+        {% set featured_kind = 'LATEST' %}
+      {% endif %}
+      {% if featured.summary != featured.content %}
+        {% set featured_excerpt = featured.summary|striptags|trim %}
+      {% else %}
+        {% set featured_excerpt = featured.content|striptags|trim %}
+      {% endif %}
+      {% set featured_words = featured.content|striptags|split(' ')|length %}
+      {% set featured_read = (featured_words / 220)|round(0, 'ceil') %}
+      {% if featured_read < 1 %}{% set featured_read = 1 %}{% endif %}
+      {% set featured_area = (q and q.place) ? (q.place|split(',')|first|trim) : '' %}
+      {% set featured_search = (featured.title ~ ' ' ~ featured_excerpt ~ ' ' ~ (featured_tags|join(' ')))|lower %}
+      {% set has_map_point = q and q.latitude is not null and q.longitude is not null %}
+      {% if has_map_point %}
+        {% set lat = q.latitude + 0 %}
+        {% set lon = q.longitude + 0 %}
+      {% endif %}
+      <article class="editoriale-featured" data-search="{{ featured_search|e('html_attr') }}">
+        <div class="featured-content">
+          <p class="eyebrow">IN EVIDENZA / ULTIMO ARTICOLO</p>
+          <h2><a href="{{ featured.url }}">{{ featured.title }}</a></h2>
+          <p class="featured-excerpt">{{ featured_excerpt|slice(0, 320) }}{% if featured_excerpt|length > 320 %}...{% endif %}</p>
+          <div class="featured-meta-strip">
+            <span>{% include 'partials/blog/date.html.twig' with {page: featured} %}</span>
+            <span>{{ featured_kind }}</span>
+            <span>{{ featured_read }} MIN LETTURA</span>
+            {% if featured_area != '' %}<span>{{ featured_area|upper }}</span>{% endif %}
+            {% if q and q.magnitude is not null %}<span>MW {{ q.magnitude }}</span>{% endif %}
+            {% if q and q.depth_km is not null %}<span>{{ q.depth_km }} KM</span>{% endif %}
+          </div>
+          <a class="featured-cta" href="{{ featured.url }}">APRI ANALISI</a>
+        </div>
+
+        <div class="featured-visual">
+          {% if has_map_point %}
+            <figure class="editorial-map-shot">
+              <div id="editorial-home-map" class="editorial-map-canvas" aria-label="Mappa epicentro"></div>
+              <figcaption>
+                Epicentro: {{ lat|number_format(3, '.', '') }}, {{ lon|number_format(3, '.', '') }}
+                <div class="editorial-wave-legend" aria-label="Legenda isocrone onde sismiche">
+                  <div class="editorial-wave-legend-row">
+                    <span id="editorial-home-wave-p" class="editorial-wave-pill is-p"><span class="dot" aria-hidden="true"></span>P-wave --/--/--s</span>
+                    <span id="editorial-home-wave-s" class="editorial-wave-pill is-s"><span class="dot" aria-hidden="true"></span>S-wave --/--/--s</span>
+                  </div>
+                  <p id="editorial-home-wave-note" class="editorial-wave-note">Isocrone con velocita medie crostali e correzione ipocentro (modello semplificato).</p>
+                </div>
+              </figcaption>
+            </figure>
+          {% endif %}
+          <div class="featured-quickfacts">
+            <div><span>Tipo</span><strong>{{ featured_kind }}</strong></div>
+            {% if featured_area != '' %}<div><span>Area</span><strong>{{ featured_area }}</strong></div>{% endif %}
+            {% if q and q.magnitude is not null %}<div><span>Magnitudo</span><strong>MW {{ q.magnitude }}</strong></div>{% endif %}
+          </div>
+        </div>
+      </article>
+    {% endif %}
+
+    <section class="editoriale-paths">
+      <header>
+        <p class="eyebrow">PERCORSI EDITORIALI</p>
+        <h3>Esplora il blog come archivio tecnico</h3>
+      </header>
+      <div class="editoriale-path-grid">
+        <button class="editoriale-path" type="button" data-path-filter="historical">
+          <strong>STORICI</strong>
+          <p>Retrospettive su eventi significativi e contesto regionale.</p>
+        </button>
+        <button class="editoriale-path" type="button" data-path-filter="scenario">
+          <strong>SE ACCADESSE OGGI</strong>
+          <p>Scenari attuali su eventi storici ad alto impatto.</p>
+        </button>
+        <button class="editoriale-path" type="button" data-path-filter="latest">
+          <strong>ANALISI RECENTI</strong>
+          <p>Letture tecniche su dinamiche e segnali osservati.</p>
+        </button>
+        <button class="editoriale-path" type="button" data-path-filter="all">
+          <strong>ARCHIVIO COMPLETO</strong>
+          <p>Navigazione seriale dell’intero catalogo editoriale.</p>
+        </button>
+      </div>
+    </section>
+
+    {% if secondary|length > 0 %}
+      <section class="editoriale-secondary">
+        <header>
+          <p class="eyebrow">SECONDO LIVELLO</p>
+          <h3>Approfondimenti in evidenza</h3>
+        </header>
+        <div class="editoriale-secondary-grid">
+          {% for child in secondary %}
+            {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child, card_variant: 'secondary'} %}
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+
+    <section class="editoriale-archive">
+      <div class="editoriale-ops-head">
+        <h3>Archivio seriale</h3>
+        <p>Ricerca, filtri e consultazione rapida per dataset editoriale.</p>
+      </div>
+
+      <div class="editoriale-searchbar" id="blog-search" role="search" aria-label="Ricerca interna blog">
+        <input id="blog-search-input" type="search" placeholder="Cerca: titolo, area, tipo, magnitudo..." autocomplete="off" />
+        <button id="blog-search-clear" class="chip" type="button">Reset</button>
+      </div>
+
+      <div class="editoriale-filterbar" role="tablist" aria-label="Filtri articoli">
+        <button class="chip is-active" data-filter="all" type="button">Tutti</button>
+        <button class="chip" data-filter="latest" type="button">Recenti</button>
+        <button class="chip" data-filter="historical" type="button">Storici</button>
+        <button class="chip" data-filter="scenario" type="button">Scenari</button>
+      </div>
+
+      <div class="editoriale-ops-status">
+        <span id="blog-results-count">0 RISULTATI</span>
+        <span id="blog-filter-state">FILTRO: TUTTI</span>
+      </div>
+
+      <p id="blog-search-empty" class="empty-related" style="display:none;">Nessun articolo trovato con i filtri correnti.</p>
+
+      <div class="editoriale-grid" id="editoriale-grid">
+        {% for child in archive %}
+          {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child, card_variant: 'archive'} %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="editoriale-closing">
+      <p class="eyebrow">ESPLORA ANCHE</p>
+      <div class="editoriale-closing-links">
+        <a href="/">Live</a>
+        <a href="/maps.php">Mappe</a>
+        <a href="/timeline.php">Timeline</a>
+        <a href="/data-archive.php">Archivio eventi</a>
+      </div>
+    </section>
+  </section>
+</section>
+
+<script>
+(function () {
+  const cards = document.querySelectorAll('.editoriale-card[data-filterable="1"]');
+  const featured = document.querySelector('.editoriale-featured');
+  const chips = document.querySelectorAll('.editoriale-filterbar .chip');
+  const searchInput = document.getElementById('blog-search-input');
+  const clearBtn = document.getElementById('blog-search-clear');
+  const emptyState = document.getElementById('blog-search-empty');
+  const resultsCount = document.getElementById('blog-results-count');
+  const filterState = document.getElementById('blog-filter-state');
+  const pathButtons = document.querySelectorAll('[data-path-filter]');
+  const archiveSection = document.querySelector('.editoriale-archive');
+  let currentFilter = 'all';
+
+  function normalize(str) {
+    return String(str || '').toLowerCase().trim();
+  }
+
+  function labelForFilter(filter) {
+    if (filter === 'latest') return 'RECENTI';
+    if (filter === 'historical') return 'STORICI';
+    if (filter === 'scenario') return 'SCENARI';
+    return 'TUTTI';
+  }
+
+  function applyFilters() {
+    const query = normalize(searchInput ? searchInput.value : '');
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      const kind = card.getAttribute('data-kind') || 'all';
+      const haystack = normalize(card.getAttribute('data-search') || card.textContent);
+      const byKind = currentFilter === 'all' || kind === currentFilter;
+      const byQuery = !query || haystack.includes(query);
+      const visible = byKind && byQuery;
+      card.style.display = visible ? '' : 'none';
+      if (visible) visibleCount += 1;
+    });
+
+    if (featured) {
+      const hayFeatured = normalize(featured.getAttribute('data-search') || featured.textContent);
+      featured.style.display = (!query || hayFeatured.includes(query)) ? '' : 'none';
+    }
+
+    if (emptyState) emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+    if (resultsCount) resultsCount.textContent = visibleCount + ' RISULTATI';
+    if (filterState) filterState.textContent = 'FILTRO: ' + labelForFilter(currentFilter);
+
+    if (searchInput && window.history && window.history.replaceState) {
+      const params = new URLSearchParams(window.location.search);
+      if (query) params.set('q', query); else params.delete('q');
+      if (currentFilter !== 'all') params.set('f', currentFilter); else params.delete('f');
+      const next = window.location.pathname + (params.toString() ? ('?' + params.toString()) : '') + window.location.hash;
+      window.history.replaceState(null, '', next);
+    }
+  }
+
+  chips.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      currentFilter = btn.getAttribute('data-filter') || 'all';
+      chips.forEach((x) => x.classList.toggle('is-active', x === btn));
+      applyFilters();
+    });
+  });
+
+  pathButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      currentFilter = btn.getAttribute('data-path-filter') || 'all';
+      chips.forEach((x) => x.classList.toggle('is-active', (x.getAttribute('data-filter') || 'all') === currentFilter));
+      applyFilters();
+      if (archiveSection) archiveSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  if (searchInput) {
+    const params = new URLSearchParams(window.location.search);
+    const initial = params.get('q');
+    const initialFilter = params.get('f');
+    if (initial) searchInput.value = initial;
+    if (initialFilter && ['all', 'latest', 'historical', 'scenario'].includes(initialFilter)) {
+      currentFilter = initialFilter;
+      chips.forEach((x) => x.classList.toggle('is-active', (x.getAttribute('data-filter') || 'all') === currentFilter));
+    }
+    searchInput.addEventListener('input', applyFilters);
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (!searchInput) return;
+      searchInput.value = '';
+      applyFilters();
+      searchInput.focus();
+    });
+  }
+
+  applyFilters();
+
+  const mapEl = document.getElementById('editorial-home-map');
+  if (!mapEl || !window.L) return;
+
+  const lat = {{ has_map_point ? (lat|json_encode|raw) : 'null' }};
+  const lon = {{ has_map_point ? (lon|json_encode|raw) : 'null' }};
+  const magnitude = {{ (q and q.magnitude is not null) ? (q.magnitude + 0)|json_encode|raw : 'null' }};
+  const depthKm = {{ (q and q.depth_km is not null) ? (q.depth_km + 0)|json_encode|raw : 'null' }};
+
+  if (typeof lat !== 'number' || typeof lon !== 'number') return;
+
+  const map = window.L.map(mapEl, { zoomControl: true, dragging: false, scrollWheelZoom: false }).setView([lat, lon], 8);
+  window.L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 18,
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+  }).addTo(map);
+
+  const faultsLayer = window.L.layerGroup().addTo(map);
+  window.L.circleMarker([lat, lon], {
+    radius: 8,
+    color: '#ff7a00',
+    weight: 2,
+    fillColor: '#ff2bd6',
+    fillOpacity: 0.85
+  }).addTo(map);
+
+  fetch('/api/tectonic-context.php?scope=local&lat=' + encodeURIComponent(String(lat)) + '&lon=' + encodeURIComponent(String(lon)) + '&max_faults=220', { cache: 'no-store' })
+    .then((res) => (res.ok ? res.json() : null))
+    .then((payload) => {
+      if (!payload || !payload.faults || !Array.isArray(payload.faults.features)) return;
+      window.L.geoJSON(payload.faults, {
+        style: () => ({ color: '#ff7a00', weight: 1.7, opacity: 0.6 })
+      }).addTo(faultsLayer);
+    })
+    .catch(() => {});
+
+  const hypoDepthKm = typeof depthKm === 'number' ? Math.max(0, depthKm) : 10;
+  const vp = 6.0;
+  const vs = 3.5;
+  const pLegend = document.getElementById('editorial-home-wave-p');
+  const sLegend = document.getElementById('editorial-home-wave-s');
+  const waveNote = document.getElementById('editorial-home-wave-note');
+  const magScale = typeof magnitude === 'number' ? Math.max(0.88, Math.min(1.35, 0.86 + ((magnitude - 5.0) * 0.12))) : 1.0;
+  const ringsLayer = window.L.layerGroup().addTo(map);
+
+  function horizontalRadiusMeters(velocityKmS, tSeconds) {
+    const hypoKm = velocityKmS * tSeconds;
+    const horizontalKm = Math.sqrt(Math.max(0, (hypoKm * hypoKm) - (hypoDepthKm * hypoDepthKm)));
+    return Math.round(horizontalKm * 1000 * magScale);
+  }
+
+  function addIsochrone(radius, opts) {
+    if (!(radius > 0)) return;
+    window.L.circle([lat, lon], {
+      radius,
+      color: opts.color,
+      weight: opts.weight,
+      opacity: opts.opacity,
+      dashArray: opts.dash || null,
+      fillOpacity: 0,
+      interactive: false
+    }).addTo(ringsLayer);
+  }
+
+  const pStart = Math.max(10, Math.ceil(hypoDepthKm / vp) + 5);
+  const sStart = Math.max(10, Math.ceil(hypoDepthKm / vs) + 5);
+  const pMarks = [pStart, pStart + 10, pStart + 20];
+  const sMarks = [sStart, sStart + 10, sStart + 20];
+
+  if (pLegend) pLegend.innerHTML = '<span class="dot" aria-hidden="true"></span>P-wave ' + pMarks.join('/') + 's';
+  if (sLegend) sLegend.innerHTML = '<span class="dot" aria-hidden="true"></span>S-wave ' + sMarks.join('/') + 's';
+  if (waveNote) waveNote.textContent = 'Isocrone con Vp ' + vp.toFixed(1) + ' km/s, Vs ' + vs.toFixed(1) + ' km/s, profondita ' + hypoDepthKm.toFixed(1) + ' km (modello semplificato).';
+
+  pMarks.forEach((t, idx) => addIsochrone(horizontalRadiusMeters(vp, t), { color: '#20e0ff', weight: idx === 0 ? 2 : 1.6, opacity: 0.45 - (idx * 0.08), dash: idx === 0 ? '6 4' : '4 6' }));
+  sMarks.forEach((t, idx) => addIsochrone(horizontalRadiusMeters(vs, t), { color: '#b7ff00', weight: idx === 0 ? 2 : 1.6, opacity: 0.42 - (idx * 0.08), dash: idx === 0 ? '10 6' : '6 8' }));
+})();
+</script>
+{% endblock %}

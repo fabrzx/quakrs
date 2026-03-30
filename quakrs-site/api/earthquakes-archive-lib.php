@@ -66,6 +66,25 @@ function earthquake_mysql_role_config(array $appConfig, string $role): array
     ];
 }
 
+function earthquake_mysql_role_tables(array $appConfig, string $role): array
+{
+    $cfg = earthquake_mysql_role_config($appConfig, $role);
+    $tables = [];
+    $primary = preg_match('/^[a-zA-Z0-9_]+$/', (string) ($cfg['table'] ?? '')) === 1
+        ? (string) $cfg['table']
+        : 'earthquake_events';
+    $tables[] = $primary;
+
+    $roleCfgs = is_array($appConfig['mysql_databases'] ?? null) ? $appConfig['mysql_databases'] : [];
+    $roleCfg = is_array($roleCfgs[strtolower(trim($role))] ?? null) ? $roleCfgs[strtolower(trim($role))] : [];
+    $shadowRaw = trim((string) ($roleCfg['shadow_table'] ?? ''));
+    if ($shadowRaw !== '' && preg_match('/^[a-zA-Z0-9_]+$/', $shadowRaw) === 1) {
+        $tables[] = $shadowRaw;
+    }
+
+    return array_values(array_unique($tables));
+}
+
 function earthquake_archive_mysql_config(array $appConfig): array
 {
     return earthquake_mysql_role_config($appConfig, 'archive');
@@ -147,12 +166,15 @@ function earthquake_mysql_open(array $appConfig, string $role, ?string &$reason 
         }
 
         $mysqli->set_charset($cfg['charset']);
-        $createSql = $cfg['role'] === 'stats'
-            ? earthquake_stats_table_sql($cfg['table'])
-            : earthquake_archive_table_sql($cfg['table']);
-        if ($mysqli->query($createSql) !== true) {
-            $reason = sprintf('MySQL schema init failed (%s)', $cfg['role']);
-            return null;
+        $tables = earthquake_mysql_role_tables($appConfig, $cfg['role']);
+        foreach ($tables as $tableName) {
+            $createSql = $cfg['role'] === 'stats'
+                ? earthquake_stats_table_sql($tableName)
+                : earthquake_archive_table_sql($tableName);
+            if ($mysqli->query($createSql) !== true) {
+                $reason = sprintf('MySQL schema init failed (%s:%s)', $cfg['role'], $tableName);
+                return null;
+            }
         }
     } catch (Throwable $e) {
         $reason = sprintf('MySQL exception (%s): %s', $cfg['role'], $e->getMessage());
@@ -167,8 +189,19 @@ function earthquake_archive_open(array $appConfig, ?string &$reason = null): ?my
     return earthquake_mysql_open($appConfig, 'archive', $reason);
 }
 
-function earthquake_archive_ingest(mysqli $db, array $events, int $nowTs, string $table): int
+function earthquake_archive_ingest(mysqli $db, array $events, int $nowTs, string|array $table): int
 {
+    if (is_array($table)) {
+        $written = 0;
+        foreach ($table as $tableName) {
+            if (!is_string($tableName) || preg_match('/^[a-zA-Z0-9_]+$/', $tableName) !== 1) {
+                continue;
+            }
+            $written += earthquake_archive_ingest($db, $events, $nowTs, $tableName);
+        }
+        return $written;
+    }
+
     $sql = sprintf(
         'INSERT INTO `%s` (
             event_key, event_id, event_time_utc, event_time_ts, place, magnitude, depth_km, latitude, longitude,

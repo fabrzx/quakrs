@@ -161,6 +161,7 @@ $sortByRaw = strtolower(trim((string) ($_GET['sort_by'] ?? 'date')));
 $sortDirRaw = strtolower(trim((string) ($_GET['sort_dir'] ?? 'desc')));
 $sortBy = in_array($sortByRaw, ['date', 'magnitude'], true) ? $sortByRaw : 'date';
 $sortDir = in_array($sortDirRaw, ['asc', 'desc'], true) ? $sortDirRaw : 'desc';
+$maxAcceptedEventTs = time() + 86400;
 
 $archiveReason = null;
 $db = earthquake_archive_open($appConfig, $archiveReason);
@@ -237,6 +238,9 @@ if (is_int($toTs)) {
     $types .= 'i';
     $params[] = $toTs;
 }
+$where[] = 'event_time_ts <= ?';
+$types .= 'i';
+$params[] = $maxAcceptedEventTs;
 if ($minMag !== null) {
     $where[] = 'magnitude >= ?';
     $types .= 'd';

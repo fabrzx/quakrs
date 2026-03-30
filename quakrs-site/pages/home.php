@@ -6,6 +6,156 @@ $pageDescription = 'Real-time earthquakes, volcanoes, tsunami alerts, space weat
 $currentPage = 'home';
 $includeLeaflet = true;
 $bodyClass = 'home-page home-2026 home-acid-balanced home-acid-brutalist';
+$appConfig = require __DIR__ . '/../config/app.php';
+require_once __DIR__ . '/../lib/editorial_engine.php';
+
+/**
+ * @return array{lead:string,trimmed:bool}
+ */
+function qk_home_trim_preview(string $text, int $maxChars = 320): array
+{
+    $lead = preg_replace('/\s+/u', ' ', trim($text)) ?? trim($text);
+    if ($lead === '') {
+        return ['lead' => '', 'trimmed' => false];
+    }
+
+    if (mb_strlen($lead, 'UTF-8') <= $maxChars) {
+        return ['lead' => $lead, 'trimmed' => false];
+    }
+
+    $slice = rtrim(mb_substr($lead, 0, $maxChars, 'UTF-8'));
+    $slice = preg_replace('/\s+\S*$/u', '', $slice) ?? $slice;
+    if ($slice === '') {
+        $slice = rtrim(mb_substr($lead, 0, $maxChars, 'UTF-8'));
+    }
+
+    return ['lead' => $slice, 'trimmed' => true];
+}
+
+/**
+ * @return array{url:string,title:string,lead:string}|null
+ */
+function qk_home_latest_blog_from_grav(): ?array
+{
+    $pagesRoot = __DIR__ . '/../editoriale/user/pages/01.home';
+    if (!is_dir($pagesRoot)) {
+        return null;
+    }
+
+    $latestPath = null;
+    $latestMtime = 0;
+    foreach (glob($pagesRoot . '/*/item.md') ?: [] as $itemPath) {
+        if (!is_string($itemPath) || $itemPath === '') {
+            continue;
+        }
+        $mtime = @filemtime($itemPath);
+        $mtime = is_int($mtime) ? $mtime : 0;
+        if ($mtime >= $latestMtime) {
+            $latestMtime = $mtime;
+            $latestPath = $itemPath;
+        }
+    }
+
+    if (!is_string($latestPath) || $latestPath === '') {
+        return null;
+    }
+
+    $raw = @file_get_contents($latestPath);
+    if (!is_string($raw) || $raw === '') {
+        return null;
+    }
+
+    $frontmatter = '';
+    $body = $raw;
+    if (preg_match('/\A---\R(.*?)\R---\R(.*)\z/s', $raw, $parts) === 1) {
+        $frontmatter = (string) ($parts[1] ?? '');
+        $body = (string) ($parts[2] ?? '');
+    }
+
+    $title = '';
+    if (preg_match('/^title:\s*"?(.*?)"?\s*$/m', $frontmatter, $titleMatch) === 1) {
+        $title = trim((string) ($titleMatch[1] ?? ''));
+    }
+    if ($title === '') {
+        $title = 'Ultimo articolo del blog';
+    }
+
+    $lead = trim($body);
+    $lead = preg_replace('/```.*?```/s', ' ', $lead) ?? $lead;
+    $lead = preg_replace('/!\[[^\]]*\]\([^)]+\)/', ' ', $lead) ?? $lead;
+    $lead = preg_replace('/\[(.*?)\]\([^)]+\)/', '$1', $lead) ?? $lead;
+    $lead = preg_replace('/^#{1,6}\s+/m', '', $lead) ?? $lead;
+    $lead = preg_replace('/\s+/u', ' ', $lead) ?? $lead;
+    $lead = trim($lead);
+    $slug = basename(dirname($latestPath));
+    $url = '/blog/' . rawurlencode($slug);
+
+    return [
+        'url' => $url,
+        'title' => $title,
+        'lead' => $lead,
+    ];
+}
+
+$homeLatestEditorial = null;
+$editorialBundle = qk_editorial_load_bundle($appConfig);
+if (is_array($editorialBundle['articles'] ?? null)) {
+    foreach ($editorialBundle['articles'] as $article) {
+        if (!is_array($article) || (string) ($article['status'] ?? '') !== 'published') {
+            continue;
+        }
+        $homeLatestEditorial = $article;
+        break;
+    }
+}
+
+$homeLatestEditorialUrl = '/blog/';
+$homeLatestEditorialTitle = '';
+$homeLatestEditorialLead = '';
+$homeLatestEditorialLeadTrimmed = false;
+if (is_array($homeLatestEditorial)) {
+    $articleUrl = trim((string) ($homeLatestEditorial['url'] ?? ''));
+    if ($articleUrl !== '' && str_starts_with($articleUrl, '/')) {
+        if (preg_match('~^/editoriale/blog/([^/?#]+)~', $articleUrl, $match) === 1) {
+            $homeLatestEditorialUrl = '/blog/' . $match[1];
+        } elseif (preg_match('~^/editoriale/([^/?#]+)\.php$~', $articleUrl, $match) === 1) {
+            $homeLatestEditorialUrl = '/blog/' . $match[1];
+        } elseif ($articleUrl === '/editoriale/' || $articleUrl === '/editoriale') {
+            $homeLatestEditorialUrl = '/blog/';
+        } else {
+            $homeLatestEditorialUrl = $articleUrl;
+        }
+    }
+    $articleTitle = trim((string) ($homeLatestEditorial['title'] ?? ''));
+    if ($articleTitle !== '') {
+        $homeLatestEditorialTitle = $articleTitle;
+    }
+
+    $articleExcerpt = trim((string) ($homeLatestEditorial['excerpt'] ?? ''));
+    if ($articleExcerpt !== '') {
+        $homeLatestEditorialLead = $articleExcerpt;
+    } else {
+        $sections = is_array($homeLatestEditorial['sections'] ?? null) ? $homeLatestEditorial['sections'] : [];
+        $firstSection = is_array($sections[0] ?? null) ? $sections[0] : [];
+        $firstBody = trim((string) ($firstSection['body'] ?? ''));
+        if ($firstBody !== '') {
+            $homeLatestEditorialLead = $firstBody;
+        }
+    }
+}
+
+if ($homeLatestEditorialTitle === '' || $homeLatestEditorialLead === '') {
+    $gravLatest = qk_home_latest_blog_from_grav();
+    if (is_array($gravLatest)) {
+        $homeLatestEditorialUrl = (string) ($gravLatest['url'] ?? $homeLatestEditorialUrl);
+        $homeLatestEditorialTitle = trim((string) ($gravLatest['title'] ?? $homeLatestEditorialTitle));
+        $homeLatestEditorialLead = trim((string) ($gravLatest['lead'] ?? $homeLatestEditorialLead));
+    }
+}
+
+$preview = qk_home_trim_preview($homeLatestEditorialLead, 320);
+$homeLatestEditorialLead = $preview['lead'];
+$homeLatestEditorialLeadTrimmed = (bool) $preview['trimmed'];
 
 require __DIR__ . '/../partials/head.php';
 require __DIR__ . '/../partials/topbar.php';
@@ -58,15 +208,22 @@ require __DIR__ . '/../partials/topbar.php';
                 </ul>
               </div>
             </div>
-            <article class="home-context-visual">
-              <p class="home-context-visual-kicker"><?= htmlspecialchars(qk_t('home.signal_canvas'), ENT_QUOTES, 'UTF-8'); ?></p>
-              <h5 id="home-context-visual-title" class="home-context-visual-title"><?= htmlspecialchars(qk_t('home.distributed_activity'), ENT_QUOTES, 'UTF-8'); ?></h5>
-              <p id="home-context-visual-meta" class="home-context-visual-meta"><?= htmlspecialchars(qk_t('home.loading_signal_canvas'), ENT_QUOTES, 'UTF-8'); ?></p>
-            </article>
-            <article class="home-context-ai">
-              <p class="home-context-ai-label"><?= htmlspecialchars(qk_t('home.ai_assisted_readout'), ENT_QUOTES, 'UTF-8'); ?></p>
-              <h5 id="home-ai-tech" class="home-context-ai-tech">M-- · <?= htmlspecialchars(qk_t('home.pending'), ENT_QUOTES, 'UTF-8'); ?></h5>
-              <p id="home-ai-text" class="home-context-ai-text"><?= htmlspecialchars(qk_t('home.preparing_contextual_interpretation'), ENT_QUOTES, 'UTF-8'); ?></p>
+            <article class="home-context-editorial-feature">
+              <p class="home-context-editorial-kicker"><?= htmlspecialchars(qk_t('home.latest_editorial_article'), ENT_QUOTES, 'UTF-8'); ?></p>
+              <h5 class="home-context-editorial-title">
+                <a class="inline-link" href="<?= htmlspecialchars($homeLatestEditorialUrl, ENT_QUOTES, 'UTF-8'); ?>">
+                  <?= htmlspecialchars($homeLatestEditorialTitle !== '' ? $homeLatestEditorialTitle : qk_t('home.latest_editorial_fallback_title'), ENT_QUOTES, 'UTF-8'); ?>
+                </a>
+              </h5>
+              <p class="home-context-editorial-lead">
+                <?= htmlspecialchars($homeLatestEditorialLead !== '' ? $homeLatestEditorialLead : qk_t('home.latest_editorial_fallback_lead'), ENT_QUOTES, 'UTF-8'); ?>
+                <?php if ($homeLatestEditorialLeadTrimmed): ?>
+                  ...
+                  <a class="home-context-editorial-readmore" href="<?= htmlspecialchars($homeLatestEditorialUrl, ENT_QUOTES, 'UTF-8'); ?>">
+                    <?= htmlspecialchars(qk_t('home.read_more'), ENT_QUOTES, 'UTF-8'); ?>
+                  </a>
+                <?php endif; ?>
+              </p>
             </article>
           </div>
         </div>

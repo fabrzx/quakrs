@@ -108,12 +108,15 @@ function source_query_url(array $sourceCfg, array $params): string
 
 function normalize_feature_time_utc(mixed $rawTime): ?string
 {
+    $minAcceptedTs = (int) strtotime('1900-01-01 00:00:00 UTC');
+    $maxAcceptedTs = time() + 86400; // tolerate small upstream clock drift, reject far-future timestamps
+
     if (is_numeric($rawTime)) {
         $time = (int) $rawTime;
-        if ($time > 9999999999) {
+        while (abs($time) > 9999999999) {
             $time = (int) floor($time / 1000);
         }
-        if ($time === 0) {
+        if ($time < $minAcceptedTs || $time > $maxAcceptedTs) {
             return null;
         }
         return gmdate('c', $time);
@@ -123,7 +126,10 @@ function normalize_feature_time_utc(mixed $rawTime): ?string
         return null;
     }
     $parsed = strtotime(trim($rawTime));
-    return is_int($parsed) ? gmdate('c', $parsed) : null;
+    if (!is_int($parsed) || $parsed < $minAcceptedTs || $parsed > $maxAcceptedTs) {
+        return null;
+    }
+    return gmdate('c', $parsed);
 }
 
 function fetch_json_diagnostic(string $url, int $timeoutSeconds): array
@@ -285,6 +291,7 @@ if (!$db instanceof mysqli) {
 }
 $archiveCfg = earthquake_archive_mysql_config($appConfig);
 $table = (string) ($archiveCfg['table'] ?? 'earthquake_events');
+$tables = earthquake_mysql_role_tables($appConfig, 'archive');
 
 $checkpointPath = $appConfig['data_dir'] . '/backfill_earthquakes_' . $sourceCfg['key'] . '_http_checkpoint.json';
 $checkpointLockPath = $appConfig['data_dir'] . '/backfill_earthquakes_' . $sourceCfg['key'] . '_http_checkpoint.lock';
@@ -525,7 +532,7 @@ if ($windowPages > 0 || $unknownCount) {
     $events = parse_geojson_events($pagePayload['features'], (string) $sourceCfg['provider']);
     $rowsFetchedThisPage = count($events);
     $before = db_count_rows($db, $table);
-    $rowsWritten = $rowsFetchedThisPage > 0 ? earthquake_archive_ingest($db, $events, time(), $table) : 0;
+    $rowsWritten = $rowsFetchedThisPage > 0 ? earthquake_archive_ingest($db, $events, time(), $tables) : 0;
     $after = db_count_rows($db, $table);
     if ($after >= $before) {
         $rowsInsertedApprox = max(0, $after - $before);

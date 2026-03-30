@@ -170,7 +170,7 @@ foreach ($feeds as $feed) {
     }
 }
 
-$mysqlRoles = ['live', 'archive', 'ingest', 'stats', 'spare'];
+$mysqlRoles = ['live', 'archive', 'ingest', 'stats'];
 $mysqlDatabases = [];
 $archiveStatus = 'unavailable';
 $archiveReason = null;

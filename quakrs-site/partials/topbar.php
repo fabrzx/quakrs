@@ -64,6 +64,11 @@ $menuItems = [
         ],
     ],
     [
+        'key' => 'blog',
+        'label' => qk_t('nav.blog'),
+        'href' => '/blog/',
+    ],
+    [
         'key' => 'resources',
         'label' => qk_t('nav.resources'),
         'children' => [
@@ -115,6 +120,8 @@ $legacyTopLevelMap = [
     'data-clusters' => 'data',
     'data-archive' => 'data',
     'data-reports' => 'data',
+    'editoriale' => 'blog',
+    'blog' => 'blog',
     'data-api' => 'data',
     'data-status' => 'data',
     'sources-status' => 'data',

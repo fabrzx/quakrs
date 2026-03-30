@@ -1,0 +1,476 @@
+/* 
+  SISMA MONITOR - Brutalist UI Theme (Acid Accents Expansion)
+*/
+
+:root {
+    /* Base Brutalist Palette */
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    
+    /* Acid Categorization Palette */
+    --color-seismic: #FF6600; /* Orange */
+    --color-volcano: #CCFF00; /* Radioactive Green */
+    --color-tsunami: #00FFFF; /* Electric Cyan */
+    --color-space: #FFFF00; /* Acid Yellow */
+    
+    /* Concrete Texture (Dark Grainy Concrete) */
+    --color-concrete: #1A1A1A;
+    --bg-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+
+    /* Typography */
+    --font-heading: 'Oswald', 'Impact', sans-serif;
+    --font-data: 'Space Mono', 'Courier New', monospace;
+
+    /* Spacing & Borders */
+    --border-width: 2px;
+    --border-style: solid var(--color-black);
+}
+
+/* Reset & Base Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-concrete);
+    background-image: var(--bg-texture);
+    color: var(--color-black);
+    font-family: var(--font-data);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* VINTAGE CRT SCANLINE & DIGITAL NOISE OVERLAY - REMOVED FOR READABILITY */
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Typography Utilities */
+h1, h2, h3, .font-bold { font-family: var(--font-heading); text-transform: uppercase; font-weight: 700; line-height: 1.1; }
+h1 { font-size: 3rem; letter-spacing: -1px; color: var(--color-white); }
+h2 { font-size: 1.5rem; letter-spacing: -0.5px; }
+h3 { font-size: 1.2rem; }
+
+.mono-data { font-family: var(--font-data); font-size: 1rem; }
+.mono-small { font-family: var(--font-data); font-size: 0.65rem; }
+.mono-large { font-family: var(--font-data); font-size: 1.25rem; font-weight: bold; }
+.mono-bold { font-family: var(--font-data); font-weight: 700; font-size: 0.9rem; }
+.terminal-text { font-family: var(--font-data); font-size: 0.85rem; line-height: 1.6; color: var(--color-white); }
+
+/* Color Utilities (Acid Map) */
+.text-white { color: var(--color-white) !important; }
+.text-black { color: var(--color-black) !important; }
+.text-seismic { color: var(--color-seismic) !important; }
+.text-volcano { color: var(--color-volcano) !important; }
+.text-tsunami { color: var(--color-tsunami) !important; }
+.text-space { color: var(--color-space) !important; }
+
+.bg-white { background-color: var(--color-white) !important; }
+.bg-black { background-color: var(--color-black) !important; }
+.bg-seismic { background-color: var(--color-seismic) !important; }
+.bg-volcano { background-color: var(--color-volcano) !important; }
+.bg-tsunami { background-color: var(--color-tsunami) !important; }
+.bg-space { background-color: var(--color-space) !important; }
+
+.stroke-white { stroke: var(--color-white) !important; }
+.stroke-black { stroke: var(--color-black) !important; }
+.stroke-seismic { stroke: var(--color-seismic) !important; }
+.stroke-volcano { stroke: var(--color-volcano) !important; }
+.stroke-tsunami { stroke: var(--color-tsunami) !important; }
+.stroke-space { stroke: var(--color-space) !important; }
+
+.fill-white { fill: var(--color-white) !important; }
+.fill-black { fill: var(--color-black) !important; }
+.fill-seismic { fill: var(--color-seismic) !important; }
+.fill-volcano { fill: var(--color-volcano) !important; }
+.fill-tsunami { fill: var(--color-tsunami) !important; }
+.fill-space { fill: var(--color-space) !important; }
+
+/* Border Utilities */
+.border-right { border-right: var(--border-width) var(--border-style); }
+.border-left { border-left: var(--border-width) var(--border-style); }
+.border-bottom { border-bottom: var(--border-width) var(--border-style); }
+.border-top { border-top: var(--border-width) var(--border-style); }
+.border-all { border: var(--border-width) var(--border-style); }
+
+.border-white { border-color: var(--color-white) !important; }
+.border-seismic { border-color: var(--color-seismic) !important; }
+.border-volcano { border-color: var(--color-volcano) !important; }
+.border-tsunami { border-color: var(--color-tsunami) !important; }
+.border-space { border-color: var(--color-space) !important; }
+
+/* Spacing Utilities */
+.p-large { padding: 1.5rem; border-color: #000; }
+.p-med { padding: 1rem; }
+.px-med { padding-left: 1rem; padding-right: 1rem; }
+.py-med { padding-top: 1rem; padding-bottom: 1rem; }
+.py-small { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.px-small { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-tiny { padding-left: 0.25rem; padding-right: 0.25rem; }
+.mt-tiny { margin-top: 0.25rem; }
+.mt-small { margin-top: 0.5rem; }
+.mt-med { margin-top: 1rem; }
+.mb-med { margin-bottom: 1rem; }
+.mb-small { margin-bottom: 0.5rem; }
+.flex-row { display: flex; align-items: center; }
+
+/* Brutalist Scrollbars */
+::-webkit-scrollbar { width: 16px; background: var(--color-concrete); border-left: var(--border-width) solid var(--color-black); }
+::-webkit-scrollbar-track { background: var(--color-white); }
+::-webkit-scrollbar-thumb { background: var(--color-seismic); border: var(--border-width) solid var(--color-black); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-black); }
+
+/* Layout Grid Container */
+.monitor-container {
+    width: 96vw;
+    height: 96vh;
+    background-color: var(--color-concrete);
+    border: calc(var(--border-width) * 2) var(--border-style);
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    overflow: hidden;
+    box-shadow: 20px 20px 0px rgba(0,0,0,0.8);
+    z-index: 10;
+}
+
+/* 1. Header */
+.system-header {
+    background-color: var(--color-black);
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 60px;
+}
+
+.logo-area { display: flex; align-items: center; padding: 0 1.5rem; gap: 1rem; flex-grow: 1; }
+.sismograph-icon { width: 100px; height: 30px; }
+
+.status-toggle {
+    background-color: var(--color-white);
+    display: flex; align-items: center; padding: 0 1.5rem; gap: 1rem;
+}
+.toggle-switch {
+    width: 60px; height: 28px; border: var(--border-width) var(--border-style); background-color: var(--color-black); position: relative; cursor: pointer;
+}
+.toggle-switch .knob {
+    width: 24px; height: 24px; background-color: var(--color-white); position: absolute; top: 0; left: 0; transition: transform 0.1s steps(2);
+}
+.toggle-switch.active { background-color: var(--color-seismic); }
+.toggle-switch.active .knob { transform: translateX(32px); }
+
+/* 2. Navigation */
+.system-nav {
+    display: flex; background-color: var(--color-black); height: 44px;
+}
+
+.nav-btn {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center; justify-content: center;
+    letter-spacing: 0.5px;
+    transition: 0.1s all steps(2);
+}
+
+.nav-btn:hover { background-color: #ccc; }
+
+/* Dynamic Acid Pressed States */
+.nav-btn.active.color-global { background-color: var(--color-black); color: var(--color-white); border-bottom: 4px solid var(--color-white); }
+.nav-btn.active.color-seismic { background-color: var(--color-black); color: var(--color-seismic); border-bottom: 4px solid var(--color-seismic); }
+.nav-btn.active.color-volcanoes { background-color: var(--color-black); color: var(--color-volcano); border-bottom: 4px solid var(--color-volcano); }
+.nav-btn.active.color-tsunamis { background-color: var(--color-black); color: var(--color-tsunami); border-bottom: 4px solid var(--color-tsunami); }
+.nav-btn.active.color-space { background-color: var(--color-black); color: var(--color-space); border-bottom: 4px solid var(--color-space); }
+.nav-btn.active.color-reports { background-color: var(--color-black); color: var(--color-white); border-bottom: 4px solid var(--color-white); }
+.nav-btn.active.color-network { background-color: var(--color-black); color: var(--color-white); border-bottom: 4px solid #AAA; }
+
+/* 3. Main Content Areas - STRICT 3 COLUMN SYSTEM */
+.system-main {
+    display: grid;
+    /* 18% Sidebars, 64% Center Map */
+    grid-template-columns: 18% 1fr 18%; 
+    grid-template-rows: 1fr;
+    background-color: var(--color-concrete);
+    background-image: var(--bg-texture);
+}
+
+.panel {
+    background-color: var(--color-white);
+    display: flex; flex-direction: column; overflow: hidden;
+}
+
+.panel-left-container { grid-column: 1 / 2; grid-row: 1 / 2; }
+.panel-center-container { grid-column: 2 / 3; grid-row: 1 / 2; background-color: var(--color-concrete); position: relative; }
+.panel-right-container { grid-column: 3 / 4; grid-row: 1 / 2; background-color: #ddd;}
+
+.panel-header { padding: 0.75rem 1rem; }
+
+/* Dynamic Tab Content */
+.tab-content { display: none; width: 100%; height: 100%; flex-direction: column; }
+.tab-content.active { display: flex; }
+
+/* Internal Scroll List */
+.list-container {
+    flex-grow: 1; overflow-y: auto; background-color: var(--color-white);
+}
+
+.data-entry {
+    padding: 1rem; border-bottom: var(--border-width) var(--border-style); background-color: #f4f4f4;
+}
+.data-entry:nth-child(even) { background-color: var(--color-white); }
+.data-entry:hover { background-color: #e0e0e0; cursor: default;}
+
+.report-item { cursor: pointer; }
+.report-item:hover { background-color: var(--color-seismic); color: var(--color-black) !important; }
+
+/* Seismic Feed (left panel custom layout) */
+.seismic-feed {
+    background: #060606;
+    color: #f2f2f2;
+}
+#left-seismic .panel-header {
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1rem;
+}
+.seismic-feed-toolbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    padding: 0.55rem 0.9rem 0.65rem 0.9rem;
+    background: #070707;
+}
+.seismic-feed-btn {
+    background: #3a3a3c;
+    color: #d7d7d7;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    line-height: 1;
+    padding: 0.8rem 0.6rem;
+    border-color: #8f7169;
+}
+.seismic-feed-btn.active {
+    background: var(--color-seismic);
+    color: #000;
+    border-color: var(--color-seismic);
+}
+.seismic-feed-entry {
+    background: #060606;
+    border-color: #8f7169;
+    padding: 1.15rem 0.9rem 1rem 0.9rem;
+}
+.seismic-feed-entry:first-of-type {
+    border-top: var(--border-width) solid #8f7169;
+}
+.seismic-feed-entry-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+.seismic-mag {
+    font-family: var(--font-heading);
+    font-size: 2.15rem;
+    line-height: 1;
+    letter-spacing: 0.2px;
+    color: #f3f3f3;
+}
+.seismic-mag.mag-74 { color: #ffb8a8; }
+.seismic-mag.mag-68 { color: #fff300; }
+.seismic-mag.mag-52,
+.seismic-mag.mag-49 { color: #f0f0f0; }
+.seismic-tag {
+    padding: 0.35rem 0.55rem;
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    line-height: 1;
+}
+.seismic-tag-danger {
+    background: #b60015;
+    color: #f0f0f0;
+}
+.seismic-tag-neutral {
+    background: #3d4044;
+    color: #efefef;
+}
+.seismic-loc {
+    margin-top: 0.85rem;
+    font-family: var(--font-heading);
+    font-size: 0.92rem;
+    line-height: 1.15;
+    color: #f0f0f0;
+}
+.seismic-meta {
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.6rem;
+    color: #9d827a;
+    font-size: 0.62rem;
+}
+.seismic-meta strong {
+    font-size: 0.68rem;
+    color: #ba9f95;
+}
+
+/* Map View */
+.panel-header-overlay { position: absolute; top: 0; left: 0; padding: 0.5rem 1rem; z-index: 10; }
+.map-container { flex-grow: 1; width: 100%; height: 100%; position: relative; overflow: hidden; background-color: var(--color-concrete); }
+.map-grid {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.16), rgba(255,255,255,0.16) 1px, transparent 1px, transparent 34px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.16), rgba(255,255,255,0.16) 1px, transparent 1px, transparent 34px);
+}
+.brutalist-map {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: #262626;
+}
+.brutalist-map.leaflet-container {
+    font-family: var(--font-data);
+}
+.brutalist-map .leaflet-control-container { display: none; }
+.map-variant-graphite .leaflet-tile {
+    filter: grayscale(1) invert(0.82) brightness(0.68) contrast(1.22);
+}
+.brutalist-map .leaflet-tooltip.map-point-label {
+    background: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 2px 6px;
+    text-transform: uppercase;
+    font-family: var(--font-data);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+.brutalist-map .leaflet-tooltip.map-point-label::before {
+    display: none;
+}
+.brutalist-map .leaflet-tooltip.label-seismic {
+    border-color: var(--color-seismic);
+    color: var(--color-seismic);
+}
+.brutalist-map .leaflet-tooltip.label-volcano {
+    border-color: var(--color-volcano);
+    color: var(--color-volcano);
+}
+.brutalist-map .leaflet-tooltip.label-tsunami {
+    border-color: var(--color-tsunami);
+    color: var(--color-tsunami);
+}
+.marker-volcano {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 16px solid var(--color-volcano);
+    filter: drop-shadow(0 0 0 #000);
+}
+.marker-tsunami {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--color-tsunami);
+    background: #000;
+}
+
+@keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.5); opacity: 0; } 100% { transform: scale(1); opacity: 0; } }
+.pulse-strong { animation: pulse 2s infinite; transform-origin: center;}
+
+@keyframes pulseBg { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+.pulse-bg { animation: pulseBg 1.5s infinite alternate; }
+
+.map-tics {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 3; pointer-events: none; color: rgba(255,255,255,0.85);
+}
+.map-cursor-coords {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 11;
+    background: #000;
+    color: #d9d9d9;
+    border-color: #8f7169;
+    padding: 4px 8px;
+    font-size: 0.66rem;
+    letter-spacing: 0.2px;
+}
+.tic-y {
+    position: absolute; left: 12px; transform: translateY(-50%);
+    padding: 2px 4px; background: #000; border: 1px solid #fff;
+}
+.tic-x {
+    position: absolute; bottom: 10px; transform: translateX(-50%);
+    padding: 2px 4px; background: #000; border: 1px solid #fff;
+}
+
+.map-legend {
+    position: absolute; bottom: 0; right: 0; padding: 0.6rem;
+    z-index: 10; display: flex; flex-direction: column; gap: 0.4rem; width: 236px;
+}
+.legend-title { font-weight: 700; }
+.legend-row {
+    display: flex; align-items: center; gap: 0.4rem;
+    min-height: 18px;
+}
+.legend-note {
+    margin-top: 0.2rem;
+    color: #bbbbbb;
+}
+.lg-chip {
+    display: inline-block; width: 12px; height: 12px;
+    border: 2px solid #fff; background: #000;
+}
+.lg-seismic { border-color: var(--color-seismic); }
+.lg-volcano {
+    border-color: var(--color-volcano);
+    background: var(--color-volcano);
+}
+.lg-tsunami { border-color: var(--color-tsunami); }
+
+/* Oscilloscope Styles (Space Weather) */
+.oscilloscope-panel {
+    background-color: #050505;
+    border: 2px solid var(--color-black);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+.scope-wave {
+    position: relative; z-index: 2; fill: none; stroke: var(--color-space); stroke-width: 2;
+}
+
+/* Other Right Panel Details */
+.alert-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+.hazard-icon { width: 24px; height: 24px; }
+.analytics-block { background-color: var(--color-white); }
+.analytics-title { font-family: var(--font-data); font-size: 0.85rem; font-weight: bold; padding: 0.5rem; letter-spacing: 0.5px; }
+.graph-bar-container { flex-grow: 1; height: 14px; background-color: var(--color-black); padding: 1px; }
+.graph-bar { height: 100%; }
+.sensor-row { padding: 0.75rem; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center; }
+
+/* Reports Terminal Text */
+#center-report { background-color: var(--color-black); padding: 2rem; overflow-y: auto; }
+.report-document { background-color: #111; border: var(--border-width) solid #333; padding: 2rem; max-width: 800px; margin: 0 auto; color: var(--color-white); }
+
+/* Footer */
+.system-footer { height: 40px; justify-content: space-between; background-color: var(--color-black); }
+.footer-link:hover { text-decoration: underline; background-color: var(--color-white); color: var(--color-black); }

@@ -22,10 +22,23 @@ Use these jobs in production to keep data preloaded and avoid empty/slow blocks.
 */30 * * * * QUAKRS_REFRESH_TOKEN=YOUR_REFRESH_TOKEN /bin/sh /var/www/quakrs-site/scripts/refresh-italy-statistics.sh https://www.quakrs.com >> /var/log/quakrs/refresh-italy-statistics.log 2>&1
 ```
 
+4. Editorial automation refresh every 30 minutes (new + historical articles)
+
+```cron
+*/30 * * * * QUAKRS_REFRESH_TOKEN=YOUR_REFRESH_TOKEN /bin/sh /var/www/quakrs-site/scripts/refresh-editorial.sh https://www.quakrs.com >> /var/log/quakrs/refresh-editorial.log 2>&1
+```
+
+Optional GPT-assisted writing (same job):
+
+```cron
+*/30 * * * * QUAKRS_REFRESH_TOKEN=YOUR_REFRESH_TOKEN QUAKRS_EDITORIAL_USE_GPT=1 QUAKRS_OPENAI_API_KEY=YOUR_OPENAI_KEY QUAKRS_OPENAI_MODEL=gpt-5.4 /bin/sh /var/www/quakrs-site/scripts/refresh-editorial.sh https://www.quakrs.com >> /var/log/quakrs/refresh-editorial.log 2>&1
+```
+
 ## Notes
 
 - `refresh-feeds.sh` refreshes core/hazard/derived feeds and tectonic cache.
 - `prewarm-all.sh` also preloads `event-history` for active seismic zones.
+- `refresh-editorial.sh` triggers fully automatic editorial generation and article page publishing.
 - Keep both jobs; they serve different latencies and payload weights.
 
 ## Cache Garbage Collection (query-based files)

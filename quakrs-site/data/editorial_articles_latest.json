@@ -1,0 +1,1365 @@
+{
+    "ok": true,
+    "generated_at_ts": 1774710122,
+    "generated_at": "2026-03-28T15:02:02+00:00",
+    "articles_count": 12,
+    "created_in_run": 2,
+    "articles": [
+        {
+            "id": "us7000s7z5",
+            "slug": "analisi-2026-03-26-us7000s7z5-153-km-wsw-of-abepura-indonesia",
+            "status": "published",
+            "type": "latest",
+            "locale": "it",
+            "eyebrow": "Analisi evento recente",
+            "title": "Terremoto M5.7 in 153 km WSW of Abepura, Indonesia: quadro e implicazioni operative",
+            "excerpt": "Analisi dell evento, contesto locale a 7 giorni e punti da monitorare in 153 km WSW of Abepura, Indonesia.",
+            "seo_title": "Terremoto M5.7 in 153 km WSW of Abepura, Indonesia: quadro e implicazioni operative | Quakrs Editoriale",
+            "seo_description": "Analisi dell evento, contesto locale a 7 giorni e punti da monitorare in 153 km WSW of Abepura, Indonesia.",
+            "published_at_ts": 1774710122,
+            "published_at": "2026-03-28T15:02:02+00:00",
+            "updated_at_ts": 1774710122,
+            "updated_at": "2026-03-28T15:02:02+00:00",
+            "word_count": 233,
+            "quality_score": 100,
+            "quality_checks": [
+                {
+                    "name": "magnitude_present",
+                    "ok": true
+                },
+                {
+                    "name": "depth_present",
+                    "ok": true
+                },
+                {
+                    "name": "coords_present",
+                    "ok": true
+                },
+                {
+                    "name": "source_url_present",
+                    "ok": true
+                },
+                {
+                    "name": "sections_ready",
+                    "ok": true
+                },
+                {
+                    "name": "context_ready",
+                    "ok": true
+                },
+                {
+                    "name": "min_word_count",
+                    "ok": true
+                }
+            ],
+            "url": "/editoriale/analisi-2026-03-26-us7000s7z5-153-km-wsw-of-abepura-indonesia.php",
+            "event": {
+                "id": "us7000s7z5",
+                "place": "153 km WSW of Abepura, Indonesia",
+                "place_short": "153 km WSW of Abepura, Indonesia",
+                "magnitude": 5.7,
+                "depth_km": 53.94,
+                "latitude": -3.1837,
+                "longitude": 139.3807,
+                "event_time_utc": "2026-03-26T22:51:01+00:00",
+                "event_time_ts": 1774565461,
+                "source_provider": "USGS",
+                "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s7z5"
+            },
+            "context": {
+                "window_days": 7,
+                "recent_window_hours": 48,
+                "nearby_count_48h": 9,
+                "nearby_count_7d": 9,
+                "nearby_max_magnitude": 5.7
+            },
+            "sections": [
+                {
+                    "heading": "Sintesi operativa",
+                    "body": "Il 2026-03-26, nell area 153 km WSW of Abepura, Indonesia, i dati sismici disponibili indicano un evento di magnitudo 5.7 con profondita 53.9 km. Il riferimento principale proviene da USGS ed e utile per leggere priorita e contesto operativo. In questa lettura, la domanda chiave non e \\\"quanto e forte in assoluto\\\", ma se i parametri mostrano stabilita o cambiamento progressivo nella stessa zona."
+                },
+                {
+                    "heading": "Dati chiave e contesto locale",
+                    "body": "Coordinate evento: -3.184, 139.381. Nella finestra di 7 giorni attorno a questo punto risultano 9 eventi entro ~250 km, con magnitudo massima 5.7. Questo aiuta a distinguere tra episodio isolato e area con attivita distribuita. Se il conteggio resta basso e la magnitudo massima non cresce, il quadro tende a rimanere contenuto; se entrambi salgono, aumenta la priorita di monitoraggio."
+                },
+                {
+                    "heading": "Cosa monitorare nelle prossime ore",
+                    "body": "Nella lettura operativa conviene controllare eventuali repliche con magnitudo in crescita, spostamento della zona attiva e variazione profondita. Un aumento combinato di questi fattori e un segnale piu utile del singolo numero di eventi. Conviene osservare anche la distanza media tra eventi successivi: quando si riduce insieme all aumento del conteggio, il quadro operativo merita attenzione aggiuntiva."
+                },
+                {
+                    "heading": "Limiti dell analisi",
+                    "body": "Il testo si basa su dati tecnici che possono riflettere ritardi o revisioni di catalogo. Per decisioni di sicurezza personale o territoriale fare sempre riferimento alle autorita ufficiali competenti. L obiettivo di questa scheda e supportare il monitoraggio informativo e la contestualizzazione, non sostituire un bollettino istituzionale."
+                }
+            ],
+            "internal_links": [
+                "/event.php?id=us7000s7z5",
+                "/earthquakes.php",
+                "/archive.php",
+                "/data-archive.php",
+                "/timeline.php",
+                "/alerts.php"
+            ],
+            "glossary": [
+                {
+                    "term": "ipocentro",
+                    "definition": "Punto in profondita dove si genera il terremoto."
+                },
+                {
+                    "term": "epicentro",
+                    "definition": "Posizione in superficie sopra l origine del sisma."
+                },
+                {
+                    "term": "magnitudo",
+                    "definition": "Valore che descrive la forza energetica del sisma."
+                },
+                {
+                    "term": "replica",
+                    "definition": "Scossa successiva legata allo stesso processo sismico."
+                }
+            ]
+        },
+        {
+            "id": "us7000s812",
+            "slug": "analisi-2026-03-27-us7000s812-42-km-nnw-of-barishal-pakistan",
+            "status": "published",
+            "type": "latest",
+            "locale": "it",
+            "eyebrow": "Analisi evento recente",
+            "title": "Terremoto M5.0 in 42 km NNW of Barishal, Pakistan: quadro e implicazioni operative",
+            "excerpt": "Analisi dell evento, contesto locale a 7 giorni e punti da monitorare in 42 km NNW of Barishal, Pakistan.",
+            "seo_title": "Terremoto M5.0 in 42 km NNW of Barishal, Pakistan: quadro e implicazioni operative | Quakrs Editoriale",
+            "seo_description": "Analisi dell evento, contesto locale a 7 giorni e punti da monitorare in 42 km NNW of Barishal, Pakistan.",
+            "published_at_ts": 1774710122,
+            "published_at": "2026-03-28T15:02:02+00:00",
+            "updated_at_ts": 1774710122,
+            "updated_at": "2026-03-28T15:02:02+00:00",
+            "word_count": 233,
+            "quality_score": 100,
+            "quality_checks": [
+                {
+                    "name": "magnitude_present",
+                    "ok": true
+                },
+                {
+                    "name": "depth_present",
+                    "ok": true
+                },
+                {
+                    "name": "coords_present",
+                    "ok": true
+                },
+                {
+                    "name": "source_url_present",
+                    "ok": true
+                },
+                {
+                    "name": "sections_ready",
+                    "ok": true
+                },
+                {
+                    "name": "context_ready",
+                    "ok": true
+                },
+                {
+                    "name": "min_word_count",
+                    "ok": true
+                }
+            ],
+            "url": "/editoriale/analisi-2026-03-27-us7000s812-42-km-nnw-of-barishal-pakistan.php",
+            "event": {
+                "id": "us7000s812",
+                "place": "42 km NNW of Barishal, Pakistan",
+                "place_short": "42 km NNW of Barishal, Pakistan",
+                "magnitude": 5,
+                "depth_km": 10,
+                "latitude": 36.6474,
+                "longitude": 74.4394,
+                "event_time_utc": "2026-03-27T04:40:10+00:00",
+                "event_time_ts": 1774586410,
+                "source_provider": "USGS",
+                "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s812"
+            },
+            "context": {
+                "window_days": 7,
+                "recent_window_hours": 48,
+                "nearby_count_48h": 4,
+                "nearby_count_7d": 4,
+                "nearby_max_magnitude": 5
+            },
+            "sections": [
+                {
+                    "heading": "Sintesi operativa",
+                    "body": "Il 2026-03-27, nell area 42 km NNW of Barishal, Pakistan, i dati sismici disponibili indicano un evento di magnitudo 5.0 con profondita 10.0 km. Il riferimento principale proviene da USGS ed e utile per leggere priorita e contesto operativo. In questa lettura, la domanda chiave non e \\\"quanto e forte in assoluto\\\", ma se i parametri mostrano stabilita o cambiamento progressivo nella stessa zona."
+                },
+                {
+                    "heading": "Dati chiave e contesto locale",
+                    "body": "Coordinate evento: 36.647, 74.439. Nella finestra di 7 giorni attorno a questo punto risultano 4 eventi entro ~250 km, con magnitudo massima 5.0. Questo aiuta a distinguere tra episodio isolato e area con attivita distribuita. Se il conteggio resta basso e la magnitudo massima non cresce, il quadro tende a rimanere contenuto; se entrambi salgono, aumenta la priorita di monitoraggio."
+                },
+                {
+                    "heading": "Cosa monitorare nelle prossime ore",
+                    "body": "Nella lettura operativa conviene controllare eventuali repliche con magnitudo in crescita, spostamento della zona attiva e variazione profondita. Un aumento combinato di questi fattori e un segnale piu utile del singolo numero di eventi. Conviene osservare anche la distanza media tra eventi successivi: quando si riduce insieme all aumento del conteggio, il quadro operativo merita attenzione aggiuntiva."
+                },
+                {
+                    "heading": "Limiti dell analisi",
+                    "body": "Il testo si basa su dati tecnici che possono riflettere ritardi o revisioni di catalogo. Per decisioni di sicurezza personale o territoriale fare sempre riferimento alle autorita ufficiali competenti. L obiettivo di questa scheda e supportare il monitoraggio informativo e la contestualizzazione, non sostituire un bollettino istituzionale."
+                }
+            ],
+            "internal_links": [
+                "/event.php?id=us7000s812",
+                "/earthquakes.php",
+                "/archive.php",
+                "/data-archive.php",
+                "/timeline.php",
+                "/alerts.php"
+            ],
+            "glossary": [
+                {
+                    "term": "ipocentro",
+                    "definition": "Punto in profondita dove si genera il terremoto."
+                },
+                {
+                    "term": "epicentro",
+                    "definition": "Posizione in superficie sopra l origine del sisma."
+                },
+                {
+                    "term": "magnitudo",
+                    "definition": "Valore che descrive la forza energetica del sisma."
+                },
+                {
+                    "term": "replica",
+                    "definition": "Scossa successiva legata allo stesso processo sismico."
+                }
+            ]
+        },
+        {
+            "id": "us7000s817",
+            "slug": "analisi-2026-03-27-us7000s817-48-km-nw-of-barishal-pakistan",
+            "status": "published",
+            "type": "latest",
+            "locale": "it",
+            "eyebrow": "Analisi evento recente",
+            "title": "Terremoto M5.0 in 48 km NW of Barishal, Pakistan: quadro e implicazioni operative",
+            "excerpt": "Analisi dell evento, contesto locale a 7 giorni e punti da monitorare in 48 km NW of Barishal, Pakistan.",
+            "seo_title": "Terremoto M5.0 in 48 km NW of Barishal, Pakistan: quadro e implicazioni operative | Quakrs Editoriale",
+            "seo_description": "Analisi dell evento, contesto locale a 7 giorni e punti da monitorare in 48 km NW of Barishal, Pakistan.",
+            "published_at_ts": 1774710122,
+            "published_at": "2026-03-28T15:02:02+00:00",
+            "updated_at_ts": 1774710122,
+            "updated_at": "2026-03-28T15:02:02+00:00",
+            "word_count": 233,
+            "quality_score": 100,
+            "quality_checks": [
+                {
+                    "name": "magnitude_present",
+                    "ok": true
+                },
+                {
+                    "name": "depth_present",
+                    "ok": true
+                },
+                {
+                    "name": "coords_present",
+                    "ok": true
+                },
+                {
+                    "name": "source_url_present",
+                    "ok": true
+                },
+                {
+                    "name": "sections_ready",
+                    "ok": true
+                },
+                {
+                    "name": "context_ready",
+                    "ok": true
+                },
+                {
+                    "name": "min_word_count",
+                    "ok": true
+                }
+            ],
+            "url": "/editoriale/analisi-2026-03-27-us7000s817-48-km-nw-of-barishal-pakistan.php",
+            "event": {
+                "id": "us7000s817",
+                "place": "48 km NW of Barishal, Pakistan",
+                "place_short": "48 km NW of Barishal, Pakistan",
+                "magnitude": 5,
+                "depth_km": 10,
+                "latitude": 36.6726,
+                "longitude": 74.3708,
+                "event_time_utc": "2026-03-27T04:52:59+00:00",
+                "event_time_ts": 1774587179,
+                "source_provider": "USGS",
+                "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s817"
+            },
+            "context": {
+                "window_days": 7,
+                "recent_window_hours": 48,
+                "nearby_count_48h": 4,
+                "nearby_count_7d": 4,
+                "nearby_max_magnitude": 5
+            },
+            "sections": [
+                {
+                    "heading": "Sintesi operativa",
+                    "body": "Il 2026-03-27, nell area 48 km NW of Barishal, Pakistan, i dati sismici disponibili indicano un evento di magnitudo 5.0 con profondita 10.0 km. Il riferimento principale proviene da USGS ed e utile per leggere priorita e contesto operativo. In questa lettura, la domanda chiave non e \\\"quanto e forte in assoluto\\\", ma se i parametri mostrano stabilita o cambiamento progressivo nella stessa zona."
+                },
+                {
+                    "heading": "Dati chiave e contesto locale",
+                    "body": "Coordinate evento: 36.673, 74.371. Nella finestra di 7 giorni attorno a questo punto risultano 4 eventi entro ~250 km, con magnitudo massima 5.0. Questo aiuta a distinguere tra episodio isolato e area con attivita distribuita. Se il conteggio resta basso e la magnitudo massima non cresce, il quadro tende a rimanere contenuto; se entrambi salgono, aumenta la priorita di monitoraggio."
+                },
+                {
+                    "heading": "Cosa monitorare nelle prossime ore",
+                    "body": "Nella lettura operativa conviene controllare eventuali repliche con magnitudo in crescita, spostamento della zona attiva e variazione profondita. Un aumento combinato di questi fattori e un segnale piu utile del singolo numero di eventi. Conviene osservare anche la distanza media tra eventi successivi: quando si riduce insieme all aumento del conteggio, il quadro operativo merita attenzione aggiuntiva."
+                },
+                {
+                    "heading": "Limiti dell analisi",
+                    "body": "Il testo si basa su dati tecnici che possono riflettere ritardi o revisioni di catalogo. Per decisioni di sicurezza personale o territoriale fare sempre riferimento alle autorita ufficiali competenti. L obiettivo di questa scheda e supportare il monitoraggio informativo e la contestualizzazione, non sostituire un bollettino istituzionale."
+                }
+            ],
+            "internal_links": [
+                "/event.php?id=us7000s817",
+                "/earthquakes.php",
+                "/archive.php",
+                "/data-archive.php",
+                "/timeline.php",
+                "/alerts.php"
+            ],
+            "glossary": [
+                {
+                    "term": "ipocentro",
+                    "definition": "Punto in profondita dove si genera il terremoto."
+                },
+                {
+                    "term": "epicentro",
+                    "definition": "Posizione in superficie sopra l origine del sisma."
+                },
+                {
+                    "term": "magnitudo",
+                    "definition": "Valore che descrive la forza energetica del sisma."
+                },
+                {
+                    "term": "replica",
+                    "definition": "Scossa successiva legata allo stesso processo sismico."
+                }
+            ]
+        },
+        {
+            "id": "us7000s83k",
+            "slug": "analisi-2026-03-27-us7000s83k-107-km-e-of-yamada-japan",
+            "status": "published",
+            "type": "latest",
+            "locale": "it",
+            "eyebrow": "Analisi evento recente",
+            "title": "Terremoto M5.1 in 107 km E of Yamada, Japan: quadro e implicazioni operative",
+            "excerpt": "Analisi dell evento, contesto locale a 7 giorni e punti da monitorare in 107 km E of Yamada, Japan.",
+            "seo_title": "Terremoto M5.1 in 107 km E of Yamada, Japan: quadro e implicazioni operative | Quakrs Editoriale",
+            "seo_description": "Analisi dell evento, contesto locale a 7 giorni e punti da monitorare in 107 km E of Yamada, Japan.",
+            "published_at_ts": 1774710122,
+            "published_at": "2026-03-28T15:02:02+00:00",
+            "updated_at_ts": 1774710122,
+            "updated_at": "2026-03-28T15:02:02+00:00",
+            "word_count": 233,
+            "quality_score": 100,
+            "quality_checks": [
+                {
+                    "name": "magnitude_present",
+                    "ok": true
+                },
+                {
+                    "name": "depth_present",
+                    "ok": true
+                },
+                {
+                    "name": "coords_present",
+                    "ok": true
+                },
+                {
+                    "name": "source_url_present",
+                    "ok": true
+                },
+                {
+                    "name": "sections_ready",
+                    "ok": true
+                },
+                {
+                    "name": "context_ready",
+                    "ok": true
+                },
+                {
+                    "name": "min_word_count",
+                    "ok": true
+                }
+            ],
+            "url": "/editoriale/analisi-2026-03-27-us7000s83k-107-km-e-of-yamada-japan.php",
+            "event": {
+                "id": "us7000s83k",
+                "place": "107 km E of Yamada, Japan",
+                "place_short": "107 km E of Yamada, Japan",
+                "magnitude": 5.1,
+                "depth_km": 16.096,
+                "latitude": 39.3975,
+                "longitude": 143.1958,
+                "event_time_utc": "2026-03-27T15:24:33+00:00",
+                "event_time_ts": 1774625073,
+                "source_provider": "USGS",
+                "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000s83k"
+            },
+            "context": {
+                "window_days": 7,
+                "recent_window_hours": 48,
+                "nearby_count_48h": 4,
+                "nearby_count_7d": 4,
+                "nearby_max_magnitude": 5.1
+            },
+            "sections": [
+                {
+                    "heading": "Sintesi operativa",
+                    "body": "Il 2026-03-27, nell area 107 km E of Yamada, Japan, i dati sismici disponibili indicano un evento di magnitudo 5.1 con profondita 16.1 km. Il riferimento principale proviene da USGS ed e utile per leggere priorita e contesto operativo. In questa lettura, la domanda chiave non e \\\"quanto e forte in assoluto\\\", ma se i parametri mostrano stabilita o cambiamento progressivo nella stessa zona."
+                },
+                {
+                    "heading": "Dati chiave e contesto locale",
+                    "body": "Coordinate evento: 39.398, 143.196. Nella finestra di 7 giorni attorno a questo punto risultano 4 eventi entro ~250 km, con magnitudo massima 5.1. Questo aiuta a distinguere tra episodio isolato e area con attivita distribuita. Se il conteggio resta basso e la magnitudo massima non cresce, il quadro tende a rimanere contenuto; se entrambi salgono, aumenta la priorita di monitoraggio."
+                },
+                {
+                    "heading": "Cosa monitorare nelle prossime ore",
+                    "body": "Nella lettura operativa conviene controllare eventuali repliche con magnitudo in crescita, spostamento della zona attiva e variazione profondita. Un aumento combinato di questi fattori e un segnale piu utile del singolo numero di eventi. Conviene osservare anche la distanza media tra eventi successivi: quando si riduce insieme all aumento del conteggio, il quadro operativo merita attenzione aggiuntiva."
+                },
+                {
+                    "heading": "Limiti dell analisi",
+                    "body": "Il testo si basa su dati tecnici che possono riflettere ritardi o revisioni di catalogo. Per decisioni di sicurezza personale o territoriale fare sempre riferimento alle autorita ufficiali competenti. L obiettivo di questa scheda e supportare il monitoraggio informativo e la contestualizzazione, non sostituire un bollettino istituzionale."
+                }
+            ],
+            "internal_links": [
+                "/event.php?id=us7000s83k",
+                "/earthquakes.php",
+                "/archive.php",
+                "/data-archive.php",
+                "/timeline.php",
+                "/alerts.php"
+            ],
+            "glossary": [
+                {
+                    "term": "ipocentro",
+                    "definition": "Punto in profondita dove si genera il terremoto."
+                },
+                {
+                    "term": "epicentro",
+                    "definition": "Posizione in superficie sopra l origine del sisma."
+                },
+                {
+                    "term": "magnitudo",
+                    "definition": "Valore che descrive la forza energetica del sisma."
+                },
+                {
+                    "term": "replica",
+                    "definition": "Scossa successiva legata allo stesso processo sismico."
+                }
+            ]
+        },
+        {
+            "id": "usp000hb7n",
+            "slug": "retrospettiva-2010-04-11-usp000hb7n-1-km-s-of-nig-elas-spain",
+            "status": "published",
+            "type": "historical",
+            "locale": "it",
+            "eyebrow": "Retrospettiva storica",
+            "title": "Retrospettiva sisma M6.3 del 2010-04-11 in 1 km S of Nig\u00fcelas, Spain: contesto e lettura operativa",
+            "excerpt": "Analisi dell evento del 2010-04-11 (1 km S of Nig\u00fcelas, Spain) con confronto sui segnali recenti e implicazioni operative.",
+            "seo_title": "Retrospettiva sisma M6.3 del 2010-04-11 in 1 km S of Nig\u00fcelas, Spain: contesto e lettura operativa | Quakrs Editoriale",
+            "seo_description": "Analisi dell evento del 2010-04-11 (1 km S of Nig\u00fcelas, Spain) con confronto sui segnali recenti e implicazioni operative.",
+            "published_at_ts": 1774710122,
+            "published_at": "2026-03-28T15:02:02+00:00",
+            "updated_at_ts": 1774710122,
+            "updated_at": "2026-03-28T15:02:02+00:00",
+            "word_count": 245,
+            "quality_score": 100,
+            "quality_checks": [
+                {
+                    "name": "magnitude_present",
+                    "ok": true
+                },
+                {
+                    "name": "depth_present",
+                    "ok": true
+                },
+                {
+                    "name": "coords_present",
+                    "ok": true
+                },
+                {
+                    "name": "source_url_present",
+                    "ok": true
+                },
+                {
+                    "name": "sections_ready",
+                    "ok": true
+                },
+                {
+                    "name": "context_ready",
+                    "ok": true
+                },
+                {
+                    "name": "min_word_count",
+                    "ok": true
+                }
+            ],
+            "url": "/editoriale/retrospettiva-2010-04-11-usp000hb7n-1-km-s-of-nig-elas-spain.php",
+            "event": {
+                "id": "usp000hb7n",
+                "place": "1 km S of Nig\u00fcelas, Spain",
+                "place_short": "1 km S of Nig\u00fcelas, Spain",
+                "magnitude": 6.3,
+                "depth_km": 609.8,
+                "latitude": 36.965,
+                "longitude": -3.542,
+                "event_time_utc": "2010-04-11T22:08:12+00:00",
+                "event_time_ts": 1271023692,
+                "source_provider": "Unknown",
+                "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hb7n"
+            },
+            "context": {
+                "window_days": 7,
+                "recent_window_hours": 48,
+                "nearby_count_48h": 0,
+                "nearby_count_7d": 0,
+                "nearby_max_magnitude": null
+            },
+            "sections": [
+                {
+                    "heading": "Evento storico in breve",
+                    "body": "Il 2010-04-11, nell area 1 km S of Nig\u00fcelas, Spain, i dati sismici disponibili indicano un evento di magnitudo 6.3 con profondita 609.8 km. Il riferimento principale proviene da Unknown ed e utile per leggere priorita e contesto operativo. In questa lettura, la domanda chiave non e \\\"quanto e forte in assoluto\\\", ma se i parametri mostrano stabilita o cambiamento progressivo nella stessa zona."
+                },
+                {
+                    "heading": "Confronto con segnali recenti",
+                    "body": "Coordinate evento: 36.965, -3.542. Nella finestra di 7 giorni attorno a questo punto risultano 0 eventi entro ~250 km, con magnitudo massima n/d. Questo aiuta a distinguere tra episodio isolato e area con attivita distribuita. Se il conteggio resta basso e la magnitudo massima non cresce, il quadro tende a rimanere contenuto; se entrambi salgono, aumenta la priorita di monitoraggio. In ottica storica, il confronto serve a misurare persistenza e ricorrenza nella stessa macro-area, non a predire un singolo evento futuro."
+                },
+                {
+                    "heading": "Lettura operativa",
+                    "body": "Per uso operativo quotidiano conviene verificare: trend magnitudo locale, profondita prevalente, variazione del numero eventi nelle ultime 24-72 ore e convergenza tra provider. Quando questi indicatori si muovono insieme, il monitoraggio va intensificato. Nella pratica, confrontare due o tre finestre temporali consecutive riduce il rischio di interpretare un picco breve come cambio strutturale."
+                },
+                {
+                    "heading": "Limiti e affidabilita",
+                    "body": "Questa retrospettiva non sostituisce fonti ufficiali di emergenza. I numeri possono essere aggiornati quando i provider ricalcolano magnitudo, coordinate o profondita. Il valore editoriale sta nel mettere in sequenza i dati utili in modo rapido e verificabile, mantenendo un tono prudente."
+                }
+            ],
+            "internal_links": [
+                "/event.php?id=usp000hb7n",
+                "/earthquakes.php",
+                "/archive.php",
+                "/data-archive.php",
+                "/timeline.php",
+                "/alerts.php"
+            ],
+            "glossary": [
+                {
+                    "term": "ipocentro",
+                    "definition": "Punto in profondita dove si genera il terremoto."
+                },
+                {
+                    "term": "epicentro",
+                    "definition": "Posizione in superficie sopra l origine del sisma."
+                },
+                {
+                    "term": "magnitudo",
+                    "definition": "Valore che descrive la forza energetica del sisma."
+                },
+                {
+                    "term": "replica",
+                    "definition": "Scossa successiva legata allo stesso processo sismico."
+                }
+            ]
+        },
+        {
+            "id": "us1000725y",
+            "slug": "retrospettiva-2016-10-26-us1000725y-2-km-nnw-of-visso-italy",
+            "status": "published",
+            "type": "historical",
+            "locale": "it",
+            "eyebrow": "Retrospettiva storica",
+            "title": "Retrospettiva sisma M6.1 del 2016-10-26 in 2 km NNW of Visso, Italy: contesto e lettura operativa",
+            "excerpt": "Analisi dell evento del 2016-10-26 (2 km NNW of Visso, Italy) con confronto sui segnali recenti e implicazioni operative.",
+            "seo_title": "Retrospettiva sisma M6.1 del 2016-10-26 in 2 km NNW of Visso, Italy: contesto e lettura operativa | Quakrs Editoriale",
+            "seo_description": "Analisi dell evento del 2016-10-26 (2 km NNW of Visso, Italy) con confronto sui segnali recenti e implicazioni operative.",
+            "published_at_ts": 1774710122,
+            "published_at": "2026-03-28T15:02:02+00:00",
+            "updated_at_ts": 1774710122,
+            "updated_at": "2026-03-28T15:02:02+00:00",
+            "word_count": 244,
+            "quality_score": 100,
+            "quality_checks": [
+                {
+                    "name": "magnitude_present",
+                    "ok": true
+                },
+                {
+                    "name": "depth_present",
+                    "ok": true
+                },
+                {
+                    "name": "coords_present",
+                    "ok": true
+                },
+                {
+                    "name": "source_url_present",
+                    "ok": true
+                },
+                {
+                    "name": "sections_ready",
+                    "ok": true
+                },
+                {
+                    "name": "context_ready",
+                    "ok": true
+                },
+                {
+                    "name": "min_word_count",
+                    "ok": true
+                }
+            ],
+            "url": "/editoriale/retrospettiva-2016-10-26-us1000725y-2-km-nnw-of-visso-italy.php",
+            "event": {
+                "id": "us1000725y",
+                "place": "2 km NNW of Visso, Italy",
+                "place_short": "2 km NNW of Visso, Italy",
+                "magnitude": 6.1,
+                "depth_km": 10,
+                "latitude": 42.9564,
+                "longitude": 13.0666,
+                "event_time_utc": "2016-10-26T19:18:08+00:00",
+                "event_time_ts": 1477509488,
+                "source_provider": "Unknown",
+                "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000725y"
+            },
+            "context": {
+                "window_days": 7,
+                "recent_window_hours": 48,
+                "nearby_count_48h": 0,
+                "nearby_count_7d": 0,
+                "nearby_max_magnitude": null
+            },
+            "sections": [
+                {
+                    "heading": "Evento storico in breve",
+                    "body": "Il 2016-10-26, nell area 2 km NNW of Visso, Italy, i dati sismici disponibili indicano un evento di magnitudo 6.1 con profondita 10.0 km. Il riferimento principale proviene da Unknown ed e utile per leggere priorita e contesto operativo. In questa lettura, la domanda chiave non e \\\"quanto e forte in assoluto\\\", ma se i parametri mostrano stabilita o cambiamento progressivo nella stessa zona."
+                },
+                {
+                    "heading": "Confronto con segnali recenti",
+                    "body": "Coordinate evento: 42.956, 13.067. Nella finestra di 7 giorni attorno a questo punto risultano 0 eventi entro ~250 km, con magnitudo massima n/d. Questo aiuta a distinguere tra episodio isolato e area con attivita distribuita. Se il conteggio resta basso e la magnitudo massima non cresce, il quadro tende a rimanere contenuto; se entrambi salgono, aumenta la priorita di monitoraggio. In ottica storica, il confronto serve a misurare persistenza e ricorrenza nella stessa macro-area, non a predire un singolo evento futuro."
+                },
+                {
+                    "heading": "Lettura operativa",
+                    "body": "Per uso operativo quotidiano conviene verificare: trend magnitudo locale, profondita prevalente, variazione del numero eventi nelle ultime 24-72 ore e convergenza tra provider. Quando questi indicatori si muovono insieme, il monitoraggio va intensificato. Nella pratica, confrontare due o tre finestre temporali consecutive riduce il rischio di interpretare un picco breve come cambio strutturale."
+                },
+                {
+                    "heading": "Limiti e affidabilita",
+                    "body": "Questa retrospettiva non sostituisce fonti ufficiali di emergenza. I numeri possono essere aggiornati quando i provider ricalcolano magnitudo, coordinate o profondita. Il valore editoriale sta nel mettere in sequenza i dati utili in modo rapido e verificabile, mantenendo un tono prudente."
+                }
+            ],
+            "internal_links": [
+                "/event.php?id=us1000725y",
+                "/earthquakes.php",
+                "/archive.php",
+                "/data-archive.php",
+                "/timeline.php",
+                "/alerts.php"
+            ],
+            "glossary": [
+                {
+                    "term": "ipocentro",
+                    "definition": "Punto in profondita dove si genera il terremoto."
+                },
+                {
+                    "term": "epicentro",
+                    "definition": "Posizione in superficie sopra l origine del sisma."
+                },
+                {
+                    "term": "magnitudo",
+                    "definition": "Valore che descrive la forza energetica del sisma."
+                },
+                {
+                    "term": "replica",
+                    "definition": "Scossa successiva legata allo stesso processo sismico."
+                }
+            ]
+        },
+        {
+            "id": "us1000731j",
+            "slug": "retrospettiva-2016-10-30-us1000731j-5-km-ese-of-preci-italy",
+            "status": "published",
+            "type": "historical",
+            "locale": "it",
+            "eyebrow": "Retrospettiva storica",
+            "title": "Retrospettiva sisma M6.6 del 2016-10-30 in 5 km ESE of Preci, Italy: contesto e lettura operativa",
+            "excerpt": "Analisi dell evento del 2016-10-30 (5 km ESE of Preci, Italy) con confronto sui segnali recenti e implicazioni operative.",
+            "seo_title": "Retrospettiva sisma M6.6 del 2016-10-30 in 5 km ESE of Preci, Italy: contesto e lettura operativa | Quakrs Editoriale",
+            "seo_description": "Analisi dell evento del 2016-10-30 (5 km ESE of Preci, Italy) con confronto sui segnali recenti e implicazioni operative.",
+            "published_at_ts": 1774710122,
+            "published_at": "2026-03-28T15:02:02+00:00",
+            "updated_at_ts": 1774710122,
+            "updated_at": "2026-03-28T15:02:02+00:00",
+            "word_count": 244,
+            "quality_score": 100,
+            "quality_checks": [
+                {
+                    "name": "magnitude_present",
+                    "ok": true
+                },
+                {
+                    "name": "depth_present",
+                    "ok": true
+                },
+                {
+                    "name": "coords_present",
+                    "ok": true
+                },
+                {
+                    "name": "source_url_present",
+                    "ok": true
+                },
+                {
+                    "name": "sections_ready",
+                    "ok": true
+                },
+                {
+                    "name": "context_ready",
+                    "ok": true
+                },
+                {
+                    "name": "min_word_count",
+                    "ok": true
+                }
+            ],
+            "url": "/editoriale/retrospettiva-2016-10-30-us1000731j-5-km-ese-of-preci-italy.php",
+            "event": {
+                "id": "us1000731j",
+                "place": "5 km ESE of Preci, Italy",
+                "place_short": "5 km ESE of Preci, Italy",
+                "magnitude": 6.6,
+                "depth_km": 8,
+                "latitude": 42.8621,
+                "longitude": 13.0961,
+                "event_time_utc": "2016-10-30T06:40:18+00:00",
+                "event_time_ts": 1477809618,
+                "source_provider": "Unknown",
+                "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000731j"
+            },
+            "context": {
+                "window_days": 7,
+                "recent_window_hours": 48,
+                "nearby_count_48h": 0,
+                "nearby_count_7d": 0,
+                "nearby_max_magnitude": null
+            },
+            "sections": [
+                {
+                    "heading": "Evento storico in breve",
+                    "body": "Il 2016-10-30, nell area 5 km ESE of Preci, Italy, i dati sismici disponibili indicano un evento di magnitudo 6.6 con profondita 8.0 km. Il riferimento principale proviene da Unknown ed e utile per leggere priorita e contesto operativo. In questa lettura, la domanda chiave non e \\\"quanto e forte in assoluto\\\", ma se i parametri mostrano stabilita o cambiamento progressivo nella stessa zona."
+                },
+                {
+                    "heading": "Confronto con segnali recenti",
+                    "body": "Coordinate evento: 42.862, 13.096. Nella finestra di 7 giorni attorno a questo punto risultano 0 eventi entro ~250 km, con magnitudo massima n/d. Questo aiuta a distinguere tra episodio isolato e area con attivita distribuita. Se il conteggio resta basso e la magnitudo massima non cresce, il quadro tende a rimanere contenuto; se entrambi salgono, aumenta la priorita di monitoraggio. In ottica storica, il confronto serve a misurare persistenza e ricorrenza nella stessa macro-area, non a predire un singolo evento futuro."
+                },
+                {
+                    "heading": "Lettura operativa",
+                    "body": "Per uso operativo quotidiano conviene verificare: trend magnitudo locale, profondita prevalente, variazione del numero eventi nelle ultime 24-72 ore e convergenza tra provider. Quando questi indicatori si muovono insieme, il monitoraggio va intensificato. Nella pratica, confrontare due o tre finestre temporali consecutive riduce il rischio di interpretare un picco breve come cambio strutturale."
+                },
+                {
+                    "heading": "Limiti e affidabilita",
+                    "body": "Questa retrospettiva non sostituisce fonti ufficiali di emergenza. I numeri possono essere aggiornati quando i provider ricalcolano magnitudo, coordinate o profondita. Il valore editoriale sta nel mettere in sequenza i dati utili in modo rapido e verificabile, mantenendo un tono prudente."
+                }
+            ],
+            "internal_links": [
+                "/event.php?id=us1000731j",
+                "/earthquakes.php",
+                "/archive.php",
+                "/data-archive.php",
+                "/timeline.php",
+                "/alerts.php"
+            ],
+            "glossary": [
+                {
+                    "term": "ipocentro",
+                    "definition": "Punto in profondita dove si genera il terremoto."
+                },
+                {
+                    "term": "epicentro",
+                    "definition": "Posizione in superficie sopra l origine del sisma."
+                },
+                {
+                    "term": "magnitudo",
+                    "definition": "Valore che descrive la forza energetica del sisma."
+                },
+                {
+                    "term": "replica",
+                    "definition": "Scossa successiva legata allo stesso processo sismico."
+                }
+            ]
+        },
+        {
+            "id": "us10007twj",
+            "slug": "retrospettiva-2017-01-18-us10007twj-5-km-ese-of-cittareale-italy",
+            "status": "published",
+            "type": "historical",
+            "locale": "it",
+            "eyebrow": "Retrospettiva storica",
+            "title": "Retrospettiva sisma M5.7 del 2017-01-18 in 5 km ESE of Cittareale, Italy: contesto e lettura operativa",
+            "excerpt": "Analisi dell evento del 2017-01-18 (5 km ESE of Cittareale, Italy) con confronto sui segnali recenti e implicazioni operative.",
+            "seo_title": "Retrospettiva sisma M5.7 del 2017-01-18 in 5 km ESE of Cittareale, Italy: contesto e lettura operativa | Quakrs Editoriale",
+            "seo_description": "Analisi dell evento del 2017-01-18 (5 km ESE of Cittareale, Italy) con confronto sui segnali recenti e implicazioni operative.",
+            "published_at_ts": 1774710122,
+            "published_at": "2026-03-28T15:02:02+00:00",
+            "updated_at_ts": 1774710122,
+            "updated_at": "2026-03-28T15:02:02+00:00",
+            "word_count": 244,
+            "quality_score": 100,
+            "quality_checks": [
+                {
+                    "name": "magnitude_present",
+                    "ok": true
+                },
+                {
+                    "name": "depth_present",
+                    "ok": true
+                },
+                {
+                    "name": "coords_present",
+                    "ok": true
+                },
+                {
+                    "name": "source_url_present",
+                    "ok": true
+                },
+                {
+                    "name": "sections_ready",
+                    "ok": true
+                },
+                {
+                    "name": "context_ready",
+                    "ok": true
+                },
+                {
+                    "name": "min_word_count",
+                    "ok": true
+                }
+            ],
+            "url": "/editoriale/retrospettiva-2017-01-18-us10007twj-5-km-ese-of-cittareale-italy.php",
+            "event": {
+                "id": "us10007twj",
+                "place": "5 km ESE of Cittareale, Italy",
+                "place_short": "5 km ESE of Cittareale, Italy",
+                "magnitude": 5.7,
+                "depth_km": 7,
+                "latitude": 42.6012,
+                "longitude": 13.2268,
+                "event_time_utc": "2017-01-18T10:14:10+00:00",
+                "event_time_ts": 1484734450,
+                "source_provider": "Unknown",
+                "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us10007twj"
+            },
+            "context": {
+                "window_days": 7,
+                "recent_window_hours": 48,
+                "nearby_count_48h": 0,
+                "nearby_count_7d": 0,
+                "nearby_max_magnitude": null
+            },
+            "sections": [
+                {
+                    "heading": "Evento storico in breve",
+                    "body": "Il 2017-01-18, nell area 5 km ESE of Cittareale, Italy, i dati sismici disponibili indicano un evento di magnitudo 5.7 con profondita 7.0 km. Il riferimento principale proviene da Unknown ed e utile per leggere priorita e contesto operativo. In questa lettura, la domanda chiave non e \\\"quanto e forte in assoluto\\\", ma se i parametri mostrano stabilita o cambiamento progressivo nella stessa zona."
+                },
+                {
+                    "heading": "Confronto con segnali recenti",
+                    "body": "Coordinate evento: 42.601, 13.227. Nella finestra di 7 giorni attorno a questo punto risultano 0 eventi entro ~250 km, con magnitudo massima n/d. Questo aiuta a distinguere tra episodio isolato e area con attivita distribuita. Se il conteggio resta basso e la magnitudo massima non cresce, il quadro tende a rimanere contenuto; se entrambi salgono, aumenta la priorita di monitoraggio. In ottica storica, il confronto serve a misurare persistenza e ricorrenza nella stessa macro-area, non a predire un singolo evento futuro."
+                },
+                {
+                    "heading": "Lettura operativa",
+                    "body": "Per uso operativo quotidiano conviene verificare: trend magnitudo locale, profondita prevalente, variazione del numero eventi nelle ultime 24-72 ore e convergenza tra provider. Quando questi indicatori si muovono insieme, il monitoraggio va intensificato. Nella pratica, confrontare due o tre finestre temporali consecutive riduce il rischio di interpretare un picco breve come cambio strutturale."
+                },
+                {
+                    "heading": "Limiti e affidabilita",
+                    "body": "Questa retrospettiva non sostituisce fonti ufficiali di emergenza. I numeri possono essere aggiornati quando i provider ricalcolano magnitudo, coordinate o profondita. Il valore editoriale sta nel mettere in sequenza i dati utili in modo rapido e verificabile, mantenendo un tono prudente."
+                }
+            ],
+            "internal_links": [
+                "/event.php?id=us10007twj",
+                "/earthquakes.php",
+                "/archive.php",
+                "/data-archive.php",
+                "/timeline.php",
+                "/alerts.php"
+            ],
+            "glossary": [
+                {
+                    "term": "ipocentro",
+                    "definition": "Punto in profondita dove si genera il terremoto."
+                },
+                {
+                    "term": "epicentro",
+                    "definition": "Posizione in superficie sopra l origine del sisma."
+                },
+                {
+                    "term": "magnitudo",
+                    "definition": "Valore che descrive la forza energetica del sisma."
+                },
+                {
+                    "term": "replica",
+                    "definition": "Scossa successiva legata allo stesso processo sismico."
+                }
+            ]
+        },
+        {
+            "id": "us7000infp",
+            "slug": "retrospettiva-2022-11-09-us7000infp-central-italy",
+            "status": "published",
+            "type": "historical",
+            "locale": "it",
+            "eyebrow": "Retrospettiva storica",
+            "title": "Retrospettiva sisma M5.6 del 2022-11-09 in central Italy: contesto e lettura operativa",
+            "excerpt": "Analisi dell evento del 2022-11-09 (central Italy) con confronto sui segnali recenti e implicazioni operative.",
+            "seo_title": "Retrospettiva sisma M5.6 del 2022-11-09 in central Italy: contesto e lettura operativa | Quakrs Editoriale",
+            "seo_description": "Analisi dell evento del 2022-11-09 (central Italy) con confronto sui segnali recenti e implicazioni operative.",
+            "published_at_ts": 1774710122,
+            "published_at": "2026-03-28T15:02:02+00:00",
+            "updated_at_ts": 1774710122,
+            "updated_at": "2026-03-28T15:02:02+00:00",
+            "word_count": 240,
+            "quality_score": 100,
+            "quality_checks": [
+                {
+                    "name": "magnitude_present",
+                    "ok": true
+                },
+                {
+                    "name": "depth_present",
+                    "ok": true
+                },
+                {
+                    "name": "coords_present",
+                    "ok": true
+                },
+                {
+                    "name": "source_url_present",
+                    "ok": true
+                },
+                {
+                    "name": "sections_ready",
+                    "ok": true
+                },
+                {
+                    "name": "context_ready",
+                    "ok": true
+                },
+                {
+                    "name": "min_word_count",
+                    "ok": true
+                }
+            ],
+            "url": "/editoriale/retrospettiva-2022-11-09-us7000infp-central-italy.php",
+            "event": {
+                "id": "us7000infp",
+                "place": "central Italy",
+                "place_short": "central Italy",
+                "magnitude": 5.6,
+                "depth_km": 8,
+                "latitude": 43.9315,
+                "longitude": 13.3152,
+                "event_time_utc": "2022-11-09T06:07:26+00:00",
+                "event_time_ts": 1667974046,
+                "source_provider": "Unknown",
+                "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000infp"
+            },
+            "context": {
+                "window_days": 7,
+                "recent_window_hours": 48,
+                "nearby_count_48h": 0,
+                "nearby_count_7d": 0,
+                "nearby_max_magnitude": null
+            },
+            "sections": [
+                {
+                    "heading": "Evento storico in breve",
+                    "body": "Il 2022-11-09, nell area central Italy, i dati sismici disponibili indicano un evento di magnitudo 5.6 con profondita 8.0 km. Il riferimento principale proviene da Unknown ed e utile per leggere priorita e contesto operativo. In questa lettura, la domanda chiave non e \\\"quanto e forte in assoluto\\\", ma se i parametri mostrano stabilita o cambiamento progressivo nella stessa zona."
+                },
+                {
+                    "heading": "Confronto con segnali recenti",
+                    "body": "Coordinate evento: 43.932, 13.315. Nella finestra di 7 giorni attorno a questo punto risultano 0 eventi entro ~250 km, con magnitudo massima n/d. Questo aiuta a distinguere tra episodio isolato e area con attivita distribuita. Se il conteggio resta basso e la magnitudo massima non cresce, il quadro tende a rimanere contenuto; se entrambi salgono, aumenta la priorita di monitoraggio. In ottica storica, il confronto serve a misurare persistenza e ricorrenza nella stessa macro-area, non a predire un singolo evento futuro."
+                },
+                {
+                    "heading": "Lettura operativa",
+                    "body": "Per uso operativo quotidiano conviene verificare: trend magnitudo locale, profondita prevalente, variazione del numero eventi nelle ultime 24-72 ore e convergenza tra provider. Quando questi indicatori si muovono insieme, il monitoraggio va intensificato. Nella pratica, confrontare due o tre finestre temporali consecutive riduce il rischio di interpretare un picco breve come cambio strutturale."
+                },
+                {
+                    "heading": "Limiti e affidabilita",
+                    "body": "Questa retrospettiva non sostituisce fonti ufficiali di emergenza. I numeri possono essere aggiornati quando i provider ricalcolano magnitudo, coordinate o profondita. Il valore editoriale sta nel mettere in sequenza i dati utili in modo rapido e verificabile, mantenendo un tono prudente."
+                }
+            ],
+            "internal_links": [
+                "/event.php?id=us7000infp",
+                "/earthquakes.php",
+                "/archive.php",
+                "/data-archive.php",
+                "/timeline.php",
+                "/alerts.php"
+            ],
+            "glossary": [
+                {
+                    "term": "ipocentro",
+                    "definition": "Punto in profondita dove si genera il terremoto."
+                },
+                {
+                    "term": "epicentro",
+                    "definition": "Posizione in superficie sopra l origine del sisma."
+                },
+                {
+                    "term": "magnitudo",
+                    "definition": "Valore che descrive la forza energetica del sisma."
+                },
+                {
+                    "term": "replica",
+                    "definition": "Scossa successiva legata allo stesso processo sismico."
+                }
+            ]
+        },
+        {
+            "id": "us7000ma59",
+            "slug": "retrospettiva-2024-04-05-us7000ma59-33-km-nne-of-sarupathar-india",
+            "status": "published",
+            "type": "historical",
+            "locale": "it",
+            "eyebrow": "Retrospettiva storica",
+            "title": "Retrospettiva sisma M5.7 del 2024-04-05 in 33 km NNE of Sarupathar, India: contesto e lettura operativa",
+            "excerpt": "Analisi dell evento del 2024-04-05 (33 km NNE of Sarupathar, India) con confronto sui segnali recenti e implicazioni operative.",
+            "seo_title": "Retrospettiva sisma M5.7 del 2024-04-05 in 33 km NNE of Sarupathar, India: contesto e lettura operativa | Quakrs Editoriale",
+            "seo_description": "Analisi dell evento del 2024-04-05 (33 km NNE of Sarupathar, India) con confronto sui segnali recenti e implicazioni operative.",
+            "published_at_ts": 1774710122,
+            "published_at": "2026-03-28T15:02:02+00:00",
+            "updated_at_ts": 1774710122,
+            "updated_at": "2026-03-28T15:02:02+00:00",
+            "word_count": 244,
+            "quality_score": 100,
+            "quality_checks": [
+                {
+                    "name": "magnitude_present",
+                    "ok": true
+                },
+                {
+                    "name": "depth_present",
+                    "ok": true
+                },
+                {
+                    "name": "coords_present",
+                    "ok": true
+                },
+                {
+                    "name": "source_url_present",
+                    "ok": true
+                },
+                {
+                    "name": "sections_ready",
+                    "ok": true
+                },
+                {
+                    "name": "context_ready",
+                    "ok": true
+                },
+                {
+                    "name": "min_word_count",
+                    "ok": true
+                }
+            ],
+            "url": "/editoriale/retrospettiva-2024-04-05-us7000ma59-33-km-nne-of-sarupathar-india.php",
+            "event": {
+                "id": "us7000ma59",
+                "place": "33 km NNE of Sarupathar, India",
+                "place_short": "33 km NNE of Sarupathar, India",
+                "magnitude": 5.7,
+                "depth_km": 69.136,
+                "latitude": 26.4924,
+                "longitude": 96.9139,
+                "event_time_utc": "2024-04-05T12:45:38+00:00",
+                "event_time_ts": 1712321138,
+                "source_provider": "Unknown",
+                "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ma59"
+            },
+            "context": {
+                "window_days": 7,
+                "recent_window_hours": 48,
+                "nearby_count_48h": 0,
+                "nearby_count_7d": 0,
+                "nearby_max_magnitude": null
+            },
+            "sections": [
+                {
+                    "heading": "Evento storico in breve",
+                    "body": "Il 2024-04-05, nell area 33 km NNE of Sarupathar, India, i dati sismici disponibili indicano un evento di magnitudo 5.7 con profondita 69.1 km. Il riferimento principale proviene da Unknown ed e utile per leggere priorita e contesto operativo. In questa lettura, la domanda chiave non e \\\"quanto e forte in assoluto\\\", ma se i parametri mostrano stabilita o cambiamento progressivo nella stessa zona."
+                },
+                {
+                    "heading": "Confronto con segnali recenti",
+                    "body": "Coordinate evento: 26.492, 96.914. Nella finestra di 7 giorni attorno a questo punto risultano 0 eventi entro ~250 km, con magnitudo massima n/d. Questo aiuta a distinguere tra episodio isolato e area con attivita distribuita. Se il conteggio resta basso e la magnitudo massima non cresce, il quadro tende a rimanere contenuto; se entrambi salgono, aumenta la priorita di monitoraggio. In ottica storica, il confronto serve a misurare persistenza e ricorrenza nella stessa macro-area, non a predire un singolo evento futuro."
+                },
+                {
+                    "heading": "Lettura operativa",
+                    "body": "Per uso operativo quotidiano conviene verificare: trend magnitudo locale, profondita prevalente, variazione del numero eventi nelle ultime 24-72 ore e convergenza tra provider. Quando questi indicatori si muovono insieme, il monitoraggio va intensificato. Nella pratica, confrontare due o tre finestre temporali consecutive riduce il rischio di interpretare un picco breve come cambio strutturale."
+                },
+                {
+                    "heading": "Limiti e affidabilita",
+                    "body": "Questa retrospettiva non sostituisce fonti ufficiali di emergenza. I numeri possono essere aggiornati quando i provider ricalcolano magnitudo, coordinate o profondita. Il valore editoriale sta nel mettere in sequenza i dati utili in modo rapido e verificabile, mantenendo un tono prudente."
+                }
+            ],
+            "internal_links": [
+                "/event.php?id=us7000ma59",
+                "/earthquakes.php",
+                "/archive.php",
+                "/data-archive.php",
+                "/timeline.php",
+                "/alerts.php"
+            ],
+            "glossary": [
+                {
+                    "term": "ipocentro",
+                    "definition": "Punto in profondita dove si genera il terremoto."
+                },
+                {
+                    "term": "epicentro",
+                    "definition": "Posizione in superficie sopra l origine del sisma."
+                },
+                {
+                    "term": "magnitudo",
+                    "definition": "Valore che descrive la forza energetica del sisma."
+                },
+                {
+                    "term": "replica",
+                    "definition": "Scossa successiva legata allo stesso processo sismico."
+                }
+            ]
+        },
+        {
+            "id": "us6000rjkv",
+            "slug": "retrospettiva-2025-10-26-us6000rjkv-57-km-nw-of-pante-makasar-timor-leste",
+            "status": "published",
+            "type": "historical",
+            "locale": "it",
+            "eyebrow": "Retrospettiva storica",
+            "title": "Retrospettiva sisma M6.2 del 2025-10-26 in 57 km NW of Pante Makasar, Timor Leste: contesto e lettura operativa",
+            "excerpt": "Analisi dell evento del 2025-10-26 (57 km NW of Pante Makasar, Timor Leste) con confronto sui segnali recenti e implicazioni operative.",
+            "seo_title": "Retrospettiva sisma M6.2 del 2025-10-26 in 57 km NW of Pante Makasar, Timor Leste: contesto e lettura operativa | Quakrs Editoriale",
+            "seo_description": "Analisi dell evento del 2025-10-26 (57 km NW of Pante Makasar, Timor Leste) con confronto sui segnali recenti e implicazioni operative.",
+            "published_at_ts": 1774710122,
+            "published_at": "2026-03-28T15:02:02+00:00",
+            "updated_at_ts": 1774710122,
+            "updated_at": "2026-03-28T15:02:02+00:00",
+            "word_count": 246,
+            "quality_score": 100,
+            "quality_checks": [
+                {
+                    "name": "magnitude_present",
+                    "ok": true
+                },
+                {
+                    "name": "depth_present",
+                    "ok": true
+                },
+                {
+                    "name": "coords_present",
+                    "ok": true
+                },
+                {
+                    "name": "source_url_present",
+                    "ok": true
+                },
+                {
+                    "name": "sections_ready",
+                    "ok": true
+                },
+                {
+                    "name": "context_ready",
+                    "ok": true
+                },
+                {
+                    "name": "min_word_count",
+                    "ok": true
+                }
+            ],
+            "url": "/editoriale/retrospettiva-2025-10-26-us6000rjkv-57-km-nw-of-pante-makasar-timor-leste.php",
+            "event": {
+                "id": "us6000rjkv",
+                "place": "57 km NW of Pante Makasar, Timor Leste",
+                "place_short": "57 km NW of Pante Makasar, Timor Leste",
+                "magnitude": 6.2,
+                "depth_km": 75,
+                "latitude": -8.8524,
+                "longitude": 123.9887,
+                "event_time_utc": "2025-10-26T17:04:25+00:00",
+                "event_time_ts": 1761498265,
+                "source_provider": "Unknown",
+                "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjkv"
+            },
+            "context": {
+                "window_days": 7,
+                "recent_window_hours": 48,
+                "nearby_count_48h": 0,
+                "nearby_count_7d": 0,
+                "nearby_max_magnitude": null
+            },
+            "sections": [
+                {
+                    "heading": "Evento storico in breve",
+                    "body": "Il 2025-10-26, nell area 57 km NW of Pante Makasar, Timor Leste, i dati sismici disponibili indicano un evento di magnitudo 6.2 con profondita 75.0 km. Il riferimento principale proviene da Unknown ed e utile per leggere priorita e contesto operativo. In questa lettura, la domanda chiave non e \\\"quanto e forte in assoluto\\\", ma se i parametri mostrano stabilita o cambiamento progressivo nella stessa zona."
+                },
+                {
+                    "heading": "Confronto con segnali recenti",
+                    "body": "Coordinate evento: -8.852, 123.989. Nella finestra di 7 giorni attorno a questo punto risultano 0 eventi entro ~250 km, con magnitudo massima n/d. Questo aiuta a distinguere tra episodio isolato e area con attivita distribuita. Se il conteggio resta basso e la magnitudo massima non cresce, il quadro tende a rimanere contenuto; se entrambi salgono, aumenta la priorita di monitoraggio. In ottica storica, il confronto serve a misurare persistenza e ricorrenza nella stessa macro-area, non a predire un singolo evento futuro."
+                },
+                {
+                    "heading": "Lettura operativa",
+                    "body": "Per uso operativo quotidiano conviene verificare: trend magnitudo locale, profondita prevalente, variazione del numero eventi nelle ultime 24-72 ore e convergenza tra provider. Quando questi indicatori si muovono insieme, il monitoraggio va intensificato. Nella pratica, confrontare due o tre finestre temporali consecutive riduce il rischio di interpretare un picco breve come cambio strutturale."
+                },
+                {
+                    "heading": "Limiti e affidabilita",
+                    "body": "Questa retrospettiva non sostituisce fonti ufficiali di emergenza. I numeri possono essere aggiornati quando i provider ricalcolano magnitudo, coordinate o profondita. Il valore editoriale sta nel mettere in sequenza i dati utili in modo rapido e verificabile, mantenendo un tono prudente."
+                }
+            ],
+            "internal_links": [
+                "/event.php?id=us6000rjkv",
+                "/earthquakes.php",
+                "/archive.php",
+                "/data-archive.php",
+                "/timeline.php",
+                "/alerts.php"
+            ],
+            "glossary": [
+                {
+                    "term": "ipocentro",
+                    "definition": "Punto in profondita dove si genera il terremoto."
+                },
+                {
+                    "term": "epicentro",
+                    "definition": "Posizione in superficie sopra l origine del sisma."
+                },
+                {
+                    "term": "magnitudo",
+                    "definition": "Valore che descrive la forza energetica del sisma."
+                },
+                {
+                    "term": "replica",
+                    "definition": "Scossa successiva legata allo stesso processo sismico."
+                }
+            ]
+        },
+        {
+            "id": "us6000rjsu",
+            "slug": "retrospettiva-2025-10-27-us6000rjsu-7-km-se-of-s-nd-rg-turkey",
+            "status": "published",
+            "type": "historical",
+            "locale": "it",
+            "eyebrow": "Retrospettiva storica",
+            "title": "Retrospettiva sisma M6.0 del 2025-10-27 in 7 km SE of S\u0131nd\u0131rg\u0131, Turkey: contesto e lettura operativa",
+            "excerpt": "Analisi dell evento del 2025-10-27 (7 km SE of S\u0131nd\u0131rg\u0131, Turkey) con confronto sui segnali recenti e implicazioni operative.",
+            "seo_title": "Retrospettiva sisma M6.0 del 2025-10-27 in 7 km SE of S\u0131nd\u0131rg\u0131, Turkey: contesto e lettura operativa | Quakrs Editoriale",
+            "seo_description": "Analisi dell evento del 2025-10-27 (7 km SE of S\u0131nd\u0131rg\u0131, Turkey) con confronto sui segnali recenti e implicazioni operative.",
+            "published_at_ts": 1774710122,
+            "published_at": "2026-03-28T15:02:02+00:00",
+            "updated_at_ts": 1774710122,
+            "updated_at": "2026-03-28T15:02:02+00:00",
+            "word_count": 246,
+            "quality_score": 100,
+            "quality_checks": [
+                {
+                    "name": "magnitude_present",
+                    "ok": true
+                },
+                {
+                    "name": "depth_present",
+                    "ok": true
+                },
+                {
+                    "name": "coords_present",
+                    "ok": true
+                },
+                {
+                    "name": "source_url_present",
+                    "ok": true
+                },
+                {
+                    "name": "sections_ready",
+                    "ok": true
+                },
+                {
+                    "name": "context_ready",
+                    "ok": true
+                },
+                {
+                    "name": "min_word_count",
+                    "ok": true
+                }
+            ],
+            "url": "/editoriale/retrospettiva-2025-10-27-us6000rjsu-7-km-se-of-s-nd-rg-turkey.php",
+            "event": {
+                "id": "us6000rjsu",
+                "place": "7 km SE of S\u0131nd\u0131rg\u0131, Turkey",
+                "place_short": "7 km SE of S\u0131nd\u0131rg\u0131, Turkey",
+                "magnitude": 6,
+                "depth_km": 8,
+                "latitude": 39.1937,
+                "longitude": 28.2425,
+                "event_time_utc": "2025-10-27T19:48:28+00:00",
+                "event_time_ts": 1761594508,
+                "source_provider": "Unknown",
+                "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rjsu"
+            },
+            "context": {
+                "window_days": 7,
+                "recent_window_hours": 48,
+                "nearby_count_48h": 0,
+                "nearby_count_7d": 0,
+                "nearby_max_magnitude": null
+            },
+            "sections": [
+                {
+                    "heading": "Evento storico in breve",
+                    "body": "Il 2025-10-27, nell area 7 km SE of S\u0131nd\u0131rg\u0131, Turkey, i dati sismici disponibili indicano un evento di magnitudo 6.0 con profondita 8.0 km. Il riferimento principale proviene da Unknown ed e utile per leggere priorita e contesto operativo. In questa lettura, la domanda chiave non e \\\"quanto e forte in assoluto\\\", ma se i parametri mostrano stabilita o cambiamento progressivo nella stessa zona."
+                },
+                {
+                    "heading": "Confronto con segnali recenti",
+                    "body": "Coordinate evento: 39.194, 28.243. Nella finestra di 7 giorni attorno a questo punto risultano 0 eventi entro ~250 km, con magnitudo massima n/d. Questo aiuta a distinguere tra episodio isolato e area con attivita distribuita. Se il conteggio resta basso e la magnitudo massima non cresce, il quadro tende a rimanere contenuto; se entrambi salgono, aumenta la priorita di monitoraggio. In ottica storica, il confronto serve a misurare persistenza e ricorrenza nella stessa macro-area, non a predire un singolo evento futuro."
+                },
+                {
+                    "heading": "Lettura operativa",
+                    "body": "Per uso operativo quotidiano conviene verificare: trend magnitudo locale, profondita prevalente, variazione del numero eventi nelle ultime 24-72 ore e convergenza tra provider. Quando questi indicatori si muovono insieme, il monitoraggio va intensificato. Nella pratica, confrontare due o tre finestre temporali consecutive riduce il rischio di interpretare un picco breve come cambio strutturale."
+                },
+                {
+                    "heading": "Limiti e affidabilita",
+                    "body": "Questa retrospettiva non sostituisce fonti ufficiali di emergenza. I numeri possono essere aggiornati quando i provider ricalcolano magnitudo, coordinate o profondita. Il valore editoriale sta nel mettere in sequenza i dati utili in modo rapido e verificabile, mantenendo un tono prudente."
+                }
+            ],
+            "internal_links": [
+                "/event.php?id=us6000rjsu",
+                "/earthquakes.php",
+                "/archive.php",
+                "/data-archive.php",
+                "/timeline.php",
+                "/alerts.php"
+            ],
+            "glossary": [
+                {
+                    "term": "ipocentro",
+                    "definition": "Punto in profondita dove si genera il terremoto."
+                },
+                {
+                    "term": "epicentro",
+                    "definition": "Posizione in superficie sopra l origine del sisma."
+                },
+                {
+                    "term": "magnitudo",
+                    "definition": "Valore che descrive la forza energetica del sisma."
+                },
+                {
+                    "term": "replica",
+                    "definition": "Scossa successiva legata allo stesso processo sismico."
+                }
+            ]
+        }
+    ]
+}

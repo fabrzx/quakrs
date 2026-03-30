@@ -66,12 +66,15 @@ function source_query_url(array $sourceCfg, array $params): string
 
 function normalize_feature_time_utc(mixed $rawTime): ?string
 {
+    $minAcceptedTs = (int) strtotime('1900-01-01 00:00:00 UTC');
+    $maxAcceptedTs = time() + 86400; // tolerate small upstream clock drift, reject far-future timestamps
+
     if (is_numeric($rawTime)) {
         $time = (int) $rawTime;
-        if ($time > 9999999999) {
+        while (abs($time) > 9999999999) {
             $time = (int) floor($time / 1000);
         }
-        if ($time === 0) {
+        if ($time < $minAcceptedTs || $time > $maxAcceptedTs) {
             return null;
         }
         return gmdate('c', $time);
@@ -81,7 +84,10 @@ function normalize_feature_time_utc(mixed $rawTime): ?string
         return null;
     }
     $parsed = strtotime(trim($rawTime));
-    return is_int($parsed) ? gmdate('c', $parsed) : null;
+    if (!is_int($parsed) || $parsed < $minAcceptedTs || $parsed > $maxAcceptedTs) {
+        return null;
+    }
+    return gmdate('c', $parsed);
 }
 
 function parse_geojson_features(array $features, string $provider): array
@@ -230,6 +236,7 @@ if ($resume && !$resetCheckpoint) {
 $archiveReason = null;
 $db = null;
 $table = 'earthquake_events';
+$tables = [$table];
 if (!$dryRun) {
     $db = earthquake_archive_open($appConfig, $archiveReason);
     if (!$db instanceof mysqli) {
@@ -238,6 +245,7 @@ if (!$dryRun) {
     }
     $cfg = earthquake_archive_mysql_config($appConfig);
     $table = (string) ($cfg['table'] ?? 'earthquake_events');
+    $tables = earthquake_mysql_role_tables($appConfig, 'archive');
 }
 
 $cursorTs = $startTs;
@@ -347,7 +355,7 @@ while ($cursorTs <= $endTs) {
         $globalFetched += $fetched;
 
         if (!$dryRun && $db instanceof mysqli && $fetched > 0) {
-            $written = earthquake_archive_ingest($db, $events, time(), $table);
+            $written = earthquake_archive_ingest($db, $events, time(), $tables);
             $windowWritten += $written;
             $globalWritten += $written;
         }

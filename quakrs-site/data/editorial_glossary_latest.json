@@ -1,0 +1,44 @@
+{
+    "ok": true,
+    "updated_at_ts": 1774739312,
+    "updated_at": "2026-03-28T23:08:32+00:00",
+    "terms_count": 4,
+    "terms": {
+        "epicentro": {
+            "term": "epicentro",
+            "definition": "Posizione in superficie sopra l origine del sisma.",
+            "first_seen_ts": 1774739312,
+            "last_seen_ts": 1774739312,
+            "seen_count": 12,
+            "last_article_slug": "retrospettiva-2025-10-27-us6000rjsu-7-km-se-of-s-nd-rg-turkey",
+            "source": "gpt"
+        },
+        "ipocentro": {
+            "term": "ipocentro",
+            "definition": "Punto in profondita dove si genera il terremoto.",
+            "first_seen_ts": 1774739312,
+            "last_seen_ts": 1774739312,
+            "seen_count": 12,
+            "last_article_slug": "retrospettiva-2025-10-27-us6000rjsu-7-km-se-of-s-nd-rg-turkey",
+            "source": "gpt"
+        },
+        "magnitudo": {
+            "term": "magnitudo",
+            "definition": "Valore che descrive la forza energetica del sisma.",
+            "first_seen_ts": 1774739226,
+            "last_seen_ts": 1774739312,
+            "seen_count": 24,
+            "last_article_slug": "retrospettiva-2025-10-27-us6000rjsu-7-km-se-of-s-nd-rg-turkey",
+            "source": "gpt"
+        },
+        "replica": {
+            "term": "replica",
+            "definition": "Scossa successiva legata allo stesso processo sismico.",
+            "first_seen_ts": 1774739312,
+            "last_seen_ts": 1774739312,
+            "seen_count": 12,
+            "last_article_slug": "retrospettiva-2025-10-27-us6000rjsu-7-km-se-of-s-nd-rg-turkey",
+            "source": "gpt"
+        }
+    }
+}

@@ -60,6 +60,15 @@ require __DIR__ . '/../partials/topbar.php';
     margin-top: 0.72rem;
   }
 
+  .it-depth-chart .bar-row {
+    grid-template-columns: 92px minmax(0, 1fr) 40px;
+  }
+
+  .it-depth-chart .bar-label {
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+
   .it-line-chart {
     height: 24.5rem;
     min-height: 24.5rem;
@@ -359,15 +368,12 @@ require __DIR__ . '/../partials/topbar.php';
   }
 
   .it-stats-recap {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 0.88rem;
-    align-items: center;
+    display: block;
   }
 
   .it-stats-recap-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.64rem;
   }
 
@@ -398,10 +404,23 @@ require __DIR__ . '/../partials/topbar.php';
     line-height: 1.2;
   }
 
-  .it-stats-actions {
+  .it-stats-mini-action {
     display: grid;
-    gap: 0.36rem;
-    justify-items: end;
+    grid-template-rows: auto 1fr auto;
+    gap: 0.48rem;
+  }
+
+  .it-stats-mini-action .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .it-stats-mini-action .btn.btn-primary,
+  .it-stats-mini-action .btn.btn-primary:visited,
+  .it-stats-mini-action .btn.btn-primary:hover,
+  .it-stats-mini-action .btn.btn-primary:focus-visible {
+    color: #f3f7ff;
   }
 
   @media (max-width: 1120px) {
@@ -423,9 +442,6 @@ require __DIR__ . '/../partials/topbar.php';
       grid-template-columns: 1fr;
     }
 
-    .it-stats-actions {
-      justify-items: start;
-    }
   }
 </style>
 
@@ -537,29 +553,27 @@ require __DIR__ . '/../partials/topbar.php';
 
 <section class="panel">
   <article class="card page-card it-stats-recap">
-    <div>
-      <h3>Recap statistico Italia</h3>
-      <div class="it-stats-recap-grid">
-        <div class="it-stats-mini">
-          <p class="it-stats-mini-label">Mese corrente</p>
-          <p id="it-stats-month-value" class="it-stats-mini-value">--</p>
-          <p id="it-stats-month-note" class="it-stats-mini-note">Caricamento...</p>
-        </div>
-        <div class="it-stats-mini">
-          <p class="it-stats-mini-label">Trend mensile</p>
-          <p id="it-stats-delta-value" class="it-stats-mini-value">--</p>
-          <p id="it-stats-delta-note" class="it-stats-mini-note">vs mese precedente</p>
-        </div>
-        <div class="it-stats-mini">
-          <p class="it-stats-mini-label">Regione più sismica</p>
-          <p id="it-stats-region-value" class="it-stats-mini-value">--</p>
-          <p id="it-stats-region-note" class="it-stats-mini-note">Quota sul totale: --</p>
-        </div>
+    <h3>Recap statistico Italia</h3>
+    <div class="it-stats-recap-grid">
+      <div class="it-stats-mini">
+        <p class="it-stats-mini-label">Mese corrente</p>
+        <p id="it-stats-month-value" class="it-stats-mini-value">--</p>
+        <p id="it-stats-month-note" class="it-stats-mini-note">Caricamento...</p>
       </div>
-    </div>
-    <div class="it-stats-actions">
-      <a class="btn btn-primary" href="<?= htmlspecialchars(qk_localized_url('/data-italia-statistiche.php'), ENT_QUOTES, 'UTF-8'); ?>">Apri statistiche complete</a>
-      <p id="it-stats-source" class="kpi-note">Dataset: --</p>
+      <div class="it-stats-mini">
+        <p class="it-stats-mini-label">Trend mensile</p>
+        <p id="it-stats-delta-value" class="it-stats-mini-value">--</p>
+        <p id="it-stats-delta-note" class="it-stats-mini-note">vs mese precedente</p>
+      </div>
+      <div class="it-stats-mini">
+        <p class="it-stats-mini-label">Regione più sismica</p>
+        <p id="it-stats-region-value" class="it-stats-mini-value">--</p>
+        <p id="it-stats-region-note" class="it-stats-mini-note">Quota del mese: --</p>
+      </div>
+      <div class="it-stats-mini it-stats-mini-action">
+        <p class="it-stats-mini-note">Apri la pagina statistiche con ranking e filtri periodo.</p>
+        <a class="btn btn-primary" href="<?= htmlspecialchars(qk_localized_url('/data-italia-statistiche.php'), ENT_QUOTES, 'UTF-8'); ?>">Apri statistiche complete</a>
+      </div>
     </div>
   </article>
 </section>
@@ -585,7 +599,6 @@ require __DIR__ . '/../partials/topbar.php';
     const statsDeltaValue = document.querySelector("#it-stats-delta-value");
     const statsRegionValue = document.querySelector("#it-stats-region-value");
     const statsRegionNote = document.querySelector("#it-stats-region-note");
-    const statsSource = document.querySelector("#it-stats-source");
     const mapContainer = document.querySelector("#it-map-leaflet");
     const itMapLegend = document.querySelector(".it-map-legend");
     const itMapFilterButtons = document.querySelectorAll(".it-map-legend .map-filter-btn");
@@ -1312,8 +1325,7 @@ require __DIR__ . '/../partials/topbar.php';
       if (statsMonthNote) statsMonthNote.textContent = "Statistiche non disponibili";
       if (statsDeltaValue) statsDeltaValue.textContent = "--";
       if (statsRegionValue) statsRegionValue.textContent = "--";
-      if (statsRegionNote) statsRegionNote.textContent = "Quota sul totale: --";
-      if (statsSource) statsSource.textContent = "Dataset: non disponibile";
+      if (statsRegionNote) statsRegionNote.textContent = "Quota del mese: --";
     };
 
     let currentEvents = [];
@@ -1574,8 +1586,10 @@ require __DIR__ . '/../partials/topbar.php';
         if (!payload || payload.ok !== true) throw new Error("Payload invalid");
 
         const recap = payload.recap && typeof payload.recap === "object" ? payload.recap : {};
+        const rankings = payload.region_rankings && typeof payload.region_rankings === "object" ? payload.region_rankings : {};
         const currentMonth = recap.current_month && typeof recap.current_month === "object" ? recap.current_month : null;
-        const topRegion = recap.top_region && typeof recap.top_region === "object" ? recap.top_region : null;
+        const monthRanking = Array.isArray(rankings.month_current) ? rankings.month_current : [];
+        const topRegion = monthRanking.length > 0 && typeof monthRanking[0] === "object" ? monthRanking[0] : null;
         const currentMonthCount = Number(currentMonth?.count || 0);
         const monthLabel = typeof currentMonth?.month === "string" ? formatMonthLabel(currentMonth.month) : "--";
         const delta = Number(recap.delta_vs_previous_month || 0);
@@ -1583,23 +1597,21 @@ require __DIR__ . '/../partials/topbar.php';
         const regionCount = Number(topRegion?.count || 0);
 
         if (statsMonthValue) statsMonthValue.textContent = `${String(currentMonthCount)} eventi`;
-        if (statsMonthNote) statsMonthNote.textContent = monthLabel !== "--" ? `Mese: ${monthLabel}` : "Mese corrente";
+        if (statsMonthNote) statsMonthNote.textContent = monthLabel !== "--" ? monthLabel : "Mese corrente";
         if (statsDeltaValue) {
           statsDeltaValue.textContent = formatSignedCount(delta);
           statsDeltaValue.style.color = delta > 0 ? "#ff7a00" : (delta < 0 ? "#20e0ff" : "var(--text-1)");
         }
         if (statsRegionValue) statsRegionValue.textContent = String(topRegion?.region || "--");
         if (statsRegionNote) statsRegionNote.textContent = Number.isFinite(share) && regionCount > 0
-          ? `${regionCount} eventi · ${share.toFixed(1)}% del totale`
-          : "Quota sul totale: --";
-        if (statsSource) statsSource.textContent = `Dataset: ${payload.provider || "Unknown"} · Aggiornato ${formatUtcShort(payload.generated_at)}`;
+          ? `${regionCount} eventi · ${share.toFixed(1)}% del mese`
+          : "Quota del mese: --";
       } catch (_) {
         if (statsMonthValue) statsMonthValue.textContent = "--";
         if (statsMonthNote) statsMonthNote.textContent = "Statistiche non disponibili";
         if (statsDeltaValue) statsDeltaValue.textContent = "--";
         if (statsRegionValue) statsRegionValue.textContent = "--";
-        if (statsRegionNote) statsRegionNote.textContent = "Quota sul totale: --";
-        if (statsSource) statsSource.textContent = "Dataset: non disponibile";
+        if (statsRegionNote) statsRegionNote.textContent = "Quota del mese: --";
       }
     };
 

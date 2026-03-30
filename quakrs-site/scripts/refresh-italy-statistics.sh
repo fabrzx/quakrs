@@ -12,5 +12,5 @@ fi
 
 curl -fsS --max-time "$TIMEOUT" \
   -H 'Accept: application/json' \
-  "${BASE_URL}/api/italy-statistics.php?force_refresh=1&token=${TOKEN}" \
+  "${BASE_URL}/api/italy-earthquakes.php?force_refresh=1&token=${TOKEN}" \
   >/dev/null

@@ -52,6 +52,11 @@ function italy_stats_region_expr(): string
     END)';
 }
 
+function italy_stats_ingv_filter_sql(): string
+{
+    return "LOWER(COALESCE(source_provider, '')) = 'ingv'";
+}
+
 function italy_stats_compact_monthly(array $rows): array
 {
     $pairs = [];
@@ -257,15 +262,19 @@ function italy_stats_count_for_period(array $appConfig, string $fromDate, string
     $cfg = earthquake_mysql_role_config($appConfig, 'archive');
     $table = preg_match('/^[a-zA-Z0-9_]+$/', (string) ($cfg['table'] ?? '')) ? (string) $cfg['table'] : 'earthquake_events';
     $eventTsExpr = italy_stats_event_ts_expr();
+    $regionExpr = italy_stats_region_expr();
 
+    $providerFilter = italy_stats_ingv_filter_sql();
     $sql = sprintf(
         'SELECT COUNT(*) AS c
          FROM `%s`
          WHERE latitude BETWEEN 35.0 AND 48.8
            AND longitude BETWEEN 6.0 AND 19.6
+           AND %s
            AND %s IS NOT NULL
            AND %s BETWEEN ? AND ?',
         $table,
+        $providerFilter,
         $eventTsExpr,
         $eventTsExpr
     );
@@ -289,16 +298,67 @@ function italy_stats_count_for_period(array $appConfig, string $fromDate, string
     }
 
     $stmt->close();
-    $db->close();
     if (!$ok) {
+        $db->close();
         $errorReason = 'Query failed';
         return null;
     }
+
+    $regionsSql = sprintf(
+        'SELECT %s AS region_guess, COUNT(*) AS c, MAX(magnitude) AS max_magnitude
+         FROM `%s`
+         WHERE latitude BETWEEN 35.0 AND 48.8
+           AND longitude BETWEEN 6.0 AND 19.6
+           AND %s
+           AND %s IS NOT NULL
+           AND %s BETWEEN ? AND ?
+         GROUP BY region_guess
+         ORDER BY c DESC, region_guess ASC
+         LIMIT 50',
+        $regionExpr,
+        $table,
+        $providerFilter,
+        $eventTsExpr,
+        $eventTsExpr
+    );
+
+    $regionsStmt = $db->prepare($regionsSql);
+    if (!$regionsStmt instanceof mysqli_stmt) {
+        $db->close();
+        $errorReason = 'Prepare regions query failed';
+        return null;
+    }
+
+    $regionsOk = $regionsStmt->bind_param('ii', $fromTs, $toTs) && $regionsStmt->execute();
+    $regionsRows = [];
+    if ($regionsOk) {
+        $regionsResult = $regionsStmt->get_result();
+        if ($regionsResult instanceof mysqli_result) {
+            while ($row = $regionsResult->fetch_assoc()) {
+                $regionsRows[] = [
+                    'region' => trim((string) ($row['region_guess'] ?? '')),
+                    'count' => (int) ($row['c'] ?? 0),
+                    'max_magnitude' => is_numeric($row['max_magnitude'] ?? null) ? (float) $row['max_magnitude'] : null,
+                ];
+            }
+            $regionsResult->free();
+        }
+    }
+    $regionsStmt->close();
+    $db->close();
+
+    if (!$regionsOk) {
+        $errorReason = 'Regions query failed';
+        return null;
+    }
+
+    $regionsPeriod = italy_stats_finalize_regions($regionsRows);
 
     return [
         'from' => $fromDate,
         'to' => $toDate,
         'events_total_period' => $count,
+        'top_regions_period' => $regionsPeriod,
     ];
 }
 
@@ -316,6 +376,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
     $table = preg_match('/^[a-zA-Z0-9_]+$/', (string) ($cfg['table'] ?? '')) ? (string) $cfg['table'] : 'earthquake_events';
     $eventTsExpr = italy_stats_event_ts_expr();
     $regionExpr = italy_stats_region_expr();
+    $providerFilter = italy_stats_ingv_filter_sql();
     $currentMonthKey = gmdate('Y-m');
     $currentYearKey = gmdate('Y');
 
@@ -324,11 +385,13 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
          FROM `%s`
          WHERE latitude BETWEEN 35.0 AND 48.8
            AND longitude BETWEEN 6.0 AND 19.6
+           AND %s
            AND %s IS NOT NULL
          GROUP BY month_utc
          ORDER BY month_utc ASC',
         $eventTsExpr,
         $table,
+        $providerFilter,
         $eventTsExpr
     );
 
@@ -337,11 +400,13 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
          FROM `%s`
          WHERE latitude BETWEEN 35.0 AND 48.8
            AND longitude BETWEEN 6.0 AND 19.6
+           AND %s
            AND %s IS NOT NULL
          GROUP BY year_utc
          ORDER BY year_utc ASC',
         $eventTsExpr,
         $table,
+        $providerFilter,
         $eventTsExpr
     );
 
@@ -350,6 +415,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
          FROM `%s`
          WHERE latitude BETWEEN 35.0 AND 48.8
            AND longitude BETWEEN 6.0 AND 19.6
+           AND %s
            AND place IS NOT NULL
            AND place <> ""
            AND %s IS NOT NULL
@@ -358,6 +424,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
          LIMIT 50',
         $regionExpr,
         $table,
+        $providerFilter,
         $eventTsExpr
     );
 
@@ -366,6 +433,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
          FROM `%s`
          WHERE latitude BETWEEN 35.0 AND 48.8
            AND longitude BETWEEN 6.0 AND 19.6
+           AND %s
            AND place IS NOT NULL
            AND place <> ""
            AND %s IS NOT NULL
@@ -375,6 +443,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
          LIMIT 50',
         $regionExpr,
         $table,
+        $providerFilter,
         $eventTsExpr,
         $eventTsExpr,
         "'" . $db->real_escape_string($currentMonthKey) . "'"
@@ -385,6 +454,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
          FROM `%s`
          WHERE latitude BETWEEN 35.0 AND 48.8
            AND longitude BETWEEN 6.0 AND 19.6
+           AND %s
            AND place IS NOT NULL
            AND place <> ""
            AND %s IS NOT NULL
@@ -394,6 +464,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
          LIMIT 50',
         $regionExpr,
         $table,
+        $providerFilter,
         $eventTsExpr,
         $eventTsExpr,
         "'" . $db->real_escape_string($currentYearKey) . "'"
@@ -404,10 +475,12 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
          FROM `%s`
          WHERE latitude BETWEEN 35.0 AND 48.8
            AND longitude BETWEEN 6.0 AND 19.6
+           AND %s
            AND %s IS NOT NULL',
         $eventTsExpr,
         $eventTsExpr,
         $table,
+        $providerFilter,
         $eventTsExpr
     );
 
@@ -483,6 +556,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
              FROM `%s`
              WHERE latitude BETWEEN 35.0 AND 48.8
                AND longitude BETWEEN 6.0 AND 19.6
+               AND %s
                AND event_time_ts IS NOT NULL
                AND (
                  (event_time_ts BETWEEN %d AND %d)
@@ -491,6 +565,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
                )
              GROUP BY month_utc',
             $liveTable,
+            $providerFilter,
             $start15Sec,
             $nowSec,
             $start15Ms,
@@ -501,6 +576,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
              FROM `%s`
              WHERE latitude BETWEEN 35.0 AND 48.8
                AND longitude BETWEEN 6.0 AND 19.6
+               AND %s
                AND event_time_ts IS NOT NULL
                AND (
                  (event_time_ts BETWEEN %d AND %d)
@@ -509,6 +585,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
                )',
             "'" . $liveDb->real_escape_string($currentYearKey) . "'",
             $liveTable,
+            $providerFilter,
             $startYearSec,
             $nowSec,
             $startYearMs,
@@ -519,6 +596,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
              FROM `%s`
              WHERE latitude BETWEEN 35.0 AND 48.8
                AND longitude BETWEEN 6.0 AND 19.6
+               AND %s
                AND place IS NOT NULL
                AND place <> ""
                AND event_time_ts IS NOT NULL
@@ -532,6 +610,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
              LIMIT 50',
             $regionExpr,
             $liveTable,
+            $providerFilter,
             $monthStartSec,
             $nowSec,
             $monthStartMs,
@@ -542,6 +621,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
              FROM `%s`
              WHERE latitude BETWEEN 35.0 AND 48.8
                AND longitude BETWEEN 6.0 AND 19.6
+               AND %s
                AND place IS NOT NULL
                AND place <> ""
                AND event_time_ts IS NOT NULL
@@ -555,6 +635,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
              LIMIT 50',
             $regionExpr,
             $liveTable,
+            $providerFilter,
             $startYearSec,
             $nowSec,
             $startYearMs,
@@ -575,7 +656,8 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
                 if ($key === '') {
                     continue;
                 }
-                $monthlyByKey[$key] = (int) ($row['c'] ?? 0);
+                $liveCount = (int) ($row['c'] ?? 0);
+                $monthlyByKey[$key] = max((int) ($monthlyByKey[$key] ?? 0), $liveCount);
             }
             $resultLiveMonth->free();
         }
@@ -599,7 +681,8 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
                 if ($key === '') {
                     continue;
                 }
-                $yearlyByKey[$key] = (int) ($row['c'] ?? 0);
+                $liveCount = (int) ($row['c'] ?? 0);
+                $yearlyByKey[$key] = max((int) ($yearlyByKey[$key] ?? 0), $liveCount);
             }
             $resultLiveYear->free();
         }
@@ -610,11 +693,15 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
         }
 
         $liveMonthRegions = italy_stats_finalize_regions(italy_stats_fetch_region_rows($liveDb, $liveRegionsMonthSql));
-        if (count($liveMonthRegions) > 0) {
+        $archiveMonthRegionsTotal = array_reduce($regionsMonth, static fn (int $carry, array $row): int => $carry + (int) ($row['count'] ?? 0), 0);
+        $liveMonthRegionsTotal = array_reduce($liveMonthRegions, static fn (int $carry, array $row): int => $carry + (int) ($row['count'] ?? 0), 0);
+        if ($liveMonthRegionsTotal > $archiveMonthRegionsTotal) {
             $regionsMonth = $liveMonthRegions;
         }
         $liveYearRegions = italy_stats_finalize_regions(italy_stats_fetch_region_rows($liveDb, $liveRegionsYearSql));
-        if (count($liveYearRegions) > 0) {
+        $archiveYearRegionsTotal = array_reduce($regionsYear, static fn (int $carry, array $row): int => $carry + (int) ($row['count'] ?? 0), 0);
+        $liveYearRegionsTotal = array_reduce($liveYearRegions, static fn (int $carry, array $row): int => $carry + (int) ($row['count'] ?? 0), 0);
+        if ($liveYearRegionsTotal > $archiveYearRegionsTotal) {
             $regionsYear = $liveYearRegions;
         }
 
@@ -627,7 +714,7 @@ function italy_stats_from_mysql(array $appConfig, ?string &$errorReason = null):
     }
 
     return [
-        'provider' => 'Archive MySQL + Live Overlay',
+        'provider' => 'Archive MySQL',
         'monthly_counts' => italy_stats_compact_monthly($monthlyRows),
         'yearly_counts' => italy_stats_compact_yearly($yearlyRows),
         'top_regions' => $regionsAll,
@@ -676,6 +763,7 @@ if ($periodFrom !== '' || $periodTo !== '') {
         'from' => $period['from'],
         'to' => $period['to'],
         'events_total_period' => $period['events_total_period'],
+        'top_regions_period' => $period['top_regions_period'] ?? [],
         'generated_at' => gmdate('c', $nowTs),
     ]);
 }
